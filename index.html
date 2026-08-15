@@ -135,22 +135,21 @@
 
   .banner-row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2px; background:var(--line); margin-top:18px;}
   @media (max-width:900px){.banner-row{grid-template-columns:1fr 1fr;}}
-  .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden;}
-  .banner-panel.mode-auto{background:linear-gradient(160deg, var(--mode-auto), var(--mode-auto-dk));}
-  .banner-panel.mode-rail{background:linear-gradient(160deg, var(--mode-rail), var(--mode-rail-dk));}
-  .banner-panel.mode-sea{background:linear-gradient(160deg, var(--mode-sea), var(--mode-sea-dk));}
-  .banner-panel.mode-air{background:linear-gradient(160deg, var(--mode-air), var(--mode-air-dk));}
-  .banner-panel.mode-multi{background:linear-gradient(160deg, var(--mode-multi), var(--mode-multi-dk));}
+  .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden; background-size:cover, cover; background-position:center, center; background-repeat:no-repeat;}
+  .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg');}
+  .banner-panel.mode-rail{background-color:var(--mode-rail); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-rail.jpg');}
+  .banner-panel.mode-sea{background-color:var(--mode-sea); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-sea.jpg');}
+  .banner-panel.mode-air{background-color:var(--mode-air); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-air.jpg');}
+  .banner-panel.mode-multi{background-color:var(--mode-multi); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-multi.jpg');}
   .banner-panel:hover{filter:brightness(1.07);}
-  .banner-panel .bp-icon{position:absolute; right:14px; bottom:10px;}
-  .banner-panel .bp-icon svg.icon{width:4.4em; height:4.4em; color:rgba(255,255,255,.3); stroke-width:1.2;}
+  .banner-panel .bp-badge{position:absolute; left:14px; top:14px; width:2.4em; height:2.4em; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; color:var(--accent-2); box-shadow:0 2px 6px rgba(0,0,0,.25);}
+  .banner-panel .bp-badge svg.icon{width:1.2em; height:1.2em;}
   .banner-panel.wide{align-items:flex-end; justify-content:flex-start;}
   .banner-panel.wide .bp-overlay{position:relative; background:rgba(255,255,255,.95); color:var(--ink); margin:16px; padding:16px 18px; max-width:320px; border-radius:2px;}
   .banner-panel.wide .bp-overlay h3{margin:0 0 8px; font-size:1.05rem;}
   .banner-panel.wide .bp-overlay p{margin:0; font-size:.82rem; color:var(--ink-soft); max-width:none;}
-  .banner-panel:not(.wide){align-items:center; justify-content:center; flex-direction:column; gap:10px; flex:1;}
-  .banner-panel:not(.wide) svg.icon{position:relative; width:2.3em; height:2.3em; color:#fff;}
-  .banner-panel:not(.wide) .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 3px rgba(0,0,0,.35);}
+  .banner-panel:not(.wide){align-items:flex-end; justify-content:center; padding-bottom:14px;}
+  .banner-panel:not(.wide) .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 4px rgba(0,0,0,.55);}
 
   .dash-grid{display:grid; grid-template-columns:300px 1fr 260px; gap:16px; margin:24px 0 40px;}
   @media (max-width:1080px){.dash-grid{grid-template-columns:1fr 1fr;}}
@@ -702,6 +701,9 @@ function renderFooter(){
         '<span>&copy; 2011&ndash;2026 Trans-Atlas. '+esc(t("footer_rights"))+'</span>'+
         '<span>'+esc(t("footer_note"))+'</span>'+
       '</div>'+
+      '<div class="foot-bottom" style="margin-top:6px; padding-top:0; border-top:none;">'+
+        '<span style="font-size:.72rem;">Photos: Wikimedia Commons (CC BY-SA 3.0/4.0, CC BY 2.0) &mdash; EveryPicture, Insightwm, Petar Milošević, Raimond Spekking, Sam LaRussa.</span>'+
+      '</div>'+
     '</div>'+
   '</footer>';
 }
@@ -713,11 +715,13 @@ function renderHero(){
   var bannerHtml = order.map(function(m,i){
     if(i===0){
       return '<button class="banner-panel wide mode-'+m+'" data-quickmode="'+m+'">'+
-        '<div class="bp-icon">'+ICONS[MODE_ICON[m]]+'</div>'+
+        '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
         '<div class="bp-overlay"><h3>'+esc(t("mode_"+m))+'</h3><p>'+esc(t("modes_sub_"+m))+'</p></div>'+
       '</button>';
     }
-    return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+ICONS[MODE_ICON[m]]+'<span class="bp-label">'+esc(t("mode_"+m))+'</span></button>';
+    return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+
+      '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
+      '<span class="bp-label">'+esc(t("mode_"+m))+'</span></button>';
   }).join("");
 
   var resultKind = state.heroTab==="cargo" ? "transport" : "cargo";
