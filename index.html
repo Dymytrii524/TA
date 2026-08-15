@@ -1,0 +1,1041 @@
+﻿<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Trans-Atlas - mizhnarodna birzha vantazhoperevezen: poshuk vantazhiv i transportu, rynok tekhniky, novyny, bagatomovnyi interfeis (UA/EN/PL/DE).">
+<title>Trans-Atlas</title>
+<style>
+  @font-face { font-family: "Bahnschrift"; src: local("Bahnschrift"); }
+
+  :root{
+    --paper:#E9EDEC; --paper-2:#DCE3E1; --surface:#FFFFFF;
+    --ink:#14212A; --ink-soft:#4B5D63; --line:#C6D0CD;
+    --accent:#B85A28; --accent-ink:#FFF7F0; --accent-2:#2E6F6A;
+    --success:#2E7D5B; --warning:#A8791F; --danger:#AE4230;
+    --shadow:rgba(20,33,42,.14);
+    --font-display:"Bahnschrift","Arial Narrow","Roboto Condensed",sans-serif;
+    --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:ui-monospace,"Cascadia Mono","SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B22; --paper-2:#152229; --surface:#122029;
+      --ink:#E7EDEC; --ink-soft:#9FB0B1; --line:#243940;
+      --accent:#DE8551; --accent-ink:#12222A; --accent-2:#57ACA4;
+      --success:#54B48A; --warning:#D3A551; --danger:#E17862;
+      --shadow:rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1B22; --paper-2:#152229; --surface:#122029;
+    --ink:#E7EDEC; --ink-soft:#9FB0B1; --line:#243940;
+    --accent:#DE8551; --accent-ink:#12222A; --accent-2:#57ACA4;
+    --success:#54B48A; --warning:#D3A551; --danger:#E17862;
+    --shadow:rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:light dark;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--font-display); text-wrap:balance; margin:0 0 .4em; letter-spacing:.01em; font-weight:700;}
+  p{margin:0 0 1em; max-width:64ch;}
+  a{color:var(--accent-2);}
+  button{font-family:inherit;}
+  ::selection{background:var(--accent); color:var(--accent-ink);}
+  :focus-visible{outline:2px solid var(--accent-2); outline-offset:2px;}
+  .num{font-variant-numeric:tabular-nums; font-family:var(--font-mono);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+  .eyebrow{font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--ink-soft);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink); padding:.6em 1.1em; border-radius:3px;
+    font-weight:600; font-size:.92rem; cursor:pointer; transition:transform .1s, border-color .15s;
+  }
+  .btn:hover{border-color:var(--accent-2);}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .btn-primary:hover{filter:brightness(1.06); border-color:var(--accent);}
+  .btn-ghost{background:transparent; border-color:transparent; color:var(--ink-soft);}
+  .btn-ghost:hover{color:var(--ink); border-color:var(--line);}
+  .btn-sm{padding:.4em .8em; font-size:.82rem;}
+  .btn[disabled]{opacity:.5; cursor:not-allowed;}
+  input,select,textarea{
+    font-family:inherit; font-size:.94rem; padding:.65em .8em; border:1px solid var(--line);
+    border-radius:3px; background:var(--surface); color:var(--ink); width:100%;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--accent-2);}
+  label{display:block; font-size:.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:.35em;}
+  .field-err{color:var(--danger); font-size:.78rem; margin-top:.3em; display:none;}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--danger);}
+  .field.invalid .field-err{display:block;}
+  svg.icon{width:1.15em; height:1.15em; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; flex:none;}
+
+  /* header */
+  .topline{height:3px; background:linear-gradient(90deg,var(--accent),var(--accent-2));}
+  header.site{position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line);}
+  .headbar{display:flex; align-items:center; gap:24px; padding:14px 20px; max-width:1180px; margin:0 auto;}
+  .logo{display:flex; flex-direction:column; gap:0; cursor:pointer; border:none; background:none; color:inherit; text-align:left; padding:0;}
+  .logo .wordmark{font-family:var(--font-display); font-weight:700; font-size:1.35rem; letter-spacing:.03em;}
+  .logo .wordmark b{color:var(--accent);}
+  .logo .tagline{font-family:var(--font-mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);}
+  nav.primary{display:flex; gap:2px; flex:1; flex-wrap:wrap;}
+  nav.primary a{
+    font-size:.88rem; font-weight:600; color:var(--ink-soft); text-decoration:none;
+    padding:.5em .7em; border-radius:3px; white-space:nowrap;
+  }
+  nav.primary a:hover{color:var(--ink); background:var(--paper-2);}
+  nav.primary a.active{color:var(--accent); background:var(--paper-2);}
+  .head-actions{display:flex; align-items:center; gap:10px;}
+  .lang-switch{display:flex; border:1px solid var(--line); border-radius:3px; overflow:hidden;}
+  .lang-switch button{border:none; background:var(--surface); color:var(--ink-soft); padding:.4em .55em; font-size:.76rem; font-family:var(--font-mono); font-weight:700; cursor:pointer;}
+  .lang-switch button.active{background:var(--accent); color:var(--accent-ink);}
+  .burger{display:none; border:1px solid var(--line); background:var(--surface); border-radius:3px; padding:.4em .6em; cursor:pointer;}
+  .user-chip{display:flex; align-items:center; gap:8px; font-size:.85rem; font-weight:600;}
+  .user-chip .avatar{width:26px; height:26px; border-radius:50%; background:var(--accent-2); color:var(--accent-ink); display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:700;}
+  @media (max-width:980px){
+    nav.primary{display:none; position:absolute; top:100%; left:0; right:0; background:var(--paper); border-bottom:1px solid var(--line); flex-direction:column; padding:8px; box-shadow:0 8px 16px var(--shadow);}
+    nav.primary.open{display:flex;}
+    .burger{display:inline-flex;}
+    header.site{position:relative;}
+  }
+
+  /* hero / console */
+  .hero{padding:44px 0 30px; border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:start;}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem); max-width:14ch;}
+  .hero .lede{color:var(--ink-soft); max-width:46ch;}
+  .route-vis{display:flex; align-items:center; gap:10px; margin:22px 0; font-family:var(--font-mono); font-size:.8rem; color:var(--ink-soft);}
+  .route-dot{width:9px; height:9px; border-radius:50%; background:var(--accent-2); flex:none;}
+  .route-dot.end{background:var(--accent);}
+  .route-line{flex:1; height:1px; background:repeating-linear-gradient(90deg,var(--ink-soft) 0 6px,transparent 6px 12px);}
+  .console{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:20px; box-shadow:0 12px 28px var(--shadow);}
+  .mode-tabs{display:flex; gap:6px; margin-bottom:16px;}
+  .mode-tabs button{flex:1; border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); border-radius:3px; padding:.6em .5em; font-weight:700; font-size:.82rem; cursor:pointer;}
+  .mode-tabs button.active{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .console-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .console-grid .span2{grid-column:1/-1;}
+  .modes-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:26px;}
+  @media (max-width:760px){.modes-strip{grid-template-columns:repeat(2,1fr);}}
+  .mode-card{border:1px solid var(--line); background:var(--surface); border-radius:5px; padding:14px 12px; text-align:left; cursor:pointer; color:inherit;}
+  .mode-card:hover{border-color:var(--accent-2);}
+  .mode-card svg.icon{width:1.6em; height:1.6em; color:var(--accent-2); margin-bottom:8px;}
+  .mode-card .mc-title{font-weight:700; font-size:.86rem;}
+  .mode-card .mc-sub{font-size:.74rem; color:var(--ink-soft);}
+
+  section{padding:38px 0;}
+  section.alt{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:20px; flex-wrap:wrap;}
+  .section-head h2{font-size:1.4rem; margin:0;}
+
+  /* stats */
+  .stats-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .stat-cell{background:var(--surface); padding:16px; display:flex; flex-direction:column; gap:4px;}
+  .stat-cell .val{font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--accent);}
+  .stat-cell .lab{font-size:.76rem; color:var(--ink-soft);}
+
+  /* filter bar */
+  .filter-bar{display:flex; flex-wrap:wrap; gap:10px; align-items:end; background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:16px; margin-bottom:20px;}
+  .filter-bar .field{flex:1; min-width:140px;}
+  .filter-bar label{margin-bottom:.3em;}
+
+  /* listing rows */
+  .manifest{border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--surface);}
+  .m-row{display:grid; grid-template-columns:auto 1fr auto auto auto auto; gap:16px; align-items:center; padding:14px 16px; border-bottom:1px solid var(--line);}
+  .m-row:last-child{border-bottom:none;}
+  .m-row:hover{background:var(--paper-2);}
+  @media (max-width:900px){.m-row{grid-template-columns:1fr; gap:6px;}}
+  .mode-chip{display:inline-flex; align-items:center; gap:6px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:.3em .55em; border-radius:3px; background:var(--paper-2); color:var(--ink-soft); font-family:var(--font-mono);}
+  .mode-chip.auto{color:var(--accent-2);} .mode-chip.rail{color:var(--warning);} .mode-chip.sea{color:#3E7FB8;} .mode-chip.air{color:var(--danger);} .mode-chip.multi{color:var(--accent);}
+  .m-route{font-weight:700; display:flex; align-items:center; gap:8px;}
+  .m-route .arr{color:var(--ink-soft); font-weight:400;}
+  .m-sub{font-size:.78rem; color:var(--ink-soft);}
+  .m-figure{font-family:var(--font-mono); text-align:right; font-size:.86rem;}
+  .m-figure .lab{display:block; font-size:.66rem; color:var(--ink-soft); text-transform:uppercase;}
+  .empty-state{padding:40px 20px; text-align:center; color:var(--ink-soft);}
+
+  /* market */
+  .market-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px;}
+  .market-card{border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:16px; cursor:pointer; text-align:left; color:inherit;}
+  .market-card:hover{border-color:var(--accent);}
+  .market-card.active{border-color:var(--accent); background:var(--paper-2);}
+  .market-card svg.icon{width:1.8em; height:1.8em; color:var(--accent); margin-bottom:10px;}
+  .market-card .mk-title{font-weight:700; font-size:.9rem;}
+  .market-card .mk-count{font-family:var(--font-mono); font-size:.76rem; color:var(--ink-soft);}
+
+  /* news */
+  .news-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
+  .news-item{padding:18px 0; border-bottom:1px solid var(--line);}
+  .news-item .n-date{font-family:var(--font-mono); font-size:.74rem; color:var(--accent-2); text-transform:uppercase; letter-spacing:.06em;}
+  .news-item h3{font-size:1.05rem; margin:.3em 0;}
+  .news-item .n-excerpt{color:var(--ink-soft); font-size:.9rem;}
+  .news-item .n-more{margin-top:8px;}
+
+  /* about */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:820px){.steps{grid-template-columns:repeat(2,1fr);}}
+  .step-card{border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:16px;}
+  .step-card .s-num{font-family:var(--font-mono); color:var(--accent); font-weight:700; font-size:1.1rem;}
+  .info-cards{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px;}
+  @media (max-width:760px){.info-cards{grid-template-columns:1fr;}}
+  .info-card{border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:18px;}
+  .info-card.warn{border-color:var(--danger);}
+  .info-card.good{border-color:var(--success);}
+
+  /* contacts */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .office-list{display:flex; flex-direction:column; gap:12px;}
+  .office{border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:14px 16px;}
+  .office .o-city{font-weight:700;}
+  .office .o-line{font-size:.86rem; color:var(--ink-soft); display:flex; align-items:center; gap:6px; margin-top:3px;}
+  .office a{color:var(--ink-soft); text-decoration:none;}
+  .office a:hover{color:var(--accent-2);}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--line); background:var(--paper-2); padding:36px 0 20px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:24px;}
+  @media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  .foot-col h4{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); margin-bottom:.8em;}
+  .foot-col a{display:block; color:var(--ink); text-decoration:none; font-size:.88rem; padding:.25em 0;}
+  .foot-col a:hover{color:var(--accent-2);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; margin-top:28px; padding-top:16px; border-top:1px solid var(--line); font-size:.78rem; color:var(--ink-soft); flex-wrap:wrap; gap:10px;}
+
+  /* modal */
+  .modal-backdrop{position:fixed; inset:0; background:rgba(10,16,20,.55); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;}
+  .modal-backdrop.open{display:flex;}
+  .modal{background:var(--surface); border-radius:8px; width:100%; max-width:400px; padding:26px; border:1px solid var(--line); box-shadow:0 20px 50px var(--shadow); max-height:90vh; overflow:auto;}
+  .modal-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;}
+  .modal-close{border:none; background:none; cursor:pointer; color:var(--ink-soft); padding:4px;}
+  .modal .field{margin-bottom:14px;}
+  .modal-switch{font-size:.85rem; text-align:center; margin-top:14px; color:var(--ink-soft);}
+  .modal-switch button{background:none; border:none; color:var(--accent-2); font-weight:700; cursor:pointer; padding:0;}
+
+  /* toast */
+  #toast{position:fixed; bottom:20px; right:20px; z-index:200; display:flex; flex-direction:column; gap:8px;}
+  .toast{background:var(--ink); color:var(--paper); padding:.8em 1.1em; border-radius:5px; font-size:.86rem; box-shadow:0 8px 20px var(--shadow); display:flex; align-items:center; gap:8px; animation:toast-in .18s ease-out;}
+  .toast.err{background:var(--danger);}
+  @keyframes toast-in{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){ *{animation-duration:.001s !important; transition-duration:.001s !important;} }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+<div id="modalRoot" class="modal-backdrop"></div>
+<div id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- data: cities ---------- */
+var CITIES = [
+  {id:"kyiv", uk:"Київ", en:"Kyiv", pl:"Kijów", de:"Kiew"},
+  {id:"lviv", uk:"Львів", en:"Lviv", pl:"Lwów", de:"Lemberg"},
+  {id:"odesa", uk:"Одеса", en:"Odesa", pl:"Odessa", de:"Odessa"},
+  {id:"warsaw", uk:"Варшава", en:"Warsaw", pl:"Warszawa", de:"Warschau"},
+  {id:"krakow", uk:"Краків", en:"Krakow", pl:"Kraków", de:"Krakau"},
+  {id:"gdansk", uk:"Гданськ", en:"Gdansk", pl:"Gdańsk", de:"Danzig"},
+  {id:"berlin", uk:"Берлін", en:"Berlin", pl:"Berlin", de:"Berlin"},
+  {id:"hamburg", uk:"Гамбург", en:"Hamburg", pl:"Hamburg", de:"Hamburg"},
+  {id:"munich", uk:"Мюнхен", en:"Munich", pl:"Monachium", de:"München"},
+  {id:"vilnius", uk:"Вільнюс", en:"Vilnius", pl:"Wilno", de:"Wilna"},
+  {id:"prague", uk:"Прага", en:"Prague", pl:"Praga", de:"Prag"},
+  {id:"vienna", uk:"Відень", en:"Vienna", pl:"Wiedeń", de:"Wien"},
+  {id:"rotterdam", uk:"Роттердам", en:"Rotterdam", pl:"Rotterdam", de:"Rotterdam"},
+  {id:"istanbul", uk:"Стамбул", en:"Istanbul", pl:"Stambuł", de:"Istanbul"},
+  {id:"constanta", uk:"Констанца", en:"Constanta", pl:"Konstanca", de:"Konstanza"}
+];
+function cityName(id,lang){ var c=CITIES.filter(function(x){return x.id===id;})[0]; return c? c[lang]||c.en : id; }
+
+var CARGO_TYPES = [
+  {id:"build", uk:"Будівельні матеріали", en:"Construction materials", pl:"Materiały budowlane", de:"Baumaterialien"},
+  {id:"food", uk:"Продукти харчування", en:"Foodstuffs", pl:"Artykuły spożywcze", de:"Lebensmittel"},
+  {id:"furn", uk:"Меблі", en:"Furniture", pl:"Meble", de:"Möbel"},
+  {id:"metal", uk:"Металопрокат", en:"Steel & metal", pl:"Wyroby stalowe", de:"Stahlprodukte"},
+  {id:"chem", uk:"Хімічна продукція", en:"Chemicals", pl:"Chemikalia", de:"Chemikalien"},
+  {id:"textile", uk:"Текстиль", en:"Textiles", pl:"Tekstylia", de:"Textilien"},
+  {id:"electro", uk:"Електроніка", en:"Electronics", pl:"Elektronika", de:"Elektronik"},
+  {id:"agro", uk:"Сільгосппродукція", en:"Agricultural produce", pl:"Produkty rolne", de:"Agrarerzeugnisse"}
+];
+function cargoName(id,lang){ var c=CARGO_TYPES.filter(function(x){return x.id===id;})[0]; return c? c[lang]||c.en : id; }
+
+/* ---------- data: listings ---------- */
+var LISTINGS = [
+  {id:1,kind:"cargo",mode:"auto",from:"kyiv",to:"warsaw",date:"2026-08-19",cargo:"build",weight:20,volume:82,price:1450,company:"ТзОВ «Карпат-Логістика»"},
+  {id:2,kind:"transport",mode:"auto",from:"lviv",to:"berlin",date:"2026-08-18",cargo:"electro",weight:18,volume:76,price:1680,company:"FastRoad Sp. z o.o."},
+  {id:3,kind:"cargo",mode:"rail",from:"odesa",to:"gdansk",date:"2026-08-22",cargo:"metal",weight:64,volume:110,price:3200,company:"АгроТранс Груп"},
+  {id:4,kind:"transport",mode:"sea",from:"rotterdam",to:"istanbul",date:"2026-08-25",cargo:"chem",weight:25,volume:40,price:2900,company:"Blue Line Shipping"},
+  {id:5,kind:"cargo",mode:"air",from:"munich",to:"kyiv",date:"2026-08-17",cargo:"electro",weight:2.4,volume:6,price:2100,company:"AirCargo Bavaria"},
+  {id:6,kind:"transport",mode:"auto",from:"warsaw",to:"vienna",date:"2026-08-20",cargo:"furn",weight:14,volume:64,price:990,company:"Meble-Trans"},
+  {id:7,kind:"cargo",mode:"multi",from:"vilnius",to:"constanta",date:"2026-08-27",cargo:"agro",weight:22,volume:70,price:1750,company:"Baltic Grain Co."},
+  {id:8,kind:"transport",mode:"rail",from:"prague",to:"hamburg",date:"2026-08-21",cargo:"metal",weight:58,volume:95,price:2650,company:"CentroRail Cargo"},
+  {id:9,kind:"cargo",mode:"auto",from:"krakow",to:"lviv",date:"2026-08-16",cargo:"food",weight:12,volume:44,price:520,company:"FreshWay Sp. z o.o."},
+  {id:10,kind:"transport",mode:"sea",from:"gdansk",to:"istanbul",date:"2026-08-24",cargo:"textile",weight:19,volume:58,price:1980,company:"Marina Freight"},
+  {id:11,kind:"cargo",mode:"auto",from:"berlin",to:"kyiv",date:"2026-08-19",cargo:"chem",weight:21,volume:66,price:1890,company:"ChemLog GmbH"},
+  {id:12,kind:"transport",mode:"air",from:"vienna",to:"odesa",date:"2026-08-23",cargo:"electro",weight:1.8,volume:4,price:2450,company:"SkyBridge Cargo"},
+  {id:13,kind:"cargo",mode:"multi",from:"hamburg",to:"lviv",date:"2026-08-26",cargo:"build",weight:24,volume:88,price:2050,company:"NordTrans AG"},
+  {id:14,kind:"transport",mode:"auto",from:"vilnius",to:"warsaw",date:"2026-08-18",cargo:"furn",weight:16,volume:70,price:780,company:"Baltic Movers"},
+  {id:15,kind:"cargo",mode:"rail",from:"kyiv",to:"munich",date:"2026-08-28",cargo:"metal",weight:70,volume:120,price:3400,company:"УкрМеталТранс"},
+  {id:16,kind:"transport",mode:"multi",from:"istanbul",to:"prague",date:"2026-08-22",cargo:"textile",weight:17,volume:52,price:1720,company:"Anatolia Freight"}
+];
+
+var MARKET = [
+  {id:"bus", uk:"Автобус", en:"Bus", pl:"Autobus", de:"Bus", count:34, icon:"bus"},
+  {id:"tractor", uk:"Тягач", en:"Tractor unit", pl:"Ciągnik siodłowy", de:"Sattelzugmaschine", count:58, icon:"truck"},
+  {id:"semitrailer", uk:"Напівпричіп", en:"Semi-trailer", pl:"Naczepa", de:"Sattelauflieger", count:41, icon:"trailer"},
+  {id:"truck", uk:"Вантажівка", en:"Truck", pl:"Ciężarówka", de:"LKW", count:76, icon:"truck"},
+  {id:"parts", uk:"Запчастини", en:"Spare parts", pl:"Części zamienne", de:"Ersatzteile", count:112, icon:"parts"},
+  {id:"special", uk:"Спецтехніка", en:"Special equipment", pl:"Sprzęt specjalistyczny", de:"Sonderfahrzeuge", count:23, icon:"crane"},
+  {id:"trailer", uk:"Причіп", en:"Trailer", pl:"Przyczepa", de:"Anhänger", count:29, icon:"trailer"}
+];
+
+var NEWS = [
+  {id:1,date:"2026-08-12",
+    uk:{t:"Нові правила перетину кордону з Польщею",e:"З вересня змінюється порядок електронного декларування для вантажівок на пунктах пропуску «Ягодин» та «Краковець»."},
+    en:{t:"New border-crossing rules with Poland",e:"From September, the e-declaration procedure changes for trucks at the Yahodyn and Krakovets crossings."},
+    pl:{t:"Nowe zasady przekraczania granicy z Polską",e:"Od września zmienia się procedura zgłoszeń elektronicznych dla ciężarówek na przejściach Jahodyn i Krakowiec."},
+    de:{t:"Neue Grenzregeln zu Polen",e:"Ab September ändert sich das Verfahren der elektronischen Zollanmeldung an den Übergängen Jahodyn und Krakovets."}},
+  {id:2,date:"2026-08-10",
+    uk:{t:"Зростання попиту на морські перевезення з портів Балтики",e:"Обсяг заявок на напрямку Гданськ–Стамбул зріс за місяць на 18% через сезонний попит."},
+    en:{t:"Rising demand for sea freight from Baltic ports",e:"Booking volume on the Gdansk–Istanbul route grew 18% over the month due to seasonal demand."},
+    pl:{t:"Rośnie popyt na transport morski z portów bałtyckich",e:"Liczba zleceń na trasie Gdańsk–Stambuł wzrosła w ciągu miesiąca o 18% w związku z sezonowym popytem."},
+    de:{t:"Steigende Nachfrage nach Seefracht aus Ostseehäfen",e:"Das Buchungsvolumen auf der Route Danzig–Istanbul stieg saisonbedingt um 18 % im Monatsvergleich."}},
+  {id:3,date:"2026-08-07",
+    uk:{t:"Оновлення тарифів на паливо в довіднику",e:"Розділ «Ціни на паливо» тепер оновлюється щотижня для 20 країн Європи."},
+    en:{t:"Fuel price reference updated",e:"The fuel price section is now refreshed weekly for 20 European countries."},
+    pl:{t:"Aktualizacja cen paliw w informatorze",e:"Sekcja „Ceny paliw” jest teraz aktualizowana co tydzień dla 20 krajów Europy."},
+    de:{t:"Aktualisierung der Kraftstoffpreise",e:"Der Bereich „Kraftstoffpreise“ wird jetzt wöchentlich für 20 europäische Länder aktualisiert."}},
+  {id:4,date:"2026-08-03",
+    uk:{t:"Розширення бази перевізників",e:"До біржі приєдналося понад 300 нових транспортних компаній за останній квартал."},
+    en:{t:"Carrier base keeps growing",e:"Over 300 new transport companies joined the exchange in the last quarter."},
+    pl:{t:"Rozszerzenie bazy przewoźników",e:"W ostatnim kwartale do giełdy dołączyło ponad 300 nowych firm transportowych."},
+    de:{t:"Wachsende Frachtführer-Datenbank",e:"Im letzten Quartal sind über 300 neue Transportunternehmen der Börse beigetreten."}},
+  {id:5,date:"2026-07-29",
+    uk:{t:"Мультимодальні маршрути Азія–Європа",e:"Тестуємо комбіновані залізнично-морські маршрути зі скороченим часом у дорозі."},
+    en:{t:"Multimodal Asia–Europe routes",e:"We are piloting combined rail-sea routes with reduced transit time."},
+    pl:{t:"Multimodalne trasy Azja–Europa",e:"Testujemy łączone trasy kolejowo-morskie o skróconym czasie tranzytu."},
+    de:{t:"Multimodale Routen Asien–Europa",e:"Wir testen kombinierte Bahn-See-Routen mit verkürzter Transitzeit."}}
+];
+
+/* ---------- i18n ---------- */
+var I18N = {
+uk:{
+  brand_tag:"Біржа вантажів і транспорту",
+  nav_home:"Головна", nav_cargo:"Вантажі", nav_transport:"Транспорт", nav_market:"Ринок транспорту",
+  nav_news:"Новини", nav_contacts:"Контакти", nav_about:"Про нас",
+  login:"Увійти", register:"Реєстрація", logout:"Вийти",
+  hero_title:"Знайдіть вантаж або транспорт за лічені хвилини",
+  hero_lede:"Пряме зʼєднання вантажовідправників і перевізників по всій Європі: авто, залізниця, море, авіа та мультимодальні маршрути.",
+  tab_cargo:"Шукаю транспорт", tab_transport:"Шукаю вантаж",
+  f_from:"Звідки", f_to:"Куди", f_date:"Дата завантаження", f_mode:"Вид транспорту",
+  f_weight:"Вага, т", f_volume:"Обʼєм, м³", search:"Знайти", any:"Будь-який",
+  mode_auto:"Авто", mode_rail:"ЖД", mode_sea:"Море", mode_air:"Авіа", mode_multi:"Мультимодальні",
+  modes_sub_auto:"Найбільша база компаній-посередників", modes_sub_rail:"Контейнерні та вагонні відправки",
+  modes_sub_sea:"Порти Балтики, Чорного та Північного морів", modes_sub_air:"Термінові та цінні вантажі",
+  modes_sub_multi:"Комбіновані маршрути «під ключ»",
+  stats_title:"Біржа у цифрах", stat_cargo:"активних заявок на вантаж", stat_transport:"вільних транспортних засобів",
+  stat_companies:"компаній-учасників", stat_countries:"країн покриття",
+  results_title:"Актуальні заявки", results_count:"знайдено", results_empty:"За цим запитом нічого не знайдено. Спробуйте змінити напрямок або вид транспорту.",
+  col_route:"Маршрут", col_cargo:"Вантаж", col_weight:"Вага", col_volume:"Обʼєм", col_date:"Дата", col_price:"Ставка", contact_btn:"Звʼязатись",
+  market_title:"Ринок транспорту", market_lede:"Купівля, продаж і оренда вантажного транспорту та спецтехніки.",
+  market_listing_title:"Оголошення в категорії", market_pick:"Оберіть категорію вище, щоб побачити оголошення.",
+  news_title:"Новини галузі", news_more:"Читати", news_less:"Згорнути",
+  about_title:"Про Trans-Atlas", about_lede:"Trans-Atlas — міжнародна біржа вантажоперевезень, що з'єднує вантажовідправників і перевізників у Європі та за її межами. Ми спрощуємо пошук партнера для будь-якого виду доставки.",
+  about_how:"Як це працює", step1_t:"Реєстрація", step1_d:"Створіть акаунт компанії за 2 хвилини.",
+  step2_t:"Розмістіть заявку", step2_d:"Опишіть вантаж або вільний транспорт.",
+  step3_t:"Отримайте пропозиції", step3_d:"Партнери відгукуються протягом години.",
+  step4_t:"Укладіть угоду", step4_d:"Погодьте умови й закрийте перевезення.",
+  reliability_t:"Зона надійності", reliability_d:"Рейтинг компаній на основі виконаних угод, відгуків партнерів і підтверджених документів.",
+  blacklist_t:"Чорний список", blacklist_d:"Перелік компаній, що порушили умови угод. Перевіряйте партнера перед співпрацею.",
+  contacts_title:"Контакти", contacts_lede:"Оберіть офіс поруч із вами або напишіть нам напряму.",
+  c_name:"Ім'я", c_email:"Email", c_message:"Повідомлення", c_send:"Надіслати", c_success:"Дякуємо! Повідомлення надіслано, ми відповімо протягом робочого дня.",
+  offices_title:"Представництва",
+  err_required:"Заповніть це поле", err_email:"Введіть коректний email", err_pass:"Мінімум 6 символів", err_match:"Паролі не збігаються",
+  modal_login_title:"Вхід до кабінету", modal_register_title:"Реєстрація компанії",
+  f_password:"Пароль", f_password2:"Повторіть пароль", f_companyname:"Назва компанії",
+  submit_login:"Увійти", submit_register:"Створити акаунт",
+  switch_to_register:"Ще немає акаунта? Зареєструватись", switch_to_login:"Вже є акаунт? Увійти",
+  toast_login_ok:"Вхід виконано успішно", toast_register_ok:"Акаунт створено, ви увійшли в систему", toast_logout_ok:"Ви вийшли з акаунта",
+  footer_nav:"Навігація", footer_info:"Інфоцентр", footer_support:"Підтримка",
+  footer_rights:"Усі права захищені.", footer_note:"Дизайн-концепт сайту. Контактні дані — приклад для демонстрації.",
+  cta_register:"Зареєструвати компанію"
+},
+en:{
+  brand_tag:"Cargo & transport exchange",
+  nav_home:"Home", nav_cargo:"Cargo", nav_transport:"Transport", nav_market:"Vehicle market",
+  nav_news:"News", nav_contacts:"Contacts", nav_about:"About us",
+  login:"Log in", register:"Register", logout:"Log out",
+  hero_title:"Find cargo or transport in minutes",
+  hero_lede:"Direct connection between shippers and carriers across Europe: road, rail, sea, air and multimodal routes.",
+  tab_cargo:"I need transport", tab_transport:"I have cargo",
+  f_from:"From", f_to:"To", f_date:"Loading date", f_mode:"Transport type",
+  f_weight:"Weight, t", f_volume:"Volume, m³", search:"Search", any:"Any",
+  mode_auto:"Road", mode_rail:"Rail", mode_sea:"Sea", mode_air:"Air", mode_multi:"Multimodal",
+  modes_sub_auto:"The largest base of carrier companies", modes_sub_rail:"Container and wagon shipments",
+  modes_sub_sea:"Baltic, Black Sea and North Sea ports", modes_sub_air:"Urgent and high-value cargo",
+  modes_sub_multi:"Combined turnkey routes",
+  stats_title:"The exchange in numbers", stat_cargo:"active cargo listings", stat_transport:"available vehicles",
+  stat_companies:"member companies", stat_countries:"countries covered",
+  results_title:"Current listings", results_count:"found", results_empty:"No listings match this search. Try another route or transport type.",
+  col_route:"Route", col_cargo:"Cargo", col_weight:"Weight", col_volume:"Volume", col_date:"Date", col_price:"Rate", contact_btn:"Contact",
+  market_title:"Vehicle market", market_lede:"Buy, sell and rent trucks, trailers and special equipment.",
+  market_listing_title:"Listings in category", market_pick:"Pick a category above to see listings.",
+  news_title:"Industry news", news_more:"Read more", news_less:"Collapse",
+  about_title:"About Trans-Atlas", about_lede:"Trans-Atlas is an international freight exchange connecting shippers and carriers across Europe and beyond. We make it simple to find a partner for any type of delivery.",
+  about_how:"How it works", step1_t:"Register", step1_d:"Create a company account in 2 minutes.",
+  step2_t:"Post a listing", step2_d:"Describe your cargo or free vehicle.",
+  step3_t:"Get offers", step3_d:"Partners respond within the hour.",
+  step4_t:"Close the deal", step4_d:"Agree on terms and complete the shipment.",
+  reliability_t:"Reliability zone", reliability_d:"Company ratings based on completed deals, partner reviews and verified documents.",
+  blacklist_t:"Blacklist", blacklist_d:"Companies that breached deal terms. Check a partner before you work with them.",
+  contacts_title:"Contacts", contacts_lede:"Pick the office nearest to you, or write to us directly.",
+  c_name:"Name", c_email:"Email", c_message:"Message", c_send:"Send", c_success:"Thank you! Your message has been sent, we'll reply within one business day.",
+  offices_title:"Offices",
+  err_required:"This field is required", err_email:"Enter a valid email", err_pass:"At least 6 characters", err_match:"Passwords do not match",
+  modal_login_title:"Sign in", modal_register_title:"Register a company",
+  f_password:"Password", f_password2:"Confirm password", f_companyname:"Company name",
+  submit_login:"Sign in", submit_register:"Create account",
+  switch_to_register:"No account yet? Register", switch_to_login:"Already have an account? Sign in",
+  toast_login_ok:"Signed in successfully", toast_register_ok:"Account created, you are signed in", toast_logout_ok:"You have been signed out",
+  footer_nav:"Navigation", footer_info:"Info center", footer_support:"Support",
+  footer_rights:"All rights reserved.", footer_note:"Design concept. Contact details are placeholders for demonstration.",
+  cta_register:"Register your company"
+},
+pl:{
+  brand_tag:"Giełda ładunków i transportu",
+  nav_home:"Start", nav_cargo:"Ładunki", nav_transport:"Transport", nav_market:"Rynek pojazdów",
+  nav_news:"Aktualności", nav_contacts:"Kontakt", nav_about:"O nas",
+  login:"Zaloguj się", register:"Rejestracja", logout:"Wyloguj",
+  hero_title:"Znajdź ładunek lub transport w kilka minut",
+  hero_lede:"Bezpośrednie połączenie nadawców i przewoźników w całej Europie: drogowo, koleją, morzem, lotniczo i multimodalnie.",
+  tab_cargo:"Szukam transportu", tab_transport:"Mam ładunek",
+  f_from:"Skąd", f_to:"Dokąd", f_date:"Data załadunku", f_mode:"Rodzaj transportu",
+  f_weight:"Waga, t", f_volume:"Objętość, m³", search:"Szukaj", any:"Dowolny",
+  mode_auto:"Drogowy", mode_rail:"Kolejowy", mode_sea:"Morski", mode_air:"Lotniczy", mode_multi:"Multimodalny",
+  modes_sub_auto:"Największa baza firm pośredniczących", modes_sub_rail:"Przesyłki kontenerowe i wagonowe",
+  modes_sub_sea:"Porty Bałtyku, Morza Czarnego i Północnego", modes_sub_air:"Ładunki pilne i wysokiej wartości",
+  modes_sub_multi:"Trasy łączone „pod klucz”",
+  stats_title:"Giełda w liczbach", stat_cargo:"aktywnych ofert ładunków", stat_transport:"wolnych pojazdów",
+  stat_companies:"firm uczestniczących", stat_countries:"krajów objętych zasięgiem",
+  results_title:"Aktualne oferty", results_count:"znaleziono", results_empty:"Brak ofert dla tego zapytania. Spróbuj innej trasy lub rodzaju transportu.",
+  col_route:"Trasa", col_cargo:"Ładunek", col_weight:"Waga", col_volume:"Objętość", col_date:"Data", col_price:"Stawka", contact_btn:"Kontakt",
+  market_title:"Rynek pojazdów", market_lede:"Kupno, sprzedaż i wynajem ciężarówek, naczep i sprzętu specjalistycznego.",
+  market_listing_title:"Oferty w kategorii", market_pick:"Wybierz kategorię powyżej, aby zobaczyć oferty.",
+  news_title:"Aktualności branżowe", news_more:"Czytaj dalej", news_less:"Zwiń",
+  about_title:"O Trans-Atlas", about_lede:"Trans-Atlas to międzynarodowa giełda transportowa łącząca nadawców i przewoźników w Europie i poza nią. Ułatwiamy znalezienie partnera dla każdego rodzaju dostawy.",
+  about_how:"Jak to działa", step1_t:"Rejestracja", step1_d:"Załóż konto firmowe w 2 minuty.",
+  step2_t:"Dodaj ogłoszenie", step2_d:"Opisz ładunek lub wolny pojazd.",
+  step3_t:"Otrzymaj oferty", step3_d:"Partnerzy odpowiadają w ciągu godziny.",
+  step4_t:"Sfinalizuj transakcję", step4_d:"Uzgodnij warunki i zrealizuj przewóz.",
+  reliability_t:"Strefa wiarygodności", reliability_d:"Ocena firm na podstawie zrealizowanych transakcji, opinii partnerów i zweryfikowanych dokumentów.",
+  blacklist_t:"Czarna lista", blacklist_d:"Firmy, które naruszyły warunki umów. Sprawdź partnera przed współpracą.",
+  contacts_title:"Kontakt", contacts_lede:"Wybierz biuro najbliższe Tobie lub napisz do nas bezpośrednio.",
+  c_name:"Imię", c_email:"Email", c_message:"Wiadomość", c_send:"Wyślij", c_success:"Dziękujemy! Wiadomość została wysłana, odpowiemy w ciągu jednego dnia roboczego.",
+  offices_title:"Biura",
+  err_required:"To pole jest wymagane", err_email:"Podaj prawidłowy adres email", err_pass:"Minimum 6 znaków", err_match:"Hasła nie są zgodne",
+  modal_login_title:"Logowanie", modal_register_title:"Rejestracja firmy",
+  f_password:"Hasło", f_password2:"Powtórz hasło", f_companyname:"Nazwa firmy",
+  submit_login:"Zaloguj się", submit_register:"Utwórz konto",
+  switch_to_register:"Nie masz konta? Zarejestruj się", switch_to_login:"Masz już konto? Zaloguj się",
+  toast_login_ok:"Zalogowano pomyślnie", toast_register_ok:"Konto utworzone, jesteś zalogowany", toast_logout_ok:"Wylogowano",
+  footer_nav:"Nawigacja", footer_info:"Centrum informacji", footer_support:"Wsparcie",
+  footer_rights:"Wszelkie prawa zastrzeżone.", footer_note:"Koncepcja projektowa. Dane kontaktowe są przykładowe.",
+  cta_register:"Zarejestruj firmę"
+},
+de:{
+  brand_tag:"Fracht- und Transportbörse",
+  nav_home:"Start", nav_cargo:"Fracht", nav_transport:"Transport", nav_market:"Fahrzeugmarkt",
+  nav_news:"News", nav_contacts:"Kontakt", nav_about:"Über uns",
+  login:"Anmelden", register:"Registrieren", logout:"Abmelden",
+  hero_title:"Fracht oder Transport in Minuten finden",
+  hero_lede:"Direkte Verbindung zwischen Verladern und Frachtführern in ganz Europa: Straße, Schiene, See, Luft und multimodal.",
+  tab_cargo:"Ich suche Transport", tab_transport:"Ich habe Fracht",
+  f_from:"Von", f_to:"Nach", f_date:"Verladedatum", f_mode:"Transportart",
+  f_weight:"Gewicht, t", f_volume:"Volumen, m³", search:"Suchen", any:"Beliebig",
+  mode_auto:"Straße", mode_rail:"Schiene", mode_sea:"See", mode_air:"Luft", mode_multi:"Multimodal",
+  modes_sub_auto:"Die größte Datenbank an Speditionen", modes_sub_rail:"Container- und Waggonsendungen",
+  modes_sub_sea:"Häfen an Ostsee, Schwarzem und Nordmeer", modes_sub_air:"Eilige und hochwertige Fracht",
+  modes_sub_multi:"Kombinierte Komplettrouten",
+  stats_title:"Die Börse in Zahlen", stat_cargo:"aktive Frachtangebote", stat_transport:"verfügbare Fahrzeuge",
+  stat_companies:"teilnehmende Unternehmen", stat_countries:"abgedeckte Länder",
+  results_title:"Aktuelle Angebote", results_count:"gefunden", results_empty:"Keine Angebote zu dieser Suche. Versuchen Sie eine andere Route oder Transportart.",
+  col_route:"Route", col_cargo:"Fracht", col_weight:"Gewicht", col_volume:"Volumen", col_date:"Datum", col_price:"Preis", contact_btn:"Kontakt",
+  market_title:"Fahrzeugmarkt", market_lede:"Kauf, Verkauf und Vermietung von LKW, Anhängern und Sondertechnik.",
+  market_listing_title:"Angebote in der Kategorie", market_pick:"Wählen Sie oben eine Kategorie, um Angebote zu sehen.",
+  news_title:"Branchennews", news_more:"Weiterlesen", news_less:"Einklappen",
+  about_title:"Über Trans-Atlas", about_lede:"Trans-Atlas ist eine internationale Frachtbörse, die Verlader und Frachtführer in ganz Europa und darüber hinaus verbindet. Wir machen es einfach, einen Partner für jede Versandart zu finden.",
+  about_how:"So funktioniert es", step1_t:"Registrieren", step1_d:"Firmenkonto in 2 Minuten erstellen.",
+  step2_t:"Angebot einstellen", step2_d:"Fracht oder freies Fahrzeug beschreiben.",
+  step3_t:"Angebote erhalten", step3_d:"Partner antworten innerhalb einer Stunde.",
+  step4_t:"Geschäft abschließen", step4_d:"Konditionen vereinbaren und Transport abwickeln.",
+  reliability_t:"Zuverlässigkeitszone", reliability_d:"Unternehmensbewertung anhand abgeschlossener Geschäfte, Partnerbewertungen und geprüfter Dokumente.",
+  blacklist_t:"Schwarze Liste", blacklist_d:"Unternehmen, die Vertragsbedingungen verletzt haben. Partner vor der Zusammenarbeit prüfen.",
+  contacts_title:"Kontakt", contacts_lede:"Wählen Sie das nächstgelegene Büro oder schreiben Sie uns direkt.",
+  c_name:"Name", c_email:"E-Mail", c_message:"Nachricht", c_send:"Senden", c_success:"Danke! Ihre Nachricht wurde gesendet, wir antworten innerhalb eines Werktags.",
+  offices_title:"Niederlassungen",
+  err_required:"Dieses Feld ist erforderlich", err_email:"Gültige E-Mail eingeben", err_pass:"Mindestens 6 Zeichen", err_match:"Passwörter stimmen nicht überein",
+  modal_login_title:"Anmelden", modal_register_title:"Unternehmen registrieren",
+  f_password:"Passwort", f_password2:"Passwort wiederholen", f_companyname:"Firmenname",
+  submit_login:"Anmelden", submit_register:"Konto erstellen",
+  switch_to_register:"Noch kein Konto? Registrieren", switch_to_login:"Bereits registriert? Anmelden",
+  toast_login_ok:"Erfolgreich angemeldet", toast_register_ok:"Konto erstellt, Sie sind angemeldet", toast_logout_ok:"Sie wurden abgemeldet",
+  footer_nav:"Navigation", footer_info:"Infocenter", footer_support:"Support",
+  footer_rights:"Alle Rechte vorbehalten.", footer_note:"Gestaltungskonzept. Kontaktdaten dienen nur als Beispiel.",
+  cta_register:"Unternehmen registrieren"
+}
+};
+var LANGS=["uk","en","pl","de"];
+function t(key){ var d=I18N[state.lang]||I18N.uk; return d[key]!==undefined? d[key] : (I18N.en[key]||key); }
+
+/* ---------- icons ---------- */
+var ICONS = {
+  truck:'<svg class="icon" viewBox="0 0 24 24"><path d="M3 16V6h10v10"/><path d="M13 9h4l4 4v3"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>',
+  train:'<svg class="icon" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="2"/><path d="M5 11h14"/><path d="M8 20l-2.5 3"/><path d="M16 20l2.5 3"/><circle cx="8.5" cy="14" r=".6" fill="currentColor"/><circle cx="15.5" cy="14" r=".6" fill="currentColor"/></svg>',
+  ship:'<svg class="icon" viewBox="0 0 24 24"><path d="M4 15l1.5 5.5c.2.7 5 1 6.5 1s6.3-.3 6.5-1L20 15"/><path d="M6 15l1-8h10l1 8"/><path d="M12 3v4"/><path d="M4 15h16"/></svg>',
+  plane:'<svg class="icon" viewBox="0 0 24 24"><path d="M2 13l8-2 5-8 2 1-3 7 6-1 2 2-8 3-2 6-2-1 1-5-6 2z"/></svg>',
+  boxes:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="10" width="7" height="7"/><rect x="13" y="10" width="8" height="7"/><rect x="7" y="4" width="9" height="6"/></svg>',
+  bus:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M3 11h18"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/></svg>',
+  trailer:'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="8"/><circle cx="8" cy="18" r="1.6"/><circle cx="16" cy="18" r="1.6"/><path d="M2 10h2"/></svg>',
+  parts:'<svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a3 3 0 01-4.2 4.2L4 17l3 3 6.5-6.5a3 3 0 014.2-4.2l-2.6 2.6-1.4-1.4z"/></svg>',
+  crane:'<svg class="icon" viewBox="0 0 24 24"><path d="M4 21V6l14 5"/><path d="M4 6h4"/><path d="M17 11v6l3 4"/><circle cx="4" cy="21" r="0" /><path d="M4 21h6"/></svg>',
+  search:'<svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
+  menu:'<svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>',
+  close:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+  phone:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2C9.5 21 3 14.5 3 6a2 2 0 012-2z"/></svg>',
+  mail:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  pin:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.6 7-12a7 7 0 10-14 0c0 5.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>',
+  user:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>'
+};
+var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", multi:"boxes"};
+
+/* ---------- state ---------- */
+var state = {
+  lang: localStorage.getItem("ta_lang") || "uk",
+  route: (location.hash||"#home").slice(1) || "home",
+  user: JSON.parse(localStorage.getItem("ta_user")||"null"),
+  heroTab: "cargo",
+  filters:{from:"", to:"", mode:"all", date:""},
+  marketCat: null,
+  openNews: {},
+  modal: null,
+  modalMode:"login"
+};
+
+function saveUser(){ localStorage.setItem("ta_user", JSON.stringify(state.user)); }
+function getUsers(){ return JSON.parse(localStorage.getItem("ta_users")||"[]"); }
+function setUsers(u){ localStorage.setItem("ta_users", JSON.stringify(u)); }
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+function fmtDate(iso){
+  var d=new Date(iso+"T00:00:00");
+  return d.toLocaleDateString(state.lang==="uk"?"uk-UA":state.lang, {day:"2-digit",month:"2-digit",year:"numeric"});
+}
+function navigate(route){ location.hash = route; }
+function toast(msg, isErr){
+  var el=document.createElement("div");
+  el.className="toast"+(isErr?" err":"");
+  el.textContent=msg;
+  document.getElementById("toast").appendChild(el);
+  setTimeout(function(){ el.remove(); }, 3600);
+}
+
+/* ---------- filtering ---------- */
+function filteredListings(kind){
+  return LISTINGS.filter(function(l){
+    if(l.kind!==kind) return false;
+    if(state.filters.mode!=="all" && l.mode!==state.filters.mode) return false;
+    if(state.filters.from && l.from!==state.filters.from) return false;
+    if(state.filters.to && l.to!==state.filters.to) return false;
+    return true;
+  });
+}
+
+/* ---------- render: shared bits ---------- */
+function cityOptions(selected){
+  var html='<option value="">'+esc(t("any"))+'</option>';
+  CITIES.forEach(function(c){
+    html+='<option value="'+c.id+'"'+(selected===c.id?" selected":"")+'>'+esc(cityName(c.id,state.lang))+'</option>';
+  });
+  return html;
+}
+function modeOptions(selected){
+  var modes=["all","auto","rail","sea","air","multi"];
+  return modes.map(function(m){
+    var label = m==="all" ? t("any") : t("mode_"+m);
+    return '<option value="'+m+'"'+(selected===m?" selected":"")+'>'+esc(label)+'</option>';
+  }).join("");
+}
+
+function renderHeader(){
+  var navItems=[["home","nav_home"],["cargo","nav_cargo"],["transport","nav_transport"],["market","nav_market"],["news","nav_news"],["contacts","nav_contacts"],["about","nav_about"]];
+  var navHtml=navItems.map(function(it){
+    var active = state.route===it[0] ? " active":"";
+    return '<a href="#'+it[0]+'" class="navlink'+active+'" data-route="'+it[0]+'">'+esc(t(it[1]))+'</a>';
+  }).join("");
+
+  var langHtml = LANGS.map(function(l){
+    return '<button data-lang="'+l+'" class="'+(state.lang===l?"active":"")+'">'+l.toUpperCase()+'</button>';
+  }).join("");
+
+  var authHtml;
+  if(state.user){
+    var initials = (state.user.name||state.user.email||"?").trim().slice(0,1).toUpperCase();
+    authHtml = '<div class="user-chip"><div class="avatar">'+esc(initials)+'</div><span>'+esc(state.user.name||state.user.email)+'</span>'+
+      '<button class="btn btn-ghost btn-sm" id="logoutBtn">'+esc(t("logout"))+'</button></div>';
+  } else {
+    authHtml = '<button class="btn btn-ghost btn-sm" id="loginBtn">'+esc(t("login"))+'</button>'+
+      '<button class="btn btn-primary btn-sm" id="registerBtn">'+esc(t("register"))+'</button>';
+  }
+
+  return ''+
+  '<div class="topline"></div>'+
+  '<header class="site">'+
+    '<div class="headbar">'+
+      '<button class="logo" data-route="home"><span class="wordmark">TRANS<b>-ATLAS</b></span><span class="tagline">'+esc(t("brand_tag"))+'</span></button>'+
+      '<button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">'+ICONS.menu+'</button>'+
+      '<nav class="primary" id="primaryNav">'+navHtml+'</nav>'+
+      '<div class="head-actions">'+
+        '<div class="lang-switch">'+langHtml+'</div>'+
+        authHtml+
+      '</div>'+
+    '</div>'+
+  '</header>';
+}
+
+function renderFooter(){
+  var cols = [
+    ["footer_nav",[["home","nav_home"],["cargo","nav_cargo"],["transport","nav_transport"],["market","nav_market"]]],
+    ["footer_info",[["about","nav_about"],["news","nav_news"],["market","nav_market"]]],
+    ["footer_support",[["contacts","nav_contacts"],["about","reliability_t"],["about","blacklist_t"]]]
+  ];
+  var colsHtml = cols.map(function(c){
+    var links = c[1].map(function(it){ return '<a href="#'+it[0]+'" data-route="'+it[0]+'">'+esc(t(it[1]))+'</a>'; }).join("");
+    return '<div class="foot-col"><h4>'+esc(t(c[0]))+'</h4>'+links+'</div>';
+  }).join("");
+
+  return ''+
+  '<footer class="site">'+
+    '<div class="wrap">'+
+      '<div class="foot-grid">'+
+        '<div class="foot-col"><span class="wordmark" style="font-family:var(--font-display);font-weight:700;">TRANS<b style="color:var(--accent)">-ATLAS</b></span>'+
+          '<p style="margin-top:10px;max-width:32ch;color:var(--ink-soft);font-size:.86rem;">'+esc(t("brand_tag"))+'.</p></div>'+
+        colsHtml+
+      '</div>'+
+      '<div class="foot-bottom">'+
+        '<span>&copy; 2011&ndash;2026 Trans-Atlas. '+esc(t("footer_rights"))+'</span>'+
+        '<span>'+esc(t("footer_note"))+'</span>'+
+      '</div>'+
+    '</div>'+
+  '</footer>';
+}
+
+/* ---------- render: home ---------- */
+function renderHero(){
+  var f=state.filters;
+  return ''+
+  '<section class="hero"><div class="wrap hero-grid">'+
+    '<div>'+
+      '<p class="eyebrow">'+esc(t("brand_tag"))+'</p>'+
+      '<h1>'+esc(t("hero_title"))+'</h1>'+
+      '<p class="lede">'+esc(t("hero_lede"))+'</p>'+
+      '<div class="route-vis"><span class="route-dot"></span><span class="route-line"></span>'+ICONS.truck+'<span class="route-line"></span><span class="route-dot end"></span></div>'+
+    '</div>'+
+    '<div class="console">'+
+      '<div class="mode-tabs">'+
+        '<button data-tab="cargo" class="'+(state.heroTab==="cargo"?"active":"")+'">'+esc(t("tab_cargo"))+'</button>'+
+        '<button data-tab="transport" class="'+(state.heroTab==="transport"?"active":"")+'">'+esc(t("tab_transport"))+'</button>'+
+      '</div>'+
+      '<form id="heroSearchForm">'+
+        '<div class="console-grid">'+
+          '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
+          '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
+          '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
+          '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="mode">'+modeOptions(f.mode)+'</select></div>'+
+          '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
+          '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
+        '</div>'+
+        '<button type="submit" class="btn btn-primary span2" style="width:100%;margin-top:14px;justify-content:center;">'+ICONS.search+esc(t("search"))+'</button>'+
+      '</form>'+
+    '</div>'+
+  '</div>'+
+  '<div class="wrap"><div class="modes-strip">'+
+    ["auto","rail","sea","air","multi"].map(function(m){
+      return '<button class="mode-card" data-quickmode="'+m+'">'+ICONS[MODE_ICON[m]]+'<div class="mc-title">'+esc(t("mode_"+m))+'</div><div class="mc-sub">'+esc(t("modes_sub_"+m))+'</div></button>';
+    }).join("")+
+  '</div></div>'+
+  '</section>';
+}
+
+function renderStats(){
+  var totalCargo=LISTINGS.filter(function(l){return l.kind==="cargo";}).length*47;
+  var totalTransport=LISTINGS.filter(function(l){return l.kind==="transport";}).length*38;
+  return ''+
+  '<section class="alt"><div class="wrap">'+
+    '<div class="section-head"><h2>'+esc(t("stats_title"))+'</h2></div>'+
+    '<div class="stats-strip">'+
+      '<div class="stat-cell"><span class="val num">'+totalCargo.toLocaleString()+'</span><span class="lab">'+esc(t("stat_cargo"))+'</span></div>'+
+      '<div class="stat-cell"><span class="val num">'+totalTransport.toLocaleString()+'</span><span class="lab">'+esc(t("stat_transport"))+'</span></div>'+
+      '<div class="stat-cell"><span class="val num">2,340</span><span class="lab">'+esc(t("stat_companies"))+'</span></div>'+
+      '<div class="stat-cell"><span class="val num">'+CITIES.length*3+'</span><span class="lab">'+esc(t("stat_countries"))+'</span></div>'+
+    '</div>'+
+  '</div></section>';
+}
+
+function renderListingRow(l){
+  var modeIcon = ICONS[MODE_ICON[l.mode]];
+  return ''+
+  '<div class="m-row">'+
+    '<span class="mode-chip '+l.mode+'">'+modeIcon+t("mode_"+l.mode)+'</span>'+
+    '<div><div class="m-route">'+esc(cityName(l.from,state.lang))+'<span class="arr">&rarr;</span>'+esc(cityName(l.to,state.lang))+'</div>'+
+      '<div class="m-sub">'+esc(cargoName(l.cargo,state.lang))+' &middot; '+esc(l.company)+'</div></div>'+
+    '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+l.weight+' t</div>'+
+    '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
+    '<div class="m-figure"><span class="lab">'+esc(t("col_date"))+'</span>'+fmtDate(l.date)+'</div>'+
+    '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button>'+
+  '</div>';
+}
+
+function renderResultsSection(kind, title){
+  var rows=filteredListings(kind);
+  return ''+
+  '<section><div class="wrap">'+
+    '<div class="section-head"><h2>'+esc(title)+'</h2><span class="eyebrow">'+rows.length+' '+esc(t("results_count"))+'</span></div>'+
+    '<div class="filter-bar">'+
+      '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="ffrom">'+cityOptions(state.filters.from)+'</select></div>'+
+      '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="fto">'+cityOptions(state.filters.to)+'</select></div>'+
+      '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="fmode">'+modeOptions(state.filters.mode)+'</select></div>'+
+      '<button class="btn btn-primary" id="applyFilterBtn">'+ICONS.search+esc(t("search"))+'</button>'+
+    '</div>'+
+    '<div class="manifest">'+
+      (rows.length ? rows.map(renderListingRow).join("") : '<div class="empty-state">'+esc(t("results_empty"))+'</div>')+
+    '</div>'+
+  '</div></section>';
+}
+
+/* ---------- render: market ---------- */
+function renderMarket(){
+  var cards = MARKET.map(function(m){
+    var active = state.marketCat===m.id ? " active":"";
+    return '<button class="market-card'+active+'" data-market="'+m.id+'">'+ICONS[m.icon]+
+      '<div class="mk-title">'+esc(m[state.lang]||m.en)+'</div><div class="mk-count num">'+m.count+'</div></button>';
+  }).join("");
+
+  var listingHtml;
+  if(state.marketCat){
+    var cat = MARKET.filter(function(m){return m.id===state.marketCat;})[0];
+    var mock = LISTINGS.slice(0,4).map(function(l,i){
+      return '<div class="m-row"><span class="mode-chip auto">'+ICONS[cat.icon]+(cat[state.lang]||cat.en)+'</span>'+
+        '<div><div class="m-route">'+esc(cityName(l.from,state.lang))+'</div><div class="m-sub">'+esc(l.company)+'</div></div>'+
+        '<div class="m-figure"><span class="lab">'+esc(t("col_price"))+'</span>&euro;'+(l.price+ i*300)+'</div>'+
+        '<div></div><div></div>'+
+        '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button></div>';
+    }).join("");
+    listingHtml = '<h3 style="margin-top:28px;">'+esc(t("market_listing_title"))+': '+esc(cat[state.lang]||cat.en)+'</h3><div class="manifest">'+mock+'</div>';
+  } else {
+    listingHtml = '<p style="margin-top:24px;color:var(--ink-soft);">'+esc(t("market_pick"))+'</p>';
+  }
+
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_market"))+'</p>'+
+    '<h1>'+esc(t("market_title"))+'</h1><p class="lede">'+esc(t("market_lede"))+'</p>'+
+    '<div class="market-grid" style="margin-top:22px;">'+cards+'</div>'+
+    listingHtml+
+  '</div></section>';
+}
+
+/* ---------- render: news ---------- */
+function renderNews(){
+  var items = NEWS.map(function(n){
+    var tr = n[state.lang]||n.en;
+    var open = !!state.openNews[n.id];
+    return ''+
+    '<article class="news-item">'+
+      '<div class="n-date">'+fmtDate(n.date)+'</div>'+
+      '<h3>'+esc(tr.t)+'</h3>'+
+      (open ? '<p class="n-excerpt">'+esc(tr.e)+'</p>' : '')+
+      '<button class="btn btn-ghost btn-sm n-more" data-news="'+n.id+'">'+esc(open? t("news_less") : t("news_more"))+'</button>'+
+    '</article>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_news"))+'</p><h1>'+esc(t("news_title"))+'</h1>'+
+    '<div class="news-list">'+items+'</div>'+
+  '</div></section>';
+}
+
+/* ---------- render: about ---------- */
+function renderAbout(){
+  var steps=[["step1_t","step1_d"],["step2_t","step2_d"],["step3_t","step3_d"],["step4_t","step4_d"]];
+  var stepsHtml = steps.map(function(s,i){
+    return '<div class="step-card"><div class="s-num">0'+(i+1)+'</div><h3 style="font-size:1rem;">'+esc(t(s[0]))+'</h3><p style="font-size:.86rem;color:var(--ink-soft);margin:0;">'+esc(t(s[1]))+'</p></div>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_about"))+'</p><h1>'+esc(t("about_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("about_lede"))+'</p>'+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("about_how"))+'</h2>'+
+    '<div class="steps">'+stepsHtml+'</div>'+
+    '<div class="info-cards">'+
+      '<div class="info-card good"><h3 style="font-size:1rem;">'+esc(t("reliability_t"))+'</h3><p style="margin:0;font-size:.88rem;color:var(--ink-soft);">'+esc(t("reliability_d"))+'</p></div>'+
+      '<div class="info-card warn"><h3 style="font-size:1rem;">'+esc(t("blacklist_t"))+'</h3><p style="margin:0;font-size:.88rem;color:var(--ink-soft);">'+esc(t("blacklist_d"))+'</p></div>'+
+    '</div>'+
+    '<button class="btn btn-primary" id="aboutRegisterBtn" style="margin-top:26px;">'+esc(t("cta_register"))+'</button>'+
+  '</div></section>';
+}
+
+/* ---------- render: contacts ---------- */
+var OFFICES=[
+  {city:{uk:"Київ",en:"Kyiv",pl:"Kijów",de:"Kiew"}, addr:"вул. Портова, 12", phone:"+380 44 000 00 00", email:"kyiv@trans-atlas.example"},
+  {city:{uk:"Варшава",en:"Warsaw",pl:"Warszawa",de:"Warschau"}, addr:"ul. Transportowa 8", phone:"+48 22 000 00 00", email:"warsaw@trans-atlas.example"},
+  {city:{uk:"Гамбург",en:"Hamburg",pl:"Hamburg",de:"Hamburg"}, addr:"Hafenstraße 21", phone:"+49 40 000 00 00", email:"hamburg@trans-atlas.example"}
+];
+function renderContacts(){
+  var offices = OFFICES.map(function(o){
+    return '<div class="office"><div class="o-city">'+esc(o.city[state.lang]||o.city.en)+'</div>'+
+      '<div class="o-line">'+ICONS.pin+esc(o.addr)+'</div>'+
+      '<div class="o-line">'+ICONS.phone+'<a href="tel:'+o.phone.replace(/\s+/g,"")+'">'+esc(o.phone)+'</a></div>'+
+      '<div class="o-line">'+ICONS.mail+'<a href="mailto:'+o.email+'">'+esc(o.email)+'</a></div></div>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_contacts"))+'</p><h1>'+esc(t("contacts_title"))+'</h1><p class="lede">'+esc(t("contacts_lede"))+'</p>'+
+    '<div class="contact-grid" style="margin-top:24px;">'+
+      '<form id="contactForm">'+
+        '<div class="field" data-field="name"><label>'+esc(t("c_name"))+'</label><input name="name"><div class="field-err">'+esc(t("err_required"))+'</div></div>'+
+        '<div class="field" data-field="email"><label>'+esc(t("c_email"))+'</label><input name="email" type="email"><div class="field-err">'+esc(t("err_email"))+'</div></div>'+
+        '<div class="field" data-field="message"><label>'+esc(t("c_message"))+'</label><textarea name="message" rows="4"></textarea><div class="field-err">'+esc(t("err_required"))+'</div></div>'+
+        '<button type="submit" class="btn btn-primary">'+esc(t("c_send"))+'</button>'+
+      '</form>'+
+      '<div><h3 style="font-size:.95rem;margin-bottom:12px;">'+esc(t("offices_title"))+'</h3><div class="office-list">'+offices+'</div></div>'+
+    '</div>'+
+  '</div></section>';
+}
+
+/* ---------- page dispatcher ---------- */
+function pageContent(){
+  switch(state.route){
+    case "home": return renderHero()+renderStats()+renderResultsSection(state.heroTab==="cargo"?"transport":"cargo", t("results_title"));
+    case "cargo": return '<div class="wrap" style="padding-top:30px;"><p class="eyebrow">'+esc(t("nav_cargo"))+'</p><h1>'+esc(t("nav_cargo"))+'</h1></div>'+renderResultsSection("cargo", t("results_title"));
+    case "transport": return '<div class="wrap" style="padding-top:30px;"><p class="eyebrow">'+esc(t("nav_transport"))+'</p><h1>'+esc(t("nav_transport"))+'</h1></div>'+renderResultsSection("transport", t("results_title"));
+    case "market": return renderMarket();
+    case "news": return renderNews();
+    case "about": return renderAbout();
+    case "contacts": return renderContacts();
+    default: return renderHero()+renderStats();
+  }
+}
+
+/* ---------- modal ---------- */
+function renderModal(){
+  var root=document.getElementById("modalRoot");
+  if(!state.modal){ root.className="modal-backdrop"; root.innerHTML=""; return; }
+  root.className="modal-backdrop open";
+  var isLogin = state.modalMode==="login";
+  var extra = isLogin ? "" : ''+
+    '<div class="field" data-field="name"><label>'+esc(t("c_name"))+'</label><input name="name"><div class="field-err">'+esc(t("err_required"))+'</div></div>'+
+    '<div class="field" data-field="company"><label>'+esc(t("f_companyname"))+'</label><input name="company"><div class="field-err">'+esc(t("err_required"))+'</div></div>';
+  var extra2 = isLogin ? "" : ''+
+    '<div class="field" data-field="password2"><label>'+esc(t("f_password2"))+'</label><input name="password2" type="password"><div class="field-err">'+esc(t("err_match"))+'</div></div>';
+
+  root.innerHTML = ''+
+  '<div class="modal" role="dialog" aria-modal="true">'+
+    '<div class="modal-head"><h2 style="margin:0;font-size:1.1rem;">'+esc(isLogin? t("modal_login_title") : t("modal_register_title"))+'</h2>'+
+      '<button class="modal-close" id="modalCloseBtn">'+ICONS.close+'</button></div>'+
+    '<form id="authForm">'+
+      extra+
+      '<div class="field" data-field="email"><label>'+esc(t("c_email"))+'</label><input name="email" type="email"><div class="field-err">'+esc(t("err_email"))+'</div></div>'+
+      '<div class="field" data-field="password"><label>'+esc(t("f_password"))+'</label><input name="password" type="password"><div class="field-err">'+esc(t("err_pass"))+'</div></div>'+
+      extra2+
+      '<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">'+esc(isLogin? t("submit_login") : t("submit_register"))+'</button>'+
+    '</form>'+
+    '<div class="modal-switch"><button id="modalSwitchBtn">'+esc(isLogin? t("switch_to_register") : t("switch_to_login"))+'</button></div>'+
+  '</div>';
+
+  document.getElementById("modalCloseBtn").onclick=function(){ state.modal=null; renderModal(); };
+  root.onclick=function(e){ if(e.target===root){ state.modal=null; renderModal(); } };
+  document.getElementById("modalSwitchBtn").onclick=function(){ state.modalMode = isLogin?"register":"login"; renderModal(); };
+
+  document.getElementById("authForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f=e.target;
+    var valid=true;
+    function markField(name, ok){
+      var fieldEl=f.querySelector('[data-field="'+name+'"]');
+      if(!fieldEl) return;
+      fieldEl.classList.toggle("invalid", !ok);
+      if(!ok) valid=false;
+    }
+    var email=f.email.value.trim();
+    var password=f.password.value;
+    markField("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+    markField("password", password.length>=6);
+    if(!isLogin){
+      markField("name", f.name.value.trim().length>0);
+      markField("company", f.company.value.trim().length>0);
+      markField("password2", f.password2.value===password && password.length>=6);
+    }
+    if(!valid) return;
+
+    if(isLogin){
+      var users=getUsers();
+      var found=users.filter(function(u){return u.email===email;})[0];
+      state.user = found ? {name:found.name, email:email} : {name:email.split("@")[0], email:email};
+      saveUser();
+      toast(t("toast_login_ok"));
+    } else {
+      var users2=getUsers();
+      users2.push({name:f.name.value.trim(), email:email, company:f.company.value.trim()});
+      setUsers(users2);
+      state.user = {name:f.name.value.trim(), email:email};
+      saveUser();
+      toast(t("toast_register_ok"));
+    }
+    state.modal=null;
+    renderModal();
+    renderApp();
+  });
+}
+
+/* ---------- main render ---------- */
+function renderApp(){
+  document.getElementById("app").innerHTML = renderHeader() + pageContent() + renderFooter();
+  bindEvents();
+  renderModal();
+}
+
+function bindEvents(){
+  var app=document.getElementById("app");
+
+  app.querySelectorAll("[data-route]").forEach(function(el){
+    el.addEventListener("click", function(ev){
+      ev.preventDefault();
+      navigate(el.getAttribute("data-route"));
+      var navPanel=document.getElementById("primaryNav");
+      if(navPanel) navPanel.classList.remove("open");
+    });
+  });
+
+  app.querySelectorAll("[data-lang]").forEach(function(el){
+    el.addEventListener("click", function(){
+      state.lang = el.getAttribute("data-lang");
+      localStorage.setItem("ta_lang", state.lang);
+      renderApp();
+    });
+  });
+
+  var burger=document.getElementById("burgerBtn");
+  if(burger){
+    burger.addEventListener("click", function(){
+      var nav=document.getElementById("primaryNav");
+      var open=nav.classList.toggle("open");
+      burger.setAttribute("aria-expanded", open? "true":"false");
+    });
+  }
+
+  var loginBtn=document.getElementById("loginBtn");
+  if(loginBtn) loginBtn.addEventListener("click", function(){ state.modal="auth"; state.modalMode="login"; renderModal(); });
+  var registerBtn=document.getElementById("registerBtn");
+  if(registerBtn) registerBtn.addEventListener("click", function(){ state.modal="auth"; state.modalMode="register"; renderModal(); });
+  var aboutRegisterBtn=document.getElementById("aboutRegisterBtn");
+  if(aboutRegisterBtn) aboutRegisterBtn.addEventListener("click", function(){ state.modal="auth"; state.modalMode="register"; renderModal(); });
+  var logoutBtn=document.getElementById("logoutBtn");
+  if(logoutBtn) logoutBtn.addEventListener("click", function(){ state.user=null; localStorage.removeItem("ta_user"); toast(t("toast_logout_ok")); renderApp(); });
+
+  var heroForm=document.getElementById("heroSearchForm");
+  if(heroForm){
+    app.querySelectorAll("[data-tab]").forEach(function(b){
+      b.addEventListener("click", function(){ state.heroTab=b.getAttribute("data-tab"); renderApp(); });
+    });
+    heroForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var f=e.target;
+      state.filters.from=f.from.value; state.filters.to=f.to.value;
+      state.filters.mode=f.mode.value; state.filters.date=f.date.value;
+      navigate(state.heroTab==="cargo" ? "transport" : "cargo");
+    });
+    app.querySelectorAll("[data-quickmode]").forEach(function(b){
+      b.addEventListener("click", function(){
+        state.filters.mode=b.getAttribute("data-quickmode");
+        navigate("cargo");
+      });
+    });
+  }
+
+  var applyFilterBtn=document.getElementById("applyFilterBtn");
+  if(applyFilterBtn){
+    applyFilterBtn.addEventListener("click", function(){
+      var bar=applyFilterBtn.closest(".filter-bar");
+      state.filters.from=bar.querySelector('[name="ffrom"]').value;
+      state.filters.to=bar.querySelector('[name="fto"]').value;
+      state.filters.mode=bar.querySelector('[name="fmode"]').value;
+      renderApp();
+    });
+  }
+
+  app.querySelectorAll(".contact-listing").forEach(function(b){
+    b.addEventListener("click", function(){
+      if(!state.user){ state.modal="auth"; state.modalMode="login"; renderModal(); return; }
+      toast(t("results_count")+": #"+b.getAttribute("data-id")+" — "+state.user.email);
+    });
+  });
+
+  app.querySelectorAll("[data-market]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id=b.getAttribute("data-market");
+      state.marketCat = state.marketCat===id ? null : id;
+      renderApp();
+    });
+  });
+
+  app.querySelectorAll("[data-news]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id=b.getAttribute("data-news");
+      state.openNews[id]=!state.openNews[id];
+      renderApp();
+    });
+  });
+
+  var contactForm=document.getElementById("contactForm");
+  if(contactForm){
+    contactForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var f=e.target;
+      var valid=true;
+      function markField(name, ok){
+        var fieldEl=f.querySelector('[data-field="'+name+'"]');
+        fieldEl.classList.toggle("invalid", !ok);
+        if(!ok) valid=false;
+      }
+      markField("name", f.name.value.trim().length>0);
+      markField("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim()));
+      markField("message", f.message.value.trim().length>0);
+      if(!valid) return;
+      toast(t("c_success"));
+      f.reset();
+    });
+  }
+}
+
+/* ---------- boot ---------- */
+window.addEventListener("hashchange", function(){
+  state.route = (location.hash||"#home").slice(1) || "home";
+  window.scrollTo({top:0, behavior:"auto"});
+  renderApp();
+});
+if(!location.hash) location.hash = "#home";
+state.route = location.hash.slice(1) || "home";
+renderApp();
+
+})();
+</script>
+</body>
+</html>
