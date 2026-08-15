@@ -12,6 +12,7 @@
     --accent:#1B5FA8; --accent-ink:#FFFFFF; --accent-2:#123F70;
     --success:#2E7D5B; --warning:#B4791D; --danger:#B23B2E;
     --mode-auto:#1B5FA8; --mode-rail:#B4791D; --mode-sea:#0E7C86; --mode-air:#B23B2E; --mode-multi:#6A4C93;
+    --mode-auto-dk:#0E3E6B; --mode-rail-dk:#7A4E10; --mode-sea-dk:#074850; --mode-air-dk:#6E2018; --mode-multi-dk:#3E2A5C;
     --shadow:rgba(20,33,50,.12);
     --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -65,6 +66,8 @@
   .btn-ghost:hover{color:var(--ink); border-color:var(--line);}
   .btn-sm{padding:.4em .8em; font-size:.82rem;}
   .btn[disabled]{opacity:.5; cursor:not-allowed;}
+  .linklike{background:none; border:none; color:var(--accent); font-weight:600; font-size:.85rem; cursor:pointer; padding:0; text-decoration:none; display:inline-block;}
+  .linklike:hover{text-decoration:underline;}
   input,select,textarea{
     font-family:inherit; font-size:.94rem; padding:.6em .75em; border:1px solid var(--line);
     border-radius:2px; background:var(--surface); color:var(--ink); width:100%;
@@ -77,55 +80,88 @@
   svg.icon{width:1.15em; height:1.15em; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; flex:none;}
 
   /* header */
-  .topline{height:2px; background:var(--accent);}
-  header.site{position:sticky; top:0; z-index:40; background:var(--paper); border-bottom:1px solid var(--line);}
-  .utilitybar{background:var(--paper-2); border-bottom:1px solid var(--line);}
-  .utility-row{display:flex; justify-content:flex-end; align-items:center; gap:18px; padding:6px 20px; max-width:1180px; margin:0 auto; font-size:.78rem;}
-  .lang-switch{display:flex; align-items:center;}
-  .lang-switch button{border:none; border-right:1px solid var(--line); background:none; color:var(--ink-soft); padding:0 8px; font-size:.72rem; font-family:var(--font-mono); font-weight:700; cursor:pointer; letter-spacing:.02em;}
-  .lang-switch button:last-child{border-right:none;}
-  .lang-switch button:hover{color:var(--ink);}
-  .lang-switch button.active{color:var(--accent);}
-  .auth-inline{display:flex; align-items:center; gap:10px;}
-  .auth-sep{color:var(--line);}
-  .linklike{background:none; border:none; color:var(--accent); font-weight:600; font-size:.8rem; cursor:pointer; padding:0;}
-  .linklike:hover{text-decoration:underline;}
-  .headbar{display:flex; align-items:center; gap:24px; padding:14px 20px; max-width:1180px; margin:0 auto;}
-  .logo{display:flex; flex-direction:column; gap:0; cursor:pointer; border:none; background:none; color:inherit; text-align:left; padding:0;}
-  .logo .wordmark{font-family:var(--font-display); font-weight:700; font-size:1.3rem; letter-spacing:0;}
+  .topline{height:10px; background:#F3C892;}
+  header.site{background:var(--paper); border-bottom:1px solid var(--line);}
+  .utilitybar{background:var(--accent-2);}
+  .utility-row{display:flex; justify-content:flex-end; align-items:center; gap:10px; padding:8px 20px; max-width:1180px; margin:0 auto;}
+  .util-btn{border:none; background:rgba(255,255,255,.16); color:#fff; padding:.55em 1.1em; font-weight:600; font-size:.82rem; cursor:pointer; border-radius:2px;}
+  .util-btn:hover{background:rgba(255,255,255,.26);}
+  .util-btn.primary{background:#fff; color:var(--accent-2);}
+  .util-btn.primary:hover{background:#EAF1F8;}
+  .auth-inline{display:flex; align-items:center; gap:8px;}
+  .user-chip{display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:#fff;}
+  .user-chip .avatar{width:22px; height:22px; border-radius:50%; background:#fff; color:var(--accent-2); display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;}
+  .logorow{padding:18px 20px;}
+  .logorow-inner{max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:center; position:relative;}
+  .logo{display:flex; flex-direction:column; align-items:center; gap:2px; cursor:pointer; border:none; background:none; color:inherit; text-align:center; padding:0;}
+  .logo .wordmark{font-family:var(--font-display); font-weight:700; font-size:1.9rem; letter-spacing:.02em;}
   .logo .wordmark b{color:var(--accent); font-weight:700;}
-  .logo .tagline{font-family:var(--font-mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
-  nav.primary{display:flex; gap:4px; flex:1; flex-wrap:wrap;}
+  .logo .tagline{font-family:var(--font-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft);}
+  .lang-box{position:absolute; right:0; top:50%; transform:translateY(-50%); display:flex; align-items:center; border:1px solid var(--line); border-radius:2px; overflow:hidden;}
+  .lang-box button{display:flex; align-items:center; gap:6px; border:none; border-right:1px solid var(--line); background:var(--surface); color:var(--ink-soft); padding:.4em .6em; font-size:.72rem; font-family:var(--font-mono); font-weight:700; cursor:pointer;}
+  .lang-box button:last-child{border-right:none;}
+  .lang-box button:hover{color:var(--ink);}
+  .lang-box button.active{color:var(--accent); background:var(--paper-2);}
+  .flag-dot{width:13px; height:13px; border-radius:50%; flex:none; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);}
+  .flag-dot.uk{background:linear-gradient(to bottom,#005BBB 50%,#FFD500 50%);}
+  .flag-dot.en{background:linear-gradient(135deg,#00247D 34%,#fff 34% 67%,#CF142B 67%);}
+  .flag-dot.pl{background:linear-gradient(to bottom,#fff 50%,#DC143C 50%);}
+  .flag-dot.de{background:linear-gradient(to bottom,#000 33%,#DD0000 33% 67%,#FFCE00 67%);}
+  .navbar{background:var(--ink); position:relative;}
+  .navbar .wrap{display:flex; align-items:center; max-width:1180px; margin:0 auto; padding:0 20px;}
+  nav.primary{display:flex; gap:2px; flex:1; flex-wrap:wrap;}
   nav.primary a{
-    font-size:.9rem; font-weight:600; color:var(--ink); text-decoration:none;
-    padding:10px 12px; white-space:nowrap; border-bottom:2px solid transparent;
+    font-size:.88rem; font-weight:600; color:rgba(255,255,255,.8); text-decoration:none;
+    padding:12px 14px; white-space:nowrap; border-bottom:2px solid transparent;
   }
-  nav.primary a:hover{color:var(--accent);}
-  nav.primary a.active{color:var(--accent); border-bottom-color:var(--accent);}
-  .burger{display:none; border:1px solid var(--line); background:var(--surface); border-radius:2px; padding:.4em .6em; cursor:pointer;}
-  .user-chip{display:flex; align-items:center; gap:8px; font-size:.8rem; font-weight:600;}
-  .user-chip .avatar{width:22px; height:22px; border-radius:50%; background:var(--accent); color:var(--accent-ink); display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;}
+  nav.primary a:hover{color:#fff; background:rgba(255,255,255,.07);}
+  nav.primary a.active{color:#fff; border-bottom-color:var(--accent);}
+  .burger{display:none; border:1px solid rgba(255,255,255,.3); background:transparent; color:#fff; border-radius:2px; padding:.4em .6em; cursor:pointer;}
   @media (max-width:980px){
-    nav.primary{display:none; position:absolute; top:100%; left:0; right:0; background:var(--paper); border-bottom:1px solid var(--line); flex-direction:column; padding:8px; box-shadow:0 2px 8px var(--shadow);}
+    nav.primary{display:none; position:absolute; top:100%; left:0; right:0; background:var(--ink); flex-direction:column; padding:8px; box-shadow:0 4px 10px var(--shadow); z-index:30;}
     nav.primary.open{display:flex;}
     nav.primary a{border-bottom:none; border-left:2px solid transparent;}
     nav.primary a.active{border-left-color:var(--accent); border-bottom-color:transparent;}
     .burger{display:inline-flex;}
-    header.site{position:relative;}
-    .utility-row{justify-content:space-between;}
+    .logo .wordmark{font-size:1.4rem;}
+    .lang-box{position:static; transform:none; margin-top:10px;}
+    .logorow-inner{flex-direction:column;}
   }
 
-  /* hero / search panel */
-  .hero{padding:36px 0 28px; border-bottom:1px solid var(--line);}
-  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:36px; align-items:start;}
-  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
-  .hero h1{font-size:clamp(1.6rem,3.2vw,2.3rem); max-width:16ch;}
-  .hero .lede{color:var(--ink-soft); max-width:46ch;}
-  .route-vis{display:flex; align-items:center; gap:10px; margin:22px 0; font-family:var(--font-mono); font-size:.8rem; color:var(--ink-soft);}
-  .route-dot{width:8px; height:8px; border-radius:50%; background:var(--ink-soft); flex:none;}
-  .route-dot.end{background:var(--accent);}
-  .route-line{flex:1; height:1px; background:repeating-linear-gradient(90deg,var(--ink-soft) 0 6px,transparent 6px 12px);}
-  .console{background:var(--surface); border:1px solid var(--line); border-radius:2px; padding:20px;}
+  /* home: lede + banner + dashboard */
+  .home-lede{padding:22px 0 0;}
+  .home-lede h1{font-size:1.5rem; max-width:none;}
+  .home-lede .lede{max-width:60ch; margin-bottom:0;}
+
+  .banner-row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2px; background:var(--line); margin-top:18px;}
+  @media (max-width:900px){.banner-row{grid-template-columns:1fr 1fr;}}
+  .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden;}
+  .banner-panel.mode-auto{background:linear-gradient(160deg, var(--mode-auto), var(--mode-auto-dk));}
+  .banner-panel.mode-rail{background:linear-gradient(160deg, var(--mode-rail), var(--mode-rail-dk));}
+  .banner-panel.mode-sea{background:linear-gradient(160deg, var(--mode-sea), var(--mode-sea-dk));}
+  .banner-panel.mode-air{background:linear-gradient(160deg, var(--mode-air), var(--mode-air-dk));}
+  .banner-panel.mode-multi{background:linear-gradient(160deg, var(--mode-multi), var(--mode-multi-dk));}
+  .banner-panel:hover{filter:brightness(1.07);}
+  .banner-panel .bp-icon{position:absolute; right:14px; bottom:10px;}
+  .banner-panel .bp-icon svg.icon{width:4.4em; height:4.4em; color:rgba(255,255,255,.3); stroke-width:1.2;}
+  .banner-panel.wide{align-items:flex-end; justify-content:flex-start;}
+  .banner-panel.wide .bp-overlay{position:relative; background:rgba(255,255,255,.95); color:var(--ink); margin:16px; padding:16px 18px; max-width:320px; border-radius:2px;}
+  .banner-panel.wide .bp-overlay h3{margin:0 0 8px; font-size:1.05rem;}
+  .banner-panel.wide .bp-overlay p{margin:0; font-size:.82rem; color:var(--ink-soft); max-width:none;}
+  .banner-panel:not(.wide){align-items:center; justify-content:center; flex-direction:column; gap:10px; flex:1;}
+  .banner-panel:not(.wide) svg.icon{position:relative; width:2.3em; height:2.3em; color:#fff;}
+  .banner-panel:not(.wide) .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 3px rgba(0,0,0,.35);}
+
+  .dash-grid{display:grid; grid-template-columns:300px 1fr 260px; gap:16px; margin:24px 0 40px;}
+  @media (max-width:1080px){.dash-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:760px){.dash-grid{grid-template-columns:1fr;}}
+  .dash-col{border:1px solid var(--line); background:var(--surface); align-self:start;}
+  .panel-head{background:var(--accent-2); color:#fff; padding:12px 16px; font-weight:700; font-size:.82rem; display:flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:.03em;}
+  .panel-head svg.icon{width:1.2em; height:1.2em;}
+  .panel-body{padding:16px;}
+  .panel-body.flush{padding:0;}
+  .panel-more{padding:12px 16px; border-top:1px solid var(--line);}
+
   .mode-tabs{display:flex; gap:0; margin-bottom:16px; border:1px solid var(--line); border-radius:2px; overflow:hidden;}
   .mode-tabs button{flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; border-right:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); padding:.65em .5em; font-weight:700; font-size:.82rem; cursor:pointer;}
   .mode-tabs button:last-child{border-right:none;}
@@ -133,13 +169,18 @@
   .mode-tabs button.active{background:var(--accent); color:var(--accent-ink);}
   .console-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .console-grid .span2{grid-column:1/-1;}
-  .modes-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; margin-top:26px; background:var(--line); border:1px solid var(--line);}
-  @media (max-width:760px){.modes-strip{grid-template-columns:repeat(2,1fr);}}
-  .mode-card{border:none; background:var(--surface); padding:14px 12px; text-align:left; cursor:pointer; color:inherit;}
-  .mode-card:hover{background:var(--paper-2);}
-  .mode-card svg.icon{width:1.5em; height:1.5em; color:var(--accent); margin-bottom:8px;}
-  .mode-card .mc-title{font-weight:700; font-size:.86rem;}
-  .mode-card .mc-sub{font-size:.74rem; color:var(--ink-soft);}
+
+  .services-list{display:flex; flex-direction:column;}
+  .services-item{display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:.86rem; font-weight:600;}
+  .services-item:last-child{border-bottom:none;}
+  .services-item:hover{background:var(--paper-2); color:var(--accent);}
+  .services-item svg.icon{color:var(--accent); width:1.25em; height:1.25em;}
+
+  .mini-widget{border:1px solid var(--line); background:var(--surface); margin-top:16px;}
+  .mini-widget-tabs{display:flex;}
+  .mini-widget-tabs button{flex:1; border:none; background:var(--paper-2); color:var(--ink-soft); padding:.6em .4em; font-size:.72rem; font-weight:700; cursor:pointer; border-bottom:2px solid transparent;}
+  .mini-widget-tabs button.active{background:var(--surface); color:var(--accent); border-bottom-color:var(--accent);}
+  .mini-widget-body{padding:14px 16px; font-size:.82rem; color:var(--ink-soft);}
 
   section{padding:38px 0;}
   section.alt{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -310,6 +351,13 @@ var MARKET = [
   {id:"trailer", uk:"Причіп", en:"Trailer", pl:"Przyczepa", de:"Anhänger", count:29, icon:"trailer"}
 ];
 
+var SERVICES = [
+  {icon:"book", route:"market", uk:"Довідник", en:"Reference", pl:"Informator", de:"Nachschlagewerk"},
+  {icon:"flagpost", route:"about", uk:"Кордони", en:"Border crossings", pl:"Przejścia graniczne", de:"Grenzübergänge"},
+  {icon:"sun", route:"news", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
+  {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"}
+];
+
 var NEWS = [
   {id:1,date:"2026-08-12",
     uk:{t:"Нові правила перетину кордону з Польщею",e:"З вересня змінюється порядок електронного декларування для вантажівок на пунктах пропуску «Ягодин» та «Краковець»."},
@@ -343,7 +391,7 @@ var I18N = {
 uk:{
   brand_tag:"Біржа вантажів і транспорту",
   nav_home:"Головна", nav_cargo:"Вантажі", nav_transport:"Транспорт", nav_market:"Ринок транспорту",
-  nav_news:"Новини", nav_contacts:"Контакти", nav_about:"Про нас",
+  nav_news:"Новини", nav_contacts:"Контакти", nav_about:"Про нас", services_title:"Сервіси",
   login:"Увійти", register:"Реєстрація", logout:"Вийти",
   hero_title:"Знайдіть вантаж або транспорт за лічені хвилини",
   hero_lede:"Пряме зʼєднання вантажовідправників і перевізників по всій Європі: авто, залізниця, море, авіа та мультимодальні маршрути.",
@@ -384,7 +432,7 @@ uk:{
 en:{
   brand_tag:"Cargo & transport exchange",
   nav_home:"Home", nav_cargo:"Cargo", nav_transport:"Transport", nav_market:"Vehicle market",
-  nav_news:"News", nav_contacts:"Contacts", nav_about:"About us",
+  nav_news:"News", nav_contacts:"Contacts", nav_about:"About us", services_title:"Services",
   login:"Log in", register:"Register", logout:"Log out",
   hero_title:"Find cargo or transport in minutes",
   hero_lede:"Direct connection between shippers and carriers across Europe: road, rail, sea, air and multimodal routes.",
@@ -425,7 +473,7 @@ en:{
 pl:{
   brand_tag:"Giełda ładunków i transportu",
   nav_home:"Start", nav_cargo:"Ładunki", nav_transport:"Transport", nav_market:"Rynek pojazdów",
-  nav_news:"Aktualności", nav_contacts:"Kontakt", nav_about:"O nas",
+  nav_news:"Aktualności", nav_contacts:"Kontakt", nav_about:"O nas", services_title:"Usługi",
   login:"Zaloguj się", register:"Rejestracja", logout:"Wyloguj",
   hero_title:"Znajdź ładunek lub transport w kilka minut",
   hero_lede:"Bezpośrednie połączenie nadawców i przewoźników w całej Europie: drogowo, koleją, morzem, lotniczo i multimodalnie.",
@@ -466,7 +514,7 @@ pl:{
 de:{
   brand_tag:"Fracht- und Transportbörse",
   nav_home:"Start", nav_cargo:"Fracht", nav_transport:"Transport", nav_market:"Fahrzeugmarkt",
-  nav_news:"News", nav_contacts:"Kontakt", nav_about:"Über uns",
+  nav_news:"News", nav_contacts:"Kontakt", nav_about:"Über uns", services_title:"Services",
   login:"Anmelden", register:"Registrieren", logout:"Abmelden",
   hero_title:"Fracht oder Transport in Minuten finden",
   hero_lede:"Direkte Verbindung zwischen Verladern und Frachtführern in ganz Europa: Straße, Schiene, See, Luft und multimodal.",
@@ -525,7 +573,10 @@ var ICONS = {
   phone:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2C9.5 21 3 14.5 3 6a2 2 0 012-2z"/></svg>',
   mail:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
   pin:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.6 7-12a7 7 0 10-14 0c0 5.4 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>',
-  user:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>'
+  user:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>',
+  book:'<svg class="icon" viewBox="0 0 24 24"><path d="M4 3h12a2 2 0 012 2v16H6a2 2 0 00-2 2V3z"/><path d="M4 19h14"/></svg>',
+  sun:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
+  flagpost:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4h13l-3 3.5L18 11H5"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", multi:"boxes"};
 
@@ -538,6 +589,7 @@ var state = {
   filters:{from:"", to:"", mode:"all", date:""},
   marketCat: null,
   openNews: {},
+  homeWidgetTab: "reliability",
   modal: null,
   modalMode:"login"
 };
@@ -596,32 +648,34 @@ function renderHeader(){
   }).join("");
 
   var langHtml = LANGS.map(function(l){
-    return '<button data-lang="'+l+'" class="'+(state.lang===l?"active":"")+'">'+l.toUpperCase()+'</button>';
+    return '<button data-lang="'+l+'" class="'+(state.lang===l?"active":"")+'">'+
+      '<span class="flag-dot '+l+'"></span>'+l.toUpperCase()+'</button>';
   }).join("");
 
   var authHtml;
   if(state.user){
     var initials = (state.user.name||state.user.email||"?").trim().slice(0,1).toUpperCase();
     authHtml = '<div class="user-chip"><div class="avatar">'+esc(initials)+'</div><span>'+esc(state.user.name||state.user.email)+'</span>'+
-      '<button class="linklike" id="logoutBtn">'+esc(t("logout"))+'</button></div>';
+      '<button class="util-btn" id="logoutBtn">'+esc(t("logout"))+'</button></div>';
   } else {
-    authHtml = '<button class="linklike" id="loginBtn">'+esc(t("login"))+'</button>'+
-      '<span class="auth-sep">|</span>'+
-      '<button class="linklike" id="registerBtn">'+esc(t("register"))+'</button>';
+    authHtml = '<button class="util-btn" id="loginBtn">'+esc(t("login"))+'</button>'+
+      '<button class="util-btn primary" id="registerBtn">'+esc(t("register"))+'</button>';
   }
 
   return ''+
   '<div class="topline"></div>'+
   '<header class="site">'+
     '<div class="utilitybar"><div class="utility-row">'+
-      '<div class="lang-switch">'+langHtml+'</div>'+
       '<div class="auth-inline">'+authHtml+'</div>'+
     '</div></div>'+
-    '<div class="headbar">'+
+    '<div class="logorow"><div class="logorow-inner">'+
       '<button class="logo" data-route="home"><span class="wordmark">TRANS<b>-ATLAS</b></span><span class="tagline">'+esc(t("brand_tag"))+'</span></button>'+
+      '<div class="lang-box">'+langHtml+'</div>'+
+    '</div></div>'+
+    '<div class="navbar"><div class="wrap">'+
       '<button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">'+ICONS.menu+'</button>'+
       '<nav class="primary" id="primaryNav">'+navHtml+'</nav>'+
-    '</div>'+
+    '</div></div>'+
   '</header>';
 }
 
@@ -655,38 +709,77 @@ function renderFooter(){
 /* ---------- render: home ---------- */
 function renderHero(){
   var f=state.filters;
+  var order=["auto","rail","sea","air","multi"];
+  var bannerHtml = order.map(function(m,i){
+    if(i===0){
+      return '<button class="banner-panel wide mode-'+m+'" data-quickmode="'+m+'">'+
+        '<div class="bp-icon">'+ICONS[MODE_ICON[m]]+'</div>'+
+        '<div class="bp-overlay"><h3>'+esc(t("mode_"+m))+'</h3><p>'+esc(t("modes_sub_"+m))+'</p></div>'+
+      '</button>';
+    }
+    return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+ICONS[MODE_ICON[m]]+'<span class="bp-label">'+esc(t("mode_"+m))+'</span></button>';
+  }).join("");
+
+  var resultKind = state.heroTab==="cargo" ? "transport" : "cargo";
+  var resultRows = filteredListings(resultKind).slice(0,6);
+  var resultsHtml = resultRows.length ? resultRows.map(renderListingRow).join("") : '<div class="empty-state">'+esc(t("results_empty"))+'</div>';
+  var widgetTab = state.homeWidgetTab;
+  var servicesHtml = SERVICES.map(function(s){
+    return '<a href="#'+s.route+'" class="services-item" data-route="'+s.route+'">'+ICONS[s.icon]+'<span>'+esc(s[state.lang]||s.en)+'</span></a>';
+  }).join("");
+
   return ''+
-  '<section class="hero"><div class="wrap hero-grid">'+
-    '<div>'+
-      '<p class="eyebrow">'+esc(t("brand_tag"))+'</p>'+
-      '<h1>'+esc(t("hero_title"))+'</h1>'+
-      '<p class="lede">'+esc(t("hero_lede"))+'</p>'+
-      '<div class="route-vis"><span class="route-dot"></span><span class="route-line"></span>'+ICONS.truck+'<span class="route-line"></span><span class="route-dot end"></span></div>'+
-    '</div>'+
-    '<div class="console">'+
-      '<div class="mode-tabs">'+
-        '<button data-tab="cargo" class="'+(state.heroTab==="cargo"?"active":"")+'">'+ICONS.truck+'<span>'+esc(t("tab_cargo"))+'</span></button>'+
-        '<button data-tab="transport" class="'+(state.heroTab==="transport"?"active":"")+'">'+ICONS.boxes+'<span>'+esc(t("tab_transport"))+'</span></button>'+
-      '</div>'+
-      '<form id="heroSearchForm">'+
-        '<div class="console-grid">'+
-          '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
-          '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
-          '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
-          '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="mode">'+modeOptions(f.mode)+'</select></div>'+
-          '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
-          '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
-        '</div>'+
-        '<button type="submit" class="btn btn-primary span2" style="width:100%;margin-top:14px;justify-content:center;">'+ICONS.search+esc(t("search"))+'</button>'+
-      '</form>'+
-    '</div>'+
+  '<div class="wrap home-lede">'+
+    '<p class="eyebrow">'+esc(t("brand_tag"))+'</p>'+
+    '<h1>'+esc(t("hero_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("hero_lede"))+'</p>'+
   '</div>'+
-  '<div class="wrap"><div class="modes-strip">'+
-    ["auto","rail","sea","air","multi"].map(function(m){
-      return '<button class="mode-card" data-quickmode="'+m+'">'+ICONS[MODE_ICON[m]]+'<div class="mc-title">'+esc(t("mode_"+m))+'</div><div class="mc-sub">'+esc(t("modes_sub_"+m))+'</div></button>';
-    }).join("")+
-  '</div></div>'+
-  '</section>';
+  '<div class="wrap">'+
+    '<div class="banner-row">'+bannerHtml+'</div>'+
+    '<div class="dash-grid">'+
+      '<div class="dash-col">'+
+        '<div class="panel-head">'+ICONS.search+'<span>'+esc(state.heroTab==="cargo"? t("tab_cargo") : t("tab_transport"))+'</span></div>'+
+        '<div class="panel-body">'+
+          '<div class="mode-tabs">'+
+            '<button data-tab="cargo" class="'+(state.heroTab==="cargo"?"active":"")+'">'+ICONS.truck+'<span>'+esc(t("tab_cargo"))+'</span></button>'+
+            '<button data-tab="transport" class="'+(state.heroTab==="transport"?"active":"")+'">'+ICONS.boxes+'<span>'+esc(t("tab_transport"))+'</span></button>'+
+          '</div>'+
+          '<form id="heroSearchForm">'+
+            '<div class="console-grid">'+
+              '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
+              '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
+              '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
+              '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="mode">'+modeOptions(f.mode)+'</select></div>'+
+              '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
+              '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
+            '</div>'+
+            '<button type="submit" class="btn btn-primary span2" style="width:100%;margin-top:14px;justify-content:center;">'+ICONS.search+esc(t("search"))+'</button>'+
+          '</form>'+
+        '</div>'+
+      '</div>'+
+      '<div class="dash-col">'+
+        '<div class="panel-head">'+ICONS[MODE_ICON[f.mode]||"truck"]+'<span>'+esc(t("results_title"))+'</span></div>'+
+        '<div class="panel-body flush">'+
+          '<div class="manifest" style="border:none;">'+resultsHtml+'</div>'+
+          '<div class="panel-more"><a href="#'+resultKind+'" data-route="'+resultKind+'" class="linklike">'+esc(t("nav_"+resultKind))+' &rarr;</a></div>'+
+        '</div>'+
+      '</div>'+
+      '<div>'+
+        '<div class="dash-col">'+
+          '<div class="panel-head">'+ICONS.boxes+'<span>'+esc(t("services_title"))+'</span></div>'+
+          '<div class="services-list">'+servicesHtml+'</div>'+
+        '</div>'+
+        '<div class="mini-widget">'+
+          '<div class="panel-head">'+ICONS.boxes+'<span>'+esc(t("nav_market"))+'</span></div>'+
+          '<div class="mini-widget-tabs">'+
+            '<button data-widgettab="reliability" class="'+(widgetTab==="reliability"?"active":"")+'">'+esc(t("reliability_t"))+'</button>'+
+            '<button data-widgettab="blacklist" class="'+(widgetTab==="blacklist"?"active":"")+'">'+esc(t("blacklist_t"))+'</button>'+
+          '</div>'+
+          '<div class="mini-widget-body">'+esc(widgetTab==="reliability"? t("reliability_d") : t("blacklist_d"))+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
 }
 
 function renderStats(){
@@ -838,7 +931,7 @@ function renderContacts(){
 /* ---------- page dispatcher ---------- */
 function pageContent(){
   switch(state.route){
-    case "home": return renderHero()+renderStats()+renderResultsSection(state.heroTab==="cargo"?"transport":"cargo", t("results_title"));
+    case "home": return renderHero()+renderStats();
     case "cargo": return '<div class="wrap" style="padding-top:30px;"><p class="eyebrow">'+esc(t("nav_cargo"))+'</p><h1>'+esc(t("nav_cargo"))+'</h1></div>'+renderResultsSection("cargo", t("results_title"));
     case "transport": return '<div class="wrap" style="padding-top:30px;"><p class="eyebrow">'+esc(t("nav_transport"))+'</p><h1>'+esc(t("nav_transport"))+'</h1></div>'+renderResultsSection("transport", t("results_title"));
     case "market": return renderMarket();
@@ -1007,6 +1100,13 @@ function bindEvents(){
     b.addEventListener("click", function(){
       var id=b.getAttribute("data-market");
       state.marketCat = state.marketCat===id ? null : id;
+      renderApp();
+    });
+  });
+
+  app.querySelectorAll("[data-widgettab]").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.homeWidgetTab = b.getAttribute("data-widgettab");
       renderApp();
     });
   });
