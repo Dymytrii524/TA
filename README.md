@@ -15,7 +15,7 @@
 
 Фотографії видів транспорту завантажені з Wikimedia Commons за відкритими ліцензіями, атрибуція вказана у футері сайту:
 
-- `banner-auto.jpg` — Mercedes-Benz Actros on the Autobahn, © EveryPicture, CC BY-SA 3.0
+- `banner-auto.jpg` — Mercedes-Benz Actros with container semi-trailer, close-up on the motorway, © Lav Ulv, CC BY 4.0
 - `banner-rail.jpg` — Cargo Train Containers at El Paso Station, © Insightwm, CC BY-SA 4.0
 - `banner-sea.jpg` — MAERSK HANOI Container Ship, © Petar Milošević, CC BY-SA 4.0
 - `banner-air.jpg` — FedEx/UPS cargo aircraft at Cologne Bonn Airport, © Raimond Spekking, CC BY-SA 4.0

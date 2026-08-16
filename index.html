@@ -136,7 +136,7 @@
   .banner-row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2px; background:var(--line); margin-top:18px;}
   @media (max-width:900px){.banner-row{grid-template-columns:1fr 1fr;}}
   .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden; background-size:cover, cover; background-position:center, center; background-repeat:no-repeat;}
-  .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg');}
+  .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg'); background-position:center 72%, center 72%;}
   .banner-panel.mode-rail{background-color:var(--mode-rail); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-rail.jpg');}
   .banner-panel.mode-sea{background-color:var(--mode-sea); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-sea.jpg');}
   .banner-panel.mode-air{background-color:var(--mode-air); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-air.jpg');}
@@ -702,7 +702,7 @@ function renderFooter(){
         '<span>'+esc(t("footer_note"))+'</span>'+
       '</div>'+
       '<div class="foot-bottom" style="margin-top:6px; padding-top:0; border-top:none;">'+
-        '<span style="font-size:.72rem;">Photos: Wikimedia Commons (CC BY-SA 3.0/4.0, CC BY 2.0) &mdash; EveryPicture, Insightwm, Petar Milošević, Raimond Spekking, Sam LaRussa.</span>'+
+        '<span style="font-size:.72rem;">Photos: Wikimedia Commons (CC BY-SA 3.0/4.0, CC BY 2.0/4.0) &mdash; Lav Ulv, Insightwm, Petar Milošević, Raimond Spekking, Sam LaRussa.</span>'+
       '</div>'+
     '</div>'+
   '</footer>';
