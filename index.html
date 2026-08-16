@@ -146,8 +146,7 @@
   .banner-panel .bp-badge svg.icon{width:1.2em; height:1.2em;}
   .banner-panel.wide{align-items:flex-end; justify-content:flex-start;}
   .banner-panel.wide .bp-overlay{position:relative; background:rgba(255,255,255,.95); color:var(--ink); margin:16px; padding:16px 18px; max-width:320px; border-radius:2px;}
-  .banner-panel.wide .bp-overlay h3{margin:0 0 8px; font-size:1.05rem;}
-  .banner-panel.wide .bp-overlay p{margin:0; font-size:.82rem; color:var(--ink-soft); max-width:none;}
+  .banner-panel.wide .bp-overlay h3{margin:0; font-size:1.05rem;}
   .banner-panel:not(.wide){align-items:flex-end; justify-content:center; padding-bottom:14px;}
   .banner-panel:not(.wide) .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 4px rgba(0,0,0,.55);}
 
@@ -398,9 +397,6 @@ uk:{
   f_from:"Звідки", f_to:"Куди", f_date:"Дата завантаження", f_mode:"Вид транспорту",
   f_weight:"Вага, т", f_volume:"Обʼєм, м³", search:"Знайти", any:"Будь-який",
   mode_auto:"Авто", mode_rail:"ЖД", mode_sea:"Море", mode_air:"Авіа", mode_multi:"Мультимодальні",
-  modes_sub_auto:"Найбільша база компаній-посередників", modes_sub_rail:"Контейнерні та вагонні відправки",
-  modes_sub_sea:"Порти Балтики, Чорного та Північного морів", modes_sub_air:"Термінові та цінні вантажі",
-  modes_sub_multi:"Комбіновані маршрути «під ключ»",
   stats_title:"Біржа у цифрах", stat_cargo:"активних заявок на вантаж", stat_transport:"вільних транспортних засобів",
   stat_companies:"компаній-учасників", stat_countries:"країн покриття",
   results_title:"Актуальні заявки", results_count:"знайдено", results_empty:"За цим запитом нічого не знайдено. Спробуйте змінити напрямок або вид транспорту.",
@@ -439,9 +435,6 @@ en:{
   f_from:"From", f_to:"To", f_date:"Loading date", f_mode:"Transport type",
   f_weight:"Weight, t", f_volume:"Volume, m³", search:"Search", any:"Any",
   mode_auto:"Road", mode_rail:"Rail", mode_sea:"Sea", mode_air:"Air", mode_multi:"Multimodal",
-  modes_sub_auto:"The largest base of carrier companies", modes_sub_rail:"Container and wagon shipments",
-  modes_sub_sea:"Baltic, Black Sea and North Sea ports", modes_sub_air:"Urgent and high-value cargo",
-  modes_sub_multi:"Combined turnkey routes",
   stats_title:"The exchange in numbers", stat_cargo:"active cargo listings", stat_transport:"available vehicles",
   stat_companies:"member companies", stat_countries:"countries covered",
   results_title:"Current listings", results_count:"found", results_empty:"No listings match this search. Try another route or transport type.",
@@ -480,9 +473,6 @@ pl:{
   f_from:"Skąd", f_to:"Dokąd", f_date:"Data załadunku", f_mode:"Rodzaj transportu",
   f_weight:"Waga, t", f_volume:"Objętość, m³", search:"Szukaj", any:"Dowolny",
   mode_auto:"Drogowy", mode_rail:"Kolejowy", mode_sea:"Morski", mode_air:"Lotniczy", mode_multi:"Multimodalny",
-  modes_sub_auto:"Największa baza firm pośredniczących", modes_sub_rail:"Przesyłki kontenerowe i wagonowe",
-  modes_sub_sea:"Porty Bałtyku, Morza Czarnego i Północnego", modes_sub_air:"Ładunki pilne i wysokiej wartości",
-  modes_sub_multi:"Trasy łączone „pod klucz”",
   stats_title:"Giełda w liczbach", stat_cargo:"aktywnych ofert ładunków", stat_transport:"wolnych pojazdów",
   stat_companies:"firm uczestniczących", stat_countries:"krajów objętych zasięgiem",
   results_title:"Aktualne oferty", results_count:"znaleziono", results_empty:"Brak ofert dla tego zapytania. Spróbuj innej trasy lub rodzaju transportu.",
@@ -521,9 +511,6 @@ de:{
   f_from:"Von", f_to:"Nach", f_date:"Verladedatum", f_mode:"Transportart",
   f_weight:"Gewicht, t", f_volume:"Volumen, m³", search:"Suchen", any:"Beliebig",
   mode_auto:"Straße", mode_rail:"Schiene", mode_sea:"See", mode_air:"Luft", mode_multi:"Multimodal",
-  modes_sub_auto:"Die größte Datenbank an Speditionen", modes_sub_rail:"Container- und Waggonsendungen",
-  modes_sub_sea:"Häfen an Ostsee, Schwarzem und Nordmeer", modes_sub_air:"Eilige und hochwertige Fracht",
-  modes_sub_multi:"Kombinierte Komplettrouten",
   stats_title:"Die Börse in Zahlen", stat_cargo:"aktive Frachtangebote", stat_transport:"verfügbare Fahrzeuge",
   stat_companies:"teilnehmende Unternehmen", stat_countries:"abgedeckte Länder",
   results_title:"Aktuelle Angebote", results_count:"gefunden", results_empty:"Keine Angebote zu dieser Suche. Versuchen Sie eine andere Route oder Transportart.",
@@ -716,7 +703,7 @@ function renderHero(){
     if(i===0){
       return '<button class="banner-panel wide mode-'+m+'" data-quickmode="'+m+'">'+
         '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
-        '<div class="bp-overlay"><h3>'+esc(t("mode_"+m))+'</h3><p>'+esc(t("modes_sub_"+m))+'</p></div>'+
+        '<div class="bp-overlay"><h3>'+esc(t("mode_"+m))+'</h3></div>'+
       '</button>';
     }
     return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+
