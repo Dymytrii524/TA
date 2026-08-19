@@ -136,7 +136,7 @@
   .banner-row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2px; background:var(--line); margin-top:18px;}
   @media (max-width:900px){.banner-row{grid-template-columns:1fr 1fr;}}
   .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden; background-size:cover, cover; background-position:center, center; background-repeat:no-repeat;}
-  .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg'); background-position:center 72%, center 72%;}
+  .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg');}
   .banner-panel.mode-rail{background-color:var(--mode-rail); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-rail.jpg');}
   .banner-panel.mode-sea{background-color:var(--mode-sea); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-sea.jpg');}
   .banner-panel.mode-air{background-color:var(--mode-air); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-air.jpg');}
@@ -167,6 +167,12 @@
   .mode-tabs button.active{background:var(--accent); color:var(--accent-ink);}
   .console-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .console-grid .span2{grid-column:1/-1;}
+
+  .mode-sub-panel{display:none; flex-wrap:wrap; gap:6px; margin-top:8px;}
+  .mode-sub-item{display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:2px; padding:.4em .6em; font-size:.78rem; font-weight:600; color:var(--ink-soft); cursor:pointer; width:auto;}
+  .mode-sub-item input{width:auto; padding:0; margin:0; accent-color:var(--accent);}
+  .mode-sub-item svg.icon{width:1em; height:1em;}
+  .mode-sub-item:has(input:checked){border-color:var(--accent); background:var(--paper-2); color:var(--accent);}
 
   .services-list{display:flex; flex-direction:column;}
   .services-item{display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:.86rem; font-weight:600;}
@@ -327,16 +333,16 @@ var LISTINGS = [
   {id:4,kind:"transport",mode:"sea",from:"rotterdam",to:"istanbul",date:"2026-08-25",cargo:"chem",weight:25,volume:40,price:2900,company:"Blue Line Shipping"},
   {id:5,kind:"cargo",mode:"air",from:"munich",to:"kyiv",date:"2026-08-17",cargo:"electro",weight:2.4,volume:6,price:2100,company:"AirCargo Bavaria"},
   {id:6,kind:"transport",mode:"auto",from:"warsaw",to:"vienna",date:"2026-08-20",cargo:"furn",weight:14,volume:64,price:990,company:"Meble-Trans"},
-  {id:7,kind:"cargo",mode:"multi",from:"vilnius",to:"constanta",date:"2026-08-27",cargo:"agro",weight:22,volume:70,price:1750,company:"Baltic Grain Co."},
+  {id:7,kind:"cargo",mode:"multi",components:["sea","rail"],from:"vilnius",to:"constanta",date:"2026-08-27",cargo:"agro",weight:22,volume:70,price:1750,company:"Baltic Grain Co."},
   {id:8,kind:"transport",mode:"rail",from:"prague",to:"hamburg",date:"2026-08-21",cargo:"metal",weight:58,volume:95,price:2650,company:"CentroRail Cargo"},
   {id:9,kind:"cargo",mode:"auto",from:"krakow",to:"lviv",date:"2026-08-16",cargo:"food",weight:12,volume:44,price:520,company:"FreshWay Sp. z o.o."},
   {id:10,kind:"transport",mode:"sea",from:"gdansk",to:"istanbul",date:"2026-08-24",cargo:"textile",weight:19,volume:58,price:1980,company:"Marina Freight"},
   {id:11,kind:"cargo",mode:"auto",from:"berlin",to:"kyiv",date:"2026-08-19",cargo:"chem",weight:21,volume:66,price:1890,company:"ChemLog GmbH"},
   {id:12,kind:"transport",mode:"air",from:"vienna",to:"odesa",date:"2026-08-23",cargo:"electro",weight:1.8,volume:4,price:2450,company:"SkyBridge Cargo"},
-  {id:13,kind:"cargo",mode:"multi",from:"hamburg",to:"lviv",date:"2026-08-26",cargo:"build",weight:24,volume:88,price:2050,company:"NordTrans AG"},
+  {id:13,kind:"cargo",mode:"multi",components:["sea","auto"],from:"hamburg",to:"lviv",date:"2026-08-26",cargo:"build",weight:24,volume:88,price:2050,company:"NordTrans AG"},
   {id:14,kind:"transport",mode:"auto",from:"vilnius",to:"warsaw",date:"2026-08-18",cargo:"furn",weight:16,volume:70,price:780,company:"Baltic Movers"},
   {id:15,kind:"cargo",mode:"rail",from:"kyiv",to:"munich",date:"2026-08-28",cargo:"metal",weight:70,volume:120,price:3400,company:"УкрМеталТранс"},
-  {id:16,kind:"transport",mode:"multi",from:"istanbul",to:"prague",date:"2026-08-22",cargo:"textile",weight:17,volume:52,price:1720,company:"Anatolia Freight"}
+  {id:16,kind:"transport",mode:"multi",components:["rail","auto"],from:"istanbul",to:"prague",date:"2026-08-22",cargo:"textile",weight:17,volume:52,price:1720,company:"Anatolia Freight"}
 ];
 
 var MARKET = [
@@ -572,7 +578,7 @@ var state = {
   route: (location.hash||"#home").slice(1) || "home",
   user: JSON.parse(localStorage.getItem("ta_user")||"null"),
   heroTab: "cargo",
-  filters:{from:"", to:"", mode:"all", date:""},
+  filters:{from:"", to:"", mode:"all", date:"", multiModes:[]},
   marketCat: null,
   openNews: {},
   homeWidgetTab: "reliability",
@@ -591,6 +597,11 @@ function fmtDate(iso){
   return d.toLocaleDateString(state.lang==="uk"?"uk-UA":state.lang, {day:"2-digit",month:"2-digit",year:"numeric"});
 }
 function navigate(route){ location.hash = route; }
+function readMultiModes(scopeEl, selectName){
+  var panel = scopeEl.querySelector('[data-modesub="'+selectName+'"]');
+  if(!panel) return [];
+  return Array.prototype.slice.call(panel.querySelectorAll('input[type="checkbox"]:checked')).map(function(cb){ return cb.value; });
+}
 function toast(msg, isErr){
   var el=document.createElement("div");
   el.className="toast"+(isErr?" err":"");
@@ -604,6 +615,11 @@ function filteredListings(kind){
   return LISTINGS.filter(function(l){
     if(l.kind!==kind) return false;
     if(state.filters.mode!=="all" && l.mode!==state.filters.mode) return false;
+    if(state.filters.mode==="multi" && state.filters.multiModes.length){
+      var comps = l.components || [];
+      var matches = state.filters.multiModes.some(function(mm){ return comps.indexOf(mm)>-1; });
+      if(!matches) return false;
+    }
     if(state.filters.from && l.from!==state.filters.from) return false;
     if(state.filters.to && l.to!==state.filters.to) return false;
     return true;
@@ -624,6 +640,21 @@ function modeOptions(selected){
     var label = m==="all" ? t("any") : t("mode_"+m);
     return '<option value="'+m+'"'+(selected===m?" selected":"")+'>'+esc(label)+'</option>';
   }).join("");
+}
+
+var MULTI_COMPONENTS=["auto","rail","sea","air"];
+/** Renders the "Вид транспорту" <select> plus, when "Мультимодальні" is the
+ * current value, a checkbox sub-menu letting the user pick which of the
+ * four base modes make up the combination. `selectedMulti` is the array of
+ * already-checked sub-modes (kept in state so it survives re-renders). */
+function renderModeField(selectName, currentMode, selectedMulti){
+  var checks = MULTI_COMPONENTS.map(function(mm){
+    var checked = selectedMulti.indexOf(mm)>-1 ? " checked" : "";
+    return '<label class="mode-sub-item"><input type="checkbox" value="'+mm+'"'+checked+'>'+ICONS[MODE_ICON[mm]]+'<span>'+esc(t("mode_"+mm))+'</span></label>';
+  }).join("");
+  return ''+
+    '<select name="'+selectName+'" class="mode-select">'+modeOptions(currentMode)+'</select>'+
+    '<div class="mode-sub-panel" data-modesub="'+selectName+'" style="display:'+(currentMode==="multi"?"flex":"none")+';">'+checks+'</div>';
 }
 
 function renderHeader(){
@@ -689,7 +720,7 @@ function renderFooter(){
         '<span>'+esc(t("footer_note"))+'</span>'+
       '</div>'+
       '<div class="foot-bottom" style="margin-top:6px; padding-top:0; border-top:none;">'+
-        '<span style="font-size:.72rem;">Photos: Wikimedia Commons (CC BY-SA 3.0/4.0, CC BY 2.0/4.0) &mdash; Lav Ulv, Insightwm, Petar Milošević, Raimond Spekking, Sam LaRussa.</span>'+
+        '<span style="font-size:.72rem;">Banner illustrations are AI-generated concept renders, not photographs of real vehicles or services.</span>'+
       '</div>'+
     '</div>'+
   '</footer>';
@@ -740,7 +771,7 @@ function renderHero(){
               '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
               '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
               '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
-              '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="mode">'+modeOptions(f.mode)+'</select></div>'+
+              '<div class="field"><label>'+esc(t("f_mode"))+'</label>'+renderModeField("mode", f.mode, f.multiModes)+'</div>'+
               '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
               '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
             '</div>'+
@@ -810,7 +841,7 @@ function renderResultsSection(kind, title){
     '<div class="filter-bar">'+
       '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="ffrom">'+cityOptions(state.filters.from)+'</select></div>'+
       '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="fto">'+cityOptions(state.filters.to)+'</select></div>'+
-      '<div class="field"><label>'+esc(t("f_mode"))+'</label><select name="fmode">'+modeOptions(state.filters.mode)+'</select></div>'+
+      '<div class="field"><label>'+esc(t("f_mode"))+'</label>'+renderModeField("fmode", state.filters.mode, state.filters.multiModes)+'</div>'+
       '<button class="btn btn-primary" id="applyFilterBtn">'+ICONS.search+esc(t("search"))+'</button>'+
     '</div>'+
     '<div class="manifest">'+
@@ -1059,6 +1090,7 @@ function bindEvents(){
       var f=e.target;
       state.filters.from=f.from.value; state.filters.to=f.to.value;
       state.filters.mode=f.mode.value; state.filters.date=f.date.value;
+      state.filters.multiModes = f.mode.value==="multi" ? readMultiModes(f,"mode") : [];
       navigate(state.heroTab==="cargo" ? "transport" : "cargo");
     });
     app.querySelectorAll("[data-quickmode]").forEach(function(b){
@@ -1069,13 +1101,22 @@ function bindEvents(){
     });
   }
 
+  app.querySelectorAll(".mode-select").forEach(function(sel){
+    sel.addEventListener("change", function(){
+      var panel = sel.parentElement.querySelector("[data-modesub]");
+      if(panel) panel.style.display = sel.value==="multi" ? "flex" : "none";
+    });
+  });
+
   var applyFilterBtn=document.getElementById("applyFilterBtn");
   if(applyFilterBtn){
     applyFilterBtn.addEventListener("click", function(){
       var bar=applyFilterBtn.closest(".filter-bar");
       state.filters.from=bar.querySelector('[name="ffrom"]').value;
       state.filters.to=bar.querySelector('[name="fto"]').value;
-      state.filters.mode=bar.querySelector('[name="fmode"]').value;
+      var modeVal=bar.querySelector('[name="fmode"]').value;
+      state.filters.mode=modeVal;
+      state.filters.multiModes = modeVal==="multi" ? readMultiModes(bar,"fmode") : [];
       renderApp();
     });
   }

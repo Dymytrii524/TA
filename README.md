@@ -11,14 +11,14 @@
 - Це фронтенд-демонстрація без бекенду: вхід/реєстрація та заявки зберігаються локально в браузері (`localStorage`), а не в реальній базі даних.
 - Контактні дані (телефони, email, адреси офісів) — приклади-заглушки для демонстрації, перед публічним запуском їх потрібно замінити на реальні.
 
-## Фото у банері (`images/`)
+## Зображення у банері (`images/`)
 
-Фотографії видів транспорту завантажені з Wikimedia Commons за відкритими ліцензіями, атрибуція вказана у футері сайту:
+Ілюстрації видів транспорту — AI-згенеровані концептуальні рендери (не фотографії реальних машин/суден/потягів), про що вказано у футері сайту:
 
-- `banner-auto.jpg` — Mercedes-Benz Actros with container semi-trailer, close-up on the motorway, © Lav Ulv, CC BY 4.0
-- `banner-rail.jpg` — Cargo Train Containers at El Paso Station, © Insightwm, CC BY-SA 4.0
-- `banner-sea.jpg` — MAERSK HANOI Container Ship, © Petar Milošević, CC BY-SA 4.0
-- `banner-air.jpg` — FedEx/UPS cargo aircraft at Cologne Bonn Airport, © Raimond Spekking, CC BY-SA 4.0
-- `banner-multi.jpg` — Intermodal terminal, © Sam LaRussa, CC BY 2.0
+- `banner-auto.jpg` — футуристична фура на сонячних панелях
+- `banner-rail.jpg` — швидкісні потяги (кадр з колажу)
+- `banner-sea.jpg` — контейнерний термінал і суховантаж (кадр з колажу)
+- `banner-air.jpg` — вантажні літаки в аеропорту (кадр з колажу)
+- `banner-multi.jpg` — мультимодальний термінал: потяги, фури, контейнери (кадр з колажу)
 
-Перед публічним запуском рекомендується замінити їх на власні фірмові фотографії.
+Перед публічним запуском рекомендується замінити їх на реальні фірмові фотографії.
