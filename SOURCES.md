@@ -1,17 +1,21 @@
 # Джерела даних — Services
 
-Статус на сьогодні: **лише Open-Meteo (Авто) реалізовано**. Решта рядків — задокументована мапа Phase 1/2/3 з брифу, щоб було видно, що ще не підключено і чому, а не мовчазна прогалина.
+Статус на сьогодні: **Open-Meteo (Погода/Авто) — живі дані. Довідник (`server/data/directory.json`) — статичний структурований каталог 8 джерел, віддається через `/api/services/directory`.** Важливо не плутати ці два рівні: наявність джерела в довіднику (посилання+опис) НЕ означає, що його *живі* дані (черги на кордоні, завантаженість порту) вже підключені — це окремий рядок статусу нижче.
 
-| Джерело | URL | Тип доступу | Ліміти безкоштовного рівня | Інтервал оновлення | TTL кешу | Ліцензія/атрибуція | Статус | Власник конектора |
-|---|---|---|---|---|---|---|---|---|
-| Open-Meteo | https://open-meteo.com | REST/JSON, без ключа | Розумний ліміт для некомерційного і помірного комерційного використання | Live, кеш 30 хв | 30 хв | Атрибуція бажана, не обов'язкова | **Реалізовано** (`server/connectors/openMeteoRoad.js`) | — |
-| ДПСУ (dpsu.gov.ua) | https://dpsu.gov.ua/en/map | HTML/JS-карта, немає публічного API | Немає офіційних лімітів — throttle вручну | 5 хв | 5 хв | Немає явної ліцензії — throttle + атрибуція обов'язкові | Не реалізовано | — |
-| granica.gov.pl (KAS) | https://granica.gov.pl/index_wait.php?p | HTML-таблиця, оновлюється 8×/день | Немає офіційних лімітів | 30 хв | 30 хв | Немає явної ліцензії — throttle + атрибуція | Не реалізовано | — |
-| MeteoAlarm | https://api.meteoalarm.org/ | GeoJSON/CAP | Вільний загальний доступ | 10 хв | 10 хв | Атрибуція обов'язкова | Не реалізовано | — |
-| AviationWeather.gov | https://aviationweather.gov/data/api/ | JSON/GeoJSON, без ключа | Вільний доступ (US gov) | 1 хв (METAR) / 10 хв (TAF) | 1 хв / 10 хв | Публічні дані США | Не реалізовано | — |
-| CAREC BCP Monitor | https://cpmm.carecprogram.org/2023-report/bcp-monitor/ | Довідкові/квартальні дані | — | Раз на квартал | 30 днів | Довідкові дані — НІКОЛИ не показувати як live-чергу | Не реалізовано | — |
-| IMF PortWatch | https://portwatch.imf.org | Iframe/дані щотижня по вівторках | — | Щотижня | 24 год | Атрибуція IMF PortWatch обов'язкова | Не реалізовано | — |
-| Copernicus Marine (CMEMS) | https://marine.copernicus.eu | NetCDF, потребує реєстрації | Безкоштовно, потрібен ключ/акаунт | 30 хв | 30 хв | Безкоштовна програма ЄС | Не реалізовано | — |
+| Джерело | URL | У Довіднику? | Живі дані підключено? | Тип доступу | TTL кешу | Ліцензія/атрибуція | Власник конектора |
+|---|---|---|---|---|---|---|---|
+| Open-Meteo | https://open-meteo.com | — | **Так** (`server/connectors/openMeteoRoad.js`) | REST/JSON, без ключа | 30 хв | Атрибуція бажана, не обов'язкова | — |
+| ДПСУ (dpsu.gov.ua) | https://dpsu.gov.ua/en/map | Так | Ні | HTML/JS-карта, немає публічного API | 5 хв (заплановано) | Немає явної ліцензії — throttle + атрибуція обов'язкові | — |
+| granica.gov.pl (KAS) | https://granica.gov.pl/index_wait.php?p | Так | Ні | HTML-таблиця, оновлюється 8×/день | 3 год (заплановано) | Немає явної ліцензії — throttle + атрибуція | — |
+| border.gov.md | https://border.gov.md | Так | Ні | HTML, немає публічного API | — | Немає явної ліцензії | — |
+| politiadefrontiera.ro | https://www.politiadefrontiera.ro | Так | Ні | HTML, немає публічного API | — | Немає явної ліцензії | — |
+| GoSwift / estonianborder.eu | https://www.estonianborder.eu | Так | Ні | Веб-сервіс електронної черги | — | Немає явної ліцензії | — |
+| CAREC BCP Monitor | https://cpmm.carecprogram.org/2023-report/bcp-monitor/ | Так | Ні (і не буде «live» — довідкові квартальні дані) | Довідкові/квартальні дані | 30 днів | Довідкові дані — НІКОЛИ не показувати як live-чергу | — |
+| IMF PortWatch | https://portwatch.imf.org | Так | Ні (Phase 1 план: iframe-віджет) | Iframe/дані щотижня по вівторках | 24 год | Атрибуція IMF PortWatch обов'язкова | — |
+| UNCTAD PLSCI | https://unctadstat.unctad.org/datacentre/reportInfo/US.PLSCI | Так | Ні (довідковий індекс) | Статистична таблиця | — | Атрибуція UNCTAD | — |
+| MeteoAlarm | https://api.meteoalarm.org/ | Ні | Ні | GeoJSON/CAP | 10 хв (заплановано) | Атрибуція обов'язкова | — |
+| AviationWeather.gov | https://aviationweather.gov/data/api/ | Ні | Ні | JSON/GeoJSON, без ключа | 1 хв / 10 хв (заплановано) | Публічні дані США | — |
+| Copernicus Marine (CMEMS) | https://marine.copernicus.eu | Ні | Ні | NetCDF, потребує реєстрації | 30 хв (заплановано) | Безкоштовна програма ЄС | — |
 
 ## Навмисно НЕ інтегровано (Phase 3, per бриф)
 

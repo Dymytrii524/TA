@@ -8,15 +8,58 @@
  *
  * Routes:
  *   GET /api/services/weather?mode=road&lat=&lon=&label=
+ *   GET /api/services/directory?transport=&region=&q=
  *   GET /api/health
  */
 
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
+var path = require('path');
 var cache = require('./cache');
 var config = require('./config');
 var log = require('./log');
 var openMeteoRoad = require('./connectors/openMeteoRoad');
+
+/**
+ * The directory is curated static data (see SOURCES.md), not something
+ * fetched from an external source at request time, so unlike the weather
+ * connector it doesn't go through cache/scheduler/TTL - there is no
+ * upstream latency or rate limit to hide from. It's still served only
+ * through /api/services/*, same as everything else, and normalized the
+ * same way, so the frontend never has to special-case it.
+ */
+var directoryData = null;
+function loadDirectory() {
+  if (directoryData) return directoryData;
+  var raw = fs.readFileSync(path.join(__dirname, 'data/directory.json'), 'utf8');
+  directoryData = JSON.parse(raw);
+  return directoryData;
+}
+
+function handleDirectory(req, res, query) {
+  var entries;
+  try {
+    entries = loadDirectory();
+  } catch (err) {
+    log.error('directory', 'failed to load directory.json', { error: err.message });
+    sendJson(res, 500, { error: 'internal_error', message_uk: 'Не вдалося завантажити довідник.' });
+    return;
+  }
+
+  var transport = (query.transport || '').trim();
+  var region = (query.region || '').trim();
+  var q = (query.q || '').trim().toLowerCase();
+
+  var filtered = entries.filter(function (e) {
+    if (transport && e.transport.indexOf(transport) === -1) return false;
+    if (region && e.region !== region) return false;
+    if (q && e.name_uk.toLowerCase().indexOf(q) === -1 && e.description_uk.toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+
+  sendJson(res, 200, { count: filtered.length, entries: filtered });
+}
 
 function sendJson(res, status, body) {
   var text = JSON.stringify(body);
@@ -148,6 +191,10 @@ function createServer() {
         log.error('api', 'unhandled error in /api/services/weather', { error: err.message });
         sendJson(res, 500, { error: 'internal_error' });
       });
+      return;
+    }
+    if (parsed.pathname === '/api/services/directory') {
+      handleDirectory(req, res, parsed.query);
       return;
     }
     if (parsed.pathname === '/api/health') {

@@ -211,6 +211,25 @@
   .weather-provenance a{color:var(--ink-soft);}
   .weather-msg{color:var(--ink-soft); font-size:.9rem; margin-top:16px;}
 
+  /* directory page */
+  .directory-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:20px;}
+  .directory-card{border:1px solid var(--line); background:var(--surface); padding:16px; display:flex; flex-direction:column; gap:8px;}
+  .directory-card-head{display:flex; align-items:center; gap:10px;}
+  .country-flag{width:20px; height:14px; flex:none; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);}
+  .country-flag.ua{background:linear-gradient(to bottom,#005BBB 50%,#FFD500 50%);}
+  .country-flag.pl{background:linear-gradient(to bottom,#fff 50%,#DC143C 50%);}
+  .country-flag.md{background:linear-gradient(90deg,#003DA5 33%,#FFD200 33% 67%,#C8102E 67%);}
+  .country-flag.ro{background:linear-gradient(90deg,#002B7F 33%,#FCD116 33% 67%,#CE1126 67%);}
+  .country-flag.ee{background:linear-gradient(to bottom,#0072CE 33%,#000 33% 67%,#fff 67%);}
+  .country-flag.kz{background:#00AFCA;}
+  .country-flag.us{background:linear-gradient(180deg,#B22234 0 15%,#fff 15% 30%,#B22234 30% 45%,#fff 45% 60%,#3C3B6E 60% 100%);}
+  .country-flag.ch{background:#D52B1E;}
+  .directory-card-head h3{margin:0; font-size:.92rem; line-height:1.3;}
+  .directory-badge{align-self:flex-start; font-size:.68rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; padding:.2em .5em; border:1px solid var(--line); color:var(--ink-soft);}
+  .directory-badge.official{color:var(--success); border-color:var(--success);}
+  .directory-desc{font-size:.84rem; color:var(--ink-soft); margin:0; flex:1;}
+  .directory-card a.linklike{margin-top:4px;}
+
   section{padding:38px 0;}
   section.alt{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:20px; flex-wrap:wrap;}
@@ -381,7 +400,7 @@ var MARKET = [
 ];
 
 var SERVICES = [
-  {icon:"book", route:"market", uk:"Довідник", en:"Reference", pl:"Informator", de:"Nachschlagewerk"},
+  {icon:"book", route:"directory", uk:"Довідник", en:"Reference", pl:"Informator", de:"Nachschlagewerk"},
   {icon:"flagpost", route:"about", uk:"Кордони", en:"Border crossings", pl:"Przejścia graniczne", de:"Grenzübergänge"},
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"}
@@ -455,6 +474,13 @@ uk:{
   weather_loading:"Завантаження...", weather_error:"Не вдалося отримати дані. Спробуйте пізніше.",
   weather_not_ready:"Джерело даних для цього виду транспорту ще не підключено в поточній фазі розробки — це чесно показано, а не імітується.",
   weather_pick_points:"Оберіть пункти відправлення та призначення вище, щоб побачити прогноз.",
+  directory_title:"Довідник джерел", directory_lede:"Офіційні відомства та агрегатори, що надають дані про кордони, порти й логістику.",
+  directory_transport_label:"Вид транспорту", directory_region_label:"Регіон", directory_search_label:"Пошук",
+  directory_search_ph:"Назва або опис...", directory_apply:"Застосувати", directory_all:"Усі",
+  directory_region_eu:"ЄС", directory_region_asia:"Азія", directory_region_balkans:"Балкани", directory_region_cis:"СНД",
+  directory_type_official:"Офіційне джерело", directory_type_aggregator:"Агрегатор",
+  directory_visit:"Перейти на сайт", directory_empty:"Нічого не знайдено за цими фільтрами.",
+  directory_loading:"Завантаження...", directory_offline:"Локальний сервер даних недоступний. Запустіть \"node server/index.js\", щоб побачити каталог.",
   err_required:"Заповніть це поле", err_email:"Введіть коректний email", err_pass:"Мінімум 6 символів", err_match:"Паролі не збігаються",
   modal_login_title:"Вхід до кабінету", modal_register_title:"Реєстрація компанії",
   f_password:"Пароль", f_password2:"Повторіть пароль", f_companyname:"Назва компанії",
@@ -503,6 +529,13 @@ en:{
   weather_loading:"Loading...", weather_error:"Could not fetch data. Please try again later.",
   weather_not_ready:"The data source for this transport mode is not wired up yet in this development phase — shown honestly, not simulated.",
   weather_pick_points:"Pick a departure and destination point above to see the forecast.",
+  directory_title:"Source directory", directory_lede:"Official authorities and aggregators providing border, port and logistics data.",
+  directory_transport_label:"Transport mode", directory_region_label:"Region", directory_search_label:"Search",
+  directory_search_ph:"Name or description...", directory_apply:"Apply", directory_all:"All",
+  directory_region_eu:"EU", directory_region_asia:"Asia", directory_region_balkans:"Balkans", directory_region_cis:"CIS",
+  directory_type_official:"Official source", directory_type_aggregator:"Aggregator",
+  directory_visit:"Visit website", directory_empty:"No entries match these filters.",
+  directory_loading:"Loading...", directory_offline:"The local data server is unreachable. Run \"node server/index.js\" to see the directory.",
   err_required:"This field is required", err_email:"Enter a valid email", err_pass:"At least 6 characters", err_match:"Passwords do not match",
   modal_login_title:"Sign in", modal_register_title:"Register a company",
   f_password:"Password", f_password2:"Confirm password", f_companyname:"Company name",
@@ -551,6 +584,13 @@ pl:{
   weather_loading:"Ładowanie...", weather_error:"Nie udało się pobrać danych. Spróbuj ponownie później.",
   weather_not_ready:"Źródło danych dla tego rodzaju transportu nie jest jeszcze podłączone na tym etapie rozwoju — pokazane uczciwie, a nie symulowane.",
   weather_pick_points:"Wybierz punkt wyjazdu i docelowy powyżej, aby zobaczyć prognozę.",
+  directory_title:"Katalog źródeł", directory_lede:"Oficjalne urzędy i agregatory dostarczające dane o granicach, portach i logistyce.",
+  directory_transport_label:"Rodzaj transportu", directory_region_label:"Region", directory_search_label:"Szukaj",
+  directory_search_ph:"Nazwa lub opis...", directory_apply:"Zastosuj", directory_all:"Wszystkie",
+  directory_region_eu:"UE", directory_region_asia:"Azja", directory_region_balkans:"Bałkany", directory_region_cis:"WNP",
+  directory_type_official:"Źródło oficjalne", directory_type_aggregator:"Agregator",
+  directory_visit:"Przejdź do strony", directory_empty:"Brak wyników dla tych filtrów.",
+  directory_loading:"Ładowanie...", directory_offline:"Lokalny serwer danych jest niedostępny. Uruchom \"node server/index.js\", aby zobaczyć katalog.",
   err_required:"To pole jest wymagane", err_email:"Podaj prawidłowy adres email", err_pass:"Minimum 6 znaków", err_match:"Hasła nie są zgodne",
   modal_login_title:"Logowanie", modal_register_title:"Rejestracja firmy",
   f_password:"Hasło", f_password2:"Powtórz hasło", f_companyname:"Nazwa firmy",
@@ -599,6 +639,13 @@ de:{
   weather_loading:"Wird geladen...", weather_error:"Daten konnten nicht abgerufen werden. Bitte später erneut versuchen.",
   weather_not_ready:"Die Datenquelle für diese Verkehrsart ist in dieser Entwicklungsphase noch nicht angebunden — ehrlich angezeigt, nicht simuliert.",
   weather_pick_points:"Wählen Sie oben einen Abfahrts- und Zielort, um die Prognose zu sehen.",
+  directory_title:"Quellenverzeichnis", directory_lede:"Offizielle Behörden und Aggregatoren mit Daten zu Grenzen, Häfen und Logistik.",
+  directory_transport_label:"Verkehrsart", directory_region_label:"Region", directory_search_label:"Suche",
+  directory_search_ph:"Name oder Beschreibung...", directory_apply:"Anwenden", directory_all:"Alle",
+  directory_region_eu:"EU", directory_region_asia:"Asien", directory_region_balkans:"Balkan", directory_region_cis:"GUS",
+  directory_type_official:"Offizielle Quelle", directory_type_aggregator:"Aggregator",
+  directory_visit:"Website besuchen", directory_empty:"Keine Einträge für diese Filter.",
+  directory_loading:"Wird geladen...", directory_offline:"Der lokale Datenserver ist nicht erreichbar. Führen Sie \"node server/index.js\" aus, um das Verzeichnis zu sehen.",
   err_required:"Dieses Feld ist erforderlich", err_email:"Gültige E-Mail eingeben", err_pass:"Mindestens 6 Zeichen", err_match:"Passwörter stimmen nicht überein",
   modal_login_title:"Anmelden", modal_register_title:"Unternehmen registrieren",
   f_password:"Passwort", f_password2:"Passwort wiederholen", f_companyname:"Firmenname",
@@ -649,7 +696,8 @@ var state = {
   homeWidgetTab: "reliability",
   modal: null,
   modalMode:"login",
-  weather:{tab:"road", from:"", to:"", loading:false, error:null, points:null}
+  weather:{tab:"road", from:"", to:"", loading:false, error:null, points:null},
+  directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null}
 };
 
 var WEATHER_API_BASE = "http://localhost:8787";
@@ -1124,6 +1172,79 @@ function fetchWeatherForRoute(fromId, toId){
     });
 }
 
+var COUNTRY_NAMES = {
+  UA:{uk:"Україна",en:"Ukraine",pl:"Ukraina",de:"Ukraine"}, PL:{uk:"Польща",en:"Poland",pl:"Polska",de:"Polen"},
+  MD:{uk:"Молдова",en:"Moldova",pl:"Mołdawia",de:"Moldau"}, RO:{uk:"Румунія",en:"Romania",pl:"Rumunia",de:"Rumänien"},
+  EE:{uk:"Естонія",en:"Estonia",pl:"Estonia",de:"Estland"}, KZ:{uk:"Казахстан",en:"Kazakhstan",pl:"Kazachstan",de:"Kasachstan"},
+  US:{uk:"США",en:"USA",pl:"USA",de:"USA"}, CH:{uk:"Швейцарія",en:"Switzerland",pl:"Szwajcaria",de:"Schweiz"}
+};
+function fetchDirectory(){
+  var d = state.directory;
+  d.loading = true; d.error = null;
+  renderApp();
+  var url = WEATHER_API_BASE+"/api/services/directory?transport="+encodeURIComponent(d.transport)+"&region="+encodeURIComponent(d.region)+"&q="+encodeURIComponent(d.q);
+  fetch(url).then(function(res){
+    return res.json().then(function(json){
+      d.loading = false;
+      if(!res.ok){ d.error = "error"; renderApp(); return; }
+      d.entries = json.entries;
+      renderApp();
+    });
+  }).catch(function(err){
+    d.loading = false;
+    d.error = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"") ? "offline" : "error";
+    renderApp();
+  });
+}
+function renderDirectory(){
+  var d = state.directory;
+  var regionOptions = ["", "eu", "asia", "balkans", "cis"].map(function(r){
+    var label = r===""? t("directory_all") : t("directory_region_"+r);
+    return '<option value="'+r+'"'+(d.region===r?" selected":"")+'>'+esc(label)+'</option>';
+  }).join("");
+  var transportOptions = ["", "road", "rail", "sea", "air"].map(function(m){
+    var label = m===""? t("directory_all") : t("mode_"+m);
+    return '<option value="'+m+'"'+(d.transport===m?" selected":"")+'>'+esc(label)+'</option>';
+  }).join("");
+
+  var body;
+  if(d.loading){
+    body = '<p class="weather-msg">'+esc(t("directory_loading"))+'</p>';
+  } else if(d.error==="offline"){
+    body = '<div class="weather-card warn-card"><p class="weather-msg">'+esc(t("directory_offline"))+'</p></div>';
+  } else if(d.error){
+    body = '<p class="weather-msg">'+esc(t("weather_error"))+'</p>';
+  } else if(d.entries && d.entries.length===0){
+    body = '<p class="weather-msg">'+esc(t("directory_empty"))+'</p>';
+  } else if(d.entries){
+    body = '<div class="directory-grid">'+d.entries.map(function(e){
+      var country = COUNTRY_NAMES[e.country];
+      var countryLabel = country ? (country[state.lang]||country.en) : e.country;
+      return ''+
+      '<div class="directory-card">'+
+        '<div class="directory-card-head"><span class="country-flag '+e.country.toLowerCase()+'" title="'+esc(countryLabel)+'"></span><h3>'+esc(e.name_uk)+'</h3></div>'+
+        '<span class="directory-badge'+(e.type==="official"?" official":"")+'">'+esc(t("directory_type_"+e.type))+'</span>'+
+        '<p class="directory-desc">'+esc(e.description_uk)+'</p>'+
+        '<a class="linklike" href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(t("directory_visit"))+' &rarr;</a>'+
+      '</div>';
+    }).join("")+'</div>';
+  } else {
+    body = "";
+  }
+
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_market"))+'</p><h1>'+esc(t("directory_title"))+'</h1><p class="lede">'+esc(t("directory_lede"))+'</p>'+
+    '<div class="filter-bar">'+
+      '<div class="field"><label>'+esc(t("directory_transport_label"))+'</label><select name="dtransport">'+transportOptions+'</select></div>'+
+      '<div class="field"><label>'+esc(t("directory_region_label"))+'</label><select name="dregion">'+regionOptions+'</select></div>'+
+      '<div class="field"><label>'+esc(t("directory_search_label"))+'</label><input type="text" name="dq" value="'+esc(d.q)+'" placeholder="'+esc(t("directory_search_ph"))+'"></div>'+
+      '<button class="btn btn-primary" id="directoryApplyBtn">'+ICONS.search+esc(t("directory_apply"))+'</button>'+
+    '</div>'+
+    body+
+  '</div></section>';
+}
+
 function pageContent(){
   switch(state.route){
     case "home": return renderHero()+renderStats();
@@ -1134,6 +1255,7 @@ function pageContent(){
     case "about": return renderAbout();
     case "contacts": return renderContacts();
     case "weather": return renderWeather();
+    case "directory": return renderDirectory();
     default: return renderHero()+renderStats();
   }
 }
@@ -1333,6 +1455,20 @@ function bindEvents(){
       if(!fromId || !toId){ state.weather.points=null; state.weather.error=null; renderApp(); return; }
       fetchWeatherForRoute(fromId, toId);
     });
+  }
+
+  var directoryApplyBtn=document.getElementById("directoryApplyBtn");
+  if(directoryApplyBtn){
+    directoryApplyBtn.addEventListener("click", function(){
+      var bar=directoryApplyBtn.closest(".filter-bar");
+      state.directory.transport=bar.querySelector('[name="dtransport"]').value;
+      state.directory.region=bar.querySelector('[name="dregion"]').value;
+      state.directory.q=bar.querySelector('[name="dq"]').value;
+      fetchDirectory();
+    });
+  }
+  if(state.route==="directory" && state.directory.entries===null && !state.directory.loading && !state.directory.error){
+    fetchDirectory();
   }
 
   app.querySelectorAll("[data-news]").forEach(function(b){

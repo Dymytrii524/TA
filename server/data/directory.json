@@ -1,0 +1,82 @@
+[
+  {
+    "id": "dpsu",
+    "name_uk": "Державна прикордонна служба України (ДПСУ)",
+    "description_uk": "Офіційна інформація про завантаженість пунктів пропуску на кордоні України з країнами ЄС.",
+    "country": "UA",
+    "region": "eu",
+    "transport": ["road"],
+    "type": "official",
+    "url": "https://dpsu.gov.ua/en/map"
+  },
+  {
+    "id": "granica-gov-pl",
+    "name_uk": "Служба державної митниці Польщі (KAS) — granica.gov.pl",
+    "description_uk": "Черги на автомобільних пунктах пропуску між Польщею та Україною, Білоруссю, Росією.",
+    "country": "PL",
+    "region": "eu",
+    "transport": ["road"],
+    "type": "official",
+    "url": "https://granica.gov.pl/index_wait.php?p"
+  },
+  {
+    "id": "border-gov-md",
+    "name_uk": "Прикордонна поліція Молдови",
+    "description_uk": "Інформація про пункти пропуску на кордоні Молдови з Румунією та Україною.",
+    "country": "MD",
+    "region": "eu",
+    "transport": ["road"],
+    "type": "official",
+    "url": "https://border.gov.md"
+  },
+  {
+    "id": "politiadefrontiera-ro",
+    "name_uk": "Прикордонна поліція Румунії",
+    "description_uk": "Дані про пункти пропуску на кордоні Румунії з Молдовою та Україною.",
+    "country": "RO",
+    "region": "eu",
+    "transport": ["road"],
+    "type": "official",
+    "url": "https://www.politiadefrontiera.ro"
+  },
+  {
+    "id": "estonianborder-eu",
+    "name_uk": "GoSwift / estonianborder.eu",
+    "description_uk": "Система електронної черги на кордоні Естонії з Росією (для вантажного транспорту).",
+    "country": "EE",
+    "region": "eu",
+    "transport": ["road"],
+    "type": "aggregator",
+    "url": "https://www.estonianborder.eu"
+  },
+  {
+    "id": "carec-bcp-monitor",
+    "name_uk": "CAREC BCP Monitor",
+    "description_uk": "Довідкові квартальні/річні показники часу перетину прикордонних пунктів у Центральній Азії (Хоргос, Достик та інші). Не є live-даними.",
+    "country": "KZ",
+    "region": "asia",
+    "transport": ["road", "rail"],
+    "type": "aggregator",
+    "url": "https://cpmm.carecprogram.org/2023-report/bcp-monitor/"
+  },
+  {
+    "id": "imf-portwatch",
+    "name_uk": "IMF PortWatch",
+    "description_uk": "Дані про завантаженість 1802 морських портів і 27 вузьких морських точок (Босфор, Суец, Панамський канал).",
+    "country": "US",
+    "region": "eu",
+    "transport": ["sea"],
+    "type": "official",
+    "url": "https://portwatch.imf.org"
+  },
+  {
+    "id": "unctad-plsci",
+    "name_uk": "UNCTAD — Liner Shipping Connectivity Index",
+    "description_uk": "Індекс морської контейнерної зв'язності країн від Конференції ООН з торгівлі та розвитку.",
+    "country": "CH",
+    "region": "eu",
+    "transport": ["sea"],
+    "type": "official",
+    "url": "https://unctadstat.unctad.org/datacentre/reportInfo/US.PLSCI"
+  }
+]
