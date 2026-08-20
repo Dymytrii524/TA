@@ -200,6 +200,8 @@
   .weather-risk{margin-bottom:14px;}
   .weather-risk-list{list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:6px;}
   .weather-risk-list li{display:flex; align-items:center; gap:8px; font-size:.84rem; color:var(--danger);}
+  .weather-risk-list li.color-yellow{color:var(--warning);}
+  .weather-alerts{margin-bottom:14px;}
   .weather-risk-list li svg.icon{width:1em; height:1em;}
   .weather-msg.good{color:var(--success); margin:8px 0 0; font-size:.84rem;}
   .weather-forecast{margin-bottom:14px;}
@@ -359,21 +361,21 @@
 
 /* ---------- data: cities ---------- */
 var CITIES = [
-  {id:"kyiv", uk:"Київ", en:"Kyiv", pl:"Kijów", de:"Kiew", lat:50.4501, lon:30.5234},
-  {id:"lviv", uk:"Львів", en:"Lviv", pl:"Lwów", de:"Lemberg", lat:49.8397, lon:24.0297},
-  {id:"odesa", uk:"Одеса", en:"Odesa", pl:"Odessa", de:"Odessa", lat:46.4825, lon:30.7233},
-  {id:"warsaw", uk:"Варшава", en:"Warsaw", pl:"Warszawa", de:"Warschau", lat:52.2297, lon:21.0122},
-  {id:"krakow", uk:"Краків", en:"Krakow", pl:"Kraków", de:"Krakau", lat:50.0647, lon:19.9450},
-  {id:"gdansk", uk:"Гданськ", en:"Gdansk", pl:"Gdańsk", de:"Danzig", lat:54.3520, lon:18.6466},
-  {id:"berlin", uk:"Берлін", en:"Berlin", pl:"Berlin", de:"Berlin", lat:52.5200, lon:13.4050},
-  {id:"hamburg", uk:"Гамбург", en:"Hamburg", pl:"Hamburg", de:"Hamburg", lat:53.5511, lon:9.9937},
-  {id:"munich", uk:"Мюнхен", en:"Munich", pl:"Monachium", de:"München", lat:48.1351, lon:11.5820},
-  {id:"vilnius", uk:"Вільнюс", en:"Vilnius", pl:"Wilno", de:"Wilna", lat:54.6872, lon:25.2797},
-  {id:"prague", uk:"Прага", en:"Prague", pl:"Praga", de:"Prag", lat:50.0755, lon:14.4378},
-  {id:"vienna", uk:"Відень", en:"Vienna", pl:"Wiedeń", de:"Wien", lat:48.2082, lon:16.3738},
-  {id:"rotterdam", uk:"Роттердам", en:"Rotterdam", pl:"Rotterdam", de:"Rotterdam", lat:51.9244, lon:4.4777},
-  {id:"istanbul", uk:"Стамбул", en:"Istanbul", pl:"Stambuł", de:"Istanbul", lat:41.0082, lon:28.9784},
-  {id:"constanta", uk:"Констанца", en:"Constanta", pl:"Konstanca", de:"Konstanza", lat:44.1733, lon:28.6383}
+  {id:"kyiv", uk:"Київ", en:"Kyiv", pl:"Kijów", de:"Kiew", lat:50.4501, lon:30.5234, country:"UA", icao:"UKBB"},
+  {id:"lviv", uk:"Львів", en:"Lviv", pl:"Lwów", de:"Lemberg", lat:49.8397, lon:24.0297, country:"UA", icao:"UKLL"},
+  {id:"odesa", uk:"Одеса", en:"Odesa", pl:"Odessa", de:"Odessa", lat:46.4825, lon:30.7233, country:"UA", icao:"UKOO"},
+  {id:"warsaw", uk:"Варшава", en:"Warsaw", pl:"Warszawa", de:"Warschau", lat:52.2297, lon:21.0122, country:"PL", icao:"EPWA"},
+  {id:"krakow", uk:"Краків", en:"Krakow", pl:"Kraków", de:"Krakau", lat:50.0647, lon:19.9450, country:"PL", icao:"EPKK"},
+  {id:"gdansk", uk:"Гданськ", en:"Gdansk", pl:"Gdańsk", de:"Danzig", lat:54.3520, lon:18.6466, country:"PL", icao:"EPGD"},
+  {id:"berlin", uk:"Берлін", en:"Berlin", pl:"Berlin", de:"Berlin", lat:52.5200, lon:13.4050, country:"DE", icao:"EDDB"},
+  {id:"hamburg", uk:"Гамбург", en:"Hamburg", pl:"Hamburg", de:"Hamburg", lat:53.5511, lon:9.9937, country:"DE", icao:"EDDH"},
+  {id:"munich", uk:"Мюнхен", en:"Munich", pl:"Monachium", de:"München", lat:48.1351, lon:11.5820, country:"DE", icao:"EDDM"},
+  {id:"vilnius", uk:"Вільнюс", en:"Vilnius", pl:"Wilno", de:"Wilna", lat:54.6872, lon:25.2797, country:"LT", icao:"EYVI"},
+  {id:"prague", uk:"Прага", en:"Prague", pl:"Praga", de:"Prag", lat:50.0755, lon:14.4378, country:"CZ", icao:"LKPR"},
+  {id:"vienna", uk:"Відень", en:"Vienna", pl:"Wiedeń", de:"Wien", lat:48.2082, lon:16.3738, country:"AT", icao:"LOWW"},
+  {id:"rotterdam", uk:"Роттердам", en:"Rotterdam", pl:"Rotterdam", de:"Rotterdam", lat:51.9244, lon:4.4777, country:"NL", icao:"EHRD"},
+  {id:"istanbul", uk:"Стамбул", en:"Istanbul", pl:"Stambuł", de:"Istanbul", lat:41.0082, lon:28.9784, country:"TR", icao:"LTFM"},
+  {id:"constanta", uk:"Констанца", en:"Constanta", pl:"Konstanca", de:"Konstanza", lat:44.1733, lon:28.6383, country:"RO", icao:"LRCK"}
 ];
 function cityName(id,lang){ var c=CITIES.filter(function(x){return x.id===id;})[0]; return c? c[lang]||c.en : id; }
 
@@ -494,6 +496,7 @@ uk:{
   weather_loading:"Завантаження...", weather_error:"Не вдалося отримати дані. Спробуйте пізніше.",
   weather_not_ready:"Джерело даних для цього виду транспорту ще не підключено в поточній фазі розробки — це чесно показано, а не імітується.",
   weather_pick_points:"Оберіть пункти відправлення та призначення вище, щоб побачити прогноз.",
+  weather_alerts_title:"Штормові попередження (MeteoAlarm)", weather_no_metar:"Немає поточних авіаданих для цього аеропорту (можливо, повітряний простір закритий або станція наразі не передає дані).",
   directory_title:"Довідник джерел", directory_lede:"Офіційні відомства та агрегатори, що надають дані про кордони, порти й логістику.",
   directory_transport_label:"Вид транспорту", directory_region_label:"Регіон", directory_search_label:"Пошук",
   directory_search_ph:"Назва або опис...", directory_apply:"Застосувати", directory_all:"Усі",
@@ -560,6 +563,7 @@ en:{
   weather_loading:"Loading...", weather_error:"Could not fetch data. Please try again later.",
   weather_not_ready:"The data source for this transport mode is not wired up yet in this development phase — shown honestly, not simulated.",
   weather_pick_points:"Pick a departure and destination point above to see the forecast.",
+  weather_alerts_title:"Storm warnings (MeteoAlarm)", weather_no_metar:"No current aviation data for this airport (airspace may be closed, or the station isn't reporting right now).",
   directory_title:"Source directory", directory_lede:"Official authorities and aggregators providing border, port and logistics data.",
   directory_transport_label:"Transport mode", directory_region_label:"Region", directory_search_label:"Search",
   directory_search_ph:"Name or description...", directory_apply:"Apply", directory_all:"All",
@@ -626,6 +630,7 @@ pl:{
   weather_loading:"Ładowanie...", weather_error:"Nie udało się pobrać danych. Spróbuj ponownie później.",
   weather_not_ready:"Źródło danych dla tego rodzaju transportu nie jest jeszcze podłączone na tym etapie rozwoju — pokazane uczciwie, a nie symulowane.",
   weather_pick_points:"Wybierz punkt wyjazdu i docelowy powyżej, aby zobaczyć prognozę.",
+  weather_alerts_title:"Ostrzeżenia meteorologiczne (MeteoAlarm)", weather_no_metar:"Brak aktualnych danych lotniczych dla tego lotniska (przestrzeń powietrzna może być zamknięta lub stacja obecnie nie raportuje).",
   directory_title:"Katalog źródeł", directory_lede:"Oficjalne urzędy i agregatory dostarczające dane o granicach, portach i logistyce.",
   directory_transport_label:"Rodzaj transportu", directory_region_label:"Region", directory_search_label:"Szukaj",
   directory_search_ph:"Nazwa lub opis...", directory_apply:"Zastosuj", directory_all:"Wszystkie",
@@ -692,6 +697,7 @@ de:{
   weather_loading:"Wird geladen...", weather_error:"Daten konnten nicht abgerufen werden. Bitte später erneut versuchen.",
   weather_not_ready:"Die Datenquelle für diese Verkehrsart ist in dieser Entwicklungsphase noch nicht angebunden — ehrlich angezeigt, nicht simuliert.",
   weather_pick_points:"Wählen Sie oben einen Abfahrts- und Zielort, um die Prognose zu sehen.",
+  weather_alerts_title:"Unwetterwarnungen (MeteoAlarm)", weather_no_metar:"Keine aktuellen Luftfahrtdaten für diesen Flughafen (Luftraum evtl. gesperrt, oder die Station meldet derzeit nicht).",
   directory_title:"Quellenverzeichnis", directory_lede:"Offizielle Behörden und Aggregatoren mit Daten zu Grenzen, Häfen und Logistik.",
   directory_transport_label:"Verkehrsart", directory_region_label:"Region", directory_search_label:"Suche",
   directory_search_ph:"Name oder Beschreibung...", directory_apply:"Anwenden", directory_all:"Alle",
@@ -1141,10 +1147,18 @@ function minutesAgo(iso){
   if(mins < 1) return "<1 " + (state.lang==="uk"?"хв":"min");
   return mins + " " + (state.lang==="uk"?"хв":"min");
 }
-function renderWeatherPointCard(label, result){
-  if(!result || result.error){
-    return '<div class="weather-card"><h3>'+esc(label)+'</h3><p class="weather-msg">'+esc(t("weather_error"))+'</p></div>';
-  }
+var FLIGHT_CATEGORY_COLOR = {VFR:"green", MVFR:"yellow", IFR:"red", LIFR:"red"};
+function renderAlertsBlock(alerts){
+  if(!alerts || !alerts.length) return "";
+  var top = alerts.slice(0,3);
+  return '<div class="weather-alerts"><span class="eyebrow">'+esc(t("weather_alerts_title"))+'</span><ul class="weather-risk-list">'+
+    top.map(function(a){
+      return '<li class="'+(a.color==="yellow"?"color-yellow":"")+'">'+ICONS.pin+esc(a.event)+(a.areaDesc?' &middot; '+esc(a.areaDesc):'')+'</li>';
+    }).join("")+
+    (alerts.length>3 ? '<li class="weather-msg" style="margin:0;">+'+(alerts.length-3)+'</li>' : '')+
+  '</ul></div>';
+}
+function renderRoadCard(label, result){
   var wp = result.data;
   var cur = wp.payload.current;
   var forecastHtml = wp.payload.next12h.map(function(h){
@@ -1155,12 +1169,36 @@ function renderWeatherPointCard(label, result){
     ? '<ul class="weather-risk-list">'+wp.payload.road_risk.map(function(r){ return '<li>'+ICONS.pin+esc(weatherRiskLabel(r.code))+'</li>'; }).join("")+'</ul>'
     : '<p class="weather-msg good">'+esc(t("weather_no_risk"))+'</p>';
   return ''+
-  '<div class="weather-card">'+
-    '<h3>'+esc(label)+(result.stale?' <span class="weather-stale-badge">stale</span>':'')+'</h3>'+
     '<div class="weather-current"><span class="wc-temp num">'+Math.round(cur.temperatureC)+'&deg;C</span><span class="wc-cond">'+esc(cur.conditionUk)+'</span>'+
       '<span class="wc-sub">'+esc(t("weather_current"))+' &middot; '+Math.round(cur.windSpeedKmh)+' km/h &middot; '+cur.precipitationMm+' mm</span></div>'+
     '<div class="weather-risk"><span class="eyebrow">'+esc(t("weather_risk_title"))+'</span>'+riskHtml+'</div>'+
-    '<div class="weather-forecast"><span class="eyebrow">'+esc(t("weather_forecast"))+'</span><div class="weather-hours">'+forecastHtml+'</div></div>'+
+    renderAlertsBlock(wp.alerts)+
+    '<div class="weather-forecast"><span class="eyebrow">'+esc(t("weather_forecast"))+'</span><div class="weather-hours">'+forecastHtml+'</div></div>';
+}
+function renderAirCard(label, result){
+  var wp = result.data;
+  var metar = wp.payload.metar;
+  if(!metar){
+    return '<p class="weather-msg">'+esc(t("weather_no_metar"))+'</p>';
+  }
+  var cat = metar.flightCategory;
+  var catPill = cat ? '<span class="status-pill '+(FLIGHT_CATEGORY_COLOR[cat]||"unknown")+'">'+esc(cat)+'</span>' : '<span class="status-pill unknown">'+esc(t("borders_status_unknown"))+'</span>';
+  return ''+
+    '<div class="weather-current"><span class="wc-temp num">'+(metar.tempC!=null?Math.round(metar.tempC):"—")+'&deg;C</span>'+catPill+
+      '<span class="wc-sub">'+(metar.windKt!=null?metar.windKt+' kt':"")+(metar.visibility?' &middot; '+esc(metar.visibility)+' SM':"")+'</span></div>'+
+    '<div class="weather-forecast"><span class="eyebrow">METAR</span><p class="weather-msg" style="font-family:var(--font-mono);font-size:.78rem;margin-top:6px;">'+esc(metar.raw)+'</p></div>'+
+    (wp.payload.taf ? '<div class="weather-forecast"><span class="eyebrow">TAF</span><p class="weather-msg" style="font-family:var(--font-mono);font-size:.72rem;margin-top:6px;word-break:break-word;">'+esc(wp.payload.taf.raw)+'</p></div>' : '');
+}
+function renderWeatherPointCard(label, result){
+  if(!result || result.error){
+    return '<div class="weather-card"><h3>'+esc(label)+'</h3><p class="weather-msg">'+esc(t("weather_error"))+'</p></div>';
+  }
+  var wp = result.data;
+  var inner = wp.transport_mode==="air" ? renderAirCard(label, result) : renderRoadCard(label, result);
+  return ''+
+  '<div class="weather-card">'+
+    '<h3>'+esc(label)+(result.stale?' <span class="weather-stale-badge">stale</span>':'')+'</h3>'+
+    inner+
     '<div class="weather-provenance"><a href="'+esc(wp.source_url)+'" target="_blank" rel="noopener">'+esc(t("weather_source"))+': '+esc(wp.source_name)+'</a> &middot; '+esc(t("weather_updated"))+' '+minutesAgo(wp.updated_at)+'</div>'+
   '</div>';
 }
@@ -1172,7 +1210,7 @@ function renderWeather(){
   }).join("");
 
   var body;
-  if(w.tab!=="road"){
+  if(w.tab==="rail" || w.tab==="sea"){
     body = '<div class="weather-card"><p class="weather-msg">'+esc(t("weather_not_ready"))+'</p></div>';
   } else if(w.loading){
     body = '<p class="weather-msg">'+esc(t("weather_loading"))+'</p>';
@@ -1206,7 +1244,19 @@ function fetchOneWeatherPoint(cityId){
   var city = CITIES.filter(function(c){ return c.id===cityId; })[0];
   if(!city) return Promise.resolve({error:true});
   var label = cityName(city.id, state.lang);
-  var url = WEATHER_API_BASE+"/api/services/weather?mode=road&lat="+city.lat+"&lon="+city.lon+"&label="+encodeURIComponent(label);
+  var url = WEATHER_API_BASE+"/api/services/weather?mode=road&lat="+city.lat+"&lon="+city.lon+"&label="+encodeURIComponent(label)+"&country="+encodeURIComponent(city.country||"");
+  return fetch(url).then(function(res){
+    return res.json().then(function(json){
+      if(!res.ok || json.error) return {error:true};
+      return {error:false, stale:json.stale, data:json.data};
+    });
+  });
+}
+function fetchOneAirPoint(cityId){
+  var city = CITIES.filter(function(c){ return c.id===cityId; })[0];
+  if(!city || !city.icao) return Promise.resolve({error:true});
+  var label = cityName(city.id, state.lang);
+  var url = WEATHER_API_BASE+"/api/services/weather?mode=air&icao="+encodeURIComponent(city.icao)+"&label="+encodeURIComponent(label);
   return fetch(url).then(function(res){
     return res.json().then(function(json){
       if(!res.ok || json.error) return {error:true};
@@ -1218,7 +1268,8 @@ function fetchWeatherForRoute(fromId, toId){
   var w = state.weather;
   w.loading = true; w.error = null; w.points = null;
   renderApp();
-  Promise.all([fetchOneWeatherPoint(fromId), fetchOneWeatherPoint(toId)])
+  var fetchOne = w.tab==="air" ? fetchOneAirPoint : fetchOneWeatherPoint;
+  Promise.all([fetchOne(fromId), fetchOne(toId)])
     .then(function(results){
       w.loading = false;
       w.points = {

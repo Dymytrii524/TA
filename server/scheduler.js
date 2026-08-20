@@ -19,6 +19,8 @@ var log = require('./log');
 var openMeteoRoad = require('./connectors/openMeteoRoad');
 var dpsuBorders = require('./connectors/dpsuBorders');
 var granicaBorders = require('./connectors/granicaBorders');
+var meteoAlarmAlerts = require('./connectors/meteoAlarmAlerts');
+var aviationWeatherAir = require('./connectors/aviationWeatherAir');
 
 var REFRESHERS = {
   openMeteoRoad: function (params) {
@@ -29,6 +31,12 @@ var REFRESHERS = {
   },
   granicaBorders: function () {
     return granicaBorders.fetchGranicaBorders();
+  },
+  meteoAlarmAlerts: function (params) {
+    return meteoAlarmAlerts.fetchAlerts(params.country);
+  },
+  aviationWeatherAir: function (params) {
+    return aviationWeatherAir.fetchAirWeather(params);
   },
 };
 

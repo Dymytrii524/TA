@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+<id>tag:meteoalarm.org,2021-02-19:PL</id>
+<title>MeteoAlarm - Alerting Europe for Extreme Weather</title>
+<updated>2026-08-20T12:07:39.275156Z</updated>
+<entry>
+<cap:geocode><valueName>EMMA_ID</valueName><value>PL2606</value></cap:geocode>
+<cap:areaDesc>Świętokrzyskie Province Opatowski County</cap:areaDesc>
+<cap:event>Yellow high-temperature warning</cap:event>
+<cap:sent>2026-08-20T11:23:00+00:00</cap:sent>
+<cap:expires>2026-08-20T16:00:00+00:00</cap:expires>
+<cap:effective>2026-08-20T11:23:00+00:00</cap:effective>
+<cap:onset>2026-08-20T11:23:15+00:00</cap:onset>
+<cap:certainty>Likely</cap:certainty>
+<cap:severity>Moderate</cap:severity>
+<cap:urgency>Expected</cap:urgency>
+</entry>
+<entry>
+<cap:geocode><valueName>EMMA_ID</valueName><value>PL9999</value></cap:geocode>
+<cap:areaDesc>Podkarpackie Province</cap:areaDesc>
+<cap:event>Orange thunderstorm warning</cap:event>
+<cap:sent>2026-08-20T09:00:00+00:00</cap:sent>
+<cap:expires>2026-08-20T22:00:00+00:00</cap:expires>
+<cap:effective>2026-08-20T09:00:00+00:00</cap:effective>
+<cap:onset>2026-08-20T09:00:00+00:00</cap:onset>
+<cap:certainty>Likely</cap:certainty>
+<cap:severity>Severe</cap:severity>
+<cap:urgency>Immediate</cap:urgency>
+</entry>
+</feed>

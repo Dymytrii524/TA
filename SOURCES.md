@@ -1,6 +1,6 @@
 # Джерела даних — Services
 
-Статус на сьогодні: **Open-Meteo (Погода/Авто), ДПСУ та granica.gov.pl (Кордони) — живі дані. Довідник (`server/data/directory.json`) — статичний структурований каталог 8 джерел, віддається через `/api/services/directory`.** Важливо не плутати ці два рівні: наявність джерела в довіднику (посилання+опис) НЕ означає, що його *живі* дані вже підключені — це окремий рядок статусу нижче.
+Статус на сьогодні: **Open-Meteo + MeteoAlarm (Погода/Авто), AviationWeather.gov (Погода/Авіа), ДПСУ та granica.gov.pl (Кордони) — живі дані. Довідник (`server/data/directory.json`) — статичний структурований каталог 8 джерел, віддається через `/api/services/directory`.** Важливо не плутати ці два рівні: наявність джерела в довіднику (посилання+опис) НЕ означає, що його *живі* дані вже підключені — це окремий рядок статусу нижче.
 
 | Джерело | URL | У Довіднику? | Живі дані підключено? | Тип доступу | TTL кешу | Ліцензія/атрибуція | Власник конектора |
 |---|---|---|---|---|---|---|---|
@@ -13,8 +13,8 @@
 | CAREC BCP Monitor | https://cpmm.carecprogram.org/2023-report/bcp-monitor/ | Так | Ні (і не буде «live» — довідкові квартальні дані) | Довідкові/квартальні дані | 30 днів | Довідкові дані — НІКОЛИ не показувати як live-чергу | — |
 | IMF PortWatch | https://portwatch.imf.org | Так | Ні (Phase 1 план: iframe-віджет) | Iframe/дані щотижня по вівторках | 24 год | Атрибуція IMF PortWatch обов'язкова | — |
 | UNCTAD PLSCI | https://unctadstat.unctad.org/datacentre/reportInfo/US.PLSCI | Так | Ні (довідковий індекс) | Статистична таблиця | — | Атрибуція UNCTAD | — |
-| MeteoAlarm | https://api.meteoalarm.org/ | Ні | Ні | GeoJSON/CAP | 10 хв (заплановано) | Атрибуція обов'язкова | — |
-| AviationWeather.gov | https://aviationweather.gov/data/api/ | Ні | Ні | JSON/GeoJSON, без ключа | 1 хв / 10 хв (заплановано) | Публічні дані США | — |
+| MeteoAlarm | https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-{country}/ | Ні | **Так** (`server/connectors/meteoAlarmAlerts.js`) — накладається на прогноз Погода/Авто за країною; `api.meteoalarm.org` виявився лендінгом, реальні дані — на legacy Atom-фідах (підтверджено: ukraine/poland/germany/austria/netherlands/lithuania/czechia/romania) | Atom/CAP XML, без ключа | 10 хв | CC BY 4.0-подібна, атрибуція обов'язкова (див. `<rights>` у фіді) | — |
+| AviationWeather.gov | https://aviationweather.gov/api/data/{metar,taf} | Ні | **Так** (`server/connectors/aviationWeatherAir.js`) — METAR+TAF за ICAO-кодом аеропорту, готова категорія `fltCat` (VFR/MVFR/IFR/LIFR) від самого API. Українські аеропорти (UKBB/UKLL/UKOO) чесно повертають "немає даних" (закритий повітряний простір), а не помилку | JSON, без ключа | 1 хв | Публічні дані уряду США | — |
 | Copernicus Marine (CMEMS) | https://marine.copernicus.eu | Ні | Ні | NetCDF, потребує реєстрації | 30 хв (заплановано) | Безкоштовна програма ЄС | — |
 
 ## Навмисно НЕ інтегровано (Phase 3, per бриф)

@@ -23,6 +23,8 @@ var log = require('./log');
 var openMeteoRoad = require('./connectors/openMeteoRoad');
 var dpsuBorders = require('./connectors/dpsuBorders');
 var granicaBorders = require('./connectors/granicaBorders');
+var meteoAlarmAlerts = require('./connectors/meteoAlarmAlerts');
+var aviationWeatherAir = require('./connectors/aviationWeatherAir');
 
 /**
  * The directory is curated static data (see SOURCES.md), not something
@@ -84,15 +86,54 @@ function roundCoord(n) {
 
 async function handleWeather(req, res, query) {
   var mode = query.mode || 'road';
-  if (mode !== 'road') {
-    sendJson(res, 501, {
-      error: 'not_implemented',
-      message_uk: 'Модуль погоди для цього виду транспорту ще не підключено в цій фазі.',
-      mode: mode,
-    });
-    return;
-  }
+  if (mode === 'road') return handleWeatherRoad(req, res, query);
+  if (mode === 'air') return handleWeatherAir(req, res, query);
+  sendJson(res, 501, {
+    error: 'not_implemented',
+    message_uk: 'Модуль погоди для цього виду транспорту ще не підключено в цій фазі.',
+    mode: mode,
+  });
+}
 
+/** MeteoAlarm alerts are fetched/cached independently of the Open-Meteo
+ * forecast they get attached to (own 10-min TTL vs the forecast's 30 min),
+ * and merged into the response at request time rather than baked into the
+ * cached WeatherPoint - that way the two refresh on their own real
+ * schedules instead of the faster-changing one being held hostage by the
+ * slower one's cache key. A country MeteoAlarm fails for, or doesn't
+ * cover, degrades to "no alerts shown" rather than breaking the weather
+ * request that asked for them - overlay is an enhancement, not a
+ * dependency the whole feature should go down with. */
+async function getAlertsForCountry(country) {
+  if (!country) return [];
+  var key = 'alerts:meteoalarm:' + country;
+  var entry = cache.get(key);
+  if (entry && entry.ok && entry.data) {
+    if (cache.isStale(key)) refreshAlerts(key, country).catch(function () {});
+    return entry.data;
+  }
+  try {
+    return await refreshAlerts(key, country);
+  } catch (err) {
+    return [];
+  }
+}
+
+async function refreshAlerts(key, country) {
+  var ttlMs = config.sources.meteoAlarm.ttlMs;
+  try {
+    var data = await meteoAlarmAlerts.fetchAlerts(country);
+    cache.set(key, data, ttlMs, { sourceId: 'meteoAlarmAlerts', params: { country: country } });
+    log.info('meteoAlarmAlerts', 'fetched ok', { country: country, count: data.length });
+    return data;
+  } catch (err) {
+    cache.recordError(key, err.message);
+    log.error('meteoAlarmAlerts', 'fetch failed', { country: country, error: err.message });
+    throw err;
+  }
+}
+
+async function handleWeatherRoad(req, res, query) {
   var lat = parseFloat(query.lat);
   var lon = parseFloat(query.lon);
   if (!isFinite(lat) || !isFinite(lon)) {
@@ -102,34 +143,38 @@ async function handleWeather(req, res, query) {
   lat = roundCoord(lat);
   lon = roundCoord(lon);
   var label = query.label || (lat + ',' + lon);
+  var country = (query.country || '').trim().toUpperCase();
   var key = 'weather:road:' + lat + ':' + lon;
 
+  var weatherData, stale, lastError;
   var entry = cache.get(key);
   if (entry && entry.ok && entry.data) {
-    sendJson(res, 200, {
-      stale: cache.isStale(key),
-      last_error: entry.lastError || null,
-      data: entry.data,
-    });
+    weatherData = entry.data;
+    stale = cache.isStale(key);
+    lastError = entry.lastError || null;
     // Warm it in the background if stale, so the *next* caller gets fresh data
     // without paying the latency - this keeps requests "cache only" once warm.
-    if (cache.isStale(key)) refreshAndCache(key, { lat: lat, lon: lon, locationLabel: label });
-    return;
+    if (stale) refreshAndCache(key, { lat: lat, lon: lon, locationLabel: label });
+  } else {
+    // True cache miss (never fetched before) - only case where a request
+    // blocks on the upstream, since there's nothing to pre-warm for a
+    // location nobody has asked about yet.
+    try {
+      weatherData = await refreshAndCache(key, { lat: lat, lon: lon, locationLabel: label });
+      stale = false; lastError = null;
+    } catch (err) {
+      sendJson(res, 502, {
+        error: 'upstream_unavailable',
+        message_uk: 'Не вдалося отримати дані про погоду. Спробуйте пізніше.',
+        detail: err.message,
+      });
+      return;
+    }
   }
 
-  // True cache miss (never fetched before) - only case where a request
-  // blocks on the upstream, since there's nothing to pre-warm for a
-  // location nobody has asked about yet.
-  try {
-    var data = await refreshAndCache(key, { lat: lat, lon: lon, locationLabel: label });
-    sendJson(res, 200, { stale: false, last_error: null, data: data });
-  } catch (err) {
-    sendJson(res, 502, {
-      error: 'upstream_unavailable',
-      message_uk: 'Не вдалося отримати дані про погоду. Спробуйте пізніше.',
-      detail: err.message,
-    });
-  }
+  var alerts = await getAlertsForCountry(country);
+  var responseData = Object.assign({}, weatherData, { alerts: alerts });
+  sendJson(res, 200, { stale: stale, last_error: lastError, data: responseData });
 }
 
 async function refreshAndCache(key, params) {
@@ -142,6 +187,48 @@ async function refreshAndCache(key, params) {
   } catch (err) {
     cache.recordError(key, err.message);
     log.error('openMeteoRoad', 'fetch failed', { key: key, error: err.message });
+    throw err;
+  }
+}
+
+async function handleWeatherAir(req, res, query) {
+  var icao = String(query.icao || '').trim().toUpperCase();
+  if (!icao) {
+    sendJson(res, 400, { error: 'bad_request', message_uk: 'Потрібен параметр icao.' });
+    return;
+  }
+  var label = query.label || icao;
+  var key = 'weather:air:' + icao;
+
+  var entry = cache.get(key);
+  if (entry && entry.ok && entry.data) {
+    sendJson(res, 200, { stale: cache.isStale(key), last_error: entry.lastError || null, data: entry.data });
+    if (cache.isStale(key)) refreshAirAndCache(key, { icao: icao, locationLabel: label });
+    return;
+  }
+
+  try {
+    var data = await refreshAirAndCache(key, { icao: icao, locationLabel: label });
+    sendJson(res, 200, { stale: false, last_error: null, data: data });
+  } catch (err) {
+    sendJson(res, 502, {
+      error: 'upstream_unavailable',
+      message_uk: 'Не вдалося отримати авіаційні дані. Спробуйте пізніше.',
+      detail: err.message,
+    });
+  }
+}
+
+async function refreshAirAndCache(key, params) {
+  var ttlMs = config.sources.aviationWeather.ttlMs;
+  try {
+    var data = await aviationWeatherAir.fetchAirWeather(params);
+    cache.set(key, data, ttlMs, { sourceId: 'aviationWeatherAir', params: params });
+    log.info('aviationWeatherAir', 'fetched ok', { key: key });
+    return data;
+  } catch (err) {
+    cache.recordError(key, err.message);
+    log.error('aviationWeatherAir', 'fetch failed', { key: key, error: err.message });
     throw err;
   }
 }
