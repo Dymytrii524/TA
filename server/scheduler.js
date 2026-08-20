@@ -17,10 +17,18 @@ var cache = require('./cache');
 var config = require('./config');
 var log = require('./log');
 var openMeteoRoad = require('./connectors/openMeteoRoad');
+var dpsuBorders = require('./connectors/dpsuBorders');
+var granicaBorders = require('./connectors/granicaBorders');
 
 var REFRESHERS = {
   openMeteoRoad: function (params) {
     return openMeteoRoad.fetchRoadWeather(params);
+  },
+  dpsuBorders: function () {
+    return dpsuBorders.fetchDpsuBorders();
+  },
+  granicaBorders: function () {
+    return granicaBorders.fetchGranicaBorders();
   },
 };
 

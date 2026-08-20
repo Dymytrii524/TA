@@ -230,6 +230,26 @@
   .directory-desc{font-size:.84rem; color:var(--ink-soft); margin:0; flex:1;}
   .directory-card a.linklike{margin-top:4px;}
 
+  /* borders page */
+  .status-pill{display:inline-flex; align-items:center; gap:6px; font-size:.74rem; font-weight:700; padding:.25em .6em; border-radius:2px; white-space:nowrap;}
+  .status-pill::before{content:""; width:8px; height:8px; border-radius:50%; background:currentColor;}
+  .status-pill.green{color:var(--success); background:color-mix(in srgb, var(--success) 14%, transparent);}
+  .status-pill.yellow{color:var(--warning); background:color-mix(in srgb, var(--warning) 14%, transparent);}
+  .status-pill.red{color:var(--danger); background:color-mix(in srgb, var(--danger) 14%, transparent);}
+  .status-pill.unknown{color:var(--ink-soft); background:var(--paper-2);}
+  .border-table{border:1px solid var(--line); background:var(--surface);}
+  .border-row{display:grid; grid-template-columns:1.6fr auto auto 1.4fr; gap:16px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--line);}
+  .border-row:last-child{border-bottom:none;}
+  .border-row:hover{background:var(--paper-2);}
+  .border-row .br-name{font-weight:700; font-size:.9rem;}
+  .border-row .br-sub{font-size:.76rem; color:var(--ink-soft); margin-top:2px;}
+  .border-row .br-queue{font-family:var(--font-mono); font-size:.82rem; text-align:right;}
+  @media (max-width:820px){
+    .border-row{grid-template-columns:1fr; gap:6px; text-align:left;}
+    .border-row .br-queue{text-align:left;}
+  }
+  .borders-source-note{font-size:.7rem; color:var(--ink-soft); margin-top:2px;}
+
   section{padding:38px 0;}
   section.alt{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:20px; flex-wrap:wrap;}
@@ -401,7 +421,7 @@ var MARKET = [
 
 var SERVICES = [
   {icon:"book", route:"directory", uk:"Довідник", en:"Reference", pl:"Informator", de:"Nachschlagewerk"},
-  {icon:"flagpost", route:"about", uk:"Кордони", en:"Border crossings", pl:"Przejścia graniczne", de:"Grenzübergänge"},
+  {icon:"flagpost", route:"borders", uk:"Кордони", en:"Border crossings", pl:"Przejścia graniczne", de:"Grenzübergänge"},
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"}
 ];
@@ -481,6 +501,17 @@ uk:{
   directory_type_official:"Офіційне джерело", directory_type_aggregator:"Агрегатор",
   directory_visit:"Перейти на сайт", directory_empty:"Нічого не знайдено за цими фільтрами.",
   directory_loading:"Завантаження...", directory_offline:"Локальний сервер даних недоступний. Запустіть \"node server/index.js\", щоб побачити каталог.",
+  borders_title:"Кордони", borders_lede:"Живі дані про пункти пропуску: ДПСУ (черги з боку України) та granica.gov.pl (час очікування з боку Польщі).",
+  borders_tab_road:"Авто (ЄС)", borders_tab_rail:"Залізниця", borders_tab_sea:"Море", borders_tab_asia:"Азія",
+  borders_country_label:"Країна", borders_apply:"Застосувати",
+  borders_status_green:"Вільно", borders_status_yellow:"Черга", borders_status_red:"Затор", borders_status_unknown:"Немає даних",
+  borders_col_checkpoint:"Пункт пропуску", borders_col_direction:"Напрямок", borders_col_status:"Статус", borders_col_queue:"Черга/очікування",
+  borders_trucks:"вантажівок", borders_wait:"очікування", borders_closed:"закрито",
+  borders_source_dpsu:"ДПСУ (Україна)", borders_source_granica:"granica.gov.pl (Польща)",
+  borders_asia_notice:"Дані CAREC BCP Monitor (Хоргос, Достик та інші) — довідкові квартальні показники, ще не підключені в цій фазі розробки. Це НЕ live-черги.",
+  borders_loading:"Завантаження...", borders_offline:"Локальний сервер даних недоступний. Запустіть \"node server/index.js\", щоб побачити дані про кордони.",
+  borders_error:"Не вдалося отримати дані. Спробуйте пізніше.", borders_empty:"Нічого не знайдено за цими фільтрами.",
+  borders_partial:"Одне з джерел тимчасово недоступне — показані дані лише з тих, що відповіли.",
   err_required:"Заповніть це поле", err_email:"Введіть коректний email", err_pass:"Мінімум 6 символів", err_match:"Паролі не збігаються",
   modal_login_title:"Вхід до кабінету", modal_register_title:"Реєстрація компанії",
   f_password:"Пароль", f_password2:"Повторіть пароль", f_companyname:"Назва компанії",
@@ -536,6 +567,17 @@ en:{
   directory_type_official:"Official source", directory_type_aggregator:"Aggregator",
   directory_visit:"Visit website", directory_empty:"No entries match these filters.",
   directory_loading:"Loading...", directory_offline:"The local data server is unreachable. Run \"node server/index.js\" to see the directory.",
+  borders_title:"Borders", borders_lede:"Live checkpoint data: DPSU (queues from the Ukrainian side) and granica.gov.pl (wait times from the Polish side).",
+  borders_tab_road:"Road (EU)", borders_tab_rail:"Rail", borders_tab_sea:"Sea", borders_tab_asia:"Asia",
+  borders_country_label:"Country", borders_apply:"Apply",
+  borders_status_green:"Clear", borders_status_yellow:"Queue", borders_status_red:"Congested", borders_status_unknown:"No data",
+  borders_col_checkpoint:"Checkpoint", borders_col_direction:"Direction", borders_col_status:"Status", borders_col_queue:"Queue/wait",
+  borders_trucks:"trucks", borders_wait:"wait", borders_closed:"closed",
+  borders_source_dpsu:"DPSU (Ukraine)", borders_source_granica:"granica.gov.pl (Poland)",
+  borders_asia_notice:"CAREC BCP Monitor data (Khorgos, Dostyk and others) is a quarterly reference indicator, not yet wired up in this development phase. This is NOT a live queue.",
+  borders_loading:"Loading...", borders_offline:"The local data server is unreachable. Run \"node server/index.js\" to see border data.",
+  borders_error:"Could not fetch data. Please try again later.", borders_empty:"No entries match these filters.",
+  borders_partial:"One of the sources is temporarily unavailable - showing data only from the ones that responded.",
   err_required:"This field is required", err_email:"Enter a valid email", err_pass:"At least 6 characters", err_match:"Passwords do not match",
   modal_login_title:"Sign in", modal_register_title:"Register a company",
   f_password:"Password", f_password2:"Confirm password", f_companyname:"Company name",
@@ -591,6 +633,17 @@ pl:{
   directory_type_official:"Źródło oficjalne", directory_type_aggregator:"Agregator",
   directory_visit:"Przejdź do strony", directory_empty:"Brak wyników dla tych filtrów.",
   directory_loading:"Ładowanie...", directory_offline:"Lokalny serwer danych jest niedostępny. Uruchom \"node server/index.js\", aby zobaczyć katalog.",
+  borders_title:"Granice", borders_lede:"Dane na żywo o przejściach granicznych: DPSU (kolejki po stronie ukraińskiej) i granica.gov.pl (czas oczekiwania po stronie polskiej).",
+  borders_tab_road:"Drogowe (UE)", borders_tab_rail:"Kolejowe", borders_tab_sea:"Morskie", borders_tab_asia:"Azja",
+  borders_country_label:"Kraj", borders_apply:"Zastosuj",
+  borders_status_green:"Wolne", borders_status_yellow:"Kolejka", borders_status_red:"Zator", borders_status_unknown:"Brak danych",
+  borders_col_checkpoint:"Przejście", borders_col_direction:"Kierunek", borders_col_status:"Status", borders_col_queue:"Kolejka/oczekiwanie",
+  borders_trucks:"ciężarówek", borders_wait:"oczekiwanie", borders_closed:"zamknięte",
+  borders_source_dpsu:"DPSU (Ukraina)", borders_source_granica:"granica.gov.pl (Polska)",
+  borders_asia_notice:"Dane CAREC BCP Monitor (Chorgos, Dostyk i inne) to kwartalne dane referencyjne, jeszcze niepodłączone na tym etapie rozwoju. To NIE są dane na żywo.",
+  borders_loading:"Ładowanie...", borders_offline:"Lokalny serwer danych jest niedostępny. Uruchom \"node server/index.js\", aby zobaczyć dane graniczne.",
+  borders_error:"Nie udało się pobrać danych. Spróbuj ponownie później.", borders_empty:"Brak wyników dla tych filtrów.",
+  borders_partial:"Jedno ze źródeł jest tymczasowo niedostępne - pokazano dane tylko z tych, które odpowiedziały.",
   err_required:"To pole jest wymagane", err_email:"Podaj prawidłowy adres email", err_pass:"Minimum 6 znaków", err_match:"Hasła nie są zgodne",
   modal_login_title:"Logowanie", modal_register_title:"Rejestracja firmy",
   f_password:"Hasło", f_password2:"Powtórz hasło", f_companyname:"Nazwa firmy",
@@ -646,6 +699,17 @@ de:{
   directory_type_official:"Offizielle Quelle", directory_type_aggregator:"Aggregator",
   directory_visit:"Website besuchen", directory_empty:"Keine Einträge für diese Filter.",
   directory_loading:"Wird geladen...", directory_offline:"Der lokale Datenserver ist nicht erreichbar. Führen Sie \"node server/index.js\" aus, um das Verzeichnis zu sehen.",
+  borders_title:"Grenzen", borders_lede:"Live-Daten zu Grenzübergängen: DPSU (Warteschlangen von der ukrainischen Seite) und granica.gov.pl (Wartezeiten von der polnischen Seite).",
+  borders_tab_road:"Straße (EU)", borders_tab_rail:"Schiene", borders_tab_sea:"See", borders_tab_asia:"Asien",
+  borders_country_label:"Land", borders_apply:"Anwenden",
+  borders_status_green:"Frei", borders_status_yellow:"Warteschlange", borders_status_red:"Stau", borders_status_unknown:"Keine Daten",
+  borders_col_checkpoint:"Übergang", borders_col_direction:"Richtung", borders_col_status:"Status", borders_col_queue:"Warteschlange/Wartezeit",
+  borders_trucks:"LKW", borders_wait:"Wartezeit", borders_closed:"geschlossen",
+  borders_source_dpsu:"DPSU (Ukraine)", borders_source_granica:"granica.gov.pl (Polen)",
+  borders_asia_notice:"CAREC-BCP-Monitor-Daten (Chorgos, Dostyk u.a.) sind vierteljährliche Referenzwerte, in dieser Entwicklungsphase noch nicht angebunden. Dies sind KEINE Live-Daten.",
+  borders_loading:"Wird geladen...", borders_offline:"Der lokale Datenserver ist nicht erreichbar. Führen Sie \"node server/index.js\" aus, um Grenzdaten zu sehen.",
+  borders_error:"Daten konnten nicht abgerufen werden. Bitte später erneut versuchen.", borders_empty:"Keine Einträge für diese Filter.",
+  borders_partial:"Eine der Quellen ist vorübergehend nicht verfügbar - es werden nur Daten der antwortenden Quellen angezeigt.",
   err_required:"Dieses Feld ist erforderlich", err_email:"Gültige E-Mail eingeben", err_pass:"Mindestens 6 Zeichen", err_match:"Passwörter stimmen nicht überein",
   modal_login_title:"Anmelden", modal_register_title:"Unternehmen registrieren",
   f_password:"Passwort", f_password2:"Passwort wiederholen", f_companyname:"Firmenname",
@@ -697,7 +761,8 @@ var state = {
   modal: null,
   modalMode:"login",
   weather:{tab:"road", from:"", to:"", loading:false, error:null, points:null},
-  directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null}
+  directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null},
+  borders:{tab:"road", country:"", loading:false, error:null, partial:false, entries:null}
 };
 
 var WEATHER_API_BASE = "http://localhost:8787";
@@ -1176,8 +1241,11 @@ var COUNTRY_NAMES = {
   UA:{uk:"Україна",en:"Ukraine",pl:"Ukraina",de:"Ukraine"}, PL:{uk:"Польща",en:"Poland",pl:"Polska",de:"Polen"},
   MD:{uk:"Молдова",en:"Moldova",pl:"Mołdawia",de:"Moldau"}, RO:{uk:"Румунія",en:"Romania",pl:"Rumunia",de:"Rumänien"},
   EE:{uk:"Естонія",en:"Estonia",pl:"Estonia",de:"Estland"}, KZ:{uk:"Казахстан",en:"Kazakhstan",pl:"Kazachstan",de:"Kasachstan"},
-  US:{uk:"США",en:"USA",pl:"USA",de:"USA"}, CH:{uk:"Швейцарія",en:"Switzerland",pl:"Szwajcaria",de:"Schweiz"}
+  US:{uk:"США",en:"USA",pl:"USA",de:"USA"}, CH:{uk:"Швейцарія",en:"Switzerland",pl:"Szwajcaria",de:"Schweiz"},
+  BY:{uk:"Білорусь",en:"Belarus",pl:"Białoruś",de:"Belarus"}, HU:{uk:"Угорщина",en:"Hungary",pl:"Węgry",de:"Ungarn"},
+  RU:{uk:"росія",en:"Russia",pl:"Rosja",de:"Russland"}, SK:{uk:"Словаччина",en:"Slovakia",pl:"Słowacja",de:"Slowakei"}
 };
+function countryName(code){ var c=COUNTRY_NAMES[code]; return c? (c[state.lang]||c.en) : code; }
 function fetchDirectory(){
   var d = state.directory;
   d.loading = true; d.error = null;
@@ -1245,6 +1313,96 @@ function renderDirectory(){
   '</div></section>';
 }
 
+var STATUS_ORDER = {red:0, yellow:1, green:2, unknown:3};
+var BORDER_COUNTRIES = ["BY","HU","MD","PL","RO","RU","SK"];
+
+function fetchBorders(){
+  var b = state.borders;
+  b.loading = true; b.error = null;
+  renderApp();
+  var vehicleType = b.tab==="road" ? "road" : (b.tab==="rail" ? "rail" : "sea");
+  var url = WEATHER_API_BASE+"/api/services/borders?vehicle_type="+encodeURIComponent(vehicleType)+"&country="+encodeURIComponent(b.country);
+  fetch(url).then(function(res){
+    return res.json().then(function(json){
+      b.loading = false;
+      if(!res.ok){ b.error = "error"; renderApp(); return; }
+      b.entries = json.entries.slice().sort(function(x,y){ return (STATUS_ORDER[x.status]||9) - (STATUS_ORDER[y.status]||9); });
+      b.partial = !!json.partial;
+      renderApp();
+    });
+  }).catch(function(err){
+    b.loading = false;
+    b.error = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"") ? "offline" : "error";
+    renderApp();
+  });
+}
+
+function formatBorderQueue(e){
+  if(e.queue && e.queue.trucksWaiting!=null){
+    return e.queue.trucksWaiting+" "+esc(t("borders_trucks"));
+  }
+  if(e.queue && e.queue.trucksWaitMinutes!=null){
+    var h = Math.floor(e.queue.trucksWaitMinutes/60), m = e.queue.trucksWaitMinutes%60;
+    return t("borders_wait")+": "+h+"г"+(m? " "+m+"хв":"")+(e.queue.truckWeightClass? " ("+e.queue.truckWeightClass+")":"");
+  }
+  if(e.isOpen===false) return esc(t("borders_closed"));
+  return esc(t("borders_status_unknown"));
+}
+
+function renderBorderRow(e){
+  var sourceLabel = e.source.indexOf("ДПСУ")>-1 ? t("borders_source_dpsu") : t("borders_source_granica");
+  return ''+
+  '<div class="border-row">'+
+    '<div><div class="br-name">'+esc(e.name)+'</div><div class="br-sub">'+esc(e.category||e.location||"")+'</div></div>'+
+    '<div class="br-sub">UA &rarr; '+esc(countryName(e.countryPair.to))+'</div>'+
+    '<span class="status-pill '+e.status+'">'+esc(t("borders_status_"+e.status))+'</span>'+
+    '<div><div class="br-queue">'+formatBorderQueue(e)+'</div><div class="borders-source-note">'+esc(sourceLabel)+' &middot; '+minutesAgo(e.updatedAt)+'</div></div>'+
+  '</div>';
+}
+
+function renderBorders(){
+  var b = state.borders;
+  var tabs = ["road","rail","sea","asia"].map(function(tb){
+    return '<button data-borderstab="'+tb+'" class="'+(b.tab===tb?"active":"")+'">'+esc(t("borders_tab_"+tb))+'</button>';
+  }).join("");
+
+  var countryOptions = '<option value="">'+esc(t("directory_all"))+'</option>'+BORDER_COUNTRIES.map(function(c){
+    return '<option value="'+c+'"'+(b.country===c?" selected":"")+'>'+esc(countryName(c))+'</option>';
+  }).join("");
+
+  var body;
+  if(b.tab==="asia"){
+    body = '<div class="weather-card"><p class="weather-msg">'+esc(t("borders_asia_notice"))+'</p></div>';
+  } else if(b.loading){
+    body = '<p class="weather-msg">'+esc(t("borders_loading"))+'</p>';
+  } else if(b.error==="offline"){
+    body = '<div class="weather-card warn-card"><p class="weather-msg">'+esc(t("borders_offline"))+'</p></div>';
+  } else if(b.error){
+    body = '<p class="weather-msg">'+esc(t("borders_error"))+'</p>';
+  } else if(b.entries && b.entries.length===0){
+    body = '<p class="weather-msg">'+esc(t("borders_empty"))+'</p>';
+  } else if(b.entries){
+    body = (b.partial ? '<p class="weather-msg" style="margin-top:0;">'+esc(t("borders_partial"))+'</p>' : '')+
+      '<div class="border-table">'+b.entries.map(renderBorderRow).join("")+'</div>';
+  } else {
+    body = "";
+  }
+
+  var showFilter = b.tab !== "asia";
+
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_market"))+'</p><h1>'+esc(t("borders_title"))+'</h1><p class="lede">'+esc(t("borders_lede"))+'</p>'+
+    '<div class="mode-tabs" style="max-width:560px;margin:20px 0 16px;">'+tabs+'</div>'+
+    (showFilter ? ''+
+      '<div class="filter-bar">'+
+        '<div class="field"><label>'+esc(t("borders_country_label"))+'</label><select name="bcountry">'+countryOptions+'</select></div>'+
+        '<button class="btn btn-primary" id="bordersApplyBtn">'+ICONS.search+esc(t("borders_apply"))+'</button>'+
+      '</div>' : '')+
+    body+
+  '</div></section>';
+}
+
 function pageContent(){
   switch(state.route){
     case "home": return renderHero()+renderStats();
@@ -1256,6 +1414,7 @@ function pageContent(){
     case "contacts": return renderContacts();
     case "weather": return renderWeather();
     case "directory": return renderDirectory();
+    case "borders": return renderBorders();
     default: return renderHero()+renderStats();
   }
 }
@@ -1469,6 +1628,25 @@ function bindEvents(){
   }
   if(state.route==="directory" && state.directory.entries===null && !state.directory.loading && !state.directory.error){
     fetchDirectory();
+  }
+
+  app.querySelectorAll("[data-borderstab]").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.borders.tab = b.getAttribute("data-borderstab");
+      state.borders.entries = null; state.borders.error = null;
+      renderApp();
+    });
+  });
+  var bordersApplyBtn=document.getElementById("bordersApplyBtn");
+  if(bordersApplyBtn){
+    bordersApplyBtn.addEventListener("click", function(){
+      var bar=bordersApplyBtn.closest(".filter-bar");
+      state.borders.country=bar.querySelector('[name="bcountry"]').value;
+      fetchBorders();
+    });
+  }
+  if(state.route==="borders" && state.borders.tab!=="asia" && state.borders.entries===null && !state.borders.loading && !state.borders.error){
+    fetchBorders();
   }
 
   app.querySelectorAll("[data-news]").forEach(function(b){

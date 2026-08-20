@@ -9,6 +9,7 @@
  * Routes:
  *   GET /api/services/weather?mode=road&lat=&lon=&label=
  *   GET /api/services/directory?transport=&region=&q=
+ *   GET /api/services/borders?country=&vehicle_type=
  *   GET /api/health
  */
 
@@ -20,6 +21,8 @@ var cache = require('./cache');
 var config = require('./config');
 var log = require('./log');
 var openMeteoRoad = require('./connectors/openMeteoRoad');
+var dpsuBorders = require('./connectors/dpsuBorders');
+var granicaBorders = require('./connectors/granicaBorders');
 
 /**
  * The directory is curated static data (see SOURCES.md), not something
@@ -143,6 +146,85 @@ async function refreshAndCache(key, params) {
   }
 }
 
+/**
+ * Unlike weather (cached per lat/lon), DPSU's page returns ALL ~250
+ * checkpoints in one fetch, so there's exactly one cache key for the
+ * whole dataset - filtering by country/vehicle_type happens in-memory
+ * per request against the cached list, not as separate upstream calls.
+ */
+var BORDERS_SOURCES = [
+  { key: 'borders:dpsu', sourceId: 'dpsuBorders', ttlSource: 'dpsu', fetch: dpsuBorders.fetchDpsuBorders },
+  { key: 'borders:granica', sourceId: 'granicaBorders', ttlSource: 'granicaGovPl', fetch: granicaBorders.fetchGranicaBorders },
+];
+
+async function refreshBorderSource(src) {
+  var ttlMs = config.sources[src.ttlSource].ttlMs;
+  try {
+    var data = await src.fetch();
+    cache.set(src.key, data, ttlMs, { sourceId: src.sourceId, params: {} });
+    log.info(src.sourceId, 'fetched ok', { count: data.length });
+    return data;
+  } catch (err) {
+    cache.recordError(src.key, err.message);
+    log.error(src.sourceId, 'fetch failed', { error: err.message });
+    throw err;
+  }
+}
+
+/** Pulls each configured border source from cache (fetching once if never
+ * seen, warming stale entries in the background otherwise), and returns
+ * whatever combination of sources actually succeeded - one government
+ * source having a bad day doesn't take the other one down with it. */
+async function handleBorders(req, res, query) {
+  var combined = [];
+  var anyOk = false;
+  var anyStale = false;
+  var errors = [];
+
+  for (var i = 0; i < BORDERS_SOURCES.length; i++) {
+    var src = BORDERS_SOURCES[i];
+    var entry = cache.get(src.key);
+    if (entry && entry.ok && entry.data) {
+      combined = combined.concat(entry.data);
+      anyOk = true;
+      if (cache.isStale(src.key)) { anyStale = true; refreshBorderSource(src); }
+    } else {
+      try {
+        var data = await refreshBorderSource(src);
+        combined = combined.concat(data);
+        anyOk = true;
+      } catch (err) {
+        errors.push({ source: src.sourceId, message: err.message });
+      }
+    }
+  }
+
+  if (!anyOk) {
+    sendJson(res, 502, {
+      error: 'upstream_unavailable',
+      message_uk: 'Не вдалося отримати дані про кордони з жодного джерела. Спробуйте пізніше.',
+      errors: errors,
+    });
+    return;
+  }
+
+  var country = (query.country || '').trim().toUpperCase();
+  var vehicleType = (query.vehicle_type || '').trim();
+  var filtered = combined.filter(function (c) {
+    if (country && c.countryPair.to !== country) return false;
+    if (vehicleType && c.vehicleType !== vehicleType) return false;
+    return true;
+  });
+
+  sendJson(res, 200, {
+    stale: anyStale,
+    partial: errors.length > 0,
+    errors: errors,
+    count: filtered.length,
+    entries: filtered,
+  });
+}
+
 function handleHealth(req, res) {
   var keys = cache.allKeys();
   var perSource = {};
@@ -195,6 +277,13 @@ function createServer() {
     }
     if (parsed.pathname === '/api/services/directory') {
       handleDirectory(req, res, parsed.query);
+      return;
+    }
+    if (parsed.pathname === '/api/services/borders') {
+      handleBorders(req, res, parsed.query).catch(function (err) {
+        log.error('api', 'unhandled error in /api/services/borders', { error: err.message });
+        sendJson(res, 500, { error: 'internal_error' });
+      });
       return;
     }
     if (parsed.pathname === '/api/health') {
