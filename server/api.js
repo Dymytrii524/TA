@@ -7,10 +7,13 @@
  * this file and index.js would need to move.
  *
  * Routes:
- *   GET /api/services/weather?mode=road&lat=&lon=&label=
- *   GET /api/services/directory?transport=&region=&q=
- *   GET /api/services/borders?country=&vehicle_type=
- *   GET /api/health
+ *   GET  /api/services/weather?mode=road&lat=&lon=&label=
+ *   GET  /api/services/directory?transport=&region=&q=
+ *   GET  /api/services/borders?country=&vehicle_type=
+ *   GET  /api/qa/wiki?category=&q=
+ *   GET  /api/qa/outputs?tag=&q=
+ *   POST /api/qa/ask  { question }
+ *   GET  /api/health
  */
 
 var http = require('http');
@@ -25,6 +28,8 @@ var dpsuBorders = require('./connectors/dpsuBorders');
 var granicaBorders = require('./connectors/granicaBorders');
 var meteoAlarmAlerts = require('./connectors/meteoAlarmAlerts');
 var aviationWeatherAir = require('./connectors/aviationWeatherAir');
+var anthropicChat = require('./connectors/anthropicChat');
+var qaRetrieval = require('./services/qaRetrieval');
 
 /**
  * The directory is curated static data (see SOURCES.md), not something
@@ -64,6 +69,194 @@ function handleDirectory(req, res, query) {
   });
 
   sendJson(res, 200, { count: filtered.length, entries: filtered });
+}
+
+/**
+ * Wiki (curated knowledge-base articles) and Outputs (finished checklists
+ * built from those articles) - same "curated static data" reasoning as
+ * loadDirectory above: no upstream, no TTL, loaded once and cached in
+ * module state.
+ */
+var wikiData = null;
+function loadWiki() {
+  if (wikiData) return wikiData;
+  var raw = fs.readFileSync(path.join(__dirname, 'data/wiki.json'), 'utf8');
+  wikiData = JSON.parse(raw);
+  return wikiData;
+}
+
+var outputsData = null;
+function loadOutputs() {
+  if (outputsData) return outputsData;
+  var raw = fs.readFileSync(path.join(__dirname, 'data/outputs.json'), 'utf8');
+  outputsData = JSON.parse(raw);
+  return outputsData;
+}
+
+function handleQaWiki(req, res, query) {
+  var items;
+  try {
+    items = loadWiki();
+  } catch (err) {
+    log.error('qa', 'failed to load wiki.json', { error: err.message });
+    sendJson(res, 500, { error: 'internal_error', message_uk: 'Не вдалося завантажити базу знань.' });
+    return;
+  }
+
+  var category = (query.category || '').trim();
+  var q = (query.q || '').trim().toLowerCase();
+
+  var filtered = items.filter(function (a) {
+    if (a.status !== 'published') return false;
+    if (category && a.category !== category) return false;
+    if (q) {
+      var haystack = (a.title + ' ' + a.summary + ' ' + a.tags.join(' ')).toLowerCase();
+      if (haystack.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  sendJson(res, 200, { count: filtered.length, entries: filtered });
+}
+
+function handleQaOutputs(req, res, query) {
+  var items;
+  try {
+    items = loadOutputs();
+  } catch (err) {
+    log.error('qa', 'failed to load outputs.json', { error: err.message });
+    sendJson(res, 500, { error: 'internal_error', message_uk: 'Не вдалося завантажити бібліотеку матеріалів.' });
+    return;
+  }
+
+  var tag = (query.tag || '').trim().toLowerCase();
+  var q = (query.q || '').trim().toLowerCase();
+
+  var filtered = items.filter(function (o) {
+    if (o.status !== 'published') return false;
+    if (tag && o.tags.map(function (x) { return x.toLowerCase(); }).indexOf(tag) === -1) return false;
+    if (q) {
+      var haystack = (o.title + ' ' + o.summary + ' ' + o.tags.join(' ')).toLowerCase();
+      if (haystack.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  sendJson(res, 200, { count: filtered.length, entries: filtered });
+}
+
+function toSourceRef(r) {
+  return { kind: r.kind, id: r.item.id, title: r.item.title };
+}
+
+var QA_SYSTEM_PROMPT_PREFIX =
+  'Ти - асистент бази знань логістичної платформи Trans-Atlas (міжнародні вантажоперевезення). ' +
+  'Відповідай ТІЛЬКИ на основі матеріалів нижче, позначених [1], [2] тощо, і посилайся на їхні номери у відповіді. ' +
+  'Якщо наданих матеріалів недостатньо для впевненої відповіді - прямо напиши про це і не вигадуй факти, цифри чи джерела, ' +
+  'яких немає серед матеріалів. Відповідай українською мовою, стисло (до 120 слів).\n\nМатеріали:\n';
+
+async function handleQaAsk(req, res, body) {
+  var question = String((body && body.question) || '').trim();
+  if (!question) {
+    sendJson(res, 400, { error: 'bad_request', message_uk: 'Питання не може бути порожнім.' });
+    return;
+  }
+  if (question.length > 500) {
+    sendJson(res, 400, { error: 'bad_request', message_uk: 'Питання завелике (максимум 500 символів).' });
+    return;
+  }
+
+  var wiki, outputs;
+  try {
+    wiki = loadWiki();
+    outputs = loadOutputs();
+  } catch (err) {
+    log.error('qa', 'failed to load knowledge base', { error: err.message });
+    sendJson(res, 500, { error: 'internal_error', message_uk: 'Не вдалося завантажити базу знань.' });
+    return;
+  }
+
+  var results = qaRetrieval.search(question, wiki, outputs);
+  if (!results.length) {
+    sendJson(res, 200, {
+      answer: null,
+      insufficient: true,
+      message_uk: 'У базі знань поки немає матеріалів, які відповідають на це питання. Спробуйте переформулювати або скористайтеся формою нижче.',
+      sources: [],
+    });
+    return;
+  }
+
+  var top = results.slice(0, 4);
+  var apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    sendJson(res, 200, {
+      answer: null,
+      aiUnavailable: true,
+      message_uk: 'AI-відповіді ще не підключені на сервері (не задано ANTHROPIC_API_KEY). Ось матеріали з бази знань, які стосуються питання:',
+      sources: top.map(toSourceRef),
+    });
+    return;
+  }
+
+  var context = top.map(function (r, i) {
+    var body_ = r.item.body || (r.item.items || []).join('; ');
+    return '[' + (i + 1) + '] (' + r.kind + ') ' + r.item.title + '\n' + (r.item.summary ? r.item.summary + '\n' : '') + body_;
+  }).join('\n\n');
+
+  try {
+    var result = await anthropicChat.askClaude({
+      apiKey: apiKey,
+      model: process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001',
+      system: QA_SYSTEM_PROMPT_PREFIX + context,
+      question: question,
+    });
+    log.info('qa', 'answered', { question: question, topScore: top[0].score, model: result.model });
+    sendJson(res, 200, {
+      answer: result.text,
+      insufficient: false,
+      confidence: top[0].score >= 6 ? 'high' : (top[0].score >= 3 ? 'medium' : 'low'),
+      sources: top.map(toSourceRef),
+      model: result.model,
+    });
+  } catch (err) {
+    log.error('qa', 'anthropic call failed', { error: err.message });
+    sendJson(res, 502, {
+      error: 'upstream_unavailable',
+      message_uk: 'Не вдалося отримати відповідь від AI. Спробуйте пізніше.',
+      sources: top.map(toSourceRef),
+    });
+  }
+}
+
+/** Reads and JSON-parses a request body, capped at 8KB - these are short
+ * chat questions, not file uploads, so a generous-but-bounded cap is enough
+ * to stop an accidental (or malicious) huge body from being buffered fully
+ * into memory. */
+function readJsonBody(req) {
+  return new Promise(function (resolve, reject) {
+    var chunks = [];
+    var total = 0;
+    var limit = 8 * 1024;
+    req.on('data', function (chunk) {
+      total += chunk.length;
+      if (total > limit) {
+        reject(new Error('payload_too_large'));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on('end', function () {
+      if (!chunks.length) { resolve({}); return; }
+      try {
+        resolve(JSON.parse(Buffer.concat(chunks).toString('utf8')));
+      } catch (err) {
+        reject(new Error('invalid_json'));
+      }
+    });
+    req.on('error', reject);
+  });
 }
 
 function sendJson(res, status, body) {
@@ -347,12 +540,41 @@ function createServer() {
   return http.createServer(function (req, res) {
     var parsed = url.parse(req.url, true);
     if (req.method === 'OPTIONS') {
-      res.writeHead(204, { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS' });
+      res.writeHead(204, {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        // POST /api/qa/ask sends Content-Type: application/json, which isn't
+        // a CORS-safelisted content type - browsers preflight it with an
+        // OPTIONS request and expect this header echoed back before they'll
+        // send the real POST. Without it, fetch() fails with an opaque
+        // network error (no server log, no response) - curl doesn't do
+        // preflights, so this only shows up in an actual browser.
+        'Access-Control-Allow-Headers': 'content-type',
+      });
       res.end();
       return;
     }
+
+    if (req.method === 'POST' && parsed.pathname === '/api/qa/ask') {
+      readJsonBody(req).then(function (body) {
+        return handleQaAsk(req, res, body);
+      }).catch(function (err) {
+        log.error('api', 'bad POST /api/qa/ask body', { error: err.message });
+        sendJson(res, 400, { error: 'bad_request', message_uk: 'Некоректне тіло запиту.' });
+      });
+      return;
+    }
+
     if (req.method !== 'GET') {
       sendJson(res, 405, { error: 'method_not_allowed' });
+      return;
+    }
+    if (parsed.pathname === '/api/qa/wiki') {
+      handleQaWiki(req, res, parsed.query);
+      return;
+    }
+    if (parsed.pathname === '/api/qa/outputs') {
+      handleQaOutputs(req, res, parsed.query);
       return;
     }
     if (parsed.pathname === '/api/services/weather') {

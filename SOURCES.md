@@ -2,6 +2,8 @@
 
 Статус на сьогодні: **Open-Meteo + MeteoAlarm (Погода/Авто), AviationWeather.gov (Погода/Авіа), ДПСУ та granica.gov.pl (Кордони) — живі дані. Довідник (`server/data/directory.json`) — статичний структурований каталог 8 джерел, віддається через `/api/services/directory`.** Важливо не плутати ці два рівні: наявність джерела в довіднику (посилання+опис) НЕ означає, що його *живі* дані вже підключені — це окремий рядок статусу нижче.
 
+**Q&A/Wiki (`server/data/wiki.json`, `outputs.json`)** — не зовнішнє джерело, а куратований контент цього репозиторію (загальновідомі факти про CMR, Інкотермс, TIR, ADR, митний транзит ЄС тощо, без вигаданих цифр/посилань — там, де точні норми залежать від країни/дозволів, стаття прямо каже це перевірити). AI-шар над ним (Anthropic Claude) — окремий рядок нижче.
+
 | Джерело | URL | У Довіднику? | Живі дані підключено? | Тип доступу | TTL кешу | Ліцензія/атрибуція | Власник конектора |
 |---|---|---|---|---|---|---|---|
 | Open-Meteo | https://open-meteo.com | — | **Так** (`server/connectors/openMeteoRoad.js`) | REST/JSON, без ключа | 30 хв | Атрибуція бажана, не обов'язкова | — |
@@ -16,6 +18,7 @@
 | MeteoAlarm | https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-{country}/ | Ні | **Так** (`server/connectors/meteoAlarmAlerts.js`) — накладається на прогноз Погода/Авто за країною; `api.meteoalarm.org` виявився лендінгом, реальні дані — на legacy Atom-фідах (підтверджено: ukraine/poland/germany/austria/netherlands/lithuania/czechia/romania) | Atom/CAP XML, без ключа | 10 хв | CC BY 4.0-подібна, атрибуція обов'язкова (див. `<rights>` у фіді) | — |
 | AviationWeather.gov | https://aviationweather.gov/api/data/{metar,taf} | Ні | **Так** (`server/connectors/aviationWeatherAir.js`) — METAR+TAF за ICAO-кодом аеропорту, готова категорія `fltCat` (VFR/MVFR/IFR/LIFR) від самого API. Українські аеропорти (UKBB/UKLL/UKOO) чесно повертають "немає даних" (закритий повітряний простір), а не помилку | JSON, без ключа | 1 хв | Публічні дані уряду США | — |
 | Copernicus Marine (CMEMS) | https://marine.copernicus.eu | Ні | Ні | NetCDF, потребує реєстрації | 30 хв (заплановано) | Безкоштовна програма ЄС | — |
+| Anthropic Claude API | https://api.anthropic.com | Ні | **Так, за наявності ключа** (`server/connectors/anthropicChat.js`) — генерує відповідь у `/api/qa/ask` виключно на основі статей, знайдених локальним keyword-пошуком (`server/services/qaRetrieval.js`) у `server/data/wiki.json`/`outputs.json`. Це не скрапінг зовнішнього джерела, а платний LLM-виклик, увімкнений лише коли задано `ANTHROPIC_API_KEY` — без ключа ендпоінт повертає знайдені статті без AI-тексту, ніколи не вигадану відповідь | REST/JSON, потребує ключа (платно) | без кешу (кожне питання — нове) | Платний API, ліміти й ціни за акаунтом Anthropic | — |
 
 ## Навмисно НЕ інтегровано (Phase 3, per бриф)
 

@@ -11,8 +11,8 @@
     --ink:#1B2733; --ink-soft:#5B6B7A; --line:#D6DEE6;
     --accent:#1B5FA8; --accent-ink:#FFFFFF; --accent-2:#123F70;
     --success:#2E7D5B; --warning:#B4791D; --danger:#B23B2E;
-    --mode-auto:#1B5FA8; --mode-rail:#B4791D; --mode-sea:#0E7C86; --mode-air:#B23B2E; --mode-multi:#6A4C93;
-    --mode-auto-dk:#0E3E6B; --mode-rail-dk:#7A4E10; --mode-sea-dk:#074850; --mode-air-dk:#6E2018; --mode-multi-dk:#3E2A5C;
+    --mode-auto:#1B5FA8; --mode-rail:#B4791D; --mode-sea:#0E7C86; --mode-air:#B23B2E; --mode-drone:#3F7D4A; --mode-multi:#6A4C93;
+    --mode-auto-dk:#0E3E6B; --mode-rail-dk:#7A4E10; --mode-sea-dk:#074850; --mode-air-dk:#6E2018; --mode-drone-dk:#1F4A28; --mode-multi-dk:#3E2A5C;
     --shadow:rgba(20,33,50,.12);
     --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -24,7 +24,7 @@
       --ink:#E6EBF0; --ink-soft:#93A3B2; --line:#25333F;
       --accent:#5B9BDB; --accent-ink:#0E1620; --accent-2:#8FC0EE;
       --success:#4FAE85; --warning:#D3A551; --danger:#E17862;
-      --mode-auto:#5B9BDB; --mode-rail:#D3A551; --mode-sea:#4FB8C4; --mode-air:#E17862; --mode-multi:#B79AE0;
+      --mode-auto:#5B9BDB; --mode-rail:#D3A551; --mode-sea:#4FB8C4; --mode-air:#E17862; --mode-drone:#6FBF8D; --mode-multi:#B79AE0;
       --shadow:rgba(0,0,0,.4);
     }
   }
@@ -117,6 +117,29 @@
   nav.primary a:hover{color:#fff; background:rgba(255,255,255,.07);}
   nav.primary a.active{color:#fff; border-bottom-color:var(--accent);}
   .burger{display:none; border:1px solid rgba(255,255,255,.3); background:transparent; color:#fff; border-radius:2px; padding:.4em .6em; cursor:pointer;}
+  /* "Сервіси" nav item: a category label with a dropdown, not a page of its
+     own - same idea as a real site's Инфоцентр/Пресс-центр menus. Pure CSS
+     hover/focus-within, no JS: cheap and correct for a mouse-driven desktop
+     nav, and the mobile media query below flattens it into the vertical
+     burger menu instead (a dropdown-inside-a-dropdown is bad UX on touch). */
+  .navlink-dropdown{position:relative;}
+  .navlink-dropdown-toggle{
+    display:flex; align-items:center; gap:4px; border:none; background:none; font-family:inherit;
+    font-size:.88rem; font-weight:600; color:rgba(255,255,255,.8); cursor:pointer;
+    padding:12px 14px; white-space:nowrap; border-bottom:2px solid transparent;
+  }
+  .navlink-dropdown-toggle:hover{color:#fff; background:rgba(255,255,255,.07);}
+  .navlink-dropdown-toggle.active{color:#fff; border-bottom-color:var(--accent);}
+  .navlink-dropdown-toggle svg.icon{width:.9em; height:.9em;}
+  .navlink-dropdown-menu{
+    position:absolute; top:100%; left:0; min-width:230px; z-index:40; padding:4px 0;
+    background:var(--surface); border:1px solid var(--line); box-shadow:0 10px 24px var(--shadow);
+    display:none; flex-direction:column;
+  }
+  .navlink-dropdown:hover .navlink-dropdown-menu, .navlink-dropdown:focus-within .navlink-dropdown-menu{display:flex;}
+  .navlink-dropdown-menu a{display:flex; align-items:center; gap:10px; padding:10px 14px; color:var(--ink); text-decoration:none; font-size:.86rem; font-weight:600;}
+  .navlink-dropdown-menu a:hover{background:var(--paper-2); color:var(--accent);}
+  .navlink-dropdown-menu svg.icon{color:var(--accent); width:1.15em; height:1.15em;}
   @media (max-width:980px){
     nav.primary{display:none; position:absolute; top:100%; left:0; right:0; background:var(--ink); flex-direction:column; padding:8px; box-shadow:0 4px 10px var(--shadow); z-index:30;}
     nav.primary.open{display:flex;}
@@ -126,6 +149,13 @@
     .logo .wordmark{font-size:1.4rem;}
     .lang-box{position:static; transform:none; margin-top:10px;}
     .logorow-inner{flex-direction:column;}
+    .navlink-dropdown{position:static;}
+    .navlink-dropdown-toggle{width:100%; border-left:2px solid transparent;}
+    .navlink-dropdown-toggle.active{border-left-color:var(--accent); border-bottom-color:transparent;}
+    .navlink-dropdown-menu{position:static; display:flex; background:transparent; border:none; box-shadow:none; padding-left:14px;}
+    .navlink-dropdown-menu a{color:rgba(255,255,255,.8); padding:10px 14px;}
+    .navlink-dropdown-menu a:hover{color:#fff; background:rgba(255,255,255,.07);}
+    .navlink-dropdown-menu svg.icon{color:inherit;}
   }
 
   /* home: lede + banner + dashboard */
@@ -133,32 +163,56 @@
   .home-lede h1{font-size:1.5rem; max-width:none;}
   .home-lede .lede{max-width:60ch; margin-bottom:0;}
 
-  .banner-row{display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2px; background:var(--line); margin-top:18px;}
-  @media (max-width:900px){.banner-row{grid-template-columns:1fr 1fr;}}
-  .banner-panel{position:relative; min-height:210px; display:flex; border:none; padding:0; text-align:left; color:#fff; cursor:pointer; overflow:hidden; background-size:cover, cover; background-position:center, center; background-repeat:no-repeat;}
+  /* All 6 tiles render at equal width (flex-basis 0, equal flex-grow) so
+     they're always the same size at rest, on any tile count. Hovering one
+     sets its flex-grow to 2.5 against the rest's 1 each: with 6 items that
+     resolves to exactly 2x the resting width for the hovered tile, and the
+     other 5 sharing the remainder equally (a uniform ~0.8x shrink) - the
+     row's total width never changes, only how it's divided. flex-grow/flex
+     transitions smoothly in evergreen browsers, no JS needed. Falls back to
+     a plain 2-col grid (no hover effect) under 900px, where the effect
+     wouldn't have room to read anyway and hover isn't a touch gesture.  */
+  .banner-row{display:flex; gap:2px; background:var(--line); margin-top:18px;}
+  @media (max-width:900px){.banner-row{display:grid; grid-template-columns:1fr 1fr;}}
+  .banner-panel{position:relative; flex:1 1 0%; min-width:0; min-height:210px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:14px; border:none; text-align:left; color:#fff; cursor:pointer; overflow:hidden; background-size:cover; background-position:center; background-repeat:no-repeat; transition:flex .4s cubic-bezier(.4,0,.2,1), filter .2s;}
   .banner-panel.mode-auto{background-color:var(--mode-auto); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-auto.jpg');}
   .banner-panel.mode-rail{background-color:var(--mode-rail); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-rail.jpg');}
   .banner-panel.mode-sea{background-color:var(--mode-sea); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-sea.jpg');}
   .banner-panel.mode-air{background-color:var(--mode-air); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-air.jpg');}
+  .banner-panel.mode-drone{background-color:var(--mode-drone); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-drone.jpg');}
   .banner-panel.mode-multi{background-color:var(--mode-multi); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-multi.jpg');}
-  .banner-panel:hover{filter:brightness(1.07);}
+  .banner-panel:hover{flex-grow:2.5; filter:brightness(1.07); z-index:1;}
   .banner-panel .bp-badge{position:absolute; left:14px; top:14px; width:2.4em; height:2.4em; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; color:var(--accent-2); box-shadow:0 2px 6px rgba(0,0,0,.25);}
   .banner-panel .bp-badge svg.icon{width:1.2em; height:1.2em;}
-  .banner-panel.wide{align-items:flex-end; justify-content:flex-start;}
-  .banner-panel.wide .bp-overlay{position:relative; margin:16px;}
-  .banner-panel.wide .bp-overlay h3{margin:0; font-size:1.3rem; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.55);}
-  .banner-panel:not(.wide){align-items:flex-end; justify-content:center; padding-bottom:14px;}
-  .banner-panel:not(.wide) .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 4px rgba(0,0,0,.55);}
+  .banner-panel .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 4px rgba(0,0,0,.55); white-space:nowrap;}
 
-  .dash-grid{display:grid; grid-template-columns:300px 1fr 260px; gap:16px; margin:24px 0 40px;}
+  .dash-grid{display:grid; grid-template-columns:150px 1fr 130px; gap:16px; margin:24px 0 40px;}
   @media (max-width:1080px){.dash-grid{grid-template-columns:1fr 1fr;}}
   @media (max-width:760px){.dash-grid{grid-template-columns:1fr;}}
+  .dash-stack{display:flex; flex-direction:column; gap:12px;}
   .dash-col{border:1px solid var(--line); background:var(--surface); align-self:start;}
   .panel-head{background:var(--accent-2); color:#fff; padding:12px 16px; font-weight:700; font-size:.82rem; display:flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:.03em;}
   .panel-head svg.icon{width:1.2em; height:1.2em;}
   .panel-body{padding:16px;}
   .panel-body.flush{padding:0;}
   .panel-more{padding:12px 16px; border-top:1px solid var(--line);}
+  /* Halved side columns (search forms + services) - see the "зменши на
+     половину" request: narrower fixed columns free up width for the
+     Міжнародні/Внутрішні flow tables now occupying the middle column.
+     Everything inside scales down to stay usable at ~130-150px. */
+  .dash-col.compact .panel-head{padding:9px 10px; font-size:.7rem; gap:6px;}
+  .dash-col.compact .panel-head svg.icon{width:1em; height:1em;}
+  .dash-col.compact .panel-body{padding:10px;}
+  .dash-col.compact label{font-size:.64rem;}
+  .dash-col.compact input, .dash-col.compact select{padding:.4em .5em; font-size:.78rem;}
+  .dash-col.compact .console-grid{grid-template-columns:1fr; gap:8px;}
+  .dash-col.compact .btn{padding:.5em .6em; font-size:.78rem;}
+  .dash-col.compact .services-item{padding:8px 10px; font-size:.74rem; gap:8px;}
+  .dash-col.compact .services-item svg.icon{width:1.05em; height:1.05em;}
+  .dash-col.compact .market-grid{grid-template-columns:repeat(2,1fr);}
+  .dash-col.compact .market-card{display:flex; flex-direction:column; align-items:center; padding:10px 4px; gap:4px; text-align:center; text-decoration:none;}
+  .dash-col.compact .market-card svg.icon{width:1.3em; height:1.3em; color:var(--accent); margin:0 auto;}
+  .dash-col.compact .market-card .mk-title{font-size:.66rem; line-height:1.2; font-weight:700;}
 
   .mode-tabs{display:flex; gap:0; margin-bottom:16px; border:1px solid var(--line); border-radius:2px; overflow:hidden;}
   .mode-tabs button{flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; border-right:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); padding:.65em .5em; font-weight:700; font-size:.82rem; cursor:pointer;}
@@ -174,17 +228,12 @@
   .mode-sub-item svg.icon{width:1em; height:1em;}
   .mode-sub-item:has(input:checked){border-color:var(--accent); background:var(--paper-2); color:var(--accent);}
 
+
   .services-list{display:flex; flex-direction:column;}
   .services-item{display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:.86rem; font-weight:600;}
   .services-item:last-child{border-bottom:none;}
   .services-item:hover{background:var(--paper-2); color:var(--accent);}
   .services-item svg.icon{color:var(--accent); width:1.25em; height:1.25em;}
-
-  .mini-widget{border:1px solid var(--line); background:var(--surface); margin-top:16px;}
-  .mini-widget-tabs{display:flex;}
-  .mini-widget-tabs button{flex:1; border:none; background:var(--paper-2); color:var(--ink-soft); padding:.6em .4em; font-size:.72rem; font-weight:700; cursor:pointer; border-bottom:2px solid transparent;}
-  .mini-widget-tabs button.active{background:var(--surface); color:var(--accent); border-bottom-color:var(--accent);}
-  .mini-widget-body{padding:14px 16px; font-size:.82rem; color:var(--ink-soft);}
 
   /* weather page */
   .weather-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;}
@@ -226,6 +275,12 @@
   .country-flag.kz{background:#00AFCA;}
   .country-flag.us{background:linear-gradient(180deg,#B22234 0 15%,#fff 15% 30%,#B22234 30% 45%,#fff 45% 60%,#3C3B6E 60% 100%);}
   .country-flag.ch{background:#D52B1E;}
+  .country-flag.de{background:linear-gradient(to bottom,#000 33%,#DD0000 33% 67%,#FFCE00 67%);}
+  .country-flag.lt{background:linear-gradient(to bottom,#FDB913 33%,#006A44 33% 67%,#C1272D 67%);}
+  .country-flag.cz{background:linear-gradient(to bottom,#fff 50%,#D7141A 50%);}
+  .country-flag.at{background:linear-gradient(to bottom,#ED2939 33%,#fff 33% 67%,#ED2939 67%);}
+  .country-flag.nl{background:linear-gradient(to bottom,#AE1C28 33%,#fff 33% 67%,#21468B 67%);}
+  .country-flag.tr{background:#E30A17;}
   .directory-card-head h3{margin:0; font-size:.92rem; line-height:1.3;}
   .directory-badge{align-self:flex-start; font-size:.68rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; padding:.2em .5em; border:1px solid var(--line); color:var(--ink-soft);}
   .directory-badge.official{color:var(--success); border-color:var(--success);}
@@ -252,6 +307,76 @@
   }
   .borders-source-note{font-size:.7rem; color:var(--ink-soft); margin-top:2px;}
 
+  /* home: country flow tables (international / domestic), styled after
+     trans-atlas.net's own homepage tables - continent tabs, dense
+     two-column country grid, per-country Транс/Грузы export-import rows. */
+  .flows-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-self:start;}
+  @media (max-width:900px){.flows-grid{grid-template-columns:1fr;}}
+  .flow-panel{border:1px solid var(--line); background:var(--surface);}
+  .flow-tabs{display:flex; gap:6px; flex-wrap:wrap; padding:10px 12px; border-bottom:1px solid var(--line);}
+  .flow-tabs button{border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); font-size:.72rem; font-weight:700; padding:.3em .8em; border-radius:20px; cursor:pointer;}
+  .flow-tabs button.active{background:var(--accent-2); color:#fff; border-color:var(--accent-2);}
+  .flow-country-grid{display:grid; grid-template-columns:1fr 1fr;}
+  @media (max-width:520px){.flow-country-grid{grid-template-columns:1fr;}}
+  .flow-country{display:flex; align-items:flex-start; gap:8px; padding:7px 12px; border-bottom:1px solid var(--line); font-size:.76rem;}
+  .flow-country:nth-child(odd){border-right:1px solid var(--line);}
+  .flow-country-head{display:flex; flex-direction:column; align-items:center; gap:3px; min-width:52px; font-weight:900; font-family:var(--font-mono); font-size:.82rem;}
+  .flow-country-head .country-flag{width:40px; height:28px;}
+  .flow-country-rows{flex:1; display:flex; flex-direction:column; gap:2px; min-width:0;}
+  .flow-subrow{display:flex; align-items:center; gap:6px;}
+  .flow-subrow .flow-kind{color:var(--ink-soft); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:700;}
+  .flow-num{display:inline-flex; align-items:center; gap:1px; font-family:var(--font-mono); font-weight:900; min-width:1.6em; border:none; background:none; padding:0; cursor:pointer; color:inherit; -webkit-tap-highlight-color:transparent;}
+  .flow-num:hover{text-decoration:underline;}
+  .flow-num:focus-visible{outline:2px solid var(--accent-2); outline-offset:2px;}
+  .flow-num svg.icon{width:.8em; height:.8em; stroke-width:3.2;}
+  .flow-num.export{color:var(--accent);}
+  .flow-num.import{color:var(--warning);}
+
+  /* Q&A page */
+  .qa-grid{display:grid; grid-template-columns:1fr 1.25fr; gap:18px; margin-top:20px; align-items:start;}
+  @media (max-width:900px){.qa-grid{grid-template-columns:1fr;}}
+  .qa-col{border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column; max-height:640px;}
+  .qa-col-head{padding:14px 16px; border-bottom:1px solid var(--line); font-weight:700; font-size:.86rem; display:flex; align-items:center; gap:8px;}
+  .qa-col-body{padding:14px 16px; overflow-y:auto; flex:1;}
+  .qa-wiki-cats{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;}
+  .qa-wiki-cats button{border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); font-size:.72rem; font-weight:700; padding:.35em .7em; border-radius:20px; cursor:pointer;}
+  .qa-wiki-cats button.active{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .qa-wiki-search{width:100%; margin-bottom:12px;}
+  .qa-wiki-item{border:1px solid var(--line); margin-bottom:8px;}
+  .qa-wiki-item-head{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:10px 12px; cursor:pointer; font-size:.84rem; font-weight:700;}
+  .qa-wiki-item-head:hover{background:var(--paper-2);}
+  .qa-wiki-item-cat{font-size:.66rem; font-weight:700; text-transform:uppercase; color:var(--accent); font-family:var(--font-mono);}
+  .qa-wiki-item-body{padding:0 12px 12px; font-size:.82rem; color:var(--ink-soft); white-space:pre-line; line-height:1.55;}
+  .qa-wiki-item-sources{font-size:.7rem; color:var(--ink-soft); margin-top:8px; border-top:1px solid var(--line); padding-top:8px;}
+  .qa-chat-messages{display:flex; flex-direction:column; gap:12px;}
+  .qa-msg{max-width:92%; padding:10px 14px; border:1px solid var(--line); font-size:.86rem; line-height:1.5; white-space:pre-line;}
+  .qa-msg.user{align-self:flex-end; background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+  .qa-msg.assistant{align-self:flex-start; background:var(--paper-2);}
+  .qa-msg.assistant.warn{border-color:var(--warning);}
+  .qa-msg-sources{margin-top:8px; padding-top:8px; border-top:1px solid var(--line); font-size:.72rem; display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
+  .qa-source-pill{border:1px solid var(--line); border-radius:20px; padding:.15em .6em; font-family:var(--font-mono); background:var(--surface);}
+  .qa-confidence{font-size:.68rem; font-family:var(--font-mono); text-transform:uppercase; color:var(--ink-soft); margin-top:4px;}
+  .qa-chat-empty{color:var(--ink-soft); font-size:.86rem;}
+  .qa-chat-form{display:flex; gap:8px; padding:12px 16px; border-top:1px solid var(--line);}
+  .qa-chat-form input{flex:1;}
+  .qa-outputs-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:20px;}
+  .qa-output-card{border:1px solid var(--line); background:var(--surface); padding:16px; display:flex; flex-direction:column; gap:8px;}
+  .qa-output-type{align-self:flex-start; font-size:.68rem; font-family:var(--font-mono); text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:.2em .5em;}
+  .qa-output-card h3{margin:0; font-size:.9rem;}
+  .qa-output-card ul{margin:0; padding-left:18px; font-size:.8rem; color:var(--ink-soft); display:flex; flex-direction:column; gap:4px;}
+  .glossary-term{color:var(--accent-2); border-bottom:1px dotted var(--accent-2); font-weight:600; cursor:pointer;}
+  .glossary-term:hover{background:var(--paper-2);}
+  .qa-glossary-panel{border:1px solid var(--line); border-left:3px solid var(--accent-2); background:var(--surface); padding:16px 20px; margin-top:16px;}
+  .qa-glossary-hint{margin:0; font-size:.86rem; color:var(--ink-soft);}
+  .qa-glossary-term{display:inline-block; font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:var(--accent-2); border:1px solid var(--accent-2); padding:.15em .5em; margin-bottom:8px;}
+  .qa-glossary-panel h3{margin:0 0 6px; font-size:.98rem;}
+  .qa-glossary-panel p{margin:0 0 10px; font-size:.86rem; color:var(--ink-soft);}
+  .qa-notfound{border:1px solid var(--line); background:var(--paper-2); padding:20px; margin-top:24px;}
+  .qa-notfound h3{margin:0 0 6px; font-size:1rem;}
+  .qa-notfound p{margin:0 0 12px; font-size:.86rem; color:var(--ink-soft);}
+  .qa-notfound-form{display:flex; gap:8px; flex-wrap:wrap;}
+  .qa-notfound-form textarea{flex:1; min-width:220px; min-height:44px; resize:vertical; font-family:inherit;}
+
   section{padding:38px 0;}
   section.alt{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:20px; flex-wrap:wrap;}
@@ -270,17 +395,28 @@
 
   /* listing rows */
   .manifest{border:1px solid var(--line); background:var(--surface);}
-  .m-row{display:grid; grid-template-columns:auto 1fr auto auto auto auto; gap:16px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--line);}
+  .m-row{display:grid; grid-template-columns:auto auto 1fr auto auto auto auto auto; gap:16px; align-items:center; padding:12px 16px; border-bottom:1px solid var(--line);}
   .m-row:last-child{border-bottom:none;}
   .m-row:hover{background:var(--paper-2);}
   @media (max-width:900px){.m-row{grid-template-columns:1fr; gap:6px;}}
+  .m-id{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-soft); white-space:nowrap;}
   .mode-chip{display:inline-flex; align-items:center; gap:6px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; padding:.3em .55em; border:1px solid var(--line); color:var(--ink-soft); font-family:var(--font-mono);}
-  .mode-chip.auto{color:var(--mode-auto); border-color:var(--mode-auto);} .mode-chip.rail{color:var(--mode-rail); border-color:var(--mode-rail);} .mode-chip.sea{color:var(--mode-sea); border-color:var(--mode-sea);} .mode-chip.air{color:var(--mode-air); border-color:var(--mode-air);} .mode-chip.multi{color:var(--mode-multi); border-color:var(--mode-multi);}
-  .m-route{font-weight:700; display:flex; align-items:center; gap:8px;}
-  .m-route .arr{color:var(--ink-soft); font-weight:400;}
+  .mode-chip.auto{color:var(--mode-auto); border-color:var(--mode-auto);} .mode-chip.rail{color:var(--mode-rail); border-color:var(--mode-rail);} .mode-chip.sea{color:var(--mode-sea); border-color:var(--mode-sea);} .mode-chip.air{color:var(--mode-air); border-color:var(--mode-air);} .mode-chip.drone{color:var(--mode-drone); border-color:var(--mode-drone);} .mode-chip.multi{color:var(--mode-multi); border-color:var(--mode-multi);}
+  .m-route{font-weight:700; display:flex; align-items:center; gap:6px;}
+  .m-route .country-flag{flex:none;}
+  .m-route .arr{color:var(--ink-soft); font-weight:400; margin:0 2px;}
   .m-sub{font-size:.78rem; color:var(--ink-soft);}
   .m-figure{font-family:var(--font-mono); text-align:right; font-size:.86rem;}
   .m-figure .lab{display:block; font-size:.66rem; color:var(--ink-soft); text-transform:uppercase;}
+  /* Real links into the site's own sections (Довідник/Кордони/Погода/Карта),
+     not decoration - matches trans-atlas.net's per-listing "Сервіси" icon
+     column, but here each icon leads somewhere that actually has data:
+     Кордони pre-filters to the listing's destination country, Погода
+     pre-loads the listing's actual route - see bindEvents' m-svc-* handlers. */
+  .m-services{display:flex; gap:6px;}
+  .m-services a{display:flex; align-items:center; justify-content:center; width:1.9em; height:1.9em; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none;}
+  .m-services a:hover{color:var(--accent); border-color:var(--accent); background:var(--paper-2);}
+  .m-services svg.icon{width:1.05em; height:1.05em;}
   .empty-state{padding:40px 20px; text-align:center; color:var(--ink-soft);}
 
   /* market */
@@ -291,6 +427,18 @@
   .market-card svg.icon{width:1.7em; height:1.7em; color:var(--accent); margin-bottom:10px;}
   .market-card .mk-title{font-weight:700; font-size:.9rem;}
   .market-card .mk-count{font-family:var(--font-mono); font-size:.76rem; color:var(--ink-soft);}
+  .market-mock-row{display:flex; align-items:center; gap:14px; padding:12px 16px; border-bottom:1px solid var(--line);}
+  .market-mock-row:last-child{border-bottom:none;}
+  .market-mock-row .m-route{flex:1;}
+
+  /* rating */
+  .rating-list{border:1px solid var(--line); background:var(--surface);}
+  .rating-row{display:flex; align-items:center; gap:14px; padding:12px 16px; border-bottom:1px solid var(--line);}
+  .rating-row:last-child{border-bottom:none;}
+  .rating-row:hover{background:var(--paper-2);}
+  .rating-rank{font-family:var(--font-mono); font-weight:700; color:var(--ink-soft); width:2em; flex:none;}
+  .rating-company{flex:1; min-width:0;}
+  .rating-price{font-family:var(--font-mono); font-weight:700; font-size:.95rem; flex:none;}
 
   /* news */
   .news-list{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);}
@@ -408,22 +556,63 @@ var LISTINGS = [
   {id:13,kind:"cargo",mode:"multi",components:["sea","auto"],from:"hamburg",to:"lviv",date:"2026-08-26",cargo:"build",weight:24,volume:88,price:2050,company:"NordTrans AG"},
   {id:14,kind:"transport",mode:"auto",from:"vilnius",to:"warsaw",date:"2026-08-18",cargo:"furn",weight:16,volume:70,price:780,company:"Baltic Movers"},
   {id:15,kind:"cargo",mode:"rail",from:"kyiv",to:"munich",date:"2026-08-28",cargo:"metal",weight:70,volume:120,price:3400,company:"УкрМеталТранс"},
-  {id:16,kind:"transport",mode:"multi",components:["rail","auto"],from:"istanbul",to:"prague",date:"2026-08-22",cargo:"textile",weight:17,volume:52,price:1720,company:"Anatolia Freight"}
+  {id:16,kind:"transport",mode:"multi",components:["rail","auto"],from:"istanbul",to:"prague",date:"2026-08-22",cargo:"textile",weight:17,volume:52,price:1720,company:"Anatolia Freight"},
+  {id:17,kind:"cargo",mode:"auto",from:"kyiv",to:"lviv",date:"2026-08-20",cargo:"food",weight:9,volume:30,price:340,company:"УкрШвидТранс"},
+  {id:18,kind:"transport",mode:"auto",from:"warsaw",to:"krakow",date:"2026-08-19",cargo:"furn",weight:11,volume:48,price:410,company:"KrajTrans Sp. z o.o."},
+  {id:19,kind:"cargo",mode:"rail",from:"berlin",to:"munich",date:"2026-08-21",cargo:"metal",weight:40,volume:88,price:1150,company:"DeutschRail Cargo"},
+  {id:20,kind:"transport",mode:"auto",from:"odesa",to:"kyiv",date:"2026-08-23",cargo:"food",weight:8,volume:26,price:300,company:"ПівденьТранс"}
 ];
 
-var MARKET = [
-  {id:"bus", uk:"Автобус", en:"Bus", pl:"Autobus", de:"Bus", count:34, icon:"bus"},
-  {id:"tractor", uk:"Тягач", en:"Tractor unit", pl:"Ciągnik siodłowy", de:"Sattelzugmaschine", count:58, icon:"truck"},
-  {id:"semitrailer", uk:"Напівпричіп", en:"Semi-trailer", pl:"Naczepa", de:"Sattelauflieger", count:41, icon:"trailer"},
-  {id:"truck", uk:"Вантажівка", en:"Truck", pl:"Ciężarówka", de:"LKW", count:76, icon:"truck"},
-  {id:"parts", uk:"Запчастини", en:"Spare parts", pl:"Części zamienne", de:"Ersatzteile", count:112, icon:"parts"},
-  {id:"special", uk:"Спецтехніка", en:"Special equipment", pl:"Sprzęt specjalistyczny", de:"Sonderfahrzeuge", count:23, icon:"crane"},
-  {id:"trailer", uk:"Причіп", en:"Trailer", pl:"Przyczepa", de:"Anhänger", count:29, icon:"trailer"}
-];
+/** Ринок транспорту, one equipment catalog per transport mode - "auto" is
+ * the original block; rail/sea/air/drone follow the same shape (icon +
+ * label + count) so renderMarket() doesn't special-case any of them. Ids
+ * are prefixed per mode so a category picked in one mode's tab can never
+ * collide with (or stay wrongly "active" under) another mode's tab. Counts
+ * are the same kind of static demo numbers the original auto block already
+ * shipped with - not computed from real inventory, consistent with the
+ * rest of this design-concept site. */
+var MARKET_CATEGORIES = {
+  auto: [
+    {id:"auto-bus", uk:"Автобус", en:"Bus", pl:"Autobus", de:"Bus", count:34, icon:"bus"},
+    {id:"auto-tractor", uk:"Тягач", en:"Tractor unit", pl:"Ciągnik siodłowy", de:"Sattelzugmaschine", count:58, icon:"truck"},
+    {id:"auto-semitrailer", uk:"Напівпричіп", en:"Semi-trailer", pl:"Naczepa", de:"Sattelauflieger", count:41, icon:"trailer"},
+    {id:"auto-truck", uk:"Вантажівка", en:"Truck", pl:"Ciężarówka", de:"LKW", count:76, icon:"truck"},
+    {id:"auto-parts", uk:"Запчастини", en:"Spare parts", pl:"Części zamienne", de:"Ersatzteile", count:112, icon:"parts"},
+    {id:"auto-special", uk:"Спецтехніка", en:"Special equipment", pl:"Sprzęt specjalistyczny", de:"Sonderfahrzeuge", count:23, icon:"crane"},
+    {id:"auto-trailer", uk:"Причіп", en:"Trailer", pl:"Przyczepa", de:"Anhänger", count:29, icon:"trailer"}
+  ],
+  rail: [
+    {id:"rail-locomotive", uk:"Локомотив", en:"Locomotive", pl:"Lokomotywa", de:"Lokomotive", count:12, icon:"train"},
+    {id:"rail-platform", uk:"Вагон-платформа", en:"Flatcar", pl:"Wagon platforma", de:"Flachwagen", count:27, icon:"trailer"},
+    {id:"rail-tank", uk:"Вагон-цистерна", en:"Tank wagon", pl:"Wagon cysterna", de:"Kesselwagen", count:19, icon:"tanker"},
+    {id:"rail-container", uk:"Контейнерна платформа", en:"Container flatcar", pl:"Wagon kontenerowy", de:"Containertragwagen", count:15, icon:"container"},
+    {id:"rail-parts", uk:"Запчастини для рухомого складу", en:"Rolling stock parts", pl:"Części do taboru", de:"Ersatzteile für Rollmaterial", count:44, icon:"parts"}
+  ],
+  sea: [
+    {id:"sea-container-ship", uk:"Контейнеровоз", en:"Container ship", pl:"Kontenerowiec", de:"Containerschiff", count:8, icon:"ship"},
+    {id:"sea-tanker", uk:"Танкер", en:"Tanker", pl:"Tankowiec", de:"Tanker", count:6, icon:"tanker"},
+    {id:"sea-container", uk:"Морський контейнер", en:"Sea container", pl:"Kontener morski", de:"Seecontainer", count:63, icon:"container"},
+    {id:"sea-port-equipment", uk:"Портове обладнання", en:"Port equipment", pl:"Sprzęt portowy", de:"Hafenausrüstung", count:14, icon:"crane"}
+  ],
+  air: [
+    {id:"air-cargo-plane", uk:"Вантажний літак", en:"Cargo plane", pl:"Samolot cargo", de:"Frachtflugzeug", count:5, icon:"plane"},
+    {id:"air-uld", uk:"Авіаконтейнер ULD", en:"ULD container", pl:"Kontener ULD", de:"ULD-Container", count:31, icon:"container"},
+    {id:"air-ground-equipment", uk:"Наземне обладнання", en:"Ground handling equipment", pl:"Sprzęt naziemny", de:"Bodenausrüstung", count:17, icon:"trailer"}
+  ],
+  drone: [
+    {id:"drone-cargo", uk:"Вантажний дрон", en:"Delivery drone", pl:"Dron dostawczy", de:"Lieferdrohne", count:22, icon:"drone"},
+    {id:"drone-battery", uk:"Акумулятор", en:"Battery", pl:"Akumulator", de:"Akku", count:48, icon:"battery"},
+    {id:"drone-station", uk:"Наземна станція", en:"Ground station", pl:"Stacja naziemna", de:"Bodenstation", count:9, icon:"station"},
+    {id:"drone-parts", uk:"Запчастини для дронів", en:"Drone parts", pl:"Części do dronów", de:"Drohnenersatzteile", count:37, icon:"parts"}
+  ]
+};
+var MARKET_MODES = ["auto","rail","sea","air","drone"];
 
 var SERVICES = [
+  {icon:"star", route:"rating", uk:"Рейтинг компаній", en:"Company rating", pl:"Ranking firm", de:"Unternehmensbewertung"},
   {icon:"book", route:"directory", uk:"Довідник", en:"Reference", pl:"Informator", de:"Nachschlagewerk"},
   {icon:"flagpost", route:"borders", uk:"Кордони", en:"Border crossings", pl:"Przejścia graniczne", de:"Grenzübergänge"},
+  {icon:"chat", route:"qa", uk:"Питання і відповіді", en:"Q&A", pl:"Pytania i odpowiedzi", de:"Fragen & Antworten"},
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"}
 ];
@@ -468,9 +657,14 @@ uk:{
   tab_cargo:"Шукаю транспорт", tab_transport:"Шукаю вантаж",
   f_from:"Звідки", f_to:"Куди", f_date:"Дата завантаження", f_mode:"Вид транспорту",
   f_weight:"Вага, т", f_volume:"Обʼєм, м³", search:"Знайти", any:"Будь-який",
-  mode_auto:"Авто", mode_rail:"ЖД", mode_sea:"Море", mode_air:"Авіа", mode_multi:"Мультимодальні",
+  mode_auto:"Авто", mode_rail:"ЖД", mode_sea:"Море", mode_air:"Авіа", mode_drone:"Дрони", mode_multi:"Мультимодальні",
   stats_title:"Біржа у цифрах", stat_cargo:"активних заявок на вантаж", stat_transport:"вільних транспортних засобів",
   stat_companies:"компаній-учасників", stat_countries:"країн покриття",
+  flows_intl_title:"Міжнародні перевезення", flows_domestic_title:"Внутрішні перевезення",
+  flows_continent_europe:"Європа", flows_continent_asia:"Азія", flows_continent_america:"Америка", flows_continent_africa:"Африка", flows_continent_australia:"Австралія",
+  flows_continent_todo:"Дані для цього континенту ще не підключено.",
+  flow_kind_transport:"Транспорт", flow_kind_cargo:"Вантаж", flow_export:"Експорт", flow_import:"Імпорт",
+  rating_title:"Рейтинг компаній", rating_lede:"Компанії, активні на біржі зараз, за сумою поточної заявки — демонстраційні дані, не оцінка репутації.",
   results_title:"Актуальні заявки", results_count:"знайдено", results_empty:"За цим запитом нічого не знайдено. Спробуйте змінити напрямок або вид транспорту.",
   col_route:"Маршрут", col_cargo:"Вантаж", col_weight:"Вага", col_volume:"Обʼєм", col_date:"Дата", col_price:"Ставка", contact_btn:"Звʼязатись",
   market_title:"Ринок транспорту", market_lede:"Купівля, продаж і оренда вантажного транспорту та спецтехніки.",
@@ -515,6 +709,20 @@ uk:{
   borders_loading:"Завантаження...", borders_offline:"Локальний сервер даних недоступний. Запустіть \"node server/index.js\", щоб побачити дані про кордони.",
   borders_error:"Не вдалося отримати дані. Спробуйте пізніше.", borders_empty:"Нічого не знайдено за цими фільтрами.",
   borders_partial:"Одне з джерел тимчасово недоступне — показані дані лише з тих, що відповіли.",
+  qa_title:"Питання і відповіді", qa_lede:"AI-асистент відповідає на основі бази знань (Wiki) та готових матеріалів (Outputs) — з посиланнями на джерела, без вигаданих фактів.",
+  qa_ask_ph:"Наприклад: що таке накладна CMR?", qa_ask_button:"Запитати", qa_ask_thinking:"Шукаю відповідь...",
+  qa_chat_empty:"Задайте питання про документи, митницю чи стандарти перевезень — відповідь будується лише на матеріалах бази знань нижче.",
+  qa_sources_label:"Джерела:", qa_confidence_high:"висока релевантність", qa_confidence_medium:"середня релевантність", qa_confidence_low:"низька релевантність",
+  qa_ai_unavailable:"AI-відповіді ще не підключені на цьому сервері (не задано ANTHROPIC_API_KEY). Ось матеріали з бази знань за темою:",
+  qa_insufficient:"У базі знань поки немає матеріалів, які точно відповідають на це питання.",
+  qa_error:"Не вдалося отримати відповідь. Спробуйте пізніше.", qa_offline:"Локальний сервер даних недоступний. Запустіть \"node server/index.js\".",
+  qa_wiki_heading:"База знань (Wiki)", qa_wiki_search_ph:"Пошук по статтях...", qa_wiki_all:"Усі категорії",
+  qa_cat_dokumenty:"Документи", qa_cat_standarty:"Стандарти", qa_cat_mytnycia:"Митниця", qa_cat_marshruty:"Маршрути",
+  qa_wiki_loading:"Завантаження...", qa_wiki_empty:"Нічого не знайдено за цими фільтрами.", qa_wiki_read_more:"Читати статтю", qa_wiki_collapse:"Згорнути",
+  qa_glossary_hint:"Натисніть на позначене слово в чек-листі вище (наприклад, ADR) — тут з'явиться пояснення.", qa_glossary_loading:"Завантаження визначення...",
+  qa_outputs_heading:"Готові матеріали (Outputs)", qa_outputs_loading:"Завантаження...", qa_outputs_empty:"Матеріалів поки немає.",
+  qa_notfound_title:"Не знайшли відповідь?", qa_notfound_body:"Опишіть питання — ми додамо відповідь у базу знань. Заявка збережеться локально у вашому браузері (демо-режим, без реального бекенду для заявок).",
+  qa_notfound_ph:"Ваше питання...", qa_notfound_submit:"Надіслати", qa_notfound_success:"Дякуємо! Питання збережено.",
   err_required:"Заповніть це поле", err_email:"Введіть коректний email", err_pass:"Мінімум 6 символів", err_match:"Паролі не збігаються",
   modal_login_title:"Вхід до кабінету", modal_register_title:"Реєстрація компанії",
   f_password:"Пароль", f_password2:"Повторіть пароль", f_companyname:"Назва компанії",
@@ -535,9 +743,14 @@ en:{
   tab_cargo:"I need transport", tab_transport:"I have cargo",
   f_from:"From", f_to:"To", f_date:"Loading date", f_mode:"Transport type",
   f_weight:"Weight, t", f_volume:"Volume, m³", search:"Search", any:"Any",
-  mode_auto:"Road", mode_rail:"Rail", mode_sea:"Sea", mode_air:"Air", mode_multi:"Multimodal",
+  mode_auto:"Road", mode_rail:"Rail", mode_sea:"Sea", mode_air:"Air", mode_drone:"Drones", mode_multi:"Multimodal",
   stats_title:"The exchange in numbers", stat_cargo:"active cargo listings", stat_transport:"available vehicles",
   stat_companies:"member companies", stat_countries:"countries covered",
+  flows_intl_title:"International transport", flows_domestic_title:"Domestic transport",
+  flows_continent_europe:"Europe", flows_continent_asia:"Asia", flows_continent_america:"America", flows_continent_africa:"Africa", flows_continent_australia:"Australia",
+  flows_continent_todo:"Data for this continent isn't connected yet.",
+  flow_kind_transport:"Transport", flow_kind_cargo:"Cargo", flow_export:"Export", flow_import:"Import",
+  rating_title:"Company rating", rating_lede:"Companies currently active on the exchange, ranked by their current listing's value - demo data, not a reputation score.",
   results_title:"Current listings", results_count:"found", results_empty:"No listings match this search. Try another route or transport type.",
   col_route:"Route", col_cargo:"Cargo", col_weight:"Weight", col_volume:"Volume", col_date:"Date", col_price:"Rate", contact_btn:"Contact",
   market_title:"Vehicle market", market_lede:"Buy, sell and rent trucks, trailers and special equipment.",
@@ -582,6 +795,20 @@ en:{
   borders_loading:"Loading...", borders_offline:"The local data server is unreachable. Run \"node server/index.js\" to see border data.",
   borders_error:"Could not fetch data. Please try again later.", borders_empty:"No entries match these filters.",
   borders_partial:"One of the sources is temporarily unavailable - showing data only from the ones that responded.",
+  qa_title:"Q&A", qa_lede:"An AI assistant answers using the knowledge base (Wiki) and ready-made materials (Outputs) — with sources cited, no invented facts.",
+  qa_ask_ph:"E.g.: what is a CMR waybill?", qa_ask_button:"Ask", qa_ask_thinking:"Searching for an answer...",
+  qa_chat_empty:"Ask about documents, customs or transport standards — the answer is built only from the knowledge base materials below.",
+  qa_sources_label:"Sources:", qa_confidence_high:"high relevance", qa_confidence_medium:"medium relevance", qa_confidence_low:"low relevance",
+  qa_ai_unavailable:"AI answers aren't wired up on this server yet (ANTHROPIC_API_KEY not set). Here are the matching knowledge base materials:",
+  qa_insufficient:"There's nothing in the knowledge base yet that clearly answers this question.",
+  qa_error:"Could not get an answer. Please try again later.", qa_offline:"The local data server is unreachable. Run \"node server/index.js\".",
+  qa_wiki_heading:"Knowledge base (Wiki)", qa_wiki_search_ph:"Search articles...", qa_wiki_all:"All categories",
+  qa_cat_dokumenty:"Documents", qa_cat_standarty:"Standards", qa_cat_mytnycia:"Customs", qa_cat_marshruty:"Routes",
+  qa_wiki_loading:"Loading...", qa_wiki_empty:"No entries match these filters.", qa_wiki_read_more:"Read article", qa_wiki_collapse:"Collapse",
+  qa_glossary_hint:"Click a highlighted word in the checklist above (e.g. ADR) - the explanation shows up here.", qa_glossary_loading:"Loading definition...",
+  qa_outputs_heading:"Ready-made materials (Outputs)", qa_outputs_loading:"Loading...", qa_outputs_empty:"No materials yet.",
+  qa_notfound_title:"Didn't find an answer?", qa_notfound_body:"Describe your question — we'll add an answer to the knowledge base. The submission is saved locally in your browser (demo mode, no real backend for submissions).",
+  qa_notfound_ph:"Your question...", qa_notfound_submit:"Submit", qa_notfound_success:"Thanks! Your question has been saved.",
   err_required:"This field is required", err_email:"Enter a valid email", err_pass:"At least 6 characters", err_match:"Passwords do not match",
   modal_login_title:"Sign in", modal_register_title:"Register a company",
   f_password:"Password", f_password2:"Confirm password", f_companyname:"Company name",
@@ -602,9 +829,14 @@ pl:{
   tab_cargo:"Szukam transportu", tab_transport:"Mam ładunek",
   f_from:"Skąd", f_to:"Dokąd", f_date:"Data załadunku", f_mode:"Rodzaj transportu",
   f_weight:"Waga, t", f_volume:"Objętość, m³", search:"Szukaj", any:"Dowolny",
-  mode_auto:"Drogowy", mode_rail:"Kolejowy", mode_sea:"Morski", mode_air:"Lotniczy", mode_multi:"Multimodalny",
+  mode_auto:"Drogowy", mode_rail:"Kolejowy", mode_sea:"Morski", mode_air:"Lotniczy", mode_drone:"Drony", mode_multi:"Multimodalny",
   stats_title:"Giełda w liczbach", stat_cargo:"aktywnych ofert ładunków", stat_transport:"wolnych pojazdów",
   stat_companies:"firm uczestniczących", stat_countries:"krajów objętych zasięgiem",
+  flows_intl_title:"Przewozy międzynarodowe", flows_domestic_title:"Przewozy krajowe",
+  flows_continent_europe:"Europa", flows_continent_asia:"Azja", flows_continent_america:"Ameryka", flows_continent_africa:"Afryka", flows_continent_australia:"Australia",
+  flows_continent_todo:"Dane dla tego kontynentu nie są jeszcze podłączone.",
+  flow_kind_transport:"Transport", flow_kind_cargo:"Ładunek", flow_export:"Eksport", flow_import:"Import",
+  rating_title:"Ranking firm", rating_lede:"Firmy aktywne obecnie na giełdzie, uszeregowane według wartości bieżącej oferty - dane demonstracyjne, nie ocena reputacji.",
   results_title:"Aktualne oferty", results_count:"znaleziono", results_empty:"Brak ofert dla tego zapytania. Spróbuj innej trasy lub rodzaju transportu.",
   col_route:"Trasa", col_cargo:"Ładunek", col_weight:"Waga", col_volume:"Objętość", col_date:"Data", col_price:"Stawka", contact_btn:"Kontakt",
   market_title:"Rynek pojazdów", market_lede:"Kupno, sprzedaż i wynajem ciężarówek, naczep i sprzętu specjalistycznego.",
@@ -649,6 +881,20 @@ pl:{
   borders_loading:"Ładowanie...", borders_offline:"Lokalny serwer danych jest niedostępny. Uruchom \"node server/index.js\", aby zobaczyć dane graniczne.",
   borders_error:"Nie udało się pobrać danych. Spróbuj ponownie później.", borders_empty:"Brak wyników dla tych filtrów.",
   borders_partial:"Jedno ze źródeł jest tymczasowo niedostępne - pokazano dane tylko z tych, które odpowiedziały.",
+  qa_title:"Pytania i odpowiedzi", qa_lede:"Asystent AI odpowiada na podstawie bazy wiedzy (Wiki) i gotowych materiałów (Outputs) — ze wskazaniem źródeł, bez zmyślonych faktów.",
+  qa_ask_ph:"Np.: czym jest list przewozowy CMR?", qa_ask_button:"Zapytaj", qa_ask_thinking:"Szukam odpowiedzi...",
+  qa_chat_empty:"Zapytaj o dokumenty, cło lub standardy transportu — odpowiedź opiera się wyłącznie na materiałach bazy wiedzy poniżej.",
+  qa_sources_label:"Źródła:", qa_confidence_high:"wysoka trafność", qa_confidence_medium:"średnia trafność", qa_confidence_low:"niska trafność",
+  qa_ai_unavailable:"Odpowiedzi AI nie są jeszcze podłączone na tym serwerze (brak ANTHROPIC_API_KEY). Oto pasujące materiały z bazy wiedzy:",
+  qa_insufficient:"W bazie wiedzy nie ma jeszcze materiałów, które jednoznacznie odpowiadają na to pytanie.",
+  qa_error:"Nie udało się uzyskać odpowiedzi. Spróbuj ponownie później.", qa_offline:"Lokalny serwer danych jest niedostępny. Uruchom \"node server/index.js\".",
+  qa_wiki_heading:"Baza wiedzy (Wiki)", qa_wiki_search_ph:"Szukaj w artykułach...", qa_wiki_all:"Wszystkie kategorie",
+  qa_cat_dokumenty:"Dokumenty", qa_cat_standarty:"Standardy", qa_cat_mytnycia:"Cło", qa_cat_marshruty:"Trasy",
+  qa_wiki_loading:"Ładowanie...", qa_wiki_empty:"Brak wyników dla tych filtrów.", qa_wiki_read_more:"Czytaj artykuł", qa_wiki_collapse:"Zwiń",
+  qa_glossary_hint:"Kliknij podświetlone słowo w checkliście powyżej (np. ADR) - wyjaśnienie pojawi się tutaj.", qa_glossary_loading:"Ładowanie definicji...",
+  qa_outputs_heading:"Gotowe materiały (Outputs)", qa_outputs_loading:"Ładowanie...", qa_outputs_empty:"Brak materiałów.",
+  qa_notfound_title:"Nie znalazłeś odpowiedzi?", qa_notfound_body:"Opisz pytanie — dodamy odpowiedź do bazy wiedzy. Zgłoszenie zapisywane jest lokalnie w przeglądarce (tryb demo, bez prawdziwego backendu dla zgłoszeń).",
+  qa_notfound_ph:"Twoje pytanie...", qa_notfound_submit:"Wyślij", qa_notfound_success:"Dziękujemy! Pytanie zostało zapisane.",
   err_required:"To pole jest wymagane", err_email:"Podaj prawidłowy adres email", err_pass:"Minimum 6 znaków", err_match:"Hasła nie są zgodne",
   modal_login_title:"Logowanie", modal_register_title:"Rejestracja firmy",
   f_password:"Hasło", f_password2:"Powtórz hasło", f_companyname:"Nazwa firmy",
@@ -669,9 +915,14 @@ de:{
   tab_cargo:"Ich suche Transport", tab_transport:"Ich habe Fracht",
   f_from:"Von", f_to:"Nach", f_date:"Verladedatum", f_mode:"Transportart",
   f_weight:"Gewicht, t", f_volume:"Volumen, m³", search:"Suchen", any:"Beliebig",
-  mode_auto:"Straße", mode_rail:"Schiene", mode_sea:"See", mode_air:"Luft", mode_multi:"Multimodal",
+  mode_auto:"Straße", mode_rail:"Schiene", mode_sea:"See", mode_air:"Luft", mode_drone:"Drohnen", mode_multi:"Multimodal",
   stats_title:"Die Börse in Zahlen", stat_cargo:"aktive Frachtangebote", stat_transport:"verfügbare Fahrzeuge",
   stat_companies:"teilnehmende Unternehmen", stat_countries:"abgedeckte Länder",
+  flows_intl_title:"Internationaler Transport", flows_domestic_title:"Inlandstransport",
+  flows_continent_europe:"Europa", flows_continent_asia:"Asien", flows_continent_america:"Amerika", flows_continent_africa:"Afrika", flows_continent_australia:"Australien",
+  flows_continent_todo:"Daten für diesen Kontinent sind noch nicht angebunden.",
+  flow_kind_transport:"Transport", flow_kind_cargo:"Fracht", flow_export:"Export", flow_import:"Import",
+  rating_title:"Unternehmensbewertung", rating_lede:"Unternehmen, die derzeit auf der Börse aktiv sind, sortiert nach dem Wert ihres aktuellen Angebots - Demodaten, keine Reputationsbewertung.",
   results_title:"Aktuelle Angebote", results_count:"gefunden", results_empty:"Keine Angebote zu dieser Suche. Versuchen Sie eine andere Route oder Transportart.",
   col_route:"Route", col_cargo:"Fracht", col_weight:"Gewicht", col_volume:"Volumen", col_date:"Datum", col_price:"Preis", contact_btn:"Kontakt",
   market_title:"Fahrzeugmarkt", market_lede:"Kauf, Verkauf und Vermietung von LKW, Anhängern und Sondertechnik.",
@@ -716,6 +967,20 @@ de:{
   borders_loading:"Wird geladen...", borders_offline:"Der lokale Datenserver ist nicht erreichbar. Führen Sie \"node server/index.js\" aus, um Grenzdaten zu sehen.",
   borders_error:"Daten konnten nicht abgerufen werden. Bitte später erneut versuchen.", borders_empty:"Keine Einträge für diese Filter.",
   borders_partial:"Eine der Quellen ist vorübergehend nicht verfügbar - es werden nur Daten der antwortenden Quellen angezeigt.",
+  qa_title:"Fragen & Antworten", qa_lede:"Ein KI-Assistent antwortet auf Basis der Wissensdatenbank (Wiki) und fertiger Materialien (Outputs) — mit Quellenangaben, ohne erfundene Fakten.",
+  qa_ask_ph:"Z. B.: Was ist ein CMR-Frachtbrief?", qa_ask_button:"Fragen", qa_ask_thinking:"Suche nach einer Antwort...",
+  qa_chat_empty:"Fragen Sie zu Dokumenten, Zoll oder Transportstandards — die Antwort basiert ausschließlich auf den unten stehenden Materialien der Wissensdatenbank.",
+  qa_sources_label:"Quellen:", qa_confidence_high:"hohe Relevanz", qa_confidence_medium:"mittlere Relevanz", qa_confidence_low:"niedrige Relevanz",
+  qa_ai_unavailable:"KI-Antworten sind auf diesem Server noch nicht eingerichtet (ANTHROPIC_API_KEY fehlt). Hier sind passende Materialien aus der Wissensdatenbank:",
+  qa_insufficient:"In der Wissensdatenbank gibt es noch nichts, das diese Frage eindeutig beantwortet.",
+  qa_error:"Antwort konnte nicht abgerufen werden. Bitte später erneut versuchen.", qa_offline:"Der lokale Datenserver ist nicht erreichbar. Führen Sie \"node server/index.js\" aus.",
+  qa_wiki_heading:"Wissensdatenbank (Wiki)", qa_wiki_search_ph:"Artikel durchsuchen...", qa_wiki_all:"Alle Kategorien",
+  qa_cat_dokumenty:"Dokumente", qa_cat_standarty:"Standards", qa_cat_mytnycia:"Zoll", qa_cat_marshruty:"Routen",
+  qa_wiki_loading:"Wird geladen...", qa_wiki_empty:"Keine Einträge für diese Filter.", qa_wiki_read_more:"Artikel lesen", qa_wiki_collapse:"Einklappen",
+  qa_glossary_hint:"Klicken Sie auf ein hervorgehobenes Wort in der Checkliste oben (z. B. ADR) - die Erklärung erscheint hier.", qa_glossary_loading:"Definition wird geladen...",
+  qa_outputs_heading:"Fertige Materialien (Outputs)", qa_outputs_loading:"Wird geladen...", qa_outputs_empty:"Noch keine Materialien.",
+  qa_notfound_title:"Keine Antwort gefunden?", qa_notfound_body:"Beschreiben Sie Ihre Frage — wir ergänzen die Wissensdatenbank. Die Einreichung wird lokal im Browser gespeichert (Demo-Modus, kein echtes Backend für Einreichungen).",
+  qa_notfound_ph:"Ihre Frage...", qa_notfound_submit:"Absenden", qa_notfound_success:"Danke! Ihre Frage wurde gespeichert.",
   err_required:"Dieses Feld ist erforderlich", err_email:"Gültige E-Mail eingeben", err_pass:"Mindestens 6 Zeichen", err_match:"Passwörter stimmen nicht überein",
   modal_login_title:"Anmelden", modal_register_title:"Unternehmen registrieren",
   f_password:"Passwort", f_password2:"Passwort wiederholen", f_companyname:"Firmenname",
@@ -750,25 +1015,42 @@ var ICONS = {
   user:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>',
   book:'<svg class="icon" viewBox="0 0 24 24"><path d="M4 3h12a2 2 0 012 2v16H6a2 2 0 00-2 2V3z"/><path d="M4 19h14"/></svg>',
   sun:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>',
-  flagpost:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4h13l-3 3.5L18 11H5"/></svg>'
+  flagpost:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4h13l-3 3.5L18 11H5"/></svg>',
+  chat:'<svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4V4z"/><path d="M8 9h8M8 12h5"/></svg>',
+  drone:'<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="10" width="6" height="4" rx="1"/><path d="M9 10L4 4M15 10L20 4M9 14L4 20M15 14L20 20"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/></svg>',
+  arrowLeft:'<svg class="icon" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
+  arrowRight:'<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  star:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3.5l2.47 5.24 5.53.55-4.15 3.9 1.13 5.5L12 15.9l-5 2.79 1.13-5.5-4.15-3.9 5.53-.55z"/></svg>',
+  tanker:'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="9" rx="4.5"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/></svg>',
+  container:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="11" rx="1"/><path d="M3 10h18M3 14h18M8 6v11M14 6v11"/></svg>',
+  battery:'<svg class="icon" viewBox="0 0 24 24"><rect x="6" y="4" width="10" height="17" rx="2"/><path d="M9 4V2h4v2"/><path d="M9 9h4M9 13h4M9 17h4"/></svg>',
+  station:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>',
+  chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'
 };
-var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", multi:"boxes"};
+var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
 /* ---------- state ---------- */
 var state = {
   lang: localStorage.getItem("ta_lang") || "uk",
   route: (location.hash||"#home").slice(1) || "home",
   user: JSON.parse(localStorage.getItem("ta_user")||"null"),
-  heroTab: "cargo",
-  filters:{from:"", to:"", mode:"all", date:"", multiModes:[]},
+  filters:{from:"", to:"", mode:"all", date:"", multiModes:[], fromCountry:"", toCountry:"", borderScope:""},
   marketCat: null,
+  marketMode: "auto",
   openNews: {},
-  homeWidgetTab: "reliability",
   modal: null,
   modalMode:"login",
   weather:{tab:"road", from:"", to:"", loading:false, error:null, points:null},
   directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null},
-  borders:{tab:"road", country:"", loading:false, error:null, partial:false, entries:null}
+  borders:{tab:"road", country:"", loading:false, error:null, partial:false, entries:null},
+  flows:{intlContinent:"europe", domesticContinent:"europe"},
+  qa:{
+    messages:[], asking:false,
+    wikiCategory:"", wikiQuery:"", wikiLoading:false, wikiError:null, wiki:null, openArticles:{},
+    outputsLoading:false, outputsError:null, outputs:null,
+    notFoundText:"", notFoundSent:false,
+    wikiById:null, wikiByIdLoading:false, wikiByIdError:null, activeTerm:null
+  }
 };
 
 var WEATHER_API_BASE = "http://localhost:8787";
@@ -809,6 +1091,17 @@ function filteredListings(kind){
     }
     if(state.filters.from && l.from!==state.filters.from) return false;
     if(state.filters.to && l.to!==state.filters.to) return false;
+    // Country-level scope, set when a Транс/Вантаж export or import number
+    // in the homepage flow tables (see renderFlowPanel) is clicked - a
+    // country can span several CITIES entries, so this checks the listing's
+    // resolved country rather than an exact city like from/to above.
+    if(state.filters.fromCountry && cityCountry(l.from)!==state.filters.fromCountry) return false;
+    if(state.filters.toCountry && cityCountry(l.to)!==state.filters.toCountry) return false;
+    if(state.filters.borderScope){
+      var crossBorder = cityCountry(l.from)!==cityCountry(l.to);
+      if(state.filters.borderScope==="international" && !crossBorder) return false;
+      if(state.filters.borderScope==="domestic" && crossBorder) return false;
+    }
     return true;
   });
 }
@@ -845,11 +1138,31 @@ function renderModeField(selectName, currentMode, selectedMulti){
 }
 
 function renderHeader(){
-  var navItems=[["home","nav_home"],["cargo","nav_cargo"],["transport","nav_transport"],["market","nav_market"],["news","nav_news"],["contacts","nav_contacts"],["about","nav_about"]];
-  var navHtml=navItems.map(function(it){
+  function navLink(it){
     var active = state.route===it[0] ? " active":"";
     return '<a href="#'+it[0]+'" class="navlink'+active+'" data-route="'+it[0]+'">'+esc(t(it[1]))+'</a>';
-  }).join("");
+  }
+  var navItemsBefore=[["home","nav_home"],["cargo","nav_cargo"],["transport","nav_transport"],["market","nav_market"]];
+  var navItemsAfter=[["news","nav_news"],["contacts","nav_contacts"],["about","nav_about"]];
+
+  // "Сервіси" sits in the top nav as a hover/focus dropdown between Ринок
+  // транспорту and Новини - a category label with no page of its own (like
+  // Инфоцентр/Пресс-центр on the real site), not a 5th copy of the sidebar
+  // widget already on Home (renderHero keeps its own Сервіси block; this is
+  // purely an additional way in from every page, per the user's request to
+  // keep both).
+  var servicesActive = SERVICES.some(function(s){ return s.route===state.route; });
+  var servicesDropdownHtml = ''+
+    '<div class="navlink-dropdown">'+
+      '<button type="button" class="navlink navlink-dropdown-toggle'+(servicesActive?" active":"")+'">'+esc(t("services_title"))+ICONS.chevronDown+'</button>'+
+      '<div class="navlink-dropdown-menu">'+
+        SERVICES.map(function(s){
+          return '<a href="#'+s.route+'" data-route="'+s.route+'">'+ICONS[s.icon]+'<span>'+esc(s[state.lang]||s.en)+'</span></a>';
+        }).join('')+
+      '</div>'+
+    '</div>';
+
+  var navHtml = navItemsBefore.map(navLink).join("") + servicesDropdownHtml + navItemsAfter.map(navLink).join("");
 
   var langHtml = LANGS.map(function(l){
     return '<button data-lang="'+l+'" class="'+(state.lang===l?"active":"")+'">'+
@@ -907,7 +1220,7 @@ function renderFooter(){
         '<span>'+esc(t("footer_note"))+'</span>'+
       '</div>'+
       '<div class="foot-bottom" style="margin-top:6px; padding-top:0; border-top:none;">'+
-        '<span style="font-size:.72rem;">Banner illustrations are AI-generated concept renders, not photographs of real vehicles or services.</span>'+
+        '<span style="font-size:.72rem;">Most banner illustrations are AI-generated concept renders, not photographs of real vehicles or services - the drone delivery banner is a real photo.</span>'+
       '</div>'+
     '</div>'+
   '</footer>';
@@ -916,26 +1229,40 @@ function renderFooter(){
 /* ---------- render: home ---------- */
 function renderHero(){
   var f=state.filters;
-  var order=["auto","rail","sea","air","multi"];
-  var bannerHtml = order.map(function(m,i){
-    if(i===0){
-      return '<button class="banner-panel wide mode-'+m+'" data-quickmode="'+m+'">'+
-        '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
-        '<div class="bp-overlay"><h3>'+esc(t("mode_"+m))+'</h3></div>'+
-      '</button>';
-    }
+  var order=["auto","rail","sea","air","drone","multi"];
+  var bannerHtml = order.map(function(m){
     return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+
       '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
       '<span class="bp-label">'+esc(t("mode_"+m))+'</span></button>';
   }).join("");
 
-  var resultKind = state.heroTab==="cargo" ? "transport" : "cargo";
-  var resultRows = filteredListings(resultKind).slice(0,6);
-  var resultsHtml = resultRows.length ? resultRows.map(renderListingRow).join("") : '<div class="empty-state">'+esc(t("results_empty"))+'</div>';
-  var widgetTab = state.homeWidgetTab;
   var servicesHtml = SERVICES.map(function(s){
     return '<a href="#'+s.route+'" class="services-item" data-route="'+s.route+'">'+ICONS[s.icon]+'<span>'+esc(s[state.lang]||s.en)+'</span></a>';
   }).join("");
+  var homeMarketHtml = MARKET_CATEGORIES.auto.map(function(m){
+    return '<a href="#market" class="market-card" data-markethome="'+m.id+'">'+ICONS[m.icon]+
+      '<div class="mk-title">'+esc(m[state.lang]||m.en)+'</div></a>';
+  }).join("");
+
+  function heroSearchForm(formId, labelKey, icon){
+    return ''+
+    '<div class="dash-col compact">'+
+      '<div class="panel-head">'+icon+'<span>'+esc(t(labelKey))+'</span></div>'+
+      '<div class="panel-body">'+
+        '<form id="'+formId+'">'+
+          '<div class="console-grid">'+
+            '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
+            '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
+            '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
+            '<div class="field"><label>'+esc(t("f_mode"))+'</label>'+renderModeField("mode", f.mode, f.multiModes)+'</div>'+
+            '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
+            '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
+          '</div>'+
+          '<button type="submit" class="btn btn-primary span2" style="width:100%;margin-top:12px;justify-content:center;">'+ICONS.search+esc(t("search"))+'</button>'+
+        '</form>'+
+      '</div>'+
+    '</div>';
+  }
 
   return ''+
   '<div class="wrap home-lede">'+
@@ -946,45 +1273,22 @@ function renderHero(){
   '<div class="wrap">'+
     '<div class="banner-row">'+bannerHtml+'</div>'+
     '<div class="dash-grid">'+
-      '<div class="dash-col">'+
-        '<div class="panel-head">'+ICONS.search+'<span>'+esc(state.heroTab==="cargo"? t("tab_cargo") : t("tab_transport"))+'</span></div>'+
-        '<div class="panel-body">'+
-          '<div class="mode-tabs">'+
-            '<button data-tab="cargo" class="'+(state.heroTab==="cargo"?"active":"")+'">'+ICONS.truck+'<span>'+esc(t("tab_cargo"))+'</span></button>'+
-            '<button data-tab="transport" class="'+(state.heroTab==="transport"?"active":"")+'">'+ICONS.boxes+'<span>'+esc(t("tab_transport"))+'</span></button>'+
-          '</div>'+
-          '<form id="heroSearchForm">'+
-            '<div class="console-grid">'+
-              '<div class="field"><label>'+esc(t("f_from"))+'</label><select name="from">'+cityOptions(f.from)+'</select></div>'+
-              '<div class="field"><label>'+esc(t("f_to"))+'</label><select name="to">'+cityOptions(f.to)+'</select></div>'+
-              '<div class="field"><label>'+esc(t("f_date"))+'</label><input type="date" name="date" value="'+esc(f.date)+'"></div>'+
-              '<div class="field"><label>'+esc(t("f_mode"))+'</label>'+renderModeField("mode", f.mode, f.multiModes)+'</div>'+
-              '<div class="field"><label>'+esc(t("f_weight"))+'</label><input type="number" min="0" step="0.1" name="weight" placeholder="0"></div>'+
-              '<div class="field"><label>'+esc(t("f_volume"))+'</label><input type="number" min="0" step="1" name="volume" placeholder="0"></div>'+
-            '</div>'+
-            '<button type="submit" class="btn btn-primary span2" style="width:100%;margin-top:14px;justify-content:center;">'+ICONS.search+esc(t("search"))+'</button>'+
-          '</form>'+
-        '</div>'+
+      '<div class="dash-stack">'+
+        heroSearchForm("heroFormCargo", "tab_cargo", ICONS.truck)+
+        heroSearchForm("heroFormTransport", "tab_transport", ICONS.boxes)+
       '</div>'+
-      '<div class="dash-col">'+
-        '<div class="panel-head">'+ICONS[MODE_ICON[f.mode]||"truck"]+'<span>'+esc(t("results_title"))+'</span></div>'+
-        '<div class="panel-body flush">'+
-          '<div class="manifest" style="border:none;">'+resultsHtml+'</div>'+
-          '<div class="panel-more"><a href="#'+resultKind+'" data-route="'+resultKind+'" class="linklike">'+esc(t("nav_"+resultKind))+' &rarr;</a></div>'+
-        '</div>'+
+      '<div class="flows-grid">'+
+        renderFlowPanel(true)+
+        renderFlowPanel(false)+
       '</div>'+
-      '<div>'+
-        '<div class="dash-col">'+
+      '<div class="dash-stack">'+
+        '<div class="dash-col compact">'+
           '<div class="panel-head">'+ICONS.boxes+'<span>'+esc(t("services_title"))+'</span></div>'+
           '<div class="services-list">'+servicesHtml+'</div>'+
         '</div>'+
-        '<div class="mini-widget">'+
+        '<div class="dash-col compact">'+
           '<div class="panel-head">'+ICONS.boxes+'<span>'+esc(t("nav_market"))+'</span></div>'+
-          '<div class="mini-widget-tabs">'+
-            '<button data-widgettab="reliability" class="'+(widgetTab==="reliability"?"active":"")+'">'+esc(t("reliability_t"))+'</button>'+
-            '<button data-widgettab="blacklist" class="'+(widgetTab==="blacklist"?"active":"")+'">'+esc(t("blacklist_t"))+'</button>'+
-          '</div>'+
-          '<div class="mini-widget-body">'+esc(widgetTab==="reliability"? t("reliability_d") : t("blacklist_d"))+'</div>'+
+          '<div class="market-grid">'+homeMarketHtml+'</div>'+
         '</div>'+
       '</div>'+
     '</div>'+
@@ -1006,16 +1310,145 @@ function renderStats(){
   '</div></section>';
 }
 
+function cityCountry(cityId){ var c=CITIES.filter(function(x){return x.id===cityId;})[0]; return c? c.country : null; }
+
+var FLOW_CONTINENTS = ["europe","asia","america","africa","australia"];
+/** Every CITIES entry is European in this demo dataset - only "europe" has
+ * real listings behind it. Other continents render the tab (so the UI shape
+ * matches the real site and future work has somewhere to plug data in) but
+ * show an honest "not connected" note instead of a fabricated zero table -
+ * same pattern as the Азія tab in Кордони/Погода. */
+var FLOW_CONTINENT_COUNTRIES = {europe: null, asia: [], america: [], africa: [], australia: []};
+
+/**
+ * Per-country, per-kind export/import counts for the homepage flow tables,
+ * computed live from LISTINGS (mock data today, a real feed later - nothing
+ * here is hand-typed). This is the site's core direction logic, kept in one
+ * place so future work (real backend, country-pair drilldown, more
+ * continents) has a single spot to extend rather than several to keep in
+ * sync:
+ *
+ *   - `kind` splits the two rows the real site shows per country: "transport"
+ *     (Транс - free capacity a carrier posted) vs "cargo" (Грузы - a load a
+ *     shipper posted) - this maps directly onto LISTINGS' existing `kind`
+ *     field, nothing new to invent.
+ *   - Export (blue) for country X = active postings of that kind
+ *     ORIGINATING in X.
+ *   - Import (yellow) for country X = active postings of that kind ENDING
+ *     in X.
+ *   - `international` selects only cross-border postings (origin country
+ *     !== destination country); pass false for domestic-only (same country
+ *     on both ends) - for those, a listing counts as both an export AND an
+ *     import for that one country (a load picked up and dropped off within
+ *     the same country's borders), so the two numbers land equal by
+ *     construction for a given kind. That's expected, not a bug.
+ *
+ * Returns counts[countryCode][kind] = {exportCount, importCount}.
+ */
+function countryFlowStats(international){
+  var counts = {};
+  function bump(country, kind, field){
+    if(!country) return;
+    if(!counts[country]) counts[country] = {transport:{exportCount:0,importCount:0}, cargo:{exportCount:0,importCount:0}};
+    counts[country][kind][field]++;
+  }
+  LISTINGS.forEach(function(l){
+    var fromCountry = cityCountry(l.from);
+    var toCountry = cityCountry(l.to);
+    if(!fromCountry || !toCountry) return;
+    var isCrossBorder = fromCountry !== toCountry;
+    if(international !== isCrossBorder) return;
+    bump(fromCountry, l.kind, "exportCount");
+    bump(toCountry, l.kind, "importCount");
+  });
+  return counts;
+}
+
+/**
+ * Each number is a real drill-down, not decoration: clicking it sets a
+ * country-level scope on the shared search filters (see filteredListings)
+ * and jumps straight to the matching Вантаж/Транспорт results list -
+ * mirrors how trans-atlas.net's own Транс/Грузы numbers behave.
+ */
+function renderFlowNum(kindLabel, exportCount, importCount, countryCode, kind, international){
+  var route = kind==="transport" ? "transport" : "cargo";
+  var scope = international ? "international" : "domestic";
+  function btn(dir, count, icon, titleKey){
+    return '<button type="button" class="flow-num '+dir+'" data-flowcountry="'+countryCode+'" data-flowdir="'+dir+'" data-flowscope="'+scope+'" data-flowroute="'+route+'" title="'+esc(t(titleKey))+'">'+icon+count+'</button>';
+  }
+  return ''+
+  '<div class="flow-subrow">'+
+    '<span class="flow-kind">'+esc(kindLabel)+'</span>'+
+    btn("export", exportCount, ICONS.arrowLeft, "flow_export")+
+    btn("import", importCount, ICONS.arrowRight, "flow_import")+
+  '</div>';
+}
+
+function renderFlowPanel(international){
+  var stateKey = international ? "intlContinent" : "domesticContinent";
+  var continent = state.flows[stateKey];
+  var titleKey = international ? "flows_intl_title" : "flows_domestic_title";
+
+  var tabsHtml = FLOW_CONTINENTS.map(function(cont){
+    return '<button data-flowcontinent="'+cont+'" data-flowtarget="'+(international?"intl":"domestic")+'" class="'+(continent===cont?"active":"")+'">'+esc(t("flows_continent_"+cont))+'</button>';
+  }).join("");
+
+  var bodyHtml;
+  if(FLOW_CONTINENT_COUNTRIES[continent] !== null){
+    bodyHtml = '<p class="weather-msg" style="margin:14px 16px;">'+esc(t("flows_continent_todo"))+'</p>';
+  } else {
+    var counts = countryFlowStats(international);
+    var countries = CITIES.map(function(c){ return c.country; })
+      .filter(function(code, i, arr){ return arr.indexOf(code)===i; })
+      .sort(function(a, b){ return a.localeCompare(b); });
+
+    bodyHtml = '<div class="flow-country-grid">'+countries.map(function(code){
+      var c = counts[code] || {transport:{exportCount:0,importCount:0}, cargo:{exportCount:0,importCount:0}};
+      return ''+
+      '<div class="flow-country">'+
+        '<div class="flow-country-head"><span class="country-flag '+code.toLowerCase()+'" title="'+esc(countryName(code))+'"></span>'+code+'</div>'+
+        '<div class="flow-country-rows">'+
+          renderFlowNum(t("flow_kind_transport"), c.transport.exportCount, c.transport.importCount, code, "transport", international)+
+          renderFlowNum(t("flow_kind_cargo"), c.cargo.exportCount, c.cargo.importCount, code, "cargo", international)+
+        '</div>'+
+      '</div>';
+    }).join("")+'</div>';
+  }
+
+  return ''+
+  '<div class="flow-panel">'+
+    '<div class="panel-head">'+ICONS[international?"boxes":"truck"]+'<span>'+esc(t(titleKey))+'</span></div>'+
+    '<div class="flow-tabs">'+tabsHtml+'</div>'+
+    bodyHtml+
+  '</div>';
+}
+
+function serviceByRoute(route){ return SERVICES.filter(function(s){ return s.route===route; })[0]; }
+function serviceLabel(route){ var s=serviceByRoute(route); return s? (s[state.lang]||s.en) : route; }
+
 function renderListingRow(l){
   var modeIcon = ICONS[MODE_ICON[l.mode]];
+  var fromCountryCode = (cityCountry(l.from)||"").toLowerCase();
+  var toCountryCode = (cityCountry(l.to)||"").toLowerCase();
+  var servicesHtml = ''+
+    '<a href="#directory" data-route="directory" title="'+esc(serviceLabel("directory"))+'">'+ICONS.book+'</a>'+
+    '<a href="#borders" class="m-svc-borders" data-country="'+esc(cityCountry(l.to)||"")+'" title="'+esc(serviceLabel("borders"))+'">'+ICONS.flagpost+'</a>'+
+    '<a href="#weather" class="m-svc-weather" data-from="'+esc(l.from)+'" data-to="'+esc(l.to)+'" title="'+esc(serviceLabel("weather"))+'">'+ICONS.sun+'</a>'+
+    '<a href="#contacts" data-route="contacts" title="'+esc(serviceLabel("contacts"))+'">'+ICONS.pin+'</a>';
   return ''+
   '<div class="m-row">'+
+    '<span class="m-id">&#8470;'+l.id+'</span>'+
     '<span class="mode-chip '+l.mode+'">'+modeIcon+t("mode_"+l.mode)+'</span>'+
-    '<div><div class="m-route">'+esc(cityName(l.from,state.lang))+'<span class="arr">&rarr;</span>'+esc(cityName(l.to,state.lang))+'</div>'+
+    '<div><div class="m-route">'+
+      '<span class="country-flag '+fromCountryCode+'" title="'+esc(countryName(cityCountry(l.from)))+'"></span>'+esc(cityName(l.from,state.lang))+
+      '<span class="arr">&rarr;</span>'+
+      '<span class="country-flag '+toCountryCode+'" title="'+esc(countryName(cityCountry(l.to)))+'"></span>'+esc(cityName(l.to,state.lang))+
+    '</div>'+
       '<div class="m-sub">'+esc(cargoName(l.cargo,state.lang))+' &middot; '+esc(l.company)+'</div></div>'+
     '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+l.weight+' t</div>'+
     '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
     '<div class="m-figure"><span class="lab">'+esc(t("col_date"))+'</span>'+fmtDate(l.date)+'</div>'+
+    '<div class="m-services">'+servicesHtml+'</div>'+
     '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button>'+
   '</div>';
 }
@@ -1039,21 +1472,30 @@ function renderResultsSection(kind, title){
 
 /* ---------- render: market ---------- */
 function renderMarket(){
-  var cards = MARKET.map(function(m){
+  var mode = MARKET_CATEGORIES[state.marketMode] ? state.marketMode : "auto";
+  var items = MARKET_CATEGORIES[mode];
+
+  var modeTabsHtml = MARKET_MODES.map(function(m){
+    return '<button data-marketmode="'+m+'" class="'+(mode===m?"active":"")+'">'+ICONS[MODE_ICON[m]]+'<span>'+esc(t("mode_"+m))+'</span></button>';
+  }).join("");
+
+  var cards = items.map(function(m){
     var active = state.marketCat===m.id ? " active":"";
     return '<button class="market-card'+active+'" data-market="'+m.id+'">'+ICONS[m.icon]+
       '<div class="mk-title">'+esc(m[state.lang]||m.en)+'</div><div class="mk-count num">'+m.count+'</div></button>';
   }).join("");
 
+  var cat = state.marketCat ? items.filter(function(m){return m.id===state.marketCat;})[0] : null;
   var listingHtml;
-  if(state.marketCat){
-    var cat = MARKET.filter(function(m){return m.id===state.marketCat;})[0];
+  if(cat){
     var mock = LISTINGS.slice(0,4).map(function(l,i){
-      return '<div class="m-row"><span class="mode-chip auto">'+ICONS[cat.icon]+(cat[state.lang]||cat.en)+'</span>'+
-        '<div><div class="m-route">'+esc(cityName(l.from,state.lang))+'</div><div class="m-sub">'+esc(l.company)+'</div></div>'+
+      return ''+
+      '<div class="market-mock-row">'+
+        '<span class="mode-chip '+mode+'">'+ICONS[cat.icon]+esc(cat[state.lang]||cat.en)+'</span>'+
+        '<div class="m-route">'+esc(cityName(l.from,state.lang))+'<span class="arr">&rarr;</span>'+esc(cityName(l.to,state.lang))+'</div>'+
         '<div class="m-figure"><span class="lab">'+esc(t("col_price"))+'</span>&euro;'+(l.price+ i*300)+'</div>'+
-        '<div></div><div></div>'+
-        '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button></div>';
+        '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button>'+
+      '</div>';
     }).join("");
     listingHtml = '<h3 style="margin-top:28px;">'+esc(t("market_listing_title"))+': '+esc(cat[state.lang]||cat.en)+'</h3><div class="manifest">'+mock+'</div>';
   } else {
@@ -1064,8 +1506,40 @@ function renderMarket(){
   '<section><div class="wrap">'+
     '<p class="eyebrow">'+esc(t("nav_market"))+'</p>'+
     '<h1>'+esc(t("market_title"))+'</h1><p class="lede">'+esc(t("market_lede"))+'</p>'+
-    '<div class="market-grid" style="margin-top:22px;">'+cards+'</div>'+
+    '<div class="mode-tabs" style="max-width:640px;margin-top:20px;">'+modeTabsHtml+'</div>'+
+    '<div class="market-grid" style="margin-top:16px;">'+cards+'</div>'+
     listingHtml+
+  '</div></section>';
+}
+
+/* ---------- render: company rating ---------- */
+/** Every mock listing has exactly one company, so "ranking" them can't be a
+ * repeat-business or volume count - it's real per-listing value instead
+ * (price), sorted high to low. No star ratings, review counts, or trust
+ * scores are invented here: this is demo data (see rating_lede), and the
+ * one honest number we actually have is what each current listing is
+ * worth. */
+function renderRating(){
+  var ranked = LISTINGS.slice().sort(function(a, b){ return b.price - a.price; });
+  var rowsHtml = ranked.map(function(l, i){
+    var modeIcon = ICONS[MODE_ICON[l.mode]];
+    return ''+
+    '<div class="rating-row">'+
+      '<span class="rating-rank">#'+(i+1)+'</span>'+
+      '<div class="rating-company">'+
+        '<div class="m-route" style="font-size:.92rem;">'+esc(l.company)+'</div>'+
+        '<div class="m-sub">'+esc(cityName(l.from,state.lang))+'<span class="arr">&rarr;</span>'+esc(cityName(l.to,state.lang))+'</div>'+
+      '</div>'+
+      '<span class="mode-chip '+l.mode+'">'+modeIcon+t("mode_"+l.mode)+'</span>'+
+      '<span class="rating-price">&euro;'+l.price+'</span>'+
+    '</div>';
+  }).join("");
+
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p>'+
+    '<h1>'+esc(t("rating_title"))+'</h1><p class="lede">'+esc(t("rating_lede"))+'</p>'+
+    '<div class="rating-list" style="margin-top:22px;">'+rowsHtml+'</div>'+
   '</div></section>';
 }
 
@@ -1294,7 +1768,10 @@ var COUNTRY_NAMES = {
   EE:{uk:"Естонія",en:"Estonia",pl:"Estonia",de:"Estland"}, KZ:{uk:"Казахстан",en:"Kazakhstan",pl:"Kazachstan",de:"Kasachstan"},
   US:{uk:"США",en:"USA",pl:"USA",de:"USA"}, CH:{uk:"Швейцарія",en:"Switzerland",pl:"Szwajcaria",de:"Schweiz"},
   BY:{uk:"Білорусь",en:"Belarus",pl:"Białoruś",de:"Belarus"}, HU:{uk:"Угорщина",en:"Hungary",pl:"Węgry",de:"Ungarn"},
-  RU:{uk:"росія",en:"Russia",pl:"Rosja",de:"Russland"}, SK:{uk:"Словаччина",en:"Slovakia",pl:"Słowacja",de:"Slowakei"}
+  RU:{uk:"росія",en:"Russia",pl:"Rosja",de:"Russland"}, SK:{uk:"Словаччина",en:"Slovakia",pl:"Słowacja",de:"Slowakei"},
+  DE:{uk:"Німеччина",en:"Germany",pl:"Niemcy",de:"Deutschland"}, LT:{uk:"Литва",en:"Lithuania",pl:"Litwa",de:"Litauen"},
+  CZ:{uk:"Чехія",en:"Czechia",pl:"Czechy",de:"Tschechien"}, AT:{uk:"Австрія",en:"Austria",pl:"Austria",de:"Österreich"},
+  NL:{uk:"Нідерланди",en:"Netherlands",pl:"Holandia",de:"Niederlande"}, TR:{uk:"Туреччина",en:"Turkey",pl:"Turcja",de:"Türkei"}
 };
 function countryName(code){ var c=COUNTRY_NAMES[code]; return c? (c[state.lang]||c.en) : code; }
 function fetchDirectory(){
@@ -1361,6 +1838,276 @@ function renderDirectory(){
       '<button class="btn btn-primary" id="directoryApplyBtn">'+ICONS.search+esc(t("directory_apply"))+'</button>'+
     '</div>'+
     body+
+  '</div></section>';
+}
+
+/* ---------- Q&A ---------- */
+var QA_CATEGORIES = ["dokumenty","standarty","mytnycia","marshruty"];
+
+function fetchQaWiki(){
+  var qa = state.qa;
+  qa.wikiLoading = true; qa.wikiError = null;
+  renderApp();
+  var url = WEATHER_API_BASE+"/api/qa/wiki?category="+encodeURIComponent(qa.wikiCategory)+"&q="+encodeURIComponent(qa.wikiQuery);
+  fetch(url).then(function(res){
+    return res.json().then(function(json){
+      qa.wikiLoading = false;
+      if(!res.ok){ qa.wikiError = "error"; renderApp(); return; }
+      qa.wiki = json.entries;
+      renderApp();
+    });
+  }).catch(function(err){
+    qa.wikiLoading = false;
+    qa.wikiError = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"") ? "offline" : "error";
+    renderApp();
+  });
+}
+
+function fetchQaOutputs(){
+  var qa = state.qa;
+  qa.outputsLoading = true; qa.outputsError = null;
+  renderApp();
+  fetch(WEATHER_API_BASE+"/api/qa/outputs").then(function(res){
+    return res.json().then(function(json){
+      qa.outputsLoading = false;
+      if(!res.ok){ qa.outputsError = "error"; renderApp(); return; }
+      qa.outputs = json.entries;
+      renderApp();
+    });
+  }).catch(function(err){
+    qa.outputsLoading = false;
+    qa.outputsError = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"") ? "offline" : "error";
+    renderApp();
+  });
+}
+
+/** Unfiltered copy of the wiki, keyed by id, fetched once and kept
+ * separately from `qa.wiki` (which reflects whatever category/search filter
+ * is active in the left column) - the glossary needs to resolve a term to
+ * its definition regardless of what's currently filtered into view there. */
+function fetchQaWikiAll(){
+  var qa = state.qa;
+  qa.wikiByIdLoading = true; qa.wikiByIdError = null;
+  renderApp();
+  fetch(WEATHER_API_BASE+"/api/qa/wiki").then(function(res){
+    return res.json().then(function(json){
+      qa.wikiByIdLoading = false;
+      if(!res.ok){ qa.wikiByIdError = "error"; renderApp(); return; }
+      var byId = {};
+      json.entries.forEach(function(a){ byId[a.id] = a; });
+      qa.wikiById = byId;
+      renderApp();
+    });
+  }).catch(function(err){
+    qa.wikiByIdLoading = false;
+    qa.wikiByIdError = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"") ? "offline" : "error";
+    renderApp();
+  });
+}
+
+/**
+ * Terms in the Outputs checklists (ADR, CMR, Incoterms codes, T1/NCTS...)
+ * that are unfamiliar unless you work in logistics - each maps to the real
+ * wiki article that actually explains it. Deliberately NOT exhaustive: a
+ * term only appears here if server/data/wiki.json really defines it, so
+ * clicking a highlighted word never shows a made-up explanation. Extend
+ * this list alongside wiki.json, not ahead of it.
+ */
+var GLOSSARY_TERMS = [
+  {term:"CMR", wikiId:"cmr-waybill"},
+  {term:"ADR", wikiId:"adr-dangerous-goods"},
+  {term:"TIR", wikiId:"tir-carnet"},
+  {term:"МДП", wikiId:"tir-carnet"},
+  {term:"Зелена картка", wikiId:"green-card-insurance"},
+  {term:"Green Card", wikiId:"green-card-insurance"},
+  {term:"Incoterms", wikiId:"incoterms-2020"},
+  {term:"Інкотермс", wikiId:"incoterms-2020"},
+  {term:"EXW", wikiId:"incoterms-2020"}, {term:"FCA", wikiId:"incoterms-2020"},
+  {term:"CPT", wikiId:"incoterms-2020"}, {term:"CIP", wikiId:"incoterms-2020"},
+  {term:"DAP", wikiId:"incoterms-2020"}, {term:"DPU", wikiId:"incoterms-2020"},
+  {term:"DDP", wikiId:"incoterms-2020"}, {term:"FOB", wikiId:"incoterms-2020"},
+  {term:"CFR", wikiId:"incoterms-2020"}, {term:"CIF", wikiId:"incoterms-2020"},
+  {term:"NCTS", wikiId:"eu-customs-transit"},
+  {term:"T1", wikiId:"eu-customs-transit"}, {term:"T2", wikiId:"eu-customs-transit"}
+];
+
+/** Wraps every GLOSSARY_TERMS match in `text` as a clickable span, after
+ * escaping the text (so this is the one place output-item text passes
+ * through - callers should not esc() it again). Uses \p{L}/\p{N} lookaround
+ * instead of \b, because JS's \b only understands ASCII word characters and
+ * silently fails to match at the edges of Cyrillic terms like "Зелена
+ * картка". */
+function linkifyGlossary(text){
+  var html = esc(text);
+  GLOSSARY_TERMS.forEach(function(g){
+    var escapedTerm = g.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var re = new RegExp("(?<![\\p{L}\\p{N}])" + escapedTerm + "(?![\\p{L}\\p{N}])", "gu");
+    html = html.replace(re, function(m){
+      return '<span class="glossary-term" data-term-wiki="'+g.wikiId+'" data-term-label="'+esc(m)+'">'+m+'</span>';
+    });
+  });
+  return html;
+}
+
+function askQa(question){
+  var qa = state.qa;
+  qa.messages.push({role:"user", text:question});
+  qa.asking = true;
+  renderApp();
+  fetch(WEATHER_API_BASE+"/api/qa/ask", {
+    method:"POST",
+    headers:{"content-type":"application/json"},
+    body: JSON.stringify({question: question})
+  }).then(function(res){
+    return res.json().then(function(json){
+      qa.asking = false;
+      if(!res.ok){
+        qa.messages.push({role:"assistant", warn:true, text: t("qa_error"), sources: json.sources||[]});
+        renderApp();
+        return;
+      }
+      if(json.insufficient){
+        qa.messages.push({role:"assistant", warn:true, text: json.message_uk || t("qa_insufficient"), sources:[]});
+      } else if(json.aiUnavailable){
+        qa.messages.push({role:"assistant", warn:true, text: t("qa_ai_unavailable"), sources: json.sources||[]});
+      } else {
+        qa.messages.push({role:"assistant", text: json.answer, sources: json.sources||[], confidence: json.confidence});
+      }
+      renderApp();
+    });
+  }).catch(function(err){
+    qa.asking = false;
+    var offline = /Failed to fetch|NetworkError|ECONNREFUSED|Load failed/i.test(err.message||"");
+    qa.messages.push({role:"assistant", warn:true, text: offline ? t("qa_offline") : t("qa_error"), sources:[]});
+    renderApp();
+  });
+}
+
+function qaSourcePillsHtml(sources){
+  if(!sources || !sources.length) return "";
+  return '<div class="qa-msg-sources">'+esc(t("qa_sources_label"))+
+    sources.map(function(s){ return '<span class="qa-source-pill">'+esc(s.title)+'</span>'; }).join('')+
+    '</div>';
+}
+
+function renderQaChatMessage(m){
+  var cls = "qa-msg "+(m.role==="user"?"user":"assistant")+(m.warn?" warn":"");
+  var confidence = m.confidence ? '<div class="qa-confidence">'+esc(t("qa_confidence_"+m.confidence))+'</div>' : "";
+  return '<div class="'+cls+'">'+esc(m.text)+confidence+(m.role==="assistant"?qaSourcePillsHtml(m.sources):"")+'</div>';
+}
+
+function renderQa(){
+  var qa = state.qa;
+
+  var catButtons = '<button data-qacat="" class="'+(qa.wikiCategory===""?"active":"")+'">'+esc(t("qa_wiki_all"))+'</button>'+
+    QA_CATEGORIES.map(function(c){
+      return '<button data-qacat="'+c+'" class="'+(qa.wikiCategory===c?"active":"")+'">'+esc(t("qa_cat_"+c))+'</button>';
+    }).join('');
+
+  var wikiBody;
+  if(qa.wikiLoading){
+    wikiBody = '<p class="weather-msg">'+esc(t("qa_wiki_loading"))+'</p>';
+  } else if(qa.wikiError==="offline"){
+    wikiBody = '<div class="weather-card warn-card"><p class="weather-msg">'+esc(t("qa_offline"))+'</p></div>';
+  } else if(qa.wikiError){
+    wikiBody = '<p class="weather-msg">'+esc(t("qa_error"))+'</p>';
+  } else if(qa.wiki && qa.wiki.length===0){
+    wikiBody = '<p class="weather-msg">'+esc(t("qa_wiki_empty"))+'</p>';
+  } else if(qa.wiki){
+    wikiBody = qa.wiki.map(function(a){
+      var open = !!qa.openArticles[a.id];
+      return '<div class="qa-wiki-item">'+
+        '<div class="qa-wiki-item-head" data-qaarticle="'+esc(a.id)+'">'+
+          '<span>'+esc(a.title)+'</span><span class="qa-wiki-item-cat">'+esc(t("qa_cat_"+a.category))+'</span>'+
+        '</div>'+
+        (open ? '<div class="qa-wiki-item-body">'+esc(a.body)+
+          (a.sources&&a.sources.length? '<div class="qa-wiki-item-sources">'+esc(t("qa_sources_label"))+' '+esc(a.sources.join('; '))+'</div>' : '')+
+        '</div>' : '')+
+      '</div>';
+    }).join('');
+  } else {
+    wikiBody = '';
+  }
+
+  var chatBody;
+  if(!qa.messages.length){
+    chatBody = '<p class="qa-chat-empty">'+esc(t("qa_chat_empty"))+'</p>';
+  } else {
+    chatBody = qa.messages.map(renderQaChatMessage).join('') + (qa.asking ? '<div class="qa-msg assistant">'+esc(t("qa_ask_thinking"))+'</div>' : '');
+  }
+
+  var outputsBody;
+  if(qa.outputsLoading){
+    outputsBody = '<p class="weather-msg">'+esc(t("qa_outputs_loading"))+'</p>';
+  } else if(qa.outputsError==="offline"){
+    outputsBody = '<div class="weather-card warn-card"><p class="weather-msg">'+esc(t("qa_offline"))+'</p></div>';
+  } else if(qa.outputsError){
+    outputsBody = '<p class="weather-msg">'+esc(t("qa_error"))+'</p>';
+  } else if(qa.outputs && qa.outputs.length===0){
+    outputsBody = '<p class="weather-msg">'+esc(t("qa_outputs_empty"))+'</p>';
+  } else if(qa.outputs){
+    outputsBody = '<div class="qa-outputs-grid">'+qa.outputs.map(function(o){
+      return '<div class="qa-output-card">'+
+        '<span class="qa-output-type">'+esc(o.type)+'</span>'+
+        '<h3>'+esc(o.title)+'</h3>'+
+        '<ul>'+o.items.slice(0,4).map(function(i){ return '<li>'+linkifyGlossary(i)+'</li>'; }).join('')+'</ul>'+
+      '</div>';
+    }).join('')+'</div>';
+  } else {
+    outputsBody = '';
+  }
+
+  var glossaryPanelHtml = '';
+  if(qa.outputs && qa.outputs.length){
+    var activeArticle = (qa.activeTerm && qa.wikiById) ? qa.wikiById[qa.activeTerm.wikiId] : null;
+    var glossaryInner;
+    if(!qa.activeTerm){
+      glossaryInner = '<p class="qa-glossary-hint">'+esc(t("qa_glossary_hint"))+'</p>';
+    } else if(!activeArticle){
+      glossaryInner = '<p class="weather-msg" style="margin:0;">'+esc(t("qa_glossary_loading"))+'</p>';
+    } else {
+      glossaryInner = ''+
+        '<span class="qa-glossary-term">'+esc(qa.activeTerm.label)+'</span>'+
+        '<h3>'+esc(activeArticle.title)+'</h3>'+
+        '<p>'+esc(activeArticle.summary)+'</p>'+
+        '<button type="button" class="linklike" data-qaopenarticle="'+esc(activeArticle.id)+'">'+esc(t("qa_wiki_read_more"))+' &rarr;</button>';
+    }
+    glossaryPanelHtml = '<div class="qa-glossary-panel" id="qaGlossaryPanel">'+glossaryInner+'</div>';
+  }
+
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("nav_market"))+'</p><h1>'+esc(t("qa_title"))+'</h1><p class="lede">'+esc(t("qa_lede"))+'</p>'+
+    '<div class="qa-grid">'+
+      '<div class="qa-col" id="qaWikiCol">'+
+        '<div class="qa-col-head">'+ICONS.book+'<span>'+esc(t("qa_wiki_heading"))+'</span></div>'+
+        '<div class="qa-col-body">'+
+          '<div class="qa-wiki-cats">'+catButtons+'</div>'+
+          '<input class="qa-wiki-search" type="text" id="qaWikiSearch" value="'+esc(qa.wikiQuery)+'" placeholder="'+esc(t("qa_wiki_search_ph"))+'">'+
+          wikiBody+
+        '</div>'+
+      '</div>'+
+      '<div class="qa-col">'+
+        '<div class="qa-col-head">'+ICONS.chat+'<span>AI</span></div>'+
+        '<div class="qa-col-body"><div class="qa-chat-messages">'+chatBody+'</div></div>'+
+        '<form class="qa-chat-form" id="qaAskForm">'+
+          '<input type="text" name="qaQuestion" placeholder="'+esc(t("qa_ask_ph"))+'" '+(qa.asking?"disabled":"")+' required>'+
+          '<button class="btn btn-primary" type="submit" '+(qa.asking?"disabled":"")+'>'+ICONS.chat+esc(t("qa_ask_button"))+'</button>'+
+        '</form>'+
+      '</div>'+
+    '</div>'+
+    '<div class="section-head" style="margin-top:32px;"><h2>'+esc(t("qa_outputs_heading"))+'</h2></div>'+
+    outputsBody+
+    glossaryPanelHtml+
+    '<div class="qa-notfound">'+
+      '<h3>'+esc(t("qa_notfound_title"))+'</h3>'+
+      '<p>'+esc(t("qa_notfound_body"))+'</p>'+
+      (qa.notFoundSent ? '<p class="weather-msg good">'+esc(t("qa_notfound_success"))+'</p>' : ''+
+      '<form class="qa-notfound-form" id="qaNotFoundForm">'+
+        '<textarea name="qaNotFoundText" placeholder="'+esc(t("qa_notfound_ph"))+'" required>'+esc(qa.notFoundText)+'</textarea>'+
+        '<button class="btn btn-primary" type="submit">'+esc(t("qa_notfound_submit"))+'</button>'+
+      '</form>')+
+    '</div>'+
   '</div></section>';
 }
 
@@ -1466,6 +2213,8 @@ function pageContent(){
     case "weather": return renderWeather();
     case "directory": return renderDirectory();
     case "borders": return renderBorders();
+    case "qa": return renderQa();
+    case "rating": return renderRating();
     default: return renderHero()+renderStats();
   }
 }
@@ -1586,26 +2335,31 @@ function bindEvents(){
   var logoutBtn=document.getElementById("logoutBtn");
   if(logoutBtn) logoutBtn.addEventListener("click", function(){ state.user=null; localStorage.removeItem("ta_user"); toast(t("toast_logout_ok")); renderApp(); });
 
-  var heroForm=document.getElementById("heroSearchForm");
-  if(heroForm){
-    app.querySelectorAll("[data-tab]").forEach(function(b){
-      b.addEventListener("click", function(){ state.heroTab=b.getAttribute("data-tab"); renderApp(); });
-    });
-    heroForm.addEventListener("submit", function(e){
+  // Two independent stacked search panels now sit where one tab-switched
+  // form used to (see heroSearchForm() in renderHero) - each just submits
+  // to its own fixed destination route instead of a shared heroTab toggle.
+  function bindHeroForm(formId, targetRoute){
+    var form = document.getElementById(formId);
+    if(!form) return;
+    form.addEventListener("submit", function(e){
       e.preventDefault();
       var f=e.target;
       state.filters.from=f.from.value; state.filters.to=f.to.value;
       state.filters.mode=f.mode.value; state.filters.date=f.date.value;
       state.filters.multiModes = f.mode.value==="multi" ? readMultiModes(f,"mode") : [];
-      navigate(state.heroTab==="cargo" ? "transport" : "cargo");
-    });
-    app.querySelectorAll("[data-quickmode]").forEach(function(b){
-      b.addEventListener("click", function(){
-        state.filters.mode=b.getAttribute("data-quickmode");
-        navigate("cargo");
-      });
+      state.filters.fromCountry = ""; state.filters.toCountry = ""; state.filters.borderScope = "";
+      navigate(targetRoute);
     });
   }
+  bindHeroForm("heroFormCargo", "transport");
+  bindHeroForm("heroFormTransport", "cargo");
+  app.querySelectorAll("[data-quickmode]").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.filters.mode=b.getAttribute("data-quickmode");
+      state.filters.fromCountry = ""; state.filters.toCountry = ""; state.filters.borderScope = "";
+      navigate("cargo");
+    });
+  });
 
   app.querySelectorAll(".mode-select").forEach(function(sel){
     sel.addEventListener("change", function(){
@@ -1623,6 +2377,9 @@ function bindEvents(){
       var modeVal=bar.querySelector('[name="fmode"]').value;
       state.filters.mode=modeVal;
       state.filters.multiModes = modeVal==="multi" ? readMultiModes(bar,"fmode") : [];
+      // Picking specific cities here supersedes any country-level scope a
+      // flow-table number click (see renderFlowNum) may have set earlier.
+      state.filters.fromCountry = ""; state.filters.toCountry = ""; state.filters.borderScope = "";
       renderApp();
     });
   }
@@ -1634,6 +2391,28 @@ function bindEvents(){
     });
   });
 
+  // Per-listing Сервіси icons (see renderListingRow) - Довідник/Карта use
+  // the generic [data-route] handler above since they need no context, but
+  // Кордони/Погода carry this specific listing's route and jump straight to
+  // the matching real data instead of a blank service page.
+  app.querySelectorAll(".m-svc-borders").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      state.borders.country = a.getAttribute("data-country") || "";
+      state.borders.entries = null; state.borders.error = null;
+      navigate("borders");
+    });
+  });
+  app.querySelectorAll(".m-svc-weather").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      var fromId = a.getAttribute("data-from"), toId = a.getAttribute("data-to");
+      state.weather.from = fromId; state.weather.to = toId;
+      navigate("weather");
+      fetchWeatherForRoute(fromId, toId);
+    });
+  });
+
   app.querySelectorAll("[data-market]").forEach(function(b){
     b.addEventListener("click", function(){
       var id=b.getAttribute("data-market");
@@ -1641,13 +2420,22 @@ function bindEvents(){
       renderApp();
     });
   });
-
-  app.querySelectorAll("[data-widgettab]").forEach(function(b){
+  app.querySelectorAll("[data-marketmode]").forEach(function(b){
     b.addEventListener("click", function(){
-      state.homeWidgetTab = b.getAttribute("data-widgettab");
+      state.marketMode = b.getAttribute("data-marketmode");
+      state.marketCat = null;
       renderApp();
     });
   });
+  app.querySelectorAll("[data-markethome]").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      state.marketMode = "auto";
+      state.marketCat = a.getAttribute("data-markethome");
+      navigate("market");
+    });
+  });
+
 
   app.querySelectorAll("[data-weathertab]").forEach(function(b){
     b.addEventListener("click", function(){
@@ -1688,6 +2476,27 @@ function bindEvents(){
       renderApp();
     });
   });
+
+  app.querySelectorAll("[data-flowcontinent]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var key = b.getAttribute("data-flowtarget")==="intl" ? "intlContinent" : "domesticContinent";
+      state.flows[key] = b.getAttribute("data-flowcontinent");
+      renderApp();
+    });
+  });
+
+  app.querySelectorAll("[data-flowcountry]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var country = b.getAttribute("data-flowcountry");
+      var dir = b.getAttribute("data-flowdir");
+      state.filters.from = ""; state.filters.to = "";
+      state.filters.fromCountry = dir==="export" ? country : "";
+      state.filters.toCountry = dir==="import" ? country : "";
+      state.filters.borderScope = b.getAttribute("data-flowscope");
+      state.filters.mode = "all"; state.filters.multiModes = [];
+      navigate(b.getAttribute("data-flowroute"));
+    });
+  });
   var bordersApplyBtn=document.getElementById("bordersApplyBtn");
   if(bordersApplyBtn){
     bordersApplyBtn.addEventListener("click", function(){
@@ -1699,6 +2508,80 @@ function bindEvents(){
   if(state.route==="borders" && state.borders.tab!=="asia" && state.borders.entries===null && !state.borders.loading && !state.borders.error){
     fetchBorders();
   }
+
+  app.querySelectorAll("[data-qacat]").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.qa.wikiCategory = b.getAttribute("data-qacat");
+      fetchQaWiki();
+    });
+  });
+  var qaWikiSearch = document.getElementById("qaWikiSearch");
+  if(qaWikiSearch){
+    // Full-app re-renders on state change would drop keyboard focus if this
+    // fired on every "input" event - trigger only when the user is done
+    // typing (blur) or presses Enter, same as the directory/borders filters
+    // that submit on an explicit Apply action rather than live per-keystroke.
+    qaWikiSearch.addEventListener("keydown", function(e){
+      if(e.key==="Enter"){ e.preventDefault(); state.qa.wikiQuery = qaWikiSearch.value; fetchQaWiki(); }
+    });
+    qaWikiSearch.addEventListener("blur", function(){
+      if(qaWikiSearch.value !== state.qa.wikiQuery){ state.qa.wikiQuery = qaWikiSearch.value; fetchQaWiki(); }
+    });
+  }
+  app.querySelectorAll("[data-qaarticle]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-qaarticle");
+      state.qa.openArticles[id] = !state.qa.openArticles[id];
+      renderApp();
+    });
+  });
+  var qaAskForm = document.getElementById("qaAskForm");
+  if(qaAskForm){
+    qaAskForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var q = qaAskForm.qaQuestion.value.trim();
+      if(!q || state.qa.asking) return;
+      qaAskForm.qaQuestion.value = "";
+      askQa(q);
+    });
+  }
+  var qaNotFoundForm = document.getElementById("qaNotFoundForm");
+  if(qaNotFoundForm){
+    qaNotFoundForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var text = qaNotFoundForm.qaNotFoundText.value.trim();
+      if(!text) return;
+      var inbox = JSON.parse(localStorage.getItem("ta_qa_inbox")||"[]");
+      inbox.push({text:text, at:new Date().toISOString()});
+      localStorage.setItem("ta_qa_inbox", JSON.stringify(inbox));
+      state.qa.notFoundSent = true;
+      renderApp();
+    });
+  }
+  if(state.route==="qa"){
+    if(state.qa.wiki===null && !state.qa.wikiLoading && !state.qa.wikiError) fetchQaWiki();
+    if(state.qa.outputs===null && !state.qa.outputsLoading && !state.qa.outputsError) fetchQaOutputs();
+    if(state.qa.wikiById===null && !state.qa.wikiByIdLoading && !state.qa.wikiByIdError) fetchQaWikiAll();
+  }
+
+  app.querySelectorAll("[data-term-wiki]").forEach(function(el){
+    el.addEventListener("click", function(){
+      state.qa.activeTerm = { label: el.getAttribute("data-term-label"), wikiId: el.getAttribute("data-term-wiki") };
+      renderApp();
+      var panel = document.getElementById("qaGlossaryPanel");
+      if(panel) panel.scrollIntoView({behavior:"smooth", block:"nearest"});
+    });
+  });
+  app.querySelectorAll("[data-qaopenarticle]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-qaopenarticle");
+      state.qa.wikiCategory = ""; state.qa.wikiQuery = "";
+      state.qa.openArticles[id] = true;
+      fetchQaWiki();
+      var col = document.getElementById("qaWikiCol");
+      if(col) col.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
 
   app.querySelectorAll("[data-news]").forEach(function(b){
     b.addEventListener("click", function(){

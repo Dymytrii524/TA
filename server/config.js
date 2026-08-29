@@ -29,6 +29,13 @@ var SOURCES = {
   carec: { name: 'CAREC BCP Monitor', ttlMs: 30 * 24 * 60 * 60 * 1000, licence: 'Free, reference/historical only - never label as live.', requiresKey: false, status: 'not_implemented' },
   imfPortwatch: { name: 'IMF PortWatch', ttlMs: 24 * 60 * 60 * 1000, licence: 'Free, attribution to IMF PortWatch required.', requiresKey: false, status: 'not_implemented' },
   copernicusMarine: { name: 'Copernicus Marine Service', ttlMs: 30 * 60 * 1000, licence: 'Free, EU programme, registration required.', requiresKey: true, status: 'not_implemented' },
+  anthropic: {
+    name: 'Anthropic Claude API (Q&A assistant)',
+    ttlMs: 0, // no caching - every question is answered fresh, grounded in the retrieval hit at request time
+    licence: 'Paid API, requires ANTHROPIC_API_KEY. Not a scraped source - used to generate answers grounded in server/data/wiki.json + outputs.json.',
+    requiresKey: true,
+    status: process.env.ANTHROPIC_API_KEY ? 'implemented' : 'not_implemented',
+  },
 };
 
 module.exports = {
