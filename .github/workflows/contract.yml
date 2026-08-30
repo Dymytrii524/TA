@@ -102,7 +102,7 @@ jobs:
           path: contract-report.txt
 
   i18n:
-    name: Валютні та мовні сценарії C1-C9, L1-L6
+    name: i18n-checks
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
