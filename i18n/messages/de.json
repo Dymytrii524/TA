@@ -5,7 +5,6 @@
   "deal.price_vs_payment": "Preis {price}, Zahlung {payment} zum Kurs {rate}",
   "fx.stale_notice": "Wechselkurs ist veraltet, aktualisiert am {fixed_at}",
   "chat.machine_translation_notice": "Maschinelle Übersetzung. Original anzeigen",
-  "escrow.locked": "{amount} USDC im Treuhandkonto gesperrt bis zur Lieferbestätigung",
   "docs.ecmr_required": "e-CMR und GPS-Bestätigung erforderlich",
   "terms.incoterms": "Incoterms-Lieferbedingungen",
   "terms.adr": "ADR-Gefahrklasse",
