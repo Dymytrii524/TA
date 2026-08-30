@@ -13,6 +13,13 @@ on:
 permissions:
   contents: read
 
+# Типова оболонка GitHub Actions - `bash -e` БЕЗ pipefail: код виходу конвеєра
+# `python ... | tee file` дорівнює коду `tee`, тобто 0, і провал прогону
+# лишається непоміченим. Дефект знайдено справжнім pull request (розділ A.13.4).
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
+
 concurrency:
   group: contract-${{ github.head_ref || github.ref }}
   cancel-in-progress: true

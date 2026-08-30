@@ -26,6 +26,7 @@ contract:
     - pip install -r schemas/requirements.txt
     - python schemas/validate_schema.py
     - python ci/check_ruleset.py
+    - set -o pipefail
     - python schemas/check_schema.py | tee contract-report.txt
   artifacts:
     when: always
@@ -59,6 +60,7 @@ i18n:
   script:
     - pip install -r schemas/requirements.txt
     - python schemas/validate_schema.py schemas/i18n.schema.json
+    - set -o pipefail
     - python schemas/check_i18n.py | tee i18n-report.txt
   artifacts:
     when: always
