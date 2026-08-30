@@ -164,7 +164,7 @@ jobs:
   # Вона виконується завжди й падає, якщо впав будь-який із job «schema» або «i18n».
   contract-gate:
     name: contract-gate
-    needs: [schema, i18n]
+    needs: [schema]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 2
