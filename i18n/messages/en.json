@@ -11,5 +11,6 @@
   "terms.adr": "ADR hazard class",
   "customs.t1": "T1 customs transit, TIR carnet",
   "docs.cmr": "CMR waybill",
-  "escrow.alt_asset": "Alternative escrow asset is USDT, accounting still runs in EUR"
+  "escrow.alt_asset": "Alternative escrow asset is USDT, accounting still runs in EUR",
+  "search.reverse": "Find return trips"
 }

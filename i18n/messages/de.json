@@ -11,5 +11,6 @@
   "terms.adr": "ADR-Gefahrklasse",
   "customs.t1": "T1-Zolltransit, TIR-Carnet",
   "docs.cmr": "CMR-Frachtbrief",
-  "escrow.alt_asset": "Alternatives Treuhand-Asset ist USDT, die Buchhaltung bleibt in EUR"
+  "escrow.alt_asset": "Alternatives Treuhand-Asset ist USDT, die Buchhaltung bleibt in EUR",
+  "search.reverse": "Rückfahrten finden"
 }
