@@ -225,7 +225,23 @@ def cond_true(expr, outputs, prev_failed):
     return True
 
 
-def run_job(work, binpath, job, branch, logs, side):
+def shell_argv(wf, job, step):
+    """Оболонка кроку за правилами GitHub Actions.
+
+    Типове значення для Linux-runner-а — `bash -e {0}`, БЕЗ pipefail: код виходу
+    конвеєра `python ... | tee file` дорівнює коду `tee`. Прогін мусить
+    відтворювати саме цю семантику, інакше маскування провалу лишиться
+    непоміченим (див. розділ A.13.4 ТЗ).
+    """
+    spec = (step.get("shell")
+            or job.get("defaults", {}).get("run", {}).get("shell")
+            or wf.get("defaults", {}).get("run", {}).get("shell")
+            or "bash -e {0}")
+    flags = [tok for tok in spec.split() if tok != "{0}"]
+    return flags + ["-c"]
+
+
+def run_job(work, binpath, wf, job, branch, logs, side):
     env = dict(os.environ)
     env["PATH"] = binpath + os.pathsep + env["PATH"]
     outputs, failed = {}, False
@@ -243,7 +259,8 @@ def run_job(work, binpath, job, branch, logs, side):
         if "uses" in step:  # checkout, setup-python, upload-artifact — інфраструктура runner-а
             logs.append(f"      ok:      {label} (крок runner-а)")
             continue
-        r = sh(["bash", "-eo", "pipefail", "-c", subst(step["run"], branch)], work, env=env, check=False)
+        argv = shell_argv(wf, job, step) + [subst(step["run"], branch)]
+        r = sh(argv, work, env=env, check=False)
         for line in (r.stdout + r.stderr).strip().splitlines():
             if line.strip():
                 logs.append(f"        | {line}")
@@ -267,10 +284,11 @@ def run_gate(work, binpath, wf, results, logs):
     env = dict(os.environ)
     env["PATH"] = binpath + os.pathsep + env["PATH"]
     step = wf["jobs"]["contract-gate"]["steps"][0]
+    argv = shell_argv(wf, wf["jobs"]["contract-gate"], step)
     script = step["run"]
     for jid, res in results.items():
         script = script.replace("${{ needs.%s.result }}" % jid, res)
-    r = sh(["bash", "-eo", "pipefail", "-c", script], work, env=env, check=False)
+    r = sh(argv + [script], work, env=env, check=False)
     for line in (r.stdout + r.stderr).strip().splitlines():
         logs.append(f"        | {line}")
     return SUCCESS if r.returncode == 0 else FAILURE
@@ -312,7 +330,7 @@ def main():
             statuses = {}
             for jid in [j for j in wf["jobs"] if j != "contract-gate"]:
                 logs.append(f"    job {jid}:")
-                statuses[jid] = run_job(work, binpath, wf["jobs"][jid], branch, logs, tmp)
+                statuses[jid] = run_job(work, binpath, wf, wf["jobs"][jid], branch, logs, tmp)
                 logs.append(f"    -> {jid}: {statuses[jid]}")
             logs.append("    job contract-gate:")
             statuses["contract-gate"] = run_gate(work, binpath, wf, statuses, logs)

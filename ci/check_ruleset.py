@@ -132,9 +132,28 @@ def r9_scenario_ids_documented(wf, rs):
                 assert f"| {letter}{n} |" in both, f"сценарій {letter}{n} із правила гілки не описаний у ТЗ"
 
 
+def r10_pipeline_does_not_mask_failures(wf, rs):
+    """R10. Кроки з конвеєром `|` виконуються під оболонкою з pipefail, інакше провал маскується."""
+    def shell_of(job, step):
+        return (step.get("shell")
+                or job.get("defaults", {}).get("run", {}).get("shell")
+                or wf.get("defaults", {}).get("run", {}).get("shell")
+                or "bash -e {0}")
+    for jid, job in wf["jobs"].items():
+        for step in job.get("steps", []):
+            script = step.get("run")
+            if not script or "|" not in script.replace("||", ""):
+                continue
+            shell = shell_of(job, step)
+            assert "pipefail" in shell, (
+                f"крок {step.get('name', script[:40])!r} у job {jid!r} містить конвеєр, "
+                f"а оболонка {shell!r} не має pipefail: код виходу візьметься від останньої "
+                f"команди (наприклад tee), і провал прогону стане невидимим")
+
+
 CHECKS = [r1_contexts_exist, r2_all_jobs_required, r3_gate_present, r4_gate_needs_all,
           r5_run_jobs_always_report, r6_no_path_filter_on_trigger, r7_scenario_groups_named,
-          r8_rule_hardening, r9_scenario_ids_documented]
+          r8_rule_hardening, r9_scenario_ids_documented, r10_pipeline_does_not_mask_failures]
 
 IDS = {f.__name__: f.__doc__.split(".")[0] for f in CHECKS}
 
@@ -168,6 +187,8 @@ MUTATIONS = [
     ("R8: знято вимогу схвалення",
      lambda wf, rs: [r["parameters"].update(required_approving_review_count=0)
                      for r in rs["rules"] if r["type"] == "pull_request"]),
+    ("R10: у конвеєрі знято pipefail - провал маскується tee",
+     lambda wf, rs: wf["defaults"]["run"].update(shell="bash -e {0}")),
     ("R7: у правилі лишились перевірки без назв груп сценаріїв",
      lambda wf, rs: set_ctx(rs, [GATE, "Схема", "Валюти"])),
 ]
