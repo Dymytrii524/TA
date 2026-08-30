@@ -21,8 +21,7 @@
         "no_landing_pad",
         "max_legs_exceeded",
         "extra_leg_disabled",
-        "drone_disabled",
-        "timeout"
+        "drone_disabled"
       ]
     },
     "route_id": {
