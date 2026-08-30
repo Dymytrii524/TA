@@ -1,14 +1,42 @@
 {
   "deal_id": "D-2026-000413",
   "route": "Луцьк — Варшава",
-  "price": {"currency": "PLN", "amount": 4200.00},
-  "contract": {"currency": "PLN", "amount": 4200.00},
-  "payment": {"currency": "PLN", "amount": 4200.00},
-  "fx": {"pair": "PLN/EUR", "rate": 0.2342, "source": "last_known", "fixed_at": "2026-08-29T09:00:00+03:00", "stale": true, "display_stale_notice": true},
-  "commission": {"currency": "EUR", "amount": 14.75},
-  "tax": {"currency": "PLN", "amount": 0.00},
+  "price": {
+    "currency": "PLN",
+    "amount": 4200.0
+  },
+  "contract": {
+    "currency": "PLN",
+    "amount": 4200.0
+  },
+  "payment": {
+    "currency": "PLN",
+    "amount": 4200.0
+  },
+  "fx": {
+    "pair": "PLN/EUR",
+    "rate": 0.2342,
+    "source": "last_known",
+    "fixed_at": "2026-08-29T09:00:00+03:00",
+    "stale": true
+  },
+  "commission": {
+    "currency": "EUR",
+    "amount": 14.75
+  },
+  "tax": {
+    "currency": "PLN",
+    "amount": 0.0
+  },
   "escrow": null,
   "conversion_log": [
-    {"entity": "commission", "pair": "PLN/EUR", "rate": 0.2342, "source": "last_known", "fixed_at": "2026-08-29T09:00:00+03:00", "actor": "system:commission"}
+    {
+      "entity": "commission",
+      "pair": "PLN/EUR",
+      "rate": 0.2342,
+      "source": "last_known",
+      "fixed_at": "2026-08-29T09:00:00+03:00",
+      "actor": "system:commission"
+    }
   ]
 }
