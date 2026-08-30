@@ -7,7 +7,7 @@
   "chat.machine_translation_notice": "Машинний переклад. Показати оригінал",
   "escrow.locked": "У ескроу заблоковано {amount} USDC до підтвердження доставки",
   "docs.ecmr_required": "Потрібен e-CMR і підтвердження GPS",
-  "terms.incoterms": "Умови постачання Incoterms",
+  "terms.incoterms": "Умови постачання Інкотермс",
   "terms.adr": "Клас небезпеки ADR",
   "customs.t1": "Митний транзит T1, книжка TIR",
   "docs.cmr": "Накладна CMR",
