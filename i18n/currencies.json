@@ -1,15 +1,80 @@
 {
   "base": "EUR",
   "currencies": [
-    {"code": "EUR", "kind": "fiat", "decimals": 2, "roles": ["base", "rate", "commission", "analytics"]},
-    {"code": "USD", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "UAH", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "PLN", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "CZK", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "RON", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "GBP", "kind": "fiat", "decimals": 2, "roles": ["rate"]},
-    {"code": "USDC", "kind": "stablecoin", "decimals": 2, "roles": ["rate", "escrow"]},
-    {"code": "USDT", "kind": "stablecoin", "decimals": 2, "roles": ["escrow"], "enabled": true}
+    {
+      "code": "EUR",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "base",
+        "rate",
+        "commission",
+        "analytics"
+      ]
+    },
+    {
+      "code": "USD",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "rate"
+      ]
+    },
+    {
+      "code": "UAH",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "rate"
+      ]
+    },
+    {
+      "code": "PLN",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "rate"
+      ]
+    },
+    {
+      "code": "CZK",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "rate"
+      ]
+    },
+    {
+      "code": "RON",
+      "kind": "fiat",
+      "decimals": 2,
+      "roles": [
+        "rate"
+      ]
+    },
+    {
+      "code": "USDC",
+      "kind": "stablecoin",
+      "decimals": 2,
+      "roles": [
+        "rate",
+        "escrow"
+      ]
+    },
+    {
+      "code": "USDT",
+      "kind": "stablecoin",
+      "decimals": 2,
+      "roles": [
+        "escrow"
+      ],
+      "enabled": true
+    }
   ],
-  "escrow": {"primary": "USDC", "secondary": ["USDT"]}
+  "escrow": {
+    "primary": "USDC",
+    "secondary": [
+      "USDT"
+    ]
+  }
 }
