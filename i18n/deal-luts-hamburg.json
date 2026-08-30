@@ -1,0 +1,15 @@
+{
+  "deal_id": "D-2026-000412",
+  "route": "Луцьк — Гамбург",
+  "price": {"currency": "EUR", "amount": 2400.00},
+  "contract": {"currency": "EUR", "amount": 2400.00},
+  "payment": {"currency": "USDC", "amount": 2607.60},
+  "fx": {"pair": "EUR/USDC", "rate": 1.0865, "source": "ECB+CEX-aggregator", "fixed_at": "2026-09-01T14:12:07+03:00", "stale": false},
+  "commission": {"currency": "EUR", "amount": 37.00},
+  "tax": {"currency": "EUR", "amount": 0.00, "note": "reverse charge, PL→DE"},
+  "escrow": {"currency": "USDC", "amount": 2607.60, "asset_role": "primary", "release_conditions": ["gps_delivery_confirmed", "ecmr_uploaded"], "released": false},
+  "conversion_log": [
+    {"entity": "payment", "pair": "EUR/USDC", "rate": 1.0865, "source": "ECB+CEX-aggregator", "fixed_at": "2026-09-01T14:12:07+03:00", "actor": "system:accept_bid"},
+    {"entity": "escrow", "pair": "EUR/USDC", "rate": 1.0865, "source": "ECB+CEX-aggregator", "fixed_at": "2026-09-01T14:12:07+03:00", "actor": "system:escrow_lock"}
+  ]
+}

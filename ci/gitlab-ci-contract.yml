@@ -1,0 +1,67 @@
+# Той самий крок «Контракт» для GitLab CI. Підключається в .gitlab-ci.yml:
+#   include:
+#     - local: ci/gitlab-ci-contract.yml
+
+contract:
+  stage: test
+  image: python:3.12-slim
+  timeout: 5 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  script:
+    - pip install -r schemas/requirements.txt
+    - python schemas/validate_schema.py
+    - python ci/check_ruleset.py
+    - python schemas/check_schema.py | tee contract-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - contract-report.txt
+
+# Валютні та мовні сценарії (рамкове ТЗ, розділи 13.6 і 14.7).
+i18n:
+  stage: test
+  image: python:3.12-slim
+  timeout: 5 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-рамкове-логістична-біржа.md"
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "i18n/**/*"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  script:
+    - pip install -r schemas/requirements.txt
+    - python schemas/validate_schema.py schemas/i18n.schema.json
+    - python schemas/check_i18n.py | tee i18n-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - i18n-report.txt

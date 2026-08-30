@@ -1,0 +1,15 @@
+{
+  "search.submit": "Знайти",
+  "lot.currency": "Валюта ставки",
+  "lot.original_language": "Оригінальна мова оголошення",
+  "deal.price_vs_payment": "Ціна {price}, оплата {payment} за курсом {rate}",
+  "fx.stale_notice": "Курс застарілий, оновлено {fixed_at}",
+  "chat.machine_translation_notice": "Машинний переклад. Показати оригінал",
+  "escrow.locked": "У ескроу заблоковано {amount} USDC до підтвердження доставки",
+  "docs.ecmr_required": "Потрібен e-CMR і підтвердження GPS",
+  "terms.incoterms": "Умови постачання Incoterms",
+  "terms.adr": "Клас небезпеки ADR",
+  "customs.t1": "Митний транзит T1, книжка TIR",
+  "docs.cmr": "Накладна CMR",
+  "escrow.alt_asset": "Альтернативний актив ескроу — USDT, облік усе одно ведеться в EUR"
+}

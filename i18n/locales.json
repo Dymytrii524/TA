@@ -1,0 +1,9 @@
+{
+  "default": "uk",
+  "locales": {
+    "uk": {"language": "uk", "group_sep": "\u00a0", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2\u00a0400,00\u00a0EUR"},
+    "en": {"language": "en", "group_sep": ",", "decimal_sep": ".", "currency_position": "after", "date": "YYYY-MM-DD", "sample_2400": "2,400.00\u00a0EUR"},
+    "pl": {"language": "pl", "group_sep": "\u00a0", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2\u00a0400,00\u00a0EUR"},
+    "de": {"language": "de", "group_sep": ".", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2.400,00\u00a0EUR"}
+  }
+}

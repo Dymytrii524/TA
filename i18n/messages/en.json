@@ -1,0 +1,15 @@
+{
+  "search.submit": "Search",
+  "lot.currency": "Bid currency",
+  "lot.original_language": "Original language of the posting",
+  "deal.price_vs_payment": "Price {price}, payment {payment} at rate {rate}",
+  "fx.stale_notice": "Exchange rate is stale, updated {fixed_at}",
+  "chat.machine_translation_notice": "Machine translation. Show original",
+  "escrow.locked": "{amount} USDC locked in escrow until delivery is confirmed",
+  "docs.ecmr_required": "e-CMR and GPS confirmation required",
+  "terms.incoterms": "Incoterms delivery terms",
+  "terms.adr": "ADR hazard class",
+  "customs.t1": "T1 customs transit, TIR carnet",
+  "docs.cmr": "CMR waybill",
+  "escrow.alt_asset": "Alternative escrow asset is USDT, accounting still runs in EUR"
+}
