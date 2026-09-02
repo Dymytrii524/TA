@@ -20,6 +20,11 @@ import sys
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+# Консоль Windows (cp1251) не має деяких символів UTF-8 (наприклад, "ʼ") -
+# без цього друк падає з UnicodeEncodeError замість показу результату.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = os.environ.get("CONTRACT_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC = os.path.join(ROOT, "ТЗ-рамкове-логістична-біржа.md")
 SPEC_V2 = os.path.join(ROOT, "ТЗ-логістична-біржа-v2-мови-валюти.md")
