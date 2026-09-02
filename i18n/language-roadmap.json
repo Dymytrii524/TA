@@ -1,0 +1,513 @@
+{
+  "source": "ТЗ-логістична-біржа-v2-мови-валюти.md, п. 12.2 і 12.12",
+  "plural_data": "CLDR 47, Language Plural Rules (cardinal)",
+  "fallback_language": "en",
+  "x_default": "en",
+  "stage_totals": {
+    "mvp": 4,
+    "stage2": 16,
+    "stage3": 24
+  },
+  "locales": [
+    {
+      "tag": "uk-UA",
+      "language": "uk",
+      "name": "Українська",
+      "stage": "mvp",
+      "status": "stable",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/uk",
+      "plural_categories": [
+        "one",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "en-GB",
+      "language": "en",
+      "name": "Англійська",
+      "stage": "mvp",
+      "status": "stable",
+      "dir": "ltr",
+      "fallback": null,
+      "url_prefix": "/en",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "pl-PL",
+      "language": "pl",
+      "name": "Польська",
+      "stage": "mvp",
+      "status": "stable",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/pl",
+      "plural_categories": [
+        "one",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "de-DE",
+      "language": "de",
+      "name": "Німецька",
+      "stage": "mvp",
+      "status": "stable",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/de",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "ro-RO",
+      "language": "ro",
+      "name": "Румунська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/ro",
+      "plural_categories": [
+        "one",
+        "few",
+        "other"
+      ]
+    },
+    {
+      "tag": "cs-CZ",
+      "language": "cs",
+      "name": "Чеська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/cs",
+      "plural_categories": [
+        "one",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "sk-SK",
+      "language": "sk",
+      "name": "Словацька",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/sk",
+      "plural_categories": [
+        "one",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "hu-HU",
+      "language": "hu",
+      "name": "Угорська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/hu",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "bg-BG",
+      "language": "bg",
+      "name": "Болгарська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/bg",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "lt-LT",
+      "language": "lt",
+      "name": "Литовська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/lt",
+      "plural_categories": [
+        "one",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "lv-LV",
+      "language": "lv",
+      "name": "Латвійська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/lv",
+      "plural_categories": [
+        "zero",
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "et-EE",
+      "language": "et",
+      "name": "Естонська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/et",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "sl-SI",
+      "language": "sl",
+      "name": "Словенська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/sl",
+      "plural_categories": [
+        "one",
+        "two",
+        "few",
+        "other"
+      ]
+    },
+    {
+      "tag": "hr-HR",
+      "language": "hr",
+      "name": "Хорватська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/hr",
+      "plural_categories": [
+        "one",
+        "few",
+        "other"
+      ]
+    },
+    {
+      "tag": "sr-RS",
+      "language": "sr",
+      "name": "Сербська",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/sr",
+      "plural_categories": [
+        "one",
+        "few",
+        "other"
+      ]
+    },
+    {
+      "tag": "ro-MD",
+      "language": "ro",
+      "name": "Молдовська/румунська (Молдова)",
+      "stage": "stage2",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/ro-md",
+      "plural_categories": [
+        "one",
+        "few",
+        "other"
+      ]
+    },
+    {
+      "tag": "fr-FR",
+      "language": "fr",
+      "name": "Французька",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/fr",
+      "plural_categories": [
+        "one",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "es-ES",
+      "language": "es",
+      "name": "Іспанська",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/es",
+      "plural_categories": [
+        "one",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "it-IT",
+      "language": "it",
+      "name": "Італійська",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/it",
+      "plural_categories": [
+        "one",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "nl-NL",
+      "language": "nl",
+      "name": "Нідерландська",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/nl",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "pt-PT",
+      "language": "pt",
+      "name": "Португальська",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/pt",
+      "plural_categories": [
+        "one",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "tr-TR",
+      "language": "tr",
+      "name": "Турецька",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/tr",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "el-GR",
+      "language": "el",
+      "name": "Грецька",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/el",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "sv-SE",
+      "language": "sv",
+      "name": "Шведська",
+      "stage": "stage3",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/sv",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "da-DK",
+      "language": "da",
+      "name": "Датська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/da",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "nb-NO",
+      "language": "nb",
+      "name": "Норвезька (Bokmål)",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/nb",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "fi-FI",
+      "language": "fi",
+      "name": "Фінська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/fi",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "zh-Hans",
+      "language": "zh",
+      "name": "Китайська (спрощена)",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/zh",
+      "plural_categories": [
+        "other"
+      ]
+    },
+    {
+      "tag": "ar",
+      "language": "ar",
+      "name": "Арабська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "rtl",
+      "fallback": "en",
+      "url_prefix": "/ar",
+      "plural_categories": [
+        "zero",
+        "one",
+        "two",
+        "few",
+        "many",
+        "other"
+      ]
+    },
+    {
+      "tag": "ka-GE",
+      "language": "ka",
+      "name": "Грузинська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/ka",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "az-AZ",
+      "language": "az",
+      "name": "Азербайджанська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/az",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "kk-KZ",
+      "language": "kk",
+      "name": "Казахська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/kk",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "uz-UZ",
+      "language": "uz",
+      "name": "Узбецька",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/uz",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    },
+    {
+      "tag": "hy-AM",
+      "language": "hy",
+      "name": "Вірменська",
+      "stage": "reserve",
+      "status": "planned",
+      "dir": "ltr",
+      "fallback": "en",
+      "url_prefix": "/hy",
+      "plural_categories": [
+        "one",
+        "other"
+      ]
+    }
+  ]
+}

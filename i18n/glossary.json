@@ -1,0 +1,12 @@
+{
+  "terms": [
+    {"term": "Incoterms", "do_not_translate": true},
+    {"term": "CMR", "do_not_translate": true},
+    {"term": "e-CMR", "do_not_translate": true},
+    {"term": "TIR", "do_not_translate": true},
+    {"term": "T1", "do_not_translate": true},
+    {"term": "ADR", "do_not_translate": true},
+    {"term": "USDC", "do_not_translate": true},
+    {"term": "USDT", "do_not_translate": true}
+  ]
+}

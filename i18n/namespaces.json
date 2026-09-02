@@ -1,0 +1,53 @@
+{
+  "source": "ТЗ-логістична-біржа-v2-мови-валюти.md, п. 12.10",
+  "namespaces": {
+    "common": [
+      "search",
+      "ui",
+      "nav",
+      "footer",
+      "brand",
+      "auth",
+      "contacts",
+      "about",
+      "news",
+      "hero",
+      "stats"
+    ],
+    "exchange": [
+      "lot",
+      "deal",
+      "bid",
+      "chat",
+      "results",
+      "market",
+      "flows",
+      "rating",
+      "fx",
+      "escrow"
+    ],
+    "services": [
+      "weather",
+      "borders",
+      "qa",
+      "directory"
+    ],
+    "admin": [
+      "admin"
+    ],
+    "emails": [
+      "email",
+      "push"
+    ],
+    "legal": [
+      "legal",
+      "policy",
+      "privacy"
+    ],
+    "glossary": [
+      "terms",
+      "docs",
+      "customs"
+    ]
+  }
+}

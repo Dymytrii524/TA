@@ -1,0 +1,381 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.example.net/schemas/i18n-fixtures-1.0.json",
+  "title": "Схеми фікстур валютної та мовної моделі (рамкове ТЗ, розділи 13-14; ТЗ v2, розділ 12)",
+  "$defs": {
+    "currency_code": {"type": "string", "pattern": "^[A-Z]{3,4}$"},
+    "locale_tag": {
+      "type": "string",
+      "description": "Тег локалі за BCP 47: мова, необовʼязковий скрипт, необовʼязковий регіон (ТЗ v2, п. 12.2)",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$"
+    },
+    "stage": {"enum": ["mvp", "stage2", "stage3", "reserve", "out_of_scope"]},
+    "plural_categories": {
+      "type": "array",
+      "description": "Категорії множини CLDR (cardinal); «other» присутня завжди (ТЗ v2, п. 12.8)",
+      "minItems": 1,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"enum": ["zero", "one", "two", "few", "many", "other"]},
+      "contains": {"const": "other"}
+    },
+    "money": {
+      "type": "object",
+      "required": ["currency", "amount"],
+      "properties": {
+        "currency": {"$ref": "#/$defs/currency_code"},
+        "amount": {"type": "number", "minimum": 0},
+        "note": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "fx": {
+      "type": "object",
+      "description": "Курс, джерело й час фіксації обовʼязкові разом (розділ 13.2)",
+      "required": ["pair", "rate", "source", "fixed_at", "stale"],
+      "properties": {
+        "pair": {"type": "string", "pattern": "^[A-Z]{3,4}/[A-Z]{3,4}$"},
+        "rate": {"type": "number", "exclusiveMinimum": 0},
+        "source": {"type": "string", "minLength": 1},
+        "fixed_at": {"type": "string", "format": "date-time"},
+        "stale": {"type": "boolean"},
+        "display_stale_notice": {"type": "boolean"}
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"stale": {"const": true}}, "required": ["stale"]},
+          "then": {
+            "required": ["display_stale_notice"],
+            "properties": {"display_stale_notice": {"const": true}},
+            "description": "Застарілий курс завжди супроводжується позначкою для користувача (розділ 13.3)"
+          }
+        }
+      ]
+    },
+    "currencies": {
+      "type": "object",
+      "required": ["base", "currencies", "escrow"],
+      "properties": {
+        "base": {"$ref": "#/$defs/currency_code"},
+        "currencies": {
+          "type": "array",
+          "minItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["code", "kind", "decimals", "roles"],
+            "properties": {
+              "code": {"$ref": "#/$defs/currency_code"},
+              "kind": {"enum": ["fiat", "stablecoin", "token"]},
+              "decimals": {"type": "integer", "minimum": 0, "maximum": 6},
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"enum": ["base", "rate", "commission", "analytics", "escrow", "contract", "invoice", "payment", "display"]},
+                "uniqueItems": true
+              },
+              "enabled": {"type": "boolean"},
+              "status": {
+                "enum": ["active", "display_only", "disabled"],
+                "description": "Опціональне поле ТЗ v2, п. 12.4: display_only дозволяє дивитися, але не укладати угоду"
+              },
+              "level": {"type": "integer", "minimum": 1, "maximum": 9},
+              "stage": {"$ref": "#/$defs/stage"},
+              "is_crypto": {"type": "boolean"},
+              "chain": {"type": "string", "minLength": 1},
+              "internal_decimals": {"type": "integer", "minimum": 0, "maximum": 18}
+            },
+            "additionalProperties": false
+          }
+        },
+        "escrow": {
+          "type": "object",
+          "required": ["primary", "secondary"],
+          "properties": {
+            "primary": {"const": "USDC"},
+            "secondary": {"type": "array", "items": {"$ref": "#/$defs/currency_code"}}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "locales": {
+      "type": "object",
+      "required": ["default", "locales"],
+      "properties": {
+        "default": {"type": "string", "pattern": "^[a-z]{2}$"},
+        "locales": {
+          "type": "object",
+          "minProperties": 4,
+          "additionalProperties": {
+            "type": "object",
+            "required": ["language", "group_sep", "decimal_sep", "currency_position", "date", "sample_2400"],
+            "properties": {
+              "language": {"type": "string", "pattern": "^[a-z]{2}$"},
+              "group_sep": {"type": "string", "maxLength": 1},
+              "decimal_sep": {"enum": [",", "."]},
+              "currency_position": {"enum": ["before", "after"]},
+              "date": {"enum": ["DD.MM.YYYY", "YYYY-MM-DD", "MM/DD/YYYY", "DD/MM/YYYY", "YYYY.MM.DD"]},
+              "sample_2400": {"type": "string", "minLength": 8},
+              "tag": {"$ref": "#/$defs/locale_tag"},
+              "fallback": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[a-z]{2}$"}]},
+              "status": {"enum": ["stable", "beta", "planned"]},
+              "dir": {"enum": ["ltr", "rtl"]},
+              "url_prefix": {"type": "string", "pattern": "^/[a-z]{2}(-[a-z]{2})?$"},
+              "plural_categories": {"$ref": "#/$defs/plural_categories"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "glossary": {
+      "type": "object",
+      "required": ["terms"],
+      "properties": {
+        "terms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["term", "do_not_translate"],
+            "properties": {
+              "term": {"type": "string", "minLength": 1},
+              "do_not_translate": {"type": "boolean"},
+              "category": {
+                "enum": ["incoterms", "adr", "customs", "documents", "body_type", "temperature", "payment_terms", "crossing", "iata_icao", "unlocode", "rail_station", "asset"],
+                "description": "Опціональна категорія керованого словника (ТЗ v2, п. 12.8)"
+              },
+              "note": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "deal": {
+      "type": "object",
+      "description": "Валюта ціни, договору й платежу зберігаються окремо (розділ 13.2)",
+      "required": ["deal_id", "price", "contract", "payment", "fx", "commission", "tax", "escrow", "conversion_log"],
+      "properties": {
+        "deal_id": {"type": "string", "minLength": 1},
+        "route": {"type": "string"},
+        "price": {"$ref": "#/$defs/money"},
+        "contract": {"$ref": "#/$defs/money"},
+        "payment": {"$ref": "#/$defs/money"},
+        "fx": {"$ref": "#/$defs/fx"},
+        "commission": {"$ref": "#/$defs/money"},
+        "tax": {"$ref": "#/$defs/money"},
+        "escrow": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "required": ["currency", "amount", "asset_role", "release_conditions", "released"],
+              "properties": {
+                "currency": {"enum": ["USDC", "USDT", "EURC"]},
+                "amount": {"type": "number", "exclusiveMinimum": 0},
+                "asset_role": {"enum": ["primary", "secondary"]},
+                "release_conditions": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"enum": ["gps_delivery_confirmed", "ecmr_uploaded", "manual_moderator_confirmation"]},
+                  "uniqueItems": true
+                },
+                "released": {"type": "boolean"}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "conversion_log": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["entity", "pair", "rate", "source", "fixed_at", "actor"],
+            "properties": {
+              "entity": {"enum": ["bid", "invoice", "payment", "commission", "tax", "escrow"]},
+              "pair": {"type": "string", "pattern": "^[A-Z]{3,4}/[A-Z]{3,4}$"},
+              "rate": {"type": "number", "exclusiveMinimum": 0},
+              "source": {"type": "string", "minLength": 1},
+              "fixed_at": {"type": "string", "format": "date-time"},
+              "actor": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "routes_display": {
+      "type": "object",
+      "required": ["base", "display_rates", "routes"],
+      "properties": {
+        "base": {"$ref": "#/$defs/currency_code"},
+        "display_rates": {"type": "object", "minProperties": 2, "additionalProperties": {"type": "number", "exclusiveMinimum": 0}},
+        "routes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["route_id", "cost_base_eur", "cost_known"],
+            "properties": {
+              "route_id": {"type": "string"},
+              "cost_base_eur": {"type": ["number", "null"]},
+              "cost_known": {"type": "boolean"}
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {"properties": {"cost_known": {"const": false}}, "required": ["cost_known"]},
+                "then": {"properties": {"cost_base_eur": {"type": "null"}}, "description": "Невідома вартість не бере участі в сортуванні (розділ A.5)"}
+              },
+              {
+                "if": {"properties": {"cost_known": {"const": true}}, "required": ["cost_known"]},
+                "then": {"properties": {"cost_base_eur": {"type": "number", "exclusiveMinimum": 0}}}
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "messages": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "language_roadmap": {
+      "type": "object",
+      "description": "Повний реєстр мов на три етапи плюс резерв (ТЗ v2, пп. 12.2 і 12.12)",
+      "required": ["fallback_language", "x_default", "stage_totals", "locales"],
+      "properties": {
+        "source": {"type": "string"},
+        "plural_data": {"type": "string"},
+        "fallback_language": {"const": "en"},
+        "x_default": {"const": "en"},
+        "stage_totals": {
+          "type": "object",
+          "required": ["mvp", "stage2", "stage3"],
+          "properties": {
+            "mvp": {"const": 4},
+            "stage2": {"const": 16},
+            "stage3": {"const": 24}
+          },
+          "additionalProperties": false
+        },
+        "locales": {
+          "type": "array",
+          "minItems": 24,
+          "items": {
+            "type": "object",
+            "required": ["tag", "language", "stage", "status", "dir", "fallback", "url_prefix", "plural_categories"],
+            "properties": {
+              "tag": {"$ref": "#/$defs/locale_tag"},
+              "language": {"type": "string", "pattern": "^[a-z]{2,3}$"},
+              "name": {"type": "string", "minLength": 1},
+              "stage": {"$ref": "#/$defs/stage"},
+              "status": {"enum": ["stable", "beta", "planned"]},
+              "dir": {"enum": ["ltr", "rtl"]},
+              "fallback": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[a-z]{2,3}$"}]},
+              "url_prefix": {"type": "string", "pattern": "^/[a-z]{2}(-[a-z]{2})?$"},
+              "plural_categories": {"$ref": "#/$defs/plural_categories"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "currency_roadmap": {
+      "type": "object",
+      "description": "Повний реєстр валют за девʼятьма рівнями (ТЗ v2, пп. 12.4, 12.5 і 12.12)",
+      "required": ["base", "levels", "escrow_allowed", "settlement_only_currency", "currencies"],
+      "properties": {
+        "source": {"type": "string"},
+        "base": {"const": "EUR"},
+        "settlement_only_currency": {"const": "EUR"},
+        "escrow_allowed": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/currency_code"}
+        },
+        "levels": {
+          "type": "object",
+          "minProperties": 9,
+          "maxProperties": 9,
+          "propertyNames": {"pattern": "^[1-9]$"},
+          "additionalProperties": {
+            "type": "object",
+            "required": ["title", "stage"],
+            "properties": {
+              "title": {"type": "string", "minLength": 1},
+              "stage": {"$ref": "#/$defs/stage"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "currencies": {
+          "type": "array",
+          "minItems": 30,
+          "items": {
+            "type": "object",
+            "required": ["code", "level", "kind", "decimals", "status", "stage", "is_crypto"],
+            "properties": {
+              "code": {"$ref": "#/$defs/currency_code"},
+              "level": {"type": "integer", "minimum": 1, "maximum": 9},
+              "kind": {"enum": ["fiat", "stablecoin", "token"]},
+              "decimals": {"type": "integer", "minimum": 0, "maximum": 6},
+              "internal_decimals": {"type": "integer", "minimum": 0, "maximum": 18},
+              "status": {"enum": ["active", "display_only", "disabled"]},
+              "stage": {"$ref": "#/$defs/stage"},
+              "is_crypto": {"type": "boolean"},
+              "chain": {"type": "string", "minLength": 1},
+              "note": {"type": "string"}
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {"properties": {"is_crypto": {"const": true}}, "required": ["is_crypto"]},
+                "then": {
+                  "required": ["chain"],
+                  "description": "Криптоактив не має коду ISO 4217, тому мережа обовʼязкова (ТЗ v2, п. 12.4)"
+                },
+                "else": {
+                  "not": {"required": ["chain"]},
+                  "description": "Фіатна валюта не має мережі"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "namespaces": {
+      "type": "object",
+      "description": "Реєстр просторів імен ключів перекладу (ТЗ v2, п. 12.10)",
+      "required": ["namespaces"],
+      "properties": {
+        "source": {"type": "string"},
+        "namespaces": {
+          "type": "object",
+          "minProperties": 7,
+          "propertyNames": {"pattern": "^[a-z][a-z_]*$"},
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "pattern": "^[a-z][a-z_]*$"}
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
