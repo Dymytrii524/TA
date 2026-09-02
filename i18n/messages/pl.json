@@ -1,0 +1,15 @@
+{
+  "search.submit": "Szukaj",
+  "lot.currency": "Waluta stawki",
+  "lot.original_language": "Oryginalny język ogłoszenia",
+  "deal.price_vs_payment": "Cena {price}, płatność {payment} po kursie {rate}",
+  "fx.stale_notice": "Kurs jest nieaktualny, zaktualizowano {fixed_at}",
+  "chat.machine_translation_notice": "Tłumaczenie maszynowe. Pokaż oryginał",
+  "escrow.locked": "W escrow zablokowano {amount} USDC do potwierdzenia dostawy",
+  "docs.ecmr_required": "Wymagane e-CMR i potwierdzenie GPS",
+  "terms.incoterms": "Warunki dostawy Incoterms",
+  "terms.adr": "Klasa zagrożenia ADR",
+  "customs.t1": "Tranzyt celny T1, karnet TIR",
+  "docs.cmr": "List przewozowy CMR",
+  "escrow.alt_asset": "Alternatywnym aktywem escrow jest USDT, rozliczenia nadal w EUR"
+}

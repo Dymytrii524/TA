@@ -1,13 +1,10 @@
 {
   "base": "EUR",
-  "display_rates": {
-    "USD": 1.08,
-    "UAH": 43.5,
-    "PLN": 4.32
-  },
+  "display_rates": {"EUR": 1.0, "UAH": 47.85, "PLN": 4.27, "USDC": 1.0865},
   "routes": [
-    {"route_id": "rt_example_1", "cost_base_eur": 2400, "cost_known": true},
-    {"route_id": "rt_example_2", "cost_base_eur": 1850, "cost_known": true},
-    {"route_id": "rt_example_3", "cost_base_eur": null, "cost_known": false}
+    {"route_id": "rt_1", "cost_base_eur": 1840.00, "cost_known": true},
+    {"route_id": "rt_2", "cost_base_eur": 1975.50, "cost_known": true},
+    {"route_id": "rt_3", "cost_base_eur": 2410.00, "cost_known": true},
+    {"route_id": "rt_4", "cost_base_eur": null, "cost_known": false}
   ]
 }

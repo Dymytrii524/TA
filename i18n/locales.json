@@ -1,61 +1,9 @@
 {
   "default": "uk",
   "locales": {
-    "uk": {
-      "language": "uk",
-      "group_sep": " ",
-      "decimal_sep": ",",
-      "currency_position": "after",
-      "date": "DD.MM.YYYY",
-      "sample_2400": "2 400,00 EUR",
-      "tag": "uk-UA",
-      "fallback": "en",
-      "status": "stable",
-      "dir": "ltr",
-      "url_prefix": "/uk",
-      "plural_categories": ["one", "few", "many", "other"]
-    },
-    "en": {
-      "language": "en",
-      "group_sep": ",",
-      "decimal_sep": ".",
-      "currency_position": "after",
-      "date": "YYYY-MM-DD",
-      "sample_2400": "2,400.00 EUR",
-      "tag": "en-GB",
-      "fallback": null,
-      "status": "stable",
-      "dir": "ltr",
-      "url_prefix": "/en",
-      "plural_categories": ["one", "other"]
-    },
-    "pl": {
-      "language": "pl",
-      "group_sep": " ",
-      "decimal_sep": ",",
-      "currency_position": "after",
-      "date": "DD.MM.YYYY",
-      "sample_2400": "2 400,00 EUR",
-      "tag": "pl-PL",
-      "fallback": "en",
-      "status": "stable",
-      "dir": "ltr",
-      "url_prefix": "/pl",
-      "plural_categories": ["one", "few", "many", "other"]
-    },
-    "de": {
-      "language": "de",
-      "group_sep": ".",
-      "decimal_sep": ",",
-      "currency_position": "after",
-      "date": "DD.MM.YYYY",
-      "sample_2400": "2.400,00 EUR",
-      "tag": "de-DE",
-      "fallback": "en",
-      "status": "stable",
-      "dir": "ltr",
-      "url_prefix": "/de",
-      "plural_categories": ["one", "other"]
-    }
+    "uk": {"language": "uk", "group_sep": "\u00a0", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2\u00a0400,00\u00a0EUR"},
+    "en": {"language": "en", "group_sep": ",", "decimal_sep": ".", "currency_position": "after", "date": "YYYY-MM-DD", "sample_2400": "2,400.00\u00a0EUR"},
+    "pl": {"language": "pl", "group_sep": "\u00a0", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2\u00a0400,00\u00a0EUR"},
+    "de": {"language": "de", "group_sep": ".", "decimal_sep": ",", "currency_position": "after", "date": "DD.MM.YYYY", "sample_2400": "2.400,00\u00a0EUR"}
   }
 }

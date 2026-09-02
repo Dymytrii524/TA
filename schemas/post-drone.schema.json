@@ -1,0 +1,682 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.example.net/schemas/post-drone-1.0.json",
+  "title": "Контракт модуля POST_DRONE (ТЗ, розділ A.8.4)",
+  "description": "Схема дрон-частини запиту та відповіді POST /api/v1/search/routes. Версія 1.0, відповідає ТЗ 2.9 і рисунку 3.1.1-7. Поля, не пов'язані з дроном, описані як additionalProperties.",
+  "$defs": {
+    "gate": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6,
+      "description": "Номер воріт рисунка 3.1.1-7"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "not_last_auto_leg",
+        "no_permit",
+        "out_of_range",
+        "cargo_not_allowed",
+        "no_drone_lot",
+        "no_landing_pad",
+        "max_legs_exceeded",
+        "extra_leg_disabled",
+        "drone_disabled",
+        "timeout"
+      ]
+    },
+    "route_id": {
+      "type": "string",
+      "pattern": "^rt_[A-Za-z0-9]+(_d)?$"
+    },
+    "weather": {
+      "type": "object",
+      "description": "Ворота 6. ok=null означає недоступність сервісу погоди; вигадані значення заборонені",
+      "properties": {
+        "wind_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "ok": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "limit_ms": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "source_error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "ok": {
+                "const": null
+              }
+            },
+            "required": [
+              "ok"
+            ]
+          },
+          "then": {
+            "required": [
+              "source_error"
+            ],
+            "properties": {
+              "wind_ms": {
+                "const": null
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": true
+    },
+    "droneLeg": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "const": "D"
+        },
+        "from": {
+          "$ref": "#/$defs/point"
+        },
+        "to": {
+          "$ref": "#/$defs/point"
+        },
+        "lot_id": {
+          "type": "integer"
+        },
+        "range_used_km": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "payload_kg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "permit_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weather": {
+          "$ref": "#/$defs/weather"
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "additionalProperties": true
+    },
+    "point": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "city",
+                "rail_station",
+                "seaport",
+                "airport",
+                "drone_pad",
+                "warehouse",
+                "border_crossing"
+              ]
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": true
+        }
+      ]
+    },
+    "warning": {
+      "type": "string",
+      "enum": [
+        "weather_risk",
+        "no_permit",
+        "customs_missing",
+        "low_rating",
+        "blacklisted",
+        "estimated_price"
+      ]
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "route_id": {
+          "$ref": "#/$defs/route_id"
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "branch",
+            "post_drone"
+          ]
+        },
+        "variant_of": {
+          "$ref": "#/$defs/route_id"
+        },
+        "order_pinned_below": {
+          "$ref": "#/$defs/route_id"
+        },
+        "score": {
+          "type": "number"
+        },
+        "transships": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "preference_coeff": {
+          "type": "number"
+        },
+        "total_cost_eur": {
+          "type": "number",
+          "minimum": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning"
+          },
+          "uniqueItems": true
+        },
+        "legs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/leg"
+          },
+          "description": "maxItems=4 — max_legs з дроном (розділ A.6.7)"
+        }
+      },
+      "required": [
+        "route_id",
+        "origin"
+      ],
+      "allOf": [
+        {
+          "description": "Правило 2 розділу A.8.4: дрон-варіант обов'язково має variant_of; варіант гілки — не має",
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "post_drone"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "required": [
+              "variant_of"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "variant_of"
+              ]
+            }
+          }
+        },
+        {
+          "description": "Розділ 7: order_pinned_below допустиме лише для дрон-варіанта і мусить дорівнювати variant_of",
+          "if": {
+            "required": [
+              "order_pinned_below"
+            ]
+          },
+          "then": {
+            "properties": {
+              "origin": {
+                "const": "post_drone"
+              }
+            },
+            "required": [
+              "variant_of"
+            ]
+          }
+        },
+        {
+          "description": "Правило 3 розділу A.8.4: weather_risk у дрон-варіанті тягне обмеження порядку",
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "post_drone"
+              },
+              "warnings": {
+                "contains": {
+                  "const": "weather_risk"
+                }
+              }
+            },
+            "required": [
+              "origin",
+              "warnings"
+            ]
+          },
+          "then": {
+            "required": [
+              "order_pinned_below"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": true
+    },
+    "droneRequest": {
+      "type": "object",
+      "description": "Блок drone запиту 8.3",
+      "properties": {
+        "allow": {
+          "type": "boolean",
+          "default": true
+        },
+        "allow_extra_leg": {
+          "type": "boolean",
+          "default": true
+        },
+        "diagnostics": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "diagnosticsItem": {
+      "type": "object",
+      "properties": {
+        "parent_route": {
+          "$ref": "#/$defs/route_id"
+        },
+        "gate": {
+          "$ref": "#/$defs/gate"
+        },
+        "reason": {
+          "$ref": "#/$defs/reason"
+        },
+        "detail": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "allOf": [
+        {
+          "description": "Коди воріт 1-5 обов'язково супроводжуються номером воріт; drone_disabled і timeout - ні",
+          "if": {
+            "properties": {
+              "reason": {
+                "enum": [
+                  "not_last_auto_leg",
+                  "no_permit",
+                  "out_of_range",
+                  "cargo_not_allowed",
+                  "no_drone_lot",
+                  "no_landing_pad",
+                  "max_legs_exceeded",
+                  "extra_leg_disabled"
+                ]
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          "then": {
+            "required": [
+              "gate"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "gate"
+              ]
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "droneCta": {
+      "type": "object",
+      "description": "Випадок «сполучення є, лота немає» — червоний вузол рисунка 3.1.1-7",
+      "properties": {
+        "parent_route": {
+          "$ref": "#/$defs/route_id"
+        },
+        "pad": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "distance_to_dest_km": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "id",
+            "distance_to_dest_km"
+          ],
+          "additionalProperties": true
+        },
+        "missing_leg": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "A",
+                "D"
+              ]
+            },
+            "from": {
+              "$ref": "#/$defs/point"
+            },
+            "to": {
+              "$ref": "#/$defs/point"
+            }
+          },
+          "required": [
+            "mode",
+            "from",
+            "to"
+          ],
+          "additionalProperties": false
+        },
+        "action": {
+          "const": "create_lot"
+        }
+      },
+      "required": [
+        "parent_route",
+        "pad",
+        "missing_leg",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "leg": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "A",
+            "T",
+            "M",
+            "F",
+            "D"
+          ]
+        }
+      },
+      "required": [
+        "mode"
+      ],
+      "allOf": [
+        {
+          "description": "Плече з mode=D валідується як дрон-плече (ворота 3, 4, 6)",
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "D"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "$ref": "#/$defs/droneLeg"
+          }
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "type": "object",
+  "properties": {
+    "search_id": {
+      "type": "string"
+    },
+    "partial": {
+      "type": "boolean"
+    },
+    "drone_skipped": {
+      "type": "string",
+      "enum": [
+        "timeout"
+      ]
+    },
+    "branch_reached": {
+      "type": "string"
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "drone_cta": {
+      "$ref": "#/$defs/droneCta"
+    },
+    "drone_diagnostics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/diagnosticsItem"
+      },
+      "minItems": 1
+    },
+    "normalization_base": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^rt_[A-Za-z0-9]+$",
+        "description": "Конвенція іменування: дрон-варіанти мають суфікс _d і в базу нормалізації входити не можуть"
+      },
+      "description": "Розділ 7: перелік route_id, що увійшли в базу min-max нормалізації. Не може містити дрон-варіантів"
+    }
+  },
+  "required": [
+    "routes"
+  ],
+  "allOf": [
+    {
+      "description": "НФВ розділу A.11: перевищення бюджету завжди супроводжується partial: true",
+      "if": {
+        "required": [
+          "drone_skipped"
+        ]
+      },
+      "then": {
+        "properties": {
+          "partial": {
+            "const": true
+          }
+        },
+        "required": [
+          "partial"
+        ]
+      }
+    },
+    {
+      "description": "Правило 4: при перевищенні бюджету дрон-варіантів у видачі немає",
+      "if": {
+        "required": [
+          "drone_skipped"
+        ]
+      },
+      "then": {
+        "properties": {
+          "routes": {
+            "items": {
+              "properties": {
+                "origin": {
+                  "const": "branch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Правило 5 розділу A.8.4: код no_permit у діагностиці зобовʼязує повернути прапорець no_permit щонайменше в одному маршруті видачі",
+      "if": {
+        "properties": {
+          "drone_diagnostics": {
+            "contains": {
+              "properties": {
+                "reason": {
+                  "const": "no_permit"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            }
+          }
+        },
+        "required": [
+          "drone_diagnostics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "routes": {
+            "contains": {
+              "properties": {
+                "warnings": {
+                  "contains": {
+                    "const": "no_permit"
+                  }
+                }
+              },
+              "required": [
+                "warnings"
+              ]
+            }
+          }
+        },
+        "required": [
+          "routes"
+        ]
+      }
+    },
+    {
+      "description": "Правило 1 розділу A.8.4: при drone.allow=false дрон-варіантів у видачі бути не може",
+      "if": {
+        "properties": {
+          "drone_diagnostics": {
+            "contains": {
+              "properties": {
+                "reason": {
+                  "const": "drone_disabled"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            }
+          }
+        },
+        "required": [
+          "drone_diagnostics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "routes": {
+            "items": {
+              "properties": {
+                "origin": {
+                  "const": "branch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Правило 5 розділу A.8.4: код no_landing_pad означає, що придатної площадки немає, тому drone_cta («площадка є, лота немає») у такій відповіді неприпустиме — сценарій T22",
+      "if": {
+        "properties": {
+          "drone_diagnostics": {
+            "contains": {
+              "properties": {
+                "reason": {
+                  "const": "no_landing_pad"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            }
+          }
+        },
+        "required": [
+          "drone_diagnostics"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "drone_cta"
+          ]
+        }
+      }
+    },
+    {
+      "description": "Правило 4 розділу A.8.4: при перевищенні бюджету модуль не встиг оцінити площадки, тому drone_cta не повертається",
+      "if": {
+        "required": [
+          "drone_skipped"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "drone_cta"
+          ]
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

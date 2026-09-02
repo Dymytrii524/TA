@@ -1,12 +1,53 @@
 {
-  "source": "Побудовано за фактичними префіксами ключів об'єкта i18n у index.html (ТЗ v2, п. 12.10)",
+  "source": "ТЗ-логістична-біржа-v2-мови-валюти.md, п. 12.10",
   "namespaces": {
-    "common": ["nav", "footer", "brand", "hero", "tab", "cta", "toast", "err", "login", "register", "logout", "modal", "switch", "submit", "any", "search"],
-    "exchange": ["col", "f", "results", "market", "rating", "currency", "permit", "unit", "mode", "escrow", "flows", "flow", "contact"],
-    "services": ["weather", "borders", "directory", "qa", "contacts", "stat"],
-    "admin": ["admin"],
-    "emails": ["email"],
-    "legal": ["about", "reliability", "blacklist"],
-    "glossary": ["glossary"]
+    "common": [
+      "search",
+      "ui",
+      "nav",
+      "footer",
+      "brand",
+      "auth",
+      "contacts",
+      "about",
+      "news",
+      "hero",
+      "stats"
+    ],
+    "exchange": [
+      "lot",
+      "deal",
+      "bid",
+      "chat",
+      "results",
+      "market",
+      "flows",
+      "rating",
+      "fx",
+      "escrow"
+    ],
+    "services": [
+      "weather",
+      "borders",
+      "qa",
+      "directory"
+    ],
+    "admin": [
+      "admin"
+    ],
+    "emails": [
+      "email",
+      "push"
+    ],
+    "legal": [
+      "legal",
+      "policy",
+      "privacy"
+    ],
+    "glossary": [
+      "terms",
+      "docs",
+      "customs"
+    ]
   }
 }

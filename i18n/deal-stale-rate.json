@@ -1,28 +1,14 @@
 {
-  "deal_id": "deal_stale_rate_example_001",
-  "route": "Приклад: пара з недоступним джерелом курсу",
-  "price": {"currency": "UAH", "amount": 92000},
-  "contract": {"currency": "UAH", "amount": 92000},
-  "payment": {"currency": "USDC", "amount": 2350, "note": "розрахунок заблоковано до оновлення курсу"},
-  "fx": {
-    "pair": "UAH/USDC",
-    "rate": 39.15,
-    "source": "останнє відоме значення (джерело курсу недоступне)",
-    "fixed_at": "2026-08-30T09:00:00+03:00",
-    "stale": true,
-    "display_stale_notice": true
-  },
-  "commission": {"currency": "UAH", "amount": 1400},
-  "tax": {"currency": "UAH", "amount": 0},
+  "deal_id": "D-2026-000413",
+  "route": "Луцьк — Варшава",
+  "price": {"currency": "PLN", "amount": 4200.00},
+  "contract": {"currency": "PLN", "amount": 4200.00},
+  "payment": {"currency": "PLN", "amount": 4200.00},
+  "fx": {"pair": "PLN/EUR", "rate": 0.2342, "source": "last_known", "fixed_at": "2026-08-29T09:00:00+03:00", "stale": true, "display_stale_notice": true},
+  "commission": {"currency": "EUR", "amount": 14.75},
+  "tax": {"currency": "PLN", "amount": 0.00},
   "escrow": null,
   "conversion_log": [
-    {
-      "entity": "payment",
-      "pair": "UAH/USDC",
-      "rate": 39.15,
-      "source": "останнє відоме значення (джерело курсу недоступне)",
-      "fixed_at": "2026-08-30T09:00:00+03:00",
-      "actor": "система (fallback: нова конвертація в цій парі заблокована)"
-    }
+    {"entity": "commission", "pair": "PLN/EUR", "rate": 0.2342, "source": "last_known", "fixed_at": "2026-08-29T09:00:00+03:00", "actor": "system:commission"}
   ]
 }
