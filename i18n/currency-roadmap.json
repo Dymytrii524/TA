@@ -1,0 +1,58 @@
+{
+  "source": "ТЗ v2, п. 12.4-12.5 (таблиця дев'яти рівнів валют); лише рівні 1-3 та 8 активні в поточному демо (i18n/currencies.json) — решта записана як дані плану, без live-підключення",
+  "base": "EUR",
+  "settlement_only_currency": "EUR",
+  "escrow_allowed": ["USDC", "USDT", "EURC"],
+  "levels": {
+    "1": {"title": "Базові міжнародні", "stage": "mvp"},
+    "2": {"title": "Домашній ринок", "stage": "mvp"},
+    "3": {"title": "Ключові європейські", "stage": "mvp"},
+    "4": {"title": "Розширення Європи", "stage": "stage2"},
+    "5": {"title": "Північна Америка", "stage": "stage3"},
+    "6": {"title": "Азія та глобальні коридори", "stage": "stage3"},
+    "7": {"title": "Кавказ і Центральна Азія", "stage": "stage3"},
+    "8": {"title": "Стейблкоїни", "stage": "mvp"},
+    "9": {"title": "Власний токен", "stage": "out_of_scope"}
+  },
+  "currencies": [
+    {"code": "EUR", "level": 1, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+    {"code": "USD", "level": 1, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+
+    {"code": "UAH", "level": 2, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+
+    {"code": "PLN", "level": 3, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+    {"code": "GBP", "level": 3, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+    {"code": "CZK", "level": 3, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+    {"code": "RON", "level": 3, "kind": "fiat", "decimals": 2, "status": "active", "stage": "mvp", "is_crypto": false},
+
+    {"code": "CHF", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "HUF", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "BGN", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "SEK", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "DKK", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "NOK", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "TRY", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "RSD", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+    {"code": "MDL", "level": 4, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage2", "is_crypto": false},
+
+    {"code": "CAD", "level": 5, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "MXN", "level": 5, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+
+    {"code": "CNY", "level": 6, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "JPY", "level": 6, "kind": "fiat", "decimals": 0, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "AED", "level": 6, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "SGD", "level": 6, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "INR", "level": 6, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "KRW", "level": 6, "kind": "fiat", "decimals": 0, "status": "disabled", "stage": "stage3", "is_crypto": false},
+
+    {"code": "GEL", "level": 7, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "AZN", "level": 7, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "KZT", "level": 7, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "UZS", "level": 7, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+    {"code": "AMD", "level": 7, "kind": "fiat", "decimals": 2, "status": "disabled", "stage": "stage3", "is_crypto": false},
+
+    {"code": "USDC", "level": 8, "kind": "stablecoin", "decimals": 6, "status": "display_only", "stage": "mvp", "is_crypto": true, "chain": "Ethereum", "note": "Основний актив ескроу (ТЗ v2, п. 12.4)"},
+    {"code": "USDT", "level": 8, "kind": "stablecoin", "decimals": 6, "status": "display_only", "stage": "mvp", "is_crypto": true, "chain": "Ethereum", "note": "Альтернативний актив ескроу"},
+    {"code": "EURC", "level": 8, "kind": "stablecoin", "decimals": 6, "status": "disabled", "stage": "stage2", "is_crypto": true, "chain": "Ethereum", "note": "Євро-номінований стейблкоїн, ще не увімкнено"}
+  ]
+}

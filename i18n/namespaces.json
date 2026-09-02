@@ -1,0 +1,12 @@
+{
+  "source": "Побудовано за фактичними префіксами ключів об'єкта i18n у index.html (ТЗ v2, п. 12.10)",
+  "namespaces": {
+    "common": ["nav", "footer", "brand", "hero", "tab", "cta", "toast", "err", "login", "register", "logout", "modal", "switch", "submit", "any", "search"],
+    "exchange": ["col", "f", "results", "market", "rating", "currency", "permit", "unit", "mode", "escrow", "flows", "flow", "contact"],
+    "services": ["weather", "borders", "directory", "qa", "contacts", "stat"],
+    "admin": ["admin"],
+    "emails": ["email"],
+    "legal": ["about", "reliability", "blacklist"],
+    "glossary": ["glossary"]
+  }
+}

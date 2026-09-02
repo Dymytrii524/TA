@@ -1,0 +1,18 @@
+{
+  "base": "EUR",
+  "currencies": [
+    {"code": "EUR", "kind": "fiat", "decimals": 2, "roles": ["base", "rate", "commission", "analytics", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 1},
+    {"code": "USD", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 1},
+    {"code": "UAH", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 2},
+    {"code": "PLN", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 3},
+    {"code": "CZK", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 3},
+    {"code": "RON", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 3},
+    {"code": "GBP", "kind": "fiat", "decimals": 2, "roles": ["rate", "contract", "invoice", "payment", "display"], "enabled": true, "status": "active", "level": 3},
+    {"code": "USDC", "kind": "stablecoin", "decimals": 6, "roles": ["escrow", "payment", "display"], "enabled": true, "status": "display_only", "level": 8, "is_crypto": true},
+    {"code": "USDT", "kind": "stablecoin", "decimals": 6, "roles": ["escrow", "payment", "display"], "enabled": true, "status": "display_only", "level": 8, "is_crypto": true}
+  ],
+  "escrow": {
+    "primary": "USDC",
+    "secondary": ["USDT"]
+  }
+}

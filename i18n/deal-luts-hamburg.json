@@ -1,0 +1,33 @@
+{
+  "deal_id": "deal_lutsk_hamburg_001",
+  "route": "Луцьк → Гамбург",
+  "price": {"currency": "EUR", "amount": 2400},
+  "contract": {"currency": "EUR", "amount": 2400},
+  "payment": {"currency": "USDC", "amount": 2607.6},
+  "fx": {
+    "pair": "EUR/USDC",
+    "rate": 1.0865,
+    "source": "медіана двох незалежних агрегаторів курсів стейблкоінів",
+    "fixed_at": "2026-09-01T14:12:07+03:00",
+    "stale": false
+  },
+  "commission": {"currency": "EUR", "amount": 37},
+  "tax": {"currency": "EUR", "amount": 0, "note": "reverse charge"},
+  "escrow": {
+    "currency": "USDC",
+    "amount": 2607.6,
+    "asset_role": "primary",
+    "release_conditions": ["gps_delivery_confirmed", "ecmr_uploaded"],
+    "released": true
+  },
+  "conversion_log": [
+    {
+      "entity": "payment",
+      "pair": "EUR/USDC",
+      "rate": 1.0865,
+      "source": "медіана двох незалежних агрегаторів курсів стейблкоінів",
+      "fixed_at": "2026-09-01T14:12:07+03:00",
+      "actor": "система (автоматична фіксація при акцепті ставки)"
+    }
+  ]
+}

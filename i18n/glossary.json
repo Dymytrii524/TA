@@ -1,0 +1,25 @@
+{
+  "terms": [
+    {"term": "CMR", "do_not_translate": true, "category": "documents", "note": "Міжнародна автотранспортна накладна"},
+    {"term": "ADR", "do_not_translate": true, "category": "adr", "note": "Угода про перевезення небезпечних вантажів"},
+    {"term": "TIR", "do_not_translate": true, "category": "customs", "note": "Книжка міжнародного дорожнього перевезення"},
+    {"term": "МДП", "do_not_translate": true, "category": "customs", "note": "Українська абревіатура TIR"},
+    {"term": "Зелена картка", "do_not_translate": true, "category": "documents"},
+    {"term": "Green Card", "do_not_translate": true, "category": "documents"},
+    {"term": "Incoterms", "do_not_translate": true, "category": "incoterms"},
+    {"term": "Інкотермс", "do_not_translate": true, "category": "incoterms"},
+    {"term": "EXW", "do_not_translate": true, "category": "incoterms"},
+    {"term": "FCA", "do_not_translate": true, "category": "incoterms"},
+    {"term": "CPT", "do_not_translate": true, "category": "incoterms"},
+    {"term": "CIP", "do_not_translate": true, "category": "incoterms"},
+    {"term": "DAP", "do_not_translate": true, "category": "incoterms"},
+    {"term": "DPU", "do_not_translate": true, "category": "incoterms"},
+    {"term": "DDP", "do_not_translate": true, "category": "incoterms"},
+    {"term": "FOB", "do_not_translate": true, "category": "incoterms"},
+    {"term": "CFR", "do_not_translate": true, "category": "incoterms"},
+    {"term": "CIF", "do_not_translate": true, "category": "incoterms"},
+    {"term": "NCTS", "do_not_translate": true, "category": "customs", "note": "Нова комп'ютеризована транзитна система ЄС"},
+    {"term": "T1", "do_not_translate": true, "category": "customs"},
+    {"term": "T2", "do_not_translate": true, "category": "customs"}
+  ]
+}
