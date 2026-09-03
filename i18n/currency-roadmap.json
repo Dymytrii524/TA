@@ -336,7 +336,7 @@
       "level": 8,
       "kind": "stablecoin",
       "decimals": 2,
-      "status": "disabled",
+      "status": "display_only",
       "stage": "stage2",
       "is_crypto": true,
       "chain": "Polygon",
