@@ -671,7 +671,132 @@ var CITIES = [
   {id:"melbourne", uk:"Мельбурн", en:"Melbourne", lat:-37.8136, lon:144.9631, country:"AU", continent:"australia"},
   {id:"brisbane", uk:"Брисбен", en:"Brisbane", lat:-27.4698, lon:153.0251, country:"AU", continent:"australia"},
   {id:"perth", uk:"Перт", en:"Perth", lat:-31.9505, lon:115.8605, country:"AU", continent:"australia"},
-  {id:"auckland", uk:"Окленд", en:"Auckland", lat:-36.8509, lon:174.7645, country:"NZ", continent:"australia"}
+  {id:"auckland", uk:"Окленд", en:"Auckland", lat:-36.8509, lon:174.7645, country:"NZ", continent:"australia"},
+  /* Міста континентальних наборів test-data/*.json (порти, авіахаби, вузли).
+   * Додані сюди, а не в JSON, бо саме CITIES живить <select> фільтрів
+   * "Звідки/Куди", cityName() у картках, cityCountry() у таблицях потоків
+   * і lat/lon для модуля погоди - інакше 7120 заявок були б у фільтрах
+   * "невідомими" рядками без країни та координат. */
+  {id:"antwerp", uk:"Антверпен", en:"Antwerp", lat:51.2194, lon:4.4025, country:"BE", continent:"europe"},
+  {id:"amsterdam", uk:"Амстердам", en:"Amsterdam", lat:52.3676, lon:4.9041, country:"NL", continent:"europe"},
+  {id:"frankfurt", uk:"Франкфурт", en:"Frankfurt", lat:50.1109, lon:8.6821, country:"DE", continent:"europe"},
+  {id:"paris", uk:"Париж", en:"Paris", lat:48.8566, lon:2.3522, country:"FR", continent:"europe"},
+  {id:"lyon", uk:"Ліон", en:"Lyon", lat:45.764, lon:4.8357, country:"FR", continent:"europe"},
+  {id:"london", uk:"Лондон", en:"London", lat:51.5072, lon:-0.1276, country:"GB", continent:"europe"},
+  {id:"dublin", uk:"Дублін", en:"Dublin", lat:53.3498, lon:-6.2603, country:"IE", continent:"europe"},
+  {id:"madrid", uk:"Мадрид", en:"Madrid", lat:40.4168, lon:-3.7038, country:"ES", continent:"europe"},
+  {id:"barcelona", uk:"Барселона", en:"Barcelona", lat:41.3874, lon:2.1686, country:"ES", continent:"europe"},
+  {id:"valencia", uk:"Валенсія", en:"Valencia", lat:39.4699, lon:-0.3763, country:"ES", continent:"europe"},
+  {id:"lisbon", uk:"Лісабон", en:"Lisbon", lat:38.7223, lon:-9.1393, country:"PT", continent:"europe"},
+  {id:"milan", uk:"Мілан", en:"Milan", lat:45.4642, lon:9.19, country:"IT", continent:"europe"},
+  {id:"genoa", uk:"Генуя", en:"Genoa", lat:44.4056, lon:8.9463, country:"IT", continent:"europe"},
+  {id:"zurich", uk:"Цюрих", en:"Zurich", lat:47.3769, lon:8.5417, country:"CH", continent:"europe"},
+  {id:"budapest", uk:"Будапешт", en:"Budapest", lat:47.4979, lon:19.0402, country:"HU", continent:"europe"},
+  {id:"sofia", uk:"Софія", en:"Sofia", lat:42.6977, lon:23.3219, country:"BG", continent:"europe"},
+  {id:"belgrade", uk:"Белград", en:"Belgrade", lat:44.7866, lon:20.4489, country:"RS", continent:"europe"},
+  {id:"chisinau", uk:"Кишинів", en:"Chisinau", lat:47.0105, lon:28.8638, country:"MD", continent:"europe"},
+  {id:"athens", uk:"Афіни", en:"Athens", lat:37.9838, lon:23.7275, country:"GR", continent:"europe"},
+  {id:"piraeus", uk:"Пірей", en:"Piraeus", lat:37.942, lon:23.6465, country:"GR", continent:"europe"},
+  {id:"riga", uk:"Рига", en:"Riga", lat:56.9496, lon:24.1052, country:"LV", continent:"europe"},
+  {id:"tallinn", uk:"Таллінн", en:"Tallinn", lat:59.437, lon:24.7536, country:"EE", continent:"europe"},
+  {id:"helsinki", uk:"Гельсінкі", en:"Helsinki", lat:60.1699, lon:24.9384, country:"FI", continent:"europe"},
+  {id:"stockholm", uk:"Стокгольм", en:"Stockholm", lat:59.3293, lon:18.0686, country:"SE", continent:"europe"},
+  {id:"gothenburg", uk:"Гетеборг", en:"Gothenburg", lat:57.7089, lon:11.9746, country:"SE", continent:"europe"},
+  {id:"oslo", uk:"Осло", en:"Oslo", lat:59.9139, lon:10.7522, country:"NO", continent:"europe"},
+  {id:"copenhagen", uk:"Копенгаген", en:"Copenhagen", lat:55.6761, lon:12.5683, country:"DK", continent:"europe"},
+  {id:"beijing", uk:"Пекін", en:"Beijing", lat:39.9042, lon:116.4074, country:"CN", continent:"asia"},
+  {id:"guangzhou", uk:"Гуанчжоу", en:"Guangzhou", lat:23.1291, lon:113.2644, country:"CN", continent:"asia"},
+  {id:"ningbo", uk:"Нінбо", en:"Ningbo", lat:29.8683, lon:121.544, country:"CN", continent:"asia"},
+  {id:"hongkong", uk:"Гонконг", en:"Hong Kong", lat:22.3193, lon:114.1694, country:"HK", continent:"asia"},
+  {id:"taipei", uk:"Тайбей", en:"Taipei", lat:25.033, lon:121.5654, country:"TW", continent:"asia"},
+  {id:"busan", uk:"Пусан", en:"Busan", lat:35.1796, lon:129.0756, country:"KR", continent:"asia"},
+  {id:"incheon", uk:"Інчхон", en:"Incheon", lat:37.4563, lon:126.7052, country:"KR", continent:"asia"},
+  {id:"chennai", uk:"Ченнаї", en:"Chennai", lat:13.0827, lon:80.2707, country:"IN", continent:"asia"},
+  {id:"hanoi", uk:"Ханой", en:"Hanoi", lat:21.0278, lon:105.8342, country:"VN", continent:"asia"},
+  {id:"jakarta", uk:"Джакарта", en:"Jakarta", lat:-6.2088, lon:106.8456, country:"ID", continent:"asia"},
+  {id:"manila", uk:"Маніла", en:"Manila", lat:14.5995, lon:120.9842, country:"PH", continent:"asia"},
+  {id:"kualalumpur", uk:"Куала-Лумпур", en:"Kuala Lumpur", lat:3.139, lon:101.6869, country:"MY", continent:"asia"},
+  {id:"portklang", uk:"Порт-Кланг", en:"Port Klang", lat:3.0031, lon:101.3928, country:"MY", continent:"asia"},
+  {id:"laemchabang", uk:"Лаем-Чабанг", en:"Laem Chabang", lat:13.0833, lon:100.8833, country:"TH", continent:"asia"},
+  {id:"doha", uk:"Доха", en:"Doha", lat:25.2854, lon:51.531, country:"QA", continent:"asia"},
+  {id:"karachi", uk:"Карачі", en:"Karachi", lat:24.8607, lon:67.0011, country:"PK", continent:"asia"},
+  {id:"colombo", uk:"Коломбо", en:"Colombo", lat:6.9271, lon:79.8612, country:"LK", continent:"asia"},
+  {id:"dhaka", uk:"Дакка", en:"Dhaka", lat:23.8103, lon:90.4125, country:"BD", continent:"asia"},
+  {id:"tehran", uk:"Тегеран", en:"Tehran", lat:35.6892, lon:51.389, country:"IR", continent:"asia"},
+  {id:"alexandria", uk:"Александрія", en:"Alexandria", lat:31.2001, lon:29.9187, country:"EG", continent:"africa"},
+  {id:"portsaid", uk:"Порт-Саїд", en:"Port Said", lat:31.2653, lon:32.3019, country:"EG", continent:"africa"},
+  {id:"tangier", uk:"Танжер", en:"Tangier", lat:35.7595, lon:-5.834, country:"MA", continent:"africa"},
+  {id:"algiers", uk:"Алжир", en:"Algiers", lat:36.7538, lon:3.0588, country:"DZ", continent:"africa"},
+  {id:"tripoli", uk:"Триполі", en:"Tripoli", lat:32.8872, lon:13.1913, country:"LY", continent:"africa"},
+  {id:"abidjan", uk:"Абіджан", en:"Abidjan", lat:5.36, lon:-4.0083, country:"CI", continent:"africa"},
+  {id:"dakar", uk:"Дакар", en:"Dakar", lat:14.7167, lon:-17.4677, country:"SN", continent:"africa"},
+  {id:"douala", uk:"Дуала", en:"Douala", lat:4.0511, lon:9.7679, country:"CM", continent:"africa"},
+  {id:"mombasa", uk:"Момбаса", en:"Mombasa", lat:-4.0435, lon:39.6682, country:"KE", continent:"africa"},
+  {id:"daressalaam", uk:"Дар-ес-Салам", en:"Dar es Salaam", lat:-6.7924, lon:39.2083, country:"TZ", continent:"africa"},
+  {id:"kampala", uk:"Кампала", en:"Kampala", lat:0.3476, lon:32.5825, country:"UG", continent:"africa"},
+  {id:"durban", uk:"Дурбан", en:"Durban", lat:-29.8587, lon:31.0218, country:"ZA", continent:"africa"},
+  {id:"capetown", uk:"Кейптаун", en:"Cape Town", lat:-33.9249, lon:18.4241, country:"ZA", continent:"africa"},
+  {id:"luanda", uk:"Луанда", en:"Luanda", lat:-8.839, lon:13.2894, country:"AO", continent:"africa"},
+  {id:"maputo", uk:"Мапуту", en:"Maputo", lat:-25.9692, lon:32.5732, country:"MZ", continent:"africa"},
+  {id:"lusaka", uk:"Лусака", en:"Lusaka", lat:-15.3875, lon:28.3228, country:"ZM", continent:"africa"},
+  {id:"harare", uk:"Гараре", en:"Harare", lat:-17.8252, lon:31.0335, country:"ZW", continent:"africa"},
+  {id:"windhoek", uk:"Віндгук", en:"Windhoek", lat:-22.5597, lon:17.0832, country:"NA", continent:"africa"},
+  {id:"chicago", uk:"Чикаго", en:"Chicago", lat:41.8781, lon:-87.6298, country:"US", continent:"america"},
+  {id:"houston", uk:"Х'юстон", en:"Houston", lat:29.7604, lon:-95.3698, country:"US", continent:"america"},
+  {id:"dallas", uk:"Даллас", en:"Dallas", lat:32.7767, lon:-96.797, country:"US", continent:"america"},
+  {id:"atlanta", uk:"Атланта", en:"Atlanta", lat:33.749, lon:-84.388, country:"US", continent:"america"},
+  {id:"miami", uk:"Маямі", en:"Miami", lat:25.7617, lon:-80.1918, country:"US", continent:"america"},
+  {id:"seattle", uk:"Сіетл", en:"Seattle", lat:47.6062, lon:-122.3321, country:"US", continent:"america"},
+  {id:"longbeach", uk:"Лонг-Біч", en:"Long Beach", lat:33.7701, lon:-118.1937, country:"US", continent:"america"},
+  {id:"savannah", uk:"Саванна", en:"Savannah", lat:32.0809, lon:-81.0912, country:"US", continent:"america"},
+  {id:"memphis", uk:"Мемфіс", en:"Memphis", lat:35.1495, lon:-90.049, country:"US", continent:"america"},
+  {id:"denver", uk:"Денвер", en:"Denver", lat:39.7392, lon:-104.9903, country:"US", continent:"america"},
+  {id:"laredo", uk:"Ларедо", en:"Laredo", lat:27.5064, lon:-99.5075, country:"US", continent:"america"},
+  {id:"montreal", uk:"Монреаль", en:"Montreal", lat:45.5019, lon:-73.5674, country:"CA", continent:"america"},
+  {id:"calgary", uk:"Калгарі", en:"Calgary", lat:51.0447, lon:-114.0719, country:"CA", continent:"america"},
+  {id:"winnipeg", uk:"Вінніпег", en:"Winnipeg", lat:49.8951, lon:-97.1384, country:"CA", continent:"america"},
+  {id:"monterrey", uk:"Монтеррей", en:"Monterrey", lat:25.6866, lon:-100.3161, country:"MX", continent:"america"},
+  {id:"guadalajara", uk:"Гвадалахара", en:"Guadalajara", lat:20.6597, lon:-103.3496, country:"MX", continent:"america"},
+  {id:"veracruz", uk:"Веракрус", en:"Veracruz", lat:19.1738, lon:-96.1342, country:"MX", continent:"america"},
+  {id:"manzanillo", uk:"Мансанільо", en:"Manzanillo", lat:19.0522, lon:-104.3158, country:"MX", continent:"america"},
+  {id:"panamacity", uk:"Панама", en:"Panama City", lat:8.9824, lon:-79.5199, country:"PA", continent:"america"},
+  {id:"santos", uk:"Сантус", en:"Santos", lat:-23.9608, lon:-46.3336, country:"BR", continent:"america"},
+  {id:"riodejaneiro", uk:"Ріо-де-Жанейро", en:"Rio de Janeiro", lat:-22.9068, lon:-43.1729, country:"BR", continent:"america"},
+  {id:"paranagua", uk:"Паранагуа", en:"Paranagua", lat:-25.5163, lon:-48.5225, country:"BR", continent:"america"},
+  {id:"portoalegre", uk:"Порту-Алегрі", en:"Porto Alegre", lat:-30.0346, lon:-51.2177, country:"BR", continent:"america"},
+  {id:"manaus", uk:"Манаус", en:"Manaus", lat:-3.119, lon:-60.0217, country:"BR", continent:"america"},
+  {id:"recife", uk:"Ресіфі", en:"Recife", lat:-8.0476, lon:-34.877, country:"BR", continent:"america"},
+  {id:"callao", uk:"Кальяо", en:"Callao", lat:-12.0565, lon:-77.1181, country:"PE", continent:"america"},
+  {id:"guayaquil", uk:"Гуаякіль", en:"Guayaquil", lat:-2.1894, lon:-79.8891, country:"EC", continent:"america"},
+  {id:"quito", uk:"Кіто", en:"Quito", lat:-0.1807, lon:-78.4678, country:"EC", continent:"america"},
+  {id:"cartagena", uk:"Картахена", en:"Cartagena", lat:10.391, lon:-75.4794, country:"CO", continent:"america"},
+  {id:"medellin", uk:"Медельїн", en:"Medellín", lat:6.2442, lon:-75.5812, country:"CO", continent:"america"},
+  {id:"valparaiso", uk:"Вальпараїсо", en:"Valparaiso", lat:-33.0472, lon:-71.6127, country:"CL", continent:"america"},
+  {id:"antofagasta", uk:"Антофагаста", en:"Antofagasta", lat:-23.6509, lon:-70.3975, country:"CL", continent:"america"},
+  {id:"montevideo", uk:"Монтевідео", en:"Montevideo", lat:-34.9011, lon:-56.1645, country:"UY", continent:"america"},
+  {id:"asuncion", uk:"Асунсьйон", en:"Asunción", lat:-25.2637, lon:-57.5759, country:"PY", continent:"america"},
+  {id:"lapaz", uk:"Ла-Пас", en:"La Paz", lat:-16.4897, lon:-68.1193, country:"BO", continent:"america"},
+  {id:"caracas", uk:"Каракас", en:"Caracas", lat:10.4806, lon:-66.9036, country:"VE", continent:"america"},
+  {id:"rosario", uk:"Росаріо", en:"Rosario", lat:-32.9442, lon:-60.6505, country:"AR", continent:"america"},
+  {id:"georgetown", uk:"Джорджтаун", en:"Georgetown", lat:6.8013, lon:-58.1551, country:"GY", continent:"america"},
+  {id:"adelaide", uk:"Аделаїда", en:"Adelaide", lat:-34.9285, lon:138.6007, country:"AU", continent:"australia"},
+  {id:"darwin", uk:"Дарвін", en:"Darwin", lat:-12.4634, lon:130.8456, country:"AU", continent:"australia"},
+  {id:"hobart", uk:"Гобарт", en:"Hobart", lat:-42.8821, lon:147.3272, country:"AU", continent:"australia"},
+  {id:"fremantle", uk:"Фрімантл", en:"Fremantle", lat:-32.0569, lon:115.7439, country:"AU", continent:"australia"},
+  {id:"newcastleau", uk:"Ньюкасл", en:"Newcastle", lat:-32.9283, lon:151.7817, country:"AU", continent:"australia"},
+  {id:"cairns", uk:"Кернс", en:"Cairns", lat:-16.9186, lon:145.7781, country:"AU", continent:"australia"},
+  {id:"townsville", uk:"Таунсвілл", en:"Townsville", lat:-19.259, lon:146.8169, country:"AU", continent:"australia"},
+  {id:"wellington", uk:"Веллінгтон", en:"Wellington", lat:-41.2866, lon:174.7756, country:"NZ", continent:"australia"},
+  {id:"christchurch", uk:"Крайстчерч", en:"Christchurch", lat:-43.5321, lon:172.6362, country:"NZ", continent:"australia"},
+  {id:"tauranga", uk:"Тауранга", en:"Tauranga", lat:-37.6878, lon:176.1651, country:"NZ", continent:"australia"},
+  {id:"napier", uk:"Нейпір", en:"Napier", lat:-39.4928, lon:176.912, country:"NZ", continent:"australia"},
+  {id:"dunedin", uk:"Данідін", en:"Dunedin", lat:-45.8788, lon:170.5028, country:"NZ", continent:"australia"},
+  {id:"portmoresby", uk:"Порт-Морсбі", en:"Port Moresby", lat:-9.4438, lon:147.1803, country:"PG", continent:"australia"},
+  {id:"lae", uk:"Лае", en:"Lae", lat:-6.7155, lon:146.9962, country:"PG", continent:"australia"},
+  {id:"suva", uk:"Сува", en:"Suva", lat:-18.1416, lon:178.4419, country:"FJ", continent:"australia"},
+  {id:"nadi", uk:"Наді", en:"Nadi", lat:-17.8035, lon:177.4144, country:"FJ", continent:"australia"},
+  {id:"noumea", uk:"Нумеа", en:"Noumea", lat:-22.2758, lon:166.458, country:"NC", continent:"australia"},
+  {id:"apia", uk:"Апіа", en:"Apia", lat:-13.8333, lon:-171.7667, country:"WS", continent:"australia"}
 ];
 function cityName(id,lang){ var c=CITIES.filter(function(x){return x.id===id;})[0]; return c? c[lang]||c.en : id; }
 
@@ -4357,6 +4482,117 @@ var LISTINGS = [
   {id:3653,kind:"cargo",mode:"drone",from:"melbourne",to:"brisbane",date:"2026-10-31",cargo:"docs",weight:1.4,weightUnit:"kg",price:61,currency:"EUR",company:"Tasman Air",rangeKm:113,maxPayloadKg:3.3,droneType:"конвертоплан",flightPermit:false}
 ];
 
+/* ---------- data: зовнішні набори заявок (test-data/) ---------- */
+/**
+ * Масив LISTINGS вище - демо-набір, вшитий у сторінку. Континентальні
+ * набори (test-data/listings-<continent>.json, 7120 заявок: Європа, Азія,
+ * Африка, Північна Америка, Південна Америка, Океанія; від 100 до 300
+ * заявок на кожну пару континент x вид транспорту) підключаються тут
+ * асинхронно й додаються в той самий LISTINGS, тому фільтри
+ * (filteredListings), пагінація "Показати ще" (PAGE_SIZE / resultsShown),
+ * рейтинг, таблиці потоків і статистика працюють з ними без окремої гілки
+ * коду.
+ *
+ * Свідомі рішення:
+ *   - id заявок з test-data починаються з 100001, тому колізій із вшитим
+ *     демо-набором (id 1..3653) немає; mergeExternalListings усе одно
+ *     перевіряє id, щоб повторний виклик не дублював рядки;
+ *   - from/to використовують лише id з CITIES, інакше фільтри "Звідки/Куди"
+ *     не змогли б вибрати заявку, а cityCountry() повернув би null;
+ *   - при відкритті index.html як file:// або якщо файли недоступні (404,
+ *     офлайн) сторінка не падає й не показує вигаданих чисел: залишається
+ *     вшитий демо-набір, а статус набору чесно позначається в UI.
+ */
+var LISTINGS_FEED = {
+  files: [
+    "test-data/listings-europe.json",
+    "test-data/listings-asia.json",
+    "test-data/listings-africa.json",
+    "test-data/listings-north-america.json",
+    "test-data/listings-south-america.json",
+    "test-data/listings-oceania.json"
+  ],
+  status: "idle",      // idle | loading | ready | partial | offline
+  builtin: 0,          // скільки заявок було вшито в сторінку
+  added: 0,            // скільки додано з test-data
+  filesOk: 0,
+  filesFailed: 0
+};
+
+function mergeExternalListings(items){
+  var seen = {};
+  LISTINGS.forEach(function(l){ seen[l.id] = true; });
+  var added = 0;
+  (items || []).forEach(function(l){
+    if(!l || l.id === undefined || seen[l.id]) return;
+    if(!l.kind || !l.mode || !l.from || !l.to) return;   // неповний рядок - не рендеримо
+    seen[l.id] = true;
+    LISTINGS.push(l);
+    added++;
+  });
+  return added;
+}
+
+function loadExternalListings(){
+  LISTINGS_FEED.builtin = LISTINGS.length;
+  if(typeof fetch !== "function" || location.protocol === "file:"){
+    LISTINGS_FEED.status = "offline";
+    return;
+  }
+  LISTINGS_FEED.status = "loading";
+  Promise.all(LISTINGS_FEED.files.map(function(url){
+    return fetch(url, {cache:"no-store"})
+      .then(function(res){ if(!res.ok) throw new Error(res.status); return res.json(); })
+      .then(function(data){ LISTINGS_FEED.filesOk++; return (data && data.listings) || []; })
+      .catch(function(){ LISTINGS_FEED.filesFailed++; return []; });
+  })).then(function(chunks){
+    var added = 0;
+    chunks.forEach(function(chunk){ added += mergeExternalListings(chunk); });
+    LISTINGS_FEED.added = added;
+    LISTINGS_FEED.status = LISTINGS_FEED.filesFailed ? (added ? "partial" : "offline") : "ready";
+    // Нові рядки змінюють обсяг вибірки, тому пагінація починається з першої
+    // сторінки, а не з випадково "вже прокрученого" стану.
+    state.resultsShown = {cargo: PAGE_SIZE, transport: PAGE_SIZE};
+    state.ratingShown = PAGE_SIZE;
+    renderApp();
+    if(added) toast(feedStatusText());
+  });
+}
+
+/** Статус набору даних, показується в результатах пошуку й тостом після
+ * завантаження. Тексти локальні (uk/en/pl/de) з фолбеком на en. */
+var FEED_TEXT = {
+  loading: {uk:"Завантаження континентальних наборів заявок...", en:"Loading continental listing datasets...", pl:"Wczytywanie kontynentalnych zbiorow zgloszen...", de:"Kontinentale Datensaetze werden geladen..."},
+  ready:   {uk:"Підключено заявок: {total} (демо {builtin} + test-data {added})", en:"Listings connected: {total} (demo {builtin} + test-data {added})", pl:"Podlaczone zgloszenia: {total} (demo {builtin} + test-data {added})", de:"Verbundene Auftraege: {total} (Demo {builtin} + test-data {added})"},
+  partial: {uk:"Частина наборів недоступна: підключено {total} заявок, файлів з помилкою - {failed}", en:"Some datasets unavailable: {total} listings connected, {failed} file(s) failed", pl:"Czesc zbiorow niedostepna: podlaczono {total} zgloszen, bledne pliki: {failed}", de:"Einige Datensaetze nicht verfuegbar: {total} Auftraege verbunden, {failed} Datei(en) fehlerhaft"},
+  offline: {uk:"Набори test-data недоступні - показано лише вшитий демо-набір ({total} заявок)", en:"test-data datasets unavailable - showing the built-in demo set only ({total} listings)", pl:"Zbiory test-data niedostepne - pokazano tylko wbudowany zestaw demo ({total} zgloszen)", de:"test-data nicht verfuegbar - nur der eingebaute Demo-Satz ({total} Auftraege)"}
+};
+/** QA-хук: дає змогу перевірити підключений набір із консолі або
+ * автотестами (Playwright/Puppeteer) без відкриття приватного замикання -
+ * лише читання, жодної логіки рендера тут немає.
+ * Приклад: TA_DEBUG.feed.status, TA_DEBUG.listings.length,
+ *          TA_DEBUG.filtered("cargo").length */
+window.TA_DEBUG = {
+  feed: LISTINGS_FEED,
+  get listings(){ return LISTINGS; },
+  get cities(){ return CITIES; },
+  get state(){ return state; },
+  filtered: function(kind){ return filteredListings(kind); },
+  reload: function(){ return loadExternalListings(); }
+};
+
+function feedStatusText(){
+  var f = LISTINGS_FEED;
+  if(f.status === "idle") return "";
+  var pack = FEED_TEXT[f.status] || FEED_TEXT.offline;
+  var tpl = pack[state.lang] || pack.en;
+  return tpl.replace("{total}", LISTINGS.length)
+            .replace("{builtin}", f.builtin || LISTINGS.length)
+            .replace("{added}", f.added)
+            .replace("{failed}", f.filesFailed);
+}
+
+
 /** Ринок транспорту, one equipment catalog per transport mode - "auto" is
  * the original block; rail/sea/air/drone follow the same shape (icon +
  * label + count) so renderMarket() doesn't special-case any of them. Ids
@@ -5380,6 +5616,7 @@ function renderResultsSection(kind, title){
       '<button class="btn btn-primary" id="applyFilterBtn">'+ICONS.search+esc(t("search"))+'</button>'+
     '</div>'+
     '<p class="escrow-note">'+esc(t("escrow_note"))+'</p>'+
+    (feedStatusText() ? '<p class="escrow-note" data-feed-status="'+LISTINGS_FEED.status+'">'+esc(feedStatusText())+'</p>' : '')+
     '<div class="manifest">'+
       (visible.length ? visible.map(renderListingRow).join("") : '<div class="empty-state">'+esc(t("results_empty"))+'</div>')+
     '</div>'+
@@ -6571,6 +6808,7 @@ window.addEventListener("hashchange", function(){
 if(!location.hash) location.hash = "#home";
 state.route = location.hash.slice(1) || "home";
 renderApp();
+loadExternalListings();
 
 })();
 </script>

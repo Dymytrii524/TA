@@ -1,3978 +1,3828 @@
 {
  "continent": "North America",
  "mode": "multi",
- "count": 207,
+ "count": 200,
  "listings": [
   {
-   "id": 5681,
+   "id": 104836,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "vancouver",
-   "to": "boston",
+   "from": "panamacity",
+   "to": "miami",
    "date": "2026-09-18",
-   "currency": "USD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 42.1,
-   "volume": 249.0,
-   "price": 3942.0
-  },
-  {
-   "id": 5682,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "panama city",
-   "to": "kansas city",
-   "date": "2026-11-18",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "chem",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 87.9,
-   "volume": 108.0,
-   "price": 13525.0
-  },
-  {
-   "id": 5683,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "dallas",
-   "date": "2026-12-26",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
    "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 18.9,
-   "volume": 340.0,
-   "price": 11957.0
+   "weight": 27.2,
+   "volume": 293.0,
+   "price": 14583.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
   },
   {
-   "id": 5684,
+   "id": 104837,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "vancouver",
-   "to": "atlanta",
-   "date": "2026-12-12",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 97.6,
-   "volume": 149.0,
-   "price": 2206.0
-  },
-  {
-   "id": 5685,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "winnipeg",
-   "to": "new york",
-   "date": "2026-10-09",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 128.2,
-   "volume": 313.0,
-   "price": 12499.0
-  },
-  {
-   "id": 5686,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "san juan",
-   "date": "2026-12-03",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 75.2,
-   "volume": 316.0,
-   "price": 6358.0
-  },
-  {
-   "id": 5687,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "laredo",
-   "to": "san juan",
-   "date": "2026-11-08",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 18.1,
-   "volume": 376.0,
-   "price": 17577.0
-  },
-  {
-   "id": 5688,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "calgary",
-   "to": "monterrey",
-   "date": "2026-10-11",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 59.8,
-   "volume": 262.0,
-   "price": 10994.0
-  },
-  {
-   "id": 5689,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "san francisco",
-   "date": "2026-09-03",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 85.4,
-   "volume": 378.0,
-   "price": 16766.0
-  },
-  {
-   "id": 5690,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "winnipeg",
-   "date": "2026-09-26",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 100.1,
-   "volume": 139.0,
-   "price": 10873.0
-  },
-  {
-   "id": 5691,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "denver",
-   "to": "minneapolis",
-   "date": "2026-09-24",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 19.4,
-   "volume": 93.0,
-   "price": 5108.0
-  },
-  {
-   "id": 5692,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "denver",
-   "to": "laredo",
-   "date": "2026-11-17",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 35.9,
-   "volume": 94.0,
-   "price": 11940.0
-  },
-  {
-   "id": 5693,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "panama city",
-   "to": "detroit",
-   "date": "2026-09-26",
-   "currency": "USD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 68.8,
-   "volume": 373.0,
-   "price": 7993.0
-  },
-  {
-   "id": 5694,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "laredo",
-   "date": "2026-11-20",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 103.5,
-   "volume": 142.0,
-   "price": 6208.0
-  },
-  {
-   "id": 5695,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "winnipeg",
-   "to": "guadalajara",
-   "date": "2026-10-25",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 50.4,
-   "volume": 305.0,
-   "price": 4434.0
-  },
-  {
-   "id": 5696,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "guadalajara",
-   "to": "miami",
-   "date": "2026-12-03",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 103.3,
-   "volume": 208.0,
-   "price": 8466.0
-  },
-  {
-   "id": 5697,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "denver",
-   "date": "2026-12-10",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 76.3,
-   "volume": 85.0,
-   "price": 6250.0
-  },
-  {
-   "id": 5698,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "los angeles",
-   "date": "2026-09-19",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 29.1,
-   "volume": 210.0,
-   "price": 9810.0
-  },
-  {
-   "id": 5699,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "havana",
-   "date": "2026-09-10",
-   "currency": "USD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 110.4,
-   "volume": 375.0,
-   "price": 5993.0
-  },
-  {
-   "id": 5700,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "philadelphia",
-   "to": "houston",
-   "date": "2026-09-13",
-   "currency": "MXN",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 22.0,
-   "volume": 194.0,
-   "price": 9467.0
-  },
-  {
-   "id": 5701,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "boston",
-   "date": "2026-12-13",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 130.0,
-   "volume": 85.0,
-   "price": 3609.0
-  },
-  {
-   "id": 5702,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "havana",
-   "date": "2026-09-05",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 50.7,
-   "volume": 351.0,
-   "price": 2081.0
-  },
-  {
-   "id": 5703,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "seattle",
-   "date": "2026-10-21",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 35.4,
-   "volume": 187.0,
-   "price": 3718.0
-  },
-  {
-   "id": 5704,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "philadelphia",
-   "to": "denver",
-   "date": "2026-10-01",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 64.1,
-   "volume": 259.0,
-   "price": 6981.0
-  },
-  {
-   "id": 5705,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "phoenix",
-   "date": "2026-09-19",
-   "currency": "MXN",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 104.4,
-   "volume": 227.0,
-   "price": 2809.0
-  },
-  {
-   "id": 5706,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "laredo",
-   "to": "minneapolis",
-   "date": "2026-12-02",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 76.9,
-   "volume": 221.0,
-   "price": 13636.0
-  },
-  {
-   "id": 5707,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "guadalajara",
-   "date": "2026-09-28",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 27.6,
-   "volume": 322.0,
-   "price": 10069.0
-  },
-  {
-   "id": 5708,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "mexico city",
-   "date": "2026-12-22",
-   "currency": "USD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 22.5,
-   "volume": 308.0,
-   "price": 7363.0
-  },
-  {
-   "id": 5709,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "monterrey",
-   "date": "2026-11-24",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 88.7,
-   "volume": 204.0,
-   "price": 8656.0
-  },
-  {
-   "id": 5710,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "calgary",
-   "to": "miami",
-   "date": "2026-09-10",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 111.1,
-   "volume": 250.0,
-   "price": 5345.0
-  },
-  {
-   "id": 5711,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "panama city",
-   "date": "2026-12-20",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 44.7,
-   "volume": 214.0,
-   "price": 6806.0
-  },
-  {
-   "id": 5712,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "panama city",
-   "date": "2026-12-19",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 84.8,
-   "volume": 191.0,
-   "price": 1255.0
-  },
-  {
-   "id": 5713,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "denver",
-   "to": "panama city",
-   "date": "2026-10-25",
-   "currency": "USD",
-   "company": "Aztec Logistica SA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 27.9,
-   "volume": 207.0,
-   "price": 15640.0
-  },
-  {
-   "id": 5714,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "chicago",
-   "date": "2026-09-25",
-   "currency": "CAD",
-   "company": "Continental Freight Inc.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 101.5,
-   "volume": 321.0,
-   "price": 6776.0
-  },
-  {
-   "id": 5715,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "san juan",
-   "date": "2026-12-07",
-   "currency": "CAD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 60.2,
-   "volume": 244.0,
-   "price": 5282.0
-  },
-  {
-   "id": 5716,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "monterrey",
-   "date": "2026-12-15",
-   "currency": "USD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 77.5,
-   "volume": 101.0,
-   "price": 11573.0
-  },
-  {
-   "id": 5717,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "kansas city",
-   "date": "2026-12-13",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 136.7,
-   "volume": 298.0,
-   "price": 16466.0
-  },
-  {
-   "id": 5718,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "panama city",
-   "date": "2026-09-12",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 64.9,
-   "volume": 95.0,
-   "price": 3624.0
-  },
-  {
-   "id": 5719,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "philadelphia",
-   "date": "2026-10-04",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 102.7,
-   "volume": 112.0,
-   "price": 5749.0
-  },
-  {
-   "id": 5720,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "atlanta",
-   "date": "2026-10-11",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 117.3,
-   "volume": 99.0,
-   "price": 13807.0
-  },
-  {
-   "id": 5721,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "memphis",
-   "date": "2026-11-23",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 39.9,
-   "volume": 273.0,
-   "price": 4711.0
-  },
-  {
-   "id": 5722,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "atlanta",
-   "date": "2026-09-21",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 130.2,
-   "volume": 203.0,
-   "price": 8857.0
-  },
-  {
-   "id": 5723,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "detroit",
-   "date": "2026-10-21",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 69.5,
-   "volume": 286.0,
-   "price": 7741.0
-  },
-  {
-   "id": 5724,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "calgary",
-   "date": "2026-11-17",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 74.3,
-   "volume": 180.0,
-   "price": 16036.0
-  },
-  {
-   "id": 5725,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "seattle",
-   "to": "los angeles",
-   "date": "2026-10-25",
-   "currency": "MXN",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 136.1,
-   "volume": 308.0,
-   "price": 3804.0
-  },
-  {
-   "id": 5726,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "winnipeg",
-   "date": "2026-12-18",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 43.8,
-   "volume": 50.0,
-   "price": 12540.0
-  },
-  {
-   "id": 5727,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "winnipeg",
-   "to": "panama city",
-   "date": "2026-11-08",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 111.3,
-   "volume": 330.0,
-   "price": 2015.0
-  },
-  {
-   "id": 5728,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
+   "from": "monterrey",
    "to": "montreal",
-   "date": "2026-09-21",
-   "currency": "USD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 137.9,
-   "volume": 366.0,
-   "price": 13818.0
-  },
-  {
-   "id": 5729,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "miami",
-   "to": "atlanta",
-   "date": "2026-09-06",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 17.3,
-   "volume": 369.0,
-   "price": 9426.0
-  },
-  {
-   "id": 5730,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "new york",
-   "date": "2026-11-20",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 69.6,
-   "volume": 344.0,
-   "price": 14376.0
-  },
-  {
-   "id": 5731,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "mexico city",
-   "date": "2026-10-21",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 79.8,
-   "volume": 208.0,
-   "price": 1910.0
-  },
-  {
-   "id": 5732,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "san juan",
-   "date": "2026-10-13",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 100.1,
-   "volume": 260.0,
-   "price": 10191.0
-  },
-  {
-   "id": 5733,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "seattle",
-   "date": "2026-12-20",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 14.3,
-   "volume": 121.0,
-   "price": 13067.0
-  },
-  {
-   "id": 5734,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "denver",
-   "date": "2026-09-21",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 87.5,
-   "volume": 392.0,
-   "price": 4350.0
-  },
-  {
-   "id": 5735,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "denver",
-   "date": "2026-12-16",
-   "currency": "MXN",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 88.2,
-   "volume": 220.0,
-   "price": 17211.0
-  },
-  {
-   "id": 5736,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san francisco",
-   "to": "atlanta",
-   "date": "2026-10-14",
-   "currency": "USD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 135.3,
-   "volume": 181.0,
-   "price": 8715.0
-  },
-  {
-   "id": 5737,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "san francisco",
-   "date": "2026-10-20",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 139.5,
-   "volume": 84.0,
-   "price": 12564.0
-  },
-  {
-   "id": 5738,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "vancouver",
-   "date": "2026-10-28",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 43.2,
-   "volume": 155.0,
-   "price": 4413.0
-  },
-  {
-   "id": 5739,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "guadalajara",
-   "date": "2026-12-21",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 50.5,
-   "volume": 299.0,
-   "price": 5493.0
-  },
-  {
-   "id": 5740,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "laredo",
-   "to": "mexico city",
-   "date": "2026-11-28",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 94.4,
-   "volume": 321.0,
-   "price": 14836.0
-  },
-  {
-   "id": 5741,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "mexico city",
-   "date": "2026-09-25",
-   "currency": "MXN",
-   "company": "Atlantic Marine Freight",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 114.2,
-   "volume": 264.0,
-   "price": 16275.0
-  },
-  {
-   "id": 5742,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "phoenix",
-   "date": "2026-12-27",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 86.7,
-   "volume": 322.0,
-   "price": 4280.0
-  },
-  {
-   "id": 5743,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "guadalajara",
-   "to": "detroit",
-   "date": "2026-11-24",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 66.4,
-   "volume": 191.0,
-   "price": 7434.0
-  },
-  {
-   "id": 5744,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "vancouver",
-   "date": "2026-11-15",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 36.2,
-   "volume": 276.0,
-   "price": 5088.0
-  },
-  {
-   "id": 5745,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "memphis",
    "date": "2026-10-27",
-   "currency": "USD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "build",
    "components": [
     "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 95.2,
-   "volume": 319.0,
-   "price": 16271.0
-  },
-  {
-   "id": 5746,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "veracruz",
-   "date": "2026-12-18",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 122.1,
-   "volume": 55.0,
-   "price": 14839.0
-  },
-  {
-   "id": 5747,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "panama city",
-   "to": "san juan",
-   "date": "2026-10-14",
-   "currency": "MXN",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "electro",
-   "components": [
-    "air",
     "rail"
    ],
-   "weight": 56.7,
-   "volume": 306.0,
-   "price": 11639.0
-  },
-  {
-   "id": 5748,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "veracruz",
-   "date": "2026-12-21",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 89.6,
-   "volume": 307.0,
-   "price": 10816.0
-  },
-  {
-   "id": 5749,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "panama city",
-   "date": "2026-12-26",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 72.3,
-   "volume": 356.0,
-   "price": 8216.0
-  },
-  {
-   "id": 5750,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "phoenix",
-   "date": "2026-10-01",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
    "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 124.9,
-   "volume": 251.0,
-   "price": 6954.0
+   "weight": 65.8,
+   "volume": 378.0,
+   "price": 2057.0,
+   "currency": "MXN",
+   "company": "Maple Leaf Transport Ltd."
   },
   {
-   "id": 5751,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "philadelphia",
-   "to": "boston",
-   "date": "2026-10-21",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 59.7,
-   "volume": 309.0,
-   "price": 6631.0
-  },
-  {
-   "id": 5752,
+   "id": 104838,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "denver",
-   "to": "toronto",
-   "date": "2026-09-01",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 28.4,
-   "volume": 86.0,
-   "price": 11095.0
-  },
-  {
-   "id": 5753,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "memphis",
-   "date": "2026-09-18",
-   "currency": "USD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 11.1,
-   "volume": 266.0,
-   "price": 12336.0
-  },
-  {
-   "id": 5754,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "san juan",
-   "date": "2026-09-06",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 80.2,
-   "volume": 286.0,
-   "price": 17914.0
-  },
-  {
-   "id": 5755,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "san francisco",
-   "date": "2026-10-12",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 79.4,
-   "volume": 243.0,
-   "price": 1830.0
-  },
-  {
-   "id": 5756,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "san juan",
-   "date": "2026-09-02",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 48.8,
-   "volume": 99.0,
-   "price": 3932.0
-  },
-  {
-   "id": 5757,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "vancouver",
-   "date": "2026-10-05",
-   "currency": "USD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 37.2,
-   "volume": 66.0,
-   "price": 16762.0
-  },
-  {
-   "id": 5758,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "philadelphia",
-   "date": "2026-10-10",
-   "currency": "USD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 94.1,
-   "volume": 63.0,
-   "price": 4304.0
-  },
-  {
-   "id": 5759,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "vancouver",
-   "to": "seattle",
-   "date": "2026-12-15",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 105.4,
-   "volume": 111.0,
-   "price": 14003.0
-  },
-  {
-   "id": 5760,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "seattle",
-   "to": "boston",
-   "date": "2026-11-17",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 46.1,
-   "volume": 348.0,
-   "price": 5205.0
-  },
-  {
-   "id": 5761,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
    "to": "dallas",
-   "date": "2026-10-08",
+   "date": "2026-09-20",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 89.4,
+   "volume": 168.0,
+   "price": 3315.0,
+   "currency": "USDC",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 104839,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "denver",
+   "to": "montreal",
+   "date": "2026-12-12",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 43.2,
+   "volume": 96.0,
+   "price": 4912.0,
    "currency": "USD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "agro",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104840,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "panamacity",
+   "date": "2026-10-23",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 97.3,
-   "volume": 207.0,
-   "price": 3100.0
-  },
-  {
-   "id": 5762,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "panama city",
-   "to": "denver",
-   "date": "2026-12-20",
+   "cargo": "textile",
+   "weight": 74.0,
+   "volume": 172.0,
+   "price": 16786.0,
    "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 42.4,
-   "volume": 222.0,
-   "price": 6680.0
+   "company": "Great Lakes Logistics LLC"
   },
   {
-   "id": 5763,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "san juan",
-   "date": "2026-11-01",
-   "currency": "MXN",
-   "company": "Atlantic Marine Freight",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 139.0,
-   "volume": 338.0,
-   "price": 17457.0
-  },
-  {
-   "id": 5764,
+   "id": 104841,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "chicago",
+   "to": "losangeles",
+   "date": "2026-10-23",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 33.0,
+   "volume": 42.0,
+   "price": 13614.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104842,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "memphis",
+   "date": "2026-12-23",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 115.4,
+   "volume": 360.0,
+   "price": 11425.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104843,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "savannah",
+   "date": "2026-10-18",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 115.0,
+   "volume": 367.0,
+   "price": 12361.0,
+   "currency": "MXN",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104844,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "memphis",
+   "date": "2026-10-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 67.7,
+   "volume": 333.0,
+   "price": 2848.0,
+   "currency": "USDC",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104845,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "winnipeg",
+   "date": "2026-09-08",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 39.7,
+   "volume": 133.0,
+   "price": 12884.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104846,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "newyork",
+   "date": "2026-10-12",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 96.0,
+   "volume": 199.0,
+   "price": 12034.0,
+   "currency": "MXN",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104847,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "dallas",
+   "date": "2026-09-23",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 47.8,
+   "volume": 369.0,
+   "price": 5450.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104848,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "laredo",
+   "date": "2026-11-11",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 92.6,
+   "volume": 367.0,
+   "price": 14372.0,
+   "currency": "MXN",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104849,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "longbeach",
+   "date": "2026-12-03",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 67.0,
+   "volume": 309.0,
+   "price": 7734.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104850,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "newyork",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 123.7,
+   "volume": 369.0,
+   "price": 3933.0,
+   "currency": "CAD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104851,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "toronto",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 45.7,
+   "volume": 301.0,
+   "price": 4000.0,
+   "currency": "USDC",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104852,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "denver",
+   "date": "2026-10-16",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 93.6,
+   "volume": 48.0,
+   "price": 3530.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104853,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "toronto",
+   "date": "2026-10-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 126.1,
+   "volume": 70.0,
+   "price": 11427.0,
+   "currency": "CAD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104854,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "longbeach",
+   "date": "2026-09-24",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 11.7,
+   "volume": 61.0,
+   "price": 2866.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104855,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "chicago",
+   "date": "2026-09-05",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 14.6,
+   "volume": 92.0,
+   "price": 13047.0,
+   "currency": "USDC",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104856,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "panamacity",
+   "date": "2026-11-27",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 20.6,
+   "volume": 204.0,
+   "price": 6620.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104857,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "calgary",
+   "to": "mexicocity",
+   "date": "2026-11-26",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 91.0,
+   "volume": 319.0,
+   "price": 5615.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104858,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "toronto",
+   "date": "2026-09-24",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 41.7,
+   "volume": 133.0,
+   "price": 8334.0,
+   "currency": "CAD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104859,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "mexicocity",
+   "date": "2026-10-05",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 137.9,
+   "volume": 276.0,
+   "price": 16164.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104860,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "calgary",
+   "to": "miami",
+   "date": "2026-10-07",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 70.5,
+   "volume": 98.0,
+   "price": 3726.0,
+   "currency": "MXN",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104861,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "atlanta",
+   "to": "montreal",
+   "date": "2026-11-19",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 104.5,
+   "volume": 260.0,
+   "price": 11012.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104862,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "calgary",
+   "date": "2026-10-12",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 19.0,
+   "volume": 93.0,
+   "price": 7768.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104863,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "losangeles",
+   "date": "2026-09-13",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 43.2,
+   "volume": 183.0,
+   "price": 1263.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104864,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "manzanillo",
+   "date": "2026-10-23",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 67.0,
+   "volume": 190.0,
+   "price": 3766.0,
+   "currency": "MXN",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104865,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "vancouver",
+   "date": "2026-10-04",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 45.3,
+   "volume": 142.0,
+   "price": 2357.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104866,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "seattle",
+   "date": "2026-09-20",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 98.4,
+   "volume": 337.0,
+   "price": 12209.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104867,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "monterrey",
+   "date": "2026-12-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 127.5,
+   "volume": 58.0,
+   "price": 5256.0,
+   "currency": "USDC",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104868,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "guadalajara",
+   "date": "2026-10-26",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 66.6,
+   "volume": 30.0,
+   "price": 2314.0,
+   "currency": "CAD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104869,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "guadalajara",
+   "date": "2026-10-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 56.0,
+   "volume": 260.0,
+   "price": 4050.0,
+   "currency": "MXN",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104870,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "newyork",
+   "date": "2026-12-03",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 45.4,
+   "volume": 365.0,
+   "price": 16194.0,
+   "currency": "USDC",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104871,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "monterrey",
+   "date": "2026-11-20",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 122.0,
+   "volume": 320.0,
+   "price": 9852.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104872,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "seattle",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 131.9,
+   "volume": 311.0,
+   "price": 10814.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104873,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "laredo",
+   "date": "2026-12-25",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 78.6,
+   "volume": 169.0,
+   "price": 10917.0,
+   "currency": "MXN",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104874,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "guadalajara",
+   "date": "2026-09-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 18.3,
+   "volume": 130.0,
+   "price": 16665.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104875,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "calgary",
+   "date": "2026-09-14",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 87.1,
+   "volume": 142.0,
+   "price": 15074.0,
+   "currency": "CAD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104876,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "veracruz",
+   "date": "2026-10-14",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 81.7,
+   "volume": 96.0,
+   "price": 9553.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104877,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "manzanillo",
+   "date": "2026-10-15",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 53.5,
+   "volume": 281.0,
+   "price": 1366.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104878,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "montreal",
+   "date": "2026-10-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 139.3,
+   "volume": 335.0,
+   "price": 10969.0,
+   "currency": "CAD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104879,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "losangeles",
+   "date": "2026-09-09",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 121.6,
+   "volume": 154.0,
+   "price": 4657.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104880,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "monterrey",
+   "date": "2026-10-06",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 128.6,
+   "volume": 183.0,
+   "price": 3727.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104881,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "savannah",
+   "date": "2026-09-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 38.8,
+   "volume": 259.0,
+   "price": 6487.0,
+   "currency": "CAD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104882,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "mexicocity",
+   "date": "2026-12-27",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 13.5,
+   "volume": 55.0,
+   "price": 2698.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104883,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
    "to": "laredo",
    "date": "2026-09-07",
-   "currency": "USD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "furn",
    "components": [
-    "sea",
-    "rail",
+    "air",
     "auto"
    ],
-   "weight": 91.7,
-   "volume": 362.0,
-   "price": 5012.0
+   "cargo": "metal",
+   "weight": 132.7,
+   "volume": 349.0,
+   "price": 6424.0,
+   "currency": "USDC",
+   "company": "Continental Freight Inc."
   },
   {
-   "id": 5765,
+   "id": 104884,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "san juan",
-   "to": "miami",
-   "date": "2026-10-12",
-   "currency": "CAD",
-   "company": "Continental Freight Inc.",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 88.3,
-   "volume": 153.0,
-   "price": 13742.0
-  },
-  {
-   "id": 5766,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
+   "from": "newyork",
    "to": "calgary",
-   "date": "2026-11-21",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "chem",
+   "date": "2026-10-11",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 102.1,
-   "volume": 33.0,
-   "price": 4078.0
+   "cargo": "textile",
+   "weight": 111.3,
+   "volume": 199.0,
+   "price": 11767.0,
+   "currency": "USDC",
+   "company": "Atlantic Marine Freight"
   },
   {
-   "id": 5767,
+   "id": 104885,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "miami",
-   "to": "havana",
-   "date": "2026-10-12",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
+   "from": "longbeach",
+   "to": "seattle",
+   "date": "2026-12-24",
+   "components": [
+    "air",
+    "rail"
+   ],
    "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 109.1,
-   "volume": 372.0,
-   "price": 7825.0
+   "weight": 134.0,
+   "volume": 243.0,
+   "price": 15136.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
   },
   {
-   "id": 5768,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "veracruz",
-   "date": "2026-11-05",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 114.7,
-   "volume": 341.0,
-   "price": 12020.0
-  },
-  {
-   "id": 5769,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "toronto",
-   "date": "2026-10-28",
-   "currency": "MXN",
-   "company": "Atlantic Marine Freight",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 59.9,
-   "volume": 252.0,
-   "price": 15069.0
-  },
-  {
-   "id": 5770,
+   "id": 104886,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "atlanta",
    "to": "toronto",
-   "date": "2026-10-28",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "agro",
+   "date": "2026-10-26",
    "components": [
     "sea",
-    "rail",
-    "auto"
+    "rail"
    ],
-   "weight": 18.5,
-   "volume": 217.0,
-   "price": 4503.0
+   "cargo": "metal",
+   "weight": 31.2,
+   "volume": 104.0,
+   "price": 3276.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
   },
   {
-   "id": 5771,
+   "id": 104887,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "memphis",
-   "to": "laredo",
-   "date": "2026-09-24",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
+   "from": "houston",
+   "to": "panamacity",
+   "date": "2026-12-17",
+   "components": [
+    "auto",
+    "rail"
+   ],
    "cargo": "electro",
+   "weight": 54.7,
+   "volume": 128.0,
+   "price": 12935.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104888,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "manzanillo",
+   "date": "2026-11-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 44.2,
+   "volume": 237.0,
+   "price": 8287.0,
+   "currency": "CAD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104889,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "newyork",
+   "to": "montreal",
+   "date": "2026-09-15",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 134.0,
+   "volume": 203.0,
+   "price": 4268.0,
+   "currency": "CAD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104890,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "vancouver",
+   "date": "2026-09-05",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 32.4,
-   "volume": 108.0,
-   "price": 5605.0
+   "cargo": "chem",
+   "weight": 95.0,
+   "volume": 274.0,
+   "price": 11665.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
   },
   {
-   "id": 5772,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "phoenix",
-   "date": "2026-11-14",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 99.8,
-   "volume": 87.0,
-   "price": 16201.0
-  },
-  {
-   "id": 5773,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "calgary",
-   "to": "laredo",
-   "date": "2026-11-07",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 97.9,
-   "volume": 167.0,
-   "price": 17635.0
-  },
-  {
-   "id": 5774,
+   "id": 104891,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "vancouver",
-   "to": "philadelphia",
-   "date": "2026-09-23",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "metal",
+   "to": "panamacity",
+   "date": "2026-12-13",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 22.1,
+   "volume": 168.0,
+   "price": 7657.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104892,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "longbeach",
+   "date": "2026-11-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 110.4,
+   "volume": 340.0,
+   "price": 6050.0,
+   "currency": "USDC",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104893,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "panamacity",
+   "date": "2026-12-15",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 118.9,
+   "volume": 41.0,
+   "price": 4313.0,
+   "currency": "USDC",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104894,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "mexicocity",
+   "date": "2026-10-10",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 63.0,
+   "volume": 107.0,
+   "price": 8056.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104895,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "vancouver",
+   "date": "2026-10-15",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 134.7,
-   "volume": 266.0,
-   "price": 16878.0
+   "cargo": "furn",
+   "weight": 18.2,
+   "volume": 296.0,
+   "price": 11716.0,
+   "currency": "CAD",
+   "company": "SkyBridge Air Cargo Inc."
   },
   {
-   "id": 5775,
+   "id": 104896,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "phoenix",
-   "to": "montreal",
-   "date": "2026-11-26",
-   "currency": "USD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "electro",
+   "from": "houston",
+   "to": "veracruz",
+   "date": "2026-10-14",
    "components": [
-    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 12.4,
+   "volume": 354.0,
+   "price": 15163.0,
+   "currency": "USDC",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104897,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "dallas",
+   "date": "2026-09-28",
+   "components": [
+    "air",
     "rail"
    ],
-   "weight": 81.6,
-   "volume": 82.0,
-   "price": 17515.0
+   "cargo": "metal",
+   "weight": 42.9,
+   "volume": 209.0,
+   "price": 11523.0,
+   "currency": "USD",
+   "company": "Union Rail Cargo Co."
   },
   {
-   "id": 5776,
+   "id": 104898,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "memphis",
-   "to": "denver",
-   "date": "2026-10-25",
+   "from": "montreal",
+   "to": "monterrey",
+   "date": "2026-11-23",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 89.0,
+   "volume": 313.0,
+   "price": 4002.0,
    "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104899,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "longbeach",
+   "date": "2026-12-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 126.0,
+   "volume": 99.0,
+   "price": 12332.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104900,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "manzanillo",
+   "date": "2026-12-21",
+   "components": [
+    "auto",
+    "rail"
+   ],
    "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 139.0,
-   "volume": 366.0,
-   "price": 2654.0
+   "weight": 60.6,
+   "volume": 115.0,
+   "price": 14128.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
   },
   {
-   "id": 5777,
+   "id": 104901,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "miami",
+   "date": "2026-11-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 97.4,
+   "volume": 206.0,
+   "price": 8839.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104902,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "winnipeg",
    "to": "memphis",
-   "date": "2026-11-14",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 77.1,
-   "volume": 238.0,
-   "price": 17797.0
-  },
-  {
-   "id": 5778,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "winnipeg",
-   "to": "toronto",
-   "date": "2026-11-08",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 109.3,
-   "volume": 380.0,
-   "price": 16771.0
-  },
-  {
-   "id": 5779,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "montreal",
-   "date": "2026-10-09",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 88.0,
-   "volume": 362.0,
-   "price": 15993.0
-  },
-  {
-   "id": 5780,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "laredo",
-   "date": "2026-10-14",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 136.8,
-   "volume": 147.0,
-   "price": 16274.0
-  },
-  {
-   "id": 5781,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "montreal",
-   "date": "2026-11-03",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 81.0,
-   "volume": 231.0,
-   "price": 17661.0
-  },
-  {
-   "id": 5782,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "chicago",
-   "to": "philadelphia",
-   "date": "2026-11-28",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 96.0,
-   "volume": 32.0,
-   "price": 4024.0
-  },
-  {
-   "id": 5783,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "mexico city",
-   "to": "denver",
-   "date": "2026-11-28",
-   "currency": "CAD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 114.8,
-   "volume": 69.0,
-   "price": 17151.0
-  },
-  {
-   "id": 5784,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "monterrey",
-   "date": "2026-09-02",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 135.2,
-   "volume": 99.0,
-   "price": 1223.0
-  },
-  {
-   "id": 5785,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "monterrey",
-   "date": "2026-09-06",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 11.7,
-   "volume": 353.0,
-   "price": 11758.0
-  },
-  {
-   "id": 5786,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "houston",
-   "date": "2026-12-03",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 27.0,
-   "volume": 56.0,
-   "price": 13850.0
-  },
-  {
-   "id": 5787,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "guadalajara",
-   "to": "laredo",
-   "date": "2026-09-15",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 123.1,
-   "volume": 256.0,
-   "price": 2921.0
-  },
-  {
-   "id": 5788,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "detroit",
    "date": "2026-10-22",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 108.6,
+   "volume": 110.0,
+   "price": 16855.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104903,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "veracruz",
+   "date": "2026-10-27",
+   "components": [
+    "sea",
+    "auto"
+   ],
    "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 13.8,
-   "volume": 249.0,
-   "price": 5461.0
+   "weight": 110.7,
+   "volume": 56.0,
+   "price": 10952.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
   },
   {
-   "id": 5789,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "kansas city",
-   "date": "2026-12-01",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 119.6,
-   "volume": 391.0,
-   "price": 9542.0
-  },
-  {
-   "id": 5790,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "laredo",
-   "to": "miami",
-   "date": "2026-09-04",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 34.9,
-   "volume": 173.0,
-   "price": 15547.0
-  },
-  {
-   "id": 5791,
+   "id": 104904,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "monterrey",
-   "to": "seattle",
-   "date": "2026-10-04",
+   "to": "denver",
+   "date": "2026-09-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 137.8,
+   "volume": 369.0,
+   "price": 13728.0,
+   "currency": "USDC",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104905,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "houston",
+   "to": "calgary",
+   "date": "2026-09-07",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 65.7,
+   "volume": 305.0,
+   "price": 6043.0,
    "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104906,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "denver",
+   "date": "2026-09-06",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 86.0,
+   "volume": 269.0,
+   "price": 8335.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104907,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "longbeach",
+   "date": "2026-12-01",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 64.2,
+   "volume": 161.0,
+   "price": 1024.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104908,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "memphis",
+   "to": "houston",
+   "date": "2026-09-12",
+   "components": [
+    "rail",
+    "auto"
+   ],
    "cargo": "electro",
+   "weight": 63.2,
+   "volume": 147.0,
+   "price": 16122.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104909,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "denver",
+   "to": "vancouver",
+   "date": "2026-10-10",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 53.9,
+   "volume": 362.0,
+   "price": 16846.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104910,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "laredo",
+   "date": "2026-09-08",
    "components": [
     "air",
-    "auto"
+    "rail"
    ],
-   "weight": 82.8,
-   "volume": 235.0,
-   "price": 14917.0
+   "cargo": "docs",
+   "weight": 96.3,
+   "volume": 60.0,
+   "price": 15997.0,
+   "currency": "MXN",
+   "company": "Heartland Trucking LLC"
   },
   {
-   "id": 5792,
+   "id": 104911,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "guadalajara",
-   "to": "houston",
-   "date": "2026-10-03",
-   "currency": "CAD",
-   "company": "Heartland Trucking LLC",
+   "from": "winnipeg",
+   "to": "longbeach",
+   "date": "2026-11-25",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 11.9,
+   "volume": 140.0,
+   "price": 15349.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104912,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "atlanta",
+   "date": "2026-12-22",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 89.7,
+   "volume": 249.0,
+   "price": 9171.0,
+   "currency": "USDC",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104913,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "newyork",
+   "date": "2026-12-12",
+   "components": [
+    "air",
+    "rail"
+   ],
    "cargo": "electro",
+   "weight": 14.8,
+   "volume": 269.0,
+   "price": 10374.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104914,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "newyork",
+   "to": "manzanillo",
+   "date": "2026-09-08",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 55.0,
+   "volume": 342.0,
+   "price": 6188.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104915,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "atlanta",
+   "to": "winnipeg",
+   "date": "2026-09-23",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 84.5,
+   "volume": 138.0,
+   "price": 2913.0,
+   "currency": "USD",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 104916,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "monterrey",
+   "date": "2026-11-23",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 93.6,
+   "volume": 240.0,
+   "price": 11332.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104917,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "chicago",
+   "date": "2026-10-06",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 41.4,
+   "volume": 314.0,
+   "price": 5727.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104918,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "chicago",
+   "date": "2026-11-05",
    "components": [
     "sea",
-    "auto"
+    "rail"
    ],
-   "weight": 137.8,
-   "volume": 252.0,
-   "price": 3949.0
+   "cargo": "electro",
+   "weight": 72.4,
+   "volume": 314.0,
+   "price": 12559.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
   },
   {
-   "id": 5793,
+   "id": 104919,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "san francisco",
-   "to": "montreal",
-   "date": "2026-11-18",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
+   "from": "losangeles",
+   "to": "panamacity",
+   "date": "2026-11-04",
+   "components": [
+    "auto",
+    "rail"
+   ],
    "cargo": "build",
+   "weight": 103.8,
+   "volume": 341.0,
+   "price": 11034.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104920,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "toronto",
+   "date": "2026-12-23",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 121.6,
+   "volume": 350.0,
+   "price": 6754.0,
+   "currency": "CAD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104921,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "chicago",
+   "date": "2026-09-22",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 49.5,
+   "volume": 197.0,
+   "price": 17828.0,
+   "currency": "MXN",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104922,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "toronto",
+   "date": "2026-10-24",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 59.6,
+   "volume": 191.0,
+   "price": 2495.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104923,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "houston",
+   "date": "2026-12-24",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 64.0,
+   "volume": 181.0,
+   "price": 4492.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104924,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "seattle",
+   "to": "toronto",
+   "date": "2026-09-17",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 70.8,
-   "volume": 74.0,
-   "price": 12996.0
+   "cargo": "agro",
+   "weight": 54.7,
+   "volume": 203.0,
+   "price": 14066.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
   },
   {
-   "id": 5794,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "laredo",
-   "date": "2026-11-16",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 124.8,
-   "volume": 271.0,
-   "price": 12393.0
-  },
-  {
-   "id": 5795,
+   "id": 104925,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "memphis",
-   "to": "new york",
-   "date": "2026-12-11",
+   "from": "houston",
+   "to": "newyork",
+   "date": "2026-10-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 74.8,
+   "volume": 129.0,
+   "price": 16312.0,
+   "currency": "CAD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104926,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "miami",
+   "date": "2026-10-02",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 52.8,
+   "volume": 258.0,
+   "price": 2095.0,
+   "currency": "MXN",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104927,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "seattle",
+   "date": "2026-09-01",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 65.4,
+   "volume": 356.0,
+   "price": 3593.0,
+   "currency": "USDC",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104928,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "atlanta",
+   "date": "2026-12-25",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 66.9,
+   "volume": 275.0,
+   "price": 13300.0,
    "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "textile",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104929,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "denver",
+   "date": "2026-12-24",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 119.8,
+   "volume": 228.0,
+   "price": 11390.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104930,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "manzanillo",
+   "date": "2026-10-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 119.7,
+   "volume": 224.0,
+   "price": 11636.0,
+   "currency": "USDC",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104931,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "vancouver",
+   "date": "2026-10-10",
    "components": [
     "sea",
     "rail"
    ],
-   "weight": 85.4,
-   "volume": 348.0,
-   "price": 10046.0
+   "cargo": "chem",
+   "weight": 96.6,
+   "volume": 42.0,
+   "price": 9839.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
   },
   {
-   "id": 5796,
+   "id": 104932,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "savannah",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 82.9,
+   "volume": 253.0,
+   "price": 1463.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104933,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "winnipeg",
+   "date": "2026-10-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 128.1,
+   "volume": 373.0,
+   "price": 6289.0,
+   "currency": "CAD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104934,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "mexicocity",
+   "date": "2026-11-02",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 37.2,
+   "volume": 332.0,
+   "price": 16323.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104935,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "calgary",
+   "date": "2026-09-01",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 18.6,
+   "volume": 63.0,
+   "price": 14731.0,
+   "currency": "CAD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104936,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "winnipeg",
+   "date": "2026-12-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 45.4,
+   "volume": 274.0,
+   "price": 16120.0,
+   "currency": "CAD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104937,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "laredo",
+   "date": "2026-10-04",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 16.4,
+   "volume": 155.0,
+   "price": 3512.0,
+   "currency": "MXN",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104938,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "veracruz",
+   "date": "2026-10-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 93.4,
+   "volume": 93.0,
+   "price": 6287.0,
+   "currency": "CAD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104939,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "vancouver",
+   "date": "2026-09-03",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 57.2,
+   "volume": 206.0,
+   "price": 10091.0,
+   "currency": "USD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104940,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "miami",
+   "date": "2026-09-14",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 81.5,
+   "volume": 153.0,
+   "price": 8737.0,
+   "currency": "MXN",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104941,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "mexicocity",
+   "date": "2026-11-25",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 131.6,
+   "volume": 273.0,
+   "price": 11428.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104942,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "laredo",
+   "date": "2026-10-26",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 119.3,
+   "volume": 372.0,
+   "price": 4124.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104943,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "veracruz",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 89.2,
+   "volume": 106.0,
+   "price": 4010.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104944,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "denver",
+   "date": "2026-12-01",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 125.6,
+   "volume": 331.0,
+   "price": 3801.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104945,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "houston",
+   "date": "2026-10-15",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 128.3,
+   "volume": 400.0,
+   "price": 17622.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104946,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "memphis",
+   "to": "veracruz",
+   "date": "2026-11-11",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 10.7,
+   "volume": 139.0,
+   "price": 10748.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104947,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "manzanillo",
+   "to": "miami",
+   "date": "2026-10-12",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 45.3,
+   "volume": 307.0,
+   "price": 11768.0,
+   "currency": "USDC",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104948,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "dallas",
+   "date": "2026-09-23",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 127.1,
+   "volume": 371.0,
+   "price": 12013.0,
+   "currency": "MXN",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104949,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "monterrey",
+   "date": "2026-09-13",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 14.0,
+   "volume": 143.0,
+   "price": 9036.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104950,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "vancouver",
+   "date": "2026-10-07",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 12.1,
+   "volume": 165.0,
+   "price": 15171.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104951,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "laredo",
+   "date": "2026-10-23",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 103.3,
+   "volume": 388.0,
+   "price": 10890.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104952,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "seattle",
+   "to": "toronto",
+   "date": "2026-10-20",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 55.2,
+   "volume": 383.0,
+   "price": 10534.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104953,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "dallas",
+   "to": "vancouver",
+   "date": "2026-12-07",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 119.6,
+   "volume": 86.0,
+   "price": 7934.0,
+   "currency": "USDC",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104954,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "guadalajara",
+   "date": "2026-10-17",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 30.5,
+   "volume": 286.0,
+   "price": 4465.0,
+   "currency": "USDC",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104955,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "newyork",
+   "to": "panamacity",
+   "date": "2026-11-28",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 83.8,
+   "volume": 103.0,
+   "price": 13854.0,
+   "currency": "USD",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 104956,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "atlanta",
+   "to": "vancouver",
+   "date": "2026-11-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 67.4,
+   "volume": 188.0,
+   "price": 17268.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104957,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "memphis",
+   "to": "monterrey",
+   "date": "2026-11-11",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 51.5,
+   "volume": 234.0,
+   "price": 5892.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104958,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "manzanillo",
+   "date": "2026-11-25",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 23.2,
+   "volume": 147.0,
+   "price": 12718.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104959,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "calgary",
+   "to": "monterrey",
+   "date": "2026-10-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 29.2,
+   "volume": 39.0,
+   "price": 15716.0,
+   "currency": "CAD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104960,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "mexicocity",
+   "date": "2026-10-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 16.0,
+   "volume": 81.0,
+   "price": 13892.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104961,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "memphis",
+   "date": "2026-09-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 38.7,
+   "volume": 125.0,
+   "price": 9369.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104962,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "savannah",
+   "date": "2026-09-26",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 94.1,
+   "volume": 132.0,
+   "price": 13387.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104963,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "houston",
+   "date": "2026-09-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 24.4,
+   "volume": 350.0,
+   "price": 14725.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104964,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "houston",
+   "to": "panamacity",
+   "date": "2026-12-22",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 49.8,
+   "volume": 34.0,
+   "price": 15334.0,
+   "currency": "CAD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104965,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "calgary",
+   "date": "2026-10-09",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 101.5,
+   "volume": 274.0,
+   "price": 17356.0,
+   "currency": "CAD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104966,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "toronto",
+   "date": "2026-09-14",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 98.7,
+   "volume": 123.0,
+   "price": 15484.0,
+   "currency": "USDC",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104967,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "winnipeg",
+   "date": "2026-10-24",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 105.4,
+   "volume": 360.0,
+   "price": 12623.0,
+   "currency": "USD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104968,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "mexicocity",
+   "date": "2026-11-25",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 62.7,
+   "volume": 204.0,
+   "price": 7222.0,
+   "currency": "CAD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104969,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "manzanillo",
+   "date": "2026-12-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 60.3,
+   "volume": 363.0,
+   "price": 10097.0,
+   "currency": "CAD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104970,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "vancouver",
+   "date": "2026-09-15",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 62.1,
+   "volume": 313.0,
+   "price": 9712.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104971,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "guadalajara",
+   "date": "2026-11-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 25.3,
+   "volume": 360.0,
+   "price": 1609.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104972,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "denver",
+   "date": "2026-09-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 26.6,
+   "volume": 269.0,
+   "price": 5983.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104973,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "guadalajara",
+   "date": "2026-11-10",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 12.6,
+   "volume": 301.0,
+   "price": 6206.0,
+   "currency": "USDC",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 104974,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "miami",
+   "date": "2026-10-14",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 123.1,
+   "volume": 171.0,
+   "price": 5690.0,
+   "currency": "USDC",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104975,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "veracruz",
+   "date": "2026-12-20",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 107.8,
+   "volume": 58.0,
+   "price": 11757.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104976,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "winnipeg",
+   "date": "2026-10-05",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 32.2,
+   "volume": 272.0,
+   "price": 6885.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104977,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "vancouver",
+   "date": "2026-09-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 41.0,
+   "volume": 383.0,
+   "price": 11013.0,
+   "currency": "CAD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104978,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "vancouver",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 87.4,
+   "volume": 200.0,
+   "price": 14987.0,
+   "currency": "USDC",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104979,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "atlanta",
+   "date": "2026-09-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 20.7,
+   "volume": 272.0,
+   "price": 16481.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104980,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "guadalajara",
+   "date": "2026-12-09",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 94.7,
+   "volume": 131.0,
+   "price": 5955.0,
+   "currency": "USDC",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104981,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "memphis",
+   "to": "winnipeg",
+   "date": "2026-12-26",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 15.1,
+   "volume": 252.0,
+   "price": 14559.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104982,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "denver",
-   "to": "kansas city",
-   "date": "2026-11-02",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 64.2,
-   "volume": 184.0,
-   "price": 4599.0
-  },
-  {
-   "id": 5797,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "montreal",
-   "date": "2026-09-25",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 87.6,
-   "volume": 320.0,
-   "price": 3758.0
-  },
-  {
-   "id": 5798,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "kansas city",
-   "date": "2026-11-14",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 109.1,
-   "volume": 37.0,
-   "price": 10322.0
-  },
-  {
-   "id": 5799,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "montreal",
-   "date": "2026-11-01",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 26.5,
-   "volume": 361.0,
-   "price": 1580.0
-  },
-  {
-   "id": 5800,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "houston",
-   "date": "2026-10-09",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 69.3,
-   "volume": 39.0,
-   "price": 11374.0
-  },
-  {
-   "id": 5801,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "detroit",
-   "date": "2026-11-02",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 52.9,
-   "volume": 121.0,
-   "price": 12798.0
-  },
-  {
-   "id": 5802,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "miami",
-   "to": "minneapolis",
-   "date": "2026-12-16",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 36.5,
-   "volume": 152.0,
-   "price": 5807.0
-  },
-  {
-   "id": 5803,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "veracruz",
-   "date": "2026-11-06",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 114.3,
-   "volume": 113.0,
-   "price": 2995.0
-  },
-  {
-   "id": 5804,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "mexico city",
-   "date": "2026-11-16",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 69.8,
-   "volume": 300.0,
-   "price": 10052.0
-  },
-  {
-   "id": 5805,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "atlanta",
-   "date": "2026-10-21",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 73.3,
-   "volume": 80.0,
-   "price": 3063.0
-  },
-  {
-   "id": 5806,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "san francisco",
-   "date": "2026-10-13",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 34.2,
-   "volume": 383.0,
-   "price": 2849.0
-  },
-  {
-   "id": 5807,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "mexico city",
-   "date": "2026-10-21",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 11.6,
-   "volume": 51.0,
-   "price": 4280.0
-  },
-  {
-   "id": 5808,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "veracruz",
-   "date": "2026-09-01",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 130.7,
-   "volume": 219.0,
-   "price": 6465.0
-  },
-  {
-   "id": 5809,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "winnipeg",
-   "date": "2026-10-11",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 107.9,
-   "volume": 160.0,
-   "price": 17421.0
-  },
-  {
-   "id": 5810,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "winnipeg",
-   "date": "2026-10-13",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 75.7,
-   "volume": 171.0,
-   "price": 11316.0
-  },
-  {
-   "id": 5811,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "vancouver",
-   "to": "laredo",
-   "date": "2026-10-01",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 47.1,
-   "volume": 254.0,
-   "price": 2084.0
-  },
-  {
-   "id": 5812,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "winnipeg",
-   "date": "2026-12-26",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 107.9,
-   "volume": 346.0,
-   "price": 9419.0
-  },
-  {
-   "id": 5813,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "memphis",
-   "date": "2026-09-10",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 121.4,
-   "volume": 41.0,
-   "price": 11818.0
-  },
-  {
-   "id": 5814,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "winnipeg",
-   "date": "2026-11-28",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 124.1,
-   "volume": 54.0,
-   "price": 2383.0
-  },
-  {
-   "id": 5815,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "philadelphia",
-   "date": "2026-10-12",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 20.9,
-   "volume": 216.0,
-   "price": 16681.0
-  },
-  {
-   "id": 5816,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "los angeles",
-   "date": "2026-09-13",
-   "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 56.8,
-   "volume": 78.0,
-   "price": 10990.0
-  },
-  {
-   "id": 5817,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "veracruz",
-   "date": "2026-10-23",
-   "currency": "USD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 139.9,
-   "volume": 260.0,
-   "price": 14893.0
-  },
-  {
-   "id": 5818,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "houston",
-   "date": "2026-12-17",
-   "currency": "USD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 118.6,
-   "volume": 250.0,
-   "price": 9665.0
-  },
-  {
-   "id": 5819,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "san juan",
-   "date": "2026-12-24",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 54.3,
-   "volume": 314.0,
-   "price": 10458.0
-  },
-  {
-   "id": 5820,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "dallas",
-   "date": "2026-12-19",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 56.3,
-   "volume": 123.0,
-   "price": 8963.0
-  },
-  {
-   "id": 5821,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "philadelphia",
-   "date": "2026-09-20",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 42.7,
-   "volume": 124.0,
-   "price": 17278.0
-  },
-  {
-   "id": 5822,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san francisco",
-   "to": "los angeles",
-   "date": "2026-12-17",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 87.2,
-   "volume": 359.0,
-   "price": 15277.0
-  },
-  {
-   "id": 5823,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "los angeles",
-   "to": "houston",
-   "date": "2026-09-20",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 93.9,
-   "volume": 345.0,
-   "price": 10717.0
-  },
-  {
-   "id": 5824,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "laredo",
-   "date": "2026-11-28",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 100.7,
-   "volume": 231.0,
-   "price": 2078.0
-  },
-  {
-   "id": 5825,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "phoenix",
-   "date": "2026-12-22",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 73.9,
-   "volume": 229.0,
-   "price": 7277.0
-  },
-  {
-   "id": 5826,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "mexico city",
-   "to": "kansas city",
-   "date": "2026-09-18",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 114.0,
-   "volume": 52.0,
-   "price": 2137.0
-  },
-  {
-   "id": 5827,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
    "to": "vancouver",
-   "date": "2026-09-06",
-   "currency": "USD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "chem",
+   "date": "2026-09-17",
    "components": [
-    "sea",
+    "auto",
     "rail"
    ],
-   "weight": 118.1,
-   "volume": 156.0,
-   "price": 7286.0
-  },
-  {
-   "id": 5828,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "phoenix",
-   "date": "2026-11-05",
-   "currency": "CAD",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 107.4,
-   "volume": 282.0,
-   "price": 17654.0
-  },
-  {
-   "id": 5829,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "miami",
-   "to": "monterrey",
-   "date": "2026-12-16",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
    "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 128.3,
-   "volume": 332.0,
-   "price": 17052.0
+   "weight": 109.0,
+   "volume": 105.0,
+   "price": 11576.0,
+   "currency": "USDC",
+   "company": "SkyBridge Air Cargo Inc."
   },
   {
-   "id": 5830,
+   "id": 104983,
    "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "vancouver",
-   "date": "2026-10-06",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 98.1,
-   "volume": 316.0,
-   "price": 17557.0
-  },
-  {
-   "id": 5831,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "laredo",
-   "to": "atlanta",
-   "date": "2026-10-15",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 17.0,
-   "volume": 394.0,
-   "price": 16651.0
-  },
-  {
-   "id": 5832,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "toronto",
-   "to": "miami",
-   "date": "2026-12-22",
-   "currency": "USD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 93.5,
-   "volume": 394.0,
-   "price": 16072.0
-  },
-  {
-   "id": 5833,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "minneapolis",
-   "to": "miami",
-   "date": "2026-12-11",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 104.2,
-   "volume": 51.0,
-   "price": 7443.0
-  },
-  {
-   "id": 5834,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "chicago",
-   "to": "san juan",
-   "date": "2026-11-26",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 76.2,
-   "volume": 108.0,
-   "price": 4298.0
-  },
-  {
-   "id": 5835,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "miami",
-   "to": "mexico city",
-   "date": "2026-10-14",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 129.5,
-   "volume": 166.0,
-   "price": 2722.0
-  },
-  {
-   "id": 5836,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "philadelphia",
-   "date": "2026-11-11",
-   "currency": "CAD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 88.3,
-   "volume": 376.0,
-   "price": 1861.0
-  },
-  {
-   "id": 5837,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "boston",
-   "to": "kansas city",
-   "date": "2026-11-17",
-   "currency": "MXN",
-   "company": "Continental Freight Inc.",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 13.1,
-   "volume": 153.0,
-   "price": 14344.0
-  },
-  {
-   "id": 5838,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "philadelphia",
-   "to": "mexico city",
-   "date": "2026-12-19",
-   "currency": "USD",
-   "company": "Continental Freight Inc.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 41.4,
-   "volume": 321.0,
-   "price": 2130.0
-  },
-  {
-   "id": 5839,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "laredo",
-   "date": "2026-10-21",
-   "currency": "MXN",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 36.9,
-   "volume": 270.0,
-   "price": 12464.0
-  },
-  {
-   "id": 5840,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "montreal",
-   "to": "kansas city",
-   "date": "2026-10-11",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 91.7,
-   "volume": 58.0,
-   "price": 5916.0
-  },
-  {
-   "id": 5841,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "dallas",
-   "date": "2026-10-13",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 48.4,
-   "volume": 112.0,
-   "price": 15608.0
-  },
-  {
-   "id": 5842,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "havana",
-   "date": "2026-10-07",
-   "currency": "CAD",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 38.9,
-   "volume": 395.0,
-   "price": 2620.0
-  },
-  {
-   "id": 5843,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "new york",
-   "to": "monterrey",
-   "date": "2026-12-03",
-   "currency": "USD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 63.4,
-   "volume": 335.0,
-   "price": 12943.0
-  },
-  {
-   "id": 5844,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "chicago",
-   "date": "2026-09-24",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 12.4,
-   "volume": 270.0,
-   "price": 8101.0
-  },
-  {
-   "id": 5845,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "monterrey",
-   "to": "chicago",
-   "date": "2026-12-05",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 22.9,
-   "volume": 173.0,
-   "price": 7234.0
-  },
-  {
-   "id": 5846,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "vancouver",
-   "to": "guadalajara",
-   "date": "2026-09-21",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 18.0,
-   "volume": 257.0,
-   "price": 1288.0
-  },
-  {
-   "id": 5847,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "houston",
-   "to": "montreal",
-   "date": "2026-10-01",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 36.7,
-   "volume": 197.0,
-   "price": 6992.0
-  },
-  {
-   "id": 5848,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "mexico city",
-   "to": "havana",
-   "date": "2026-10-06",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 65.3,
-   "volume": 376.0,
-   "price": 15656.0
-  },
-  {
-   "id": 5849,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "panama city",
-   "to": "guadalajara",
-   "date": "2026-09-11",
-   "currency": "CAD",
-   "company": "Rio Grande Carriers SA de CV",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 77.3,
-   "volume": 45.0,
-   "price": 4476.0
-  },
-  {
-   "id": 5850,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "boston",
-   "date": "2026-12-07",
-   "currency": "MXN",
-   "company": "Aztec Logistica SA",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 80.9,
-   "volume": 357.0,
-   "price": 13663.0
-  },
-  {
-   "id": 5851,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "winnipeg",
-   "to": "kansas city",
-   "date": "2026-10-01",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 99.8,
-   "volume": 286.0,
-   "price": 5765.0
-  },
-  {
-   "id": 5852,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "atlanta",
-   "to": "san juan",
-   "date": "2026-12-14",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 82.1,
-   "volume": 212.0,
-   "price": 6264.0
-  },
-  {
-   "id": 5853,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "monterrey",
-   "to": "mexico city",
-   "date": "2026-09-20",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 122.9,
-   "volume": 247.0,
-   "price": 16781.0
-  },
-  {
-   "id": 5854,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "chicago",
-   "date": "2026-11-07",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 96.2,
-   "volume": 320.0,
-   "price": 13342.0
-  },
-  {
-   "id": 5855,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "seattle",
-   "to": "winnipeg",
-   "date": "2026-10-14",
-   "currency": "CAD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 102.1,
-   "volume": 340.0,
-   "price": 17976.0
-  },
-  {
-   "id": 5856,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "montreal",
-   "date": "2026-12-24",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 94.1,
-   "volume": 59.0,
-   "price": 3328.0
-  },
-  {
-   "id": 5857,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "miami",
-   "date": "2026-11-15",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 109.5,
-   "volume": 377.0,
-   "price": 7631.0
-  },
-  {
-   "id": 5858,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "chicago",
-   "date": "2026-10-24",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 85.7,
-   "volume": 110.0,
-   "price": 9699.0
-  },
-  {
-   "id": 5859,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "havana",
-   "date": "2026-09-10",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 134.9,
-   "volume": 141.0,
-   "price": 3912.0
-  },
-  {
-   "id": 5860,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "miami",
-   "date": "2026-12-01",
-   "currency": "USD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 108.4,
-   "volume": 125.0,
-   "price": 9700.0
-  },
-  {
-   "id": 5861,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "guadalajara",
-   "date": "2026-12-20",
-   "currency": "USD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 37.6,
-   "volume": 302.0,
-   "price": 13131.0
-  },
-  {
-   "id": 5862,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "monterrey",
-   "to": "san juan",
-   "date": "2026-12-27",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 122.8,
-   "volume": 115.0,
-   "price": 17012.0
-  },
-  {
-   "id": 5863,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "phoenix",
-   "to": "veracruz",
-   "date": "2026-09-24",
-   "currency": "USD",
-   "company": "Aztec Logistica SA",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 15.3,
-   "volume": 254.0,
-   "price": 13628.0
-  },
-  {
-   "id": 5864,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "veracruz",
-   "to": "monterrey",
-   "date": "2026-12-01",
-   "currency": "CAD",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 31.1,
-   "volume": 238.0,
-   "price": 7353.0
-  },
-  {
-   "id": 5865,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "dallas",
-   "to": "vancouver",
-   "date": "2026-09-01",
-   "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 123.4,
-   "volume": 282.0,
-   "price": 17498.0
-  },
-  {
-   "id": 5866,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "montreal",
-   "date": "2026-12-07",
-   "currency": "CAD",
-   "company": "Atlantic Marine Freight",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 54.5,
-   "volume": 376.0,
-   "price": 16214.0
-  },
-  {
-   "id": 5867,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "boston",
-   "date": "2026-10-09",
-   "currency": "MXN",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 68.8,
-   "volume": 209.0,
-   "price": 9918.0
-  },
-  {
-   "id": 5868,
-   "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "guadalajara",
-   "to": "calgary",
-   "date": "2026-09-24",
+   "to": "denver",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 135.2,
+   "volume": 347.0,
+   "price": 6952.0,
+   "currency": "USDC",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 104984,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "denver",
+   "date": "2026-11-22",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 48.2,
+   "volume": 133.0,
+   "price": 7450.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 104985,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "savannah",
+   "date": "2026-12-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 72.6,
+   "volume": 30.0,
+   "price": 7578.0,
    "currency": "CAD",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "build",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 104986,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "monterrey",
+   "date": "2026-09-06",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 111.6,
-   "volume": 155.0,
-   "price": 17336.0
+   "cargo": "agro",
+   "weight": 99.2,
+   "volume": 70.0,
+   "price": 4724.0,
+   "currency": "CAD",
+   "company": "Continental Freight Inc."
   },
   {
-   "id": 5869,
+   "id": 104987,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "montreal",
-   "to": "toronto",
-   "date": "2026-10-01",
+   "from": "manzanillo",
+   "to": "memphis",
+   "date": "2026-11-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 23.5,
+   "volume": 224.0,
+   "price": 16487.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104988,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "savannah",
+   "to": "seattle",
+   "date": "2026-11-11",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 48.8,
+   "volume": 240.0,
+   "price": 11174.0,
    "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "metal",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 104989,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "toronto",
+   "date": "2026-10-09",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 97.4,
-   "volume": 131.0,
-   "price": 12937.0
+   "cargo": "docs",
+   "weight": 96.4,
+   "volume": 88.0,
+   "price": 8310.0,
+   "currency": "MXN",
+   "company": "SkyBridge Air Cargo Inc."
   },
   {
-   "id": 5870,
+   "id": 104990,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "memphis",
-   "to": "miami",
-   "date": "2026-11-19",
-   "currency": "USD",
-   "company": "Heartland Trucking LLC",
-   "cargo": "food",
+   "to": "guadalajara",
+   "date": "2026-09-13",
    "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 118.9,
-   "volume": 138.0,
-   "price": 10741.0
-  },
-  {
-   "id": 5871,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "philadelphia",
-   "to": "new york",
-   "date": "2026-09-14",
-   "currency": "CAD",
-   "company": "Pacific Northwest Cargo",
-   "cargo": "chem",
-   "components": [
-    "rail",
+    "air",
     "auto"
    ],
-   "weight": 13.4,
-   "volume": 347.0,
-   "price": 17269.0
+   "cargo": "furn",
+   "weight": 28.6,
+   "volume": 362.0,
+   "price": 16163.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
   },
   {
-   "id": 5872,
+   "id": 104991,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "san juan",
+   "from": "montreal",
    "to": "memphis",
-   "date": "2026-12-03",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "metal",
+   "date": "2026-09-14",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 108.4,
+   "volume": 224.0,
+   "price": 16846.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 104992,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "veracruz",
+   "to": "denver",
+   "date": "2026-09-09",
    "components": [
     "rail",
     "auto"
    ],
-   "weight": 81.7,
-   "volume": 42.0,
-   "price": 14399.0
+   "cargo": "docs",
+   "weight": 54.8,
+   "volume": 278.0,
+   "price": 7724.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
   },
   {
-   "id": 5873,
+   "id": 104993,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "seattle",
+   "date": "2026-12-07",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 22.0,
+   "volume": 54.0,
+   "price": 12371.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 104994,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "veracruz",
+   "date": "2026-10-18",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 111.8,
+   "volume": 171.0,
+   "price": 10449.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104995,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
    "from": "calgary",
-   "to": "minneapolis",
-   "date": "2026-10-18",
-   "currency": "MXN",
-   "company": "Union Rail Cargo Co.",
-   "cargo": "textile",
+   "to": "memphis",
+   "date": "2026-10-11",
    "components": [
     "sea",
-    "rail"
+    "auto"
    ],
-   "weight": 24.5,
-   "volume": 387.0,
-   "price": 9701.0
+   "cargo": "food",
+   "weight": 82.0,
+   "volume": 383.0,
+   "price": 2103.0,
+   "currency": "MXN",
+   "company": "Rio Grande Carriers SA de CV"
   },
   {
-   "id": 5874,
+   "id": 104996,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "seattle",
+   "to": "miami",
+   "date": "2026-09-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 61.0,
+   "volume": 364.0,
+   "price": 1447.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 104997,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "savannah",
+   "date": "2026-11-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 119.8,
+   "volume": 75.0,
+   "price": 14950.0,
+   "currency": "MXN",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 104998,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "chicago",
+   "to": "newyork",
+   "date": "2026-10-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 122.9,
+   "volume": 314.0,
+   "price": 11594.0,
+   "currency": "USD",
+   "company": "SkyBridge Air Cargo Inc."
+  },
+  {
+   "id": 104999,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "atlanta",
-   "to": "monterrey",
-   "date": "2026-09-08",
-   "currency": "CAD",
-   "company": "Continental Freight Inc.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 72.3,
-   "volume": 98.0,
-   "price": 17707.0
-  },
-  {
-   "id": 5875,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "veracruz",
-   "date": "2026-10-19",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 85.7,
-   "volume": 68.0,
-   "price": 14533.0
-  },
-  {
-   "id": 5876,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "havana",
-   "to": "panama city",
-   "date": "2026-12-05",
-   "currency": "USD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
+   "to": "longbeach",
+   "date": "2026-11-24",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 123.6,
-   "volume": 320.0,
-   "price": 5050.0
-  },
-  {
-   "id": 5877,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "veracruz",
-   "date": "2026-10-21",
-   "currency": "USD",
-   "company": "Aztec Logistica SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 124.7,
-   "volume": 216.0,
-   "price": 11871.0
-  },
-  {
-   "id": 5878,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "kansas city",
-   "to": "monterrey",
-   "date": "2026-09-16",
-   "currency": "USD",
-   "company": "Great Lakes Logistics LLC",
    "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 35.4,
-   "volume": 135.0,
-   "price": 13978.0
-  },
-  {
-   "id": 5879,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "seattle",
-   "to": "san francisco",
-   "date": "2026-10-11",
-   "currency": "MXN",
-   "company": "Atlantic Marine Freight",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 106.4,
-   "volume": 332.0,
-   "price": 12787.0
-  },
-  {
-   "id": 5880,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "san juan",
-   "to": "laredo",
-   "date": "2026-09-16",
+   "weight": 47.8,
+   "volume": 316.0,
+   "price": 1251.0,
    "currency": "CAD",
-   "company": "Aztec Logistica SA",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 96.6,
-   "volume": 164.0,
-   "price": 16312.0
+   "company": "Continental Freight Inc."
   },
   {
-   "id": 5881,
+   "id": 105000,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "laredo",
-   "to": "houston",
-   "date": "2026-12-03",
-   "currency": "MXN",
-   "company": "Heartland Trucking LLC",
-   "cargo": "agro",
+   "from": "panamacity",
+   "to": "vancouver",
+   "date": "2026-09-01",
    "components": [
-    "sea",
+    "air",
     "auto"
    ],
-   "weight": 72.7,
-   "volume": 301.0,
-   "price": 12392.0
+   "cargo": "metal",
+   "weight": 111.5,
+   "volume": 40.0,
+   "price": 14746.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
   },
   {
-   "id": 5882,
+   "id": 105001,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
-   "from": "boston",
-   "to": "panama city",
-   "date": "2026-09-15",
-   "currency": "MXN",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 74.4,
-   "volume": 215.0,
-   "price": 5625.0
-  },
-  {
-   "id": 5883,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "detroit",
-   "to": "dallas",
-   "date": "2026-12-12",
-   "currency": "CAD",
-   "company": "Maple Leaf Transport Ltd.",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 20.3,
-   "volume": 334.0,
-   "price": 12135.0
-  },
-  {
-   "id": 5884,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "North America",
-   "from": "memphis",
-   "to": "chicago",
-   "date": "2026-09-10",
-   "currency": "MXN",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "metal",
+   "from": "savannah",
+   "to": "losangeles",
+   "date": "2026-12-13",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 22.0,
-   "volume": 392.0,
-   "price": 5573.0
+   "cargo": "furn",
+   "weight": 17.6,
+   "volume": 109.0,
+   "price": 15535.0,
+   "currency": "USDC",
+   "company": "Great Lakes Logistics LLC"
   },
   {
-   "id": 5885,
+   "id": 105002,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "memphis",
+   "to": "vancouver",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 94.9,
+   "volume": 168.0,
+   "price": 1260.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 105003,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "denver",
+   "date": "2026-12-15",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 18.7,
+   "volume": 388.0,
+   "price": 7337.0,
+   "currency": "USD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105004,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "montreal",
+   "date": "2026-12-06",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 103.1,
+   "volume": 369.0,
+   "price": 16993.0,
+   "currency": "MXN",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 105005,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "vancouver",
+   "to": "montreal",
+   "date": "2026-12-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 66.0,
+   "volume": 234.0,
+   "price": 7534.0,
+   "currency": "USDC",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 105006,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "denver",
+   "to": "guadalajara",
+   "date": "2026-12-25",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 69.4,
+   "volume": 207.0,
+   "price": 14152.0,
+   "currency": "MXN",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 105007,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "panamacity",
+   "date": "2026-12-26",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 95.8,
+   "volume": 85.0,
+   "price": 14003.0,
+   "currency": "USDC",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 105008,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "montreal",
+   "to": "guadalajara",
+   "date": "2026-10-19",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 106.2,
+   "volume": 277.0,
+   "price": 17534.0,
+   "currency": "CAD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 105009,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "toronto",
+   "to": "dallas",
+   "date": "2026-09-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 23.5,
+   "volume": 39.0,
+   "price": 17042.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 105010,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "denver",
+   "to": "winnipeg",
+   "date": "2026-10-09",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 25.4,
+   "volume": 330.0,
+   "price": 15150.0,
+   "currency": "USD",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 105011,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "memphis",
+   "date": "2026-10-28",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 118.9,
+   "volume": 279.0,
+   "price": 6685.0,
+   "currency": "MXN",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105012,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "memphis",
+   "date": "2026-11-23",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 75.7,
+   "volume": 191.0,
+   "price": 8196.0,
+   "currency": "USDC",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 105013,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "longbeach",
+   "to": "manzanillo",
+   "date": "2026-11-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 33.4,
+   "volume": 271.0,
+   "price": 7020.0,
+   "currency": "USD",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 105014,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "manzanillo",
+   "to": "seattle",
+   "date": "2026-11-08",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 113.4,
+   "volume": 155.0,
+   "price": 9457.0,
+   "currency": "CAD",
+   "company": "Heartland Trucking LLC"
+  },
+  {
+   "id": 105015,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "chicago",
+   "date": "2026-10-28",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 59.9,
+   "volume": 319.0,
+   "price": 9521.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 105016,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "memphis",
+   "date": "2026-09-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 119.4,
+   "volume": 42.0,
+   "price": 16876.0,
+   "currency": "MXN",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 105017,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "calgary",
+   "to": "guadalajara",
+   "date": "2026-10-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 68.5,
+   "volume": 109.0,
+   "price": 5137.0,
+   "currency": "USD",
+   "company": "Great Lakes Logistics LLC"
+  },
+  {
+   "id": 105018,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "losangeles",
+   "to": "calgary",
+   "date": "2026-09-20",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 58.3,
+   "volume": 222.0,
+   "price": 17972.0,
+   "currency": "USD",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 105019,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "houston",
+   "to": "toronto",
+   "date": "2026-11-08",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 110.6,
+   "volume": 302.0,
+   "price": 10199.0,
+   "currency": "MXN",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 105020,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "denver",
+   "date": "2026-10-28",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 102.4,
+   "volume": 176.0,
+   "price": 9729.0,
+   "currency": "USD",
+   "company": "Border Express Logistics Inc."
+  },
+  {
+   "id": 105021,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "mexicocity",
+   "date": "2026-11-09",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 110.6,
+   "volume": 158.0,
+   "price": 5534.0,
+   "currency": "USDC",
+   "company": "Rio Grande Carriers SA de CV"
+  },
+  {
+   "id": 105022,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "guadalajara",
+   "to": "memphis",
+   "date": "2026-10-20",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 124.5,
+   "volume": 287.0,
+   "price": 17051.0,
+   "currency": "USD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105023,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "newyork",
+   "to": "mexicocity",
+   "date": "2026-12-02",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 68.5,
+   "volume": 204.0,
+   "price": 1087.0,
+   "currency": "MXN",
+   "company": "Aztec Logistica SA"
+  },
+  {
+   "id": 105024,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "toronto",
    "to": "memphis",
-   "date": "2026-11-10",
-   "currency": "USD",
-   "company": "Great Lakes Logistics LLC",
-   "cargo": "textile",
+   "date": "2026-10-08",
    "components": [
-    "rail",
-    "auto"
+    "sea",
+    "rail"
    ],
-   "weight": 73.3,
-   "volume": 150.0,
-   "price": 11113.0
+   "cargo": "electro",
+   "weight": 11.9,
+   "volume": 96.0,
+   "price": 9460.0,
+   "currency": "MXN",
+   "company": "Rio Grande Carriers SA de CV"
   },
   {
-   "id": 5886,
+   "id": 105025,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "laredo",
+   "to": "miami",
+   "date": "2026-09-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 24.0,
+   "volume": 32.0,
+   "price": 2151.0,
+   "currency": "CAD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105026,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "laredo",
+   "date": "2026-10-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 61.3,
+   "volume": 255.0,
+   "price": 9689.0,
+   "currency": "MXN",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 105027,
    "kind": "cargo",
    "mode": "multi",
    "continent": "North America",
-   "from": "panama city",
-   "to": "vancouver",
-   "date": "2026-11-21",
-   "currency": "MXN",
-   "company": "SkyBridge Air Cargo Inc.",
-   "cargo": "agro",
+   "from": "toronto",
+   "to": "losangeles",
+   "date": "2026-11-23",
    "components": [
-    "rail",
+    "air",
     "auto"
    ],
-   "weight": 36.5,
-   "volume": 159.0,
-   "price": 7103.0
+   "cargo": "food",
+   "weight": 13.2,
+   "volume": 342.0,
+   "price": 14351.0,
+   "currency": "USD",
+   "company": "Maple Leaf Transport Ltd."
   },
   {
-   "id": 5887,
+   "id": 105028,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "winnipeg",
+   "to": "seattle",
+   "date": "2026-09-15",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 62.7,
+   "volume": 313.0,
+   "price": 12941.0,
+   "currency": "MXN",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105029,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "miami",
+   "to": "calgary",
+   "date": "2026-12-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 35.1,
+   "volume": 210.0,
+   "price": 6375.0,
+   "currency": "USDC",
+   "company": "Pacific Northwest Cargo"
+  },
+  {
+   "id": 105030,
    "kind": "transport",
    "mode": "multi",
    "continent": "North America",
    "from": "winnipeg",
-   "to": "guadalajara",
-   "date": "2026-09-24",
-   "currency": "USD",
-   "company": "Union Rail Cargo Co.",
+   "to": "memphis",
+   "date": "2026-11-20",
+   "components": [
+    "air",
+    "auto"
+   ],
    "cargo": "metal",
+   "weight": 85.0,
+   "volume": 47.0,
+   "price": 2862.0,
+   "currency": "USDC",
+   "company": "Union Rail Cargo Co."
+  },
+  {
+   "id": 105031,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "houston",
+   "to": "manzanillo",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 28.3,
+   "volume": 169.0,
+   "price": 8110.0,
+   "currency": "MXN",
+   "company": "Maple Leaf Transport Ltd."
+  },
+  {
+   "id": 105032,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "manzanillo",
+   "to": "miami",
+   "date": "2026-10-05",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 32.6,
+   "volume": 267.0,
+   "price": 6986.0,
+   "currency": "USD",
+   "company": "Atlantic Marine Freight"
+  },
+  {
+   "id": 105033,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "panamacity",
+   "to": "guadalajara",
+   "date": "2026-11-06",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 135.5,
+   "volume": 68.0,
+   "price": 17047.0,
+   "currency": "USDC",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 105034,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "mexicocity",
+   "to": "monterrey",
+   "date": "2026-09-25",
    "components": [
     "rail",
     "auto"
    ],
-   "weight": 53.2,
-   "volume": 336.0,
-   "price": 6990.0
+   "cargo": "textile",
+   "weight": 52.5,
+   "volume": 334.0,
+   "price": 14016.0,
+   "currency": "USD",
+   "company": "Continental Freight Inc."
+  },
+  {
+   "id": 105035,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "North America",
+   "from": "monterrey",
+   "to": "veracruz",
+   "date": "2026-12-16",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 108.2,
+   "volume": 220.0,
+   "price": 9831.0,
+   "currency": "USD",
+   "company": "Pacific Northwest Cargo"
   }
  ]
 }
