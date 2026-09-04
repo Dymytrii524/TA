@@ -1,0 +1,3306 @@
+{
+ "continent": "Asia",
+ "mode": "multi",
+ "count": 172,
+ "listings": [
+  {
+   "id": 3496,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "singapore",
+   "date": "2026-09-21",
+   "currency": "VND",
+   "company": "Mekong Shipping JSC",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 25.1,
+   "volume": 193.0,
+   "price": 11888.0
+  },
+  {
+   "id": 3497,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "seoul",
+   "to": "jakarta",
+   "date": "2026-11-24",
+   "currency": "JPY",
+   "company": "Mekong Shipping JSC",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 97.9,
+   "volume": 352.0,
+   "price": 13073.0
+  },
+  {
+   "id": 3498,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "almaty",
+   "date": "2026-11-16",
+   "currency": "VND",
+   "company": "Nippon Cargo Lines",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 80.2,
+   "volume": 305.0,
+   "price": 2917.0
+  },
+  {
+   "id": 3499,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hong kong",
+   "to": "tokyo",
+   "date": "2026-11-09",
+   "currency": "USD",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 97.8,
+   "volume": 369.0,
+   "price": 1094.0
+  },
+  {
+   "id": 3500,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "dubai",
+   "date": "2026-09-04",
+   "currency": "AED",
+   "company": "Orient Air Freight",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 110.7,
+   "volume": 62.0,
+   "price": 12449.0
+  },
+  {
+   "id": 3501,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "ho chi minh",
+   "date": "2026-11-06",
+   "currency": "INR",
+   "company": "Asia Star Forwarding",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 57.8,
+   "volume": 207.0,
+   "price": 5477.0
+  },
+  {
+   "id": 3502,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "hanoi",
+   "date": "2026-10-17",
+   "currency": "TRY",
+   "company": "Tashkent Trans Group",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 65.9,
+   "volume": 336.0,
+   "price": 11645.0
+  },
+  {
+   "id": 3503,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "baku",
+   "date": "2026-09-01",
+   "currency": "KRW",
+   "company": "Silk Road Logistics",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 35.7,
+   "volume": 134.0,
+   "price": 2327.0
+  },
+  {
+   "id": 3504,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hanoi",
+   "to": "tokyo",
+   "date": "2026-12-01",
+   "currency": "KRW",
+   "company": "Nippon Cargo Lines",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 75.6,
+   "volume": 54.0,
+   "price": 4792.0
+  },
+  {
+   "id": 3505,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "chennai",
+   "date": "2026-09-22",
+   "currency": "THB",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 81.6,
+   "volume": 107.0,
+   "price": 11472.0
+  },
+  {
+   "id": 3506,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "busan",
+   "date": "2026-12-11",
+   "currency": "CNY",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 14.9,
+   "volume": 347.0,
+   "price": 9168.0
+  },
+  {
+   "id": 3507,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "chennai",
+   "to": "mumbai",
+   "date": "2026-12-12",
+   "currency": "SGD",
+   "company": "Orient Air Freight",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 89.6,
+   "volume": 70.0,
+   "price": 5074.0
+  },
+  {
+   "id": 3508,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "ho chi minh",
+   "to": "karachi",
+   "date": "2026-11-27",
+   "currency": "VND",
+   "company": "Orient Air Freight",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 55.0,
+   "volume": 137.0,
+   "price": 6739.0
+  },
+  {
+   "id": 3509,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "singapore",
+   "date": "2026-09-01",
+   "currency": "AED",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 70.8,
+   "volume": 371.0,
+   "price": 11224.0
+  },
+  {
+   "id": 3510,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "chennai",
+   "date": "2026-10-17",
+   "currency": "SGD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 104.1,
+   "volume": 98.0,
+   "price": 3222.0
+  },
+  {
+   "id": 3511,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "hong kong",
+   "date": "2026-09-20",
+   "currency": "USD",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 83.3,
+   "volume": 287.0,
+   "price": 13937.0
+  },
+  {
+   "id": 3512,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "seoul",
+   "date": "2026-12-15",
+   "currency": "INR",
+   "company": "Orient Air Freight",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 79.6,
+   "volume": 359.0,
+   "price": 5695.0
+  },
+  {
+   "id": 3513,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "doha",
+   "to": "bangkok",
+   "date": "2026-10-23",
+   "currency": "SGD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 49.5,
+   "volume": 314.0,
+   "price": 3357.0
+  },
+  {
+   "id": 3514,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "mumbai",
+   "to": "shenzhen",
+   "date": "2026-09-14",
+   "currency": "SGD",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 47.8,
+   "volume": 173.0,
+   "price": 9156.0
+  },
+  {
+   "id": 3515,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "doha",
+   "to": "busan",
+   "date": "2026-11-20",
+   "currency": "JPY",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 66.4,
+   "volume": 362.0,
+   "price": 11433.0
+  },
+  {
+   "id": 3516,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "karachi",
+   "date": "2026-12-22",
+   "currency": "VND",
+   "company": "Asia Star Forwarding",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 13.6,
+   "volume": 372.0,
+   "price": 13202.0
+  },
+  {
+   "id": 3517,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "bangkok",
+   "date": "2026-09-20",
+   "currency": "CNY",
+   "company": "Tashkent Trans Group",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 121.8,
+   "volume": 329.0,
+   "price": 1769.0
+  },
+  {
+   "id": 3518,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "hanoi",
+   "date": "2026-09-08",
+   "currency": "INR",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 125.2,
+   "volume": 228.0,
+   "price": 15037.0
+  },
+  {
+   "id": 3519,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "manila",
+   "to": "shenzhen",
+   "date": "2026-10-05",
+   "currency": "VND",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 72.8,
+   "volume": 70.0,
+   "price": 3384.0
+  },
+  {
+   "id": 3520,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "riyadh",
+   "date": "2026-11-28",
+   "currency": "KRW",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 73.1,
+   "volume": 172.0,
+   "price": 11500.0
+  },
+  {
+   "id": 3521,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "seoul",
+   "date": "2026-09-25",
+   "currency": "INR",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 69.2,
+   "volume": 239.0,
+   "price": 17948.0
+  },
+  {
+   "id": 3522,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hanoi",
+   "to": "guangzhou",
+   "date": "2026-11-16",
+   "currency": "SGD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 10.5,
+   "volume": 173.0,
+   "price": 12747.0
+  },
+  {
+   "id": 3523,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tehran",
+   "to": "beijing",
+   "date": "2026-12-03",
+   "currency": "AED",
+   "company": "Silk Road Logistics",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 114.4,
+   "volume": 154.0,
+   "price": 12841.0
+  },
+  {
+   "id": 3524,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "taipei",
+   "date": "2026-10-25",
+   "currency": "AED",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 44.7,
+   "volume": 203.0,
+   "price": 7136.0
+  },
+  {
+   "id": 3525,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "singapore",
+   "date": "2026-11-05",
+   "currency": "AED",
+   "company": "Nippon Cargo Lines",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 52.8,
+   "volume": 322.0,
+   "price": 7646.0
+  },
+  {
+   "id": 3526,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "chennai",
+   "date": "2026-11-20",
+   "currency": "KRW",
+   "company": "Asia Star Forwarding",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 116.9,
+   "volume": 343.0,
+   "price": 16292.0
+  },
+  {
+   "id": 3527,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "manila",
+   "date": "2026-09-01",
+   "currency": "USD",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 37.9,
+   "volume": 95.0,
+   "price": 2102.0
+  },
+  {
+   "id": 3528,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "shenzhen",
+   "date": "2026-12-09",
+   "currency": "SGD",
+   "company": "Silk Road Logistics",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 29.3,
+   "volume": 117.0,
+   "price": 11412.0
+  },
+  {
+   "id": 3529,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "bangkok",
+   "date": "2026-11-22",
+   "currency": "INR",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 125.8,
+   "volume": 250.0,
+   "price": 12674.0
+  },
+  {
+   "id": 3530,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "singapore",
+   "to": "hong kong",
+   "date": "2026-11-19",
+   "currency": "VND",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 99.0,
+   "volume": 255.0,
+   "price": 14799.0
+  },
+  {
+   "id": 3531,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "ho chi minh",
+   "date": "2026-09-18",
+   "currency": "KRW",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 78.0,
+   "volume": 232.0,
+   "price": 15329.0
+  },
+  {
+   "id": 3532,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "taipei",
+   "date": "2026-10-06",
+   "currency": "CNY",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 12.6,
+   "volume": 81.0,
+   "price": 2705.0
+  },
+  {
+   "id": 3533,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "ho chi minh",
+   "date": "2026-09-19",
+   "currency": "SGD",
+   "company": "Asia Star Forwarding",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 62.3,
+   "volume": 212.0,
+   "price": 10432.0
+  },
+  {
+   "id": 3534,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "mumbai",
+   "to": "taipei",
+   "date": "2026-11-10",
+   "currency": "KRW",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 119.8,
+   "volume": 217.0,
+   "price": 5771.0
+  },
+  {
+   "id": 3535,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hanoi",
+   "to": "manila",
+   "date": "2026-10-21",
+   "currency": "INR",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 137.3,
+   "volume": 227.0,
+   "price": 7810.0
+  },
+  {
+   "id": 3536,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "almaty",
+   "to": "chennai",
+   "date": "2026-11-04",
+   "currency": "TRY",
+   "company": "Orient Air Freight",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 116.3,
+   "volume": 287.0,
+   "price": 15534.0
+  },
+  {
+   "id": 3537,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "dubai",
+   "date": "2026-12-23",
+   "currency": "TRY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 115.5,
+   "volume": 261.0,
+   "price": 1347.0
+  },
+  {
+   "id": 3538,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "jakarta",
+   "date": "2026-09-25",
+   "currency": "INR",
+   "company": "Tashkent Trans Group",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 108.2,
+   "volume": 290.0,
+   "price": 13861.0
+  },
+  {
+   "id": 3539,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "busan",
+   "date": "2026-11-23",
+   "currency": "TRY",
+   "company": "Mekong Shipping JSC",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 104.2,
+   "volume": 172.0,
+   "price": 15715.0
+  },
+  {
+   "id": 3540,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "beijing",
+   "date": "2026-09-23",
+   "currency": "CNY",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 34.8,
+   "volume": 144.0,
+   "price": 17263.0
+  },
+  {
+   "id": 3541,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "osaka",
+   "to": "almaty",
+   "date": "2026-11-01",
+   "currency": "CNY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 18.9,
+   "volume": 242.0,
+   "price": 8051.0
+  },
+  {
+   "id": 3542,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hong kong",
+   "to": "guangzhou",
+   "date": "2026-12-23",
+   "currency": "SGD",
+   "company": "Nippon Cargo Lines",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 28.8,
+   "volume": 269.0,
+   "price": 13380.0
+  },
+  {
+   "id": 3543,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "doha",
+   "to": "tehran",
+   "date": "2026-09-03",
+   "currency": "AED",
+   "company": "Silk Road Logistics",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 25.3,
+   "volume": 33.0,
+   "price": 2073.0
+  },
+  {
+   "id": 3544,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "hong kong",
+   "date": "2026-11-25",
+   "currency": "TRY",
+   "company": "Nippon Cargo Lines",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 132.8,
+   "volume": 52.0,
+   "price": 7698.0
+  },
+  {
+   "id": 3545,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "bangkok",
+   "date": "2026-11-17",
+   "currency": "VND",
+   "company": "Mekong Shipping JSC",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 66.1,
+   "volume": 265.0,
+   "price": 8384.0
+  },
+  {
+   "id": 3546,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hanoi",
+   "to": "bangkok",
+   "date": "2026-12-28",
+   "currency": "CNY",
+   "company": "Silk Road Logistics",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 124.6,
+   "volume": 399.0,
+   "price": 1640.0
+  },
+  {
+   "id": 3547,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "hanoi",
+   "date": "2026-10-12",
+   "currency": "USD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 97.8,
+   "volume": 300.0,
+   "price": 8601.0
+  },
+  {
+   "id": 3548,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "chennai",
+   "date": "2026-11-20",
+   "currency": "INR",
+   "company": "Tashkent Trans Group",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 123.8,
+   "volume": 388.0,
+   "price": 2776.0
+  },
+  {
+   "id": 3549,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "singapore",
+   "date": "2026-12-13",
+   "currency": "USD",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 78.1,
+   "volume": 249.0,
+   "price": 10309.0
+  },
+  {
+   "id": 3550,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "ho chi minh",
+   "to": "tokyo",
+   "date": "2026-11-28",
+   "currency": "AED",
+   "company": "Mekong Shipping JSC",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 44.3,
+   "volume": 367.0,
+   "price": 8564.0
+  },
+  {
+   "id": 3551,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "mumbai",
+   "to": "ho chi minh",
+   "date": "2026-10-28",
+   "currency": "INR",
+   "company": "Tashkent Trans Group",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 125.4,
+   "volume": 221.0,
+   "price": 2540.0
+  },
+  {
+   "id": 3552,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "chennai",
+   "to": "seoul",
+   "date": "2026-12-08",
+   "currency": "AED",
+   "company": "Orient Air Freight",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 71.0,
+   "volume": 305.0,
+   "price": 7053.0
+  },
+  {
+   "id": 3553,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "taipei",
+   "to": "riyadh",
+   "date": "2026-09-27",
+   "currency": "JPY",
+   "company": "Silk Road Logistics",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 128.2,
+   "volume": 177.0,
+   "price": 4901.0
+  },
+  {
+   "id": 3554,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "singapore",
+   "to": "seoul",
+   "date": "2026-09-09",
+   "currency": "AED",
+   "company": "Silk Road Logistics",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 62.4,
+   "volume": 325.0,
+   "price": 14598.0
+  },
+  {
+   "id": 3555,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "chennai",
+   "date": "2026-11-01",
+   "currency": "THB",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 14.8,
+   "volume": 41.0,
+   "price": 10108.0
+  },
+  {
+   "id": 3556,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "singapore",
+   "date": "2026-12-27",
+   "currency": "USD",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 35.6,
+   "volume": 306.0,
+   "price": 13449.0
+  },
+  {
+   "id": 3557,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tokyo",
+   "to": "singapore",
+   "date": "2026-12-05",
+   "currency": "INR",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 139.8,
+   "volume": 86.0,
+   "price": 2969.0
+  },
+  {
+   "id": 3558,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "chennai",
+   "date": "2026-11-25",
+   "currency": "AED",
+   "company": "Gulf Cargo LLC",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 33.6,
+   "volume": 212.0,
+   "price": 17652.0
+  },
+  {
+   "id": 3559,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "jakarta",
+   "date": "2026-09-02",
+   "currency": "VND",
+   "company": "Silk Road Logistics",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 106.5,
+   "volume": 211.0,
+   "price": 17849.0
+  },
+  {
+   "id": 3560,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "chennai",
+   "date": "2026-09-11",
+   "currency": "USD",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 108.7,
+   "volume": 150.0,
+   "price": 14315.0
+  },
+  {
+   "id": 3561,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "tokyo",
+   "date": "2026-10-04",
+   "currency": "SGD",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 16.9,
+   "volume": 380.0,
+   "price": 3380.0
+  },
+  {
+   "id": 3562,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "kuala lumpur",
+   "to": "shenzhen",
+   "date": "2026-12-06",
+   "currency": "VND",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 35.0,
+   "volume": 31.0,
+   "price": 14559.0
+  },
+  {
+   "id": 3563,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "hong kong",
+   "date": "2026-12-12",
+   "currency": "THB",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 40.4,
+   "volume": 199.0,
+   "price": 8175.0
+  },
+  {
+   "id": 3564,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "baku",
+   "date": "2026-11-27",
+   "currency": "USD",
+   "company": "Tashkent Trans Group",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 40.1,
+   "volume": 136.0,
+   "price": 14527.0
+  },
+  {
+   "id": 3565,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "hanoi",
+   "date": "2026-10-13",
+   "currency": "JPY",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 84.5,
+   "volume": 145.0,
+   "price": 17900.0
+  },
+  {
+   "id": 3566,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "baku",
+   "date": "2026-10-07",
+   "currency": "VND",
+   "company": "Gulf Cargo LLC",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 41.8,
+   "volume": 33.0,
+   "price": 3429.0
+  },
+  {
+   "id": 3567,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "kuala lumpur",
+   "date": "2026-09-15",
+   "currency": "CNY",
+   "company": "Mekong Shipping JSC",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 136.3,
+   "volume": 164.0,
+   "price": 2414.0
+  },
+  {
+   "id": 3568,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "manila",
+   "date": "2026-09-26",
+   "currency": "AED",
+   "company": "Tashkent Trans Group",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 106.0,
+   "volume": 320.0,
+   "price": 9999.0
+  },
+  {
+   "id": 3569,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hong kong",
+   "to": "shanghai",
+   "date": "2026-10-02",
+   "currency": "THB",
+   "company": "Mekong Shipping JSC",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 51.6,
+   "volume": 288.0,
+   "price": 4820.0
+  },
+  {
+   "id": 3570,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "tehran",
+   "date": "2026-11-28",
+   "currency": "JPY",
+   "company": "Silk Road Logistics",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 68.0,
+   "volume": 178.0,
+   "price": 13008.0
+  },
+  {
+   "id": 3571,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "tashkent",
+   "date": "2026-11-08",
+   "currency": "KRW",
+   "company": "Orient Air Freight",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 110.4,
+   "volume": 333.0,
+   "price": 4547.0
+  },
+  {
+   "id": 3572,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "delhi",
+   "date": "2026-09-22",
+   "currency": "CNY",
+   "company": "Mekong Shipping JSC",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 29.2,
+   "volume": 278.0,
+   "price": 16580.0
+  },
+  {
+   "id": 3573,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "ho chi minh",
+   "to": "riyadh",
+   "date": "2026-09-19",
+   "currency": "CNY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 113.5,
+   "volume": 172.0,
+   "price": 2493.0
+  },
+  {
+   "id": 3574,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "osaka",
+   "to": "taipei",
+   "date": "2026-11-21",
+   "currency": "INR",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 126.0,
+   "volume": 358.0,
+   "price": 9183.0
+  },
+  {
+   "id": 3575,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "ho chi minh",
+   "date": "2026-12-26",
+   "currency": "THB",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 93.8,
+   "volume": 228.0,
+   "price": 2917.0
+  },
+  {
+   "id": 3576,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "taipei",
+   "to": "jakarta",
+   "date": "2026-09-18",
+   "currency": "THB",
+   "company": "Tashkent Trans Group",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 106.5,
+   "volume": 281.0,
+   "price": 17687.0
+  },
+  {
+   "id": 3577,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "dubai",
+   "date": "2026-11-24",
+   "currency": "VND",
+   "company": "Gulf Cargo LLC",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 91.9,
+   "volume": 126.0,
+   "price": 7930.0
+  },
+  {
+   "id": 3578,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "karachi",
+   "date": "2026-12-07",
+   "currency": "AED",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 77.1,
+   "volume": 216.0,
+   "price": 8909.0
+  },
+  {
+   "id": 3579,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "ho chi minh",
+   "date": "2026-11-17",
+   "currency": "USD",
+   "company": "Nippon Cargo Lines",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 32.4,
+   "volume": 294.0,
+   "price": 2447.0
+  },
+  {
+   "id": 3580,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "beijing",
+   "date": "2026-12-28",
+   "currency": "VND",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 72.6,
+   "volume": 214.0,
+   "price": 7308.0
+  },
+  {
+   "id": 3581,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "hong kong",
+   "date": "2026-12-22",
+   "currency": "SGD",
+   "company": "Tashkent Trans Group",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 24.8,
+   "volume": 48.0,
+   "price": 7995.0
+  },
+  {
+   "id": 3582,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "hanoi",
+   "date": "2026-10-28",
+   "currency": "TRY",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 111.3,
+   "volume": 169.0,
+   "price": 7883.0
+  },
+  {
+   "id": 3583,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tehran",
+   "to": "dhaka",
+   "date": "2026-12-06",
+   "currency": "TRY",
+   "company": "Nippon Cargo Lines",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 64.3,
+   "volume": 350.0,
+   "price": 7858.0
+  },
+  {
+   "id": 3584,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "hong kong",
+   "date": "2026-09-17",
+   "currency": "JPY",
+   "company": "Asia Star Forwarding",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 133.5,
+   "volume": 313.0,
+   "price": 12497.0
+  },
+  {
+   "id": 3585,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "hong kong",
+   "date": "2026-10-16",
+   "currency": "AED",
+   "company": "Mekong Shipping JSC",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 65.3,
+   "volume": 100.0,
+   "price": 2832.0
+  },
+  {
+   "id": 3586,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "singapore",
+   "to": "bangkok",
+   "date": "2026-11-21",
+   "currency": "CNY",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 123.7,
+   "volume": 128.0,
+   "price": 10191.0
+  },
+  {
+   "id": 3587,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "baku",
+   "date": "2026-09-17",
+   "currency": "TRY",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 111.7,
+   "volume": 108.0,
+   "price": 11530.0
+  },
+  {
+   "id": 3588,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "osaka",
+   "date": "2026-10-26",
+   "currency": "CNY",
+   "company": "Asia Star Forwarding",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 96.3,
+   "volume": 159.0,
+   "price": 17835.0
+  },
+  {
+   "id": 3589,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "bangkok",
+   "date": "2026-12-22",
+   "currency": "JPY",
+   "company": "Tashkent Trans Group",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 40.2,
+   "volume": 353.0,
+   "price": 8424.0
+  },
+  {
+   "id": 3590,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "doha",
+   "to": "mumbai",
+   "date": "2026-10-23",
+   "currency": "INR",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 137.6,
+   "volume": 362.0,
+   "price": 8542.0
+  },
+  {
+   "id": 3591,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "beijing",
+   "to": "singapore",
+   "date": "2026-12-12",
+   "currency": "AED",
+   "company": "Asia Star Forwarding",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 63.6,
+   "volume": 261.0,
+   "price": 9380.0
+  },
+  {
+   "id": 3592,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "riyadh",
+   "date": "2026-10-28",
+   "currency": "USD",
+   "company": "Orient Air Freight",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 86.8,
+   "volume": 249.0,
+   "price": 7304.0
+  },
+  {
+   "id": 3593,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "tehran",
+   "date": "2026-09-01",
+   "currency": "THB",
+   "company": "Mekong Shipping JSC",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 20.5,
+   "volume": 53.0,
+   "price": 15033.0
+  },
+  {
+   "id": 3594,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "riyadh",
+   "date": "2026-09-01",
+   "currency": "THB",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 28.5,
+   "volume": 31.0,
+   "price": 12156.0
+  },
+  {
+   "id": 3595,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "ho chi minh",
+   "date": "2026-11-16",
+   "currency": "AED",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 17.4,
+   "volume": 65.0,
+   "price": 11166.0
+  },
+  {
+   "id": 3596,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "ho chi minh",
+   "to": "tashkent",
+   "date": "2026-12-08",
+   "currency": "THB",
+   "company": "Gulf Cargo LLC",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 87.2,
+   "volume": 223.0,
+   "price": 15176.0
+  },
+  {
+   "id": 3597,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "bangkok",
+   "date": "2026-10-10",
+   "currency": "KRW",
+   "company": "Mekong Shipping JSC",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 88.1,
+   "volume": 122.0,
+   "price": 13899.0
+  },
+  {
+   "id": 3598,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "dhaka",
+   "date": "2026-09-19",
+   "currency": "KRW",
+   "company": "Silk Road Logistics",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 129.8,
+   "volume": 172.0,
+   "price": 8454.0
+  },
+  {
+   "id": 3599,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "colombo",
+   "date": "2026-09-21",
+   "currency": "THB",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 23.4,
+   "volume": 150.0,
+   "price": 8410.0
+  },
+  {
+   "id": 3600,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "chennai",
+   "to": "shanghai",
+   "date": "2026-10-19",
+   "currency": "TRY",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 89.5,
+   "volume": 303.0,
+   "price": 3004.0
+  },
+  {
+   "id": 3601,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "colombo",
+   "date": "2026-10-09",
+   "currency": "THB",
+   "company": "Gulf Cargo LLC",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 109.8,
+   "volume": 157.0,
+   "price": 7162.0
+  },
+  {
+   "id": 3602,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "beijing",
+   "to": "hong kong",
+   "date": "2026-09-02",
+   "currency": "KRW",
+   "company": "Mekong Shipping JSC",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 58.3,
+   "volume": 250.0,
+   "price": 7866.0
+  },
+  {
+   "id": 3603,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "dhaka",
+   "date": "2026-09-14",
+   "currency": "USD",
+   "company": "Asia Star Forwarding",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 130.1,
+   "volume": 279.0,
+   "price": 15681.0
+  },
+  {
+   "id": 3604,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hong kong",
+   "to": "tashkent",
+   "date": "2026-10-19",
+   "currency": "SGD",
+   "company": "Mekong Shipping JSC",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 131.1,
+   "volume": 49.0,
+   "price": 8074.0
+  },
+  {
+   "id": 3605,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "almaty",
+   "date": "2026-09-05",
+   "currency": "SGD",
+   "company": "Nippon Cargo Lines",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 101.0,
+   "volume": 325.0,
+   "price": 14597.0
+  },
+  {
+   "id": 3606,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shanghai",
+   "to": "bangkok",
+   "date": "2026-09-03",
+   "currency": "CNY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 33.6,
+   "volume": 374.0,
+   "price": 3925.0
+  },
+  {
+   "id": 3607,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "delhi",
+   "date": "2026-12-17",
+   "currency": "JPY",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 108.1,
+   "volume": 352.0,
+   "price": 6639.0
+  },
+  {
+   "id": 3608,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "tokyo",
+   "date": "2026-10-03",
+   "currency": "JPY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 42.9,
+   "volume": 190.0,
+   "price": 15929.0
+  },
+  {
+   "id": 3609,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "dhaka",
+   "date": "2026-10-20",
+   "currency": "VND",
+   "company": "Nippon Cargo Lines",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 101.9,
+   "volume": 399.0,
+   "price": 9973.0
+  },
+  {
+   "id": 3610,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "seoul",
+   "date": "2026-12-21",
+   "currency": "JPY",
+   "company": "Mekong Shipping JSC",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 17.3,
+   "volume": 298.0,
+   "price": 1887.0
+  },
+  {
+   "id": 3611,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "ho chi minh",
+   "date": "2026-10-06",
+   "currency": "TRY",
+   "company": "Orient Air Freight",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 42.4,
+   "volume": 192.0,
+   "price": 4530.0
+  },
+  {
+   "id": 3612,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "colombo",
+   "date": "2026-09-23",
+   "currency": "USD",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 75.3,
+   "volume": 187.0,
+   "price": 12367.0
+  },
+  {
+   "id": 3613,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "tehran",
+   "date": "2026-10-26",
+   "currency": "KRW",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 91.2,
+   "volume": 267.0,
+   "price": 6349.0
+  },
+  {
+   "id": 3614,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "riyadh",
+   "date": "2026-11-05",
+   "currency": "USD",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 106.8,
+   "volume": 165.0,
+   "price": 14722.0
+  },
+  {
+   "id": 3615,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "kuala lumpur",
+   "to": "doha",
+   "date": "2026-10-27",
+   "currency": "SGD",
+   "company": "Silk Road Logistics",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 71.7,
+   "volume": 111.0,
+   "price": 2397.0
+  },
+  {
+   "id": 3616,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "colombo",
+   "date": "2026-11-15",
+   "currency": "VND",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 126.7,
+   "volume": 245.0,
+   "price": 14691.0
+  },
+  {
+   "id": 3617,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "almaty",
+   "date": "2026-12-23",
+   "currency": "USD",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 13.9,
+   "volume": 97.0,
+   "price": 3269.0
+  },
+  {
+   "id": 3618,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "tokyo",
+   "date": "2026-12-06",
+   "currency": "THB",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 72.0,
+   "volume": 168.0,
+   "price": 2364.0
+  },
+  {
+   "id": 3619,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "colombo",
+   "date": "2026-11-18",
+   "currency": "KRW",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 81.4,
+   "volume": 369.0,
+   "price": 10393.0
+  },
+  {
+   "id": 3620,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "almaty",
+   "to": "tehran",
+   "date": "2026-11-16",
+   "currency": "JPY",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 107.8,
+   "volume": 52.0,
+   "price": 16430.0
+  },
+  {
+   "id": 3621,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tehran",
+   "to": "kuala lumpur",
+   "date": "2026-10-18",
+   "currency": "SGD",
+   "company": "Silk Road Logistics",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 104.6,
+   "volume": 156.0,
+   "price": 9908.0
+  },
+  {
+   "id": 3622,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "karachi",
+   "to": "bangkok",
+   "date": "2026-10-20",
+   "currency": "VND",
+   "company": "Silk Road Logistics",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 55.7,
+   "volume": 282.0,
+   "price": 14370.0
+  },
+  {
+   "id": 3623,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "kuala lumpur",
+   "to": "busan",
+   "date": "2026-11-14",
+   "currency": "USD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 119.1,
+   "volume": 43.0,
+   "price": 9465.0
+  },
+  {
+   "id": 3624,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "beijing",
+   "to": "ho chi minh",
+   "date": "2026-12-26",
+   "currency": "TRY",
+   "company": "Gulf Cargo LLC",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 127.2,
+   "volume": 32.0,
+   "price": 3176.0
+  },
+  {
+   "id": 3625,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "riyadh",
+   "date": "2026-10-11",
+   "currency": "SGD",
+   "company": "Nippon Cargo Lines",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 63.1,
+   "volume": 63.0,
+   "price": 6902.0
+  },
+  {
+   "id": 3626,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "kuala lumpur",
+   "to": "almaty",
+   "date": "2026-10-18",
+   "currency": "SGD",
+   "company": "Orient Air Freight",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 93.8,
+   "volume": 118.0,
+   "price": 15628.0
+  },
+  {
+   "id": 3627,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tehran",
+   "to": "seoul",
+   "date": "2026-09-08",
+   "currency": "JPY",
+   "company": "Gulf Cargo LLC",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 119.7,
+   "volume": 33.0,
+   "price": 11393.0
+  },
+  {
+   "id": 3628,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "chennai",
+   "date": "2026-09-22",
+   "currency": "USD",
+   "company": "Mekong Shipping JSC",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 88.7,
+   "volume": 208.0,
+   "price": 13828.0
+  },
+  {
+   "id": 3629,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "taipei",
+   "date": "2026-12-14",
+   "currency": "SGD",
+   "company": "Orient Air Freight",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 89.6,
+   "volume": 290.0,
+   "price": 1723.0
+  },
+  {
+   "id": 3630,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tokyo",
+   "to": "doha",
+   "date": "2026-09-19",
+   "currency": "CNY",
+   "company": "Nippon Cargo Lines",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 120.4,
+   "volume": 365.0,
+   "price": 2633.0
+  },
+  {
+   "id": 3631,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "colombo",
+   "date": "2026-11-07",
+   "currency": "AED",
+   "company": "Orient Air Freight",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 121.0,
+   "volume": 50.0,
+   "price": 6419.0
+  },
+  {
+   "id": 3632,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "guangzhou",
+   "to": "osaka",
+   "date": "2026-11-20",
+   "currency": "THB",
+   "company": "Bharat Freight Pvt Ltd",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 134.6,
+   "volume": 97.0,
+   "price": 12262.0
+  },
+  {
+   "id": 3633,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "almaty",
+   "date": "2026-10-16",
+   "currency": "THB",
+   "company": "Asia Star Forwarding",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 42.3,
+   "volume": 316.0,
+   "price": 8770.0
+  },
+  {
+   "id": 3634,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "jakarta",
+   "date": "2026-09-18",
+   "currency": "THB",
+   "company": "Nippon Cargo Lines",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 94.9,
+   "volume": 244.0,
+   "price": 14170.0
+  },
+  {
+   "id": 3635,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "hong kong",
+   "date": "2026-12-05",
+   "currency": "CNY",
+   "company": "Tashkent Trans Group",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 93.9,
+   "volume": 398.0,
+   "price": 2991.0
+  },
+  {
+   "id": 3636,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "delhi",
+   "to": "tashkent",
+   "date": "2026-10-22",
+   "currency": "AED",
+   "company": "Tashkent Trans Group",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 18.4,
+   "volume": 373.0,
+   "price": 13620.0
+  },
+  {
+   "id": 3637,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "bangkok",
+   "date": "2026-09-06",
+   "currency": "INR",
+   "company": "Silk Road Logistics",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 121.3,
+   "volume": 373.0,
+   "price": 8943.0
+  },
+  {
+   "id": 3638,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "karachi",
+   "date": "2026-10-13",
+   "currency": "CNY",
+   "company": "Silk Road Logistics",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 30.8,
+   "volume": 144.0,
+   "price": 3734.0
+  },
+  {
+   "id": 3639,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "osaka",
+   "to": "beijing",
+   "date": "2026-10-01",
+   "currency": "KRW",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 17.5,
+   "volume": 220.0,
+   "price": 1312.0
+  },
+  {
+   "id": 3640,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "colombo",
+   "to": "beijing",
+   "date": "2026-11-09",
+   "currency": "KRW",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 39.5,
+   "volume": 336.0,
+   "price": 15974.0
+  },
+  {
+   "id": 3641,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "chennai",
+   "date": "2026-12-09",
+   "currency": "INR",
+   "company": "Silk Road Logistics",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 109.0,
+   "volume": 91.0,
+   "price": 10827.0
+  },
+  {
+   "id": 3642,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "kuala lumpur",
+   "date": "2026-10-20",
+   "currency": "JPY",
+   "company": "Tashkent Trans Group",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 56.5,
+   "volume": 331.0,
+   "price": 13261.0
+  },
+  {
+   "id": 3643,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "seoul",
+   "date": "2026-11-16",
+   "currency": "CNY",
+   "company": "Tashkent Trans Group",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 10.4,
+   "volume": 42.0,
+   "price": 1734.0
+  },
+  {
+   "id": 3644,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "osaka",
+   "to": "tashkent",
+   "date": "2026-10-01",
+   "currency": "TRY",
+   "company": "Gulf Cargo LLC",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 117.0,
+   "volume": 369.0,
+   "price": 15178.0
+  },
+  {
+   "id": 3645,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "hong kong",
+   "to": "kuala lumpur",
+   "date": "2026-11-16",
+   "currency": "TRY",
+   "company": "Hanjin Logistics Corp.",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 88.7,
+   "volume": 325.0,
+   "price": 10715.0
+  },
+  {
+   "id": 3646,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "chennai",
+   "date": "2026-10-08",
+   "currency": "TRY",
+   "company": "Sunrise Rail Cargo",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 73.5,
+   "volume": 136.0,
+   "price": 13004.0
+  },
+  {
+   "id": 3647,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "jakarta",
+   "date": "2026-11-02",
+   "currency": "KRW",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 103.5,
+   "volume": 61.0,
+   "price": 12317.0
+  },
+  {
+   "id": 3648,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dubai",
+   "to": "jakarta",
+   "date": "2026-10-18",
+   "currency": "THB",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 87.8,
+   "volume": 116.0,
+   "price": 15839.0
+  },
+  {
+   "id": 3649,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "hanoi",
+   "date": "2026-12-22",
+   "currency": "SGD",
+   "company": "Gulf Cargo LLC",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 94.5,
+   "volume": 38.0,
+   "price": 17523.0
+  },
+  {
+   "id": 3650,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "jakarta",
+   "to": "guangzhou",
+   "date": "2026-09-09",
+   "currency": "INR",
+   "company": "Silk Road Logistics",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 125.6,
+   "volume": 84.0,
+   "price": 6609.0
+  },
+  {
+   "id": 3651,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "singapore",
+   "to": "jakarta",
+   "date": "2026-11-28",
+   "currency": "TRY",
+   "company": "Nippon Cargo Lines",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 117.1,
+   "volume": 224.0,
+   "price": 9584.0
+  },
+  {
+   "id": 3652,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "taipei",
+   "to": "guangzhou",
+   "date": "2026-11-24",
+   "currency": "USD",
+   "company": "Mekong Shipping JSC",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 121.7,
+   "volume": 50.0,
+   "price": 6423.0
+  },
+  {
+   "id": 3653,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "almaty",
+   "to": "ho chi minh",
+   "date": "2026-12-22",
+   "currency": "AED",
+   "company": "Nippon Cargo Lines",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 77.8,
+   "volume": 347.0,
+   "price": 9220.0
+  },
+  {
+   "id": 3654,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "seoul",
+   "to": "karachi",
+   "date": "2026-11-12",
+   "currency": "CNY",
+   "company": "Gulf Cargo LLC",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 56.9,
+   "volume": 339.0,
+   "price": 1511.0
+  },
+  {
+   "id": 3655,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "busan",
+   "to": "doha",
+   "date": "2026-10-27",
+   "currency": "AED",
+   "company": "Silk Road Logistics",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 103.1,
+   "volume": 320.0,
+   "price": 7292.0
+  },
+  {
+   "id": 3656,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "mumbai",
+   "to": "guangzhou",
+   "date": "2026-10-11",
+   "currency": "USD",
+   "company": "Orient Air Freight",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 36.2,
+   "volume": 244.0,
+   "price": 15208.0
+  },
+  {
+   "id": 3657,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "dhaka",
+   "to": "ho chi minh",
+   "date": "2026-12-14",
+   "currency": "VND",
+   "company": "Mekong Shipping JSC",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 25.7,
+   "volume": 48.0,
+   "price": 15800.0
+  },
+  {
+   "id": 3658,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "taipei",
+   "to": "guangzhou",
+   "date": "2026-10-21",
+   "currency": "SGD",
+   "company": "Tashkent Trans Group",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 86.2,
+   "volume": 381.0,
+   "price": 4779.0
+  },
+  {
+   "id": 3659,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "mumbai",
+   "to": "taipei",
+   "date": "2026-12-16",
+   "currency": "VND",
+   "company": "Asia Star Forwarding",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 91.0,
+   "volume": 94.0,
+   "price": 16946.0
+  },
+  {
+   "id": 3660,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tehran",
+   "to": "ho chi minh",
+   "date": "2026-10-18",
+   "currency": "VND",
+   "company": "Mekong Shipping JSC",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 57.6,
+   "volume": 387.0,
+   "price": 6824.0
+  },
+  {
+   "id": 3661,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "baku",
+   "to": "ho chi minh",
+   "date": "2026-09-02",
+   "currency": "USD",
+   "company": "Nippon Cargo Lines",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 134.0,
+   "volume": 204.0,
+   "price": 7037.0
+  },
+  {
+   "id": 3662,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "tashkent",
+   "to": "bangkok",
+   "date": "2026-12-09",
+   "currency": "AED",
+   "company": "Mekong Shipping JSC",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 137.2,
+   "volume": 103.0,
+   "price": 5497.0
+  },
+  {
+   "id": 3663,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "shenzhen",
+   "to": "riyadh",
+   "date": "2026-09-27",
+   "currency": "TRY",
+   "company": "Tashkent Trans Group",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 15.9,
+   "volume": 280.0,
+   "price": 10190.0
+  },
+  {
+   "id": 3664,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "bangkok",
+   "to": "jakarta",
+   "date": "2026-09-10",
+   "currency": "AED",
+   "company": "Orient Air Freight",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 91.8,
+   "volume": 219.0,
+   "price": 6362.0
+  },
+  {
+   "id": 3665,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "riyadh",
+   "to": "delhi",
+   "date": "2026-10-06",
+   "currency": "KRW",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 108.2,
+   "volume": 118.0,
+   "price": 9210.0
+  },
+  {
+   "id": 3666,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "osaka",
+   "to": "tashkent",
+   "date": "2026-10-16",
+   "currency": "KRW",
+   "company": "Pacific Rim Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 85.6,
+   "volume": 61.0,
+   "price": 12701.0
+  },
+  {
+   "id": 3667,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Asia",
+   "from": "singapore",
+   "to": "jakarta",
+   "date": "2026-11-13",
+   "currency": "TRY",
+   "company": "Sinotrans Logistics Co.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 73.3,
+   "volume": 98.0,
+   "price": 11082.0
+  }
+ ]
+}
