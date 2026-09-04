@@ -1,0 +1,130 @@
+{
+ "generated": "2026-09-04",
+ "source_model": "index.html demo listings + schemas/post-drone.schema.json",
+ "continents": {
+  "Europe": {
+   "total": 1251,
+   "byMode": {
+    "auto": 130,
+    "rail": 243,
+    "sea": 297,
+    "air": 202,
+    "drone": 135,
+    "multi": 244
+   },
+   "files": [
+    "listings-europe.json",
+    "listings-europe-auto.json",
+    "listings-europe-rail.json",
+    "listings-europe-sea.json",
+    "listings-europe-air.json",
+    "listings-europe-drone.json",
+    "listings-europe-multi.json"
+   ]
+  },
+  "Asia": {
+   "total": 1416,
+   "byMode": {
+    "auto": 168,
+    "rail": 232,
+    "sea": 295,
+    "air": 270,
+    "drone": 279,
+    "multi": 172
+   },
+   "files": [
+    "listings-asia.json",
+    "listings-asia-auto.json",
+    "listings-asia-rail.json",
+    "listings-asia-sea.json",
+    "listings-asia-air.json",
+    "listings-asia-drone.json",
+    "listings-asia-multi.json"
+   ]
+  },
+  "Africa": {
+   "total": 1229,
+   "byMode": {
+    "auto": 278,
+    "rail": 122,
+    "sea": 169,
+    "air": 208,
+    "drone": 233,
+    "multi": 219
+   },
+   "files": [
+    "listings-africa.json",
+    "listings-africa-auto.json",
+    "listings-africa-rail.json",
+    "listings-africa-sea.json",
+    "listings-africa-air.json",
+    "listings-africa-drone.json",
+    "listings-africa-multi.json"
+   ]
+  },
+  "North America": {
+   "total": 991,
+   "byMode": {
+    "auto": 148,
+    "rail": 111,
+    "sea": 132,
+    "air": 133,
+    "drone": 260,
+    "multi": 207
+   },
+   "files": [
+    "listings-north-america.json",
+    "listings-north-america-auto.json",
+    "listings-north-america-rail.json",
+    "listings-north-america-sea.json",
+    "listings-north-america-air.json",
+    "listings-north-america-drone.json",
+    "listings-north-america-multi.json"
+   ]
+  },
+  "South America": {
+   "total": 1122,
+   "byMode": {
+    "auto": 202,
+    "rail": 161,
+    "sea": 181,
+    "air": 205,
+    "drone": 125,
+    "multi": 248
+   },
+   "files": [
+    "listings-south-america.json",
+    "listings-south-america-auto.json",
+    "listings-south-america-rail.json",
+    "listings-south-america-sea.json",
+    "listings-south-america-air.json",
+    "listings-south-america-drone.json",
+    "listings-south-america-multi.json"
+   ]
+  },
+  "Oceania": {
+   "total": 1111,
+   "byMode": {
+    "auto": 158,
+    "rail": 249,
+    "sea": 101,
+    "air": 127,
+    "drone": 191,
+    "multi": 285
+   },
+   "files": [
+    "listings-oceania.json",
+    "listings-oceania-auto.json",
+    "listings-oceania-rail.json",
+    "listings-oceania-sea.json",
+    "listings-oceania-air.json",
+    "listings-oceania-drone.json",
+    "listings-oceania-multi.json"
+   ]
+  }
+ },
+ "totals": {
+  "files": 42,
+  "listings": 7120
+ }
+}

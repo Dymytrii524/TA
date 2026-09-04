@@ -1,0 +1,4208 @@
+{
+ "continent": "Africa",
+ "mode": "multi",
+ "count": 219,
+ "listings": [
+  {
+   "id": 4678,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "lusaka",
+   "date": "2026-09-27",
+   "currency": "GHS",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 15.1,
+   "volume": 235.0,
+   "price": 3356.0
+  },
+  {
+   "id": 4679,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abidjan",
+   "to": "accra",
+   "date": "2026-12-08",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 47.3,
+   "volume": 275.0,
+   "price": 13049.0
+  },
+  {
+   "id": 4680,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abuja",
+   "to": "tangier",
+   "date": "2026-10-03",
+   "currency": "TND",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 88.9,
+   "volume": 317.0,
+   "price": 8268.0
+  },
+  {
+   "id": 4681,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "luanda",
+   "to": "addis ababa",
+   "date": "2026-11-14",
+   "currency": "ZAR",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 124.6,
+   "volume": 237.0,
+   "price": 10218.0
+  },
+  {
+   "id": 4682,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "algiers",
+   "date": "2026-09-03",
+   "currency": "EUR",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 122.2,
+   "volume": 81.0,
+   "price": 12534.0
+  },
+  {
+   "id": 4683,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "lagos",
+   "date": "2026-10-08",
+   "currency": "ZAR",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 62.9,
+   "volume": 152.0,
+   "price": 9845.0
+  },
+  {
+   "id": 4684,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "kinshasa",
+   "date": "2026-12-26",
+   "currency": "USD",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 32.8,
+   "volume": 225.0,
+   "price": 11316.0
+  },
+  {
+   "id": 4685,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "maputo",
+   "date": "2026-11-10",
+   "currency": "EUR",
+   "company": "Atlas Trans SARL",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 86.6,
+   "volume": 66.0,
+   "price": 16131.0
+  },
+  {
+   "id": 4686,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "cape town",
+   "date": "2026-12-11",
+   "currency": "USD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 57.7,
+   "volume": 259.0,
+   "price": 7350.0
+  },
+  {
+   "id": 4687,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "dakar",
+   "date": "2026-12-21",
+   "currency": "KES",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 130.8,
+   "volume": 289.0,
+   "price": 10257.0
+  },
+  {
+   "id": 4688,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "durban",
+   "to": "algiers",
+   "date": "2026-12-22",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 39.1,
+   "volume": 350.0,
+   "price": 4464.0
+  },
+  {
+   "id": 4689,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "addis ababa",
+   "date": "2026-09-26",
+   "currency": "KES",
+   "company": "Atlas Trans SARL",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 62.7,
+   "volume": 380.0,
+   "price": 2305.0
+  },
+  {
+   "id": 4690,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abidjan",
+   "to": "lusaka",
+   "date": "2026-11-23",
+   "currency": "USD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 125.8,
+   "volume": 33.0,
+   "price": 4049.0
+  },
+  {
+   "id": 4691,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "luanda",
+   "to": "cape town",
+   "date": "2026-10-25",
+   "currency": "EUR",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 57.2,
+   "volume": 61.0,
+   "price": 7375.0
+  },
+  {
+   "id": 4692,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "mombasa",
+   "date": "2026-11-05",
+   "currency": "EGP",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 128.2,
+   "volume": 329.0,
+   "price": 16109.0
+  },
+  {
+   "id": 4693,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "lagos",
+   "date": "2026-12-10",
+   "currency": "USD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 47.2,
+   "volume": 132.0,
+   "price": 4292.0
+  },
+  {
+   "id": 4694,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "abidjan",
+   "date": "2026-11-04",
+   "currency": "MAD",
+   "company": "Nile Logistics SAE",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 52.6,
+   "volume": 53.0,
+   "price": 15511.0
+  },
+  {
+   "id": 4695,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "nairobi",
+   "date": "2026-09-10",
+   "currency": "KES",
+   "company": "Atlas Trans SARL",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 50.7,
+   "volume": 292.0,
+   "price": 17300.0
+  },
+  {
+   "id": 4696,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "douala",
+   "date": "2026-12-15",
+   "currency": "NGN",
+   "company": "Atlas Trans SARL",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 83.0,
+   "volume": 387.0,
+   "price": 11158.0
+  },
+  {
+   "id": 4697,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "dar es salaam",
+   "date": "2026-09-13",
+   "currency": "KES",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 26.6,
+   "volume": 162.0,
+   "price": 6989.0
+  },
+  {
+   "id": 4698,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "kampala",
+   "date": "2026-11-11",
+   "currency": "GHS",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 92.9,
+   "volume": 89.0,
+   "price": 14371.0
+  },
+  {
+   "id": 4699,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "windhoek",
+   "date": "2026-09-11",
+   "currency": "TND",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 17.8,
+   "volume": 206.0,
+   "price": 1301.0
+  },
+  {
+   "id": 4700,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "casablanca",
+   "to": "mombasa",
+   "date": "2026-10-12",
+   "currency": "EGP",
+   "company": "Atlas Trans SARL",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 27.0,
+   "volume": 362.0,
+   "price": 13568.0
+  },
+  {
+   "id": 4701,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tangier",
+   "to": "tunis",
+   "date": "2026-11-14",
+   "currency": "MAD",
+   "company": "Savanna Air Freight",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 123.0,
+   "volume": 41.0,
+   "price": 5902.0
+  },
+  {
+   "id": 4702,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "maputo",
+   "date": "2026-10-04",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 71.0,
+   "volume": 369.0,
+   "price": 11634.0
+  },
+  {
+   "id": 4703,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "maputo",
+   "date": "2026-09-19",
+   "currency": "ZAR",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 55.8,
+   "volume": 156.0,
+   "price": 5578.0
+  },
+  {
+   "id": 4704,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "cape town",
+   "date": "2026-11-28",
+   "currency": "DZD",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 75.0,
+   "volume": 370.0,
+   "price": 12840.0
+  },
+  {
+   "id": 4705,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "douala",
+   "date": "2026-10-14",
+   "currency": "KES",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 66.7,
+   "volume": 364.0,
+   "price": 13152.0
+  },
+  {
+   "id": 4706,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "tripoli",
+   "date": "2026-10-06",
+   "currency": "GHS",
+   "company": "Nile Logistics SAE",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 32.1,
+   "volume": 68.0,
+   "price": 3451.0
+  },
+  {
+   "id": 4707,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abidjan",
+   "to": "khartoum",
+   "date": "2026-11-08",
+   "currency": "USD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 131.5,
+   "volume": 320.0,
+   "price": 1664.0
+  },
+  {
+   "id": 4708,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "casablanca",
+   "date": "2026-10-28",
+   "currency": "TND",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 16.6,
+   "volume": 280.0,
+   "price": 12928.0
+  },
+  {
+   "id": 4709,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "luanda",
+   "date": "2026-12-25",
+   "currency": "DZD",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 84.0,
+   "volume": 115.0,
+   "price": 14611.0
+  },
+  {
+   "id": 4710,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "maputo",
+   "date": "2026-12-06",
+   "currency": "NGN",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 78.2,
+   "volume": 135.0,
+   "price": 9470.0
+  },
+  {
+   "id": 4711,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "cairo",
+   "date": "2026-11-01",
+   "currency": "TND",
+   "company": "Atlas Trans SARL",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 107.7,
+   "volume": 228.0,
+   "price": 5555.0
+  },
+  {
+   "id": 4712,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "nairobi",
+   "date": "2026-11-15",
+   "currency": "KES",
+   "company": "Savanna Air Freight",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 23.8,
+   "volume": 303.0,
+   "price": 6510.0
+  },
+  {
+   "id": 4713,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "cape town",
+   "date": "2026-10-24",
+   "currency": "DZD",
+   "company": "Savanna Air Freight",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 109.7,
+   "volume": 219.0,
+   "price": 9780.0
+  },
+  {
+   "id": 4714,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "dakar",
+   "date": "2026-09-10",
+   "currency": "USD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 47.1,
+   "volume": 296.0,
+   "price": 8916.0
+  },
+  {
+   "id": 4715,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "lagos",
+   "date": "2026-09-24",
+   "currency": "DZD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 43.0,
+   "volume": 282.0,
+   "price": 11542.0
+  },
+  {
+   "id": 4716,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abuja",
+   "to": "douala",
+   "date": "2026-11-22",
+   "currency": "EGP",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 114.1,
+   "volume": 125.0,
+   "price": 16104.0
+  },
+  {
+   "id": 4717,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tangier",
+   "to": "casablanca",
+   "date": "2026-12-24",
+   "currency": "EUR",
+   "company": "Savanna Air Freight",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 50.2,
+   "volume": 272.0,
+   "price": 13349.0
+  },
+  {
+   "id": 4718,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "port said",
+   "date": "2026-10-26",
+   "currency": "EUR",
+   "company": "East Africa Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 95.1,
+   "volume": 42.0,
+   "price": 9177.0
+  },
+  {
+   "id": 4719,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "alexandria",
+   "date": "2026-09-20",
+   "currency": "USD",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 123.8,
+   "volume": 389.0,
+   "price": 17645.0
+  },
+  {
+   "id": 4720,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "tangier",
+   "date": "2026-12-10",
+   "currency": "USD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 127.3,
+   "volume": 133.0,
+   "price": 7091.0
+  },
+  {
+   "id": 4721,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "addis ababa",
+   "date": "2026-10-02",
+   "currency": "TND",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 42.2,
+   "volume": 246.0,
+   "price": 16122.0
+  },
+  {
+   "id": 4722,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "douala",
+   "to": "port said",
+   "date": "2026-11-18",
+   "currency": "EUR",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 84.1,
+   "volume": 364.0,
+   "price": 14660.0
+  },
+  {
+   "id": 4723,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "kampala",
+   "date": "2026-10-03",
+   "currency": "MAD",
+   "company": "Savanna Air Freight",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 128.2,
+   "volume": 357.0,
+   "price": 7435.0
+  },
+  {
+   "id": 4724,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "lagos",
+   "date": "2026-12-13",
+   "currency": "KES",
+   "company": "Atlas Trans SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 28.5,
+   "volume": 295.0,
+   "price": 14764.0
+  },
+  {
+   "id": 4725,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abuja",
+   "to": "windhoek",
+   "date": "2026-10-02",
+   "currency": "GHS",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 82.9,
+   "volume": 314.0,
+   "price": 6711.0
+  },
+  {
+   "id": 4726,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "tunis",
+   "date": "2026-10-09",
+   "currency": "TND",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 50.8,
+   "volume": 271.0,
+   "price": 8281.0
+  },
+  {
+   "id": 4727,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "cairo",
+   "date": "2026-09-01",
+   "currency": "USD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 47.3,
+   "volume": 312.0,
+   "price": 13082.0
+  },
+  {
+   "id": 4728,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "port said",
+   "to": "algiers",
+   "date": "2026-10-15",
+   "currency": "KES",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 105.7,
+   "volume": 274.0,
+   "price": 11080.0
+  },
+  {
+   "id": 4729,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "mombasa",
+   "date": "2026-09-24",
+   "currency": "MAD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 40.3,
+   "volume": 279.0,
+   "price": 1169.0
+  },
+  {
+   "id": 4730,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "port said",
+   "date": "2026-11-28",
+   "currency": "NGN",
+   "company": "Atlas Trans SARL",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 105.4,
+   "volume": 64.0,
+   "price": 11711.0
+  },
+  {
+   "id": 4731,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "luanda",
+   "date": "2026-12-22",
+   "currency": "EGP",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 131.7,
+   "volume": 328.0,
+   "price": 15069.0
+  },
+  {
+   "id": 4732,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "harare",
+   "date": "2026-12-18",
+   "currency": "EUR",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 120.2,
+   "volume": 269.0,
+   "price": 3489.0
+  },
+  {
+   "id": 4733,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "casablanca",
+   "date": "2026-09-20",
+   "currency": "GHS",
+   "company": "Atlas Trans SARL",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 139.8,
+   "volume": 372.0,
+   "price": 13022.0
+  },
+  {
+   "id": 4734,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tangier",
+   "to": "harare",
+   "date": "2026-11-01",
+   "currency": "USD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 69.2,
+   "volume": 312.0,
+   "price": 14709.0
+  },
+  {
+   "id": 4735,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "alexandria",
+   "to": "abuja",
+   "date": "2026-12-20",
+   "currency": "DZD",
+   "company": "Nile Logistics SAE",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 126.2,
+   "volume": 337.0,
+   "price": 12612.0
+  },
+  {
+   "id": 4736,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "dar es salaam",
+   "date": "2026-10-16",
+   "currency": "MAD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 97.5,
+   "volume": 103.0,
+   "price": 7088.0
+  },
+  {
+   "id": 4737,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "johannesburg",
+   "date": "2026-09-04",
+   "currency": "ZAR",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 35.4,
+   "volume": 230.0,
+   "price": 4717.0
+  },
+  {
+   "id": 4738,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "johannesburg",
+   "date": "2026-09-02",
+   "currency": "EUR",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 81.8,
+   "volume": 62.0,
+   "price": 4056.0
+  },
+  {
+   "id": 4739,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "kinshasa",
+   "date": "2026-11-26",
+   "currency": "MAD",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 47.8,
+   "volume": 195.0,
+   "price": 8430.0
+  },
+  {
+   "id": 4740,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "nairobi",
+   "to": "dakar",
+   "date": "2026-10-13",
+   "currency": "ZAR",
+   "company": "Savanna Air Freight",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 42.4,
+   "volume": 339.0,
+   "price": 7899.0
+  },
+  {
+   "id": 4741,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "algiers",
+   "date": "2026-11-21",
+   "currency": "EUR",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 103.4,
+   "volume": 280.0,
+   "price": 5357.0
+  },
+  {
+   "id": 4742,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "alexandria",
+   "date": "2026-09-06",
+   "currency": "GHS",
+   "company": "Savanna Air Freight",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 45.1,
+   "volume": 389.0,
+   "price": 12942.0
+  },
+  {
+   "id": 4743,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "algiers",
+   "date": "2026-12-12",
+   "currency": "USD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 135.6,
+   "volume": 233.0,
+   "price": 9675.0
+  },
+  {
+   "id": 4744,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dakar",
+   "to": "cape town",
+   "date": "2026-12-01",
+   "currency": "ZAR",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 110.9,
+   "volume": 100.0,
+   "price": 16537.0
+  },
+  {
+   "id": 4745,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "dakar",
+   "date": "2026-11-05",
+   "currency": "ZAR",
+   "company": "Savanna Air Freight",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 28.2,
+   "volume": 134.0,
+   "price": 10959.0
+  },
+  {
+   "id": 4746,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "tripoli",
+   "date": "2026-10-20",
+   "currency": "KES",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 105.5,
+   "volume": 152.0,
+   "price": 12692.0
+  },
+  {
+   "id": 4747,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "harare",
+   "date": "2026-11-22",
+   "currency": "GHS",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 65.3,
+   "volume": 185.0,
+   "price": 7052.0
+  },
+  {
+   "id": 4748,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "bamako",
+   "date": "2026-09-11",
+   "currency": "EGP",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 30.4,
+   "volume": 389.0,
+   "price": 15734.0
+  },
+  {
+   "id": 4749,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "durban",
+   "date": "2026-11-04",
+   "currency": "KES",
+   "company": "Savanna Air Freight",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 60.1,
+   "volume": 52.0,
+   "price": 15231.0
+  },
+  {
+   "id": 4750,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dakar",
+   "to": "bamako",
+   "date": "2026-10-07",
+   "currency": "MAD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 74.4,
+   "volume": 273.0,
+   "price": 6880.0
+  },
+  {
+   "id": 4751,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "kinshasa",
+   "date": "2026-12-13",
+   "currency": "NGN",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 11.2,
+   "volume": 51.0,
+   "price": 9819.0
+  },
+  {
+   "id": 4752,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "tripoli",
+   "date": "2026-11-17",
+   "currency": "MAD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 19.3,
+   "volume": 63.0,
+   "price": 8998.0
+  },
+  {
+   "id": 4753,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "windhoek",
+   "date": "2026-10-01",
+   "currency": "MAD",
+   "company": "Atlas Trans SARL",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 51.2,
+   "volume": 341.0,
+   "price": 8983.0
+  },
+  {
+   "id": 4754,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "tripoli",
+   "date": "2026-11-19",
+   "currency": "NGN",
+   "company": "Atlas Trans SARL",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 139.7,
+   "volume": 369.0,
+   "price": 11550.0
+  },
+  {
+   "id": 4755,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "port said",
+   "to": "accra",
+   "date": "2026-09-10",
+   "currency": "USD",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 38.7,
+   "volume": 63.0,
+   "price": 13490.0
+  },
+  {
+   "id": 4756,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "addis ababa",
+   "date": "2026-12-28",
+   "currency": "NGN",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 110.7,
+   "volume": 381.0,
+   "price": 6735.0
+  },
+  {
+   "id": 4757,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "durban",
+   "date": "2026-11-26",
+   "currency": "TND",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 105.7,
+   "volume": 229.0,
+   "price": 6174.0
+  },
+  {
+   "id": 4758,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "cape town",
+   "date": "2026-12-27",
+   "currency": "EGP",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 50.0,
+   "volume": 216.0,
+   "price": 3814.0
+  },
+  {
+   "id": 4759,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "durban",
+   "to": "addis ababa",
+   "date": "2026-12-22",
+   "currency": "KES",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 115.5,
+   "volume": 327.0,
+   "price": 2571.0
+  },
+  {
+   "id": 4760,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "douala",
+   "to": "abidjan",
+   "date": "2026-10-04",
+   "currency": "TND",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 103.6,
+   "volume": 291.0,
+   "price": 4083.0
+  },
+  {
+   "id": 4761,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "harare",
+   "date": "2026-10-08",
+   "currency": "USD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 135.1,
+   "volume": 312.0,
+   "price": 11991.0
+  },
+  {
+   "id": 4762,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abidjan",
+   "to": "cape town",
+   "date": "2026-10-20",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 135.2,
+   "volume": 177.0,
+   "price": 16884.0
+  },
+  {
+   "id": 4763,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "kinshasa",
+   "date": "2026-12-21",
+   "currency": "GHS",
+   "company": "Atlas Trans SARL",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 41.9,
+   "volume": 221.0,
+   "price": 9253.0
+  },
+  {
+   "id": 4764,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "tangier",
+   "date": "2026-10-17",
+   "currency": "TND",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 61.2,
+   "volume": 274.0,
+   "price": 8592.0
+  },
+  {
+   "id": 4765,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "luanda",
+   "date": "2026-11-04",
+   "currency": "NGN",
+   "company": "East Africa Rail Cargo",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 42.3,
+   "volume": 47.0,
+   "price": 2405.0
+  },
+  {
+   "id": 4766,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "kinshasa",
+   "date": "2026-10-05",
+   "currency": "NGN",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 93.6,
+   "volume": 193.0,
+   "price": 1571.0
+  },
+  {
+   "id": 4767,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "lagos",
+   "date": "2026-10-22",
+   "currency": "EGP",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 62.1,
+   "volume": 249.0,
+   "price": 5111.0
+  },
+  {
+   "id": 4768,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "abidjan",
+   "date": "2026-11-02",
+   "currency": "ZAR",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 93.3,
+   "volume": 258.0,
+   "price": 9755.0
+  },
+  {
+   "id": 4769,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "port said",
+   "date": "2026-10-20",
+   "currency": "ZAR",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 59.6,
+   "volume": 266.0,
+   "price": 4788.0
+  },
+  {
+   "id": 4770,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "abuja",
+   "date": "2026-12-17",
+   "currency": "EGP",
+   "company": "Savanna Air Freight",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 73.2,
+   "volume": 231.0,
+   "price": 8913.0
+  },
+  {
+   "id": 4771,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "douala",
+   "date": "2026-10-20",
+   "currency": "NGN",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 105.0,
+   "volume": 129.0,
+   "price": 10544.0
+  },
+  {
+   "id": 4772,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "khartoum",
+   "date": "2026-10-04",
+   "currency": "EGP",
+   "company": "Atlas Trans SARL",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 107.0,
+   "volume": 372.0,
+   "price": 12957.0
+  },
+  {
+   "id": 4773,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "luanda",
+   "date": "2026-12-07",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 61.8,
+   "volume": 383.0,
+   "price": 3209.0
+  },
+  {
+   "id": 4774,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "douala",
+   "to": "abidjan",
+   "date": "2026-11-09",
+   "currency": "EGP",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 49.0,
+   "volume": 139.0,
+   "price": 7952.0
+  },
+  {
+   "id": 4775,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "abidjan",
+   "date": "2026-12-05",
+   "currency": "NGN",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 66.5,
+   "volume": 295.0,
+   "price": 6738.0
+  },
+  {
+   "id": 4776,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "luanda",
+   "to": "windhoek",
+   "date": "2026-11-17",
+   "currency": "ZAR",
+   "company": "Atlas Trans SARL",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 37.6,
+   "volume": 58.0,
+   "price": 8716.0
+  },
+  {
+   "id": 4777,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "kampala",
+   "date": "2026-12-07",
+   "currency": "NGN",
+   "company": "Savanna Air Freight",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 16.8,
+   "volume": 164.0,
+   "price": 16955.0
+  },
+  {
+   "id": 4778,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dakar",
+   "to": "douala",
+   "date": "2026-12-22",
+   "currency": "EUR",
+   "company": "East Africa Rail Cargo",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 22.4,
+   "volume": 349.0,
+   "price": 13976.0
+  },
+  {
+   "id": 4779,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cape town",
+   "to": "addis ababa",
+   "date": "2026-12-16",
+   "currency": "DZD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 110.6,
+   "volume": 167.0,
+   "price": 7762.0
+  },
+  {
+   "id": 4780,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abuja",
+   "to": "tripoli",
+   "date": "2026-11-11",
+   "currency": "NGN",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 40.4,
+   "volume": 264.0,
+   "price": 9204.0
+  },
+  {
+   "id": 4781,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "alexandria",
+   "to": "cairo",
+   "date": "2026-09-08",
+   "currency": "NGN",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 46.8,
+   "volume": 303.0,
+   "price": 12909.0
+  },
+  {
+   "id": 4782,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "kampala",
+   "date": "2026-12-15",
+   "currency": "USD",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 126.6,
+   "volume": 209.0,
+   "price": 4859.0
+  },
+  {
+   "id": 4783,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "khartoum",
+   "date": "2026-09-02",
+   "currency": "TND",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 15.6,
+   "volume": 345.0,
+   "price": 12501.0
+  },
+  {
+   "id": 4784,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "cape town",
+   "date": "2026-11-20",
+   "currency": "DZD",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 120.3,
+   "volume": 294.0,
+   "price": 6354.0
+  },
+  {
+   "id": 4785,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "douala",
+   "to": "dar es salaam",
+   "date": "2026-09-11",
+   "currency": "DZD",
+   "company": "Atlas Trans SARL",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 59.6,
+   "volume": 75.0,
+   "price": 5144.0
+  },
+  {
+   "id": 4786,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "casablanca",
+   "date": "2026-09-10",
+   "currency": "MAD",
+   "company": "Savanna Air Freight",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 88.3,
+   "volume": 207.0,
+   "price": 9159.0
+  },
+  {
+   "id": 4787,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "tunis",
+   "date": "2026-11-04",
+   "currency": "GHS",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "metal",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 21.1,
+   "volume": 299.0,
+   "price": 8472.0
+  },
+  {
+   "id": 4788,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "lagos",
+   "date": "2026-10-09",
+   "currency": "DZD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 88.5,
+   "volume": 40.0,
+   "price": 6653.0
+  },
+  {
+   "id": 4789,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "luanda",
+   "to": "windhoek",
+   "date": "2026-12-23",
+   "currency": "ZAR",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 110.7,
+   "volume": 265.0,
+   "price": 15418.0
+  },
+  {
+   "id": 4790,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "abidjan",
+   "date": "2026-12-10",
+   "currency": "GHS",
+   "company": "East Africa Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 136.5,
+   "volume": 339.0,
+   "price": 12490.0
+  },
+  {
+   "id": 4791,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "nairobi",
+   "date": "2026-09-10",
+   "currency": "USD",
+   "company": "Savanna Air Freight",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 130.4,
+   "volume": 339.0,
+   "price": 13932.0
+  },
+  {
+   "id": 4792,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "bamako",
+   "date": "2026-12-26",
+   "currency": "EGP",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 90.1,
+   "volume": 215.0,
+   "price": 7294.0
+  },
+  {
+   "id": 4793,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "kampala",
+   "date": "2026-09-04",
+   "currency": "DZD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 132.9,
+   "volume": 162.0,
+   "price": 15340.0
+  },
+  {
+   "id": 4794,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "douala",
+   "to": "johannesburg",
+   "date": "2026-11-05",
+   "currency": "EGP",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 91.0,
+   "volume": 168.0,
+   "price": 1416.0
+  },
+  {
+   "id": 4795,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "algiers",
+   "date": "2026-12-19",
+   "currency": "GHS",
+   "company": "Savanna Air Freight",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 55.2,
+   "volume": 351.0,
+   "price": 6988.0
+  },
+  {
+   "id": 4796,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "khartoum",
+   "date": "2026-10-02",
+   "currency": "ZAR",
+   "company": "Atlas Trans SARL",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 13.3,
+   "volume": 279.0,
+   "price": 5118.0
+  },
+  {
+   "id": 4797,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "dar es salaam",
+   "date": "2026-12-26",
+   "currency": "TND",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 129.7,
+   "volume": 142.0,
+   "price": 15277.0
+  },
+  {
+   "id": 4798,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "luanda",
+   "date": "2026-12-27",
+   "currency": "MAD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 76.0,
+   "volume": 324.0,
+   "price": 10434.0
+  },
+  {
+   "id": 4799,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "abuja",
+   "date": "2026-12-05",
+   "currency": "DZD",
+   "company": "Atlas Trans SARL",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 36.8,
+   "volume": 319.0,
+   "price": 2112.0
+  },
+  {
+   "id": 4800,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "nairobi",
+   "to": "tripoli",
+   "date": "2026-10-28",
+   "currency": "KES",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 45.3,
+   "volume": 317.0,
+   "price": 16274.0
+  },
+  {
+   "id": 4801,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "nairobi",
+   "date": "2026-11-21",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 114.6,
+   "volume": 259.0,
+   "price": 12897.0
+  },
+  {
+   "id": 4802,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "abuja",
+   "to": "khartoum",
+   "date": "2026-12-02",
+   "currency": "GHS",
+   "company": "Atlas Trans SARL",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 116.1,
+   "volume": 231.0,
+   "price": 15349.0
+  },
+  {
+   "id": 4803,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "khartoum",
+   "date": "2026-11-04",
+   "currency": "GHS",
+   "company": "Atlas Trans SARL",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 28.1,
+   "volume": 127.0,
+   "price": 8900.0
+  },
+  {
+   "id": 4804,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "tunis",
+   "date": "2026-12-24",
+   "currency": "ZAR",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 135.9,
+   "volume": 156.0,
+   "price": 15428.0
+  },
+  {
+   "id": 4805,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "luanda",
+   "date": "2026-09-03",
+   "currency": "TND",
+   "company": "Atlas Trans SARL",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 53.2,
+   "volume": 173.0,
+   "price": 14841.0
+  },
+  {
+   "id": 4806,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "tripoli",
+   "date": "2026-09-06",
+   "currency": "DZD",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 136.7,
+   "volume": 113.0,
+   "price": 17583.0
+  },
+  {
+   "id": 4807,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "bamako",
+   "date": "2026-12-28",
+   "currency": "EUR",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 60.2,
+   "volume": 119.0,
+   "price": 15240.0
+  },
+  {
+   "id": 4808,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "cairo",
+   "date": "2026-10-17",
+   "currency": "KES",
+   "company": "Nile Logistics SAE",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 26.9,
+   "volume": 287.0,
+   "price": 12854.0
+  },
+  {
+   "id": 4809,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "cape town",
+   "date": "2026-09-26",
+   "currency": "DZD",
+   "company": "Savanna Air Freight",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 50.4,
+   "volume": 397.0,
+   "price": 6079.0
+  },
+  {
+   "id": 4810,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "casablanca",
+   "to": "kinshasa",
+   "date": "2026-10-02",
+   "currency": "NGN",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 128.8,
+   "volume": 42.0,
+   "price": 7343.0
+  },
+  {
+   "id": 4811,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "lagos",
+   "date": "2026-09-14",
+   "currency": "USD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 103.1,
+   "volume": 329.0,
+   "price": 7124.0
+  },
+  {
+   "id": 4812,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "douala",
+   "date": "2026-11-20",
+   "currency": "EUR",
+   "company": "Atlas Trans SARL",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 122.2,
+   "volume": 94.0,
+   "price": 10756.0
+  },
+  {
+   "id": 4813,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "kinshasa",
+   "date": "2026-12-03",
+   "currency": "NGN",
+   "company": "Savanna Air Freight",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 30.0,
+   "volume": 61.0,
+   "price": 17538.0
+  },
+  {
+   "id": 4814,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "port said",
+   "to": "tripoli",
+   "date": "2026-09-04",
+   "currency": "USD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "build",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 57.0,
+   "volume": 176.0,
+   "price": 2175.0
+  },
+  {
+   "id": 4815,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "bamako",
+   "date": "2026-09-08",
+   "currency": "NGN",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 26.7,
+   "volume": 160.0,
+   "price": 12573.0
+  },
+  {
+   "id": 4816,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "casablanca",
+   "date": "2026-10-01",
+   "currency": "MAD",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 138.5,
+   "volume": 335.0,
+   "price": 11835.0
+  },
+  {
+   "id": 4817,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "casablanca",
+   "to": "addis ababa",
+   "date": "2026-09-13",
+   "currency": "DZD",
+   "company": "Nile Logistics SAE",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 106.0,
+   "volume": 362.0,
+   "price": 4146.0
+  },
+  {
+   "id": 4818,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "douala",
+   "date": "2026-11-13",
+   "currency": "TND",
+   "company": "Nile Logistics SAE",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 105.5,
+   "volume": 249.0,
+   "price": 11698.0
+  },
+  {
+   "id": 4819,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "tripoli",
+   "date": "2026-11-08",
+   "currency": "ZAR",
+   "company": "Atlas Trans SARL",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 12.7,
+   "volume": 271.0,
+   "price": 14345.0
+  },
+  {
+   "id": 4820,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "dar es salaam",
+   "date": "2026-11-04",
+   "currency": "MAD",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 28.0,
+   "volume": 252.0,
+   "price": 17923.0
+  },
+  {
+   "id": 4821,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "durban",
+   "to": "cape town",
+   "date": "2026-12-04",
+   "currency": "TND",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 97.9,
+   "volume": 123.0,
+   "price": 13380.0
+  },
+  {
+   "id": 4822,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "windhoek",
+   "date": "2026-09-15",
+   "currency": "EUR",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 38.8,
+   "volume": 71.0,
+   "price": 2816.0
+  },
+  {
+   "id": 4823,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "lagos",
+   "date": "2026-11-14",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 61.2,
+   "volume": 49.0,
+   "price": 13623.0
+  },
+  {
+   "id": 4824,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "alexandria",
+   "date": "2026-10-16",
+   "currency": "TND",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 117.1,
+   "volume": 190.0,
+   "price": 9106.0
+  },
+  {
+   "id": 4825,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "khartoum",
+   "date": "2026-12-15",
+   "currency": "NGN",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 14.3,
+   "volume": 351.0,
+   "price": 12312.0
+  },
+  {
+   "id": 4826,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "lagos",
+   "date": "2026-12-01",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 91.2,
+   "volume": 120.0,
+   "price": 11059.0
+  },
+  {
+   "id": 4827,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lagos",
+   "to": "port said",
+   "date": "2026-11-15",
+   "currency": "EGP",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 70.1,
+   "volume": 173.0,
+   "price": 3244.0
+  },
+  {
+   "id": 4828,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "durban",
+   "to": "port said",
+   "date": "2026-10-10",
+   "currency": "MAD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 94.2,
+   "volume": 53.0,
+   "price": 11202.0
+  },
+  {
+   "id": 4829,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "dar es salaam",
+   "date": "2026-11-16",
+   "currency": "ZAR",
+   "company": "East Africa Rail Cargo",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 43.0,
+   "volume": 375.0,
+   "price": 8030.0
+  },
+  {
+   "id": 4830,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cape town",
+   "to": "khartoum",
+   "date": "2026-11-10",
+   "currency": "NGN",
+   "company": "Atlas Trans SARL",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 109.6,
+   "volume": 114.0,
+   "price": 10620.0
+  },
+  {
+   "id": 4831,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "khartoum",
+   "date": "2026-09-14",
+   "currency": "ZAR",
+   "company": "Nile Logistics SAE",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 107.1,
+   "volume": 365.0,
+   "price": 17968.0
+  },
+  {
+   "id": 4832,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "johannesburg",
+   "date": "2026-12-04",
+   "currency": "KES",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 129.5,
+   "volume": 370.0,
+   "price": 4095.0
+  },
+  {
+   "id": 4833,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "casablanca",
+   "to": "cape town",
+   "date": "2026-10-20",
+   "currency": "NGN",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 49.8,
+   "volume": 272.0,
+   "price": 10473.0
+  },
+  {
+   "id": 4834,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "dar es salaam",
+   "date": "2026-10-16",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 15.4,
+   "volume": 50.0,
+   "price": 11585.0
+  },
+  {
+   "id": 4835,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "johannesburg",
+   "date": "2026-10-01",
+   "currency": "TND",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 108.4,
+   "volume": 121.0,
+   "price": 3030.0
+  },
+  {
+   "id": 4836,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "lagos",
+   "date": "2026-09-14",
+   "currency": "TND",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 84.1,
+   "volume": 215.0,
+   "price": 16750.0
+  },
+  {
+   "id": 4837,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "casablanca",
+   "to": "luanda",
+   "date": "2026-10-19",
+   "currency": "MAD",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 90.8,
+   "volume": 276.0,
+   "price": 1414.0
+  },
+  {
+   "id": 4838,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cairo",
+   "to": "mombasa",
+   "date": "2026-12-25",
+   "currency": "TND",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 10.2,
+   "volume": 390.0,
+   "price": 13078.0
+  },
+  {
+   "id": 4839,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "kinshasa",
+   "date": "2026-10-28",
+   "currency": "TND",
+   "company": "Atlas Trans SARL",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 101.3,
+   "volume": 388.0,
+   "price": 4537.0
+  },
+  {
+   "id": 4840,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "cape town",
+   "date": "2026-12-18",
+   "currency": "ZAR",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 130.7,
+   "volume": 90.0,
+   "price": 11213.0
+  },
+  {
+   "id": 4841,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "casablanca",
+   "date": "2026-10-05",
+   "currency": "KES",
+   "company": "Savanna Air Freight",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 41.7,
+   "volume": 324.0,
+   "price": 4737.0
+  },
+  {
+   "id": 4842,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "kinshasa",
+   "date": "2026-11-19",
+   "currency": "ZAR",
+   "company": "East Africa Rail Cargo",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 137.1,
+   "volume": 231.0,
+   "price": 15104.0
+  },
+  {
+   "id": 4843,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "abidjan",
+   "date": "2026-11-11",
+   "currency": "KES",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "electro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 92.1,
+   "volume": 62.0,
+   "price": 15822.0
+  },
+  {
+   "id": 4844,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "harare",
+   "date": "2026-11-28",
+   "currency": "EGP",
+   "company": "Savanna Air Freight",
+   "cargo": "metal",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 25.5,
+   "volume": 267.0,
+   "price": 12023.0
+  },
+  {
+   "id": 4845,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "kampala",
+   "date": "2026-10-27",
+   "currency": "USD",
+   "company": "Savanna Air Freight",
+   "cargo": "furn",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 88.6,
+   "volume": 237.0,
+   "price": 11982.0
+  },
+  {
+   "id": 4846,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "port said",
+   "to": "tangier",
+   "date": "2026-09-06",
+   "currency": "NGN",
+   "company": "Savanna Air Freight",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 43.5,
+   "volume": 296.0,
+   "price": 6195.0
+  },
+  {
+   "id": 4847,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dakar",
+   "to": "abuja",
+   "date": "2026-12-11",
+   "currency": "DZD",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 82.1,
+   "volume": 359.0,
+   "price": 10709.0
+  },
+  {
+   "id": 4848,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "maputo",
+   "date": "2026-10-18",
+   "currency": "GHS",
+   "company": "Savanna Air Freight",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 96.7,
+   "volume": 281.0,
+   "price": 14694.0
+  },
+  {
+   "id": 4849,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dakar",
+   "to": "dar es salaam",
+   "date": "2026-10-23",
+   "currency": "EGP",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 63.9,
+   "volume": 358.0,
+   "price": 16562.0
+  },
+  {
+   "id": 4850,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "accra",
+   "date": "2026-09-05",
+   "currency": "MAD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 96.2,
+   "volume": 263.0,
+   "price": 14928.0
+  },
+  {
+   "id": 4851,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "kampala",
+   "date": "2026-10-26",
+   "currency": "EUR",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 129.4,
+   "volume": 257.0,
+   "price": 15666.0
+  },
+  {
+   "id": 4852,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "durban",
+   "to": "alexandria",
+   "date": "2026-10-27",
+   "currency": "DZD",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 52.9,
+   "volume": 377.0,
+   "price": 17645.0
+  },
+  {
+   "id": 4853,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "nairobi",
+   "date": "2026-11-19",
+   "currency": "MAD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "agro",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 78.9,
+   "volume": 45.0,
+   "price": 17698.0
+  },
+  {
+   "id": 4854,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "maputo",
+   "date": "2026-12-11",
+   "currency": "EGP",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 48.6,
+   "volume": 172.0,
+   "price": 5393.0
+  },
+  {
+   "id": 4855,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cape town",
+   "to": "cairo",
+   "date": "2026-09-06",
+   "currency": "TND",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 77.5,
+   "volume": 192.0,
+   "price": 13935.0
+  },
+  {
+   "id": 4856,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "mombasa",
+   "date": "2026-10-24",
+   "currency": "KES",
+   "company": "Atlas Trans SARL",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 107.3,
+   "volume": 384.0,
+   "price": 15734.0
+  },
+  {
+   "id": 4857,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "dakar",
+   "date": "2026-12-28",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 122.6,
+   "volume": 188.0,
+   "price": 12402.0
+  },
+  {
+   "id": 4858,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "lagos",
+   "date": "2026-11-13",
+   "currency": "NGN",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 32.0,
+   "volume": 55.0,
+   "price": 6220.0
+  },
+  {
+   "id": 4859,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "lusaka",
+   "date": "2026-12-21",
+   "currency": "TND",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "food",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 103.6,
+   "volume": 179.0,
+   "price": 9080.0
+  },
+  {
+   "id": 4860,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "cairo",
+   "date": "2026-10-25",
+   "currency": "EUR",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 76.2,
+   "volume": 193.0,
+   "price": 16068.0
+  },
+  {
+   "id": 4861,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "alexandria",
+   "to": "abidjan",
+   "date": "2026-10-17",
+   "currency": "DZD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "build",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 138.0,
+   "volume": 216.0,
+   "price": 17029.0
+  },
+  {
+   "id": 4862,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "tangier",
+   "date": "2026-11-20",
+   "currency": "TND",
+   "company": "Savanna Air Freight",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 132.7,
+   "volume": 248.0,
+   "price": 7014.0
+  },
+  {
+   "id": 4863,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "casablanca",
+   "date": "2026-09-05",
+   "currency": "KES",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "metal",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 35.4,
+   "volume": 106.0,
+   "price": 13063.0
+  },
+  {
+   "id": 4864,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "accra",
+   "to": "durban",
+   "date": "2026-11-17",
+   "currency": "TND",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 125.3,
+   "volume": 256.0,
+   "price": 14039.0
+  },
+  {
+   "id": 4865,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "algiers",
+   "date": "2026-09-04",
+   "currency": "TND",
+   "company": "Savanna Air Freight",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 66.9,
+   "volume": 296.0,
+   "price": 12663.0
+  },
+  {
+   "id": 4866,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "cairo",
+   "date": "2026-09-03",
+   "currency": "DZD",
+   "company": "Nile Logistics SAE",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 62.1,
+   "volume": 215.0,
+   "price": 6191.0
+  },
+  {
+   "id": 4867,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "mombasa",
+   "to": "accra",
+   "date": "2026-11-21",
+   "currency": "GHS",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "chem",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 58.3,
+   "volume": 322.0,
+   "price": 17059.0
+  },
+  {
+   "id": 4868,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "khartoum",
+   "to": "alexandria",
+   "date": "2026-09-03",
+   "currency": "EGP",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "build",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 44.8,
+   "volume": 323.0,
+   "price": 11330.0
+  },
+  {
+   "id": 4869,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "lusaka",
+   "to": "algiers",
+   "date": "2026-11-21",
+   "currency": "EGP",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 32.4,
+   "volume": 225.0,
+   "price": 12834.0
+  },
+  {
+   "id": 4870,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "harare",
+   "date": "2026-11-10",
+   "currency": "KES",
+   "company": "Savanna Air Freight",
+   "cargo": "food",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 126.4,
+   "volume": 47.0,
+   "price": 8653.0
+  },
+  {
+   "id": 4871,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "lagos",
+   "date": "2026-12-27",
+   "currency": "NGN",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "furn",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 72.8,
+   "volume": 215.0,
+   "price": 6401.0
+  },
+  {
+   "id": 4872,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cape town",
+   "to": "khartoum",
+   "date": "2026-10-19",
+   "currency": "EGP",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 50.9,
+   "volume": 142.0,
+   "price": 13148.0
+  },
+  {
+   "id": 4873,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "dakar",
+   "date": "2026-11-10",
+   "currency": "KES",
+   "company": "Maghreb Spedition SARL",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 54.9,
+   "volume": 217.0,
+   "price": 9568.0
+  },
+  {
+   "id": 4874,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "nairobi",
+   "date": "2026-12-05",
+   "currency": "ZAR",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 105.9,
+   "volume": 138.0,
+   "price": 17997.0
+  },
+  {
+   "id": 4875,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "johannesburg",
+   "to": "durban",
+   "date": "2026-12-27",
+   "currency": "EGP",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 15.1,
+   "volume": 108.0,
+   "price": 3654.0
+  },
+  {
+   "id": 4876,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "addis ababa",
+   "to": "douala",
+   "date": "2026-12-18",
+   "currency": "DZD",
+   "company": "Savanna Air Freight",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 32.8,
+   "volume": 187.0,
+   "price": 6356.0
+  },
+  {
+   "id": 4877,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "douala",
+   "date": "2026-10-16",
+   "currency": "GHS",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 20.9,
+   "volume": 176.0,
+   "price": 5608.0
+  },
+  {
+   "id": 4878,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "johannesburg",
+   "date": "2026-11-15",
+   "currency": "DZD",
+   "company": "West Coast Shipping Nig. Ltd.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 21.9,
+   "volume": 303.0,
+   "price": 3284.0
+  },
+  {
+   "id": 4879,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kinshasa",
+   "to": "abuja",
+   "date": "2026-09-23",
+   "currency": "EUR",
+   "company": "Savanna Air Freight",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 79.7,
+   "volume": 289.0,
+   "price": 10317.0
+  },
+  {
+   "id": 4880,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "casablanca",
+   "date": "2026-11-17",
+   "currency": "NGN",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 18.6,
+   "volume": 80.0,
+   "price": 9922.0
+  },
+  {
+   "id": 4881,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tangier",
+   "to": "cairo",
+   "date": "2026-11-18",
+   "currency": "TND",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "docs",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 63.9,
+   "volume": 41.0,
+   "price": 2715.0
+  },
+  {
+   "id": 4882,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "port said",
+   "to": "tripoli",
+   "date": "2026-12-20",
+   "currency": "USD",
+   "company": "East Africa Rail Cargo",
+   "cargo": "chem",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 80.1,
+   "volume": 273.0,
+   "price": 6226.0
+  },
+  {
+   "id": 4883,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "maputo",
+   "to": "dar es salaam",
+   "date": "2026-10-15",
+   "currency": "EUR",
+   "company": "Cape Cargo (Pty) Ltd",
+   "cargo": "textile",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 88.2,
+   "volume": 392.0,
+   "price": 5547.0
+  },
+  {
+   "id": 4884,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tangier",
+   "to": "luanda",
+   "date": "2026-09-09",
+   "currency": "DZD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "build",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 113.9,
+   "volume": 390.0,
+   "price": 6637.0
+  },
+  {
+   "id": 4885,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "khartoum",
+   "date": "2026-09-26",
+   "currency": "KES",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 115.0,
+   "volume": 379.0,
+   "price": 10503.0
+  },
+  {
+   "id": 4886,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "algiers",
+   "to": "lagos",
+   "date": "2026-09-26",
+   "currency": "USD",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "docs",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 132.6,
+   "volume": 204.0,
+   "price": 6281.0
+  },
+  {
+   "id": 4887,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "harare",
+   "to": "port said",
+   "date": "2026-10-17",
+   "currency": "MAD",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 137.9,
+   "volume": 281.0,
+   "price": 12200.0
+  },
+  {
+   "id": 4888,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "alexandria",
+   "to": "tangier",
+   "date": "2026-12-11",
+   "currency": "MAD",
+   "company": "Savanna Air Freight",
+   "cargo": "agro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 70.4,
+   "volume": 41.0,
+   "price": 10893.0
+  },
+  {
+   "id": 4889,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "tangier",
+   "date": "2026-10-02",
+   "currency": "KES",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "food",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "weight": 97.2,
+   "volume": 352.0,
+   "price": 10593.0
+  },
+  {
+   "id": 4890,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tunis",
+   "to": "kampala",
+   "date": "2026-11-15",
+   "currency": "TND",
+   "company": "Zambezi Logistics Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "weight": 112.3,
+   "volume": 368.0,
+   "price": 9962.0
+  },
+  {
+   "id": 4891,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "bamako",
+   "to": "cape town",
+   "date": "2026-09-02",
+   "currency": "USD",
+   "company": "Nile Logistics SAE",
+   "cargo": "textile",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "weight": 44.0,
+   "volume": 350.0,
+   "price": 14579.0
+  },
+  {
+   "id": 4892,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "dar es salaam",
+   "to": "maputo",
+   "date": "2026-11-21",
+   "currency": "GHS",
+   "company": "Transafrica Cargo Ltd.",
+   "cargo": "agro",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "weight": 10.0,
+   "volume": 137.0,
+   "price": 9238.0
+  },
+  {
+   "id": 4893,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "tripoli",
+   "to": "johannesburg",
+   "date": "2026-09-16",
+   "currency": "USD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "textile",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 53.3,
+   "volume": 381.0,
+   "price": 9359.0
+  },
+  {
+   "id": 4894,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "kampala",
+   "to": "johannesburg",
+   "date": "2026-10-07",
+   "currency": "KES",
+   "company": "Atlas Trans SARL",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 104.2,
+   "volume": 329.0,
+   "price": 7574.0
+  },
+  {
+   "id": 4895,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "cape town",
+   "to": "mombasa",
+   "date": "2026-11-13",
+   "currency": "KES",
+   "company": "Nile Logistics SAE",
+   "cargo": "electro",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "weight": 49.5,
+   "volume": 383.0,
+   "price": 9459.0
+  },
+  {
+   "id": 4896,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Africa",
+   "from": "windhoek",
+   "to": "dar es salaam",
+   "date": "2026-12-03",
+   "currency": "DZD",
+   "company": "Sahara Freight Ltd.",
+   "cargo": "furn",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "weight": 69.4,
+   "volume": 283.0,
+   "price": 8428.0
+  }
+ ]
+}
