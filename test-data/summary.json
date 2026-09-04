@@ -1,19 +1,24 @@
 {
  "generated": "2026-09-04",
- "source_model": "index.html demo listings + schemas/post-drone.schema.json",
+ "idRange": {
+  "from": 100001,
+  "to": 107120
+ },
+ "cityIdsSource": "CITIES (index.html)",
  "continents": {
-  "Europe": {
-   "total": 1251,
+  "europe": {
+   "name": "Europe",
+   "total": 1345,
    "byMode": {
-    "auto": 130,
-    "rail": 243,
-    "sea": 297,
-    "air": 202,
-    "drone": 135,
-    "multi": 244
+    "auto": 300,
+    "rail": 220,
+    "sea": 240,
+    "air": 200,
+    "drone": 150,
+    "multi": 235
    },
-   "files": [
-    "listings-europe.json",
+   "file": "listings-europe.json",
+   "modeFiles": [
     "listings-europe-auto.json",
     "listings-europe-rail.json",
     "listings-europe-sea.json",
@@ -22,18 +27,19 @@
     "listings-europe-multi.json"
    ]
   },
-  "Asia": {
-   "total": 1416,
+  "asia": {
+   "name": "Asia",
+   "total": 1370,
    "byMode": {
-    "auto": 168,
-    "rail": 232,
-    "sea": 295,
-    "air": 270,
-    "drone": 279,
-    "multi": 172
+    "auto": 260,
+    "rail": 210,
+    "sea": 300,
+    "air": 240,
+    "drone": 140,
+    "multi": 220
    },
-   "files": [
-    "listings-asia.json",
+   "file": "listings-asia.json",
+   "modeFiles": [
     "listings-asia-auto.json",
     "listings-asia-rail.json",
     "listings-asia-sea.json",
@@ -42,18 +48,19 @@
     "listings-asia-multi.json"
    ]
   },
-  "Africa": {
-   "total": 1229,
+  "africa": {
+   "name": "Africa",
+   "total": 1100,
    "byMode": {
-    "auto": 278,
-    "rail": 122,
-    "sea": 169,
-    "air": 208,
-    "drone": 233,
-    "multi": 219
+    "auto": 230,
+    "rail": 150,
+    "sea": 230,
+    "air": 180,
+    "drone": 120,
+    "multi": 190
    },
-   "files": [
-    "listings-africa.json",
+   "file": "listings-africa.json",
+   "modeFiles": [
     "listings-africa-auto.json",
     "listings-africa-rail.json",
     "listings-africa-sea.json",
@@ -62,18 +69,19 @@
     "listings-africa-multi.json"
    ]
   },
-  "North America": {
-   "total": 991,
+  "north-america": {
+   "name": "North America",
+   "total": 1220,
    "byMode": {
-    "auto": 148,
-    "rail": 111,
-    "sea": 132,
-    "air": 133,
-    "drone": 260,
-    "multi": 207
+    "auto": 290,
+    "rail": 200,
+    "sea": 190,
+    "air": 210,
+    "drone": 130,
+    "multi": 200
    },
-   "files": [
-    "listings-north-america.json",
+   "file": "listings-north-america.json",
+   "modeFiles": [
     "listings-north-america-auto.json",
     "listings-north-america-rail.json",
     "listings-north-america-sea.json",
@@ -82,18 +90,19 @@
     "listings-north-america-multi.json"
    ]
   },
-  "South America": {
-   "total": 1122,
+  "south-america": {
+   "name": "South America",
+   "total": 1090,
    "byMode": {
-    "auto": 202,
-    "rail": 161,
-    "sea": 181,
-    "air": 205,
-    "drone": 125,
-    "multi": 248
+    "auto": 240,
+    "rail": 160,
+    "sea": 220,
+    "air": 180,
+    "drone": 110,
+    "multi": 180
    },
-   "files": [
-    "listings-south-america.json",
+   "file": "listings-south-america.json",
+   "modeFiles": [
     "listings-south-america-auto.json",
     "listings-south-america-rail.json",
     "listings-south-america-sea.json",
@@ -102,18 +111,19 @@
     "listings-south-america-multi.json"
    ]
   },
-  "Oceania": {
-   "total": 1111,
+  "oceania": {
+   "name": "Oceania",
+   "total": 995,
    "byMode": {
-    "auto": 158,
-    "rail": 249,
-    "sea": 101,
-    "air": 127,
-    "drone": 191,
-    "multi": 285
+    "auto": 210,
+    "rail": 140,
+    "sea": 200,
+    "air": 170,
+    "drone": 110,
+    "multi": 165
    },
-   "files": [
-    "listings-oceania.json",
+   "file": "listings-oceania.json",
+   "modeFiles": [
     "listings-oceania-auto.json",
     "listings-oceania-rail.json",
     "listings-oceania-sea.json",
@@ -124,7 +134,15 @@
   }
  },
  "totals": {
-  "files": 42,
-  "listings": 7120
- }
+  "listings": 7120,
+  "files": 42
+ },
+ "files": [
+  "listings-europe.json",
+  "listings-asia.json",
+  "listings-africa.json",
+  "listings-north-america.json",
+  "listings-south-america.json",
+  "listings-oceania.json"
+ ]
 }

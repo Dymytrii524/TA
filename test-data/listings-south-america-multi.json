@@ -1,4740 +1,3450 @@
 {
  "continent": "South America",
  "mode": "multi",
- "count": 248,
+ "count": 180,
  "listings": [
   {
-   "id": 6762,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "buenos aires",
-   "date": "2026-12-11",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 75.2,
-   "volume": 382.0,
-   "price": 6724.0
-  },
-  {
-   "id": 6763,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rosario",
-   "to": "cartagena",
-   "date": "2026-12-01",
-   "currency": "COP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 103.7,
-   "volume": 283.0,
-   "price": 6892.0
-  },
-  {
-   "id": 6764,
+   "id": 105946,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "caracas",
-   "to": "antofagasta",
-   "date": "2026-11-02",
-   "currency": "PEN",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 46.1,
-   "volume": 52.0,
-   "price": 15435.0
-  },
-  {
-   "id": 6765,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "valparaiso",
+   "from": "asuncion",
+   "to": "santos",
    "date": "2026-09-19",
-   "currency": "PEN",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "chem",
    "components": [
     "sea",
+    "rail",
     "auto"
    ],
-   "weight": 16.4,
-   "volume": 393.0,
-   "price": 8217.0
+   "cargo": "electro",
+   "weight": 85.8,
+   "volume": 186.0,
+   "price": 11406.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
   },
   {
-   "id": 6766,
-   "kind": "transport",
+   "id": 105947,
+   "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "porto alegre",
-   "to": "fortaleza",
-   "date": "2026-11-16",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
+   "from": "antofagasta",
+   "to": "riodejaneiro",
+   "date": "2026-10-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 15.5,
+   "volume": 126.0,
+   "price": 16634.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 105948,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "lima",
+   "date": "2026-09-08",
+   "components": [
+    "air",
+    "auto"
+   ],
    "cargo": "food",
+   "weight": 93.9,
+   "volume": 364.0,
+   "price": 4769.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 105949,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "asuncion",
+   "date": "2026-12-05",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 107.0,
-   "volume": 124.0,
-   "price": 10298.0
+   "cargo": "food",
+   "weight": 73.4,
+   "volume": 196.0,
+   "price": 5605.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
   },
   {
-   "id": 6767,
+   "id": 105950,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "caracas",
-   "to": "santiago",
-   "date": "2026-09-08",
-   "currency": "USD",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 70.7,
-   "volume": 289.0,
-   "price": 17271.0
-  },
-  {
-   "id": 6768,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "callao",
-   "date": "2026-12-06",
-   "currency": "UYU",
-   "company": "Condor Air Freight SA",
-   "cargo": "chem",
+   "to": "riodejaneiro",
+   "date": "2026-09-04",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 64.1,
-   "volume": 162.0,
-   "price": 15037.0
+   "cargo": "furn",
+   "weight": 64.9,
+   "volume": 386.0,
+   "price": 5192.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
   },
   {
-   "id": 6769,
+   "id": 105951,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "salvador",
-   "to": "quito",
-   "date": "2026-11-13",
-   "currency": "CLP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "food",
+   "from": "asuncion",
+   "to": "lima",
+   "date": "2026-09-19",
    "components": [
-    "air",
+    "sea",
     "rail"
    ],
-   "weight": 88.1,
-   "volume": 34.0,
-   "price": 13460.0
+   "cargo": "build",
+   "weight": 128.1,
+   "volume": 235.0,
+   "price": 9353.0,
+   "currency": "EUR",
+   "company": "Atlantico Sul Cargo"
   },
   {
-   "id": 6770,
+   "id": 105952,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "brasilia",
-   "to": "cartagena",
-   "date": "2026-10-17",
-   "currency": "BRL",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "food",
+   "from": "manaus",
+   "to": "portoalegre",
+   "date": "2026-10-08",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 96.0,
+   "volume": 340.0,
+   "price": 4262.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 105953,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "antofagasta",
+   "date": "2026-09-05",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 26.2,
-   "volume": 332.0,
-   "price": 10487.0
+   "cargo": "chem",
+   "weight": 12.8,
+   "volume": 48.0,
+   "price": 14774.0,
+   "currency": "EUR",
+   "company": "Condor Air Freight SA"
   },
   {
-   "id": 6771,
+   "id": 105954,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "recife",
+   "to": "valparaiso",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 101.7,
+   "volume": 117.0,
+   "price": 10472.0,
+   "currency": "EUR",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 105955,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "cartagena",
-   "to": "paramaribo",
-   "date": "2026-10-02",
-   "currency": "CLP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "electro",
+   "from": "saopaulo",
+   "to": "lapaz",
+   "date": "2026-09-01",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 55.5,
+   "volume": 341.0,
+   "price": 16255.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 105956,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "lapaz",
+   "date": "2026-12-17",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 41.5,
-   "volume": 371.0,
-   "price": 10419.0
+   "cargo": "docs",
+   "weight": 51.1,
+   "volume": 85.0,
+   "price": 17431.0,
+   "currency": "EUR",
+   "company": "Mercosur Spedition SRL"
   },
   {
-   "id": 6772,
+   "id": 105957,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "guayaquil",
+   "date": "2026-11-22",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 35.5,
+   "volume": 300.0,
+   "price": 16964.0,
+   "currency": "USDT",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 105958,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "guayaquil",
+   "to": "santiago",
+   "date": "2026-11-12",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 48.0,
+   "volume": 189.0,
+   "price": 1093.0,
+   "currency": "EUR",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 105959,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "paranagua",
+   "date": "2026-12-14",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 81.0,
+   "volume": 45.0,
+   "price": 17209.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 105960,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "georgetown",
+   "to": "bogota",
+   "date": "2026-12-04",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 80.8,
+   "volume": 372.0,
+   "price": 2737.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 105961,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "guayaquil",
+   "to": "lapaz",
+   "date": "2026-11-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 86.1,
+   "volume": 278.0,
+   "price": 6890.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 105962,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "quito",
+   "date": "2026-12-11",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 134.0,
+   "volume": 80.0,
+   "price": 1776.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 105963,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "caracas",
+   "date": "2026-09-07",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 62.6,
+   "volume": 56.0,
+   "price": 13253.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 105964,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "recife",
+   "date": "2026-10-27",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 107.0,
+   "volume": 209.0,
+   "price": 11256.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 105965,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "lima",
-   "to": "georgetown",
-   "date": "2026-11-07",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "textile",
+   "to": "montevideo",
+   "date": "2026-12-09",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 19.5,
-   "volume": 107.0,
-   "price": 15988.0
+   "cargo": "build",
+   "weight": 78.6,
+   "volume": 368.0,
+   "price": 8006.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
   },
   {
-   "id": 6773,
+   "id": 105966,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "paramaribo",
+   "from": "callao",
+   "to": "antofagasta",
+   "date": "2026-09-22",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 85.9,
+   "volume": 300.0,
+   "price": 9792.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 105967,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "callao",
+   "date": "2026-11-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 61.9,
+   "volume": 89.0,
+   "price": 1207.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 105968,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "lima",
+   "date": "2026-12-10",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 64.7,
+   "volume": 283.0,
+   "price": 11557.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 105969,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "bogota",
+   "date": "2026-09-22",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 136.9,
+   "volume": 241.0,
+   "price": 15820.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 105970,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "saopaulo",
+   "date": "2026-09-15",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 27.4,
+   "volume": 203.0,
+   "price": 1298.0,
+   "currency": "EUR",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 105971,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "georgetown",
+   "date": "2026-10-19",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 78.9,
+   "volume": 379.0,
+   "price": 3746.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 105972,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "valparaiso",
+   "date": "2026-12-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 71.3,
+   "volume": 62.0,
+   "price": 12994.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 105973,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "callao",
    "to": "valparaiso",
    "date": "2026-12-18",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 22.0,
-   "volume": 188.0,
-   "price": 1653.0
-  },
-  {
-   "id": 6774,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "brasilia",
-   "date": "2026-11-28",
-   "currency": "USD",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 25.8,
-   "volume": 295.0,
-   "price": 10611.0
-  },
-  {
-   "id": 6775,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "asuncion",
-   "to": "medellin",
-   "date": "2026-10-08",
-   "currency": "ARS",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 81.7,
-   "volume": 215.0,
-   "price": 15237.0
-  },
-  {
-   "id": 6776,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "porto alegre",
-   "to": "valparaiso",
-   "date": "2026-12-17",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 11.0,
-   "volume": 204.0,
-   "price": 17966.0
-  },
-  {
-   "id": 6777,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "bogota",
-   "to": "la paz",
-   "date": "2026-11-06",
-   "currency": "USD",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 18.5,
-   "volume": 72.0,
-   "price": 7620.0
-  },
-  {
-   "id": 6778,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "georgetown",
-   "date": "2026-12-01",
-   "currency": "ARS",
-   "company": "Pampas Transportes SRL",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 17.5,
-   "volume": 376.0,
-   "price": 8226.0
-  },
-  {
-   "id": 6779,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "manaus",
-   "to": "fortaleza",
-   "date": "2026-12-09",
-   "currency": "ARS",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 132.6,
-   "volume": 161.0,
-   "price": 6661.0
-  },
-  {
-   "id": 6780,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "callao",
-   "date": "2026-12-08",
-   "currency": "ARS",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 107.9,
-   "volume": 366.0,
-   "price": 17670.0
-  },
-  {
-   "id": 6781,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "valparaiso",
-   "date": "2026-11-24",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 128.2,
-   "volume": 368.0,
-   "price": 6239.0
-  },
-  {
-   "id": 6782,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "callao",
-   "date": "2026-09-17",
-   "currency": "UYU",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 70.4,
-   "volume": 301.0,
-   "price": 11390.0
-  },
-  {
-   "id": 6783,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "manaus",
-   "to": "cartagena",
-   "date": "2026-10-01",
-   "currency": "USD",
-   "company": "Guayas Logistics CA",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 128.6,
-   "volume": 218.0,
-   "price": 10802.0
-  },
-  {
-   "id": 6784,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "callao",
-   "date": "2026-09-25",
-   "currency": "BRL",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 82.3,
-   "volume": 266.0,
-   "price": 16303.0
-  },
-  {
-   "id": 6785,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "manaus",
-   "date": "2026-11-23",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 109.1,
-   "volume": 177.0,
-   "price": 17811.0
-  },
-  {
-   "id": 6786,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "antofagasta",
-   "date": "2026-12-09",
-   "currency": "USD",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 69.7,
-   "volume": 135.0,
-   "price": 8726.0
-  },
-  {
-   "id": 6787,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "buenos aires",
-   "date": "2026-11-28",
-   "currency": "CLP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 95.3,
-   "volume": 222.0,
-   "price": 12174.0
-  },
-  {
-   "id": 6788,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "curitiba",
-   "date": "2026-11-21",
-   "currency": "BRL",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 54.4,
-   "volume": 122.0,
-   "price": 5855.0
-  },
-  {
-   "id": 6789,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "sao paulo",
-   "date": "2026-10-27",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 10.5,
-   "volume": 130.0,
-   "price": 15201.0
-  },
-  {
-   "id": 6790,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "montevideo",
-   "date": "2026-12-01",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 63.5,
-   "volume": 204.0,
-   "price": 2414.0
-  },
-  {
-   "id": 6791,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "bogota",
-   "date": "2026-10-23",
-   "currency": "PEN",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 41.0,
-   "volume": 73.0,
-   "price": 4206.0
-  },
-  {
-   "id": 6792,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "paramaribo",
-   "date": "2026-12-12",
-   "currency": "BRL",
-   "company": "Condor Air Freight SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 83.5,
-   "volume": 362.0,
-   "price": 4143.0
-  },
-  {
-   "id": 6793,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "georgetown",
-   "date": "2026-09-11",
-   "currency": "COP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "textile",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 107.9,
-   "volume": 367.0,
-   "price": 14158.0
-  },
-  {
-   "id": 6794,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "bogota",
-   "date": "2026-11-22",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 25.4,
-   "volume": 258.0,
-   "price": 7845.0
-  },
-  {
-   "id": 6795,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "recife",
-   "date": "2026-10-10",
-   "currency": "CLP",
-   "company": "Mercosur Spedition SRL",
    "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 113.0,
-   "volume": 271.0,
-   "price": 3882.0
+   "weight": 91.2,
+   "volume": 69.0,
+   "price": 9382.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
   },
   {
-   "id": 6796,
+   "id": 105974,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "medellin",
-   "to": "asuncion",
-   "date": "2026-09-02",
-   "currency": "CLP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 26.5,
-   "volume": 185.0,
-   "price": 13210.0
-  },
-  {
-   "id": 6797,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "sao paulo",
+   "from": "lapaz",
+   "to": "quito",
    "date": "2026-10-28",
-   "currency": "COP",
-   "company": "Condor Air Freight SA",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 131.8,
-   "volume": 365.0,
-   "price": 3220.0
-  },
-  {
-   "id": 6798,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "salvador",
-   "date": "2026-10-18",
-   "currency": "USD",
-   "company": "Guayas Logistics CA",
-   "cargo": "food",
    "components": [
     "sea",
-    "rail"
+    "auto"
    ],
-   "weight": 88.9,
-   "volume": 384.0,
-   "price": 8358.0
-  },
-  {
-   "id": 6799,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "salvador",
-   "date": "2026-10-02",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
    "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 22.1,
-   "volume": 358.0,
-   "price": 13644.0
-  },
-  {
-   "id": 6800,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "fortaleza",
-   "to": "sao paulo",
-   "date": "2026-11-23",
-   "currency": "ARS",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 84.8,
-   "volume": 306.0,
-   "price": 17757.0
-  },
-  {
-   "id": 6801,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "medellin",
-   "date": "2026-10-02",
-   "currency": "USD",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 116.7,
-   "volume": 326.0,
-   "price": 14278.0
-  },
-  {
-   "id": 6802,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "rosario",
-   "date": "2026-12-07",
-   "currency": "BRL",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 71.3,
-   "volume": 160.0,
-   "price": 16996.0
-  },
-  {
-   "id": 6803,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "fortaleza",
-   "date": "2026-12-24",
-   "currency": "CLP",
-   "company": "Guayas Logistics CA",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 123.8,
-   "volume": 194.0,
-   "price": 6727.0
-  },
-  {
-   "id": 6804,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "cartagena",
-   "date": "2026-12-01",
-   "currency": "PEN",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 58.0,
-   "volume": 361.0,
-   "price": 11162.0
-  },
-  {
-   "id": 6805,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "callao",
-   "date": "2026-10-15",
-   "currency": "USD",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 56.3,
-   "volume": 191.0,
-   "price": 5812.0
-  },
-  {
-   "id": 6806,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "georgetown",
-   "date": "2026-11-03",
-   "currency": "UYU",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 11.3,
-   "volume": 350.0,
-   "price": 9274.0
-  },
-  {
-   "id": 6807,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "fortaleza",
-   "date": "2026-10-19",
-   "currency": "COP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 123.7,
-   "volume": 356.0,
-   "price": 5905.0
-  },
-  {
-   "id": 6808,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "paramaribo",
-   "date": "2026-12-13",
-   "currency": "COP",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 139.7,
-   "volume": 228.0,
-   "price": 14945.0
-  },
-  {
-   "id": 6809,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "quito",
-   "date": "2026-11-22",
-   "currency": "CLP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 134.3,
-   "volume": 70.0,
-   "price": 10720.0
-  },
-  {
-   "id": 6810,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "montevideo",
-   "date": "2026-09-27",
-   "currency": "PEN",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 93.1,
-   "volume": 67.0,
-   "price": 9587.0
-  },
-  {
-   "id": 6811,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "curitiba",
-   "date": "2026-11-22",
-   "currency": "BRL",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 95.4,
-   "volume": 111.0,
-   "price": 14890.0
-  },
-  {
-   "id": 6812,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "manaus",
-   "date": "2026-11-15",
-   "currency": "BRL",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 137.9,
-   "volume": 79.0,
-   "price": 14913.0
-  },
-  {
-   "id": 6813,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "bogota",
-   "to": "medellin",
-   "date": "2026-12-28",
-   "currency": "ARS",
-   "company": "Pampas Transportes SRL",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 97.1,
-   "volume": 64.0,
-   "price": 11334.0
-  },
-  {
-   "id": 6814,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "la paz",
-   "date": "2026-11-18",
-   "currency": "UYU",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 45.6,
-   "volume": 303.0,
-   "price": 17771.0
-  },
-  {
-   "id": 6815,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "buenos aires",
-   "date": "2026-11-27",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 132.8,
-   "volume": 339.0,
-   "price": 1537.0
-  },
-  {
-   "id": 6816,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "medellin",
-   "date": "2026-12-24",
-   "currency": "UYU",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 19.9,
-   "volume": 121.0,
-   "price": 12870.0
-  },
-  {
-   "id": 6817,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "callao",
-   "date": "2026-10-24",
-   "currency": "CLP",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 32.7,
-   "volume": 97.0,
-   "price": 16908.0
-  },
-  {
-   "id": 6818,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "brasilia",
-   "date": "2026-11-28",
-   "currency": "ARS",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 106.9,
-   "volume": 367.0,
-   "price": 15153.0
-  },
-  {
-   "id": 6819,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "manaus",
-   "date": "2026-12-21",
-   "currency": "BRL",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 116.6,
-   "volume": 221.0,
-   "price": 6286.0
-  },
-  {
-   "id": 6820,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "manaus",
-   "date": "2026-10-09",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 110.8,
-   "volume": 312.0,
-   "price": 15923.0
-  },
-  {
-   "id": 6821,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "porto alegre",
-   "to": "quito",
-   "date": "2026-10-06",
-   "currency": "BRL",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 87.0,
-   "volume": 367.0,
-   "price": 12984.0
-  },
-  {
-   "id": 6822,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "cartagena",
-   "date": "2026-12-08",
-   "currency": "CLP",
-   "company": "Guayas Logistics CA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 74.2,
-   "volume": 336.0,
-   "price": 5019.0
-  },
-  {
-   "id": 6823,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "manaus",
-   "date": "2026-12-14",
-   "currency": "BRL",
-   "company": "Condor Air Freight SA",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 130.9,
-   "volume": 223.0,
-   "price": 1468.0
-  },
-  {
-   "id": 6824,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "santiago",
-   "date": "2026-10-28",
-   "currency": "CLP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 112.3,
-   "volume": 366.0,
-   "price": 14507.0
-  },
-  {
-   "id": 6825,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "buenos aires",
-   "date": "2026-12-05",
-   "currency": "ARS",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 99.7,
-   "volume": 90.0,
-   "price": 7836.0
-  },
-  {
-   "id": 6826,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "georgetown",
-   "date": "2026-09-11",
-   "currency": "ARS",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 47.3,
-   "volume": 301.0,
-   "price": 13753.0
-  },
-  {
-   "id": 6827,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "georgetown",
-   "date": "2026-10-22",
-   "currency": "COP",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 35.8,
-   "volume": 70.0,
-   "price": 1764.0
-  },
-  {
-   "id": 6828,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "cordoba",
-   "date": "2026-12-12",
-   "currency": "PEN",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 34.6,
-   "volume": 183.0,
-   "price": 8088.0
-  },
-  {
-   "id": 6829,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "recife",
-   "date": "2026-10-18",
-   "currency": "CLP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 19.4,
-   "volume": 265.0,
-   "price": 11656.0
-  },
-  {
-   "id": 6830,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "georgetown",
-   "to": "paramaribo",
-   "date": "2026-10-05",
-   "currency": "USD",
-   "company": "Condor Air Freight SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 78.0,
-   "volume": 277.0,
-   "price": 16523.0
-  },
-  {
-   "id": 6831,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "paramaribo",
-   "date": "2026-12-07",
-   "currency": "CLP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 117.7,
-   "volume": 127.0,
-   "price": 14971.0
-  },
-  {
-   "id": 6832,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "asuncion",
-   "date": "2026-09-01",
-   "currency": "ARS",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 47.2,
-   "volume": 271.0,
-   "price": 1063.0
-  },
-  {
-   "id": 6833,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "recife",
-   "date": "2026-11-18",
-   "currency": "USD",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 56.0,
-   "volume": 158.0,
-   "price": 12563.0
-  },
-  {
-   "id": 6834,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "sao paulo",
-   "date": "2026-10-01",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 124.1,
-   "volume": 68.0,
-   "price": 17902.0
-  },
-  {
-   "id": 6835,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "bogota",
-   "to": "callao",
-   "date": "2026-12-02",
-   "currency": "USD",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 30.2,
-   "volume": 227.0,
-   "price": 10937.0
-  },
-  {
-   "id": 6836,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "quito",
-   "date": "2026-12-20",
-   "currency": "CLP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 16.7,
-   "volume": 346.0,
-   "price": 9764.0
-  },
-  {
-   "id": 6837,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "rosario",
-   "date": "2026-09-27",
-   "currency": "PEN",
-   "company": "Guayas Logistics CA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 25.0,
-   "volume": 194.0,
-   "price": 5206.0
-  },
-  {
-   "id": 6838,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "valparaiso",
-   "to": "porto alegre",
-   "date": "2026-09-05",
-   "currency": "UYU",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 18.2,
-   "volume": 143.0,
-   "price": 12233.0
-  },
-  {
-   "id": 6839,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "lima",
-   "date": "2026-09-07",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 99.4,
-   "volume": 297.0,
-   "price": 12989.0
-  },
-  {
-   "id": 6840,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "rio de janeiro",
-   "date": "2026-12-26",
-   "currency": "BRL",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 67.3,
-   "volume": 348.0,
-   "price": 4165.0
-  },
-  {
-   "id": 6841,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "antofagasta",
-   "to": "manaus",
-   "date": "2026-12-28",
-   "currency": "ARS",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 109.9,
-   "volume": 161.0,
-   "price": 14028.0
-  },
-  {
-   "id": 6842,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "antofagasta",
-   "date": "2026-09-11",
-   "currency": "ARS",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 62.0,
-   "volume": 379.0,
-   "price": 16584.0
-  },
-  {
-   "id": 6843,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "manaus",
-   "date": "2026-11-12",
-   "currency": "UYU",
-   "company": "Pampas Transportes SRL",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 84.5,
-   "volume": 35.0,
-   "price": 6550.0
-  },
-  {
-   "id": 6844,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "cartagena",
-   "date": "2026-10-11",
-   "currency": "CLP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 23.8,
-   "volume": 213.0,
-   "price": 1986.0
-  },
-  {
-   "id": 6845,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "porto alegre",
-   "date": "2026-10-07",
-   "currency": "PEN",
-   "company": "Andes Cargo SA",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 98.6,
-   "volume": 312.0,
-   "price": 5387.0
-  },
-  {
-   "id": 6846,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "rio de janeiro",
-   "date": "2026-09-13",
-   "currency": "CLP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 101.9,
-   "volume": 262.0,
-   "price": 2362.0
-  },
-  {
-   "id": 6847,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "georgetown",
-   "to": "buenos aires",
-   "date": "2026-09-02",
-   "currency": "CLP",
-   "company": "Condor Air Freight SA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 67.1,
-   "volume": 142.0,
-   "price": 8223.0
-  },
-  {
-   "id": 6848,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "sao paulo",
-   "date": "2026-11-19",
-   "currency": "BRL",
-   "company": "Guayas Logistics CA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 71.6,
-   "volume": 288.0,
-   "price": 3215.0
-  },
-  {
-   "id": 6849,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "quito",
-   "date": "2026-12-14",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 134.9,
-   "volume": 71.0,
-   "price": 10336.0
-  },
-  {
-   "id": 6850,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "iquitos",
-   "date": "2026-10-16",
-   "currency": "COP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 104.2,
-   "volume": 342.0,
-   "price": 1775.0
-  },
-  {
-   "id": 6851,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "sao paulo",
-   "to": "paramaribo",
-   "date": "2026-10-08",
-   "currency": "USD",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 116.6,
-   "volume": 143.0,
-   "price": 3615.0
-  },
-  {
-   "id": 6852,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "asuncion",
-   "date": "2026-12-19",
-   "currency": "PEN",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 119.4,
-   "volume": 111.0,
-   "price": 16130.0
-  },
-  {
-   "id": 6853,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "quito",
-   "date": "2026-10-11",
-   "currency": "COP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 137.2,
-   "volume": 366.0,
-   "price": 4702.0
-  },
-  {
-   "id": 6854,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rosario",
-   "to": "callao",
-   "date": "2026-09-15",
-   "currency": "ARS",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 139.7,
-   "volume": 235.0,
-   "price": 14859.0
-  },
-  {
-   "id": 6855,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "bogota",
-   "to": "rio de janeiro",
-   "date": "2026-11-25",
-   "currency": "COP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 10.9,
-   "volume": 330.0,
-   "price": 9256.0
-  },
-  {
-   "id": 6856,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "rosario",
-   "date": "2026-11-25",
-   "currency": "UYU",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 68.9,
-   "volume": 302.0,
-   "price": 2736.0
-  },
-  {
-   "id": 6857,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "callao",
-   "date": "2026-11-07",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 90.6,
-   "volume": 169.0,
-   "price": 8810.0
-  },
-  {
-   "id": 6858,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "sao paulo",
-   "to": "guayaquil",
-   "date": "2026-12-19",
-   "currency": "USD",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 69.8,
-   "volume": 151.0,
-   "price": 17952.0
-  },
-  {
-   "id": 6859,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "medellin",
-   "to": "asuncion",
-   "date": "2026-09-24",
-   "currency": "CLP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 44.1,
-   "volume": 373.0,
-   "price": 15444.0
-  },
-  {
-   "id": 6860,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "cartagena",
-   "date": "2026-10-06",
-   "currency": "COP",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 55.2,
-   "volume": 285.0,
-   "price": 13768.0
-  },
-  {
-   "id": 6861,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "antofagasta",
-   "date": "2026-11-13",
-   "currency": "PEN",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 84.1,
-   "volume": 354.0,
-   "price": 15714.0
-  },
-  {
-   "id": 6862,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "valparaiso",
-   "date": "2026-09-16",
-   "currency": "ARS",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 92.1,
-   "volume": 355.0,
-   "price": 5685.0
-  },
-  {
-   "id": 6863,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "manaus",
-   "date": "2026-09-04",
-   "currency": "UYU",
-   "company": "Guayas Logistics CA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 53.5,
-   "volume": 349.0,
-   "price": 16243.0
-  },
-  {
-   "id": 6864,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "lima",
-   "date": "2026-11-22",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 45.4,
-   "volume": 371.0,
-   "price": 3275.0
-  },
-  {
-   "id": 6865,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "georgetown",
-   "to": "asuncion",
-   "date": "2026-10-02",
-   "currency": "BRL",
-   "company": "Andes Cargo SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 117.7,
-   "volume": 291.0,
-   "price": 14275.0
-  },
-  {
-   "id": 6866,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "santiago",
-   "date": "2026-09-24",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 27.0,
-   "volume": 30.0,
-   "price": 9982.0
-  },
-  {
-   "id": 6867,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "brasilia",
-   "date": "2026-09-02",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 100.0,
-   "volume": 71.0,
-   "price": 13097.0
-  },
-  {
-   "id": 6868,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "quito",
-   "date": "2026-11-04",
-   "currency": "USD",
-   "company": "Pampas Transportes SRL",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 75.0,
-   "volume": 217.0,
-   "price": 11614.0
-  },
-  {
-   "id": 6869,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "manaus",
-   "date": "2026-11-13",
-   "currency": "USD",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 32.6,
-   "volume": 354.0,
-   "price": 17303.0
-  },
-  {
-   "id": 6870,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "rio de janeiro",
-   "date": "2026-12-27",
-   "currency": "BRL",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 16.6,
-   "volume": 399.0,
-   "price": 17602.0
-  },
-  {
-   "id": 6871,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "medellin",
-   "date": "2026-12-19",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 33.7,
-   "volume": 359.0,
-   "price": 14411.0
-  },
-  {
-   "id": 6872,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "asuncion",
-   "date": "2026-10-07",
-   "currency": "ARS",
-   "company": "Condor Air Freight SA",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 56.9,
-   "volume": 370.0,
-   "price": 9575.0
-  },
-  {
-   "id": 6873,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "georgetown",
-   "date": "2026-12-21",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 73.5,
-   "volume": 130.0,
-   "price": 4098.0
-  },
-  {
-   "id": 6874,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "salvador",
-   "date": "2026-09-26",
-   "currency": "BRL",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 130.7,
-   "volume": 334.0,
-   "price": 10153.0
-  },
-  {
-   "id": 6875,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "guayaquil",
-   "date": "2026-10-22",
-   "currency": "PEN",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 65.5,
-   "volume": 277.0,
-   "price": 3744.0
-  },
-  {
-   "id": 6876,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "curitiba",
-   "date": "2026-12-01",
-   "currency": "COP",
-   "company": "Guayas Logistics CA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 11.1,
-   "volume": 134.0,
-   "price": 4098.0
-  },
-  {
-   "id": 6877,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "santiago",
-   "date": "2026-11-18",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 79.8,
-   "volume": 320.0,
-   "price": 2657.0
-  },
-  {
-   "id": 6878,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "santos",
-   "date": "2026-12-03",
-   "currency": "ARS",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 48.4,
-   "volume": 62.0,
-   "price": 12529.0
-  },
-  {
-   "id": 6879,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "porto alegre",
-   "date": "2026-12-19",
-   "currency": "CLP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 87.3,
-   "volume": 296.0,
-   "price": 6223.0
-  },
-  {
-   "id": 6880,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "caracas",
-   "date": "2026-09-05",
-   "currency": "UYU",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 88.2,
-   "volume": 45.0,
-   "price": 12416.0
-  },
-  {
-   "id": 6881,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "sao paulo",
-   "date": "2026-12-27",
-   "currency": "USD",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 63.5,
-   "volume": 336.0,
-   "price": 16564.0
-  },
-  {
-   "id": 6882,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "paramaribo",
-   "date": "2026-11-25",
-   "currency": "CLP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 133.1,
-   "volume": 309.0,
-   "price": 8466.0
-  },
-  {
-   "id": 6883,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rosario",
-   "to": "brasilia",
-   "date": "2026-11-28",
-   "currency": "COP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 59.9,
-   "volume": 176.0,
-   "price": 16879.0
-  },
-  {
-   "id": 6884,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "bogota",
-   "date": "2026-10-25",
-   "currency": "PEN",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 23.2,
-   "volume": 344.0,
-   "price": 6267.0
-  },
-  {
-   "id": 6885,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "rosario",
-   "date": "2026-09-07",
-   "currency": "ARS",
-   "company": "Pampas Transportes SRL",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 96.0,
-   "volume": 207.0,
-   "price": 4520.0
-  },
-  {
-   "id": 6886,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "antofagasta",
-   "to": "asuncion",
-   "date": "2026-09-04",
-   "currency": "CLP",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 131.6,
-   "volume": 173.0,
-   "price": 15692.0
-  },
-  {
-   "id": 6887,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "fortaleza",
-   "date": "2026-11-25",
-   "currency": "USD",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 60.9,
-   "volume": 108.0,
-   "price": 8749.0
-  },
-  {
-   "id": 6888,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "asuncion",
-   "to": "iquitos",
-   "date": "2026-11-24",
-   "currency": "BRL",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 98.1,
-   "volume": 151.0,
-   "price": 14002.0
-  },
-  {
-   "id": 6889,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "fortaleza",
-   "to": "santiago",
-   "date": "2026-11-23",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 13.7,
-   "volume": 169.0,
-   "price": 16702.0
-  },
-  {
-   "id": 6890,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "quito",
-   "date": "2026-09-02",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 96.0,
-   "volume": 32.0,
-   "price": 8314.0
-  },
-  {
-   "id": 6891,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "buenos aires",
-   "to": "fortaleza",
-   "date": "2026-11-15",
-   "currency": "ARS",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 10.8,
-   "volume": 399.0,
-   "price": 2521.0
-  },
-  {
-   "id": 6892,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "valparaiso",
-   "to": "santos",
-   "date": "2026-12-04",
-   "currency": "CLP",
-   "company": "Condor Air Freight SA",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 31.2,
-   "volume": 122.0,
-   "price": 11899.0
-  },
-  {
-   "id": 6893,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "medellin",
-   "date": "2026-11-01",
-   "currency": "ARS",
-   "company": "Condor Air Freight SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 79.8,
-   "volume": 157.0,
-   "price": 9248.0
-  },
-  {
-   "id": 6894,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "georgetown",
-   "date": "2026-09-26",
-   "currency": "BRL",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 18.5,
-   "volume": 161.0,
-   "price": 5100.0
-  },
-  {
-   "id": 6895,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "la paz",
-   "date": "2026-12-26",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 23.8,
-   "volume": 100.0,
-   "price": 3235.0
-  },
-  {
-   "id": 6896,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "medellin",
-   "date": "2026-09-28",
-   "currency": "USD",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 132.2,
-   "volume": 39.0,
-   "price": 7187.0
-  },
-  {
-   "id": 6897,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "fortaleza",
-   "to": "manaus",
-   "date": "2026-10-17",
-   "currency": "BRL",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 115.9,
-   "volume": 194.0,
-   "price": 15587.0
-  },
-  {
-   "id": 6898,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "fortaleza",
-   "date": "2026-11-07",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 37.6,
-   "volume": 58.0,
-   "price": 3890.0
-  },
-  {
-   "id": 6899,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "santos",
-   "date": "2026-09-06",
-   "currency": "USD",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 128.9,
-   "volume": 337.0,
-   "price": 16987.0
-  },
-  {
-   "id": 6900,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "la paz",
-   "date": "2026-10-01",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 135.0,
-   "volume": 273.0,
-   "price": 2151.0
-  },
-  {
-   "id": 6901,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "brasilia",
-   "date": "2026-11-01",
-   "currency": "UYU",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 85.3,
-   "volume": 74.0,
-   "price": 2593.0
-  },
-  {
-   "id": 6902,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "santiago",
-   "date": "2026-09-20",
-   "currency": "CLP",
-   "company": "Andes Cargo SA",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 139.2,
-   "volume": 176.0,
-   "price": 6524.0
-  },
-  {
-   "id": 6903,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "cordoba",
-   "date": "2026-12-27",
-   "currency": "CLP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 117.3,
-   "volume": 84.0,
-   "price": 3466.0
-  },
-  {
-   "id": 6904,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "georgetown",
-   "date": "2026-12-08",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 64.3,
-   "volume": 149.0,
-   "price": 17816.0
-  },
-  {
-   "id": 6905,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "antofagasta",
-   "to": "salvador",
-   "date": "2026-12-05",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 43.0,
-   "volume": 387.0,
-   "price": 10296.0
-  },
-  {
-   "id": 6906,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "manaus",
-   "to": "montevideo",
-   "date": "2026-10-27",
-   "currency": "PEN",
-   "company": "Pampas Transportes SRL",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 52.4,
-   "volume": 45.0,
-   "price": 11030.0
-  },
-  {
-   "id": 6907,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "rosario",
-   "date": "2026-09-12",
-   "currency": "BRL",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 135.4,
-   "volume": 31.0,
-   "price": 7531.0
-  },
-  {
-   "id": 6908,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "caracas",
-   "date": "2026-12-27",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 54.2,
-   "volume": 116.0,
-   "price": 8981.0
-  },
-  {
-   "id": 6909,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "curitiba",
-   "date": "2026-10-22",
-   "currency": "BRL",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 98.7,
-   "volume": 307.0,
-   "price": 9622.0
-  },
-  {
-   "id": 6910,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "bogota",
-   "to": "recife",
-   "date": "2026-11-03",
-   "currency": "USD",
-   "company": "Condor Air Freight SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 93.5,
-   "volume": 198.0,
-   "price": 16948.0
-  },
-  {
-   "id": 6911,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "cartagena",
-   "date": "2026-11-21",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 108.8,
-   "volume": 210.0,
-   "price": 5760.0
-  },
-  {
-   "id": 6912,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "manaus",
-   "date": "2026-10-27",
-   "currency": "ARS",
-   "company": "Guayas Logistics CA",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 29.0,
-   "volume": 203.0,
-   "price": 8062.0
-  },
-  {
-   "id": 6913,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "cordoba",
-   "date": "2026-10-25",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 56.4,
-   "volume": 153.0,
-   "price": 8613.0
-  },
-  {
-   "id": 6914,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "recife",
-   "date": "2026-12-21",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 39.6,
-   "volume": 39.0,
-   "price": 5639.0
-  },
-  {
-   "id": 6915,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "cordoba",
-   "date": "2026-10-09",
-   "currency": "USD",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 57.9,
-   "volume": 361.0,
-   "price": 5198.0
-  },
-  {
-   "id": 6916,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "salvador",
-   "date": "2026-09-17",
-   "currency": "USD",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 26.7,
-   "volume": 174.0,
-   "price": 6115.0
-  },
-  {
-   "id": 6917,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "santos",
-   "date": "2026-12-10",
-   "currency": "CLP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 124.5,
-   "volume": 112.0,
-   "price": 9072.0
-  },
-  {
-   "id": 6918,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "georgetown",
-   "date": "2026-10-04",
-   "currency": "UYU",
-   "company": "Guayas Logistics CA",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 63.5,
-   "volume": 327.0,
-   "price": 10586.0
-  },
-  {
-   "id": 6919,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "valparaiso",
-   "date": "2026-11-12",
-   "currency": "USD",
-   "company": "Pampas Transportes SRL",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 14.5,
-   "volume": 188.0,
-   "price": 6492.0
-  },
-  {
-   "id": 6920,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "santos",
-   "date": "2026-11-07",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 41.6,
-   "volume": 138.0,
-   "price": 1862.0
-  },
-  {
-   "id": 6921,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "georgetown",
-   "date": "2026-12-04",
-   "currency": "COP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 125.9,
-   "volume": 377.0,
-   "price": 11660.0
-  },
-  {
-   "id": 6922,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "medellin",
-   "to": "la paz",
-   "date": "2026-11-05",
-   "currency": "CLP",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 103.6,
-   "volume": 119.0,
-   "price": 14246.0
-  },
-  {
-   "id": 6923,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "porto alegre",
-   "to": "recife",
-   "date": "2026-09-07",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 42.5,
-   "volume": 200.0,
-   "price": 5452.0
-  },
-  {
-   "id": 6924,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "buenos aires",
-   "date": "2026-11-12",
-   "currency": "CLP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 135.0,
-   "volume": 104.0,
-   "price": 11507.0
-  },
-  {
-   "id": 6925,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "antofagasta",
-   "date": "2026-10-22",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 138.9,
+   "weight": 27.1,
    "volume": 41.0,
-   "price": 7702.0
+   "price": 12192.0,
+   "currency": "USDT",
+   "company": "Andes Cargo SA"
   },
   {
-   "id": 6926,
+   "id": 105975,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "lima",
-   "to": "georgetown",
-   "date": "2026-12-01",
-   "currency": "COP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 23.3,
-   "volume": 131.0,
-   "price": 17872.0
-  },
-  {
-   "id": 6927,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "curitiba",
+   "from": "cartagena",
+   "to": "valparaiso",
    "date": "2026-12-05",
-   "currency": "CLP",
-   "company": "Condor Air Freight SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 79.8,
-   "volume": 333.0,
-   "price": 6324.0
-  },
-  {
-   "id": 6928,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "medellin",
-   "date": "2026-11-28",
-   "currency": "BRL",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 43.8,
-   "volume": 263.0,
-   "price": 7937.0
-  },
-  {
-   "id": 6929,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "iquitos",
-   "date": "2026-12-25",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 55.8,
-   "volume": 35.0,
-   "price": 9814.0
-  },
-  {
-   "id": 6930,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "georgetown",
-   "date": "2026-11-27",
-   "currency": "UYU",
-   "company": "Pampas Transportes SRL",
-   "cargo": "textile",
    "components": [
     "sea",
     "rail"
    ],
-   "weight": 95.9,
-   "volume": 66.0,
-   "price": 1379.0
+   "cargo": "metal",
+   "weight": 82.9,
+   "volume": 57.0,
+   "price": 7008.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 6931,
+   "id": 105976,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "santiago",
+   "date": "2026-09-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 99.9,
+   "volume": 47.0,
+   "price": 8323.0,
+   "currency": "USDT",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 105977,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "santiago",
+   "date": "2026-11-05",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 96.4,
+   "volume": 159.0,
+   "price": 14450.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 105978,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "callao",
-   "to": "recife",
-   "date": "2026-09-09",
-   "currency": "UYU",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "build",
+   "from": "montevideo",
+   "to": "callao",
+   "date": "2026-11-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 111.1,
+   "volume": 288.0,
+   "price": 12439.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 105979,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "callao",
+   "date": "2026-11-27",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 41.9,
+   "volume": 125.0,
+   "price": 11388.0,
+   "currency": "USDT",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 105980,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "caracas",
+   "to": "quito",
+   "date": "2026-10-27",
    "components": [
     "air",
     "auto"
    ],
-   "weight": 17.8,
-   "volume": 298.0,
-   "price": 17114.0
-  },
-  {
-   "id": 6932,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "fortaleza",
-   "date": "2026-12-06",
+   "cargo": "docs",
+   "weight": 71.3,
+   "volume": 289.0,
+   "price": 16398.0,
    "currency": "USD",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 30.6,
-   "volume": 180.0,
-   "price": 6816.0
+   "company": "Pampas Transportes SRL"
   },
   {
-   "id": 6933,
+   "id": 105981,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "asuncion",
-   "to": "valparaiso",
-   "date": "2026-12-12",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "food",
+   "from": "lapaz",
+   "to": "santos",
+   "date": "2026-09-03",
    "components": [
-    "sea",
+    "air",
     "rail"
    ],
-   "weight": 17.2,
-   "volume": 110.0,
-   "price": 16217.0
+   "cargo": "furn",
+   "weight": 26.1,
+   "volume": 63.0,
+   "price": 1606.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 6934,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "georgetown",
-   "date": "2026-12-21",
-   "currency": "CLP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 129.9,
-   "volume": 85.0,
-   "price": 8175.0
-  },
-  {
-   "id": 6935,
-   "kind": "cargo",
+   "id": 105982,
+   "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "rosario",
-   "to": "rio de janeiro",
-   "date": "2026-12-19",
-   "currency": "USD",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "food",
+   "to": "portoalegre",
+   "date": "2026-10-09",
    "components": [
-    "rail",
+    "sea",
     "auto"
    ],
-   "weight": 120.9,
-   "volume": 378.0,
-   "price": 10510.0
-  },
-  {
-   "id": 6936,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "manaus",
-   "to": "guayaquil",
-   "date": "2026-10-05",
-   "currency": "BRL",
-   "company": "Andes Cargo SA",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 58.2,
-   "volume": 84.0,
-   "price": 2822.0
-  },
-  {
-   "id": 6937,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "iquitos",
-   "to": "antofagasta",
-   "date": "2026-11-18",
-   "currency": "UYU",
-   "company": "Pampas Transportes SRL",
    "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 136.0,
-   "volume": 261.0,
-   "price": 16887.0
+   "weight": 34.0,
+   "volume": 263.0,
+   "price": 11911.0,
+   "currency": "USDT",
+   "company": "Pacifico Shipping Ltda"
   },
   {
-   "id": 6938,
+   "id": 105983,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "callao",
+   "date": "2026-09-15",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 114.2,
+   "volume": 266.0,
+   "price": 6360.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 105984,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "santiago",
-   "to": "montevideo",
-   "date": "2026-10-25",
-   "currency": "USD",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "electro",
+   "from": "montevideo",
+   "to": "callao",
+   "date": "2026-09-02",
    "components": [
-    "air",
-    "rail"
+    "sea",
+    "auto"
    ],
-   "weight": 63.3,
-   "volume": 62.0,
-   "price": 9256.0
+   "cargo": "build",
+   "weight": 44.8,
+   "volume": 60.0,
+   "price": 9880.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 6939,
-   "kind": "cargo",
+   "id": 105985,
+   "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "la paz",
-   "to": "brasilia",
-   "date": "2026-11-08",
-   "currency": "COP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "electro",
+   "from": "valparaiso",
+   "to": "guayaquil",
+   "date": "2026-09-12",
    "components": [
+    "sea",
     "rail",
     "auto"
    ],
-   "weight": 24.4,
-   "volume": 367.0,
-   "price": 3268.0
+   "cargo": "build",
+   "weight": 92.9,
+   "volume": 39.0,
+   "price": 4149.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
   },
   {
-   "id": 6940,
+   "id": 105986,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "manaus",
+   "to": "santiago",
+   "date": "2026-10-07",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 93.5,
+   "volume": 291.0,
+   "price": 17012.0,
+   "currency": "EUR",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 105987,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "medellin",
-   "to": "quito",
-   "date": "2026-11-28",
-   "currency": "USD",
-   "company": "Andes Cargo SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 82.7,
-   "volume": 182.0,
-   "price": 13869.0
-  },
-  {
-   "id": 6941,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "georgetown",
-   "to": "la paz",
-   "date": "2026-12-07",
-   "currency": "ARS",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 130.4,
-   "volume": 150.0,
-   "price": 3240.0
-  },
-  {
-   "id": 6942,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "georgetown",
-   "to": "antofagasta",
-   "date": "2026-10-07",
-   "currency": "ARS",
-   "company": "Andes Cargo SA",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 18.2,
-   "volume": 377.0,
-   "price": 13487.0
-  },
-  {
-   "id": 6943,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "asuncion",
-   "date": "2026-09-28",
-   "currency": "COP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 133.1,
-   "volume": 388.0,
-   "price": 1236.0
-  },
-  {
-   "id": 6944,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "cordoba",
-   "date": "2026-12-16",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 70.5,
-   "volume": 273.0,
-   "price": 11210.0
-  },
-  {
-   "id": 6945,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "lima",
-   "to": "la paz",
-   "date": "2026-11-08",
-   "currency": "BRL",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 15.7,
-   "volume": 378.0,
-   "price": 13236.0
-  },
-  {
-   "id": 6946,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "sao paulo",
-   "to": "salvador",
-   "date": "2026-11-28",
-   "currency": "USD",
-   "company": "Pampas Transportes SRL",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 39.7,
-   "volume": 126.0,
-   "price": 4480.0
-  },
-  {
-   "id": 6947,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "sao paulo",
-   "to": "asuncion",
-   "date": "2026-09-19",
-   "currency": "USD",
-   "company": "Andes Cargo SA",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 106.1,
-   "volume": 181.0,
-   "price": 13141.0
-  },
-  {
-   "id": 6948,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "caracas",
-   "to": "sao paulo",
-   "date": "2026-10-16",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 120.9,
-   "volume": 47.0,
-   "price": 7026.0
-  },
-  {
-   "id": 6949,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "buenos aires",
-   "date": "2026-09-09",
-   "currency": "CLP",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 52.1,
-   "volume": 78.0,
-   "price": 17778.0
-  },
-  {
-   "id": 6950,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "valparaiso",
-   "date": "2026-11-11",
-   "currency": "PEN",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 94.0,
-   "volume": 154.0,
-   "price": 1754.0
-  },
-  {
-   "id": 6951,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "manaus",
-   "date": "2026-11-13",
-   "currency": "UYU",
-   "company": "Guayas Logistics CA",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 60.7,
-   "volume": 288.0,
-   "price": 11210.0
-  },
-  {
-   "id": 6952,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "rosario",
-   "date": "2026-11-28",
-   "currency": "UYU",
-   "company": "Condor Air Freight SA",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 76.3,
-   "volume": 183.0,
-   "price": 4142.0
-  },
-  {
-   "id": 6953,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "iquitos",
-   "date": "2026-11-03",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 130.4,
-   "volume": 394.0,
-   "price": 17171.0
-  },
-  {
-   "id": 6954,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "georgetown",
-   "date": "2026-10-28",
-   "currency": "COP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 60.1,
-   "volume": 318.0,
-   "price": 10859.0
-  },
-  {
-   "id": 6955,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "quito",
-   "to": "manaus",
-   "date": "2026-11-20",
-   "currency": "BRL",
-   "company": "Guayas Logistics CA",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 91.4,
-   "volume": 196.0,
-   "price": 7445.0
-  },
-  {
-   "id": 6956,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "caracas",
-   "date": "2026-10-04",
-   "currency": "UYU",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 93.0,
-   "volume": 112.0,
-   "price": 13686.0
-  },
-  {
-   "id": 6957,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "porto alegre",
-   "to": "la paz",
-   "date": "2026-10-27",
-   "currency": "USD",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 22.3,
-   "volume": 226.0,
-   "price": 6106.0
-  },
-  {
-   "id": 6958,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "fortaleza",
-   "date": "2026-10-16",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 83.2,
-   "volume": 360.0,
-   "price": 4901.0
-  },
-  {
-   "id": 6959,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "salvador",
-   "date": "2026-12-27",
-   "currency": "UYU",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 55.2,
-   "volume": 339.0,
-   "price": 5287.0
-  },
-  {
-   "id": 6960,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "santiago",
-   "date": "2026-11-23",
-   "currency": "ARS",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 136.4,
-   "volume": 39.0,
-   "price": 8345.0
-  },
-  {
-   "id": 6961,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "brasilia",
-   "date": "2026-11-12",
-   "currency": "BRL",
-   "company": "Condor Air Freight SA",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 27.5,
-   "volume": 228.0,
-   "price": 4906.0
-  },
-  {
-   "id": 6962,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santiago",
-   "to": "paramaribo",
-   "date": "2026-10-24",
-   "currency": "PEN",
-   "company": "Andes Cargo SA",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 61.1,
-   "volume": 91.0,
-   "price": 3510.0
-  },
-  {
-   "id": 6963,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "bogota",
-   "date": "2026-10-13",
-   "currency": "COP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 103.9,
-   "volume": 208.0,
-   "price": 15291.0
-  },
-  {
-   "id": 6964,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "georgetown",
-   "date": "2026-12-02",
-   "currency": "BRL",
-   "company": "Guayas Logistics CA",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 65.2,
-   "volume": 59.0,
-   "price": 12745.0
-  },
-  {
-   "id": 6965,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rosario",
-   "to": "guayaquil",
-   "date": "2026-12-15",
-   "currency": "UYU",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 88.7,
-   "volume": 138.0,
-   "price": 10269.0
-  },
-  {
-   "id": 6966,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "porto alegre",
-   "to": "rio de janeiro",
-   "date": "2026-10-09",
-   "currency": "BRL",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 14.8,
-   "volume": 363.0,
-   "price": 17076.0
-  },
-  {
-   "id": 6967,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "santos",
-   "to": "fortaleza",
-   "date": "2026-12-08",
-   "currency": "PEN",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 123.6,
-   "volume": 274.0,
-   "price": 5946.0
-  },
-  {
-   "id": 6968,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "salvador",
-   "date": "2026-11-20",
-   "currency": "UYU",
-   "company": "Condor Air Freight SA",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 17.4,
-   "volume": 120.0,
-   "price": 6199.0
-  },
-  {
-   "id": 6969,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "porto alegre",
-   "date": "2026-10-16",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 125.2,
-   "volume": 70.0,
-   "price": 11109.0
-  },
-  {
-   "id": 6970,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "santos",
-   "date": "2026-12-05",
-   "currency": "BRL",
-   "company": "Andes Cargo SA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 121.4,
-   "volume": 294.0,
-   "price": 12719.0
-  },
-  {
-   "id": 6971,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "santos",
-   "date": "2026-10-01",
-   "currency": "COP",
-   "company": "Pampas Transportes SRL",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 79.9,
-   "volume": 120.0,
-   "price": 12773.0
-  },
-  {
-   "id": 6972,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "santos",
-   "date": "2026-10-27",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 105.8,
-   "volume": 213.0,
-   "price": 16958.0
-  },
-  {
-   "id": 6973,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "paramaribo",
-   "date": "2026-09-12",
-   "currency": "COP",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 57.0,
-   "volume": 290.0,
-   "price": 14169.0
-  },
-  {
-   "id": 6974,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "fortaleza",
-   "to": "la paz",
-   "date": "2026-10-11",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 37.0,
-   "volume": 389.0,
-   "price": 12608.0
-  },
-  {
-   "id": 6975,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "curitiba",
-   "date": "2026-12-25",
-   "currency": "UYU",
-   "company": "Condor Air Freight SA",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 114.6,
-   "volume": 101.0,
-   "price": 14370.0
-  },
-  {
-   "id": 6976,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "manaus",
-   "to": "callao",
-   "date": "2026-09-21",
-   "currency": "ARS",
-   "company": "Guayas Logistics CA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 63.4,
-   "volume": 373.0,
-   "price": 17519.0
-  },
-  {
-   "id": 6977,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "georgetown",
-   "date": "2026-12-12",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 21.3,
-   "volume": 280.0,
-   "price": 14438.0
-  },
-  {
-   "id": 6978,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "fortaleza",
-   "date": "2026-10-19",
-   "currency": "PEN",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 27.5,
-   "volume": 364.0,
-   "price": 11089.0
-  },
-  {
-   "id": 6979,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "porto alegre",
-   "date": "2026-11-25",
-   "currency": "BRL",
-   "company": "Guayas Logistics CA",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 95.7,
-   "volume": 167.0,
-   "price": 15358.0
-  },
-  {
-   "id": 6980,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "sao paulo",
-   "to": "manaus",
-   "date": "2026-12-12",
-   "currency": "USD",
-   "company": "Condor Air Freight SA",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 107.7,
-   "volume": 259.0,
-   "price": 6923.0
-  },
-  {
-   "id": 6981,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "recife",
-   "to": "valparaiso",
+   "to": "lapaz",
    "date": "2026-09-07",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "metal",
    "components": [
-    "sea",
+    "rail",
     "auto"
    ],
-   "weight": 51.6,
-   "volume": 370.0,
-   "price": 11125.0
+   "cargo": "food",
+   "weight": 42.5,
+   "volume": 215.0,
+   "price": 17830.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
   },
   {
-   "id": 6982,
+   "id": 105988,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "santos",
+   "date": "2026-10-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 125.9,
+   "volume": 383.0,
+   "price": 16154.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 105989,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "cartagena",
+   "date": "2026-09-16",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 35.3,
+   "volume": 365.0,
+   "price": 12352.0,
+   "currency": "EUR",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 105990,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "guayaquil",
-   "to": "salvador",
-   "date": "2026-10-11",
-   "currency": "BRL",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "docs",
+   "from": "recife",
+   "to": "buenosaires",
+   "date": "2026-12-17",
    "components": [
     "air",
     "auto"
    ],
+   "cargo": "textile",
    "weight": 94.6,
-   "volume": 318.0,
-   "price": 13271.0
+   "volume": 348.0,
+   "price": 10265.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 6983,
+   "id": 105991,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "guayaquil",
+   "to": "medellin",
+   "date": "2026-09-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 32.4,
+   "volume": 203.0,
+   "price": 14396.0,
+   "currency": "USDT",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 105992,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "lapaz",
+   "date": "2026-09-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 84.4,
+   "volume": 159.0,
+   "price": 1398.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 105993,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "saopaulo",
+   "to": "manaus",
+   "date": "2026-10-21",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 38.6,
+   "volume": 127.0,
+   "price": 6828.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 105994,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
    "from": "asuncion",
-   "to": "buenos aires",
-   "date": "2026-09-10",
-   "currency": "PEN",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 105.5,
-   "volume": 95.0,
-   "price": 16348.0
-  },
-  {
-   "id": 6984,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "montevideo",
-   "to": "curitiba",
-   "date": "2026-11-19",
-   "currency": "BRL",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
+   "to": "georgetown",
+   "date": "2026-09-04",
    "components": [
     "air",
-    "auto"
-   ],
-   "weight": 109.2,
-   "volume": 380.0,
-   "price": 3763.0
-  },
-  {
-   "id": 6985,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "curitiba",
-   "to": "antofagasta",
-   "date": "2026-11-26",
-   "currency": "BRL",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 97.1,
-   "volume": 87.0,
-   "price": 13516.0
-  },
-  {
-   "id": 6986,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "brasilia",
-   "to": "asuncion",
-   "date": "2026-10-05",
-   "currency": "BRL",
-   "company": "Pampas Transportes SRL",
-   "cargo": "electro",
-   "components": [
-    "sea",
     "rail"
    ],
-   "weight": 67.8,
-   "volume": 175.0,
-   "price": 13413.0
-  },
-  {
-   "id": 6987,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "guayaquil",
-   "to": "antofagasta",
-   "date": "2026-12-02",
-   "currency": "PEN",
-   "company": "Guayas Logistics CA",
    "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 47.0,
-   "volume": 331.0,
-   "price": 2712.0
+   "weight": 135.3,
+   "volume": 272.0,
+   "price": 6962.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
   },
   {
-   "id": 6988,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "paramaribo",
-   "to": "cordoba",
-   "date": "2026-12-17",
-   "currency": "COP",
-   "company": "Andes Cargo SA",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 63.9,
-   "volume": 114.0,
-   "price": 17632.0
-  },
-  {
-   "id": 6989,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "guayaquil",
-   "date": "2026-11-04",
-   "currency": "UYU",
-   "company": "Andes Cargo SA",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 96.9,
-   "volume": 139.0,
-   "price": 8074.0
-  },
-  {
-   "id": 6990,
+   "id": 105995,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "antofagasta",
-   "to": "valparaiso",
-   "date": "2026-12-05",
-   "currency": "USD",
-   "company": "Pampas Transportes SRL",
-   "cargo": "chem",
+   "to": "saopaulo",
+   "date": "2026-09-19",
    "components": [
-    "rail",
-    "auto"
+    "auto",
+    "rail"
    ],
-   "weight": 100.6,
-   "volume": 60.0,
-   "price": 14984.0
+   "cargo": "textile",
+   "weight": 14.3,
+   "volume": 57.0,
+   "price": 9591.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 6991,
+   "id": 105996,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "caracas",
+   "to": "santos",
+   "date": "2026-10-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 97.7,
+   "volume": 399.0,
+   "price": 13266.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 105997,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "salvador",
-   "to": "la paz",
-   "date": "2026-10-24",
-   "currency": "COP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "furn",
+   "from": "callao",
+   "to": "riodejaneiro",
+   "date": "2026-09-11",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 139.7,
-   "volume": 144.0,
-   "price": 5285.0
+   "cargo": "furn",
+   "weight": 19.9,
+   "volume": 305.0,
+   "price": 12220.0,
+   "currency": "EUR",
+   "company": "Pacifico Shipping Ltda"
   },
   {
-   "id": 6992,
-   "kind": "transport",
+   "id": 105998,
+   "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "medellin",
-   "to": "callao",
-   "date": "2026-12-05",
-   "currency": "COP",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "electro",
+   "from": "lapaz",
+   "to": "asuncion",
+   "date": "2026-12-01",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 103.8,
-   "volume": 317.0,
-   "price": 11375.0
+   "cargo": "furn",
+   "weight": 11.3,
+   "volume": 226.0,
+   "price": 9671.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
   },
   {
-   "id": 6993,
+   "id": 105999,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "santos",
+   "date": "2026-09-10",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 127.1,
+   "volume": 377.0,
+   "price": 17954.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106000,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "saopaulo",
+   "to": "rosario",
+   "date": "2026-12-16",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 78.5,
+   "volume": 87.0,
+   "price": 14335.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106001,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "cartagena",
+   "to": "buenosaires",
+   "date": "2026-12-13",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 94.9,
+   "volume": 393.0,
+   "price": 13521.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106002,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "buenosaires",
+   "date": "2026-09-26",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 19.0,
+   "volume": 278.0,
+   "price": 10426.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106003,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "recife",
+   "date": "2026-09-13",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 19.6,
+   "volume": 230.0,
+   "price": 4769.0,
+   "currency": "EUR",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106004,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "recife",
+   "date": "2026-10-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 135.8,
+   "volume": 161.0,
+   "price": 12001.0,
+   "currency": "USDT",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106005,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "guayaquil",
+   "date": "2026-10-14",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 92.3,
+   "volume": 179.0,
+   "price": 11395.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106006,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "lapaz",
+   "date": "2026-09-01",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 138.3,
+   "volume": 64.0,
+   "price": 9274.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106007,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "bogota",
+   "date": "2026-10-27",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 61.2,
+   "volume": 214.0,
+   "price": 3954.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106008,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "paranagua",
+   "date": "2026-09-28",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 67.6,
+   "volume": 101.0,
+   "price": 14710.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106009,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "quito",
+   "date": "2026-09-03",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 19.6,
+   "volume": 92.0,
+   "price": 11599.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106010,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "paranagua",
+   "date": "2026-11-24",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 21.3,
+   "volume": 181.0,
+   "price": 4921.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106011,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "guayaquil",
+   "date": "2026-12-04",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 12.2,
+   "volume": 306.0,
+   "price": 8123.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106012,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "callao",
+   "to": "portoalegre",
+   "date": "2026-10-28",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 137.8,
+   "volume": 185.0,
+   "price": 17927.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106013,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "asuncion",
+   "date": "2026-09-24",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 74.2,
+   "volume": 340.0,
+   "price": 5988.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106014,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "guayaquil",
+   "to": "cartagena",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 115.5,
+   "volume": 312.0,
+   "price": 7159.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106015,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "buenosaires",
+   "date": "2026-10-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 125.6,
+   "volume": 331.0,
+   "price": 7658.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106016,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "paranagua",
+   "to": "montevideo",
+   "date": "2026-09-16",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 100.3,
+   "volume": 288.0,
+   "price": 16298.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106017,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "caracas",
+   "date": "2026-12-04",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 32.3,
+   "volume": 179.0,
+   "price": 10456.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106018,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "santos",
+   "date": "2026-09-14",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 52.0,
+   "volume": 185.0,
+   "price": 11420.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106019,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "santos",
+   "date": "2026-09-06",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 81.5,
+   "volume": 150.0,
+   "price": 15631.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106020,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "lapaz",
+   "date": "2026-09-22",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 128.9,
+   "volume": 202.0,
+   "price": 12362.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106021,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
    "from": "bogota",
-   "to": "rosario",
-   "date": "2026-11-01",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "build",
+   "to": "asuncion",
+   "date": "2026-09-12",
    "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 123.1,
-   "volume": 357.0,
-   "price": 6410.0
-  },
-  {
-   "id": 6994,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "la paz",
-   "to": "lima",
-   "date": "2026-10-03",
-   "currency": "ARS",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 16.9,
-   "volume": 246.0,
-   "price": 10219.0
-  },
-  {
-   "id": 6995,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "manaus",
-   "date": "2026-09-15",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 108.5,
-   "volume": 67.0,
-   "price": 11528.0
-  },
-  {
-   "id": 6996,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cordoba",
-   "to": "brasilia",
-   "date": "2026-09-17",
-   "currency": "UYU",
-   "company": "Guayas Logistics CA",
-   "cargo": "docs",
-   "components": [
-    "rail",
+    "air",
     "auto"
    ],
-   "weight": 57.1,
-   "volume": 256.0,
-   "price": 16594.0
+   "cargo": "chem",
+   "weight": 92.5,
+   "volume": 46.0,
+   "price": 4856.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
   },
   {
-   "id": 6997,
+   "id": 106022,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "montevideo",
+   "date": "2026-11-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 104.4,
+   "volume": 160.0,
+   "price": 17529.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106023,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
    "from": "rosario",
-   "to": "valparaiso",
-   "date": "2026-09-02",
-   "currency": "PEN",
-   "company": "Condor Air Freight SA",
-   "cargo": "docs",
+   "to": "callao",
+   "date": "2026-10-25",
    "components": [
     "sea",
     "rail"
    ],
-   "weight": 111.3,
-   "volume": 206.0,
-   "price": 2459.0
+   "cargo": "docs",
+   "weight": 30.2,
+   "volume": 164.0,
+   "price": 12046.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
   },
   {
-   "id": 6998,
+   "id": 106024,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "manaus",
+   "to": "lapaz",
+   "date": "2026-11-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 60.1,
+   "volume": 157.0,
+   "price": 10325.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106025,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "georgetown",
+   "to": "antofagasta",
+   "date": "2026-10-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 130.7,
+   "volume": 134.0,
+   "price": 17898.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106026,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "curitiba",
-   "to": "iquitos",
-   "date": "2026-09-08",
-   "currency": "BRL",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "build",
+   "from": "manaus",
+   "to": "antofagasta",
+   "date": "2026-10-18",
    "components": [
     "air",
     "auto"
    ],
-   "weight": 45.7,
-   "volume": 52.0,
-   "price": 9708.0
+   "cargo": "furn",
+   "weight": 49.6,
+   "volume": 146.0,
+   "price": 9117.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
   },
   {
-   "id": 6999,
+   "id": 106027,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "antofagasta",
+   "date": "2026-09-13",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 113.7,
+   "volume": 131.0,
+   "price": 16431.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106028,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "lapaz",
+   "date": "2026-10-25",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 105.1,
+   "volume": 210.0,
+   "price": 2657.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106029,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
    "from": "lima",
-   "to": "georgetown",
-   "date": "2026-11-19",
-   "currency": "CLP",
-   "company": "Condor Air Freight SA",
-   "cargo": "electro",
+   "to": "santos",
+   "date": "2026-09-17",
    "components": [
     "sea",
     "auto"
    ],
-   "weight": 20.1,
-   "volume": 370.0,
-   "price": 13553.0
+   "cargo": "electro",
+   "weight": 13.6,
+   "volume": 65.0,
+   "price": 17338.0,
+   "currency": "EUR",
+   "company": "Amazonas Logistica Ltda"
   },
   {
-   "id": 7000,
+   "id": 106030,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "valparaiso",
+   "date": "2026-09-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 64.2,
+   "volume": 159.0,
+   "price": 8776.0,
+   "currency": "USDT",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106031,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "antofagasta",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 44.2,
+   "volume": 222.0,
+   "price": 1844.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106032,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "callao",
+   "to": "santiago",
+   "date": "2026-10-08",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 13.7,
+   "volume": 343.0,
+   "price": 3705.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106033,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "callao",
+   "date": "2026-11-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 22.5,
+   "volume": 329.0,
+   "price": 9665.0,
+   "currency": "EUR",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106034,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "buenosaires",
+   "date": "2026-10-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 46.4,
+   "volume": 125.0,
+   "price": 3933.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106035,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "antofagasta",
+   "date": "2026-09-02",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 87.4,
+   "volume": 336.0,
+   "price": 7364.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106036,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "guayaquil",
-   "to": "rio de janeiro",
-   "date": "2026-11-07",
-   "currency": "PEN",
-   "company": "Amazonas Logistica Ltda",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 80.0,
-   "volume": 232.0,
-   "price": 2424.0
-  },
-  {
-   "id": 7001,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "cartagena",
-   "to": "manaus",
-   "date": "2026-11-21",
-   "currency": "ARS",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 51.2,
-   "volume": 332.0,
-   "price": 15723.0
-  },
-  {
-   "id": 7002,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
    "to": "antofagasta",
-   "date": "2026-10-06",
-   "currency": "USD",
-   "company": "Guayas Logistics CA",
-   "cargo": "electro",
+   "date": "2026-11-05",
    "components": [
-    "sea",
     "rail",
     "auto"
    ],
-   "weight": 109.8,
-   "volume": 312.0,
-   "price": 1336.0
+   "cargo": "docs",
+   "weight": 68.0,
+   "volume": 306.0,
+   "price": 6556.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
   },
   {
-   "id": 7003,
-   "kind": "transport",
+   "id": 106037,
+   "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "santiago",
-   "to": "fortaleza",
-   "date": "2026-11-11",
-   "currency": "UYU",
-   "company": "Pampas Transportes SRL",
-   "cargo": "textile",
+   "from": "quito",
+   "to": "santos",
+   "date": "2026-09-09",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 107.4,
+   "volume": 359.0,
+   "price": 4496.0,
+   "currency": "USDT",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106038,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "santiago",
+   "date": "2026-12-11",
    "components": [
     "air",
     "auto"
    ],
-   "weight": 129.7,
-   "volume": 400.0,
-   "price": 4660.0
+   "cargo": "metal",
+   "weight": 104.2,
+   "volume": 49.0,
+   "price": 6345.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
   },
   {
-   "id": 7004,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "callao",
-   "to": "iquitos",
-   "date": "2026-11-18",
-   "currency": "BRL",
-   "company": "Altiplano Rail Cargo",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 25.3,
-   "volume": 324.0,
-   "price": 14452.0
-  },
-  {
-   "id": 7005,
+   "id": 106039,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
-   "from": "santos",
-   "to": "recife",
-   "date": "2026-09-06",
-   "currency": "CLP",
-   "company": "Pacifico Shipping Ltda",
-   "cargo": "agro",
+   "from": "buenosaires",
+   "to": "manaus",
+   "date": "2026-09-20",
    "components": [
-    "air",
+    "auto",
     "rail"
    ],
-   "weight": 74.6,
-   "volume": 247.0,
-   "price": 8514.0
+   "cargo": "docs",
+   "weight": 69.3,
+   "volume": 249.0,
+   "price": 6027.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
   },
   {
-   "id": 7006,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "salvador",
-   "to": "guayaquil",
-   "date": "2026-09-15",
-   "currency": "ARS",
-   "company": "Rio Freight Forwarding SA",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 77.6,
-   "volume": 392.0,
-   "price": 3106.0
-  },
-  {
-   "id": 7007,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "South America",
-   "from": "antofagasta",
-   "to": "rio de janeiro",
-   "date": "2026-09-15",
-   "currency": "CLP",
-   "company": "Mercosur Spedition SRL",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 120.5,
-   "volume": 48.0,
-   "price": 16982.0
-  },
-  {
-   "id": 7008,
+   "id": 106040,
    "kind": "transport",
    "mode": "multi",
    "continent": "South America",
    "from": "montevideo",
-   "to": "callao",
-   "date": "2026-11-21",
-   "currency": "UYU",
-   "company": "Mercosur Spedition SRL",
+   "to": "rosario",
+   "date": "2026-09-10",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 36.1,
+   "volume": 161.0,
+   "price": 9360.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106041,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "montevideo",
+   "date": "2026-10-24",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 112.3,
+   "volume": 254.0,
+   "price": 9417.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106042,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "saopaulo",
+   "to": "bogota",
+   "date": "2026-09-16",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 42.1,
+   "volume": 196.0,
+   "price": 13986.0,
+   "currency": "EUR",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106043,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "antofagasta",
+   "date": "2026-09-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
    "cargo": "chem",
+   "weight": 60.5,
+   "volume": 74.0,
+   "price": 13297.0,
+   "currency": "USDT",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106044,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "bogota",
+   "date": "2026-09-11",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 118.9,
+   "volume": 136.0,
+   "price": 11759.0,
+   "currency": "EUR",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106045,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "valparaiso",
+   "date": "2026-10-01",
    "components": [
     "rail",
     "auto"
    ],
-   "weight": 95.3,
-   "volume": 37.0,
-   "price": 2054.0
+   "cargo": "food",
+   "weight": 90.2,
+   "volume": 301.0,
+   "price": 13233.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
   },
   {
-   "id": 7009,
+   "id": 106046,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "caracas",
+   "to": "quito",
+   "date": "2026-09-06",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 44.1,
+   "volume": 112.0,
+   "price": 7684.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106047,
    "kind": "cargo",
    "mode": "multi",
    "continent": "South America",
-   "from": "rio de janeiro",
-   "to": "paramaribo",
-   "date": "2026-12-10",
-   "currency": "CLP",
-   "company": "Atlantico Sul Cargo",
-   "cargo": "metal",
+   "from": "medellin",
+   "to": "lima",
+   "date": "2026-09-03",
    "components": [
     "air",
     "auto"
    ],
-   "weight": 120.9,
-   "volume": 148.0,
-   "price": 5308.0
+   "cargo": "food",
+   "weight": 91.4,
+   "volume": 100.0,
+   "price": 8733.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106048,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "rosario",
+   "date": "2026-10-19",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 38.0,
+   "volume": 331.0,
+   "price": 1749.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106049,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "paranagua",
+   "to": "saopaulo",
+   "date": "2026-10-13",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 129.5,
+   "volume": 102.0,
+   "price": 4987.0,
+   "currency": "EUR",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106050,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "lima",
+   "date": "2026-09-07",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 77.6,
+   "volume": 159.0,
+   "price": 15245.0,
+   "currency": "EUR",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106051,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "paranagua",
+   "to": "riodejaneiro",
+   "date": "2026-09-13",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 129.1,
+   "volume": 357.0,
+   "price": 10949.0,
+   "currency": "USDT",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106052,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "guayaquil",
+   "date": "2026-10-09",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 78.8,
+   "volume": 312.0,
+   "price": 11477.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106053,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "santiago",
+   "date": "2026-09-23",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 111.2,
+   "volume": 131.0,
+   "price": 11800.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106054,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "recife",
+   "date": "2026-10-04",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 76.3,
+   "volume": 38.0,
+   "price": 11175.0,
+   "currency": "EUR",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106055,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "caracas",
+   "to": "manaus",
+   "date": "2026-12-06",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 10.8,
+   "volume": 108.0,
+   "price": 2953.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106056,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "medellin",
+   "date": "2026-12-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 23.8,
+   "volume": 199.0,
+   "price": 15894.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106057,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "manaus",
+   "date": "2026-09-18",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 97.5,
+   "volume": 151.0,
+   "price": 13357.0,
+   "currency": "EUR",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106058,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "manaus",
+   "date": "2026-11-12",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 74.9,
+   "volume": 341.0,
+   "price": 10762.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106059,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "bogota",
+   "date": "2026-10-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 127.9,
+   "volume": 256.0,
+   "price": 6718.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106060,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "portoalegre",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 70.6,
+   "volume": 176.0,
+   "price": 9308.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106061,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "caracas",
+   "to": "medellin",
+   "date": "2026-12-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 63.1,
+   "volume": 329.0,
+   "price": 3289.0,
+   "currency": "EUR",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106062,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "portoalegre",
+   "date": "2026-11-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 64.4,
+   "volume": 229.0,
+   "price": 8479.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106063,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "recife",
+   "to": "buenosaires",
+   "date": "2026-12-03",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 62.8,
+   "volume": 299.0,
+   "price": 4234.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106064,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "cartagena",
+   "date": "2026-09-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 24.1,
+   "volume": 100.0,
+   "price": 16335.0,
+   "currency": "USDT",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106065,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "georgetown",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 24.1,
+   "volume": 260.0,
+   "price": 13426.0,
+   "currency": "USDT",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106066,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "lima",
+   "date": "2026-11-09",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 73.3,
+   "volume": 386.0,
+   "price": 15614.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106067,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "lima",
+   "date": "2026-12-14",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 116.6,
+   "volume": 336.0,
+   "price": 13909.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106068,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "portoalegre",
+   "date": "2026-10-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 136.9,
+   "volume": 336.0,
+   "price": 2928.0,
+   "currency": "USDT",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106069,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "recife",
+   "to": "georgetown",
+   "date": "2026-09-09",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 22.4,
+   "volume": 124.0,
+   "price": 3504.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106070,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "bogota",
+   "date": "2026-11-24",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 110.7,
+   "volume": 392.0,
+   "price": 1535.0,
+   "currency": "EUR",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106071,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "portoalegre",
+   "to": "rosario",
+   "date": "2026-10-25",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 123.8,
+   "volume": 361.0,
+   "price": 3702.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106072,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "saopaulo",
+   "date": "2026-12-20",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 10.3,
+   "volume": 217.0,
+   "price": 6376.0,
+   "currency": "USDT",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106073,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "manaus",
+   "to": "medellin",
+   "date": "2026-09-20",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 22.8,
+   "volume": 345.0,
+   "price": 5140.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106074,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "montevideo",
+   "date": "2026-10-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 123.9,
+   "volume": 364.0,
+   "price": 14121.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106075,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "guayaquil",
+   "date": "2026-12-05",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 116.9,
+   "volume": 164.0,
+   "price": 3236.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106076,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "recife",
+   "to": "lapaz",
+   "date": "2026-09-04",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 21.6,
+   "volume": 52.0,
+   "price": 16476.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106077,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "montevideo",
+   "date": "2026-10-03",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 44.9,
+   "volume": 169.0,
+   "price": 14270.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106078,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "riodejaneiro",
+   "to": "santiago",
+   "date": "2026-11-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 111.5,
+   "volume": 119.0,
+   "price": 5181.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106079,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "cartagena",
+   "date": "2026-10-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 31.4,
+   "volume": 349.0,
+   "price": 17089.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106080,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "callao",
+   "to": "santos",
+   "date": "2026-11-10",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 101.1,
+   "volume": 178.0,
+   "price": 5025.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106081,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "saopaulo",
+   "date": "2026-10-03",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 68.3,
+   "volume": 399.0,
+   "price": 10117.0,
+   "currency": "EUR",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106082,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "cartagena",
+   "date": "2026-09-03",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 81.9,
+   "volume": 162.0,
+   "price": 3912.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106083,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "valparaiso",
+   "date": "2026-11-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 18.7,
+   "volume": 223.0,
+   "price": 8765.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106084,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "recife",
+   "to": "montevideo",
+   "date": "2026-11-21",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 21.7,
+   "volume": 102.0,
+   "price": 12570.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106085,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "valparaiso",
+   "date": "2026-11-10",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 19.1,
+   "volume": 234.0,
+   "price": 12252.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106086,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "montevideo",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 16.9,
+   "volume": 165.0,
+   "price": 11297.0,
+   "currency": "USDT",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106087,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "guayaquil",
+   "date": "2026-11-23",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 84.8,
+   "volume": 83.0,
+   "price": 12616.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106088,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "georgetown",
+   "to": "bogota",
+   "date": "2026-10-22",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 53.6,
+   "volume": 197.0,
+   "price": 16033.0,
+   "currency": "EUR",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106089,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "asuncion",
+   "date": "2026-10-10",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 60.5,
+   "volume": 362.0,
+   "price": 13795.0,
+   "currency": "USDT",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106090,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "manaus",
+   "to": "cartagena",
+   "date": "2026-11-15",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 80.8,
+   "volume": 324.0,
+   "price": 11642.0,
+   "currency": "EUR",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106091,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "valparaiso",
+   "date": "2026-12-04",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 111.1,
+   "volume": 89.0,
+   "price": 6149.0,
+   "currency": "USDT",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106092,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "guayaquil",
+   "date": "2026-09-05",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 38.6,
+   "volume": 374.0,
+   "price": 1787.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106093,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santos",
+   "to": "caracas",
+   "date": "2026-10-05",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 101.7,
+   "volume": 36.0,
+   "price": 14184.0,
+   "currency": "USDT",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106094,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "lima",
+   "date": "2026-11-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 120.1,
+   "volume": 336.0,
+   "price": 2423.0,
+   "currency": "EUR",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106095,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "buenosaires",
+   "to": "asuncion",
+   "date": "2026-10-06",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 23.4,
+   "volume": 125.0,
+   "price": 15170.0,
+   "currency": "EUR",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106096,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "asuncion",
+   "date": "2026-09-05",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 130.7,
+   "volume": 217.0,
+   "price": 7178.0,
+   "currency": "USDT",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106097,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "bogota",
+   "date": "2026-11-14",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 107.0,
+   "volume": 161.0,
+   "price": 15241.0,
+   "currency": "EUR",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106098,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "guayaquil",
+   "date": "2026-10-16",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 56.3,
+   "volume": 168.0,
+   "price": 3335.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106099,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "caracas",
+   "date": "2026-10-18",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 94.7,
+   "volume": 35.0,
+   "price": 3875.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106100,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "bogota",
+   "date": "2026-12-27",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 45.2,
+   "volume": 141.0,
+   "price": 17166.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106101,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "medellin",
+   "to": "buenosaires",
+   "date": "2026-10-16",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 104.1,
+   "volume": 101.0,
+   "price": 15904.0,
+   "currency": "USDT",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106102,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "paranagua",
+   "to": "georgetown",
+   "date": "2026-10-06",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 85.9,
+   "volume": 93.0,
+   "price": 6079.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106103,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "quito",
+   "date": "2026-10-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 91.6,
+   "volume": 203.0,
+   "price": 2012.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106104,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "manaus",
+   "date": "2026-11-22",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 79.9,
+   "volume": 292.0,
+   "price": 1181.0,
+   "currency": "USD",
+   "company": "Andes Cargo SA"
+  },
+  {
+   "id": 106105,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "asuncion",
+   "to": "saopaulo",
+   "date": "2026-10-08",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 20.7,
+   "volume": 338.0,
+   "price": 1817.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106106,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "manaus",
+   "date": "2026-10-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 104.0,
+   "volume": 214.0,
+   "price": 7900.0,
+   "currency": "USD",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106107,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "lapaz",
+   "date": "2026-09-07",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 17.5,
+   "volume": 126.0,
+   "price": 5678.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106108,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "rosario",
+   "to": "caracas",
+   "date": "2026-11-06",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 104.9,
+   "volume": 114.0,
+   "price": 12044.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106109,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "montevideo",
+   "date": "2026-09-07",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 118.7,
+   "volume": 136.0,
+   "price": 5985.0,
+   "currency": "EUR",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106110,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "caracas",
+   "date": "2026-10-11",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 94.6,
+   "volume": 38.0,
+   "price": 16997.0,
+   "currency": "USD",
+   "company": "Rio Freight Forwarding SA"
+  },
+  {
+   "id": 106111,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "lima",
+   "date": "2026-12-23",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 53.9,
+   "volume": 305.0,
+   "price": 15213.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106112,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "valparaiso",
+   "to": "lapaz",
+   "date": "2026-11-04",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 43.2,
+   "volume": 132.0,
+   "price": 16510.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106113,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "callao",
+   "to": "caracas",
+   "date": "2026-12-22",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 102.3,
+   "volume": 274.0,
+   "price": 8523.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106114,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "antofagasta",
+   "to": "montevideo",
+   "date": "2026-10-20",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 90.6,
+   "volume": 269.0,
+   "price": 14993.0,
+   "currency": "USDT",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106115,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lapaz",
+   "to": "portoalegre",
+   "date": "2026-10-18",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 91.8,
+   "volume": 170.0,
+   "price": 1400.0,
+   "currency": "USD",
+   "company": "Mercosur Spedition SRL"
+  },
+  {
+   "id": 106116,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "lima",
+   "to": "antofagasta",
+   "date": "2026-09-16",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 49.8,
+   "volume": 216.0,
+   "price": 12416.0,
+   "currency": "USD",
+   "company": "Altiplano Rail Cargo"
+  },
+  {
+   "id": 106117,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "cartagena",
+   "to": "recife",
+   "date": "2026-12-27",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 13.5,
+   "volume": 260.0,
+   "price": 12349.0,
+   "currency": "EUR",
+   "company": "Atlantico Sul Cargo"
+  },
+  {
+   "id": 106118,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "montevideo",
+   "to": "antofagasta",
+   "date": "2026-10-04",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 63.4,
+   "volume": 56.0,
+   "price": 2580.0,
+   "currency": "USD",
+   "company": "Guayas Logistics CA"
+  },
+  {
+   "id": 106119,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "saopaulo",
+   "to": "caracas",
+   "date": "2026-12-12",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 128.8,
+   "volume": 204.0,
+   "price": 14894.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106120,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "lima",
+   "date": "2026-10-24",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 59.7,
+   "volume": 46.0,
+   "price": 17505.0,
+   "currency": "USD",
+   "company": "Condor Air Freight SA"
+  },
+  {
+   "id": 106121,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "quito",
+   "to": "guayaquil",
+   "date": "2026-11-12",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 71.5,
+   "volume": 331.0,
+   "price": 16268.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
+  },
+  {
+   "id": 106122,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "bogota",
+   "to": "callao",
+   "date": "2026-11-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 54.0,
+   "volume": 253.0,
+   "price": 17269.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106123,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "santiago",
+   "to": "guayaquil",
+   "date": "2026-10-01",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 17.6,
+   "volume": 309.0,
+   "price": 11049.0,
+   "currency": "USD",
+   "company": "Amazonas Logistica Ltda"
+  },
+  {
+   "id": 106124,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "paranagua",
+   "to": "santos",
+   "date": "2026-10-14",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 131.7,
+   "volume": 155.0,
+   "price": 14369.0,
+   "currency": "USD",
+   "company": "Pampas Transportes SRL"
+  },
+  {
+   "id": 106125,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "South America",
+   "from": "georgetown",
+   "to": "rosario",
+   "date": "2026-12-02",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 15.7,
+   "volume": 113.0,
+   "price": 3468.0,
+   "currency": "USD",
+   "company": "Pacifico Shipping Ltda"
   }
  ]
 }

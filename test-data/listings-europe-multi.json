@@ -1,4687 +1,4505 @@
 {
  "continent": "Europe",
  "mode": "multi",
- "count": 244,
+ "count": 235,
  "listings": [
   {
-   "id": 2008,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "lisbon",
-   "date": "2026-10-15",
-   "currency": "UAH",
-   "company": "NordTrans AG",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 93.8,
-   "volume": 239.0,
-   "price": 12941.0
-  },
-  {
-   "id": 2009,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "oslo",
-   "date": "2026-10-03",
-   "currency": "CZK",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 99.4,
-   "volume": 384.0,
-   "price": 5122.0
-  },
-  {
-   "id": 2010,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "lviv",
-   "date": "2026-12-05",
-   "currency": "DKK",
-   "company": "ChemLog GmbH",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 28.2,
-   "volume": 141.0,
-   "price": 1557.0
-  },
-  {
-   "id": 2011,
+   "id": 101111,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "tallinn",
-   "to": "antwerp",
-   "date": "2026-10-06",
-   "currency": "GBP",
-   "company": "АгроТранс Груп",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 103.6,
-   "volume": 392.0,
-   "price": 3983.0
-  },
-  {
-   "id": 2012,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "lisbon",
-   "date": "2026-09-11",
-   "currency": "UAH",
-   "company": "ChemLog GmbH",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 128.8,
-   "volume": 34.0,
-   "price": 13342.0
-  },
-  {
-   "id": 2013,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "lisbon",
-   "date": "2026-09-03",
-   "currency": "EUR",
-   "company": "ChemLog GmbH",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 96.5,
-   "volume": 55.0,
-   "price": 3657.0
-  },
-  {
-   "id": 2014,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "helsinki",
-   "date": "2026-10-04",
-   "currency": "CZK",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 41.2,
-   "volume": 196.0,
-   "price": 1799.0
-  },
-  {
-   "id": 2015,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "milan",
-   "date": "2026-12-05",
-   "currency": "RON",
-   "company": "NordTrans AG",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 88.6,
-   "volume": 236.0,
-   "price": 15344.0
-  },
-  {
-   "id": 2016,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "hamburg",
-   "to": "constanta",
-   "date": "2026-11-05",
-   "currency": "PLN",
-   "company": "Baltic Grain Co.",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 19.6,
-   "volume": 79.0,
-   "price": 6552.0
-  },
-  {
-   "id": 2017,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "athens",
-   "date": "2026-11-11",
-   "currency": "USD",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 128.6,
-   "volume": 243.0,
-   "price": 7136.0
-  },
-  {
-   "id": 2018,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "tallinn",
-   "date": "2026-10-21",
-   "currency": "SEK",
-   "company": "Anatolia Freight",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 101.0,
-   "volume": 391.0,
-   "price": 6455.0
-  },
-  {
-   "id": 2019,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "munich",
-   "date": "2026-10-07",
-   "currency": "PLN",
-   "company": "ChemLog GmbH",
-   "cargo": "electro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 104.1,
-   "volume": 276.0,
-   "price": 6116.0
-  },
-  {
-   "id": 2020,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "athens",
-   "date": "2026-12-08",
-   "currency": "UAH",
-   "company": "Blue Line Shipping",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 12.4,
-   "volume": 255.0,
-   "price": 8031.0
-  },
-  {
-   "id": 2021,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "lviv",
-   "date": "2026-12-24",
-   "currency": "UAH",
-   "company": "Meble-Trans",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 138.8,
-   "volume": 204.0,
-   "price": 13756.0
-  },
-  {
-   "id": 2022,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "athens",
-   "date": "2026-09-13",
-   "currency": "HUF",
-   "company": "Blue Line Shipping",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 40.1,
-   "volume": 231.0,
-   "price": 13396.0
-  },
-  {
-   "id": 2023,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "tallinn",
-   "to": "lviv",
-   "date": "2026-09-01",
-   "currency": "USD",
-   "company": "АгроТранс Груп",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 120.3,
-   "volume": 250.0,
-   "price": 10208.0
-  },
-  {
-   "id": 2024,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "berlin",
-   "date": "2026-11-07",
-   "currency": "USD",
-   "company": "АгроТранс Груп",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 89.4,
-   "volume": 292.0,
-   "price": 10331.0
-  },
-  {
-   "id": 2025,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "warsaw",
-   "date": "2026-10-16",
-   "currency": "UAH",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 92.2,
-   "volume": 224.0,
-   "price": 2087.0
-  },
-  {
-   "id": 2026,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "gdansk",
-   "date": "2026-11-11",
-   "currency": "EUR",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 29.7,
-   "volume": 385.0,
-   "price": 17749.0
-  },
-  {
-   "id": 2027,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "tallinn",
-   "to": "lviv",
-   "date": "2026-12-28",
-   "currency": "EUR",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 21.2,
-   "volume": 286.0,
-   "price": 4677.0
-  },
-  {
-   "id": 2028,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "kyiv",
-   "date": "2026-12-03",
-   "currency": "SEK",
-   "company": "АгроТранс Груп",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 125.3,
-   "volume": 367.0,
-   "price": 9049.0
-  },
-  {
-   "id": 2029,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "hamburg",
-   "date": "2026-11-17",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 12.7,
-   "volume": 333.0,
-   "price": 5053.0
-  },
-  {
-   "id": 2030,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
    "to": "vilnius",
-   "date": "2026-09-16",
-   "currency": "UAH",
-   "company": "AirCargo Bavaria",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 122.1,
-   "volume": 238.0,
-   "price": 11084.0
-  },
-  {
-   "id": 2031,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "hamburg",
-   "date": "2026-09-24",
-   "currency": "CZK",
-   "company": "NordTrans AG",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 22.0,
-   "volume": 335.0,
-   "price": 16167.0
-  },
-  {
-   "id": 2032,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "barcelona",
-   "date": "2026-12-22",
-   "currency": "SEK",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 57.4,
-   "volume": 372.0,
-   "price": 9698.0
-  },
-  {
-   "id": 2033,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "vienna",
-   "date": "2026-11-24",
-   "currency": "SEK",
-   "company": "ChemLog GmbH",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 47.1,
-   "volume": 116.0,
-   "price": 17278.0
-  },
-  {
-   "id": 2034,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "krakow",
-   "date": "2026-12-13",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 39.5,
-   "volume": 153.0,
-   "price": 9440.0
-  },
-  {
-   "id": 2035,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "milan",
    "date": "2026-11-10",
-   "currency": "HUF",
-   "company": "ChemLog GmbH",
-   "cargo": "agro",
    "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 16.1,
-   "volume": 299.0,
-   "price": 12557.0
-  },
-  {
-   "id": 2036,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "riga",
-   "date": "2026-10-13",
-   "currency": "PLN",
-   "company": "Baltic Grain Co.",
-   "cargo": "chem",
-   "components": [
-    "air",
+    "sea",
     "rail"
    ],
-   "weight": 14.0,
-   "volume": 258.0,
-   "price": 14848.0
-  },
-  {
-   "id": 2037,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "vilnius",
-   "date": "2026-12-19",
-   "currency": "SEK",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 34.9,
-   "volume": 330.0,
-   "price": 4520.0
-  },
-  {
-   "id": 2038,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "krakow",
-   "date": "2026-10-14",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
    "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 137.6,
-   "volume": 240.0,
-   "price": 13373.0
-  },
-  {
-   "id": 2039,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "odesa",
-   "date": "2026-11-07",
-   "currency": "DKK",
-   "company": "NordTrans AG",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 29.7,
-   "volume": 322.0,
-   "price": 7198.0
-  },
-  {
-   "id": 2040,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "rotterdam",
-   "date": "2026-12-05",
-   "currency": "SEK",
-   "company": "Blue Line Shipping",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 52.0,
-   "volume": 179.0,
-   "price": 3647.0
-  },
-  {
-   "id": 2041,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "odesa",
-   "date": "2026-11-12",
-   "currency": "GBP",
-   "company": "CentroRail Cargo",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 38.4,
-   "volume": 341.0,
-   "price": 3076.0
-  },
-  {
-   "id": 2042,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "lyon",
-   "date": "2026-09-16",
-   "currency": "USD",
-   "company": "ChemLog GmbH",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 104.8,
-   "volume": 126.0,
-   "price": 15524.0
-  },
-  {
-   "id": 2043,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "rotterdam",
-   "date": "2026-11-21",
-   "currency": "SEK",
-   "company": "AirCargo Bavaria",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 32.9,
-   "volume": 51.0,
-   "price": 10584.0
-  },
-  {
-   "id": 2044,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "munich",
-   "date": "2026-09-02",
-   "currency": "RON",
-   "company": "Anatolia Freight",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 107.5,
-   "volume": 250.0,
-   "price": 10995.0
-  },
-  {
-   "id": 2045,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "lisbon",
-   "date": "2026-11-26",
-   "currency": "UAH",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 75.9,
-   "volume": 52.0,
-   "price": 4235.0
-  },
-  {
-   "id": 2046,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "lviv",
-   "date": "2026-11-08",
-   "currency": "GBP",
-   "company": "Baltic Grain Co.",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 107.5,
-   "volume": 235.0,
-   "price": 17965.0
-  },
-  {
-   "id": 2047,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "oslo",
-   "date": "2026-11-16",
+   "weight": 40.7,
+   "volume": 174.0,
+   "price": 7969.0,
    "currency": "CZK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 56.7,
-   "volume": 175.0,
-   "price": 11672.0
+   "company": "CentroRail Cargo"
   },
   {
-   "id": 2048,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "berlin",
-   "date": "2026-09-06",
-   "currency": "CZK",
-   "company": "NordTrans AG",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 81.1,
-   "volume": 341.0,
-   "price": 4947.0
-  },
-  {
-   "id": 2049,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "helsinki",
-   "date": "2026-11-02",
-   "currency": "HUF",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 57.3,
-   "volume": 173.0,
-   "price": 17983.0
-  },
-  {
-   "id": 2050,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "stockholm",
-   "date": "2026-12-09",
-   "currency": "UAH",
-   "company": "Blue Line Shipping",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 116.1,
-   "volume": 346.0,
-   "price": 13989.0
-  },
-  {
-   "id": 2051,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "rotterdam",
-   "date": "2026-11-10",
-   "currency": "CZK",
-   "company": "УкрМеталТранс",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 51.8,
-   "volume": 166.0,
-   "price": 7747.0
-  },
-  {
-   "id": 2052,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "krakow",
-   "date": "2026-12-06",
-   "currency": "HUF",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 124.9,
-   "volume": 395.0,
-   "price": 5692.0
-  },
-  {
-   "id": 2053,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "kyiv",
-   "date": "2026-09-27",
-   "currency": "EUR",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 11.2,
-   "volume": 175.0,
-   "price": 9262.0
-  },
-  {
-   "id": 2054,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "budapest",
-   "date": "2026-11-14",
-   "currency": "SEK",
-   "company": "АгроТранс Груп",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 43.2,
-   "volume": 316.0,
-   "price": 4077.0
-  },
-  {
-   "id": 2055,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "krakow",
-   "date": "2026-09-08",
-   "currency": "SEK",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 12.6,
-   "volume": 383.0,
-   "price": 7983.0
-  },
-  {
-   "id": 2056,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "riga",
-   "date": "2026-12-27",
-   "currency": "EUR",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 37.5,
-   "volume": 140.0,
-   "price": 1153.0
-  },
-  {
-   "id": 2057,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "helsinki",
-   "date": "2026-11-11",
-   "currency": "PLN",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 130.8,
-   "volume": 69.0,
-   "price": 6975.0
-  },
-  {
-   "id": 2058,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "dublin",
-   "date": "2026-12-27",
-   "currency": "HUF",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 78.0,
-   "volume": 89.0,
-   "price": 8255.0
-  },
-  {
-   "id": 2059,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "munich",
-   "date": "2026-12-13",
-   "currency": "DKK",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 36.8,
-   "volume": 293.0,
-   "price": 4000.0
-  },
-  {
-   "id": 2060,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "istanbul",
-   "date": "2026-09-07",
-   "currency": "CZK",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 42.6,
-   "volume": 96.0,
-   "price": 3300.0
-  },
-  {
-   "id": 2061,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "prague",
-   "date": "2026-09-05",
-   "currency": "EUR",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 99.4,
-   "volume": 139.0,
-   "price": 17844.0
-  },
-  {
-   "id": 2062,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "berlin",
-   "date": "2026-09-01",
-   "currency": "EUR",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 135.9,
-   "volume": 50.0,
-   "price": 5330.0
-  },
-  {
-   "id": 2063,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "prague",
-   "date": "2026-10-06",
-   "currency": "CZK",
-   "company": "УкрМеталТранс",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 99.5,
-   "volume": 106.0,
-   "price": 10919.0
-  },
-  {
-   "id": 2064,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "oslo",
-   "date": "2026-11-08",
-   "currency": "RON",
-   "company": "ChemLog GmbH",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 19.2,
-   "volume": 293.0,
-   "price": 16745.0
-  },
-  {
-   "id": 2065,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "prague",
-   "date": "2026-10-28",
-   "currency": "SEK",
-   "company": "Meble-Trans",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 83.3,
-   "volume": 38.0,
-   "price": 2246.0
-  },
-  {
-   "id": 2066,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "gdansk",
-   "to": "budapest",
-   "date": "2026-10-02",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 120.4,
-   "volume": 366.0,
-   "price": 5863.0
-  },
-  {
-   "id": 2067,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "milan",
-   "date": "2026-11-21",
-   "currency": "CZK",
-   "company": "AirCargo Bavaria",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 21.9,
-   "volume": 346.0,
-   "price": 10537.0
-  },
-  {
-   "id": 2068,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "munich",
-   "date": "2026-09-20",
-   "currency": "CZK",
-   "company": "УкрМеталТранс",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 75.0,
-   "volume": 140.0,
-   "price": 14105.0
-  },
-  {
-   "id": 2069,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "istanbul",
-   "date": "2026-12-18",
-   "currency": "DKK",
-   "company": "NordTrans AG",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 116.1,
-   "volume": 57.0,
-   "price": 4182.0
-  },
-  {
-   "id": 2070,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "lviv",
-   "date": "2026-12-22",
-   "currency": "DKK",
-   "company": "Baltic Grain Co.",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 72.9,
-   "volume": 216.0,
-   "price": 8940.0
-  },
-  {
-   "id": 2071,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "tallinn",
-   "to": "vienna",
-   "date": "2026-11-04",
-   "currency": "RON",
-   "company": "AirCargo Bavaria",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 59.5,
-   "volume": 259.0,
-   "price": 10771.0
-  },
-  {
-   "id": 2072,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "oslo",
-   "date": "2026-12-07",
-   "currency": "DKK",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 71.8,
-   "volume": 226.0,
-   "price": 15893.0
-  },
-  {
-   "id": 2073,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "lisbon",
-   "date": "2026-09-20",
-   "currency": "USD",
-   "company": "Meble-Trans",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 60.7,
-   "volume": 158.0,
-   "price": 10948.0
-  },
-  {
-   "id": 2074,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "tallinn",
-   "date": "2026-11-14",
-   "currency": "RON",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 123.0,
-   "volume": 309.0,
-   "price": 16217.0
-  },
-  {
-   "id": 2075,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "munich",
-   "date": "2026-09-20",
-   "currency": "EUR",
-   "company": "Meble-Trans",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 112.1,
-   "volume": 306.0,
-   "price": 10385.0
-  },
-  {
-   "id": 2076,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "athens",
-   "date": "2026-10-07",
-   "currency": "HUF",
-   "company": "CentroRail Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 21.8,
-   "volume": 384.0,
-   "price": 3266.0
-  },
-  {
-   "id": 2077,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "krakow",
-   "date": "2026-11-20",
-   "currency": "GBP",
-   "company": "Anatolia Freight",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 30.4,
-   "volume": 350.0,
-   "price": 15038.0
-  },
-  {
-   "id": 2078,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "warsaw",
-   "date": "2026-11-14",
-   "currency": "DKK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 106.5,
-   "volume": 354.0,
-   "price": 12432.0
-  },
-  {
-   "id": 2079,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "constanta",
-   "date": "2026-12-24",
-   "currency": "SEK",
-   "company": "NordTrans AG",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 94.8,
-   "volume": 337.0,
-   "price": 17272.0
-  },
-  {
-   "id": 2080,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "vilnius",
-   "date": "2026-10-11",
-   "currency": "GBP",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 24.2,
-   "volume": 398.0,
-   "price": 1827.0
-  },
-  {
-   "id": 2081,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "dublin",
-   "date": "2026-11-27",
-   "currency": "HUF",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 73.1,
-   "volume": 330.0,
-   "price": 14659.0
-  },
-  {
-   "id": 2082,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "munich",
-   "date": "2026-12-11",
-   "currency": "EUR",
-   "company": "Baltic Grain Co.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 47.1,
-   "volume": 332.0,
-   "price": 7504.0
-  },
-  {
-   "id": 2083,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "sofia",
-   "date": "2026-11-02",
-   "currency": "PLN",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 130.6,
-   "volume": 327.0,
-   "price": 13382.0
-  },
-  {
-   "id": 2084,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "constanta",
-   "date": "2026-10-08",
-   "currency": "CZK",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 38.6,
-   "volume": 76.0,
-   "price": 6888.0
-  },
-  {
-   "id": 2085,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "kyiv",
-   "date": "2026-09-07",
-   "currency": "EUR",
-   "company": "ChemLog GmbH",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 66.8,
-   "volume": 117.0,
-   "price": 16365.0
-  },
-  {
-   "id": 2086,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "gdansk",
-   "to": "istanbul",
-   "date": "2026-10-06",
-   "currency": "SEK",
-   "company": "ChemLog GmbH",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 40.9,
-   "volume": 329.0,
-   "price": 9494.0
-  },
-  {
-   "id": 2087,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "sofia",
-   "date": "2026-10-14",
-   "currency": "USD",
-   "company": "NordTrans AG",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 134.1,
-   "volume": 50.0,
-   "price": 4956.0
-  },
-  {
-   "id": 2088,
+   "id": 101112,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
    "from": "athens",
-   "to": "lyon",
-   "date": "2026-09-05",
-   "currency": "EUR",
-   "company": "AirCargo Bavaria",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 74.5,
-   "volume": 259.0,
-   "price": 10976.0
-  },
-  {
-   "id": 2089,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "kyiv",
-   "date": "2026-10-26",
-   "currency": "GBP",
-   "company": "АгроТранс Груп",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 106.2,
-   "volume": 353.0,
-   "price": 15432.0
-  },
-  {
-   "id": 2090,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "stockholm",
-   "date": "2026-09-22",
-   "currency": "PLN",
-   "company": "CentroRail Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 65.6,
-   "volume": 302.0,
-   "price": 13295.0
-  },
-  {
-   "id": 2091,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "sofia",
-   "date": "2026-09-05",
-   "currency": "USD",
-   "company": "CentroRail Cargo",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 114.3,
-   "volume": 324.0,
-   "price": 12645.0
-  },
-  {
-   "id": 2092,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "milan",
-   "date": "2026-12-21",
-   "currency": "DKK",
-   "company": "ChemLog GmbH",
-   "cargo": "metal",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 102.3,
-   "volume": 318.0,
-   "price": 9987.0
-  },
-  {
-   "id": 2093,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "milan",
-   "date": "2026-09-26",
-   "currency": "DKK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 96.2,
-   "volume": 51.0,
-   "price": 13320.0
-  },
-  {
-   "id": 2094,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "berlin",
-   "date": "2026-09-01",
-   "currency": "UAH",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 74.6,
-   "volume": 343.0,
-   "price": 16185.0
-  },
-  {
-   "id": 2095,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "oslo",
-   "date": "2026-09-13",
-   "currency": "EUR",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 18.1,
-   "volume": 228.0,
-   "price": 2374.0
-  },
-  {
-   "id": 2096,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "helsinki",
-   "date": "2026-12-24",
-   "currency": "HUF",
-   "company": "Meble-Trans",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 121.2,
-   "volume": 287.0,
-   "price": 8128.0
-  },
-  {
-   "id": 2097,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "lisbon",
-   "date": "2026-10-12",
-   "currency": "EUR",
-   "company": "AirCargo Bavaria",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 90.8,
-   "volume": 254.0,
-   "price": 1408.0
-  },
-  {
-   "id": 2098,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "athens",
-   "date": "2026-12-08",
-   "currency": "EUR",
-   "company": "ChemLog GmbH",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 45.3,
-   "volume": 324.0,
-   "price": 11609.0
-  },
-  {
-   "id": 2099,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "helsinki",
-   "date": "2026-11-17",
-   "currency": "EUR",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "build",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 71.8,
-   "volume": 260.0,
-   "price": 11959.0
-  },
-  {
-   "id": 2100,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "prague",
-   "date": "2026-11-25",
-   "currency": "RON",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 34.8,
-   "volume": 38.0,
-   "price": 15992.0
-  },
-  {
-   "id": 2101,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "vienna",
-   "date": "2026-12-22",
-   "currency": "USD",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 13.6,
-   "volume": 87.0,
-   "price": 2784.0
-  },
-  {
-   "id": 2102,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "gdansk",
-   "date": "2026-12-11",
-   "currency": "HUF",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 68.1,
-   "volume": 242.0,
-   "price": 3920.0
-  },
-  {
-   "id": 2103,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "vienna",
-   "date": "2026-11-09",
-   "currency": "DKK",
-   "company": "Marina Freight",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 60.3,
-   "volume": 179.0,
-   "price": 11252.0
-  },
-  {
-   "id": 2104,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "rotterdam",
-   "date": "2026-10-07",
-   "currency": "GBP",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 105.0,
-   "volume": 268.0,
-   "price": 12686.0
-  },
-  {
-   "id": 2105,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "odesa",
-   "date": "2026-11-13",
-   "currency": "SEK",
-   "company": "Marina Freight",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 55.4,
-   "volume": 240.0,
-   "price": 16670.0
-  },
-  {
-   "id": 2106,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "oslo",
-   "date": "2026-10-18",
-   "currency": "SEK",
-   "company": "Baltic Grain Co.",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 28.6,
-   "volume": 83.0,
-   "price": 9783.0
-  },
-  {
-   "id": 2107,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "kyiv",
-   "date": "2026-12-12",
-   "currency": "EUR",
-   "company": "NordTrans AG",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 123.1,
-   "volume": 49.0,
-   "price": 5140.0
-  },
-  {
-   "id": 2108,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "warsaw",
-   "date": "2026-11-19",
-   "currency": "HUF",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 45.0,
-   "volume": 245.0,
-   "price": 9294.0
-  },
-  {
-   "id": 2109,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "gdansk",
-   "to": "vilnius",
-   "date": "2026-10-25",
-   "currency": "HUF",
-   "company": "Blue Line Shipping",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 134.9,
-   "volume": 121.0,
-   "price": 10496.0
-  },
-  {
-   "id": 2110,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "helsinki",
-   "date": "2026-12-06",
-   "currency": "UAH",
-   "company": "AirCargo Bavaria",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 47.7,
-   "volume": 329.0,
-   "price": 10448.0
-  },
-  {
-   "id": 2111,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "oslo",
-   "date": "2026-11-18",
-   "currency": "EUR",
-   "company": "Blue Line Shipping",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 70.4,
-   "volume": 227.0,
-   "price": 17214.0
-  },
-  {
-   "id": 2112,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "gdansk",
-   "to": "krakow",
-   "date": "2026-12-21",
-   "currency": "USD",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 66.5,
-   "volume": 79.0,
-   "price": 3737.0
-  },
-  {
-   "id": 2113,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "lviv",
-   "date": "2026-11-01",
-   "currency": "RON",
-   "company": "NordTrans AG",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 39.7,
-   "volume": 101.0,
-   "price": 16064.0
-  },
-  {
-   "id": 2114,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "vienna",
-   "date": "2026-12-11",
-   "currency": "CZK",
-   "company": "Baltic Grain Co.",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 83.5,
-   "volume": 320.0,
-   "price": 7819.0
-  },
-  {
-   "id": 2115,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "lisbon",
-   "date": "2026-10-01",
-   "currency": "PLN",
-   "company": "Marina Freight",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 14.0,
-   "volume": 305.0,
-   "price": 10208.0
-  },
-  {
-   "id": 2116,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "berlin",
-   "date": "2026-11-07",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 94.8,
-   "volume": 306.0,
-   "price": 17487.0
-  },
-  {
-   "id": 2117,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "athens",
-   "date": "2026-12-23",
-   "currency": "RON",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 26.9,
-   "volume": 85.0,
-   "price": 5041.0
-  },
-  {
-   "id": 2118,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "istanbul",
-   "date": "2026-09-15",
-   "currency": "EUR",
-   "company": "ChemLog GmbH",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 111.7,
-   "volume": 303.0,
-   "price": 6253.0
-  },
-  {
-   "id": 2119,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "gdansk",
-   "date": "2026-11-27",
-   "currency": "USD",
-   "company": "АгроТранс Груп",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 102.4,
-   "volume": 220.0,
-   "price": 6689.0
-  },
-  {
-   "id": 2120,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "gdansk",
-   "to": "vilnius",
-   "date": "2026-12-04",
-   "currency": "RON",
-   "company": "ChemLog GmbH",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 74.1,
-   "volume": 93.0,
-   "price": 2910.0
-  },
-  {
-   "id": 2121,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
    "to": "munich",
-   "date": "2026-11-11",
-   "currency": "GBP",
-   "company": "Meble-Trans",
-   "cargo": "food",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 59.5,
-   "volume": 238.0,
-   "price": 12415.0
-  },
-  {
-   "id": 2122,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "antwerp",
-   "date": "2026-12-22",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 24.2,
-   "volume": 131.0,
-   "price": 3115.0
-  },
-  {
-   "id": 2123,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "tallinn",
-   "to": "lyon",
-   "date": "2026-11-11",
-   "currency": "PLN",
-   "company": "АгроТранс Груп",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 31.0,
-   "volume": 65.0,
-   "price": 10701.0
-  },
-  {
-   "id": 2124,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "hamburg",
-   "to": "barcelona",
-   "date": "2026-10-10",
-   "currency": "GBP",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 17.0,
-   "volume": 85.0,
-   "price": 13799.0
-  },
-  {
-   "id": 2125,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "riga",
-   "date": "2026-12-26",
-   "currency": "HUF",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 137.7,
-   "volume": 266.0,
-   "price": 9172.0
-  },
-  {
-   "id": 2126,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "odesa",
-   "date": "2026-12-12",
-   "currency": "PLN",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 77.7,
-   "volume": 156.0,
-   "price": 4950.0
-  },
-  {
-   "id": 2127,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "hamburg",
-   "date": "2026-11-06",
-   "currency": "HUF",
-   "company": "Baltic Grain Co.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 98.3,
-   "volume": 142.0,
-   "price": 2158.0
-  },
-  {
-   "id": 2128,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "munich",
-   "date": "2026-10-22",
-   "currency": "USD",
-   "company": "Blue Line Shipping",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 41.7,
-   "volume": 328.0,
-   "price": 6757.0
-  },
-  {
-   "id": 2129,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "rotterdam",
-   "date": "2026-09-08",
-   "currency": "UAH",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 49.9,
-   "volume": 143.0,
-   "price": 2726.0
-  },
-  {
-   "id": 2130,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "antwerp",
-   "date": "2026-10-13",
-   "currency": "PLN",
-   "company": "Anatolia Freight",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 99.3,
-   "volume": 208.0,
-   "price": 15850.0
-  },
-  {
-   "id": 2131,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "kyiv",
-   "date": "2026-09-01",
-   "currency": "RON",
-   "company": "Blue Line Shipping",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 67.1,
-   "volume": 112.0,
-   "price": 5996.0
-  },
-  {
-   "id": 2132,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "tallinn",
-   "date": "2026-09-25",
-   "currency": "SEK",
-   "company": "УкрМеталТранс",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 32.4,
-   "volume": 384.0,
-   "price": 12770.0
-  },
-  {
-   "id": 2133,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "athens",
-   "date": "2026-12-23",
-   "currency": "PLN",
-   "company": "ChemLog GmbH",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 32.2,
-   "volume": 163.0,
-   "price": 2558.0
-  },
-  {
-   "id": 2134,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "munich",
-   "date": "2026-09-25",
-   "currency": "RON",
-   "company": "УкрМеталТранс",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 10.4,
-   "volume": 294.0,
-   "price": 16890.0
-  },
-  {
-   "id": 2135,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "prague",
-   "date": "2026-11-18",
-   "currency": "CZK",
-   "company": "Baltic Grain Co.",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 45.5,
-   "volume": 175.0,
-   "price": 16256.0
-  },
-  {
-   "id": 2136,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "helsinki",
-   "date": "2026-12-12",
-   "currency": "USD",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 135.4,
-   "volume": 151.0,
-   "price": 1365.0
-  },
-  {
-   "id": 2137,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "budapest",
-   "date": "2026-12-21",
-   "currency": "PLN",
-   "company": "Meble-Trans",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 60.4,
-   "volume": 295.0,
-   "price": 1903.0
-  },
-  {
-   "id": 2138,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "barcelona",
-   "date": "2026-11-04",
-   "currency": "HUF",
-   "company": "Marina Freight",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 81.9,
-   "volume": 238.0,
-   "price": 6328.0
-  },
-  {
-   "id": 2139,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "rotterdam",
-   "date": "2026-09-02",
-   "currency": "USD",
-   "company": "AirCargo Bavaria",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 82.3,
-   "volume": 70.0,
-   "price": 3529.0
-  },
-  {
-   "id": 2140,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "helsinki",
-   "date": "2026-12-21",
-   "currency": "CZK",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 137.4,
-   "volume": 273.0,
-   "price": 8620.0
-  },
-  {
-   "id": 2141,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "milan",
-   "date": "2026-09-08",
-   "currency": "EUR",
-   "company": "АгроТранс Груп",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 47.2,
-   "volume": 256.0,
-   "price": 8000.0
-  },
-  {
-   "id": 2142,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "barcelona",
-   "date": "2026-09-08",
-   "currency": "PLN",
-   "company": "Anatolia Freight",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 99.8,
-   "volume": 130.0,
-   "price": 10507.0
-  },
-  {
-   "id": 2143,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "milan",
-   "date": "2026-11-17",
-   "currency": "HUF",
-   "company": "АгроТранс Груп",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 38.2,
-   "volume": 381.0,
-   "price": 4719.0
-  },
-  {
-   "id": 2144,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "krakow",
-   "date": "2026-12-09",
-   "currency": "GBP",
-   "company": "Blue Line Shipping",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 132.8,
-   "volume": 251.0,
-   "price": 4537.0
-  },
-  {
-   "id": 2145,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
-   "to": "milan",
-   "date": "2026-11-07",
-   "currency": "USD",
-   "company": "Baltic Grain Co.",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 27.1,
-   "volume": 125.0,
-   "price": 9023.0
-  },
-  {
-   "id": 2146,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "lyon",
-   "date": "2026-09-09",
-   "currency": "SEK",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 74.0,
-   "volume": 139.0,
-   "price": 11741.0
-  },
-  {
-   "id": 2147,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "rotterdam",
-   "date": "2026-11-11",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 87.1,
-   "volume": 125.0,
-   "price": 7711.0
-  },
-  {
-   "id": 2148,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "helsinki",
-   "date": "2026-11-07",
-   "currency": "DKK",
-   "company": "Meble-Trans",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 80.6,
-   "volume": 374.0,
-   "price": 4971.0
-  },
-  {
-   "id": 2149,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "munich",
-   "date": "2026-09-01",
-   "currency": "HUF",
-   "company": "УкрМеталТранс",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 46.4,
-   "volume": 367.0,
-   "price": 14978.0
-  },
-  {
-   "id": 2150,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "odesa",
-   "date": "2026-11-14",
-   "currency": "USD",
-   "company": "NordTrans AG",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 34.7,
-   "volume": 270.0,
-   "price": 5116.0
-  },
-  {
-   "id": 2151,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "milan",
-   "date": "2026-11-10",
-   "currency": "GBP",
-   "company": "ChemLog GmbH",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 37.6,
-   "volume": 37.0,
-   "price": 9742.0
-  },
-  {
-   "id": 2152,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "warsaw",
-   "date": "2026-11-24",
-   "currency": "UAH",
-   "company": "NordTrans AG",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 14.9,
-   "volume": 220.0,
-   "price": 14302.0
-  },
-  {
-   "id": 2153,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "warsaw",
-   "date": "2026-11-08",
-   "currency": "CZK",
-   "company": "AirCargo Bavaria",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 11.6,
-   "volume": 362.0,
-   "price": 10980.0
-  },
-  {
-   "id": 2154,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "hamburg",
-   "date": "2026-10-08",
-   "currency": "DKK",
-   "company": "AirCargo Bavaria",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 79.4,
-   "volume": 328.0,
-   "price": 4322.0
-  },
-  {
-   "id": 2155,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "athens",
-   "to": "antwerp",
-   "date": "2026-09-08",
-   "currency": "CZK",
-   "company": "Marina Freight",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 19.3,
-   "volume": 91.0,
-   "price": 9199.0
-  },
-  {
-   "id": 2156,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "riga",
-   "date": "2026-11-23",
-   "currency": "DKK",
-   "company": "ChemLog GmbH",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 122.2,
-   "volume": 105.0,
-   "price": 7046.0
-  },
-  {
-   "id": 2157,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "riga",
-   "date": "2026-10-21",
-   "currency": "GBP",
-   "company": "Marina Freight",
-   "cargo": "agro",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 131.6,
-   "volume": 130.0,
-   "price": 7266.0
-  },
-  {
-   "id": 2158,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "tallinn",
-   "date": "2026-11-06",
-   "currency": "GBP",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 35.0,
-   "volume": 384.0,
-   "price": 5499.0
-  },
-  {
-   "id": 2159,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "sofia",
-   "date": "2026-10-15",
-   "currency": "USD",
-   "company": "Meble-Trans",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 45.5,
-   "volume": 117.0,
-   "price": 14211.0
-  },
-  {
-   "id": 2160,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "constanta",
-   "date": "2026-09-15",
-   "currency": "DKK",
-   "company": "Blue Line Shipping",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 103.1,
-   "volume": 209.0,
-   "price": 8222.0
-  },
-  {
-   "id": 2161,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "stockholm",
-   "date": "2026-12-05",
-   "currency": "GBP",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "electro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 60.3,
-   "volume": 119.0,
-   "price": 5565.0
-  },
-  {
-   "id": 2162,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "oslo",
-   "date": "2026-10-02",
-   "currency": "PLN",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 61.0,
-   "volume": 306.0,
-   "price": 7419.0
-  },
-  {
-   "id": 2163,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "oslo",
-   "date": "2026-09-01",
-   "currency": "RON",
-   "company": "ChemLog GmbH",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 15.5,
-   "volume": 231.0,
-   "price": 12865.0
-  },
-  {
-   "id": 2164,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "krakow",
-   "to": "milan",
-   "date": "2026-09-24",
-   "currency": "HUF",
-   "company": "NordTrans AG",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 82.0,
-   "volume": 184.0,
-   "price": 4043.0
-  },
-  {
-   "id": 2165,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "helsinki",
-   "date": "2026-11-24",
-   "currency": "PLN",
-   "company": "Blue Line Shipping",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 119.1,
-   "volume": 388.0,
-   "price": 16575.0
-  },
-  {
-   "id": 2166,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "milan",
-   "date": "2026-10-28",
-   "currency": "HUF",
-   "company": "УкрМеталТранс",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 51.6,
-   "volume": 201.0,
-   "price": 17767.0
-  },
-  {
-   "id": 2167,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "constanta",
-   "date": "2026-10-27",
-   "currency": "GBP",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 63.0,
-   "volume": 190.0,
-   "price": 3206.0
-  },
-  {
-   "id": 2168,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "hamburg",
-   "date": "2026-10-13",
-   "currency": "PLN",
-   "company": "CentroRail Cargo",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 34.5,
-   "volume": 108.0,
-   "price": 3784.0
-  },
-  {
-   "id": 2169,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "rotterdam",
-   "date": "2026-10-06",
-   "currency": "PLN",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 22.1,
-   "volume": 307.0,
-   "price": 11489.0
-  },
-  {
-   "id": 2170,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "athens",
-   "date": "2026-09-06",
-   "currency": "CZK",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "chem",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 31.0,
-   "volume": 338.0,
-   "price": 16419.0
-  },
-  {
-   "id": 2171,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "stockholm",
-   "date": "2026-12-25",
-   "currency": "EUR",
-   "company": "AirCargo Bavaria",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 31.0,
-   "volume": 349.0,
-   "price": 13866.0
-  },
-  {
-   "id": 2172,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "sofia",
-   "date": "2026-09-25",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 106.6,
-   "volume": 117.0,
-   "price": 11068.0
-  },
-  {
-   "id": 2173,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "vilnius",
-   "date": "2026-10-03",
-   "currency": "HUF",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 29.8,
-   "volume": 375.0,
-   "price": 9935.0
-  },
-  {
-   "id": 2174,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vienna",
-   "to": "athens",
    "date": "2026-09-10",
-   "currency": "SEK",
-   "company": "Meble-Trans",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 19.1,
-   "volume": 48.0,
-   "price": 9643.0
-  },
-  {
-   "id": 2175,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "gdansk",
-   "date": "2026-10-19",
-   "currency": "UAH",
-   "company": "AirCargo Bavaria",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 115.0,
-   "volume": 370.0,
-   "price": 1060.0
-  },
-  {
-   "id": 2176,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "hamburg",
-   "to": "rotterdam",
-   "date": "2026-11-04",
-   "currency": "GBP",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "build",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 50.0,
-   "volume": 103.0,
-   "price": 9297.0
-  },
-  {
-   "id": 2177,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "athens",
-   "to": "istanbul",
-   "date": "2026-11-25",
-   "currency": "HUF",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 136.0,
-   "volume": 131.0,
-   "price": 16602.0
-  },
-  {
-   "id": 2178,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lisbon",
-   "to": "stockholm",
-   "date": "2026-09-06",
-   "currency": "CZK",
-   "company": "Blue Line Shipping",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 77.5,
-   "volume": 244.0,
-   "price": 17632.0
-  },
-  {
-   "id": 2179,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "lyon",
-   "date": "2026-11-18",
-   "currency": "SEK",
-   "company": "Blue Line Shipping",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 48.6,
-   "volume": 182.0,
-   "price": 17908.0
-  },
-  {
-   "id": 2180,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "odesa",
-   "date": "2026-12-02",
-   "currency": "SEK",
-   "company": "Baltic Grain Co.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 65.6,
-   "volume": 214.0,
-   "price": 9864.0
-  },
-  {
-   "id": 2181,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "lviv",
-   "date": "2026-09-19",
-   "currency": "CZK",
-   "company": "Marina Freight",
    "cargo": "food",
+   "weight": 16.2,
+   "volume": 323.0,
+   "price": 11640.0,
+   "currency": "NOK",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101113,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "madrid",
+   "date": "2026-09-17",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 79.4,
-   "volume": 342.0,
-   "price": 12459.0
-  },
-  {
-   "id": 2182,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "athens",
-   "to": "helsinki",
-   "date": "2026-09-25",
-   "currency": "GBP",
-   "company": "AirCargo Bavaria",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 94.8,
-   "volume": 368.0,
-   "price": 1239.0
-  },
-  {
-   "id": 2183,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "stockholm",
-   "date": "2026-10-28",
-   "currency": "SEK",
-   "company": "УкрМеталТранс",
-   "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 50.6,
-   "volume": 175.0,
-   "price": 6023.0
-  },
-  {
-   "id": 2184,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "istanbul",
-   "date": "2026-11-25",
-   "currency": "RON",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 91.5,
-   "volume": 249.0,
-   "price": 14201.0
-  },
-  {
-   "id": 2185,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "rotterdam",
-   "date": "2026-09-09",
-   "currency": "USD",
-   "company": "Anatolia Freight",
-   "cargo": "food",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 35.3,
-   "volume": 196.0,
-   "price": 10074.0
-  },
-  {
-   "id": 2186,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "sofia",
-   "date": "2026-10-01",
-   "currency": "RON",
-   "company": "CentroRail Cargo",
-   "cargo": "build",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 132.1,
-   "volume": 336.0,
-   "price": 11556.0
-  },
-  {
-   "id": 2187,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "oslo",
-   "date": "2026-10-26",
-   "currency": "EUR",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 28.0,
-   "volume": 360.0,
-   "price": 7540.0
-  },
-  {
-   "id": 2188,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "helsinki",
-   "to": "barcelona",
-   "date": "2026-12-03",
-   "currency": "HUF",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 102.8,
-   "volume": 366.0,
-   "price": 10856.0
-  },
-  {
-   "id": 2189,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "lviv",
-   "date": "2026-12-11",
-   "currency": "GBP",
-   "company": "ChemLog GmbH",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 78.8,
-   "volume": 192.0,
-   "price": 17310.0
-  },
-  {
-   "id": 2190,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "oslo",
-   "date": "2026-11-16",
-   "currency": "SEK",
-   "company": "Meble-Trans",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 80.0,
-   "volume": 318.0,
-   "price": 17948.0
-  },
-  {
-   "id": 2191,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "kyiv",
-   "to": "budapest",
-   "date": "2026-11-04",
-   "currency": "GBP",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 103.6,
-   "volume": 277.0,
-   "price": 3241.0
-  },
-  {
-   "id": 2192,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "dublin",
-   "date": "2026-12-18",
-   "currency": "UAH",
-   "company": "АгроТранс Груп",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 43.6,
-   "volume": 325.0,
-   "price": 9415.0
-  },
-  {
-   "id": 2193,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "prague",
-   "to": "budapest",
-   "date": "2026-10-19",
-   "currency": "GBP",
-   "company": "Baltic Grain Co.",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 137.6,
-   "volume": 43.0,
-   "price": 2905.0
-  },
-  {
-   "id": 2194,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "riga",
-   "date": "2026-10-27",
-   "currency": "UAH",
-   "company": "Baltic Grain Co.",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 86.7,
-   "volume": 85.0,
-   "price": 5949.0
-  },
-  {
-   "id": 2195,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "rotterdam",
-   "to": "hamburg",
-   "date": "2026-10-20",
-   "currency": "RON",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "agro",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 39.1,
-   "volume": 271.0,
-   "price": 3509.0
-  },
-  {
-   "id": 2196,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "vienna",
-   "date": "2026-09-12",
-   "currency": "UAH",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 36.7,
-   "volume": 72.0,
-   "price": 4473.0
-  },
-  {
-   "id": 2197,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "berlin",
-   "date": "2026-12-20",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "food",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 92.7,
-   "volume": 368.0,
-   "price": 14847.0
-  },
-  {
-   "id": 2198,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "athens",
-   "to": "stockholm",
-   "date": "2026-11-08",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 34.0,
-   "volume": 118.0,
-   "price": 3199.0
-  },
-  {
-   "id": 2199,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "sofia",
-   "date": "2026-10-27",
-   "currency": "HUF",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 37.6,
-   "volume": 201.0,
-   "price": 8989.0
-  },
-  {
-   "id": 2200,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "odesa",
-   "date": "2026-12-22",
-   "currency": "HUF",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 131.0,
-   "volume": 262.0,
-   "price": 1205.0
-  },
-  {
-   "id": 2201,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "hamburg",
-   "to": "warsaw",
-   "date": "2026-09-01",
-   "currency": "RON",
-   "company": "УкрМеталТранс",
-   "cargo": "food",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 109.5,
-   "volume": 358.0,
-   "price": 2972.0
-  },
-  {
-   "id": 2202,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "vilnius",
-   "date": "2026-12-12",
-   "currency": "PLN",
-   "company": "FastRoad Sp. z o.o.",
    "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 37.1,
-   "volume": 354.0,
-   "price": 1881.0
+   "weight": 91.7,
+   "volume": 369.0,
+   "price": 9614.0,
+   "currency": "TRY",
+   "company": "Adria Spedition d.o.o."
   },
   {
-   "id": 2203,
+   "id": 101114,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
-   "from": "kyiv",
-   "to": "tallinn",
-   "date": "2026-12-26",
-   "currency": "SEK",
-   "company": "ChemLog GmbH",
-   "cargo": "build",
+   "from": "vienna",
+   "to": "helsinki",
+   "date": "2026-09-27",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 124.1,
-   "volume": 195.0,
-   "price": 6478.0
+   "cargo": "build",
+   "weight": 86.8,
+   "volume": 351.0,
+   "price": 13530.0,
+   "currency": "PLN",
+   "company": "NordTrans AG"
   },
   {
-   "id": 2204,
+   "id": 101115,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "lviv",
-   "to": "hamburg",
-   "date": "2026-10-03",
-   "currency": "DKK",
-   "company": "УкрМеталТранс",
+   "from": "warsaw",
+   "to": "zurich",
+   "date": "2026-12-16",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 108.3,
+   "volume": 137.0,
+   "price": 16837.0,
+   "currency": "PLN",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101116,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "lyon",
+   "date": "2026-11-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 98.7,
+   "volume": 143.0,
+   "price": 8500.0,
+   "currency": "EUR",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101117,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "lisbon",
+   "date": "2026-11-20",
+   "components": [
+    "sea",
+    "auto"
+   ],
    "cargo": "textile",
+   "weight": 29.6,
+   "volume": 108.0,
+   "price": 10830.0,
+   "currency": "CZK",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101118,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "valencia",
+   "to": "munich",
+   "date": "2026-09-22",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 88.4,
+   "volume": 40.0,
+   "price": 8322.0,
+   "currency": "SEK",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101119,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "munich",
+   "to": "riga",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 81.3,
+   "volume": 129.0,
+   "price": 6566.0,
+   "currency": "TRY",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101120,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "stockholm",
+   "date": "2026-11-23",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 71.2,
+   "volume": 331.0,
+   "price": 1848.0,
+   "currency": "EUR",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101121,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "oslo",
+   "date": "2026-12-22",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 94.8,
+   "volume": 387.0,
+   "price": 12912.0,
+   "currency": "UAH",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101122,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "lisbon",
+   "date": "2026-09-06",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 89.4,
-   "volume": 317.0,
-   "price": 3203.0
+   "cargo": "food",
+   "weight": 36.6,
+   "volume": 83.0,
+   "price": 8472.0,
+   "currency": "UAH",
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2205,
+   "id": 101123,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
-   "from": "berlin",
-   "to": "barcelona",
-   "date": "2026-10-15",
-   "currency": "RON",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "docs",
+   "from": "antwerp",
+   "to": "madrid",
+   "date": "2026-10-20",
    "components": [
     "rail",
     "auto"
    ],
-   "weight": 90.2,
-   "volume": 96.0,
-   "price": 3890.0
+   "cargo": "electro",
+   "weight": 97.1,
+   "volume": 233.0,
+   "price": 1183.0,
+   "currency": "RON",
+   "company": "NordTrans AG"
   },
   {
-   "id": 2206,
+   "id": 101124,
    "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "piraeus",
+   "date": "2026-10-06",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 76.8,
+   "volume": 234.0,
+   "price": 9219.0,
+   "currency": "SEK",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101125,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "athens",
+   "to": "istanbul",
+   "date": "2026-10-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 27.4,
+   "volume": 101.0,
+   "price": 8531.0,
+   "currency": "DKK",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101126,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "copenhagen",
+   "to": "munich",
+   "date": "2026-09-08",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 111.5,
+   "volume": 60.0,
+   "price": 5794.0,
+   "currency": "BGN",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101127,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "genoa",
+   "date": "2026-09-20",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 61.2,
+   "volume": 156.0,
+   "price": 16767.0,
+   "currency": "HUF",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101128,
+   "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "lyon",
-   "to": "lviv",
-   "date": "2026-10-09",
-   "currency": "PLN",
-   "company": "Marina Freight",
-   "cargo": "build",
+   "to": "helsinki",
+   "date": "2026-09-01",
    "components": [
     "air",
-    "auto"
+    "rail"
    ],
-   "weight": 36.6,
-   "volume": 228.0,
-   "price": 17797.0
+   "cargo": "agro",
+   "weight": 48.7,
+   "volume": 373.0,
+   "price": 16403.0,
+   "currency": "UAH",
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2207,
+   "id": 101129,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "budapest",
-   "to": "sofia",
-   "date": "2026-10-23",
-   "currency": "HUF",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 20.8,
-   "volume": 242.0,
-   "price": 10384.0
-  },
-  {
-   "id": 2208,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lisbon",
-   "to": "rotterdam",
-   "date": "2026-12-23",
-   "currency": "CZK",
-   "company": "AirCargo Bavaria",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 61.1,
-   "volume": 67.0,
-   "price": 15529.0
-  },
-  {
-   "id": 2209,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "gdansk",
-   "date": "2026-11-24",
-   "currency": "CZK",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 127.3,
-   "volume": 229.0,
-   "price": 13661.0
-  },
-  {
-   "id": 2210,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "dublin",
-   "to": "istanbul",
-   "date": "2026-12-03",
-   "currency": "SEK",
-   "company": "CentroRail Cargo",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 20.2,
-   "volume": 182.0,
-   "price": 8519.0
-  },
-  {
-   "id": 2211,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "constanta",
+   "from": "zurich",
    "to": "riga",
    "date": "2026-09-21",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 25.9,
+   "volume": 352.0,
+   "price": 15900.0,
    "currency": "SEK",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "furn",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 66.3,
-   "volume": 345.0,
-   "price": 7978.0
+   "company": "Marina Freight"
   },
   {
-   "id": 2212,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "athens",
-   "to": "milan",
-   "date": "2026-12-28",
-   "currency": "RON",
-   "company": "FastRoad Sp. z o.o.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 99.8,
-   "volume": 63.0,
-   "price": 5300.0
-  },
-  {
-   "id": 2213,
+   "id": 101130,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
-   "from": "sofia",
-   "to": "antwerp",
-   "date": "2026-12-01",
-   "currency": "EUR",
-   "company": "УкрМеталТранс",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 126.6,
-   "volume": 143.0,
-   "price": 6179.0
-  },
-  {
-   "id": 2214,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "budapest",
-   "date": "2026-12-03",
-   "currency": "GBP",
-   "company": "Baltic Grain Co.",
-   "cargo": "chem",
+   "from": "budapest",
+   "to": "frankfurt",
+   "date": "2026-10-23",
    "components": [
     "air",
     "auto"
    ],
-   "weight": 122.4,
-   "volume": 396.0,
-   "price": 12005.0
-  },
-  {
-   "id": 2215,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "lisbon",
-   "date": "2026-12-08",
+   "cargo": "food",
+   "weight": 105.8,
+   "volume": 343.0,
+   "price": 12784.0,
    "currency": "DKK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 28.4,
-   "volume": 168.0,
-   "price": 15169.0
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2216,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "barcelona",
-   "to": "berlin",
-   "date": "2026-09-14",
-   "currency": "DKK",
-   "company": "CentroRail Cargo",
-   "cargo": "electro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 61.1,
-   "volume": 350.0,
-   "price": 7056.0
-  },
-  {
-   "id": 2217,
+   "id": 101131,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
    "from": "milan",
-   "to": "munich",
-   "date": "2026-11-04",
-   "currency": "RON",
-   "company": "NordTrans AG",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 110.7,
-   "volume": 71.0,
-   "price": 11842.0
-  },
-  {
-   "id": 2218,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "rotterdam",
-   "date": "2026-11-21",
-   "currency": "GBP",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 90.6,
-   "volume": 266.0,
-   "price": 17378.0
-  },
-  {
-   "id": 2219,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "rotterdam",
-   "date": "2026-09-25",
-   "currency": "HUF",
-   "company": "Anatolia Freight",
-   "cargo": "chem",
+   "to": "madrid",
+   "date": "2026-10-04",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 43.0,
-   "volume": 70.0,
-   "price": 2869.0
+   "cargo": "agro",
+   "weight": 124.6,
+   "volume": 138.0,
+   "price": 10527.0,
+   "currency": "EUR",
+   "company": "Baltic Grain Co."
   },
   {
-   "id": 2220,
+   "id": 101132,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "prague",
-   "to": "stockholm",
+   "from": "lviv",
+   "to": "belgrade",
+   "date": "2026-09-19",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 53.9,
+   "volume": 185.0,
+   "price": 15552.0,
+   "currency": "EURC",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101133,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "dublin",
    "date": "2026-10-16",
-   "currency": "SEK",
-   "company": "Blue Line Shipping",
-   "cargo": "chem",
    "components": [
     "air",
-    "rail"
-   ],
-   "weight": 42.3,
-   "volume": 142.0,
-   "price": 14087.0
-  },
-  {
-   "id": 2221,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "stockholm",
-   "to": "tallinn",
-   "date": "2026-09-28",
-   "currency": "CZK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 118.0,
-   "volume": 107.0,
-   "price": 2992.0
-  },
-  {
-   "id": 2222,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "vilnius",
-   "date": "2026-11-09",
-   "currency": "SEK",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "rail",
     "auto"
    ],
-   "weight": 110.4,
-   "volume": 389.0,
-   "price": 11089.0
+   "cargo": "electro",
+   "weight": 29.6,
+   "volume": 235.0,
+   "price": 5754.0,
+   "currency": "BGN",
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2223,
+   "id": 101134,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
-   "from": "oslo",
-   "to": "berlin",
-   "date": "2026-09-10",
-   "currency": "GBP",
-   "company": "ChemLog GmbH",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 49.2,
-   "volume": 179.0,
-   "price": 17166.0
-  },
-  {
-   "id": 2224,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "athens",
+   "from": "london",
+   "to": "oslo",
    "date": "2026-12-06",
-   "currency": "UAH",
-   "company": "NordTrans AG",
-   "cargo": "agro",
    "components": [
-    "air",
-    "auto"
+    "auto",
+    "rail"
    ],
-   "weight": 13.8,
-   "volume": 105.0,
-   "price": 10043.0
+   "cargo": "food",
+   "weight": 108.3,
+   "volume": 399.0,
+   "price": 8392.0,
+   "currency": "EURC",
+   "company": "Rhein Спедиція ТзОВ"
   },
   {
-   "id": 2225,
+   "id": 101135,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "gdansk",
-   "to": "hamburg",
+   "to": "budapest",
    "date": "2026-09-01",
-   "currency": "USD",
-   "company": "Meble-Trans",
-   "cargo": "food",
    "components": [
     "sea",
     "rail"
    ],
-   "weight": 83.2,
-   "volume": 160.0,
-   "price": 3422.0
+   "cargo": "chem",
+   "weight": 14.9,
+   "volume": 394.0,
+   "price": 8151.0,
+   "currency": "USD",
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2226,
+   "id": 101136,
    "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "riga",
+   "to": "berlin",
+   "date": "2026-11-28",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 59.2,
+   "volume": 352.0,
+   "price": 17681.0,
+   "currency": "CZK",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101137,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "stockholm",
+   "to": "lyon",
+   "date": "2026-12-21",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 115.9,
+   "volume": 120.0,
+   "price": 12027.0,
+   "currency": "RON",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101138,
+   "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "dublin",
-   "to": "hamburg",
-   "date": "2026-10-02",
-   "currency": "PLN",
-   "company": "ТзОВ «Карпат-Логістика»",
-   "cargo": "agro",
+   "to": "tallinn",
+   "date": "2026-09-12",
    "components": [
     "sea",
-    "rail",
     "auto"
    ],
-   "weight": 79.5,
-   "volume": 345.0,
-   "price": 10937.0
+   "cargo": "electro",
+   "weight": 113.3,
+   "volume": 206.0,
+   "price": 13436.0,
+   "currency": "NOK",
+   "company": "ChemLog GmbH"
   },
   {
-   "id": 2227,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lyon",
-   "to": "lisbon",
-   "date": "2026-12-24",
-   "currency": "RON",
-   "company": "Blue Line Shipping",
-   "cargo": "furn",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 84.1,
-   "volume": 346.0,
-   "price": 4728.0
-  },
-  {
-   "id": 2228,
+   "id": 101139,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "athens",
-   "to": "budapest",
-   "date": "2026-10-16",
-   "currency": "GBP",
-   "company": "AirCargo Bavaria",
-   "cargo": "metal",
+   "from": "valencia",
+   "to": "lyon",
+   "date": "2026-10-19",
    "components": [
-    "air",
+    "sea",
     "auto"
    ],
-   "weight": 134.5,
-   "volume": 340.0,
-   "price": 6312.0
-  },
-  {
-   "id": 2229,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "hamburg",
-   "to": "athens",
-   "date": "2026-11-19",
-   "currency": "UAH",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 135.5,
-   "volume": 240.0,
-   "price": 1870.0
-  },
-  {
-   "id": 2230,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "berlin",
-   "to": "athens",
-   "date": "2026-11-19",
-   "currency": "UAH",
-   "company": "AirCargo Bavaria",
    "cargo": "build",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 52.6,
-   "volume": 140.0,
-   "price": 2723.0
+   "weight": 82.4,
+   "volume": 90.0,
+   "price": 1248.0,
+   "currency": "PLN",
+   "company": "Blue Line Shipping"
   },
   {
-   "id": 2231,
+   "id": 101140,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "krakow",
+   "from": "sofia",
+   "to": "milan",
+   "date": "2026-09-11",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 134.0,
+   "volume": 382.0,
+   "price": 14890.0,
+   "currency": "MDL",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101141,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "madrid",
    "to": "lisbon",
-   "date": "2026-09-22",
-   "currency": "EUR",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "electro",
+   "date": "2026-11-18",
    "components": [
-    "air",
+    "sea",
     "auto"
    ],
-   "weight": 126.6,
-   "volume": 51.0,
-   "price": 3712.0
-  },
-  {
-   "id": 2232,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "milan",
-   "to": "munich",
-   "date": "2026-11-03",
+   "cargo": "food",
+   "weight": 139.6,
+   "volume": 205.0,
+   "price": 4363.0,
    "currency": "HUF",
-   "company": "NordTrans AG",
-   "cargo": "textile",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 136.4,
-   "volume": 290.0,
-   "price": 6556.0
+   "company": "Adria Spedition d.o.o."
   },
   {
-   "id": 2233,
-   "kind": "cargo",
+   "id": 101142,
+   "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
-   "from": "lyon",
+   "from": "budapest",
+   "to": "lyon",
+   "date": "2026-09-01",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 75.3,
+   "volume": 276.0,
+   "price": 9506.0,
+   "currency": "HUF",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101143,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "valencia",
    "to": "athens",
-   "date": "2026-09-02",
-   "currency": "HUF",
-   "company": "Marina Freight",
-   "cargo": "electro",
+   "date": "2026-10-27",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 128.1,
+   "volume": 253.0,
+   "price": 7876.0,
+   "currency": "CZK",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101144,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "amsterdam",
+   "date": "2026-09-06",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 88.4,
+   "volume": 127.0,
+   "price": 4195.0,
+   "currency": "EUR",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101145,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "gothenburg",
+   "date": "2026-09-03",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 81.1,
+   "volume": 268.0,
+   "price": 3834.0,
+   "currency": "PLN",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101146,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "piraeus",
+   "date": "2026-10-12",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 71.0,
+   "volume": 174.0,
+   "price": 2516.0,
+   "currency": "PLN",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101147,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "antwerp",
+   "date": "2026-10-09",
    "components": [
     "air",
     "rail"
    ],
-   "weight": 108.0,
-   "volume": 348.0,
-   "price": 3744.0
+   "cargo": "chem",
+   "weight": 59.3,
+   "volume": 225.0,
+   "price": 5778.0,
+   "currency": "TRY",
+   "company": "Sarmatia Логістика s.r.o."
   },
   {
-   "id": 2234,
+   "id": 101148,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "odesa",
-   "to": "prague",
-   "date": "2026-09-28",
+   "to": "sofia",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 68.1,
+   "volume": 113.0,
+   "price": 5429.0,
+   "currency": "DKK",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101149,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "chisinau",
+   "date": "2026-09-08",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 45.9,
+   "volume": 363.0,
+   "price": 2607.0,
    "currency": "SEK",
-   "company": "Anatolia Freight",
-   "cargo": "food",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101150,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "london",
+   "to": "berlin",
+   "date": "2026-11-18",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
-   "weight": 118.6,
-   "volume": 185.0,
-   "price": 5776.0
+   "cargo": "furn",
+   "weight": 30.4,
+   "volume": 140.0,
+   "price": 7352.0,
+   "currency": "CZK",
+   "company": "Adria Spedition d.o.o."
   },
   {
-   "id": 2235,
+   "id": 101151,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "antwerp",
+   "to": "helsinki",
+   "date": "2026-12-25",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 125.2,
+   "volume": 70.0,
+   "price": 7146.0,
+   "currency": "DKK",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101152,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "barcelona",
+   "date": "2026-10-07",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 108.9,
+   "volume": 52.0,
+   "price": 12195.0,
+   "currency": "USD",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101153,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "stockholm",
+   "date": "2026-09-12",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 96.8,
+   "volume": 301.0,
+   "price": 3496.0,
+   "currency": "HUF",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101154,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "munich",
+   "date": "2026-12-19",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 117.3,
+   "volume": 153.0,
+   "price": 7646.0,
+   "currency": "GBP",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101155,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "odesa",
+   "date": "2026-10-20",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 77.8,
+   "volume": 251.0,
+   "price": 12009.0,
+   "currency": "BGN",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101156,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "chisinau",
+   "date": "2026-10-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 122.1,
+   "volume": 143.0,
+   "price": 14638.0,
+   "currency": "TRY",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101157,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "sofia",
+   "to": "krakow",
+   "date": "2026-12-06",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 55.6,
+   "volume": 340.0,
+   "price": 11967.0,
+   "currency": "HUF",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101158,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "warsaw",
+   "to": "munich",
+   "date": "2026-12-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 129.1,
+   "volume": 206.0,
+   "price": 11937.0,
+   "currency": "EUR",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101159,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "warsaw",
+   "to": "krakow",
+   "date": "2026-10-24",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 66.6,
+   "volume": 31.0,
+   "price": 2452.0,
+   "currency": "EUR",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101160,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "athens",
+   "to": "rotterdam",
+   "date": "2026-09-27",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 82.0,
+   "volume": 376.0,
+   "price": 2840.0,
+   "currency": "PLN",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101161,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "athens",
+   "to": "tallinn",
+   "date": "2026-09-11",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 94.3,
+   "volume": 388.0,
+   "price": 7144.0,
+   "currency": "EUR",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101162,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "madrid",
+   "to": "frankfurt",
+   "date": "2026-10-08",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 73.4,
+   "volume": 153.0,
+   "price": 10040.0,
+   "currency": "RSD",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101163,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "stockholm",
+   "to": "madrid",
+   "date": "2026-11-10",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 96.9,
+   "volume": 301.0,
+   "price": 4029.0,
+   "currency": "MDL",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101164,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gdansk",
+   "to": "belgrade",
+   "date": "2026-12-07",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 28.8,
+   "volume": 225.0,
+   "price": 10216.0,
+   "currency": "SEK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101165,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "istanbul",
+   "to": "dublin",
+   "date": "2026-10-15",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 24.9,
+   "volume": 238.0,
+   "price": 8742.0,
+   "currency": "EUR",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101166,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "sofia",
+   "date": "2026-10-06",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 93.0,
+   "volume": 194.0,
+   "price": 9411.0,
+   "currency": "HUF",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101167,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "istanbul",
+   "to": "hamburg",
+   "date": "2026-12-28",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 80.3,
+   "volume": 284.0,
+   "price": 7622.0,
+   "currency": "EUR",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101168,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "dublin",
+   "date": "2026-12-12",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 38.9,
+   "volume": 48.0,
+   "price": 9100.0,
+   "currency": "NOK",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101169,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "munich",
+   "to": "genoa",
+   "date": "2026-09-05",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 124.5,
+   "volume": 349.0,
+   "price": 2459.0,
+   "currency": "TRY",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101170,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "warsaw",
+   "to": "sofia",
+   "date": "2026-11-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 15.4,
+   "volume": 333.0,
+   "price": 11111.0,
+   "currency": "TRY",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101171,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "barcelona",
+   "date": "2026-10-23",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 87.4,
+   "volume": 137.0,
+   "price": 15383.0,
+   "currency": "DKK",
+   "company": "АгроТранс Груп"
+  },
+  {
+   "id": 101172,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "oslo",
+   "to": "frankfurt",
+   "date": "2026-09-20",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 25.9,
+   "volume": 149.0,
+   "price": 10014.0,
+   "currency": "NOK",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101173,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "athens",
+   "date": "2026-09-13",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 44.1,
+   "volume": 275.0,
+   "price": 5916.0,
+   "currency": "USD",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101174,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "frankfurt",
+   "date": "2026-11-24",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 19.7,
+   "volume": 352.0,
+   "price": 11677.0,
+   "currency": "EUR",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101175,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "lviv",
+   "date": "2026-10-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 88.5,
+   "volume": 273.0,
+   "price": 1495.0,
+   "currency": "DKK",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101176,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gdansk",
+   "to": "amsterdam",
+   "date": "2026-09-25",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 139.4,
+   "volume": 380.0,
+   "price": 1021.0,
+   "currency": "EUR",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101177,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "frankfurt",
+   "date": "2026-12-21",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 55.8,
+   "volume": 97.0,
+   "price": 2075.0,
+   "currency": "PLN",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101178,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "milan",
+   "date": "2026-10-20",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 31.6,
+   "volume": 151.0,
+   "price": 6673.0,
+   "currency": "CZK",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101179,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "lyon",
+   "date": "2026-09-18",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 49.6,
+   "volume": 398.0,
+   "price": 13488.0,
+   "currency": "EURC",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101180,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "piraeus",
+   "to": "belgrade",
+   "date": "2026-10-02",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 13.0,
+   "volume": 284.0,
+   "price": 1999.0,
+   "currency": "EUR",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101181,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "oslo",
+   "date": "2026-09-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 134.6,
+   "volume": 106.0,
+   "price": 7703.0,
+   "currency": "EUR",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101182,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "london",
+   "date": "2026-11-10",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 90.0,
+   "volume": 292.0,
+   "price": 12069.0,
+   "currency": "HUF",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101183,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "paris",
+   "date": "2026-11-24",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 35.4,
+   "volume": 288.0,
+   "price": 6550.0,
+   "currency": "CZK",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101184,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "constanta",
+   "date": "2026-11-04",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 42.3,
+   "volume": 216.0,
+   "price": 5781.0,
+   "currency": "PLN",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101185,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "copenhagen",
+   "date": "2026-11-11",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 118.8,
+   "volume": 59.0,
+   "price": 14651.0,
+   "currency": "RSD",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101186,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "budapest",
+   "to": "copenhagen",
+   "date": "2026-12-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 62.0,
+   "volume": 295.0,
+   "price": 2821.0,
+   "currency": "EUR",
+   "company": "АгроТранс Груп"
+  },
+  {
+   "id": 101187,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "prague",
+   "date": "2026-12-22",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 103.3,
+   "volume": 128.0,
+   "price": 14283.0,
+   "currency": "CZK",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101188,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "lviv",
+   "date": "2026-09-28",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 81.8,
+   "volume": 76.0,
+   "price": 2349.0,
+   "currency": "CZK",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101189,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "munich",
+   "to": "gdansk",
+   "date": "2026-09-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 83.8,
+   "volume": 133.0,
+   "price": 7222.0,
+   "currency": "UAH",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101190,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "paris",
+   "date": "2026-09-14",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 82.8,
+   "volume": 182.0,
+   "price": 13615.0,
+   "currency": "PLN",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101191,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "zurich",
+   "date": "2026-11-21",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 118.4,
+   "volume": 49.0,
+   "price": 3399.0,
+   "currency": "EUR",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101192,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "oslo",
+   "to": "tallinn",
+   "date": "2026-12-23",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 79.7,
+   "volume": 181.0,
+   "price": 16014.0,
+   "currency": "DKK",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101193,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "berlin",
+   "date": "2026-09-03",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 17.1,
+   "volume": 216.0,
+   "price": 3765.0,
+   "currency": "MDL",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101194,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lyon",
+   "to": "copenhagen",
+   "date": "2026-09-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 86.3,
+   "volume": 36.0,
+   "price": 12325.0,
+   "currency": "CHF",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101195,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lviv",
+   "to": "rotterdam",
+   "date": "2026-11-07",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 122.7,
+   "volume": 279.0,
+   "price": 12357.0,
+   "currency": "UAH",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101196,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "riga",
+   "to": "sofia",
+   "date": "2026-12-15",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 91.1,
+   "volume": 395.0,
+   "price": 10941.0,
+   "currency": "GBP",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101197,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "stockholm",
+   "date": "2026-11-06",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 70.4,
+   "volume": 187.0,
+   "price": 14789.0,
+   "currency": "PLN",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101198,
    "kind": "transport",
    "mode": "multi",
    "continent": "Europe",
    "from": "gdansk",
    "to": "dublin",
-   "date": "2026-12-25",
-   "currency": "EUR",
-   "company": "ChemLog GmbH",
-   "cargo": "chem",
+   "date": "2026-11-07",
    "components": [
     "rail",
     "auto"
    ],
-   "weight": 59.6,
-   "volume": 330.0,
-   "price": 10858.0
+   "cargo": "furn",
+   "weight": 24.6,
+   "volume": 357.0,
+   "price": 4301.0,
+   "currency": "RON",
+   "company": "Marina Freight"
   },
   {
-   "id": 2236,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "oslo",
-   "to": "gdansk",
-   "date": "2026-11-11",
-   "currency": "EUR",
-   "company": "CentroRail Cargo",
-   "cargo": "docs",
-   "components": [
-    "air",
-    "auto"
-   ],
-   "weight": 76.8,
-   "volume": 180.0,
-   "price": 8085.0
-  },
-  {
-   "id": 2237,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "lviv",
-   "to": "gdansk",
-   "date": "2026-11-17",
-   "currency": "SEK",
-   "company": "CentroRail Cargo",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 71.6,
-   "volume": 388.0,
-   "price": 6888.0
-  },
-  {
-   "id": 2238,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "sofia",
-   "to": "lviv",
-   "date": "2026-11-25",
-   "currency": "SEK",
-   "company": "АгроТранс Груп",
-   "cargo": "chem",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 99.5,
-   "volume": 60.0,
-   "price": 11901.0
-  },
-  {
-   "id": 2239,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "warsaw",
-   "to": "rotterdam",
-   "date": "2026-11-08",
-   "currency": "USD",
-   "company": "Anatolia Freight",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 82.5,
-   "volume": 356.0,
-   "price": 6370.0
-  },
-  {
-   "id": 2240,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "hamburg",
-   "date": "2026-09-01",
-   "currency": "UAH",
-   "company": "Sarmatia Логістика s.r.o.",
-   "cargo": "metal",
-   "components": [
-    "sea",
-    "rail",
-    "auto"
-   ],
-   "weight": 60.8,
-   "volume": 43.0,
-   "price": 10969.0
-  },
-  {
-   "id": 2241,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "riga",
-   "to": "stockholm",
-   "date": "2026-10-27",
-   "currency": "CZK",
-   "company": "ChemLog GmbH",
-   "cargo": "metal",
-   "components": [
-    "air",
-    "rail"
-   ],
-   "weight": 56.4,
-   "volume": 279.0,
-   "price": 17210.0
-  },
-  {
-   "id": 2242,
+   "id": 101199,
    "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "budapest",
-   "to": "athens",
-   "date": "2026-09-09",
-   "currency": "PLN",
-   "company": "УкрМеталТранс",
-   "cargo": "chem",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 101.7,
-   "volume": 210.0,
-   "price": 10264.0
-  },
-  {
-   "id": 2243,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "lyon",
-   "date": "2026-12-05",
-   "currency": "HUF",
-   "company": "Baltic Grain Co.",
-   "cargo": "agro",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 84.8,
-   "volume": 247.0,
-   "price": 6760.0
-  },
-  {
-   "id": 2244,
-   "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
    "from": "warsaw",
    "to": "munich",
-   "date": "2026-11-18",
-   "currency": "HUF",
-   "company": "Meble-Trans",
-   "cargo": "furn",
+   "date": "2026-10-26",
    "components": [
     "sea",
     "rail"
    ],
-   "weight": 65.2,
-   "volume": 362.0,
-   "price": 6710.0
-  },
-  {
-   "id": 2245,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "istanbul",
-   "to": "vienna",
-   "date": "2026-11-21",
-   "currency": "RON",
-   "company": "Rhein Спедиція ТзОВ",
-   "cargo": "docs",
-   "components": [
-    "sea",
-    "auto"
-   ],
-   "weight": 110.8,
-   "volume": 133.0,
-   "price": 12546.0
-  },
-  {
-   "id": 2246,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "vilnius",
-   "to": "stockholm",
-   "date": "2026-12-02",
-   "currency": "CZK",
-   "company": "Anatolia Freight",
-   "cargo": "build",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 49.1,
-   "volume": 302.0,
-   "price": 16769.0
-  },
-  {
-   "id": 2247,
-   "kind": "cargo",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "antwerp",
-   "to": "budapest",
-   "date": "2026-11-03",
-   "currency": "UAH",
-   "company": "AirCargo Bavaria",
-   "cargo": "furn",
-   "components": [
-    "rail",
-    "auto"
-   ],
-   "weight": 77.3,
-   "volume": 114.0,
-   "price": 5123.0
-  },
-  {
-   "id": 2248,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "odesa",
-   "to": "lisbon",
-   "date": "2026-12-16",
-   "currency": "CZK",
-   "company": "АгроТранс Груп",
-   "cargo": "textile",
-   "components": [
-    "sea",
-    "rail"
-   ],
-   "weight": 58.5,
-   "volume": 242.0,
-   "price": 7995.0
-  },
-  {
-   "id": 2249,
-   "kind": "transport",
-   "mode": "multi",
-   "continent": "Europe",
-   "from": "munich",
-   "to": "odesa",
-   "date": "2026-12-26",
-   "currency": "USD",
-   "company": "УкрМеталТранс",
    "cargo": "electro",
+   "weight": 27.9,
+   "volume": 145.0,
+   "price": 16956.0,
+   "currency": "EUR",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101200,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "london",
+   "to": "paris",
+   "date": "2026-12-08",
    "components": [
     "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 62.4,
+   "volume": 86.0,
+   "price": 3703.0,
+   "currency": "BGN",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101201,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "sofia",
+   "to": "vilnius",
+   "date": "2026-10-22",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 30.1,
+   "volume": 102.0,
+   "price": 12025.0,
+   "currency": "SEK",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101202,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "piraeus",
+   "to": "frankfurt",
+   "date": "2026-09-07",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 82.7,
+   "volume": 360.0,
+   "price": 11984.0,
+   "currency": "CZK",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101203,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "hamburg",
+   "to": "oslo",
+   "date": "2026-10-23",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 76.0,
+   "volume": 279.0,
+   "price": 6846.0,
+   "currency": "HUF",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101204,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "dublin",
+   "date": "2026-09-13",
+   "components": [
     "rail",
     "auto"
    ],
-   "weight": 91.3,
-   "volume": 255.0,
-   "price": 1871.0
+   "cargo": "chem",
+   "weight": 113.8,
+   "volume": 291.0,
+   "price": 14026.0,
+   "currency": "UAH",
+   "company": "Anatolia Freight"
   },
   {
-   "id": 2250,
+   "id": 101205,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "hamburg",
+   "date": "2026-09-15",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 65.3,
+   "volume": 205.0,
+   "price": 6053.0,
+   "currency": "CHF",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101206,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gothenburg",
+   "to": "vienna",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 79.1,
+   "volume": 263.0,
+   "price": 10856.0,
+   "currency": "DKK",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101207,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
    "from": "sofia",
-   "to": "odesa",
-   "date": "2026-09-23",
-   "currency": "SEK",
-   "company": "CentroRail Cargo",
-   "cargo": "build",
+   "to": "zurich",
+   "date": "2026-09-11",
    "components": [
     "sea",
-    "auto"
+    "rail"
    ],
-   "weight": 27.6,
-   "volume": 298.0,
-   "price": 13225.0
+   "cargo": "food",
+   "weight": 45.2,
+   "volume": 205.0,
+   "price": 4418.0,
+   "currency": "HUF",
+   "company": "FastRoad Sp. z o.o."
   },
   {
-   "id": 2251,
+   "id": 101208,
    "kind": "cargo",
    "mode": "multi",
    "continent": "Europe",
-   "from": "warsaw",
-   "to": "sofia",
-   "date": "2026-10-03",
-   "currency": "EUR",
-   "company": "Baltic Grain Co.",
-   "cargo": "textile",
+   "from": "vilnius",
+   "to": "barcelona",
+   "date": "2026-10-21",
    "components": [
     "sea",
     "rail",
     "auto"
    ],
+   "cargo": "food",
+   "weight": 128.9,
+   "volume": 387.0,
+   "price": 12212.0,
+   "currency": "RSD",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101209,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "milan",
+   "to": "gdansk",
+   "date": "2026-11-01",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 104.9,
+   "volume": 143.0,
+   "price": 13753.0,
+   "currency": "SEK",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101210,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "stockholm",
+   "to": "copenhagen",
+   "date": "2026-10-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 115.8,
+   "volume": 125.0,
+   "price": 16963.0,
+   "currency": "EURC",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101211,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "helsinki",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 135.2,
+   "volume": 62.0,
+   "price": 10197.0,
+   "currency": "DKK",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101212,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gdansk",
+   "to": "paris",
+   "date": "2026-10-19",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 98.9,
+   "volume": 375.0,
+   "price": 13032.0,
+   "currency": "CZK",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101213,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "krakow",
+   "date": "2026-09-19",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 103.3,
+   "volume": 384.0,
+   "price": 5076.0,
+   "currency": "DKK",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101214,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "lisbon",
+   "date": "2026-09-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 75.3,
+   "volume": 196.0,
+   "price": 12434.0,
+   "currency": "CZK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101215,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "piraeus",
+   "date": "2026-12-28",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 27.3,
+   "volume": 227.0,
+   "price": 3783.0,
+   "currency": "EURC",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101216,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "piraeus",
+   "date": "2026-10-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 12.4,
+   "volume": 147.0,
+   "price": 11190.0,
+   "currency": "RSD",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101217,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "london",
+   "date": "2026-12-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 121.6,
+   "volume": 214.0,
+   "price": 7023.0,
+   "currency": "HUF",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101218,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "stockholm",
+   "date": "2026-09-09",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 33.1,
+   "volume": 174.0,
+   "price": 2109.0,
+   "currency": "CZK",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101219,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "stockholm",
+   "date": "2026-09-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 86.2,
+   "volume": 305.0,
+   "price": 8774.0,
+   "currency": "CZK",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101220,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "gothenburg",
+   "date": "2026-09-17",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 27.3,
+   "volume": 188.0,
+   "price": 1445.0,
+   "currency": "BGN",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101221,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "munich",
+   "date": "2026-12-21",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 63.2,
+   "volume": 161.0,
+   "price": 6882.0,
+   "currency": "EUR",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101222,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "piraeus",
+   "date": "2026-10-06",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 28.1,
+   "volume": 260.0,
+   "price": 7968.0,
+   "currency": "BGN",
+   "company": "АгроТранс Груп"
+  },
+  {
+   "id": 101223,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "lisbon",
+   "date": "2026-11-17",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 13.2,
+   "volume": 210.0,
+   "price": 8538.0,
+   "currency": "BGN",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101224,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "gdansk",
+   "date": "2026-11-15",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 87.8,
+   "volume": 213.0,
+   "price": 1744.0,
+   "currency": "RSD",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101225,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "sofia",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 132.5,
+   "volume": 189.0,
+   "price": 1356.0,
+   "currency": "RON",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101226,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "lyon",
+   "date": "2026-11-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 24.9,
+   "volume": 285.0,
+   "price": 16628.0,
+   "currency": "EUR",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101227,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "zurich",
+   "date": "2026-12-21",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 21.5,
+   "volume": 271.0,
+   "price": 3777.0,
+   "currency": "RSD",
+   "company": "АгроТранс Груп"
+  },
+  {
+   "id": 101228,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "piraeus",
+   "date": "2026-10-10",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 88.9,
+   "volume": 77.0,
+   "price": 1365.0,
+   "currency": "UAH",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101229,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "berlin",
+   "to": "istanbul",
+   "date": "2026-12-10",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 56.5,
+   "volume": 360.0,
+   "price": 16200.0,
+   "currency": "DKK",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101230,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "antwerp",
+   "to": "riga",
+   "date": "2026-12-21",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 134.5,
+   "volume": 389.0,
+   "price": 1892.0,
+   "currency": "USD",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101231,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "madrid",
+   "to": "hamburg",
+   "date": "2026-09-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 116.9,
+   "volume": 234.0,
+   "price": 8538.0,
+   "currency": "TRY",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101232,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "sofia",
+   "date": "2026-12-23",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 125.8,
+   "volume": 158.0,
+   "price": 15932.0,
+   "currency": "GBP",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101233,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gothenburg",
+   "to": "hamburg",
+   "date": "2026-10-12",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 66.4,
+   "volume": 244.0,
+   "price": 6295.0,
+   "currency": "EURC",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101234,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "london",
+   "to": "odesa",
+   "date": "2026-09-28",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 40.9,
+   "volume": 93.0,
+   "price": 4563.0,
+   "currency": "UAH",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101235,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "warsaw",
+   "to": "milan",
+   "date": "2026-11-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 70.2,
+   "volume": 234.0,
+   "price": 1083.0,
+   "currency": "HUF",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101236,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "kyiv",
+   "date": "2026-10-01",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 38.7,
+   "volume": 267.0,
+   "price": 13458.0,
+   "currency": "BGN",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101237,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lisbon",
+   "to": "stockholm",
+   "date": "2026-10-13",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 131.2,
+   "volume": 85.0,
+   "price": 8993.0,
+   "currency": "UAH",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101238,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "copenhagen",
+   "date": "2026-11-03",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 51.5,
+   "volume": 132.0,
+   "price": 8012.0,
+   "currency": "MDL",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101239,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "warsaw",
+   "to": "istanbul",
+   "date": "2026-11-15",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 109.1,
+   "volume": 69.0,
+   "price": 1512.0,
+   "currency": "DKK",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101240,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "hamburg",
+   "date": "2026-10-23",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 128.0,
+   "volume": 217.0,
+   "price": 13094.0,
+   "currency": "UAH",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101241,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "milan",
+   "date": "2026-11-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 114.5,
+   "volume": 211.0,
+   "price": 6509.0,
+   "currency": "RON",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101242,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "belgrade",
+   "to": "vilnius",
+   "date": "2026-12-11",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 61.7,
+   "volume": 66.0,
+   "price": 10073.0,
+   "currency": "RON",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101243,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "istanbul",
+   "to": "milan",
+   "date": "2026-09-22",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 32.1,
+   "volume": 216.0,
+   "price": 2869.0,
+   "currency": "EURC",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101244,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "sofia",
+   "to": "budapest",
+   "date": "2026-10-28",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 61.4,
+   "volume": 281.0,
+   "price": 3147.0,
+   "currency": "MDL",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101245,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "berlin",
+   "to": "copenhagen",
+   "date": "2026-12-22",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 47.1,
+   "volume": 172.0,
+   "price": 17913.0,
+   "currency": "EURC",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101246,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "munich",
+   "to": "prague",
+   "date": "2026-10-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 43.0,
+   "volume": 338.0,
+   "price": 15835.0,
+   "currency": "GBP",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101247,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "barcelona",
+   "to": "vienna",
+   "date": "2026-09-16",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 118.4,
+   "volume": 63.0,
+   "price": 5012.0,
+   "currency": "CZK",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101248,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "genoa",
+   "to": "athens",
+   "date": "2026-09-04",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 101.5,
+   "volume": 150.0,
+   "price": 5940.0,
+   "currency": "EURC",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101249,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "valencia",
+   "date": "2026-12-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 11.1,
+   "volume": 274.0,
+   "price": 13120.0,
+   "currency": "NOK",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101250,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "oslo",
+   "to": "lyon",
+   "date": "2026-10-18",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 74.3,
+   "volume": 316.0,
+   "price": 15941.0,
+   "currency": "UAH",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101251,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "rotterdam",
+   "date": "2026-11-17",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 61.7,
+   "volume": 70.0,
+   "price": 5944.0,
+   "currency": "EUR",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101252,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "genoa",
+   "to": "amsterdam",
+   "date": "2026-09-06",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 32.8,
+   "volume": 60.0,
+   "price": 10713.0,
+   "currency": "UAH",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101253,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "valencia",
+   "to": "istanbul",
+   "date": "2026-09-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 134.0,
+   "volume": 266.0,
+   "price": 8193.0,
+   "currency": "EUR",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101254,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lviv",
+   "to": "oslo",
+   "date": "2026-09-19",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 95.6,
+   "volume": 115.0,
+   "price": 3878.0,
+   "currency": "RON",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101255,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "warsaw",
+   "date": "2026-09-24",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 84.1,
+   "volume": 396.0,
+   "price": 17203.0,
+   "currency": "EUR",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101256,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "lisbon",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 80.2,
+   "volume": 279.0,
+   "price": 17211.0,
+   "currency": "TRY",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101257,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "tallinn",
+   "to": "kyiv",
+   "date": "2026-10-08",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 52.6,
+   "volume": 82.0,
+   "price": 16289.0,
+   "currency": "BGN",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101258,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "amsterdam",
+   "to": "milan",
+   "date": "2026-10-15",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 97.0,
+   "volume": 253.0,
+   "price": 4087.0,
+   "currency": "CHF",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101259,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "antwerp",
+   "date": "2026-12-28",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 77.0,
+   "volume": 360.0,
+   "price": 16673.0,
+   "currency": "GBP",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101260,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "copenhagen",
+   "date": "2026-09-10",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 114.6,
+   "volume": 52.0,
+   "price": 5960.0,
+   "currency": "UAH",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101261,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "oslo",
+   "to": "athens",
+   "date": "2026-11-20",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 38.2,
+   "volume": 62.0,
+   "price": 12925.0,
+   "currency": "PLN",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101262,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "barcelona",
+   "to": "berlin",
+   "date": "2026-12-14",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 117.3,
+   "volume": 76.0,
+   "price": 13581.0,
+   "currency": "EUR",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101263,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vilnius",
+   "to": "kyiv",
+   "date": "2026-11-11",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 137.3,
+   "volume": 168.0,
+   "price": 7865.0,
+   "currency": "CHF",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101264,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "london",
+   "date": "2026-12-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 41.3,
+   "volume": 360.0,
+   "price": 2592.0,
+   "currency": "HUF",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101265,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "dublin",
+   "date": "2026-09-12",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 13.1,
+   "volume": 143.0,
+   "price": 3823.0,
+   "currency": "RSD",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101266,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "piraeus",
+   "to": "lisbon",
+   "date": "2026-09-14",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 73.3,
+   "volume": 309.0,
+   "price": 8994.0,
+   "currency": "BGN",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101267,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "prague",
+   "date": "2026-10-07",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 106.4,
+   "volume": 367.0,
+   "price": 12426.0,
+   "currency": "CZK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101268,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "hamburg",
+   "to": "madrid",
+   "date": "2026-10-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 48.5,
+   "volume": 225.0,
+   "price": 6313.0,
+   "currency": "GBP",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101269,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vilnius",
+   "to": "genoa",
+   "date": "2026-11-23",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 136.6,
+   "volume": 44.0,
+   "price": 11575.0,
+   "currency": "CZK",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101270,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "madrid",
+   "date": "2026-12-05",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 15.4,
+   "volume": 392.0,
+   "price": 7796.0,
+   "currency": "NOK",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101271,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "gdansk",
+   "to": "sofia",
+   "date": "2026-11-21",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 33.9,
+   "volume": 84.0,
+   "price": 2440.0,
+   "currency": "CHF",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101272,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "frankfurt",
+   "date": "2026-11-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 115.4,
+   "volume": 189.0,
+   "price": 7439.0,
+   "currency": "CHF",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101273,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "piraeus",
+   "date": "2026-10-10",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 75.4,
+   "volume": 304.0,
+   "price": 7820.0,
+   "currency": "MDL",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101274,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "paris",
+   "date": "2026-09-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 120.5,
+   "volume": 89.0,
+   "price": 15102.0,
+   "currency": "DKK",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101275,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lisbon",
+   "to": "copenhagen",
+   "date": "2026-12-28",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 61.5,
+   "volume": 256.0,
+   "price": 9385.0,
+   "currency": "SEK",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101276,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "barcelona",
+   "to": "paris",
+   "date": "2026-09-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 70.6,
+   "volume": 192.0,
+   "price": 9104.0,
+   "currency": "RSD",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101277,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "belgrade",
+   "to": "munich",
+   "date": "2026-11-16",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 85.1,
+   "volume": 315.0,
+   "price": 12417.0,
+   "currency": "MDL",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101278,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "madrid",
+   "to": "lyon",
+   "date": "2026-09-12",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 74.4,
+   "volume": 230.0,
+   "price": 3101.0,
+   "currency": "HUF",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101279,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "london",
+   "date": "2026-09-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 37.3,
+   "volume": 196.0,
+   "price": 15540.0,
+   "currency": "NOK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101280,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "london",
+   "date": "2026-09-15",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 43.8,
+   "volume": 398.0,
+   "price": 14878.0,
+   "currency": "RON",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101281,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "genoa",
+   "to": "rotterdam",
+   "date": "2026-10-03",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 13.8,
+   "volume": 375.0,
+   "price": 4424.0,
+   "currency": "EUR",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101282,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "munich",
+   "date": "2026-09-18",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 37.3,
+   "volume": 264.0,
+   "price": 14094.0,
+   "currency": "EUR",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101283,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "barcelona",
+   "date": "2026-10-13",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 28.0,
+   "volume": 146.0,
+   "price": 10140.0,
+   "currency": "UAH",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101284,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "kyiv",
+   "date": "2026-10-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 75.3,
+   "volume": 328.0,
+   "price": 14775.0,
+   "currency": "PLN",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101285,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "budapest",
+   "to": "berlin",
+   "date": "2026-09-18",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 109.6,
+   "volume": 254.0,
+   "price": 14826.0,
+   "currency": "EUR",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101286,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "paris",
+   "to": "vilnius",
+   "date": "2026-10-23",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 123.7,
+   "volume": 43.0,
+   "price": 7471.0,
+   "currency": "EUR",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101287,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "madrid",
+   "to": "tallinn",
+   "date": "2026-09-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 11.2,
+   "volume": 114.0,
+   "price": 4177.0,
+   "currency": "HUF",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101288,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "stockholm",
+   "to": "amsterdam",
+   "date": "2026-10-22",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 58.7,
+   "volume": 271.0,
+   "price": 6599.0,
+   "currency": "GBP",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101289,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "helsinki",
+   "date": "2026-09-25",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 25.4,
+   "volume": 54.0,
+   "price": 16578.0,
+   "currency": "TRY",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101290,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "prague",
+   "date": "2026-09-15",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 131.6,
+   "volume": 381.0,
+   "price": 15811.0,
+   "currency": "HUF",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101291,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "oslo",
+   "to": "chisinau",
+   "date": "2026-10-03",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 38.3,
+   "volume": 124.0,
+   "price": 17248.0,
+   "currency": "GBP",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101292,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "sofia",
+   "date": "2026-10-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 91.1,
+   "volume": 170.0,
+   "price": 17224.0,
+   "currency": "MDL",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101293,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "riga",
+   "to": "belgrade",
+   "date": "2026-10-10",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 53.8,
+   "volume": 177.0,
+   "price": 12638.0,
+   "currency": "RON",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101294,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "athens",
+   "to": "sofia",
+   "date": "2026-09-14",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 32.9,
+   "volume": 212.0,
+   "price": 14724.0,
+   "currency": "GBP",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101295,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "gdansk",
+   "date": "2026-09-13",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 22.9,
+   "volume": 219.0,
+   "price": 16066.0,
+   "currency": "RON",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101296,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "piraeus",
+   "date": "2026-09-05",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 18.1,
+   "volume": 72.0,
+   "price": 8131.0,
+   "currency": "TRY",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101297,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "munich",
+   "date": "2026-10-23",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 81.9,
+   "volume": 396.0,
+   "price": 3145.0,
+   "currency": "BGN",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101298,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "milan",
+   "to": "istanbul",
+   "date": "2026-12-26",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 50.1,
+   "volume": 249.0,
+   "price": 16984.0,
+   "currency": "PLN",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101299,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "valencia",
+   "date": "2026-12-28",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 122.1,
+   "volume": 150.0,
+   "price": 12477.0,
+   "currency": "NOK",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101300,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "madrid",
+   "date": "2026-10-19",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 13.9,
+   "volume": 125.0,
+   "price": 3709.0,
+   "currency": "SEK",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101301,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "helsinki",
+   "date": "2026-09-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 26.7,
+   "volume": 210.0,
+   "price": 12076.0,
+   "currency": "EURC",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101302,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "prague",
+   "to": "vilnius",
+   "date": "2026-09-20",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 60.8,
+   "volume": 98.0,
+   "price": 11893.0,
+   "currency": "TRY",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101303,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "budapest",
+   "to": "berlin",
+   "date": "2026-09-23",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 58.2,
+   "volume": 142.0,
+   "price": 14754.0,
+   "currency": "EUR",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101304,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "zurich",
+   "date": "2026-12-11",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 49.5,
+   "volume": 79.0,
+   "price": 12122.0,
+   "currency": "RON",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101305,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "lyon",
+   "date": "2026-12-26",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 22.7,
+   "volume": 91.0,
+   "price": 2243.0,
+   "currency": "EUR",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101306,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lviv",
+   "to": "amsterdam",
+   "date": "2026-11-25",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 111.3,
+   "volume": 254.0,
+   "price": 15695.0,
+   "currency": "GBP",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101307,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lyon",
+   "to": "odesa",
+   "date": "2026-12-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 57.0,
+   "volume": 227.0,
+   "price": 8204.0,
+   "currency": "SEK",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101308,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "athens",
+   "date": "2026-09-04",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 45.7,
+   "volume": 205.0,
+   "price": 3387.0,
+   "currency": "TRY",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101309,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "lisbon",
+   "date": "2026-09-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
    "weight": 102.2,
-   "volume": 269.0,
-   "price": 3074.0
+   "volume": 52.0,
+   "price": 15595.0,
+   "currency": "BGN",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101310,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "barcelona",
+   "date": "2026-10-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 38.1,
+   "volume": 73.0,
+   "price": 10421.0,
+   "currency": "EUR",
+   "company": "Marina Freight"
+  },
+  {
+   "id": 101311,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "paris",
+   "date": "2026-12-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 95.8,
+   "volume": 217.0,
+   "price": 9998.0,
+   "currency": "MDL",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101312,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "kyiv",
+   "to": "odesa",
+   "date": "2026-11-05",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 32.3,
+   "volume": 67.0,
+   "price": 5289.0,
+   "currency": "RSD",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101313,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lviv",
+   "to": "tallinn",
+   "date": "2026-10-07",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 67.0,
+   "volume": 297.0,
+   "price": 17533.0,
+   "currency": "RSD",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101314,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "belgrade",
+   "to": "warsaw",
+   "date": "2026-09-02",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 116.7,
+   "volume": 168.0,
+   "price": 17575.0,
+   "currency": "GBP",
+   "company": "Sarmatia Логістика s.r.o."
+  },
+  {
+   "id": 101315,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "sofia",
+   "to": "paris",
+   "date": "2026-10-19",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 53.0,
+   "volume": 242.0,
+   "price": 12366.0,
+   "currency": "EUR",
+   "company": "FastRoad Sp. z o.o."
+  },
+  {
+   "id": 101316,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "budapest",
+   "to": "dublin",
+   "date": "2026-11-14",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 126.7,
+   "volume": 215.0,
+   "price": 7535.0,
+   "currency": "EUR",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101317,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "krakow",
+   "to": "tallinn",
+   "date": "2026-11-26",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 123.5,
+   "volume": 280.0,
+   "price": 3939.0,
+   "currency": "USD",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101318,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "gothenburg",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 79.7,
+   "volume": 221.0,
+   "price": 5356.0,
+   "currency": "EURC",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101319,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "munich",
+   "to": "lviv",
+   "date": "2026-10-09",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 43.9,
+   "volume": 261.0,
+   "price": 3937.0,
+   "currency": "NOK",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101320,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "barcelona",
+   "to": "warsaw",
+   "date": "2026-11-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 72.4,
+   "volume": 60.0,
+   "price": 8726.0,
+   "currency": "HUF",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101321,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "copenhagen",
+   "to": "athens",
+   "date": "2026-11-13",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 122.5,
+   "volume": 254.0,
+   "price": 5917.0,
+   "currency": "NOK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101322,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "odesa",
+   "date": "2026-11-28",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 39.6,
+   "volume": 122.0,
+   "price": 2106.0,
+   "currency": "UAH",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101323,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "vienna",
+   "to": "krakow",
+   "date": "2026-10-11",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 111.4,
+   "volume": 182.0,
+   "price": 7260.0,
+   "currency": "CZK",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101324,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "dublin",
+   "to": "sofia",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 30.4,
+   "volume": 398.0,
+   "price": 13469.0,
+   "currency": "USD",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101325,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "berlin",
+   "date": "2026-12-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 106.9,
+   "volume": 152.0,
+   "price": 1628.0,
+   "currency": "UAH",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101326,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "london",
+   "date": "2026-09-21",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 54.0,
+   "volume": 396.0,
+   "price": 13758.0,
+   "currency": "MDL",
+   "company": "УкрМеталТранс"
+  },
+  {
+   "id": 101327,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "rotterdam",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 100.1,
+   "volume": 290.0,
+   "price": 1057.0,
+   "currency": "DKK",
+   "company": "ChemLog GmbH"
+  },
+  {
+   "id": 101328,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "constanta",
+   "to": "vienna",
+   "date": "2026-10-01",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 121.5,
+   "volume": 171.0,
+   "price": 10975.0,
+   "currency": "RSD",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101329,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "frankfurt",
+   "to": "antwerp",
+   "date": "2026-10-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 97.1,
+   "volume": 75.0,
+   "price": 9496.0,
+   "currency": "GBP",
+   "company": "Iberia Cargo SL"
+  },
+  {
+   "id": 101330,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "lisbon",
+   "to": "riga",
+   "date": "2026-10-11",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 108.3,
+   "volume": 152.0,
+   "price": 10418.0,
+   "currency": "UAH",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101331,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "budapest",
+   "to": "tallinn",
+   "date": "2026-11-13",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 86.4,
+   "volume": 329.0,
+   "price": 16531.0,
+   "currency": "DKK",
+   "company": "Baltic Grain Co."
+  },
+  {
+   "id": 101332,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "antwerp",
+   "to": "oslo",
+   "date": "2026-10-02",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 30.9,
+   "volume": 366.0,
+   "price": 17674.0,
+   "currency": "NOK",
+   "company": "ТзОВ «Карпат-Логістика»"
+  },
+  {
+   "id": 101333,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "antwerp",
+   "to": "lviv",
+   "date": "2026-10-24",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 93.2,
+   "volume": 228.0,
+   "price": 9629.0,
+   "currency": "EURC",
+   "company": "Adria Spedition d.o.o."
+  },
+  {
+   "id": 101334,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "piraeus",
+   "to": "munich",
+   "date": "2026-09-05",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 28.8,
+   "volume": 155.0,
+   "price": 2523.0,
+   "currency": "HUF",
+   "company": "NordTrans AG"
+  },
+  {
+   "id": 101335,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "genoa",
+   "to": "valencia",
+   "date": "2026-09-26",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 19.7,
+   "volume": 120.0,
+   "price": 6792.0,
+   "currency": "EUR",
+   "company": "Anatolia Freight"
+  },
+  {
+   "id": 101336,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "istanbul",
+   "to": "warsaw",
+   "date": "2026-10-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 107.6,
+   "volume": 183.0,
+   "price": 8044.0,
+   "currency": "BGN",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101337,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "chisinau",
+   "to": "milan",
+   "date": "2026-09-19",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 98.4,
+   "volume": 102.0,
+   "price": 17937.0,
+   "currency": "UAH",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101338,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "milan",
+   "to": "amsterdam",
+   "date": "2026-11-15",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 117.0,
+   "volume": 229.0,
+   "price": 15497.0,
+   "currency": "CHF",
+   "company": "Meble-Trans"
+  },
+  {
+   "id": 101339,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "london",
+   "to": "warsaw",
+   "date": "2026-10-10",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 138.2,
+   "volume": 391.0,
+   "price": 15635.0,
+   "currency": "MDL",
+   "company": "Nordic Rail Cargo AB"
+  },
+  {
+   "id": 101340,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "valencia",
+   "to": "amsterdam",
+   "date": "2026-09-27",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 127.4,
+   "volume": 50.0,
+   "price": 15846.0,
+   "currency": "UAH",
+   "company": "Rhein Спедиція ТзОВ"
+  },
+  {
+   "id": 101341,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "helsinki",
+   "to": "riga",
+   "date": "2026-10-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 135.1,
+   "volume": 323.0,
+   "price": 4918.0,
+   "currency": "RON",
+   "company": "Blue Line Shipping"
+  },
+  {
+   "id": 101342,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "zurich",
+   "to": "sofia",
+   "date": "2026-11-28",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 92.1,
+   "volume": 308.0,
+   "price": 14309.0,
+   "currency": "EUR",
+   "company": "CentroRail Cargo"
+  },
+  {
+   "id": 101343,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "rotterdam",
+   "to": "copenhagen",
+   "date": "2026-09-06",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 139.4,
+   "volume": 85.0,
+   "price": 1496.0,
+   "currency": "NOK",
+   "company": "АгроТранс Груп"
+  },
+  {
+   "id": 101344,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "antwerp",
+   "to": "frankfurt",
+   "date": "2026-09-20",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 84.6,
+   "volume": 253.0,
+   "price": 3925.0,
+   "currency": "SEK",
+   "company": "AirCargo Bavaria"
+  },
+  {
+   "id": 101345,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Europe",
+   "from": "odesa",
+   "to": "piraeus",
+   "date": "2026-11-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 109.6,
+   "volume": 293.0,
+   "price": 13968.0,
+   "currency": "RON",
+   "company": "Rhein Спедиція ТзОВ"
   }
  ]
 }
