@@ -403,8 +403,12 @@
   .flow-num:hover{text-decoration:underline;}
   .flow-num:focus-visible{outline:2px solid var(--accent-2); outline-offset:2px;}
   .flow-num svg.icon{width:.8em; height:.8em; stroke-width:3.2;}
-  .flow-num.export{color:var(--accent);}
-  .flow-num.import{color:var(--warning);}
+  /* Колір навмисно розв'язаний зі своєю однойменною CSS-класою: синій -
+     колір "імпорту" (товар/транспорт прибуває в країну), жовтий - "експорту"
+     (вибуває), а не навпаки, як було раніше. Застосовується однаково для
+     обох рядків - і Вантаж, і Транс - бо це той самий renderFlowNum(). */
+  .flow-num.export{color:var(--warning);}
+  .flow-num.import{color:var(--accent);}
 
   /* Q&A page */
   .qa-grid{display:grid; grid-template-columns:1fr 1.25fr; gap:18px; margin-top:20px; align-items:start;}
