@@ -70,3 +70,32 @@ i18n:
     expire_in: 30 days
     paths:
       - i18n-report.txt
+
+# UI-сценарії U1-U8: вибір виду транспорту на головній сторінці та його
+# наскрізне застосування до панелі потоків і деталізації.
+ui:
+  stage: test
+  image: node:20-slim
+  timeout: 10 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "index.html"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - ci/package-lock.json
+    paths:
+      - ci/node_modules
+  script:
+    - npm ci --prefix ci
+    - set -o pipefail
+    - node ci/verify_heromode.js | tee ui-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - ui-report.txt

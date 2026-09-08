@@ -1,0 +1,13 @@
+{
+  "name": "trans-atlas-ui-checks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "UI-сценарії U1-U8 конвеєра: вибір виду транспорту на головній сторінці",
+  "scripts": {
+    "verify:heromode": "node verify_heromode.js",
+    "verify:heromode:fast": "HEROMODE_FULL=0 node verify_heromode.js"
+  },
+  "dependencies": {
+    "jsdom": "29.1.1"
+  }
+}
