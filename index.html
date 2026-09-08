@@ -226,6 +226,9 @@
   .banner-panel.mode-drone{background-color:var(--mode-drone); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-drone.jpg');}
   .banner-panel.mode-multi{background-color:var(--mode-multi); background-image:linear-gradient(180deg, rgba(10,18,28,.1), rgba(8,14,20,.6)), url('images/banner-multi.jpg');}
   .banner-panel:hover{flex-grow:2.5; filter:brightness(1.07); z-index:1;}
+  /* .selected is the click-driven, sticky counterpart to :hover - stays
+     expanded after the mouse leaves, until a different tile is clicked. */
+  .banner-panel.selected{flex-grow:2.5; filter:brightness(1.07); z-index:1;}
   .banner-panel .bp-badge{position:absolute; left:14px; top:14px; width:2.4em; height:2.4em; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; color:var(--accent-2); box-shadow:0 2px 6px rgba(0,0,0,.25);}
   .banner-panel .bp-badge svg.icon{width:1.2em; height:1.2em;}
   .banner-panel .bp-label{position:relative; color:#fff; font-weight:700; font-size:.85rem; text-align:center; text-shadow:0 1px 4px rgba(0,0,0,.55); white-space:nowrap;}
@@ -4940,6 +4943,7 @@ var state = {
   directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null},
   borders:{tab:"road", country:"", loading:false, error:null, partial:false, entries:null},
   flows:{intlContinent:"europe", domesticContinent:"europe"},
+  heroMode:"",
   qa:{
     messages:[], asking:false,
     wikiCategory:"", wikiQuery:"", wikiLoading:false, wikiError:null, wiki:null, openArticles:{},
@@ -5133,7 +5137,7 @@ function renderHero(){
   var f=state.filters;
   var order=["auto","rail","sea","air","drone","multi"];
   var bannerHtml = order.map(function(m){
-    return '<button class="banner-panel mode-'+m+'" data-quickmode="'+m+'">'+
+    return '<button class="banner-panel mode-'+m+(state.heroMode===m?" selected":"")+'" data-quickmode="'+m+'">'+
       '<div class="bp-badge">'+ICONS[MODE_ICON[m]]+'</div>'+
       '<span class="bp-label">'+esc(t("mode_"+m))+'</span></button>';
   }).join("");
@@ -5249,6 +5253,10 @@ function flowContinentCountries(continent){
  *     import for that one country (a load picked up and dropped off within
  *     the same country's borders), so the two numbers land equal by
  *     construction for a given kind. That's expected, not a bug.
+ *   - When a hero tile (see renderHero) is selected, state.heroMode narrows
+ *     this to that one transport mode only - clicking Авто shows Авто-only
+ *     flags/counters, not the combined total. Empty string (nothing
+ *     selected yet) keeps the original all-modes-combined behavior.
  *
  * Returns counts[countryCode][kind] = {exportCount, importCount}.
  */
@@ -5260,6 +5268,7 @@ function countryFlowStats(international){
     counts[country][kind][field]++;
   }
   LISTINGS.forEach(function(l){
+    if(state.heroMode && l.mode!==state.heroMode) return;
     var fromCountry = cityCountry(l.from);
     var toCountry = cityCountry(l.to);
     if(!fromCountry || !toCountry) return;
@@ -6293,9 +6302,15 @@ function bindEvents(){
   bindHeroForm("heroFormTransport", "cargo");
   app.querySelectorAll("[data-quickmode]").forEach(function(b){
     b.addEventListener("click", function(){
-      state.filters.mode=b.getAttribute("data-quickmode");
+      var m = b.getAttribute("data-quickmode");
+      // Stays on the home page: the clicked tile locks into the expanded
+      // state (see .banner-panel.selected) and the flow panel below
+      // (flags + export/import counters) re-filters to this mode, instead
+      // of jumping away to the Вантаж/Транспорт results list.
+      state.heroMode = m;
+      state.filters.mode = m;
       state.filters.fromCountry = ""; state.filters.toCountry = ""; state.filters.borderScope = "";
-      navigate("cargo");
+      renderApp();
     });
   });
 
