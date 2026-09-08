@@ -6465,7 +6465,12 @@ function bindEvents(){
       state.filters.fromCountry = dir==="export" ? country : "";
       state.filters.toCountry = dir==="import" ? country : "";
       state.filters.borderScope = b.getAttribute("data-flowscope");
-      state.filters.mode = "all"; state.filters.multiModes = [];
+      // Carries the hero tile's selected mode (see renderHero) into the
+      // results list instead of always resetting to "all": the flow
+      // panel's numbers were already filtered to that mode, so the
+      // export/import drill-down should land on the same subset, not a
+      // wider one.
+      state.filters.mode = state.heroMode || "all"; state.filters.multiModes = [];
       state.resultsShown = {cargo: PAGE_SIZE, transport: PAGE_SIZE};
       navigate(b.getAttribute("data-flowroute"));
     });
