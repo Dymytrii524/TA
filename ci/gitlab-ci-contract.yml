@@ -75,7 +75,7 @@ i18n:
 # наскрізне застосування до панелі потоків і деталізації.
 ui:
   stage: test
-  image: node:20-slim
+  image: node:24-slim
   timeout: 10 minutes
   interruptible: true
   rules:
