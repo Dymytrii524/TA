@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="defs_checkcall" targetNamespace="http://logistics/checkcall">
+  <bpmn:process id="proc_checkcall" name="Автоматизований check-call" isExecutable="false">
+    <bpmn:laneSet id="laneset_1">
+      <bpmn:lane id="lane_sys" name="Оркестратор трекінгу (система)">
+        <bpmn:flowNodeRef>e_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_plan</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_timer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_pos</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_fresh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_dev</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_upd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_geo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_geo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_dlv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_pod</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_end_ok</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="lane_ai" name="AI check-call агент">
+        <bpmn:flowNodeRef>t_call</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_ans</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_parse</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_exc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_sms</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_wait</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g_resp</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="lane_disp" name="Диспетчер (людина)">
+        <bpmn:flowNodeRef>sp_exc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>be_timer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>t_lead</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_lead</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>be_err</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>e_end_x</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="e_start" name="Вантаж призначено перевізнику">
+      <bpmn:outgoing>flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="t_plan" name="Активувати план трекінгу: геозони, вікна, частота">
+      <bpmn:incoming>flow_1</bpmn:incoming>
+      <bpmn:outgoing>flow_2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:intermediateCatchEvent id="e_timer" name="Інтервал моніторингу">
+      <bpmn:incoming>flow_2</bpmn:incoming>
+      <bpmn:incoming>flow_18</bpmn:incoming>
+      <bpmn:incoming>flow_24</bpmn:incoming>
+      <bpmn:outgoing>flow_3</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="td_e_timer"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:task id="t_pos" name="Отримати позицію: ELD / GPS / застосунок водія">
+      <bpmn:incoming>flow_3</bpmn:incoming>
+      <bpmn:outgoing>flow_4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="g_fresh" name="Дані актуальні?">
+      <bpmn:incoming>flow_4</bpmn:incoming>
+      <bpmn:outgoing>flow_5</bpmn:outgoing>
+      <bpmn:outgoing>flow_7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="g_dev" name="Відхилення від плану?">
+      <bpmn:incoming>flow_5</bpmn:incoming>
+      <bpmn:outgoing>flow_6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_upd" name="Оновити статус у TMS і сповістити клієнта">
+      <bpmn:incoming>flow_6</bpmn:incoming>
+      <bpmn:incoming>flow_11</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:startEvent id="e_geo" name="Геозона: прибуття або виїзд">
+      <bpmn:outgoing>flow_22</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="md_e_geo"/>
+    </bpmn:startEvent>
+    <bpmn:task id="t_geo" name="Авто check-in / check-out, timestamp, сповіщення">
+      <bpmn:incoming>flow_22</bpmn:incoming>
+      <bpmn:outgoing>flow_23</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="g_dlv" name="Це доставка?">
+      <bpmn:incoming>flow_23</bpmn:incoming>
+      <bpmn:outgoing>flow_24</bpmn:outgoing>
+      <bpmn:outgoing>flow_25</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_pod" name="Зібрати POD, статус «Delivered»">
+      <bpmn:incoming>flow_25</bpmn:incoming>
+      <bpmn:outgoing>flow_26</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="e_end_ok" name="Доставку підтверджено">
+      <bpmn:incoming>flow_26</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="t_call" name="AI телефонує водієві та записує статус">
+      <bpmn:incoming>flow_7</bpmn:incoming>
+      <bpmn:outgoing>flow_8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="g_ans" name="Водій відповів?">
+      <bpmn:incoming>flow_8</bpmn:incoming>
+      <bpmn:outgoing>flow_9</bpmn:outgoing>
+      <bpmn:outgoing>flow_12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_parse" name="Розпізнати відповідь, записати локацію та ETA">
+      <bpmn:incoming>flow_9</bpmn:incoming>
+      <bpmn:incoming>flow_15</bpmn:incoming>
+      <bpmn:outgoing>flow_10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="g_exc" name="Виявлено виняток?">
+      <bpmn:incoming>flow_10</bpmn:incoming>
+      <bpmn:outgoing>flow_11</bpmn:outgoing>
+      <bpmn:outgoing>flow_16</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="t_sms" name="Надіслати SMS та email із запитом статусу">
+      <bpmn:incoming>flow_12</bpmn:incoming>
+      <bpmn:outgoing>flow_13</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:intermediateCatchEvent id="e_wait" name="Очікування 15 хв">
+      <bpmn:incoming>flow_13</bpmn:incoming>
+      <bpmn:outgoing>flow_14</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="td_e_wait"/>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="g_resp" name="Отримано відповідь?">
+      <bpmn:incoming>flow_14</bpmn:incoming>
+      <bpmn:outgoing>flow_15</bpmn:outgoing>
+      <bpmn:outgoing>flow_17</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:subProcess id="sp_exc" name="Обробка винятку">
+      <bpmn:incoming>flow_16</bpmn:incoming>
+      <bpmn:incoming>flow_17</bpmn:incoming>
+      <bpmn:outgoing>flow_18</bpmn:outgoing>
+      <bpmn:startEvent id="s_start" name="Виняток зареєстровано">
+        <bpmn:outgoing>flow_27</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="s_class" name="Класифікувати виняток за типом, джерелом і впливом на SLA">
+        <bpmn:incoming>flow_27</bpmn:incoming>
+        <bpmn:outgoing>flow_28</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="s_gw" name="Тип винятку?">
+        <bpmn:incoming>flow_28</bpmn:incoming>
+        <bpmn:outgoing>flow_29</bpmn:outgoing>
+        <bpmn:outgoing>flow_32</bpmn:outgoing>
+        <bpmn:outgoing>flow_35</bpmn:outgoing>
+        <bpmn:outgoing>flow_38</bpmn:outgoing>
+        <bpmn:outgoing>flow_41</bpmn:outgoing>
+        <bpmn:outgoing>flow_44</bpmn:outgoing>
+        <bpmn:outgoing>flow_47</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="a1" name="Перепризначити appointment зі складом або отримувачем">
+        <bpmn:incoming>flow_29</bpmn:incoming>
+        <bpmn:outgoing>flow_31</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="a2" name="Оновити вікно доставки та ETA у TMS">
+        <bpmn:incoming>flow_31</bpmn:incoming>
+        <bpmn:outgoing>flow_30</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="b1" name="Дзвінок перевізнику для відновлення зв&#x27;язку">
+        <bpmn:incoming>flow_32</bpmn:incoming>
+        <bpmn:outgoing>flow_34</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="b2" name="Пошук заміни або процедура lost load">
+        <bpmn:incoming>flow_34</bpmn:incoming>
+        <bpmn:outgoing>flow_33</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="c1" name="Залучити roadside assistance, оцінити стан вантажу">
+        <bpmn:incoming>flow_35</bpmn:incoming>
+        <bpmn:outgoing>flow_37</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="c2" name="Організувати recovery truck і перевантаження">
+        <bpmn:incoming>flow_37</bpmn:incoming>
+        <bpmn:outgoing>flow_36</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="d1" name="Перерахувати ETA з урахуванням HOS і трафіку">
+        <bpmn:incoming>flow_38</bpmn:incoming>
+        <bpmn:outgoing>flow_40</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="d2" name="Проактивно повідомити клієнта про затримку">
+        <bpmn:incoming>flow_40</bpmn:incoming>
+        <bpmn:outgoing>flow_39</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="e1" name="Запустити таймери detention і простою">
+        <bpmn:incoming>flow_41</bpmn:incoming>
+        <bpmn:outgoing>flow_43</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="e2" name="Погодити accessorial charge із клієнтом">
+        <bpmn:incoming>flow_43</bpmn:incoming>
+        <bpmn:outgoing>flow_42</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="f1" name="Запросити фото BOL, POD і опис розбіжності">
+        <bpmn:incoming>flow_44</bpmn:incoming>
+        <bpmn:outgoing>flow_46</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="f2" name="Відкрити OS&amp;D claim, повідомити страховика">
+        <bpmn:incoming>flow_46</bpmn:incoming>
+        <bpmn:outgoing>flow_45</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="g1" name="Заблокувати вантаж, вимагати ліцензію та страховку">
+        <bpmn:incoming>flow_47</bpmn:incoming>
+        <bpmn:outgoing>flow_49</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="g2" name="Перевірити ознаки double-brokering у профілі">
+        <bpmn:incoming>flow_49</bpmn:incoming>
+        <bpmn:outgoing>flow_48</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="s_merge" name="">
+        <bpmn:incoming>flow_30</bpmn:incoming>
+        <bpmn:incoming>flow_33</bpmn:incoming>
+        <bpmn:incoming>flow_36</bpmn:incoming>
+        <bpmn:incoming>flow_39</bpmn:incoming>
+        <bpmn:incoming>flow_42</bpmn:incoming>
+        <bpmn:incoming>flow_45</bpmn:incoming>
+        <bpmn:incoming>flow_48</bpmn:incoming>
+        <bpmn:outgoing>flow_50</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="s_log" name="Задокументувати причину, тег винятку й рішення в TMS">
+        <bpmn:incoming>flow_50</bpmn:incoming>
+        <bpmn:outgoing>flow_51</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="s_sla" name="Ризик SLA?">
+        <bpmn:incoming>flow_51</bpmn:incoming>
+        <bpmn:outgoing>flow_52</bpmn:outgoing>
+        <bpmn:outgoing>flow_54</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="s_comp" name="Узгодити компенсацію та новий SLA із клієнтом">
+        <bpmn:incoming>flow_52</bpmn:incoming>
+        <bpmn:outgoing>flow_53</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="s_merge2" name="">
+        <bpmn:incoming>flow_53</bpmn:incoming>
+        <bpmn:incoming>flow_54</bpmn:incoming>
+        <bpmn:outgoing>flow_55</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:exclusiveGateway id="s_cont" name="Рейс можна продовжити?">
+        <bpmn:incoming>flow_55</bpmn:incoming>
+        <bpmn:outgoing>flow_56</bpmn:outgoing>
+        <bpmn:outgoing>flow_57</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:endEvent id="s_end_ok" name="Виняток закрито, моніторинг триває">
+        <bpmn:incoming>flow_56</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:endEvent id="s_end_err" name="Рейс неможливо продовжити">
+        <bpmn:incoming>flow_57</bpmn:incoming>
+        <bpmn:errorEventDefinition id="ed_s_end_err"/>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="flow_27" sourceRef="s_start" targetRef="s_class"/>
+      <bpmn:sequenceFlow id="flow_28" sourceRef="s_class" targetRef="s_gw"/>
+      <bpmn:sequenceFlow id="flow_29" name="Пропущене вікно pickup або delivery" sourceRef="s_gw" targetRef="a1"/>
+      <bpmn:sequenceFlow id="flow_30" sourceRef="a2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_31" sourceRef="a1" targetRef="a2"/>
+      <bpmn:sequenceFlow id="flow_32" name="Втрата трекінгу, водій недоступний" sourceRef="s_gw" targetRef="b1"/>
+      <bpmn:sequenceFlow id="flow_33" sourceRef="b2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_34" sourceRef="b1" targetRef="b2"/>
+      <bpmn:sequenceFlow id="flow_35" name="Поломка, ДТП, потреба в recovery" sourceRef="s_gw" targetRef="c1"/>
+      <bpmn:sequenceFlow id="flow_36" sourceRef="c2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_37" sourceRef="c1" targetRef="c2"/>
+      <bpmn:sequenceFlow id="flow_38" name="Затримка в дорозі: HOS, трафік, погода" sourceRef="s_gw" targetRef="d1"/>
+      <bpmn:sequenceFlow id="flow_39" sourceRef="d2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_40" sourceRef="d1" targetRef="d2"/>
+      <bpmn:sequenceFlow id="flow_41" name="Detention, простій, lumper" sourceRef="s_gw" targetRef="e1"/>
+      <bpmn:sequenceFlow id="flow_42" sourceRef="e2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_43" sourceRef="e1" targetRef="e2"/>
+      <bpmn:sequenceFlow id="flow_44" name="Розбіжність документів, OS&amp;D" sourceRef="s_gw" targetRef="f1"/>
+      <bpmn:sequenceFlow id="flow_45" sourceRef="f2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_46" sourceRef="f1" targetRef="f2"/>
+      <bpmn:sequenceFlow id="flow_47" name="Комплаєнс перевізника" sourceRef="s_gw" targetRef="g1"/>
+      <bpmn:sequenceFlow id="flow_48" sourceRef="g2" targetRef="s_merge"/>
+      <bpmn:sequenceFlow id="flow_49" sourceRef="g1" targetRef="g2"/>
+      <bpmn:sequenceFlow id="flow_50" sourceRef="s_merge" targetRef="s_log"/>
+      <bpmn:sequenceFlow id="flow_51" sourceRef="s_log" targetRef="s_sla"/>
+      <bpmn:sequenceFlow id="flow_52" name="так" sourceRef="s_sla" targetRef="s_comp"/>
+      <bpmn:sequenceFlow id="flow_53" sourceRef="s_comp" targetRef="s_merge2"/>
+      <bpmn:sequenceFlow id="flow_54" name="ні" sourceRef="s_sla" targetRef="s_merge2"/>
+      <bpmn:sequenceFlow id="flow_55" sourceRef="s_merge2" targetRef="s_cont"/>
+      <bpmn:sequenceFlow id="flow_56" name="так" sourceRef="s_cont" targetRef="s_end_ok"/>
+      <bpmn:sequenceFlow id="flow_57" name="ні" sourceRef="s_cont" targetRef="s_end_err"/>
+    </bpmn:subProcess>
+    <bpmn:boundaryEvent id="be_timer" name="Не вирішено за 60 хв" attachedToRef="sp_exc" cancelActivity="false">
+      <bpmn:outgoing>flow_19</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="td_be_timer"/>
+    </bpmn:boundaryEvent>
+    <bpmn:task id="t_lead" name="Ескалація керівнику зміни">
+      <bpmn:incoming>flow_19</bpmn:incoming>
+      <bpmn:outgoing>flow_20</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="e_lead" name="Керівника зміни підключено">
+      <bpmn:incoming>flow_20</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:boundaryEvent id="be_err" name="Рейс неможливо продовжити" attachedToRef="sp_exc">
+      <bpmn:outgoing>flow_21</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ed_be_err"/>
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="e_end_x" name="Рейс закрито з винятком">
+      <bpmn:incoming>flow_21</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="flow_1" sourceRef="e_start" targetRef="t_plan"/>
+    <bpmn:sequenceFlow id="flow_2" sourceRef="t_plan" targetRef="e_timer"/>
+    <bpmn:sequenceFlow id="flow_3" sourceRef="e_timer" targetRef="t_pos"/>
+    <bpmn:sequenceFlow id="flow_4" sourceRef="t_pos" targetRef="g_fresh"/>
+    <bpmn:sequenceFlow id="flow_5" name="так" sourceRef="g_fresh" targetRef="g_dev"/>
+    <bpmn:sequenceFlow id="flow_6" name="ні — у графіку" sourceRef="g_dev" targetRef="t_upd"/>
+    <bpmn:sequenceFlow id="flow_7" name="ні — тиша &gt; 30 хв" sourceRef="g_fresh" targetRef="t_call"/>
+    <bpmn:sequenceFlow id="flow_8" sourceRef="t_call" targetRef="g_ans"/>
+    <bpmn:sequenceFlow id="flow_9" name="так" sourceRef="g_ans" targetRef="t_parse"/>
+    <bpmn:sequenceFlow id="flow_10" sourceRef="t_parse" targetRef="g_exc"/>
+    <bpmn:sequenceFlow id="flow_11" name="ні" sourceRef="g_exc" targetRef="t_upd"/>
+    <bpmn:sequenceFlow id="flow_12" name="ні" sourceRef="g_ans" targetRef="t_sms"/>
+    <bpmn:sequenceFlow id="flow_13" sourceRef="t_sms" targetRef="e_wait"/>
+    <bpmn:sequenceFlow id="flow_14" sourceRef="e_wait" targetRef="g_resp"/>
+    <bpmn:sequenceFlow id="flow_15" name="так" sourceRef="g_resp" targetRef="t_parse"/>
+    <bpmn:sequenceFlow id="flow_16" name="так — виняток" sourceRef="g_exc" targetRef="sp_exc"/>
+    <bpmn:sequenceFlow id="flow_17" name="ні — 2 спроби" sourceRef="g_resp" targetRef="sp_exc"/>
+    <bpmn:sequenceFlow id="flow_18" name="виняток вирішено — повернення в моніторинг" sourceRef="sp_exc" targetRef="e_timer"/>
+    <bpmn:sequenceFlow id="flow_19" sourceRef="be_timer" targetRef="t_lead"/>
+    <bpmn:sequenceFlow id="flow_20" sourceRef="t_lead" targetRef="e_lead"/>
+    <bpmn:sequenceFlow id="flow_21" sourceRef="be_err" targetRef="e_end_x"/>
+    <bpmn:sequenceFlow id="flow_22" sourceRef="e_geo" targetRef="t_geo"/>
+    <bpmn:sequenceFlow id="flow_23" sourceRef="t_geo" targetRef="g_dlv"/>
+    <bpmn:sequenceFlow id="flow_24" name="ні" sourceRef="g_dlv" targetRef="e_timer"/>
+    <bpmn:sequenceFlow id="flow_25" name="так" sourceRef="g_dlv" targetRef="t_pod"/>
+    <bpmn:sequenceFlow id="flow_26" sourceRef="t_pod" targetRef="e_end_ok"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="diag_1">
+    <bpmndi:BPMNPlane id="plane_main" bpmnElement="proc_checkcall">
+      <bpmndi:BPMNShape id="lane_sys_di" bpmnElement="lane_sys" isHorizontal="true"><dc:Bounds x="74" y="60" width="1956" height="320"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lane_ai_di" bpmnElement="lane_ai" isHorizontal="true"><dc:Bounds x="74" y="380" width="1956" height="250"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lane_disp_di" bpmnElement="lane_disp" isHorizontal="true"><dc:Bounds x="74" y="630" width="1956" height="240"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_start_di" bpmnElement="e_start"><dc:Bounds x="181" y="101" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_plan_di" bpmnElement="t_plan"><dc:Bounds x="280" y="83" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_timer_di" bpmnElement="e_timer"><dc:Bounds x="461" y="101" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_pos_di" bpmnElement="t_pos"><dc:Bounds x="530" y="83" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_fresh_di" bpmnElement="g_fresh"><dc:Bounds x="719" y="94" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_dev_di" bpmnElement="g_dev"><dc:Bounds x="834" y="94" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_upd_di" bpmnElement="t_upd"><dc:Bounds x="1320" y="83" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_geo_di" bpmnElement="e_geo"><dc:Bounds x="181" y="213" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_geo_di" bpmnElement="t_geo"><dc:Bounds x="280" y="195" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_dlv_di" bpmnElement="g_dlv"><dc:Bounds x="454" y="206" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_pod_di" bpmnElement="t_pod"><dc:Bounds x="550" y="253" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_end_ok_di" bpmnElement="e_end_ok"><dc:Bounds x="731" y="271" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_call_di" bpmnElement="t_call"><dc:Bounds x="780" y="413" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_ans_di" bpmnElement="g_ans"><dc:Bounds x="944" y="424" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_parse_di" bpmnElement="t_parse"><dc:Bounds x="1020" y="413" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_exc_di" bpmnElement="g_exc"><dc:Bounds x="1194" y="424" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_sms_di" bpmnElement="t_sms"><dc:Bounds x="1020" y="533" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_wait_di" bpmnElement="e_wait"><dc:Bounds x="1201" y="551" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g_resp_di" bpmnElement="g_resp"><dc:Bounds x="1294" y="544" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="sp_exc_di" bpmnElement="sp_exc"><dc:Bounds x="1390" y="650" width="220" height="100"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="be_timer_di" bpmnElement="be_timer"><dc:Bounds x="1591" y="656" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="t_lead_di" bpmnElement="t_lead"><dc:Bounds x="1680" y="638" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_lead_di" bpmnElement="e_lead"><dc:Bounds x="1881" y="656" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="be_err_di" bpmnElement="be_err"><dc:Bounds x="1401" y="731" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e_end_x_di" bpmnElement="e_end_x"><dc:Bounds x="1241" y="781" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="flow_1_di" bpmnElement="flow_1"><di:waypoint x="219" y="120"/><di:waypoint x="280" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_2_di" bpmnElement="flow_2"><di:waypoint x="440" y="120"/><di:waypoint x="461" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_3_di" bpmnElement="flow_3"><di:waypoint x="499" y="120"/><di:waypoint x="530" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_4_di" bpmnElement="flow_4"><di:waypoint x="690" y="120"/><di:waypoint x="719" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_5_di" bpmnElement="flow_5"><di:waypoint x="771" y="120"/><di:waypoint x="834" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_6_di" bpmnElement="flow_6"><di:waypoint x="886" y="120"/><di:waypoint x="1320" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_7_di" bpmnElement="flow_7"><di:waypoint x="745" y="146"/><di:waypoint x="745" y="450"/><di:waypoint x="780" y="450"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_8_di" bpmnElement="flow_8"><di:waypoint x="940" y="450"/><di:waypoint x="944" y="450"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_9_di" bpmnElement="flow_9"><di:waypoint x="996" y="450"/><di:waypoint x="1020" y="450"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_10_di" bpmnElement="flow_10"><di:waypoint x="1180" y="450"/><di:waypoint x="1194" y="450"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_11_di" bpmnElement="flow_11"><di:waypoint x="1246" y="450"/><di:waypoint x="1280" y="450"/><di:waypoint x="1280" y="120"/><di:waypoint x="1320" y="120"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_12_di" bpmnElement="flow_12"><di:waypoint x="970" y="476"/><di:waypoint x="970" y="570"/><di:waypoint x="1020" y="570"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_13_di" bpmnElement="flow_13"><di:waypoint x="1180" y="570"/><di:waypoint x="1201" y="570"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_14_di" bpmnElement="flow_14"><di:waypoint x="1239" y="570"/><di:waypoint x="1294" y="570"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_15_di" bpmnElement="flow_15"><di:waypoint x="1320" y="544"/><di:waypoint x="1320" y="510"/><di:waypoint x="1100" y="510"/><di:waypoint x="1100" y="487"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_16_di" bpmnElement="flow_16"><di:waypoint x="1220" y="476"/><di:waypoint x="1220" y="690"/><di:waypoint x="1390" y="690"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_17_di" bpmnElement="flow_17"><di:waypoint x="1346" y="570"/><di:waypoint x="1372" y="570"/><di:waypoint x="1372" y="725"/><di:waypoint x="1390" y="725"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_18_di" bpmnElement="flow_18"><di:waypoint x="1610" y="730"/><di:waypoint x="1666" y="730"/><di:waypoint x="1666" y="858"/><di:waypoint x="480" y="858"/><di:waypoint x="480" y="139"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_19_di" bpmnElement="flow_19"><di:waypoint x="1629" y="675"/><di:waypoint x="1680" y="675"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_20_di" bpmnElement="flow_20"><di:waypoint x="1840" y="675"/><di:waypoint x="1881" y="675"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_21_di" bpmnElement="flow_21"><di:waypoint x="1420" y="769"/><di:waypoint x="1420" y="800"/><di:waypoint x="1279" y="800"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_22_di" bpmnElement="flow_22"><di:waypoint x="219" y="232"/><di:waypoint x="280" y="232"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_23_di" bpmnElement="flow_23"><di:waypoint x="440" y="232"/><di:waypoint x="454" y="232"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_24_di" bpmnElement="flow_24"><di:waypoint x="480" y="206"/><di:waypoint x="480" y="139"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_25_di" bpmnElement="flow_25"><di:waypoint x="506" y="232"/><di:waypoint x="525" y="232"/><di:waypoint x="525" y="290"/><di:waypoint x="550" y="290"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_26_di" bpmnElement="flow_26"><di:waypoint x="710" y="290"/><di:waypoint x="731" y="290"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNPlane id="plane_sub" bpmnElement="sp_exc">
+      <bpmndi:BPMNShape id="s_start_di" bpmnElement="s_start"><dc:Bounds x="111" y="486" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_class_di" bpmnElement="s_class"><dc:Bounds x="210" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_gw_di" bpmnElement="s_gw"><dc:Bounds x="414" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a1_di" bpmnElement="a1"><dc:Bounds x="510" y="123" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a2_di" bpmnElement="a2"><dc:Bounds x="720" y="123" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="b1_di" bpmnElement="b1"><dc:Bounds x="510" y="238" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="b2_di" bpmnElement="b2"><dc:Bounds x="720" y="238" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="c1_di" bpmnElement="c1"><dc:Bounds x="510" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="c2_di" bpmnElement="c2"><dc:Bounds x="720" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="d1_di" bpmnElement="d1"><dc:Bounds x="510" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="d2_di" bpmnElement="d2"><dc:Bounds x="720" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e1_di" bpmnElement="e1"><dc:Bounds x="510" y="583" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e2_di" bpmnElement="e2"><dc:Bounds x="720" y="583" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="f1_di" bpmnElement="f1"><dc:Bounds x="510" y="698" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="f2_di" bpmnElement="f2"><dc:Bounds x="720" y="698" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g1_di" bpmnElement="g1"><dc:Bounds x="510" y="813" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g2_di" bpmnElement="g2"><dc:Bounds x="720" y="813" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_merge_di" bpmnElement="s_merge"><dc:Bounds x="934" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_log_di" bpmnElement="s_log"><dc:Bounds x="1000" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_sla_di" bpmnElement="s_sla"><dc:Bounds x="1214" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_comp_di" bpmnElement="s_comp"><dc:Bounds x="1320" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_merge2_di" bpmnElement="s_merge2"><dc:Bounds x="1534" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_cont_di" bpmnElement="s_cont"><dc:Bounds x="1634" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_end_ok_di" bpmnElement="s_end_ok"><dc:Bounds x="1771" y="411" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_end_err_di" bpmnElement="s_end_err"><dc:Bounds x="1771" y="581" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="flow_27_di" bpmnElement="flow_27"><di:waypoint x="149" y="505"/><di:waypoint x="210" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_28_di" bpmnElement="flow_28"><di:waypoint x="370" y="505"/><di:waypoint x="414" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_29_di" bpmnElement="flow_29"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="160"/><di:waypoint x="510" y="160"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_30_di" bpmnElement="flow_30"><di:waypoint x="880" y="160"/><di:waypoint x="960" y="160"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_31_di" bpmnElement="flow_31"><di:waypoint x="670" y="160"/><di:waypoint x="720" y="160"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_32_di" bpmnElement="flow_32"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="275"/><di:waypoint x="510" y="275"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_33_di" bpmnElement="flow_33"><di:waypoint x="880" y="275"/><di:waypoint x="960" y="275"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_34_di" bpmnElement="flow_34"><di:waypoint x="670" y="275"/><di:waypoint x="720" y="275"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_35_di" bpmnElement="flow_35"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="390"/><di:waypoint x="510" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_36_di" bpmnElement="flow_36"><di:waypoint x="880" y="390"/><di:waypoint x="960" y="390"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_37_di" bpmnElement="flow_37"><di:waypoint x="670" y="390"/><di:waypoint x="720" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_38_di" bpmnElement="flow_38"><di:waypoint x="466" y="505"/><di:waypoint x="510" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_39_di" bpmnElement="flow_39"><di:waypoint x="880" y="505"/><di:waypoint x="934" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_40_di" bpmnElement="flow_40"><di:waypoint x="670" y="505"/><di:waypoint x="720" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_41_di" bpmnElement="flow_41"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="620"/><di:waypoint x="510" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_42_di" bpmnElement="flow_42"><di:waypoint x="880" y="620"/><di:waypoint x="960" y="620"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_43_di" bpmnElement="flow_43"><di:waypoint x="670" y="620"/><di:waypoint x="720" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_44_di" bpmnElement="flow_44"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="735"/><di:waypoint x="510" y="735"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_45_di" bpmnElement="flow_45"><di:waypoint x="880" y="735"/><di:waypoint x="960" y="735"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_46_di" bpmnElement="flow_46"><di:waypoint x="670" y="735"/><di:waypoint x="720" y="735"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_47_di" bpmnElement="flow_47"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="850"/><di:waypoint x="510" y="850"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_48_di" bpmnElement="flow_48"><di:waypoint x="880" y="850"/><di:waypoint x="960" y="850"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_49_di" bpmnElement="flow_49"><di:waypoint x="670" y="850"/><di:waypoint x="720" y="850"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_50_di" bpmnElement="flow_50"><di:waypoint x="986" y="505"/><di:waypoint x="1000" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_51_di" bpmnElement="flow_51"><di:waypoint x="1160" y="505"/><di:waypoint x="1214" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_52_di" bpmnElement="flow_52"><di:waypoint x="1240" y="479"/><di:waypoint x="1240" y="390"/><di:waypoint x="1320" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_53_di" bpmnElement="flow_53"><di:waypoint x="1480" y="390"/><di:waypoint x="1560" y="390"/><di:waypoint x="1560" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_54_di" bpmnElement="flow_54"><di:waypoint x="1266" y="505"/><di:waypoint x="1534" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_55_di" bpmnElement="flow_55"><di:waypoint x="1586" y="505"/><di:waypoint x="1634" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_56_di" bpmnElement="flow_56"><di:waypoint x="1660" y="479"/><di:waypoint x="1660" y="430"/><di:waypoint x="1771" y="430"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_57_di" bpmnElement="flow_57"><di:waypoint x="1660" y="531"/><di:waypoint x="1660" y="600"/><di:waypoint x="1771" y="600"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

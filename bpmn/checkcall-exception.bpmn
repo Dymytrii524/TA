@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="defs_exception" targetNamespace="http://logistics/checkcall">
+  <bpmn:collaboration id="collab_exception">
+    <bpmn:participant id="p_broker" name="Диспетчерська: обробка винятку" processRef="proc_exception"/>
+    <bpmn:participant id="p_carrier" name="Перевізник, водій, склад"/>
+    <bpmn:participant id="p_client" name="Клієнт (вантажовідправник)"/>
+    <bpmn:messageFlow id="mflow_1" name="Новий слот appointment" sourceRef="a1" targetRef="p_carrier"/>
+    <bpmn:messageFlow id="mflow_2" name="Запис зв&#x27;язку з водієм" sourceRef="b1" targetRef="p_carrier"/>
+    <bpmn:messageFlow id="mflow_3" name="Наряд roadside і recovery" sourceRef="c1" targetRef="p_carrier"/>
+    <bpmn:messageFlow id="mflow_4" name="Запит фото BOL і POD" sourceRef="f1" targetRef="p_carrier"/>
+    <bpmn:messageFlow id="mflow_5" name="Запит ліцензії та страховки" sourceRef="g1" targetRef="p_carrier"/>
+    <bpmn:messageFlow id="mflow_6" name="Фото BOL, POD, коментар водія" sourceRef="p_carrier" targetRef="f1"/>
+    <bpmn:messageFlow id="mflow_7" name="Нове вікно доставки та ETA" sourceRef="a2" targetRef="p_client"/>
+    <bpmn:messageFlow id="mflow_8" name="Повідомлення про затримку" sourceRef="d2" targetRef="p_client"/>
+    <bpmn:messageFlow id="mflow_9" name="Погодження accessorial" sourceRef="e2" targetRef="p_client"/>
+    <bpmn:messageFlow id="mflow_10" name="Повідомлення про OS&amp;D claim" sourceRef="f2" targetRef="p_client"/>
+    <bpmn:messageFlow id="mflow_11" name="Пропозиція компенсації та SLA" sourceRef="s_comp" targetRef="p_client"/>
+  </bpmn:collaboration>
+  <bpmn:process id="proc_exception" name="Обробка винятку" isExecutable="false">
+    <bpmn:startEvent id="s_start" name="Виняток зареєстровано">
+      <bpmn:outgoing>flow_27</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="s_class" name="Класифікувати виняток за типом, джерелом і впливом на SLA">
+      <bpmn:incoming>flow_27</bpmn:incoming>
+      <bpmn:outgoing>flow_28</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="s_gw" name="Тип винятку?">
+      <bpmn:incoming>flow_28</bpmn:incoming>
+      <bpmn:outgoing>flow_29</bpmn:outgoing>
+      <bpmn:outgoing>flow_32</bpmn:outgoing>
+      <bpmn:outgoing>flow_35</bpmn:outgoing>
+      <bpmn:outgoing>flow_38</bpmn:outgoing>
+      <bpmn:outgoing>flow_41</bpmn:outgoing>
+      <bpmn:outgoing>flow_44</bpmn:outgoing>
+      <bpmn:outgoing>flow_47</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="a1" name="Перепризначити appointment зі складом або отримувачем">
+      <bpmn:incoming>flow_29</bpmn:incoming>
+      <bpmn:outgoing>flow_31</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="a2" name="Оновити вікно доставки та ETA у TMS">
+      <bpmn:incoming>flow_31</bpmn:incoming>
+      <bpmn:outgoing>flow_30</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="b1" name="Дзвінок перевізнику для відновлення зв&#x27;язку">
+      <bpmn:incoming>flow_32</bpmn:incoming>
+      <bpmn:outgoing>flow_34</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="b2" name="Пошук заміни або процедура lost load">
+      <bpmn:incoming>flow_34</bpmn:incoming>
+      <bpmn:outgoing>flow_33</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="c1" name="Залучити roadside assistance, оцінити стан вантажу">
+      <bpmn:incoming>flow_35</bpmn:incoming>
+      <bpmn:outgoing>flow_37</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="c2" name="Організувати recovery truck і перевантаження">
+      <bpmn:incoming>flow_37</bpmn:incoming>
+      <bpmn:outgoing>flow_36</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="d1" name="Перерахувати ETA з урахуванням HOS і трафіку">
+      <bpmn:incoming>flow_38</bpmn:incoming>
+      <bpmn:outgoing>flow_40</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="d2" name="Проактивно повідомити клієнта про затримку">
+      <bpmn:incoming>flow_40</bpmn:incoming>
+      <bpmn:outgoing>flow_39</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="e1" name="Запустити таймери detention і простою">
+      <bpmn:incoming>flow_41</bpmn:incoming>
+      <bpmn:outgoing>flow_43</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="e2" name="Погодити accessorial charge із клієнтом">
+      <bpmn:incoming>flow_43</bpmn:incoming>
+      <bpmn:outgoing>flow_42</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="f1" name="Запросити фото BOL, POD і опис розбіжності">
+      <bpmn:incoming>flow_44</bpmn:incoming>
+      <bpmn:outgoing>flow_46</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="f2" name="Відкрити OS&amp;D claim, повідомити страховика">
+      <bpmn:incoming>flow_46</bpmn:incoming>
+      <bpmn:outgoing>flow_45</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="g1" name="Заблокувати вантаж, вимагати ліцензію та страховку">
+      <bpmn:incoming>flow_47</bpmn:incoming>
+      <bpmn:outgoing>flow_49</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="g2" name="Перевірити ознаки double-brokering у профілі">
+      <bpmn:incoming>flow_49</bpmn:incoming>
+      <bpmn:outgoing>flow_48</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="s_merge" name="">
+      <bpmn:incoming>flow_30</bpmn:incoming>
+      <bpmn:incoming>flow_33</bpmn:incoming>
+      <bpmn:incoming>flow_36</bpmn:incoming>
+      <bpmn:incoming>flow_39</bpmn:incoming>
+      <bpmn:incoming>flow_42</bpmn:incoming>
+      <bpmn:incoming>flow_45</bpmn:incoming>
+      <bpmn:incoming>flow_48</bpmn:incoming>
+      <bpmn:outgoing>flow_50</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="s_log" name="Задокументувати причину, тег винятку й рішення в TMS">
+      <bpmn:incoming>flow_50</bpmn:incoming>
+      <bpmn:outgoing>flow_51</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="s_sla" name="Ризик SLA?">
+      <bpmn:incoming>flow_51</bpmn:incoming>
+      <bpmn:outgoing>flow_52</bpmn:outgoing>
+      <bpmn:outgoing>flow_54</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="s_comp" name="Узгодити компенсацію та новий SLA із клієнтом">
+      <bpmn:incoming>flow_52</bpmn:incoming>
+      <bpmn:outgoing>flow_53</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="s_merge2" name="">
+      <bpmn:incoming>flow_53</bpmn:incoming>
+      <bpmn:incoming>flow_54</bpmn:incoming>
+      <bpmn:outgoing>flow_55</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="s_cont" name="Рейс можна продовжити?">
+      <bpmn:incoming>flow_55</bpmn:incoming>
+      <bpmn:outgoing>flow_56</bpmn:outgoing>
+      <bpmn:outgoing>flow_57</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="s_end_ok" name="Виняток закрито, моніторинг триває">
+      <bpmn:incoming>flow_56</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="s_end_err" name="Рейс неможливо продовжити">
+      <bpmn:incoming>flow_57</bpmn:incoming>
+      <bpmn:errorEventDefinition id="ed_s_end_err"/>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="flow_27" sourceRef="s_start" targetRef="s_class"/>
+    <bpmn:sequenceFlow id="flow_28" sourceRef="s_class" targetRef="s_gw"/>
+    <bpmn:sequenceFlow id="flow_29" name="Пропущене вікно pickup або delivery" sourceRef="s_gw" targetRef="a1"/>
+    <bpmn:sequenceFlow id="flow_30" sourceRef="a2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_31" sourceRef="a1" targetRef="a2"/>
+    <bpmn:sequenceFlow id="flow_32" name="Втрата трекінгу, водій недоступний" sourceRef="s_gw" targetRef="b1"/>
+    <bpmn:sequenceFlow id="flow_33" sourceRef="b2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_34" sourceRef="b1" targetRef="b2"/>
+    <bpmn:sequenceFlow id="flow_35" name="Поломка, ДТП, потреба в recovery" sourceRef="s_gw" targetRef="c1"/>
+    <bpmn:sequenceFlow id="flow_36" sourceRef="c2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_37" sourceRef="c1" targetRef="c2"/>
+    <bpmn:sequenceFlow id="flow_38" name="Затримка в дорозі: HOS, трафік, погода" sourceRef="s_gw" targetRef="d1"/>
+    <bpmn:sequenceFlow id="flow_39" sourceRef="d2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_40" sourceRef="d1" targetRef="d2"/>
+    <bpmn:sequenceFlow id="flow_41" name="Detention, простій, lumper" sourceRef="s_gw" targetRef="e1"/>
+    <bpmn:sequenceFlow id="flow_42" sourceRef="e2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_43" sourceRef="e1" targetRef="e2"/>
+    <bpmn:sequenceFlow id="flow_44" name="Розбіжність документів, OS&amp;D" sourceRef="s_gw" targetRef="f1"/>
+    <bpmn:sequenceFlow id="flow_45" sourceRef="f2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_46" sourceRef="f1" targetRef="f2"/>
+    <bpmn:sequenceFlow id="flow_47" name="Комплаєнс перевізника" sourceRef="s_gw" targetRef="g1"/>
+    <bpmn:sequenceFlow id="flow_48" sourceRef="g2" targetRef="s_merge"/>
+    <bpmn:sequenceFlow id="flow_49" sourceRef="g1" targetRef="g2"/>
+    <bpmn:sequenceFlow id="flow_50" sourceRef="s_merge" targetRef="s_log"/>
+    <bpmn:sequenceFlow id="flow_51" sourceRef="s_log" targetRef="s_sla"/>
+    <bpmn:sequenceFlow id="flow_52" name="так" sourceRef="s_sla" targetRef="s_comp"/>
+    <bpmn:sequenceFlow id="flow_53" sourceRef="s_comp" targetRef="s_merge2"/>
+    <bpmn:sequenceFlow id="flow_54" name="ні" sourceRef="s_sla" targetRef="s_merge2"/>
+    <bpmn:sequenceFlow id="flow_55" sourceRef="s_merge2" targetRef="s_cont"/>
+    <bpmn:sequenceFlow id="flow_56" name="так" sourceRef="s_cont" targetRef="s_end_ok"/>
+    <bpmn:sequenceFlow id="flow_57" name="ні" sourceRef="s_cont" targetRef="s_end_err"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="diag_exc">
+    <bpmndi:BPMNPlane id="plane_collab" bpmnElement="collab_exception">
+      <bpmndi:BPMNShape id="p_broker_di" bpmnElement="p_broker" isHorizontal="true"><dc:Bounds x="40" y="70" width="1880" height="890"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p_carrier_di" bpmnElement="p_carrier" isHorizontal="true"><dc:Bounds x="40" y="1000" width="1880" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p_client_di" bpmnElement="p_client" isHorizontal="true"><dc:Bounds x="40" y="1120" width="1880" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_start_dic" bpmnElement="s_start"><dc:Bounds x="111" y="486" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_class_dic" bpmnElement="s_class"><dc:Bounds x="210" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_gw_dic" bpmnElement="s_gw"><dc:Bounds x="414" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a1_dic" bpmnElement="a1"><dc:Bounds x="510" y="123" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="a2_dic" bpmnElement="a2"><dc:Bounds x="720" y="123" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="b1_dic" bpmnElement="b1"><dc:Bounds x="510" y="238" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="b2_dic" bpmnElement="b2"><dc:Bounds x="720" y="238" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="c1_dic" bpmnElement="c1"><dc:Bounds x="510" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="c2_dic" bpmnElement="c2"><dc:Bounds x="720" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="d1_dic" bpmnElement="d1"><dc:Bounds x="510" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="d2_dic" bpmnElement="d2"><dc:Bounds x="720" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e1_dic" bpmnElement="e1"><dc:Bounds x="510" y="583" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="e2_dic" bpmnElement="e2"><dc:Bounds x="720" y="583" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="f1_dic" bpmnElement="f1"><dc:Bounds x="510" y="698" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="f2_dic" bpmnElement="f2"><dc:Bounds x="720" y="698" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g1_dic" bpmnElement="g1"><dc:Bounds x="510" y="813" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g2_dic" bpmnElement="g2"><dc:Bounds x="720" y="813" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_merge_dic" bpmnElement="s_merge"><dc:Bounds x="934" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_log_dic" bpmnElement="s_log"><dc:Bounds x="1000" y="468" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_sla_dic" bpmnElement="s_sla"><dc:Bounds x="1214" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_comp_dic" bpmnElement="s_comp"><dc:Bounds x="1320" y="353" width="160" height="74"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_merge2_dic" bpmnElement="s_merge2"><dc:Bounds x="1534" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_cont_dic" bpmnElement="s_cont"><dc:Bounds x="1634" y="479" width="52" height="52"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_end_ok_dic" bpmnElement="s_end_ok"><dc:Bounds x="1771" y="411" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="s_end_err_dic" bpmnElement="s_end_err"><dc:Bounds x="1771" y="581" width="38" height="38"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="flow_27_dic" bpmnElement="flow_27"><di:waypoint x="149" y="505"/><di:waypoint x="210" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_28_dic" bpmnElement="flow_28"><di:waypoint x="370" y="505"/><di:waypoint x="414" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_29_dic" bpmnElement="flow_29"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="160"/><di:waypoint x="510" y="160"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_30_dic" bpmnElement="flow_30"><di:waypoint x="880" y="160"/><di:waypoint x="960" y="160"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_31_dic" bpmnElement="flow_31"><di:waypoint x="670" y="160"/><di:waypoint x="720" y="160"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_32_dic" bpmnElement="flow_32"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="275"/><di:waypoint x="510" y="275"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_33_dic" bpmnElement="flow_33"><di:waypoint x="880" y="275"/><di:waypoint x="960" y="275"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_34_dic" bpmnElement="flow_34"><di:waypoint x="670" y="275"/><di:waypoint x="720" y="275"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_35_dic" bpmnElement="flow_35"><di:waypoint x="440" y="479"/><di:waypoint x="440" y="390"/><di:waypoint x="510" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_36_dic" bpmnElement="flow_36"><di:waypoint x="880" y="390"/><di:waypoint x="960" y="390"/><di:waypoint x="960" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_37_dic" bpmnElement="flow_37"><di:waypoint x="670" y="390"/><di:waypoint x="720" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_38_dic" bpmnElement="flow_38"><di:waypoint x="466" y="505"/><di:waypoint x="510" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_39_dic" bpmnElement="flow_39"><di:waypoint x="880" y="505"/><di:waypoint x="934" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_40_dic" bpmnElement="flow_40"><di:waypoint x="670" y="505"/><di:waypoint x="720" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_41_dic" bpmnElement="flow_41"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="620"/><di:waypoint x="510" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_42_dic" bpmnElement="flow_42"><di:waypoint x="880" y="620"/><di:waypoint x="960" y="620"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_43_dic" bpmnElement="flow_43"><di:waypoint x="670" y="620"/><di:waypoint x="720" y="620"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_44_dic" bpmnElement="flow_44"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="735"/><di:waypoint x="510" y="735"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_45_dic" bpmnElement="flow_45"><di:waypoint x="880" y="735"/><di:waypoint x="960" y="735"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_46_dic" bpmnElement="flow_46"><di:waypoint x="670" y="735"/><di:waypoint x="720" y="735"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_47_dic" bpmnElement="flow_47"><di:waypoint x="440" y="531"/><di:waypoint x="440" y="850"/><di:waypoint x="510" y="850"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_48_dic" bpmnElement="flow_48"><di:waypoint x="880" y="850"/><di:waypoint x="960" y="850"/><di:waypoint x="960" y="531"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_49_dic" bpmnElement="flow_49"><di:waypoint x="670" y="850"/><di:waypoint x="720" y="850"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_50_dic" bpmnElement="flow_50"><di:waypoint x="986" y="505"/><di:waypoint x="1000" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_51_dic" bpmnElement="flow_51"><di:waypoint x="1160" y="505"/><di:waypoint x="1214" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_52_dic" bpmnElement="flow_52"><di:waypoint x="1240" y="479"/><di:waypoint x="1240" y="390"/><di:waypoint x="1320" y="390"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_53_dic" bpmnElement="flow_53"><di:waypoint x="1480" y="390"/><di:waypoint x="1560" y="390"/><di:waypoint x="1560" y="479"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_54_dic" bpmnElement="flow_54"><di:waypoint x="1266" y="505"/><di:waypoint x="1534" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_55_dic" bpmnElement="flow_55"><di:waypoint x="1586" y="505"/><di:waypoint x="1634" y="505"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_56_dic" bpmnElement="flow_56"><di:waypoint x="1660" y="479"/><di:waypoint x="1660" y="430"/><di:waypoint x="1771" y="430"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="flow_57_dic" bpmnElement="flow_57"><di:waypoint x="1660" y="531"/><di:waypoint x="1660" y="600"/><di:waypoint x="1771" y="600"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_1_di" bpmnElement="mflow_1"><di:waypoint x="590" y="197"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_2_di" bpmnElement="mflow_2"><di:waypoint x="590" y="312"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_3_di" bpmnElement="mflow_3"><di:waypoint x="590" y="427"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_4_di" bpmnElement="mflow_4"><di:waypoint x="590" y="772"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_5_di" bpmnElement="mflow_5"><di:waypoint x="590" y="887"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_6_di" bpmnElement="mflow_6"><di:waypoint x="0" y="1040"/><di:waypoint x="590" y="698"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_7_di" bpmnElement="mflow_7"><di:waypoint x="800" y="197"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_8_di" bpmnElement="mflow_8"><di:waypoint x="800" y="542"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_9_di" bpmnElement="mflow_9"><di:waypoint x="800" y="657"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_10_di" bpmnElement="mflow_10"><di:waypoint x="800" y="772"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="mflow_11_di" bpmnElement="mflow_11"><di:waypoint x="1400" y="427"/><di:waypoint x="0" y="1040"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

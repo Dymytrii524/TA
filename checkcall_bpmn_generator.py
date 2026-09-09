@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Дві діаграми з однієї моделі: основний процес check-call + підпроцес «Обробка винятків».
-Вихід: checkcall-bpmn.svg, checkcall-exception-subprocess.svg."""
+"""Чотири файли з однієї моделі: основний процес check-call + підпроцес
+«Обробка винятків» (SVG-ілюстрації), плюс BPMN 2.0 XML з drill-down у
+підпроцес і колаборація підпроцесу з message flows до контрагентів.
+Вихід: checkcall-bpmn.svg, checkcall-exception-subprocess.svg,
+checkcall.bpmn, checkcall-exception.bpmn."""
 import textwrap, html, sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 W_T, H_T = 160, 74
 S_G, S_E, S_B = 52, 38, 38
-W_S, H_S = 220, 100          # collapsed subprocess
+W_S, H_S = 220, 100
 
 FONT = "Inter, 'Segoe UI', Arial, sans-serif"
 INK = "#1c2b3a"
@@ -146,28 +149,25 @@ SUB_E += [
 SUB_LBL_POS = {"s_end_ok": (1790, 391), "s_end_err": (1790, 561),
                "s_sla": (1240, 570), "s_cont": (1626, 452)}
 
-DY = 105
-SUB = {k: (v[0], v[1], v[2], v[3] + DY, v[4]) for k, v in SUB.items()}
-SUB_E = [tuple([e[0], e[1], [(x, y + DY) for x, y in e[2]], e[3]] +
-               ([(e[4][0], e[4][1] + DY)] if len(e) > 4 else [])) for e in SUB_E]
-SUB_LBL_POS = {k: (v[0], v[1] + DY) for k, v in SUB_LBL_POS.items()}
-
-CARRIER_Y, CARRIER_H = 70, 80
-CLIENT_Y, CLIENT_H = 1100, 80
-FRAME_Y, FRAME_H = 175, 900
+# Ці два блоки (чорні скриньки й message flows) більше НЕ малюються на
+# ілюстративному SVG підпроцесу (модель це прибрала - див. checkcall-
+# exception.bpmn, де message flows належать за BPMN-семантикою: у
+# collaboration-діаграмі, а не домальовані поверх process-діаграми).
+# Дані MF лишаються тут і йдуть тільки в checkcall-exception.bpmn.
+FRAME_Y, FRAME_H = 70, 890
 
 MF = [
-    ("a1", "p_carrier", [(590, 228), (590, 150)], "Новий слот appointment", (590, 180)),
-    ("b1", "p_carrier", [(510, 385), (495, 385), (495, 150)], "Запис зв'язку з водієм", (410, 327)),
-    ("c1", "p_carrier", [(510, 500), (480, 500), (480, 150)], "Наряд roadside і recovery", (418, 442)),
-    ("f1", "p_carrier", [(670, 845), (690, 845), (690, 150)], "Запит фото BOL і POD", (768, 442)),
-    ("g1", "p_carrier", [(670, 960), (710, 960), (710, 150)], "Запит ліцензії та страховки", (772, 327)),
-    ("p_carrier", "f1", [(730, 150), (730, 862), (670, 862)], "Фото BOL, POD, коментар водія", (768, 1035)),
-    ("a2", "p_client", [(880, 265), (1200, 265), (1200, 1100)], "Нове вікно доставки та ETA", (1258, 248)),
-    ("d2", "p_client", [(800, 652), (800, 668), (900, 668), (900, 1100)], "Повідомлення про затримку", (996, 690)),
-    ("e2", "p_client", [(880, 730), (915, 730), (915, 1100)], "Погодження accessorial", (1000, 786)),
-    ("f2", "p_client", [(880, 845), (930, 845), (930, 1100)], "Повідомлення про OS&D claim", (1016, 899)),
-    ("s_comp", "p_client", [(1400, 537), (1400, 1100)], "Пропозиція компенсації та SLA", (1500, 720)),
+    ("a1", "p_carrier", "Новий слот appointment"),
+    ("b1", "p_carrier", "Запис зв'язку з водієм"),
+    ("c1", "p_carrier", "Наряд roadside і recovery"),
+    ("f1", "p_carrier", "Запит фото BOL і POD"),
+    ("g1", "p_carrier", "Запит ліцензії та страховки"),
+    ("p_carrier", "f1", "Фото BOL, POD, коментар водія"),
+    ("a2", "p_client", "Нове вікно доставки та ETA"),
+    ("d2", "p_client", "Повідомлення про затримку"),
+    ("e2", "p_client", "Погодження accessorial"),
+    ("f2", "p_client", "Повідомлення про OS&D claim"),
+    ("s_comp", "p_client", "Пропозиція компенсації та SLA"),
 ]
 
 
@@ -269,24 +269,6 @@ LEGEND = [("Подія", "circle"), ("Таймер", "timer"), ("Задача", 
 MF_INK = "#0f6fbf"
 
 
-def draw_blackbox(out, x, y, w, h, name, accent):
-    out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#f7f9fb" stroke="{accent}" stroke-width="1.8"/>')
-    out.append(tblock([name, "чорна скринька (зовнішній учасник)"], x + w / 2, y + h / 2 - 8, 13, accent, "700"))
-
-
-def draw_mflows(out):
-    for src, dst, wps, lbl, anchor in MF:
-        out.append('<path d="M ' + " L ".join(f"{x} {y}" for x, y in wps) +
-                   f'" fill="none" stroke="{MF_INK}" stroke-width="1.5" stroke-dasharray="7 5" '
-                   'marker-start="url(#mstart)" marker-end="url(#marr)"/>')
-        lines = wrap(lbl, 175, 11)
-        w = max(len(l) for l in lines) * 5.9 + 10
-        h = len(lines) * 14 + 4
-        lx, ly = anchor
-        out.append(f'<rect x="{lx-w/2:.0f}" y="{ly-h/2:.0f}" width="{w:.0f}" height="{h:.0f}" rx="3" fill="#ffffff" opacity="0.94"/>')
-        out.append(tblock(lines, lx, ly, 11, MF_INK, "600"))
-
-
 def draw_legend(out, lx, ly, width, note):
     out.append(f'<rect x="{lx}" y="{ly-22}" width="{width}" height="44" rx="6" fill="#f7f9fb" stroke="#d5dee6"/>')
     x = lx + 20
@@ -317,8 +299,9 @@ def draw_legend(out, lx, ly, width, note):
     out.append(f'<text x="{x+10}" y="{ly+4}" font-family="{FONT}" font-size="11.5" fill="#5b6f83">{html.escape(note)}</text>')
 
 
-SRC = "Дизайн-концепт: ілюстративна модель процесу, не підключений сервіс (демо Trans-Atlas)"
+SRC = "Джерела логіки: FleetWorks, GoFast Freight, Descartes MacroPoint OpsForce, Tai TMS, Vektor TMS"
 
+# ---------------------------------------------------------------- SVG 1: основний процес
 o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="2070" height="960" viewBox="0 0 2070 960" font-family="{FONT}">',
      '<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">'
      f'<path d="M0,0 L10,5 L0,10 z" fill="{INK}"/></marker></defs>',
@@ -340,25 +323,163 @@ draw_legend(o, 60, 910, 1900, SRC)
 o.append("</svg>")
 open("checkcall-bpmn.svg", "w", encoding="utf-8").write("\n".join(o))
 
-o2 = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1960" height="1275" viewBox="0 0 1960 1275" font-family="{FONT}">',
+# ---------------------------------------------------------------- SVG 2: підпроцес
+o2 = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1960" height="1030" viewBox="0 0 1960 1030" font-family="{FONT}">',
       '<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">'
-      f'<path d="M0,0 L10,5 L0,10 z" fill="{INK}"/></marker>'
-      '<marker id="marr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">'
-      f'<path d="M1,1 L9,5 L1,9" fill="none" stroke="{MF_INK}" stroke-width="1.6"/></marker>'
-      '<marker id="mstart" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">'
-      f'<circle cx="5" cy="5" r="3.4" fill="#ffffff" stroke="{MF_INK}" stroke-width="1.4"/></marker></defs>',
+      f'<path d="M0,0 L10,5 L0,10 z" fill="{INK}"/></marker></defs>',
       '<rect width="100%" height="100%" fill="#ffffff"/>',
-      tblock(["Підпроцес «Обробка винятку»: типи винятків, сценарії вирішення та обмін повідомленнями"], 980, 30, 20, INK, "700")]
-draw_blackbox(o2, 40, CARRIER_Y, 1880, CARRIER_H, "Перевізник, водій, склад", "#0f6fbf")
-draw_blackbox(o2, 40, CLIENT_Y, 1880, CLIENT_H, "Клієнт (вантажовідправник)", "#0f6fbf")
+      tblock(["Підпроцес «Обробка винятку»: типи винятків і сценарії вирішення"], 980, 30, 20, INK, "700")]
 o2.append(f'<rect x="40" y="{FRAME_Y}" width="1880" height="{FRAME_H}" rx="14" fill="none" stroke="{ACC["sub"]}" stroke-width="2.2"/>')
 o2.append(f'<text x="60" y="{FRAME_Y+24}" font-family="{FONT}" font-size="12.5" font-weight="700" fill="{ACC["sub"]}">'
-          'Диспетчерська: обробка винятку (розгорнутий підпроцес)</text>')
-draw_mflows(o2)
+          'Обробка винятку (розгорнутий підпроцес)</text>')
 draw_edges(SUB_E, o2)
 draw_nodes(SUB, o2, SUB_LBL_POS)
-draw_legend(o2, 40, 1245, 1880, SRC)
+draw_legend(o2, 40, 1000, 1880, SRC)
 o2.append("</svg>")
 open("checkcall-exception-subprocess.svg", "w", encoding="utf-8").write("\n".join(o2))
 
 print("main nodes", len(MAIN), "| sub nodes", len(SUB))
+
+# ==================================================================
+# BPMN 2.0 XML
+# ==================================================================
+TAG = {"start": "startEvent", "msgstart": "startEvent", "end": "endEvent", "errend": "endEvent",
+       "timer": "intermediateCatchEvent", "gw": "exclusiveGateway", "task": "task",
+       "sub": "subProcess", "btimer": "boundaryEvent", "berr": "boundaryEvent"}
+ALL = dict(MAIN)
+ALL.update(SUB)
+SUB_IDS = set(SUB)
+
+flows = []
+inc = {n: [] for n in ALL}
+outg = {n: [] for n in ALL}
+for i, _e in enumerate(MAIN_E + SUB_E, 1):
+    fid = f"flow_{i}"
+    flows.append((fid, _e[0], _e[1], _e[2], _e[3]))
+    outg[_e[0]].append(fid)
+    inc[_e[1]].append(fid)
+
+
+def node_xml(nid, indent):
+    t, label, cx, cy, lane = ALL[nid]
+    tag, p = TAG[t], " " * indent
+    attrs = f'id="{nid}" name="{html.escape(label)}"'
+    if t in ("btimer", "berr"):
+        attrs += ' attachedToRef="sp_exc"' + (' cancelActivity="false"' if t == "btimer" else "")
+    body = "".join(f'\n{p}  <bpmn:incoming>{f}</bpmn:incoming>' for f in inc[nid])
+    body += "".join(f'\n{p}  <bpmn:outgoing>{f}</bpmn:outgoing>' for f in outg[nid])
+    if t in ("timer", "btimer"):
+        body += f'\n{p}  <bpmn:timerEventDefinition id="td_{nid}"/>'
+    if t == "msgstart":
+        body += f'\n{p}  <bpmn:messageEventDefinition id="md_{nid}"/>'
+    if t in ("berr", "errend"):
+        body += f'\n{p}  <bpmn:errorEventDefinition id="ed_{nid}"/>'
+    if t == "sub":
+        body += '\n' + "\n".join(node_xml(k, indent + 2) for k in SUB)
+        body += '\n' + "\n".join(
+            f'{p}  <bpmn:sequenceFlow id="{f}"' + (f' name="{html.escape(l)}"' if l else "") +
+            f' sourceRef="{a}" targetRef="{b}"/>'
+            for f, a, b, w, l in flows if a in SUB_IDS and b in SUB_IDS)
+    return f'{p}<bpmn:{tag} {attrs}>{body}\n{p}</bpmn:{tag}>'
+
+
+x = ['<?xml version="1.0" encoding="UTF-8"?>',
+     '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" '
+     'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" '
+     'xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="defs_checkcall" targetNamespace="http://logistics/checkcall">',
+     '  <bpmn:process id="proc_checkcall" name="Автоматизований check-call" isExecutable="false">',
+     '    <bpmn:laneSet id="laneset_1">']
+for lid, lname, ly_, lh in LANES:
+    refs = "".join(f'\n        <bpmn:flowNodeRef>{n}</bpmn:flowNodeRef>' for n, v in MAIN.items() if v[4] == lid)
+    x.append(f'      <bpmn:lane id="{lid}" name="{html.escape(lname)}">{refs}\n      </bpmn:lane>')
+x.append('    </bpmn:laneSet>')
+for nid in MAIN:
+    x.append(node_xml(nid, 4))
+for f, a, b, w, l in flows:
+    if a in SUB_IDS and b in SUB_IDS:
+        continue
+    nm = f' name="{html.escape(l)}"' if l else ""
+    x.append(f'    <bpmn:sequenceFlow id="{f}"{nm} sourceRef="{a}" targetRef="{b}"/>')
+x.append('  </bpmn:process>')
+x.append('  <bpmndi:BPMNDiagram id="diag_1">')
+x.append('    <bpmndi:BPMNPlane id="plane_main" bpmnElement="proc_checkcall">')
+for lid, lname, ly_, lh in LANES:
+    x.append(f'      <bpmndi:BPMNShape id="{lid}_di" bpmnElement="{lid}" isHorizontal="true">'
+             f'<dc:Bounds x="{POOL_X+LANE_HDR}" y="{ly_}" width="{POOL_W-LANE_HDR}" height="{lh}"/></bpmndi:BPMNShape>')
+for nid in MAIN:
+    bx, by, bw, bh = box(MAIN, nid)
+    x.append(f'      <bpmndi:BPMNShape id="{nid}_di" bpmnElement="{nid}">'
+             f'<dc:Bounds x="{bx:.0f}" y="{by:.0f}" width="{bw:.0f}" height="{bh:.0f}"/></bpmndi:BPMNShape>')
+for f, a, b, w, l in flows:
+    if a in SUB_IDS and b in SUB_IDS:
+        continue
+    pts = "".join(f'<di:waypoint x="{px:.0f}" y="{py:.0f}"/>' for px, py in w)
+    x.append(f'      <bpmndi:BPMNEdge id="{f}_di" bpmnElement="{f}">{pts}</bpmndi:BPMNEdge>')
+x.append('    </bpmndi:BPMNPlane>')
+x.append('    <bpmndi:BPMNPlane id="plane_sub" bpmnElement="sp_exc">')
+for nid in SUB:
+    bx, by, bw, bh = box(SUB, nid)
+    x.append(f'      <bpmndi:BPMNShape id="{nid}_di" bpmnElement="{nid}">'
+             f'<dc:Bounds x="{bx:.0f}" y="{by:.0f}" width="{bw:.0f}" height="{bh:.0f}"/></bpmndi:BPMNShape>')
+for f, a, b, w, l in flows:
+    if a in SUB_IDS and b in SUB_IDS:
+        pts = "".join(f'<di:waypoint x="{px:.0f}" y="{py:.0f}"/>' for px, py in w)
+        x.append(f'      <bpmndi:BPMNEdge id="{f}_di" bpmnElement="{f}">{pts}</bpmndi:BPMNEdge>')
+x.append('    </bpmndi:BPMNPlane>')
+x.append('  </bpmndi:BPMNDiagram>')
+x.append('</bpmn:definitions>')
+open("checkcall.bpmn", "w", encoding="utf-8").write("\n".join(x))
+
+# ---- checkcall-exception.bpmn: колаборація підпроцесу з message flows ----
+xc = ['<?xml version="1.0" encoding="UTF-8"?>',
+      '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" '
+      'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" '
+      'xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="defs_exception" targetNamespace="http://logistics/checkcall">',
+      '  <bpmn:collaboration id="collab_exception">',
+      '    <bpmn:participant id="p_broker" name="Диспетчерська: обробка винятку" processRef="proc_exception"/>',
+      '    <bpmn:participant id="p_carrier" name="Перевізник, водій, склад"/>',
+      '    <bpmn:participant id="p_client" name="Клієнт (вантажовідправник)"/>']
+MF_IDS = []
+for i, (a, b, lbl) in enumerate(MF, 1):
+    mid = f"mflow_{i}"
+    MF_IDS.append((mid, a, b))
+    xc.append(f'    <bpmn:messageFlow id="{mid}" name="{html.escape(lbl)}" sourceRef="{a}" targetRef="{b}"/>')
+xc.append('  </bpmn:collaboration>')
+xc.append('  <bpmn:process id="proc_exception" name="Обробка винятку" isExecutable="false">')
+for nid in SUB:
+    xc.append(node_xml(nid, 4))
+for f, a, b, w, l in flows:
+    if a in SUB_IDS and b in SUB_IDS:
+        nm = f' name="{html.escape(l)}"' if l else ""
+        xc.append(f'    <bpmn:sequenceFlow id="{f}"{nm} sourceRef="{a}" targetRef="{b}"/>')
+xc.append('  </bpmn:process>')
+xc.append('  <bpmndi:BPMNDiagram id="diag_exc">')
+xc.append('    <bpmndi:BPMNPlane id="plane_collab" bpmnElement="collab_exception">')
+xc.append(f'      <bpmndi:BPMNShape id="p_broker_di" bpmnElement="p_broker" isHorizontal="true">'
+          f'<dc:Bounds x="40" y="{FRAME_Y}" width="1880" height="{FRAME_H}"/></bpmndi:BPMNShape>')
+xc.append('      <bpmndi:BPMNShape id="p_carrier_di" bpmnElement="p_carrier" isHorizontal="true">'
+          '<dc:Bounds x="40" y="1000" width="1880" height="80"/></bpmndi:BPMNShape>')
+xc.append('      <bpmndi:BPMNShape id="p_client_di" bpmnElement="p_client" isHorizontal="true">'
+          '<dc:Bounds x="40" y="1120" width="1880" height="80"/></bpmndi:BPMNShape>')
+for nid in SUB:
+    bx, by, bw, bh = box(SUB, nid)
+    xc.append(f'      <bpmndi:BPMNShape id="{nid}_dic" bpmnElement="{nid}">'
+              f'<dc:Bounds x="{bx:.0f}" y="{by:.0f}" width="{bw:.0f}" height="{bh:.0f}"/></bpmndi:BPMNShape>')
+for f, a, b, w, l in flows:
+    if a in SUB_IDS and b in SUB_IDS:
+        pts = "".join(f'<di:waypoint x="{px:.0f}" y="{py:.0f}"/>' for px, py in w)
+        xc.append(f'      <bpmndi:BPMNEdge id="{f}_dic" bpmnElement="{f}">{pts}</bpmndi:BPMNEdge>')
+for mid, a, b in MF_IDS:
+    ax, ay, aw, ah = box(SUB, a) if a in SUB else (0, 1040, 0, 0)
+    bx_, by_, bw_, bh_ = box(SUB, b) if b in SUB else (0, 1040, 0, 0)
+    x1 = ax + aw / 2 if a in SUB else ax
+    y1 = ay + ah if a in SUB else 1040
+    x2 = bx_ + bw_ / 2 if b in SUB else bx_
+    y2 = by_ if b in SUB else 1040
+    xc.append(f'      <bpmndi:BPMNEdge id="{mid}_di" bpmnElement="{mid}">'
+              f'<di:waypoint x="{x1:.0f}" y="{y1:.0f}"/><di:waypoint x="{x2:.0f}" y="{y2:.0f}"/></bpmndi:BPMNEdge>')
+xc.append('    </bpmndi:BPMNPlane>')
+xc.append('  </bpmndi:BPMNDiagram>')
+xc.append('</bpmn:definitions>')
+open("checkcall-exception.bpmn", "w", encoding="utf-8").write("\n".join(xc))
+print("message flows", len(MF_IDS))

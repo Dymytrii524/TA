@@ -164,5 +164,5 @@
 <circle cx="951.0" cy="910" r="2.6" fill="#fff" stroke="#0f6fbf" stroke-width="1.2"/>
 <path d="M 971.0 906 L 977.0 910 L 971.0 914" fill="none" stroke="#0f6fbf" stroke-width="1.4"/>
 <text x="985.0" y="914" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1c2b3a">Message flow</text>
-<text x="1113.8" y="914" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#5b6f83">Дизайн-концепт: ілюстративна модель процесу, не підключений сервіс (демо Trans-Atlas)</text>
+<text x="1113.8" y="914" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#5b6f83">Джерела логіки: FleetWorks, GoFast Freight, Descartes MacroPoint OpsForce, Tai TMS, Vektor TMS</text>
 </svg>
