@@ -1,0 +1,3166 @@
+{
+ "continent": "Oceania",
+ "mode": "multi",
+ "count": 165,
+ "listings": [
+  {
+   "id": 106956,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "napier",
+   "date": "2026-12-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 118.5,
+   "volume": 166.0,
+   "price": 2816.0,
+   "currency": "USDC",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 106957,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "newcastleau",
+   "date": "2026-10-10",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 93.9,
+   "volume": 210.0,
+   "price": 12878.0,
+   "currency": "USD",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 106958,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "brisbane",
+   "date": "2026-12-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 71.4,
+   "volume": 384.0,
+   "price": 2285.0,
+   "currency": "USDC",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106959,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "melbourne",
+   "date": "2026-12-03",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 51.2,
+   "volume": 291.0,
+   "price": 4846.0,
+   "currency": "USDC",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 106960,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "apia",
+   "date": "2026-10-03",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 10.5,
+   "volume": 394.0,
+   "price": 11584.0,
+   "currency": "EUR",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 106961,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "wellington",
+   "date": "2026-09-11",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 23.6,
+   "volume": 114.0,
+   "price": 13635.0,
+   "currency": "USDC",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 106962,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "hobart",
+   "to": "apia",
+   "date": "2026-10-11",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 35.2,
+   "volume": 103.0,
+   "price": 15128.0,
+   "currency": "EUR",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 106963,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "hobart",
+   "date": "2026-09-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 96.4,
+   "volume": 150.0,
+   "price": 1294.0,
+   "currency": "SGD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106964,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "apia",
+   "date": "2026-10-08",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 12.0,
+   "volume": 202.0,
+   "price": 17160.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 106965,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "napier",
+   "date": "2026-10-06",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 109.6,
+   "volume": 93.0,
+   "price": 12880.0,
+   "currency": "EUR",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106966,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "portmoresby",
+   "date": "2026-10-02",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 10.2,
+   "volume": 391.0,
+   "price": 16268.0,
+   "currency": "SGD",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 106967,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "cairns",
+   "date": "2026-09-24",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 108.4,
+   "volume": 33.0,
+   "price": 3464.0,
+   "currency": "EUR",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106968,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "lae",
+   "date": "2026-12-01",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 127.2,
+   "volume": 118.0,
+   "price": 1268.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106969,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "wellington",
+   "date": "2026-09-20",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 90.6,
+   "volume": 255.0,
+   "price": 1740.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 106970,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "christchurch",
+   "date": "2026-12-19",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 26.5,
+   "volume": 317.0,
+   "price": 16074.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 106971,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "townsville",
+   "date": "2026-09-04",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 59.6,
+   "volume": 114.0,
+   "price": 4900.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106972,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "wellington",
+   "date": "2026-10-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 120.4,
+   "volume": 279.0,
+   "price": 14212.0,
+   "currency": "USDC",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106973,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "noumea",
+   "date": "2026-11-06",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 34.6,
+   "volume": 329.0,
+   "price": 2326.0,
+   "currency": "USDC",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 106974,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "nadi",
+   "date": "2026-12-26",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 89.5,
+   "volume": 91.0,
+   "price": 13265.0,
+   "currency": "SGD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 106975,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "wellington",
+   "date": "2026-12-09",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 129.8,
+   "volume": 301.0,
+   "price": 6606.0,
+   "currency": "USD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106976,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "hobart",
+   "to": "dunedin",
+   "date": "2026-10-22",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 48.2,
+   "volume": 205.0,
+   "price": 17872.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 106977,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "noumea",
+   "date": "2026-11-28",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 35.8,
+   "volume": 237.0,
+   "price": 15972.0,
+   "currency": "USDC",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106978,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "tauranga",
+   "to": "cairns",
+   "date": "2026-10-20",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 127.8,
+   "volume": 388.0,
+   "price": 9606.0,
+   "currency": "SGD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 106979,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "wellington",
+   "date": "2026-12-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 137.3,
+   "volume": 329.0,
+   "price": 9084.0,
+   "currency": "SGD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106980,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "napier",
+   "date": "2026-09-08",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 43.7,
+   "volume": 53.0,
+   "price": 12923.0,
+   "currency": "USDC",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106981,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "melbourne",
+   "to": "wellington",
+   "date": "2026-11-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 53.1,
+   "volume": 121.0,
+   "price": 9461.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106982,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "nadi",
+   "date": "2026-10-04",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 38.2,
+   "volume": 240.0,
+   "price": 6696.0,
+   "currency": "EUR",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 106983,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "adelaide",
+   "date": "2026-10-04",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 44.2,
+   "volume": 82.0,
+   "price": 8580.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106984,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "fremantle",
+   "date": "2026-11-04",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 72.3,
+   "volume": 109.0,
+   "price": 3470.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106985,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "sydney",
+   "to": "nadi",
+   "date": "2026-12-01",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 95.7,
+   "volume": 326.0,
+   "price": 3116.0,
+   "currency": "SGD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 106986,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "townsville",
+   "date": "2026-12-25",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 91.3,
+   "volume": 349.0,
+   "price": 16976.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106987,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "nadi",
+   "date": "2026-10-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 13.7,
+   "volume": 241.0,
+   "price": 13122.0,
+   "currency": "USDC",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106988,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "dunedin",
+   "date": "2026-10-11",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 36.3,
+   "volume": 95.0,
+   "price": 11523.0,
+   "currency": "USDC",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106989,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "cairns",
+   "date": "2026-09-08",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 55.0,
+   "volume": 193.0,
+   "price": 11533.0,
+   "currency": "EUR",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106990,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "townsville",
+   "date": "2026-10-01",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 25.9,
+   "volume": 112.0,
+   "price": 6739.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 106991,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "newcastleau",
+   "date": "2026-09-23",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 127.6,
+   "volume": 77.0,
+   "price": 1713.0,
+   "currency": "SGD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106992,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "newcastleau",
+   "date": "2026-12-05",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 39.9,
+   "volume": 34.0,
+   "price": 4505.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 106993,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "suva",
+   "date": "2026-12-23",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 10.3,
+   "volume": 363.0,
+   "price": 3169.0,
+   "currency": "USDC",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106994,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "sydney",
+   "date": "2026-11-06",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 63.3,
+   "volume": 126.0,
+   "price": 6189.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 106995,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "auckland",
+   "date": "2026-12-16",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 12.5,
+   "volume": 57.0,
+   "price": 1536.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106996,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "portmoresby",
+   "date": "2026-12-22",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 24.3,
+   "volume": 332.0,
+   "price": 4530.0,
+   "currency": "EUR",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 106997,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "christchurch",
+   "date": "2026-09-26",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 59.6,
+   "volume": 113.0,
+   "price": 17336.0,
+   "currency": "SGD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 106998,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "newcastleau",
+   "date": "2026-11-03",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 49.2,
+   "volume": 205.0,
+   "price": 3922.0,
+   "currency": "SGD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 106999,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "tauranga",
+   "date": "2026-12-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 43.7,
+   "volume": 117.0,
+   "price": 8468.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107000,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "sydney",
+   "date": "2026-09-05",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 112.9,
+   "volume": 342.0,
+   "price": 7495.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107001,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "hobart",
+   "to": "darwin",
+   "date": "2026-09-02",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 83.9,
+   "volume": 198.0,
+   "price": 8465.0,
+   "currency": "EUR",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107002,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "auckland",
+   "to": "darwin",
+   "date": "2026-12-26",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 80.0,
+   "volume": 162.0,
+   "price": 1976.0,
+   "currency": "SGD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107003,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "auckland",
+   "date": "2026-09-07",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 37.7,
+   "volume": 173.0,
+   "price": 17352.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107004,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "apia",
+   "date": "2026-11-15",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 95.3,
+   "volume": 295.0,
+   "price": 13536.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107005,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "christchurch",
+   "date": "2026-10-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 121.2,
+   "volume": 101.0,
+   "price": 2285.0,
+   "currency": "USDC",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107006,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "adelaide",
+   "date": "2026-12-07",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 84.7,
+   "volume": 268.0,
+   "price": 15818.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107007,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "christchurch",
+   "date": "2026-09-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 99.5,
+   "volume": 375.0,
+   "price": 6062.0,
+   "currency": "EUR",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107008,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "sydney",
+   "date": "2026-10-22",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 19.5,
+   "volume": 298.0,
+   "price": 8656.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107009,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "nadi",
+   "date": "2026-09-05",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 11.2,
+   "volume": 153.0,
+   "price": 8841.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107010,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "portmoresby",
+   "date": "2026-10-02",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 135.6,
+   "volume": 372.0,
+   "price": 15262.0,
+   "currency": "SGD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107011,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "darwin",
+   "date": "2026-10-09",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 128.9,
+   "volume": 283.0,
+   "price": 13516.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107012,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "wellington",
+   "date": "2026-12-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 89.7,
+   "volume": 266.0,
+   "price": 14075.0,
+   "currency": "SGD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107013,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "lae",
+   "date": "2026-11-10",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 40.3,
+   "volume": 75.0,
+   "price": 7760.0,
+   "currency": "USD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107014,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "darwin",
+   "date": "2026-10-22",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 101.9,
+   "volume": 122.0,
+   "price": 16925.0,
+   "currency": "SGD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107015,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "lae",
+   "date": "2026-10-07",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 60.5,
+   "volume": 98.0,
+   "price": 3181.0,
+   "currency": "USDC",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107016,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "darwin",
+   "to": "nadi",
+   "date": "2026-12-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 132.7,
+   "volume": 175.0,
+   "price": 5128.0,
+   "currency": "SGD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107017,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "sydney",
+   "date": "2026-12-13",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 79.9,
+   "volume": 210.0,
+   "price": 7342.0,
+   "currency": "EUR",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107018,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "sydney",
+   "date": "2026-09-27",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 73.7,
+   "volume": 295.0,
+   "price": 17804.0,
+   "currency": "EUR",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107019,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "darwin",
+   "date": "2026-11-05",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 35.4,
+   "volume": 397.0,
+   "price": 12952.0,
+   "currency": "EUR",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107020,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "darwin",
+   "to": "noumea",
+   "date": "2026-10-02",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 42.5,
+   "volume": 348.0,
+   "price": 2072.0,
+   "currency": "SGD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107021,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "portmoresby",
+   "date": "2026-11-01",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 29.0,
+   "volume": 62.0,
+   "price": 12773.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107022,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "auckland",
+   "date": "2026-09-20",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 83.2,
+   "volume": 393.0,
+   "price": 16181.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107023,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "tauranga",
+   "to": "adelaide",
+   "date": "2026-12-28",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 69.4,
+   "volume": 244.0,
+   "price": 14346.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107024,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "christchurch",
+   "date": "2026-10-10",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 78.0,
+   "volume": 87.0,
+   "price": 17941.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107025,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "wellington",
+   "date": "2026-09-21",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 105.4,
+   "volume": 140.0,
+   "price": 17345.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107026,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "cairns",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 36.1,
+   "volume": 326.0,
+   "price": 7538.0,
+   "currency": "USDC",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107027,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "auckland",
+   "date": "2026-10-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 84.8,
+   "volume": 249.0,
+   "price": 15516.0,
+   "currency": "USD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107028,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "noumea",
+   "date": "2026-11-04",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 88.5,
+   "volume": 68.0,
+   "price": 2597.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107029,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "newcastleau",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 113.9,
+   "volume": 175.0,
+   "price": 15736.0,
+   "currency": "USDC",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107030,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "lae",
+   "date": "2026-12-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 129.7,
+   "volume": 133.0,
+   "price": 3959.0,
+   "currency": "SGD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107031,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "wellington",
+   "date": "2026-10-25",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 112.3,
+   "volume": 222.0,
+   "price": 11420.0,
+   "currency": "SGD",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107032,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "lae",
+   "date": "2026-10-18",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 37.1,
+   "volume": 237.0,
+   "price": 17187.0,
+   "currency": "SGD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107033,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "sydney",
+   "to": "suva",
+   "date": "2026-10-09",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 25.6,
+   "volume": 237.0,
+   "price": 8360.0,
+   "currency": "EUR",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107034,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "newcastleau",
+   "to": "napier",
+   "date": "2026-10-26",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 36.9,
+   "volume": 237.0,
+   "price": 5120.0,
+   "currency": "SGD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107035,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "newcastleau",
+   "to": "wellington",
+   "date": "2026-11-27",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 58.5,
+   "volume": 154.0,
+   "price": 13598.0,
+   "currency": "EUR",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107036,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "cairns",
+   "date": "2026-11-07",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 28.3,
+   "volume": 66.0,
+   "price": 13496.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107037,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "fremantle",
+   "date": "2026-11-10",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 41.8,
+   "volume": 138.0,
+   "price": 16628.0,
+   "currency": "EUR",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107038,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "melbourne",
+   "date": "2026-12-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 56.3,
+   "volume": 147.0,
+   "price": 11777.0,
+   "currency": "EUR",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107039,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "sydney",
+   "to": "hobart",
+   "date": "2026-09-22",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 79.4,
+   "volume": 363.0,
+   "price": 12022.0,
+   "currency": "USD",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107040,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "wellington",
+   "date": "2026-12-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 69.7,
+   "volume": 273.0,
+   "price": 15106.0,
+   "currency": "SGD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107041,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "melbourne",
+   "date": "2026-09-25",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 41.2,
+   "volume": 69.0,
+   "price": 2251.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107042,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "melbourne",
+   "to": "nadi",
+   "date": "2026-09-25",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 110.9,
+   "volume": 332.0,
+   "price": 9755.0,
+   "currency": "USDC",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107043,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "darwin",
+   "to": "nadi",
+   "date": "2026-12-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 132.0,
+   "volume": 355.0,
+   "price": 14192.0,
+   "currency": "SGD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107044,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "perth",
+   "date": "2026-10-18",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 21.0,
+   "volume": 282.0,
+   "price": 10631.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107045,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "darwin",
+   "to": "auckland",
+   "date": "2026-09-24",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 139.9,
+   "volume": 298.0,
+   "price": 1919.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107046,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "auckland",
+   "date": "2026-10-15",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 93.0,
+   "volume": 342.0,
+   "price": 15127.0,
+   "currency": "USDC",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107047,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "auckland",
+   "date": "2026-09-12",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 107.5,
+   "volume": 181.0,
+   "price": 5422.0,
+   "currency": "USDC",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107048,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "suva",
+   "date": "2026-09-14",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 10.1,
+   "volume": 199.0,
+   "price": 10258.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107049,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "newcastleau",
+   "to": "tauranga",
+   "date": "2026-09-11",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 39.9,
+   "volume": 315.0,
+   "price": 12374.0,
+   "currency": "EUR",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107050,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "sydney",
+   "date": "2026-10-03",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 86.3,
+   "volume": 64.0,
+   "price": 17360.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107051,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "nadi",
+   "date": "2026-12-27",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 53.5,
+   "volume": 249.0,
+   "price": 1759.0,
+   "currency": "USD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107052,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "wellington",
+   "date": "2026-12-12",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 130.9,
+   "volume": 73.0,
+   "price": 9078.0,
+   "currency": "SGD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107053,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "noumea",
+   "to": "nadi",
+   "date": "2026-10-07",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 93.4,
+   "volume": 263.0,
+   "price": 10662.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107054,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "tauranga",
+   "to": "nadi",
+   "date": "2026-09-22",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 33.0,
+   "volume": 107.0,
+   "price": 7129.0,
+   "currency": "SGD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107055,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "auckland",
+   "to": "melbourne",
+   "date": "2026-11-16",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 15.1,
+   "volume": 317.0,
+   "price": 3578.0,
+   "currency": "SGD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107056,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "auckland",
+   "date": "2026-12-27",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 66.9,
+   "volume": 358.0,
+   "price": 11174.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107057,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "newcastleau",
+   "to": "brisbane",
+   "date": "2026-11-03",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 90.4,
+   "volume": 218.0,
+   "price": 2524.0,
+   "currency": "USDC",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107058,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "lae",
+   "date": "2026-10-02",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 59.5,
+   "volume": 223.0,
+   "price": 8878.0,
+   "currency": "USD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107059,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "cairns",
+   "date": "2026-11-23",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 121.2,
+   "volume": 115.0,
+   "price": 8078.0,
+   "currency": "USD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107060,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "townsville",
+   "date": "2026-11-16",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 93.7,
+   "volume": 347.0,
+   "price": 10852.0,
+   "currency": "EUR",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107061,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "auckland",
+   "date": "2026-12-01",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 89.3,
+   "volume": 344.0,
+   "price": 12932.0,
+   "currency": "SGD",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107062,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "nadi",
+   "date": "2026-09-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 21.2,
+   "volume": 57.0,
+   "price": 5439.0,
+   "currency": "USDC",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107063,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "portmoresby",
+   "date": "2026-12-27",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 81.1,
+   "volume": 49.0,
+   "price": 2596.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107064,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "wellington",
+   "date": "2026-10-20",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 21.1,
+   "volume": 361.0,
+   "price": 11368.0,
+   "currency": "EUR",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107065,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "tauranga",
+   "to": "perth",
+   "date": "2026-09-17",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 117.7,
+   "volume": 345.0,
+   "price": 17594.0,
+   "currency": "EUR",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107066,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "noumea",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 123.9,
+   "volume": 336.0,
+   "price": 17908.0,
+   "currency": "USD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107067,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "apia",
+   "date": "2026-10-23",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 73.2,
+   "volume": 93.0,
+   "price": 13824.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107068,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "noumea",
+   "date": "2026-12-15",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 29.2,
+   "volume": 353.0,
+   "price": 7898.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107069,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "townsville",
+   "date": "2026-09-20",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 99.8,
+   "volume": 346.0,
+   "price": 11564.0,
+   "currency": "USDC",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107070,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "sydney",
+   "date": "2026-11-17",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 53.0,
+   "volume": 176.0,
+   "price": 6396.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107071,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "adelaide",
+   "to": "christchurch",
+   "date": "2026-10-21",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 92.7,
+   "volume": 372.0,
+   "price": 3527.0,
+   "currency": "SGD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107072,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "sydney",
+   "date": "2026-10-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 69.4,
+   "volume": 239.0,
+   "price": 2855.0,
+   "currency": "SGD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107073,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "townsville",
+   "to": "portmoresby",
+   "date": "2026-10-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 47.5,
+   "volume": 386.0,
+   "price": 1333.0,
+   "currency": "SGD",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107074,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "nadi",
+   "date": "2026-12-20",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 94.3,
+   "volume": 264.0,
+   "price": 8988.0,
+   "currency": "EUR",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107075,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "dunedin",
+   "date": "2026-10-19",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 130.5,
+   "volume": 372.0,
+   "price": 16558.0,
+   "currency": "USDC",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107076,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "tauranga",
+   "to": "cairns",
+   "date": "2026-09-13",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 15.3,
+   "volume": 399.0,
+   "price": 6580.0,
+   "currency": "EUR",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107077,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "suva",
+   "date": "2026-12-24",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 96.7,
+   "volume": 67.0,
+   "price": 4121.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107078,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "adelaide",
+   "date": "2026-11-02",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 69.5,
+   "volume": 268.0,
+   "price": 17237.0,
+   "currency": "USD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107079,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "perth",
+   "date": "2026-09-15",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 81.9,
+   "volume": 151.0,
+   "price": 6965.0,
+   "currency": "SGD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107080,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "perth",
+   "to": "noumea",
+   "date": "2026-09-16",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 11.4,
+   "volume": 54.0,
+   "price": 13557.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107081,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "melbourne",
+   "date": "2026-11-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "agro",
+   "weight": 69.1,
+   "volume": 384.0,
+   "price": 11006.0,
+   "currency": "USDC",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107082,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "portmoresby",
+   "date": "2026-12-12",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 119.5,
+   "volume": 221.0,
+   "price": 15775.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107083,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "sydney",
+   "date": "2026-12-07",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "metal",
+   "weight": 124.0,
+   "volume": 133.0,
+   "price": 8674.0,
+   "currency": "USDC",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107084,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "adelaide",
+   "date": "2026-09-04",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 15.7,
+   "volume": 265.0,
+   "price": 11336.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107085,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "napier",
+   "date": "2026-11-18",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "food",
+   "weight": 31.3,
+   "volume": 353.0,
+   "price": 14932.0,
+   "currency": "USDC",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107086,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "adelaide",
+   "date": "2026-09-09",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 76.3,
+   "volume": 359.0,
+   "price": 14912.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107087,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "adelaide",
+   "date": "2026-09-28",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 138.1,
+   "volume": 116.0,
+   "price": 2599.0,
+   "currency": "EUR",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107088,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "melbourne",
+   "to": "napier",
+   "date": "2026-10-12",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 59.5,
+   "volume": 234.0,
+   "price": 14489.0,
+   "currency": "EUR",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107089,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "tauranga",
+   "date": "2026-09-25",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 105.2,
+   "volume": 143.0,
+   "price": 4646.0,
+   "currency": "USDC",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107090,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "christchurch",
+   "date": "2026-12-02",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "docs",
+   "weight": 92.4,
+   "volume": 260.0,
+   "price": 13367.0,
+   "currency": "USDC",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107091,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "perth",
+   "date": "2026-12-17",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 134.5,
+   "volume": 233.0,
+   "price": 3624.0,
+   "currency": "USDC",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107092,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "perth",
+   "date": "2026-11-06",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "docs",
+   "weight": 58.8,
+   "volume": 207.0,
+   "price": 13585.0,
+   "currency": "SGD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107093,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "apia",
+   "date": "2026-11-13",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 45.7,
+   "volume": 379.0,
+   "price": 7753.0,
+   "currency": "USD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107094,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "noumea",
+   "to": "sydney",
+   "date": "2026-10-14",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 137.4,
+   "volume": 231.0,
+   "price": 4081.0,
+   "currency": "SGD",
+   "company": "Great Barrier Logistics"
+  },
+  {
+   "id": 107095,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "auckland",
+   "to": "portmoresby",
+   "date": "2026-10-20",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "furn",
+   "weight": 127.4,
+   "volume": 34.0,
+   "price": 16441.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107096,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "hobart",
+   "to": "dunedin",
+   "date": "2026-11-05",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 15.6,
+   "volume": 233.0,
+   "price": 12870.0,
+   "currency": "USDC",
+   "company": "Southern Cross Freight Pty Ltd"
+  },
+  {
+   "id": 107097,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "darwin",
+   "to": "suva",
+   "date": "2026-10-02",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 137.6,
+   "volume": 228.0,
+   "price": 7079.0,
+   "currency": "USDC",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107098,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "fremantle",
+   "date": "2026-10-26",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 45.5,
+   "volume": 322.0,
+   "price": 8568.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107099,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "adelaide",
+   "date": "2026-09-13",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 101.7,
+   "volume": 386.0,
+   "price": 9523.0,
+   "currency": "USDC",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107100,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "fremantle",
+   "to": "hobart",
+   "date": "2026-11-11",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 138.7,
+   "volume": 250.0,
+   "price": 6889.0,
+   "currency": "USD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107101,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "hobart",
+   "date": "2026-11-14",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 120.9,
+   "volume": 101.0,
+   "price": 14263.0,
+   "currency": "SGD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107102,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "hobart",
+   "to": "tauranga",
+   "date": "2026-09-22",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 36.1,
+   "volume": 283.0,
+   "price": 6064.0,
+   "currency": "USDC",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107103,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "napier",
+   "to": "sydney",
+   "date": "2026-10-17",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 103.4,
+   "volume": 339.0,
+   "price": 1783.0,
+   "currency": "EUR",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107104,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "noumea",
+   "to": "melbourne",
+   "date": "2026-09-25",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "furn",
+   "weight": 61.8,
+   "volume": 53.0,
+   "price": 2365.0,
+   "currency": "EUR",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107105,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "christchurch",
+   "to": "brisbane",
+   "date": "2026-11-01",
+   "components": [
+    "air",
+    "rail"
+   ],
+   "cargo": "textile",
+   "weight": 55.7,
+   "volume": 290.0,
+   "price": 13506.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107106,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "cairns",
+   "date": "2026-11-26",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 116.2,
+   "volume": 298.0,
+   "price": 3820.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107107,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "noumea",
+   "to": "newcastleau",
+   "date": "2026-09-05",
+   "components": [
+    "auto",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 71.5,
+   "volume": 115.0,
+   "price": 8274.0,
+   "currency": "USD",
+   "company": "Kiwi Cargo Ltd"
+  },
+  {
+   "id": 107108,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "wellington",
+   "to": "nadi",
+   "date": "2026-11-04",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "electro",
+   "weight": 79.6,
+   "volume": 80.0,
+   "price": 11923.0,
+   "currency": "SGD",
+   "company": "Outback Transport Pty Ltd"
+  },
+  {
+   "id": 107109,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "adelaide",
+   "date": "2026-11-23",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 26.2,
+   "volume": 136.0,
+   "price": 1106.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107110,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "lae",
+   "to": "tauranga",
+   "date": "2026-12-19",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "electro",
+   "weight": 57.2,
+   "volume": 352.0,
+   "price": 3169.0,
+   "currency": "SGD",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107111,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "portmoresby",
+   "to": "adelaide",
+   "date": "2026-09-13",
+   "components": [
+    "rail",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 90.0,
+   "volume": 371.0,
+   "price": 16106.0,
+   "currency": "USDC",
+   "company": "Coral Sea Shipping Pty Ltd"
+  },
+  {
+   "id": 107112,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "auckland",
+   "date": "2026-12-09",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "agro",
+   "weight": 44.9,
+   "volume": 141.0,
+   "price": 14059.0,
+   "currency": "EUR",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107113,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "dunedin",
+   "to": "napier",
+   "date": "2026-10-06",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "build",
+   "weight": 75.6,
+   "volume": 207.0,
+   "price": 10017.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107114,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "suva",
+   "to": "sydney",
+   "date": "2026-09-17",
+   "components": [
+    "sea",
+    "rail",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 78.2,
+   "volume": 133.0,
+   "price": 4378.0,
+   "currency": "EUR",
+   "company": "Pacific Islands Freight Ltd"
+  },
+  {
+   "id": 107115,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "newcastleau",
+   "to": "apia",
+   "date": "2026-11-11",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "chem",
+   "weight": 18.2,
+   "volume": 203.0,
+   "price": 1549.0,
+   "currency": "USD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107116,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "cairns",
+   "to": "auckland",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "textile",
+   "weight": 66.1,
+   "volume": 373.0,
+   "price": 17454.0,
+   "currency": "SGD",
+   "company": "Tasman Logistics Ltd"
+  },
+  {
+   "id": 107117,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "brisbane",
+   "to": "napier",
+   "date": "2026-11-15",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "chem",
+   "weight": 38.4,
+   "volume": 94.0,
+   "price": 14636.0,
+   "currency": "USD",
+   "company": "Oceania Air Freight Ltd"
+  },
+  {
+   "id": 107118,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "apia",
+   "to": "newcastleau",
+   "date": "2026-11-16",
+   "components": [
+    "air",
+    "auto"
+   ],
+   "cargo": "food",
+   "weight": 125.1,
+   "volume": 87.0,
+   "price": 5717.0,
+   "currency": "SGD",
+   "company": "Aussie Rail Cargo Pty Ltd"
+  },
+  {
+   "id": 107119,
+   "kind": "transport",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "newcastleau",
+   "date": "2026-09-03",
+   "components": [
+    "sea",
+    "auto"
+   ],
+   "cargo": "metal",
+   "weight": 121.5,
+   "volume": 136.0,
+   "price": 7366.0,
+   "currency": "USD",
+   "company": "Papua Trans Ltd"
+  },
+  {
+   "id": 107120,
+   "kind": "cargo",
+   "mode": "multi",
+   "continent": "Oceania",
+   "from": "nadi",
+   "to": "perth",
+   "date": "2026-09-21",
+   "components": [
+    "sea",
+    "rail"
+   ],
+   "cargo": "build",
+   "weight": 76.1,
+   "volume": 129.0,
+   "price": 17726.0,
+   "currency": "SGD",
+   "company": "Great Barrier Logistics"
+  }
+ ]
+}
