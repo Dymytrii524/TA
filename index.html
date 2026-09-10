@@ -547,6 +547,36 @@
   .automation-downloads svg.icon{color:var(--accent); width:1.1em; height:1.1em; flex:none;}
   .automation-downloads a{color:var(--accent); font-weight:600; text-decoration:none;}
   .automation-downloads a:hover{text-decoration:underline;}
+  /* Verification module: badges/pills are visual documentation of the
+     spec's own 3-state system (L0/L1/L2, source states) - not attached
+     to any real company in the demo's LISTINGS/rating data, since
+     nothing here actually runs these checks. */
+  .verify-badge{display:inline-flex; align-items:center; gap:6px; padding:.4em .8em; border-radius:20px; font-weight:700; font-size:.86rem; border:1.5px solid transparent;}
+  .verify-badge svg.icon{width:1.1em; height:1.1em;}
+  .verify-badge.sm{padding:.15em .55em; font-size:.74rem; gap:4px;}
+  .verify-badge.sm svg.icon{display:none;}
+  .verify-badge.l0{color:var(--ink-soft); background:var(--paper-2); border-color:var(--line);}
+  .verify-badge.l1{color:var(--accent); background:var(--surface); border-color:var(--accent);}
+  .verify-badge.l2{color:#fff; background:var(--success); border-color:var(--success);}
+  .verify-level-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px;}
+  @media (max-width:760px){.verify-level-grid{grid-template-columns:1fr;}}
+  .verify-level-card{border:1px solid var(--line); border-radius:4px; padding:16px; background:var(--surface);}
+  .verify-level-card .v-meaning{font-size:.86rem; margin:10px 0 6px; color:var(--ink);}
+  .verify-level-card .v-gives{font-size:.8rem; margin:0; color:var(--ink-soft);}
+  .verify-table{width:100%; border-collapse:collapse; font-size:.82rem; min-width:820px;}
+  .verify-table th{text-align:left; padding:8px 10px; background:var(--paper-2); border-bottom:1px solid var(--line); white-space:nowrap; font-weight:700;}
+  .verify-table td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  .verify-table code{font-family:var(--font-mono); font-size:.78rem;}
+  .v-decisive{color:var(--danger); font-weight:700;}
+  .source-status{display:inline-block; padding:.15em .6em; border-radius:20px; font-size:.76rem; font-weight:700; white-space:nowrap;}
+  .source-status.live{color:#fff; background:var(--success);}
+  .source-status.needs_key{color:#fff; background:var(--warning);}
+  .source-status.stale{color:#fff; background:var(--danger);}
+  .source-status.manual_only{color:var(--ink-soft); background:var(--paper-2); border:1px solid var(--line);}
+  .v-importance{display:inline-block; padding:.15em .6em; border-radius:20px; font-size:.76rem; font-weight:700;}
+  .v-importance.critical{color:#fff; background:var(--danger);}
+  .v-importance.attention{color:#fff; background:var(--warning);}
+  .v-importance.info{color:var(--ink-soft); background:var(--paper-2); border:1px solid var(--line);}
   .info-card{border:1px solid var(--line); border-left:3px solid var(--line); background:var(--surface); padding:18px;}
   .info-card.warn{border-left-color:var(--danger);}
   .info-card.good{border-left-color:var(--success);}
@@ -4429,7 +4459,8 @@ var SERVICES = [
   {icon:"chat", route:"qa", uk:"Питання і відповіді", en:"Q&A", pl:"Pytania i odpowiedzi", de:"Fragen & Antworten"},
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"},
-  {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"}
+  {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"},
+  {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"}
 ];
 
 var NEWS = [
@@ -4561,7 +4592,24 @@ uk:{
   automation_downloads_heading:"Файли моделі",
   automation_download_bpmn1:"checkcall.bpmn — основний процес (BPMN 2.0, XML)",
   automation_download_bpmn2:"checkcall-exception.bpmn — колаборація з перевізником і клієнтом (BPMN 2.0, XML)",
-  automation_download_spec:"Повна специфікація процесу (Markdown)"
+  automation_download_spec:"Повна специфікація процесу (Markdown)",
+  verification_title:"Верифікація контрагентів",
+  verification_lede:"Верифікація — не оцінка, а зафіксований факт із джерелом, датою і доказом: без зірочок, без зведеного балу і без місця, де недоступність джерела мовчки перетворюється на довіру.",
+  verification_disclaimer:"Це специфікація модуля (каталоги рівнів, перевірок і джерел), а не підключений сервіс: у цьому демо немає бази даних, реальних інтеграцій із реєстрами чи ключів доступу до жодного з перелічених джерел.",
+  verification_levels_heading:"Рівні верифікації",
+  verification_checks_heading:"Каталог перевірок",
+  verification_checks_lede:"14 перевірок; рішучі перевірки при провалі відхиляють справу, інші йдуть у ручний розгляд.",
+  verification_sources_heading:"Джерела та їхній фактичний стан",
+  verification_sources_lede:"Стан — результат живого зонда джерел, а не опис із документації.",
+  verification_matrix_heading:"Матриця важливості зміни реквізитів",
+  verification_matrix_lede:"Критична зміна завжди призупиняє рівень — це перевіряється і базою даних, і схемою, а не лише домовленістю.",
+  verification_col_source:"Джерело", verification_col_level:"Рівень", verification_col_decisive:"Рішуча",
+  verification_col_jurisdiction:"Юрисдикція", verification_col_criterion:"Критерій", verification_col_state:"Стан",
+  verification_col_note:"Що показав живий запит", verification_col_field:"Що змінилося",
+  verification_col_importance:"Важливість", verification_col_effect:"Наслідок",
+  verification_decisive_yes:"так", verification_decisive_no:"ні",
+  verification_importance_critical:"критична", verification_importance_attention:"attention", verification_importance_info:"info",
+  verification_download_spec:"Повна специфікація модуля (Markdown)"
 },
 en:{
   brand_tag:"Cargo & transport exchange",
@@ -4662,7 +4710,24 @@ en:{
   automation_downloads_heading:"Model files",
   automation_download_bpmn1:"checkcall.bpmn — main process (BPMN 2.0, XML)",
   automation_download_bpmn2:"checkcall-exception.bpmn — collaboration with carrier and client (BPMN 2.0, XML)",
-  automation_download_spec:"Full process specification (Markdown)"
+  automation_download_spec:"Full process specification (Markdown)",
+  verification_title:"Counterparty verification",
+  verification_lede:"Verification isn't a score - it's a recorded fact with a source, a date and evidence: no stars, no aggregate rating, and no place where a source's unavailability silently turns into trust.",
+  verification_disclaimer:"This is the module's specification (level, check and source catalogs), not a connected service: this demo has no database, no real registry integrations, and no access keys for any of the listed sources.",
+  verification_levels_heading:"Verification levels",
+  verification_checks_heading:"Check catalog",
+  verification_checks_lede:"14 checks; decisive checks reject the case on failure, others go to manual review.",
+  verification_sources_heading:"Sources and their actual status",
+  verification_sources_lede:"Status is the result of a live source probe, not a description from documentation.",
+  verification_matrix_heading:"Requisite-change importance matrix",
+  verification_matrix_lede:"A critical change always suspends the level - enforced by both the database and the schema, not just convention.",
+  verification_col_source:"Source", verification_col_level:"Level", verification_col_decisive:"Decisive",
+  verification_col_jurisdiction:"Jurisdiction", verification_col_criterion:"Criterion", verification_col_state:"State",
+  verification_col_note:"What the live request showed", verification_col_field:"What changed",
+  verification_col_importance:"Importance", verification_col_effect:"Effect",
+  verification_decisive_yes:"yes", verification_decisive_no:"no",
+  verification_importance_critical:"critical", verification_importance_attention:"attention", verification_importance_info:"info",
+  verification_download_spec:"Full module specification (Markdown)"
 },
 pl:{
   brand_tag:"Giełda ładunków i transportu",
@@ -4763,7 +4828,24 @@ pl:{
   automation_downloads_heading:"Pliki modelu",
   automation_download_bpmn1:"checkcall.bpmn — proces główny (BPMN 2.0, XML)",
   automation_download_bpmn2:"checkcall-exception.bpmn — kolaboracja z przewoźnikiem i klientem (BPMN 2.0, XML)",
-  automation_download_spec:"Pełna specyfikacja procesu (Markdown)"
+  automation_download_spec:"Pełna specyfikacja procesu (Markdown)",
+  verification_title:"Weryfikacja kontrahentów",
+  verification_lede:"Weryfikacja to nie ocena, lecz odnotowany fakt ze źródłem, datą i dowodem: bez gwiazdek, bez zbiorczego wyniku i bez miejsca, w którym niedostępność źródła po cichu zamienia się w zaufanie.",
+  verification_disclaimer:"To specyfikacja modułu (katalogi poziomów, kontroli i źródeł), a nie podłączona usługa: to demo nie ma bazy danych, prawdziwych integracji z rejestrami ani kluczy dostępu do żadnego z wymienionych źródeł.",
+  verification_levels_heading:"Poziomy weryfikacji",
+  verification_checks_heading:"Katalog kontroli",
+  verification_checks_lede:"14 kontroli; kontrole rozstrzygające odrzucają sprawę przy niepowodzeniu, pozostałe trafiają do ręcznego przeglądu.",
+  verification_sources_heading:"Źródła i ich rzeczywisty stan",
+  verification_sources_lede:"Stan to wynik żywej sondy źródeł, a nie opis z dokumentacji.",
+  verification_matrix_heading:"Macierz ważności zmiany danych rejestrowych",
+  verification_matrix_lede:"Krytyczna zmiana zawsze zawiesza poziom - wymusza to zarówno baza danych, jak i schemat, a nie tylko umowa.",
+  verification_col_source:"Źródło", verification_col_level:"Poziom", verification_col_decisive:"Rozstrzygająca",
+  verification_col_jurisdiction:"Jurysdykcja", verification_col_criterion:"Kryterium", verification_col_state:"Stan",
+  verification_col_note:"Co pokazało żywe zapytanie", verification_col_field:"Co się zmieniło",
+  verification_col_importance:"Ważność", verification_col_effect:"Skutek",
+  verification_decisive_yes:"tak", verification_decisive_no:"nie",
+  verification_importance_critical:"krytyczna", verification_importance_attention:"attention", verification_importance_info:"info",
+  verification_download_spec:"Pełna specyfikacja modułu (Markdown)"
 },
 de:{
   brand_tag:"Fracht- und Transportbörse",
@@ -4864,7 +4946,24 @@ de:{
   automation_downloads_heading:"Modelldateien",
   automation_download_bpmn1:"checkcall.bpmn — Hauptprozess (BPMN 2.0, XML)",
   automation_download_bpmn2:"checkcall-exception.bpmn — Kollaboration mit Frachtführer und Kunde (BPMN 2.0, XML)",
-  automation_download_spec:"Vollständige Prozessspezifikation (Markdown)"
+  automation_download_spec:"Vollständige Prozessspezifikation (Markdown)",
+  verification_title:"Verifizierung von Vertragspartnern",
+  verification_lede:"Verifizierung ist keine Bewertung, sondern eine festgehaltene Tatsache mit Quelle, Datum und Beleg: keine Sterne, keine Gesamtpunktzahl und keine Stelle, an der die Nichtverfügbarkeit einer Quelle stillschweigend zu Vertrauen wird.",
+  verification_disclaimer:"Dies ist die Spezifikation des Moduls (Kataloge für Stufen, Prüfungen und Quellen), kein angebundener Dienst: Diese Demo hat keine Datenbank, keine echten Registerintegrationen und keine Zugangsschlüssel für eine der genannten Quellen.",
+  verification_levels_heading:"Verifizierungsstufen",
+  verification_checks_heading:"Prüfkatalog",
+  verification_checks_lede:"14 Prüfungen; entscheidende Prüfungen lehnen den Fall bei Fehlschlag ab, andere gehen in die manuelle Prüfung.",
+  verification_sources_heading:"Quellen und ihr tatsächlicher Status",
+  verification_sources_lede:"Der Status ist das Ergebnis einer Live-Abfrage der Quellen, keine Beschreibung aus der Dokumentation.",
+  verification_matrix_heading:"Wichtigkeitsmatrix für Stammdatenänderungen",
+  verification_matrix_lede:"Eine kritische Änderung setzt die Stufe immer aus - erzwungen durch Datenbank und Schema, nicht nur durch Konvention.",
+  verification_col_source:"Quelle", verification_col_level:"Stufe", verification_col_decisive:"Entscheidend",
+  verification_col_jurisdiction:"Rechtsraum", verification_col_criterion:"Kriterium", verification_col_state:"Status",
+  verification_col_note:"Ergebnis der Live-Abfrage", verification_col_field:"Was sich geändert hat",
+  verification_col_importance:"Wichtigkeit", verification_col_effect:"Auswirkung",
+  verification_decisive_yes:"ja", verification_decisive_no:"nein",
+  verification_importance_critical:"kritisch", verification_importance_attention:"attention", verification_importance_info:"info",
+  verification_download_spec:"Vollständige Modulspezifikation (Markdown)"
 },
 ro:{"brand_tag":"Bursa de marfă și transport","nav_home":"Acasă","nav_cargo":"Marfă","nav_transport":"Transport","nav_market":"Piața vehiculelor","nav_news":"Știri","nav_contacts":"Contact","nav_about":"Despre noi","services_title":"Servicii","login":"Conectare","register":"Înregistrare","logout":"Deconectare","hero_title":"Găsiți marfă sau transport în câteva minute","hero_lede":"Legătură directă între expeditori și transportatori în toată Europa: rutier, feroviar, maritim, aerian și multimodal.","tab_cargo":"Caut transport","tab_transport":"Am marfă","f_from":"De unde","f_to":"Până unde","f_date":"Data încărcării","f_mode":"Tip de transport","f_weight":"Greutate, t","f_volume":"Volum, m³","search":"Caută","load_more":"Afișează mai multe","any":"Oricare","mode_auto":"Rutier","mode_rail":"Feroviar","mode_sea":"Maritim","mode_air":"Aerian","mode_drone":"Drone","mode_multi":"Multimodal","stats_title":"Bursa în cifre","stat_cargo":"anunțuri de marfă active","stat_transport":"vehicule disponibile","stat_companies":"companii membre","stat_countries":"țări acoperite","flows_intl_title":"Transport internațional","flows_domestic_title":"Transport intern","flows_continent_europe":"Europa","flows_continent_asia":"Asia","flows_continent_america":"America","flows_continent_africa":"Africa","flows_continent_australia":"Australia","flows_continent_todo":"Datele pentru acest continent nu sunt încă conectate.","flow_kind_transport":"Transport","flow_kind_cargo":"Marfă","flow_export":"Export","flow_import":"Import","rating_title":"Clasamentul companiilor","rating_lede":"Companii active acum pe bursă, ordonate după valoarea anunțului curent și grupate pe valută (fără curs valutar conectat) - date demonstrative, nu un scor de reputație.","results_title":"Anunțuri curente","results_count":"găsite","results_empty":"Niciun anunț nu corespunde acestei căutări. Încercați altă rută sau alt tip de transport.","col_route":"Rută","col_cargo":"Marfă","col_weight":"Greutate","col_volume":"Volum","col_date":"Data","col_price":"Tarif","contact_btn":"Contact","col_range":"Autonomie","col_permit":"Permis de zbor","unit_kg":"kg","unit_km":"km","permit_yes":"da","permit_no":"nu","f_currency":"Valută","currency_all":"Toate valutele","escrow_note":"Decontarea în USDC/USDT (escrow blockchain, TS §13.5) nu este conectată în acest demo; valutele de mai jos sunt doar valuta anunțului.","market_title":"Piața vehiculelor","market_lede":"Cumpărare, vânzare și închiriere de camioane, remorci și utilaje speciale.","market_listing_title":"Anunțuri în categorie","market_pick":"Alegeți o categorie mai sus pentru a vedea anunțurile.","news_title":"Știri din domeniu","news_more":"Citește mai mult","news_less":"Restrânge","about_title":"Despre Trans-Atlas","about_lede":"Trans-Atlas este o bursă internațională de transport marfă care conectează expeditori și transportatori în toată Europa și dincolo de ea. Facilităm găsirea unui partener pentru orice tip de livrare.","about_how":"Cum funcționează","step1_t":"Înregistrare","step1_d":"Creați un cont de companie în 2 minute.","step2_t":"Publicați un anunț","step2_d":"Descrieți marfa sau vehiculul liber.","step3_t":"Primiți oferte","step3_d":"Partenerii răspund în decurs de o oră.","step4_t":"Finalizați tranzacția","step4_d":"Conveniți termenii și finalizați transportul.","reliability_t":"Zona de fiabilitate","reliability_d":"Evaluarea companiilor pe baza tranzacțiilor finalizate, recenziilor partenerilor și documentelor verificate.","blacklist_t":"Listă neagră","blacklist_d":"Companii care au încălcat termenii tranzacțiilor. Verificați partenerul înainte de colaborare.","contacts_title":"Contact","contacts_lede":"Alegeți biroul cel mai apropiat sau scrieți-ne direct.","c_name":"Nume","c_email":"Email","c_message":"Mesaj","c_send":"Trimite","c_success":"Mulțumim! Mesajul a fost trimis, vă vom răspunde în cel mult o zi lucrătoare.","offices_title":"Birouri","weather_title":"Vremea pe rută","weather_lede":"Prognoză pentru transportul rutier — date de la Open-Meteo, actualizate la fiecare 30 de minute.","weather_tab_road":"Rutier","weather_tab_rail":"Feroviar","weather_tab_sea":"Maritim","weather_tab_air":"Aerian","weather_show":"Arată vremea","weather_from_label":"Punct de plecare","weather_to_label":"Punct de destinație","weather_current":"Acum","weather_forecast":"Prognoză pe 12 ore","weather_risk_title":"Riscuri pentru șofer","weather_risk_ice":"Risc de polei","weather_risk_wind":"Vânt puternic","weather_risk_rain":"Ploi abundente","weather_no_risk":"Niciun risc semnificativ detectat","weather_updated":"Actualizat","weather_source":"Sursă","weather_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pe calculatorul dvs. pentru date live de la Open-Meteo.","weather_loading":"Se încarcă...","weather_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","weather_not_ready":"Sursa de date pentru acest tip de transport nu este încă conectată în această fază de dezvoltare — arătat cinstit, nu simulat.","weather_pick_points":"Alegeți punctul de plecare și destinația de mai sus pentru a vedea prognoza.","weather_alerts_title":"Avertizări meteo (MeteoAlarm)","weather_no_metar":"Nu există date aeronautice curente pentru acest aeroport (spațiul aerian poate fi închis sau stația nu raportează în prezent).","directory_title":"Director de surse","directory_lede":"Autorități oficiale și agregatori care oferă date despre frontiere, porturi și logistică.","directory_transport_label":"Tip de transport","directory_region_label":"Regiune","directory_search_label":"Căutare","directory_search_ph":"Nume sau descriere...","directory_apply":"Aplică","directory_all":"Toate","directory_region_eu":"UE","directory_region_asia":"Asia","directory_region_balkans":"Balcani","directory_region_cis":"CSI","directory_type_official":"Sursă oficială","directory_type_aggregator":"Agregator","directory_visit":"Vizitează site-ul","directory_empty":"Niciun rezultat pentru aceste filtre.","directory_loading":"Se încarcă...","directory_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea directorul.","borders_title":"Frontiere","borders_lede":"Date live despre punctele de trecere: DPSU (cozi din partea ucraineană) și granica.gov.pl (timpi de așteptare din partea poloneză).","borders_tab_road":"Rutier (UE)","borders_tab_rail":"Feroviar","borders_tab_sea":"Maritim","borders_tab_asia":"Asia","borders_country_label":"Țară","borders_apply":"Aplică","borders_status_green":"Liber","borders_status_yellow":"Coadă","borders_status_red":"Aglomerat","borders_status_unknown":"Fără date","borders_col_checkpoint":"Punct de trecere","borders_col_direction":"Direcție","borders_col_status":"Stare","borders_col_queue":"Coadă/așteptare","borders_trucks":"camioane","borders_wait":"așteptare","borders_closed":"închis","borders_source_dpsu":"DPSU (Ucraina)","borders_source_granica":"granica.gov.pl (Polonia)","borders_asia_notice":"Datele CAREC BCP Monitor (Khorgos, Dostyk și altele) sunt indicatori de referință trimestriali, neconectați încă în această fază de dezvoltare. NU sunt cozi live.","borders_loading":"Se încarcă...","borders_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea datele frontaliere.","borders_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","borders_empty":"Niciun rezultat pentru aceste filtre.","borders_partial":"Una dintre surse este temporar indisponibilă - se arată doar datele celor care au răspuns.","qa_title":"Întrebări și răspunsuri","qa_lede":"Un asistent AI răspunde pe baza bazei de cunoștințe (Wiki) și a materialelor gata făcute (Outputs) — cu surse citate, fără fapte inventate.","qa_ask_ph":"Ex.: ce este o scrisoare de trăsură CMR?","qa_ask_button":"Întreabă","qa_ask_thinking":"Caut un răspuns...","qa_chat_empty":"Întrebați despre documente, vamă sau standarde de transport — răspunsul se bazează doar pe materialele bazei de cunoștințe de mai jos.","qa_sources_label":"Surse:","qa_confidence_high":"relevanță ridicată","qa_confidence_medium":"relevanță medie","qa_confidence_low":"relevanță scăzută","qa_ai_unavailable":"Răspunsurile AI nu sunt încă activate pe acest server (ANTHROPIC_API_KEY nesetat). Iată materialele potrivite din baza de cunoștințe:","qa_insufficient":"În baza de cunoștințe nu există încă materiale care să răspundă clar la această întrebare.","qa_error":"Nu s-a putut obține un răspuns. Încercați din nou mai târziu.","qa_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\".","qa_wiki_heading":"Bază de cunoștințe (Wiki)","qa_wiki_search_ph":"Caută articole...","qa_wiki_all":"Toate categoriile","qa_cat_dokumenty":"Documente","qa_cat_standarty":"Standarde","qa_cat_mytnycia":"Vamă","qa_cat_marshruty":"Rute","qa_wiki_loading":"Se încarcă...","qa_wiki_empty":"Niciun rezultat pentru aceste filtre.","qa_wiki_read_more":"Citește articolul","qa_wiki_collapse":"Restrânge","qa_glossary_hint":"Faceți clic pe un cuvânt evidențiat din lista de mai sus (de ex. ADR) - explicația apare aici.","qa_glossary_loading":"Se încarcă definiția...","qa_outputs_heading":"Materiale gata făcute (Outputs)","qa_outputs_loading":"Se încarcă...","qa_outputs_empty":"Încă nu există materiale.","qa_notfound_title":"Nu ați găsit răspunsul?","qa_notfound_body":"Descrieți întrebarea — vom adăuga un răspuns în baza de cunoștințe. Solicitarea se salvează local în browser (mod demo, fără backend real).","qa_notfound_ph":"Întrebarea dvs...","qa_notfound_submit":"Trimite","qa_notfound_success":"Mulțumim! Întrebarea a fost salvată.","err_required":"Acest câmp este obligatoriu","err_email":"Introduceți un email valid","err_pass":"Minimum 6 caractere","err_match":"Parolele nu coincid","modal_login_title":"Conectare","modal_register_title":"Înregistrare companie","f_password":"Parolă","f_password2":"Repetați parola","f_companyname":"Numele companiei","submit_login":"Conectare","submit_register":"Creează cont","switch_to_register":"Nu aveți cont? Înregistrați-vă","switch_to_login":"Aveți deja cont? Conectați-vă","toast_login_ok":"Conectare reușită","toast_register_ok":"Cont creat, sunteți conectat","toast_logout_ok":"V-ați deconectat","footer_nav":"Navigare","footer_info":"Centru de informații","footer_support":"Suport","footer_rights":"Toate drepturile rezervate.","footer_note":"Concept de design. Datele de contact sunt exemple demonstrative.","cta_register":"Înregistrați-vă compania"},
 cs:{"brand_tag":"Burza nákladů a dopravy","nav_home":"Domů","nav_cargo":"Náklad","nav_transport":"Doprava","nav_market":"Trh vozidel","nav_news":"Novinky","nav_contacts":"Kontakty","nav_about":"O nás","services_title":"Služby","login":"Přihlásit se","register":"Registrace","logout":"Odhlásit se","hero_title":"Najděte náklad nebo dopravu během pár minut","hero_lede":"Přímé spojení odesílatelů a dopravců po celé Evropě: silniční, železniční, námořní, letecká a multimodální doprava.","tab_cargo":"Hledám dopravu","tab_transport":"Mám náklad","f_from":"Odkud","f_to":"Kam","f_date":"Datum nakládky","f_mode":"Druh dopravy","f_weight":"Hmotnost, t","f_volume":"Objem, m³","search":"Hledat","load_more":"Zobrazit další","any":"Jakýkoli","mode_auto":"Silniční","mode_rail":"Železniční","mode_sea":"Námořní","mode_air":"Letecká","mode_drone":"Drony","mode_multi":"Multimodální","stats_title":"Burza v číslech","stat_cargo":"aktivních nabídek nákladu","stat_transport":"volných vozidel","stat_companies":"zapojených firem","stat_countries":"pokrytých zemí","flows_intl_title":"Mezinárodní doprava","flows_domestic_title":"Vnitrostátní doprava","flows_continent_europe":"Evropa","flows_continent_asia":"Asie","flows_continent_america":"Amerika","flows_continent_africa":"Afrika","flows_continent_australia":"Austrálie","flows_continent_todo":"Data pro tento kontinent ještě nejsou připojena.","flow_kind_transport":"Doprava","flow_kind_cargo":"Náklad","flow_export":"Export","flow_import":"Import","rating_title":"Hodnocení firem","rating_lede":"Firmy aktivní právě teď na burze, seřazené podle hodnoty aktuální nabídky a seskupené podle měny (bez připojeného směnného kurzu) - ukázková data, nikoli hodnocení reputace.","results_title":"Aktuální nabídky","results_count":"nalezeno","results_empty":"Žádné nabídky neodpovídají tomuto hledání. Zkuste jinou trasu nebo druh dopravy.","col_route":"Trasa","col_cargo":"Náklad","col_weight":"Hmotnost","col_volume":"Objem","col_date":"Datum","col_price":"Sazba","contact_btn":"Kontakt","col_range":"Dolet","col_permit":"Povolení k letu","unit_kg":"kg","unit_km":"km","permit_yes":"ano","permit_no":"ne","f_currency":"Měna","currency_all":"Všechny měny","escrow_note":"Vypořádání v USDC/USDT (blockchain escrow, ZD §13.5) není v tomto demu připojeno; měny níže jsou pouze měna nabídky.","market_title":"Trh vozidel","market_lede":"Nákup, prodej a pronájem nákladních vozidel, přívěsů a speciální techniky.","market_listing_title":"Nabídky v kategorii","market_pick":"Vyberte výše kategorii pro zobrazení nabídek.","news_title":"Novinky z oboru","news_more":"Číst dál","news_less":"Sbalit","about_title":"O Trans-Atlas","about_lede":"Trans-Atlas je mezinárodní burza nákladní dopravy propojující odesílatele a dopravce po celé Evropě i mimo ni. Usnadňujeme nalezení partnera pro jakýkoli druh přepravy.","about_how":"Jak to funguje","step1_t":"Registrace","step1_d":"Vytvořte firemní účet za 2 minuty.","step2_t":"Zadejte nabídku","step2_d":"Popište náklad nebo volné vozidlo.","step3_t":"Získejte nabídky","step3_d":"Partneři odpovídají do hodiny.","step4_t":"Uzavřete obchod","step4_d":"Domluvte podmínky a dokončete přepravu.","reliability_t":"Zóna spolehlivosti","reliability_d":"Hodnocení firem na základě dokončených obchodů, recenzí partnerů a ověřených dokumentů.","blacklist_t":"Černá listina","blacklist_d":"Firmy, které porušily podmínky obchodu. Před spoluprací partnera ověřte.","contacts_title":"Kontakty","contacts_lede":"Vyberte nejbližší pobočku nebo nám napište přímo.","c_name":"Jméno","c_email":"E-mail","c_message":"Zpráva","c_send":"Odeslat","c_success":"Děkujeme! Zpráva byla odeslána, odpovíme do jednoho pracovního dne.","offices_title":"Pobočky","weather_title":"Počasí na trase","weather_lede":"Předpověď pro silniční dopravu — data z Open-Meteo, aktualizace každých 30 minut.","weather_tab_road":"Silniční","weather_tab_rail":"Železniční","weather_tab_sea":"Námořní","weather_tab_air":"Letecká","weather_show":"Zobrazit počasí","weather_from_label":"Místo odjezdu","weather_to_label":"Místo určení","weather_current":"Nyní","weather_forecast":"Předpověď na 12 hodin","weather_risk_title":"Rizika pro řidiče","weather_risk_ice":"Riziko náledí","weather_risk_wind":"Silný vítr","weather_risk_rain":"Silné srážky","weather_no_risk":"Nebyla zjištěna žádná zvláštní rizika","weather_updated":"Aktualizováno","weather_source":"Zdroj","weather_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" na svém počítači pro živá data z Open-Meteo.","weather_loading":"Načítání...","weather_error":"Data se nepodařilo načíst. Zkuste to prosím později.","weather_not_ready":"Zdroj dat pro tento druh dopravy zatím není v této fázi vývoje připojen — zobrazeno poctivě, nikoli simulováno.","weather_pick_points":"Vyberte výše místo odjezdu a určení pro zobrazení předpovědi.","weather_alerts_title":"Bouřková varování (MeteoAlarm)","weather_no_metar":"Pro toto letiště nejsou aktuální letecká data (vzdušný prostor může být uzavřen nebo stanice momentálně nehlásí).","directory_title":"Adresář zdrojů","directory_lede":"Oficiální úřady a agregátory poskytující data o hranicích, přístavech a logistice.","directory_transport_label":"Druh dopravy","directory_region_label":"Region","directory_search_label":"Hledat","directory_search_ph":"Název nebo popis...","directory_apply":"Použít","directory_all":"Vše","directory_region_eu":"EU","directory_region_asia":"Asie","directory_region_balkans":"Balkán","directory_region_cis":"SNS","directory_type_official":"Oficiální zdroj","directory_type_aggregator":"Agregátor","directory_visit":"Navštívit web","directory_empty":"Žádné výsledky pro tyto filtry.","directory_loading":"Načítání...","directory_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení adresáře.","borders_title":"Hranice","borders_lede":"Živá data o hraničních přechodech: DPSU (fronty z ukrajinské strany) a granica.gov.pl (čekací doby z polské strany).","borders_tab_road":"Silniční (EU)","borders_tab_rail":"Železniční","borders_tab_sea":"Námořní","borders_tab_asia":"Asie","borders_country_label":"Země","borders_apply":"Použít","borders_status_green":"Volno","borders_status_yellow":"Fronta","borders_status_red":"Ucpáno","borders_status_unknown":"Bez dat","borders_col_checkpoint":"Přechod","borders_col_direction":"Směr","borders_col_status":"Stav","borders_col_queue":"Fronta/čekání","borders_trucks":"kamionů","borders_wait":"čekání","borders_closed":"uzavřeno","borders_source_dpsu":"DPSU (Ukrajina)","borders_source_granica":"granica.gov.pl (Polsko)","borders_asia_notice":"Data CAREC BCP Monitor (Chorgos, Dostyk a další) jsou čtvrtletní referenční ukazatele, v této fázi vývoje ještě nepřipojené. Nejedná se o živé fronty.","borders_loading":"Načítání...","borders_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení dat o hranicích.","borders_error":"Data se nepodařilo načíst. Zkuste to prosím později.","borders_empty":"Žádné výsledky pro tyto filtry.","borders_partial":"Jeden ze zdrojů je dočasně nedostupný - zobrazena jsou pouze data z těch, které odpověděly.","qa_title":"Otázky a odpovědi","qa_lede":"AI asistent odpovídá na základě znalostní báze (Wiki) a hotových materiálů (Outputs) — s uvedením zdrojů, bez vymyšlených faktů.","qa_ask_ph":"Např.: co je nákladní list CMR?","qa_ask_button":"Zeptat se","qa_ask_thinking":"Hledám odpověď...","qa_chat_empty":"Zeptejte se na dokumenty, celní řízení nebo přepravní standardy — odpověď vychází pouze z materiálů znalostní báze níže.","qa_sources_label":"Zdroje:","qa_confidence_high":"vysoká relevance","qa_confidence_medium":"střední relevance","qa_confidence_low":"nízká relevance","qa_ai_unavailable":"AI odpovědi na tomto serveru ještě nejsou zapojeny (není nastaven ANTHROPIC_API_KEY). Zde jsou odpovídající materiály ze znalostní báze:","qa_insufficient":"Ve znalostní bázi zatím není nic, co by jasně odpovídalo na tuto otázku.","qa_error":"Odpověď se nepodařilo získat. Zkuste to prosím později.","qa_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\".","qa_wiki_heading":"Znalostní báze (Wiki)","qa_wiki_search_ph":"Hledat v článcích...","qa_wiki_all":"Všechny kategorie","qa_cat_dokumenty":"Dokumenty","qa_cat_standarty":"Standardy","qa_cat_mytnycia":"Clo","qa_cat_marshruty":"Trasy","qa_wiki_loading":"Načítání...","qa_wiki_empty":"Žádné výsledky pro tyto filtry.","qa_wiki_read_more":"Číst článek","qa_wiki_collapse":"Sbalit","qa_glossary_hint":"Klikněte na zvýrazněné slovo v checklistu výše (např. ADR) - vysvětlení se zobrazí zde.","qa_glossary_loading":"Načítání definice...","qa_outputs_heading":"Hotové materiály (Outputs)","qa_outputs_loading":"Načítání...","qa_outputs_empty":"Zatím žádné materiály.","qa_notfound_title":"Nenašli jste odpověď?","qa_notfound_body":"Popište svůj dotaz — přidáme odpověď do znalostní báze. Dotaz se ukládá lokálně v prohlížeči (demo režim, bez skutečného backendu).","qa_notfound_ph":"Váš dotaz...","qa_notfound_submit":"Odeslat","qa_notfound_success":"Děkujeme! Dotaz byl uložen.","err_required":"Toto pole je povinné","err_email":"Zadejte platný e-mail","err_pass":"Minimálně 6 znaků","err_match":"Hesla se neshodují","modal_login_title":"Přihlášení","modal_register_title":"Registrace firmy","f_password":"Heslo","f_password2":"Zopakujte heslo","f_companyname":"Název firmy","submit_login":"Přihlásit se","submit_register":"Vytvořit účet","switch_to_register":"Ještě nemáte účet? Zaregistrujte se","switch_to_login":"Už máte účet? Přihlaste se","toast_login_ok":"Přihlášení úspěšné","toast_register_ok":"Účet vytvořen, jste přihlášeni","toast_logout_ok":"Byli jste odhlášeni","footer_nav":"Navigace","footer_info":"Informační centrum","footer_support":"Podpora","footer_rights":"Všechna práva vyhrazena.","footer_note":"Designový koncept. Kontaktní údaje jsou ukázkové.","cta_register":"Zaregistrujte firmu"},
@@ -4940,7 +5039,8 @@ var ICONS = {
   container:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="11" rx="1"/><path d="M3 10h18M3 14h18M8 6v11M14 6v11"/></svg>',
   battery:'<svg class="icon" viewBox="0 0 24 24"><rect x="6" y="4" width="10" height="17" rx="2"/><path d="M9 4V2h4v2"/><path d="M9 9h4M9 13h4M9 17h4"/></svg>',
   station:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>',
-  chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>'
+  chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
+  shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
@@ -5619,6 +5719,119 @@ function renderAutomation(){
   '</div></section>';
 }
 
+/* ---------- render: verification module ----------
+ * Same honesty pattern as automation: this is the spec's own catalogs
+ * (levels, checks, sources) rendered as documentation, not a live
+ * verification service. Row content (check criteria, source names) is
+ * kept in Ukrainian only, matching how the QA wiki's own articles are
+ * defined as needing "окремий переклад на кожну мову етапу, а не
+ * машинний" - machine-translating legal/technical criteria wasn't
+ * acceptable there and isn't here either; only the page chrome (headings,
+ * column labels, badge names) is localized via t(). */
+var VERIFICATION_LEVELS = [
+  {id:"L0", cls:"l0", uk:"Не перевірено", en:"Not verified", pl:"Niezweryfikowano", de:"Nicht verifiziert",
+   meaning_uk:"Акаунт створено, пошту підтверджено. Жодної перевірки.",
+   gives_uk:"Перегляд заявок, публікація з позначкою «не перевірено», ліміт 5 заявок на добу"},
+  {id:"L1", cls:"l1", uk:"Ідентичність підтверджено", en:"Identity confirmed", pl:"Tożsamość potwierdzona", de:"Identität bestätigt",
+   meaning_uk:"Компанія існує в держреєстрі, дані збігаються, санкційних збігів немає.",
+   gives_uk:"Публікація без ліміту, бейдж «ідентичність підтверджено», доступ до контактів"},
+  {id:"L2", cls:"l2", uk:"Перевірений контрагент", en:"Verified counterparty", pl:"Zweryfikowany kontrahent", de:"Verifizierter Vertragspartner",
+   meaning_uk:"L1 + право підпису заявника + судові та ліцензійні перевірки + активний моніторинг реквізитів.",
+   gives_uk:"Бейдж «перевірений контрагент», пріоритет у стрічці, доступ до заявок «тільки для перевірених»"}
+];
+var VERIFICATION_CHECKS = [
+  {id:"identity.email_domain", source:"домен", level:"L1", decisive:false, jur:"усі", crit:"Домен старший за 90 днів, має MX; безкоштовна пошта не зараховується"},
+  {id:"identity.registry_match", source:"ЄДР (НАІС)", level:"L1", decisive:true, jur:"UA", crit:"Запис знайдено, назва збігається, статус не «припинено», КВЕД містить перевезення"},
+  {id:"identity.registry_match_pl", source:"KRS", level:"L1", decisive:true, jur:"PL", crit:"Актуальний витяг отримано, назва і статус збігаються"},
+  {id:"identity.vat_active", source:"VIES", level:"L1", decisive:false, jur:"усі", crit:"valid=true; поза ЄС — не застосовна"},
+  {id:"identity.signatory", source:"ЄДР", level:"L2", decisive:true, jur:"усі", crit:"Заявник — керівник у реєстрі або має перевірену довіреність"},
+  {id:"identity.control_payment", source:"банк", level:"L2", decisive:false, jur:"усі", crit:"Платіж отримано, назва платника збігається з реєстровою"},
+  {id:"risk.sanctions", source:"OpenSanctions", level:"L1", decisive:true, jur:"усі", crit:"Немає підтвердженого збігу за назвою, кодом і країною"},
+  {id:"risk.sanctions_ua", source:"ДРС РНБО", level:"L1", decisive:true, jur:"UA", crit:"Немає збігу в державному реєстрі санкцій"},
+  {id:"risk.court_cases", source:"ЄДРСР", level:"L2", decisive:false, jur:"UA", crit:"Немає справ категорій банкрутство, борг за перевезення, податковий спір, втрата вантажу"},
+  {id:"risk.bankruptcy", source:"ЄДР", level:"L1", decisive:true, jur:"усі", crit:"Статус не «припинення» і немає відкритої справи про банкрутство"},
+  {id:"capability.license", source:"Укртрансбезпека", level:"L2", decisive:false, jur:"UA", crit:"Застосовна лише до пасажирських і небезпечних перевезень"},
+  {id:"capability.eu_licence", source:"ERRU / документ", level:"L2", decisive:false, jur:"усі", crit:"Копія ліцензії Спільноти, звірена оператором"},
+  {id:"monitor.requisites", source:"агрегатор", level:"L2", decisive:false, jur:"усі", crit:"Підписка активна, останній прогін не старший за подвоєний інтервал"},
+  {id:"monitor.vat_status", source:"Biała lista", level:"L2", decisive:false, jur:"PL", crit:"Щотижнева перевірка статусу ПДВ і переліку рахунків"}
+];
+var VERIFICATION_SOURCES = [
+  {name:"VIES", url:"https://ec.europa.eu/taxation_customs/vies/", state:"live", note:"REST-ендпойнт check-vat-number працює без ключа, valid=true, повертає назву платника"},
+  {name:"Biała lista podatników VAT", url:"https://www.podatki.gov.pl/wykaz-podatnikow-vat-wyszukiwarka/", state:"live", note:"statusVat=Czynny, 17 офіційних банківських рахунків у відповіді"},
+  {name:"KRS Otwarte API", url:"https://prs.ms.gov.pl/krs/openApi", state:"live", note:"Актуальний витяг, stanZDnia=27.08.2026"},
+  {name:"Державний реєстр санкцій РНБО", url:"https://api-drs.nsdc.gov.ua/swagger/", state:"needs_key", note:"Специфікація публічна, дельта-ендпойнт new-decrees є; запит без ключа — 401 Unauthorized"},
+  {name:"OpenSanctions", url:"https://www.opensanctions.org/api/", state:"needs_key", note:"401 без ключа; тариф 0,10 EUR за запит або власне розгортання"},
+  {name:"Ліцензійний реєстр Укртрансбезпеки", url:"https://dsbt.gov.ua/novyny/vidkryto-dani-pro-litsenzii-pereviznykiv-dlia-koho-tse-bude-korysnym", state:"stale", note:"Віддає HTML, машинного інтерфейсу немає"},
+  {name:"API ЄДР (ДП НАІС)", url:"https://nais.gov.ua/pages/api", state:"needs_key", note:"Доступ за договором; 18 000 грн з ПДВ на місяць незалежно від кількості запитів"},
+  {name:"ERRU", url:"https://transport.ec.europa.eu/transport-modes/road/rules-governing-access-profession/european-register-road-transport-undertakings-erru_en", state:"manual_only", note:"Обмін лише між національними органами"},
+  {name:"Контрольний платіж, домен", url:"", state:"manual_only", note:"Машинного інтерфейсу не існує за визначенням"}
+];
+var VERIFICATION_SOURCE_STATE_LABEL = {live:"жива", needs_key:"потрібен ключ", stale:"застаріла", manual_only:"лише вручну"};
+var VERIFICATION_MATRIX = [
+  {what:"Банківський рахунок", importance:"critical", effect:"Рівень призупинено, сповіщення всім, хто стежить, негайно"},
+  {what:"Керівник, бенефіціар", importance:"critical", effect:"Рівень призупинено, потрібне повторне підтвердження права підпису"},
+  {what:"Статус у реєстрі (припинення, банкрутство)", importance:"critical", effect:"Рівень призупинено, заявки знімаються з публікації"},
+  {what:"Назва", importance:"attention", effect:"Сповіщення, рівень зберігається"},
+  {what:"Юридична адреса, КВЕД", importance:"attention", effect:"Сповіщення"},
+  {what:"Телефон, сайт, пошта", importance:"info", effect:"Тільки в історії"}
+];
+
+function renderVerification(){
+  var levelsHtml = VERIFICATION_LEVELS.map(function(l){
+    return '<div class="verify-level-card">'+
+      '<span class="verify-badge '+l.cls+'">'+ICONS.shield+esc(l[state.lang]||l.en)+'</span>'+
+      '<p class="v-meaning">'+esc(l.meaning_uk)+'</p>'+
+      '<p class="v-gives">'+esc(l.gives_uk)+'</p>'+
+    '</div>';
+  }).join("");
+  var checksHtml = VERIFICATION_CHECKS.map(function(c){
+    return '<tr><td><code>'+esc(c.id)+'</code></td><td>'+esc(c.source)+'</td>'+
+      '<td><span class="verify-badge '+c.level.toLowerCase()+' sm">'+esc(c.level)+'</span></td>'+
+      '<td>'+(c.decisive?'<span class="v-decisive">'+esc(t("verification_decisive_yes"))+'</span>':esc(t("verification_decisive_no")))+'</td>'+
+      '<td>'+esc(c.jur)+'</td><td>'+esc(c.crit)+'</td></tr>';
+  }).join("");
+  var sourcesHtml = VERIFICATION_SOURCES.map(function(s){
+    var nameHtml = s.url ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.name)+'</a>' : esc(s.name);
+    return '<tr><td>'+nameHtml+'</td>'+
+      '<td><span class="source-status '+s.state+'">'+esc(VERIFICATION_SOURCE_STATE_LABEL[s.state])+'</span></td>'+
+      '<td>'+esc(s.note)+'</td></tr>';
+  }).join("");
+  var matrixHtml = VERIFICATION_MATRIX.map(function(m){
+    return '<tr><td>'+esc(m.what)+'</td>'+
+      '<td><span class="v-importance '+m.importance+'">'+esc(t("verification_importance_"+m.importance))+'</span></td>'+
+      '<td>'+esc(m.effect)+'</td></tr>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("verification_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("verification_lede"))+'</p>'+
+    '<p class="escrow-note">'+esc(t("verification_disclaimer"))+'</p>'+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("verification_levels_heading"))+'</h2>'+
+    '<div class="verify-level-grid">'+levelsHtml+'</div>'+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("verification_checks_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("verification_checks_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>ID</th><th>'+esc(t("verification_col_source"))+'</th><th>'+esc(t("verification_col_level"))+'</th>'+
+      '<th>'+esc(t("verification_col_decisive"))+'</th><th>'+esc(t("verification_col_jurisdiction"))+'</th>'+
+      '<th>'+esc(t("verification_col_criterion"))+'</th>'+
+    '</tr></thead><tbody>'+checksHtml+'</tbody></table></div>'+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("verification_sources_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("verification_sources_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("verification_col_source"))+'</th><th>'+esc(t("verification_col_state"))+'</th><th>'+esc(t("verification_col_note"))+'</th>'+
+    '</tr></thead><tbody>'+sourcesHtml+'</tbody></table></div>'+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("verification_matrix_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("verification_matrix_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("verification_col_field"))+'</th><th>'+esc(t("verification_col_importance"))+'</th><th>'+esc(t("verification_col_effect"))+'</th>'+
+    '</tr></thead><tbody>'+matrixHtml+'</tbody></table></div>'+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
+    '<ul class="automation-downloads">'+
+      '<li>'+ICONS.book+'<a href="docs/verification-spec.md" target="_blank" rel="noopener">'+esc(t("verification_download_spec"))+'</a></li>'+
+    '</ul>'+
+  '</div></section>';
+}
+
 /* ---------- render: contacts ---------- */
 var OFFICES=[
   {city:{uk:"Київ",en:"Kyiv",pl:"Kijów",de:"Kiew"}, addr:"вул. Портова, 12", phone:"+380 44 000 00 00", email:"kyiv@trans-atlas.example"},
@@ -6252,6 +6465,7 @@ function pageContent(){
     case "qa": return renderQa();
     case "rating": return renderRating();
     case "automation": return renderAutomation();
+    case "verification": return renderVerification();
     default: return renderHero()+renderStats();
   }
 }
