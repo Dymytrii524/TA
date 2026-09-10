@@ -4697,6 +4697,7 @@ var SERVICES = [
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"},
   {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"},
   {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"},
+  {icon:"checklist", route:"verification-sprint1", uk:"Верифікація: план Спринту 1", en:"Verification: Sprint 1 plan", pl:"Weryfikacja: plan Sprintu 1", de:"Verifizierung: Sprint-1-Plan"},
   {icon:"server", route:"backend", uk:"Бекенд: Спринт 0", en:"Backend: Sprint 0", pl:"Backend: Sprint 0", de:"Backend: Sprint 0"},
   {icon:"layers", route:"stack", uk:"Технологічний стек", en:"Technology stack", pl:"Stos technologiczny", de:"Technologie-Stack"}
 ];
@@ -4885,7 +4886,28 @@ uk:{
   stack_col_rejected:"Відкинуто", stack_col_reason:"Причина",
   stack_col_stage:"Етап", stack_col_includes:"Що входить", stack_col_tech:"Технологічний приріст",
   stack_download_spec:"Повний документ рішення (Markdown)",
-  stack_link_backend:"Бекенд: Спринт 0 — перший виконаний етап"
+  stack_link_backend:"Бекенд: Спринт 0 — перший виконаний етап",
+  sprint1_title:"Верифікація, Спринт 1: перша працездатна частина",
+  sprint1_lede:"Тижні 3–4: польська або європейська компанія за номером ПДВ отримує рівень L1 автоматично, менш ніж за 60 секунд, із доказами в сховищі та бейджем у стрічці — на джерелах, які вже працюють без ключа й без договору.",
+  sprint1_disclaimer:"Це план спринту з переліком критеріїв готовності, а не звіт про виконану роботу: коннектори VIES/Biała lista/KRS, машина справи, сховище доказів WORM і роль оператора верифікації в цьому демо не розгорнуті. Дата складання документа — 10 вересня 2026.",
+  sprint1_goal_heading:"Мета спринту",
+  sprint1_entry_heading:"Умови входу: що вже є",
+  sprint1_entry_lede:"Спринт починається не з проєктування, а з реалізації за готовим і машинно перевіреним контрактом. Незакритим лишається хостинг бекенду — рішення дня 1.",
+  sprint1_col_artifact:"Артефакт", sprint1_col_status:"Стан",
+  sprint1_scope_heading:"Обсяг спринту",
+  sprint1_col_item:"Пункт", sprint1_col_duration:"Тривалість", sprint1_col_summary:"Що входить", sprint1_col_donewhen:"Готово, коли",
+  sprint1_calendar_heading:"Календар",
+  sprint1_calendar_resource:"Ресурс: 1 бекенд повністю, 0.5 інтеграції, 0.5 фронтенд із дня 7, 0.5 QA і CI. Юридичний трек — власник продукту.",
+  sprint1_col_day:"День", sprint1_col_work:"Робота",
+  sprint1_outofscope_heading:"Що НЕ входить у Спринт 1",
+  sprint1_acceptance_heading:"Приймальні критерії спринту",
+  sprint1_risks_heading:"Ризики спринту і що робити",
+  sprint1_col_risk:"Ризик", sprint1_col_signal:"Ознака на ранньому етапі", sprint1_col_action:"Дія",
+  sprint1_cost_heading:"Вартість спринту за джерелами",
+  sprint1_col_source:"Джерело", sprint1_col_cost:"Вартість у Спринті 1",
+  sprint1_handoff_heading:"Вихід зі спринту в Спринт 2",
+  sprint1_download_spec:"Повний план спринту (Markdown)",
+  sprint1_link_verification:"Верифікація контрагентів — каталог рівнів, перевірок і джерел"
 },
 en:{
   brand_tag:"Cargo & transport exchange",
@@ -5041,7 +5063,28 @@ en:{
   stack_col_rejected:"Rejected", stack_col_reason:"Reason",
   stack_col_stage:"Stage", stack_col_includes:"What's included", stack_col_tech:"Technology added",
   stack_download_spec:"Full decision record (Markdown)",
-  stack_link_backend:"Backend: Sprint 0 - the first executed stage"
+  stack_link_backend:"Backend: Sprint 0 - the first executed stage",
+  sprint1_title:"Verification Sprint 1: first working slice",
+  sprint1_lede:"Weeks 3-4: a Polish or EU company identified by VAT number gets level L1 automatically, in under 60 seconds, with evidence in storage and a badge in the feed - built on sources that already work with no key and no contract.",
+  sprint1_disclaimer:"This is a sprint plan with a list of readiness criteria, not a report of completed work: the VIES/Biala lista/KRS connectors, the case state machine, WORM evidence storage and the verification-operator role are not deployed in this demo. Document date: 10 September 2026.",
+  sprint1_goal_heading:"Sprint goal",
+  sprint1_entry_heading:"Entry conditions: what already exists",
+  sprint1_entry_lede:"The sprint starts from implementation against an already-written, machine-checked contract, not from design. Backend hosting is the one open question - a day-1 decision.",
+  sprint1_col_artifact:"Artifact", sprint1_col_status:"Status",
+  sprint1_scope_heading:"Sprint scope",
+  sprint1_col_item:"Item", sprint1_col_duration:"Duration", sprint1_col_summary:"What it covers", sprint1_col_donewhen:"Done when",
+  sprint1_calendar_heading:"Calendar",
+  sprint1_calendar_resource:"Resource: 1 backend engineer full-time, 0.5 integrations, 0.5 frontend from day 7, 0.5 QA/CI. The legal track is owned by the product owner.",
+  sprint1_col_day:"Day", sprint1_col_work:"Work",
+  sprint1_outofscope_heading:"What is NOT in Sprint 1",
+  sprint1_acceptance_heading:"Sprint acceptance criteria",
+  sprint1_risks_heading:"Sprint risks and mitigations",
+  sprint1_col_risk:"Risk", sprint1_col_signal:"Early warning sign", sprint1_col_action:"Action",
+  sprint1_cost_heading:"Sprint cost by source",
+  sprint1_col_source:"Source", sprint1_col_cost:"Cost in Sprint 1",
+  sprint1_handoff_heading:"Handoff from this sprint to Sprint 2",
+  sprint1_download_spec:"Full sprint plan (Markdown)",
+  sprint1_link_verification:"Counterparty verification - the level, check and source catalog"
 },
 pl:{
   brand_tag:"Giełda ładunków i transportu",
@@ -5197,7 +5240,28 @@ pl:{
   stack_col_rejected:"Odrzucono", stack_col_reason:"Powód",
   stack_col_stage:"Etap", stack_col_includes:"Co obejmuje", stack_col_tech:"Przyrost technologiczny",
   stack_download_spec:"Pełny dokument decyzyjny (Markdown)",
-  stack_link_backend:"Backend: Sprint 0 - pierwszy zrealizowany etap"
+  stack_link_backend:"Backend: Sprint 0 - pierwszy zrealizowany etap",
+  sprint1_title:"Weryfikacja, Sprint 1: pierwsza działająca część",
+  sprint1_lede:"Tygodnie 3-4: polska lub unijna firma po numerze VAT otrzymuje poziom L1 automatycznie, w mniej niż 60 sekund, z dowodami w magazynie i odznaką w strumieniu - na źródłach, które już działają bez klucza i bez umowy.",
+  sprint1_disclaimer:"To plan sprintu z listą kryteriów gotowości, a nie raport z wykonanej pracy: konektory VIES/Biała lista/KRS, maszyna stanów sprawy, magazyn dowodów WORM i rola operatora weryfikacji nie są wdrożone w tym demo. Data dokumentu: 10 września 2026.",
+  sprint1_goal_heading:"Cel sprintu",
+  sprint1_entry_heading:"Warunki wejścia: co już jest",
+  sprint1_entry_lede:"Sprint zaczyna się od implementacji według gotowego, maszynowo zweryfikowanego kontraktu, a nie od projektowania. Otwartą kwestią pozostaje hosting backendu - decyzja dnia 1.",
+  sprint1_col_artifact:"Artefakt", sprint1_col_status:"Stan",
+  sprint1_scope_heading:"Zakres sprintu",
+  sprint1_col_item:"Pozycja", sprint1_col_duration:"Czas trwania", sprint1_col_summary:"Co obejmuje", sprint1_col_donewhen:"Gotowe, gdy",
+  sprint1_calendar_heading:"Kalendarz",
+  sprint1_calendar_resource:"Zasoby: 1 backend w pełnym wymiarze, 0,5 integracje, 0,5 frontend od dnia 7, 0,5 QA i CI. Ścieżkę prawną prowadzi właściciel produktu.",
+  sprint1_col_day:"Dzień", sprint1_col_work:"Praca",
+  sprint1_outofscope_heading:"Co NIE wchodzi w Sprint 1",
+  sprint1_acceptance_heading:"Kryteria akceptacji sprintu",
+  sprint1_risks_heading:"Ryzyka sprintu i działania",
+  sprint1_col_risk:"Ryzyko", sprint1_col_signal:"Wczesny sygnał", sprint1_col_action:"Działanie",
+  sprint1_cost_heading:"Koszt sprintu według źródeł",
+  sprint1_col_source:"Źródło", sprint1_col_cost:"Koszt w Sprincie 1",
+  sprint1_handoff_heading:"Przekazanie ze sprintu do Sprintu 2",
+  sprint1_download_spec:"Pełny plan sprintu (Markdown)",
+  sprint1_link_verification:"Weryfikacja kontrahentów - katalog poziomów, kontroli i źródeł"
 },
 de:{
   brand_tag:"Fracht- und Transportbörse",
@@ -5353,7 +5417,28 @@ de:{
   stack_col_rejected:"Abgelehnt", stack_col_reason:"Grund",
   stack_col_stage:"Phase", stack_col_includes:"Umfang", stack_col_tech:"Technologiezuwachs",
   stack_download_spec:"Vollständiges Entscheidungsdokument (Markdown)",
-  stack_link_backend:"Backend: Sprint 0 - die erste umgesetzte Phase"
+  stack_link_backend:"Backend: Sprint 0 - die erste umgesetzte Phase",
+  sprint1_title:"Verifizierung, Sprint 1: erster funktionsfähiger Teil",
+  sprint1_lede:"Wochen 3-4: Ein polnisches oder EU-Unternehmen erhält anhand seiner USt-IdNr. automatisch die Stufe L1, in unter 60 Sekunden, mit Belegen im Speicher und einem Abzeichen im Feed - auf Basis von Quellen, die bereits ohne Schlüssel und ohne Vertrag funktionieren.",
+  sprint1_disclaimer:"Dies ist ein Sprintplan mit einer Liste von Abnahmekriterien, kein Bericht über bereits erledigte Arbeit: Die Konnektoren VIES/Biała lista/KRS, die Fall-Zustandsmaschine, der WORM-Belegspeicher und die Rolle des Verifizierungs-Operators sind in dieser Demo nicht bereitgestellt. Dokumentdatum: 10. September 2026.",
+  sprint1_goal_heading:"Sprintziel",
+  sprint1_entry_heading:"Einstiegsbedingungen: was bereits vorhanden ist",
+  sprint1_entry_lede:"Der Sprint beginnt mit der Umsetzung nach einem bereits geschriebenen, maschinell geprüften Vertrag, nicht mit dem Entwurf. Offen bleibt das Backend-Hosting - eine Entscheidung von Tag 1.",
+  sprint1_col_artifact:"Artefakt", sprint1_col_status:"Status",
+  sprint1_scope_heading:"Sprintumfang",
+  sprint1_col_item:"Punkt", sprint1_col_duration:"Dauer", sprint1_col_summary:"Was es umfasst", sprint1_col_donewhen:"Fertig, wenn",
+  sprint1_calendar_heading:"Kalender",
+  sprint1_calendar_resource:"Ressourcen: 1 Backend-Entwickler in Vollzeit, 0,5 Integrationen, 0,5 Frontend ab Tag 7, 0,5 QA/CI. Den rechtlichen Strang verantwortet der Product Owner.",
+  sprint1_col_day:"Tag", sprint1_col_work:"Arbeit",
+  sprint1_outofscope_heading:"Was NICHT in Sprint 1 enthalten ist",
+  sprint1_acceptance_heading:"Abnahmekriterien des Sprints",
+  sprint1_risks_heading:"Sprintrisiken und Gegenmaßnahmen",
+  sprint1_col_risk:"Risiko", sprint1_col_signal:"Frühwarnzeichen", sprint1_col_action:"Maßnahme",
+  sprint1_cost_heading:"Sprintkosten nach Quelle",
+  sprint1_col_source:"Quelle", sprint1_col_cost:"Kosten in Sprint 1",
+  sprint1_handoff_heading:"Übergabe von diesem Sprint an Sprint 2",
+  sprint1_download_spec:"Vollständiger Sprintplan (Markdown)",
+  sprint1_link_verification:"Verifizierung von Vertragspartnern - Katalog der Stufen, Prüfungen und Quellen"
 },
 ro:{"brand_tag":"Bursa de marfă și transport","nav_home":"Acasă","nav_cargo":"Marfă","nav_transport":"Transport","nav_market":"Piața vehiculelor","nav_news":"Știri","nav_contacts":"Contact","nav_about":"Despre noi","services_title":"Servicii","login":"Conectare","register":"Înregistrare","logout":"Deconectare","hero_title":"Găsiți marfă sau transport în câteva minute","hero_lede":"Legătură directă între expeditori și transportatori în toată Europa: rutier, feroviar, maritim, aerian și multimodal.","tab_cargo":"Caut transport","tab_transport":"Am marfă","f_from":"De unde","f_to":"Până unde","f_date":"Data încărcării","f_mode":"Tip de transport","f_weight":"Greutate, t","f_volume":"Volum, m³","search":"Caută","load_more":"Afișează mai multe","any":"Oricare","mode_auto":"Rutier","mode_rail":"Feroviar","mode_sea":"Maritim","mode_air":"Aerian","mode_drone":"Drone","mode_multi":"Multimodal","stats_title":"Bursa în cifre","stat_cargo":"anunțuri de marfă active","stat_transport":"vehicule disponibile","stat_companies":"companii membre","stat_countries":"țări acoperite","flows_intl_title":"Transport internațional","flows_domestic_title":"Transport intern","flows_continent_europe":"Europa","flows_continent_asia":"Asia","flows_continent_america":"America","flows_continent_africa":"Africa","flows_continent_australia":"Australia","flows_continent_todo":"Datele pentru acest continent nu sunt încă conectate.","flow_kind_transport":"Transport","flow_kind_cargo":"Marfă","flow_export":"Export","flow_import":"Import","rating_title":"Clasamentul companiilor","rating_lede":"Companii active acum pe bursă, ordonate după valoarea anunțului curent și grupate pe valută (fără curs valutar conectat) - date demonstrative, nu un scor de reputație.","results_title":"Anunțuri curente","results_count":"găsite","results_empty":"Niciun anunț nu corespunde acestei căutări. Încercați altă rută sau alt tip de transport.","col_route":"Rută","col_cargo":"Marfă","col_weight":"Greutate","col_volume":"Volum","col_date":"Data","col_price":"Tarif","contact_btn":"Contact","col_range":"Autonomie","col_permit":"Permis de zbor","unit_kg":"kg","unit_km":"km","permit_yes":"da","permit_no":"nu","f_currency":"Valută","currency_all":"Toate valutele","escrow_note":"Decontarea în USDC/USDT (escrow blockchain, TS §13.5) nu este conectată în acest demo; valutele de mai jos sunt doar valuta anunțului.","market_title":"Piața vehiculelor","market_lede":"Cumpărare, vânzare și închiriere de camioane, remorci și utilaje speciale.","market_listing_title":"Anunțuri în categorie","market_pick":"Alegeți o categorie mai sus pentru a vedea anunțurile.","news_title":"Știri din domeniu","news_more":"Citește mai mult","news_less":"Restrânge","about_title":"Despre Trans-Atlas","about_lede":"Trans-Atlas este o bursă internațională de transport marfă care conectează expeditori și transportatori în toată Europa și dincolo de ea. Facilităm găsirea unui partener pentru orice tip de livrare.","about_how":"Cum funcționează","step1_t":"Înregistrare","step1_d":"Creați un cont de companie în 2 minute.","step2_t":"Publicați un anunț","step2_d":"Descrieți marfa sau vehiculul liber.","step3_t":"Primiți oferte","step3_d":"Partenerii răspund în decurs de o oră.","step4_t":"Finalizați tranzacția","step4_d":"Conveniți termenii și finalizați transportul.","reliability_t":"Zona de fiabilitate","reliability_d":"Evaluarea companiilor pe baza tranzacțiilor finalizate, recenziilor partenerilor și documentelor verificate.","blacklist_t":"Listă neagră","blacklist_d":"Companii care au încălcat termenii tranzacțiilor. Verificați partenerul înainte de colaborare.","contacts_title":"Contact","contacts_lede":"Alegeți biroul cel mai apropiat sau scrieți-ne direct.","c_name":"Nume","c_email":"Email","c_message":"Mesaj","c_send":"Trimite","c_success":"Mulțumim! Mesajul a fost trimis, vă vom răspunde în cel mult o zi lucrătoare.","offices_title":"Birouri","weather_title":"Vremea pe rută","weather_lede":"Prognoză pentru transportul rutier — date de la Open-Meteo, actualizate la fiecare 30 de minute.","weather_tab_road":"Rutier","weather_tab_rail":"Feroviar","weather_tab_sea":"Maritim","weather_tab_air":"Aerian","weather_show":"Arată vremea","weather_from_label":"Punct de plecare","weather_to_label":"Punct de destinație","weather_current":"Acum","weather_forecast":"Prognoză pe 12 ore","weather_risk_title":"Riscuri pentru șofer","weather_risk_ice":"Risc de polei","weather_risk_wind":"Vânt puternic","weather_risk_rain":"Ploi abundente","weather_no_risk":"Niciun risc semnificativ detectat","weather_updated":"Actualizat","weather_source":"Sursă","weather_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pe calculatorul dvs. pentru date live de la Open-Meteo.","weather_loading":"Se încarcă...","weather_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","weather_not_ready":"Sursa de date pentru acest tip de transport nu este încă conectată în această fază de dezvoltare — arătat cinstit, nu simulat.","weather_pick_points":"Alegeți punctul de plecare și destinația de mai sus pentru a vedea prognoza.","weather_alerts_title":"Avertizări meteo (MeteoAlarm)","weather_no_metar":"Nu există date aeronautice curente pentru acest aeroport (spațiul aerian poate fi închis sau stația nu raportează în prezent).","directory_title":"Director de surse","directory_lede":"Autorități oficiale și agregatori care oferă date despre frontiere, porturi și logistică.","directory_transport_label":"Tip de transport","directory_region_label":"Regiune","directory_search_label":"Căutare","directory_search_ph":"Nume sau descriere...","directory_apply":"Aplică","directory_all":"Toate","directory_region_eu":"UE","directory_region_asia":"Asia","directory_region_balkans":"Balcani","directory_region_cis":"CSI","directory_type_official":"Sursă oficială","directory_type_aggregator":"Agregator","directory_visit":"Vizitează site-ul","directory_empty":"Niciun rezultat pentru aceste filtre.","directory_loading":"Se încarcă...","directory_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea directorul.","borders_title":"Frontiere","borders_lede":"Date live despre punctele de trecere: DPSU (cozi din partea ucraineană) și granica.gov.pl (timpi de așteptare din partea poloneză).","borders_tab_road":"Rutier (UE)","borders_tab_rail":"Feroviar","borders_tab_sea":"Maritim","borders_tab_asia":"Asia","borders_country_label":"Țară","borders_apply":"Aplică","borders_status_green":"Liber","borders_status_yellow":"Coadă","borders_status_red":"Aglomerat","borders_status_unknown":"Fără date","borders_col_checkpoint":"Punct de trecere","borders_col_direction":"Direcție","borders_col_status":"Stare","borders_col_queue":"Coadă/așteptare","borders_trucks":"camioane","borders_wait":"așteptare","borders_closed":"închis","borders_source_dpsu":"DPSU (Ucraina)","borders_source_granica":"granica.gov.pl (Polonia)","borders_asia_notice":"Datele CAREC BCP Monitor (Khorgos, Dostyk și altele) sunt indicatori de referință trimestriali, neconectați încă în această fază de dezvoltare. NU sunt cozi live.","borders_loading":"Se încarcă...","borders_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea datele frontaliere.","borders_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","borders_empty":"Niciun rezultat pentru aceste filtre.","borders_partial":"Una dintre surse este temporar indisponibilă - se arată doar datele celor care au răspuns.","qa_title":"Întrebări și răspunsuri","qa_lede":"Un asistent AI răspunde pe baza bazei de cunoștințe (Wiki) și a materialelor gata făcute (Outputs) — cu surse citate, fără fapte inventate.","qa_ask_ph":"Ex.: ce este o scrisoare de trăsură CMR?","qa_ask_button":"Întreabă","qa_ask_thinking":"Caut un răspuns...","qa_chat_empty":"Întrebați despre documente, vamă sau standarde de transport — răspunsul se bazează doar pe materialele bazei de cunoștințe de mai jos.","qa_sources_label":"Surse:","qa_confidence_high":"relevanță ridicată","qa_confidence_medium":"relevanță medie","qa_confidence_low":"relevanță scăzută","qa_ai_unavailable":"Răspunsurile AI nu sunt încă activate pe acest server (ANTHROPIC_API_KEY nesetat). Iată materialele potrivite din baza de cunoștințe:","qa_insufficient":"În baza de cunoștințe nu există încă materiale care să răspundă clar la această întrebare.","qa_error":"Nu s-a putut obține un răspuns. Încercați din nou mai târziu.","qa_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\".","qa_wiki_heading":"Bază de cunoștințe (Wiki)","qa_wiki_search_ph":"Caută articole...","qa_wiki_all":"Toate categoriile","qa_cat_dokumenty":"Documente","qa_cat_standarty":"Standarde","qa_cat_mytnycia":"Vamă","qa_cat_marshruty":"Rute","qa_wiki_loading":"Se încarcă...","qa_wiki_empty":"Niciun rezultat pentru aceste filtre.","qa_wiki_read_more":"Citește articolul","qa_wiki_collapse":"Restrânge","qa_glossary_hint":"Faceți clic pe un cuvânt evidențiat din lista de mai sus (de ex. ADR) - explicația apare aici.","qa_glossary_loading":"Se încarcă definiția...","qa_outputs_heading":"Materiale gata făcute (Outputs)","qa_outputs_loading":"Se încarcă...","qa_outputs_empty":"Încă nu există materiale.","qa_notfound_title":"Nu ați găsit răspunsul?","qa_notfound_body":"Descrieți întrebarea — vom adăuga un răspuns în baza de cunoștințe. Solicitarea se salvează local în browser (mod demo, fără backend real).","qa_notfound_ph":"Întrebarea dvs...","qa_notfound_submit":"Trimite","qa_notfound_success":"Mulțumim! Întrebarea a fost salvată.","err_required":"Acest câmp este obligatoriu","err_email":"Introduceți un email valid","err_pass":"Minimum 6 caractere","err_match":"Parolele nu coincid","modal_login_title":"Conectare","modal_register_title":"Înregistrare companie","f_password":"Parolă","f_password2":"Repetați parola","f_companyname":"Numele companiei","submit_login":"Conectare","submit_register":"Creează cont","switch_to_register":"Nu aveți cont? Înregistrați-vă","switch_to_login":"Aveți deja cont? Conectați-vă","toast_login_ok":"Conectare reușită","toast_register_ok":"Cont creat, sunteți conectat","toast_logout_ok":"V-ați deconectat","footer_nav":"Navigare","footer_info":"Centru de informații","footer_support":"Suport","footer_rights":"Toate drepturile rezervate.","footer_note":"Concept de design. Datele de contact sunt exemple demonstrative.","cta_register":"Înregistrați-vă compania"},
 cs:{"brand_tag":"Burza nákladů a dopravy","nav_home":"Domů","nav_cargo":"Náklad","nav_transport":"Doprava","nav_market":"Trh vozidel","nav_news":"Novinky","nav_contacts":"Kontakty","nav_about":"O nás","services_title":"Služby","login":"Přihlásit se","register":"Registrace","logout":"Odhlásit se","hero_title":"Najděte náklad nebo dopravu během pár minut","hero_lede":"Přímé spojení odesílatelů a dopravců po celé Evropě: silniční, železniční, námořní, letecká a multimodální doprava.","tab_cargo":"Hledám dopravu","tab_transport":"Mám náklad","f_from":"Odkud","f_to":"Kam","f_date":"Datum nakládky","f_mode":"Druh dopravy","f_weight":"Hmotnost, t","f_volume":"Objem, m³","search":"Hledat","load_more":"Zobrazit další","any":"Jakýkoli","mode_auto":"Silniční","mode_rail":"Železniční","mode_sea":"Námořní","mode_air":"Letecká","mode_drone":"Drony","mode_multi":"Multimodální","stats_title":"Burza v číslech","stat_cargo":"aktivních nabídek nákladu","stat_transport":"volných vozidel","stat_companies":"zapojených firem","stat_countries":"pokrytých zemí","flows_intl_title":"Mezinárodní doprava","flows_domestic_title":"Vnitrostátní doprava","flows_continent_europe":"Evropa","flows_continent_asia":"Asie","flows_continent_america":"Amerika","flows_continent_africa":"Afrika","flows_continent_australia":"Austrálie","flows_continent_todo":"Data pro tento kontinent ještě nejsou připojena.","flow_kind_transport":"Doprava","flow_kind_cargo":"Náklad","flow_export":"Export","flow_import":"Import","rating_title":"Hodnocení firem","rating_lede":"Firmy aktivní právě teď na burze, seřazené podle hodnoty aktuální nabídky a seskupené podle měny (bez připojeného směnného kurzu) - ukázková data, nikoli hodnocení reputace.","results_title":"Aktuální nabídky","results_count":"nalezeno","results_empty":"Žádné nabídky neodpovídají tomuto hledání. Zkuste jinou trasu nebo druh dopravy.","col_route":"Trasa","col_cargo":"Náklad","col_weight":"Hmotnost","col_volume":"Objem","col_date":"Datum","col_price":"Sazba","contact_btn":"Kontakt","col_range":"Dolet","col_permit":"Povolení k letu","unit_kg":"kg","unit_km":"km","permit_yes":"ano","permit_no":"ne","f_currency":"Měna","currency_all":"Všechny měny","escrow_note":"Vypořádání v USDC/USDT (blockchain escrow, ZD §13.5) není v tomto demu připojeno; měny níže jsou pouze měna nabídky.","market_title":"Trh vozidel","market_lede":"Nákup, prodej a pronájem nákladních vozidel, přívěsů a speciální techniky.","market_listing_title":"Nabídky v kategorii","market_pick":"Vyberte výše kategorii pro zobrazení nabídek.","news_title":"Novinky z oboru","news_more":"Číst dál","news_less":"Sbalit","about_title":"O Trans-Atlas","about_lede":"Trans-Atlas je mezinárodní burza nákladní dopravy propojující odesílatele a dopravce po celé Evropě i mimo ni. Usnadňujeme nalezení partnera pro jakýkoli druh přepravy.","about_how":"Jak to funguje","step1_t":"Registrace","step1_d":"Vytvořte firemní účet za 2 minuty.","step2_t":"Zadejte nabídku","step2_d":"Popište náklad nebo volné vozidlo.","step3_t":"Získejte nabídky","step3_d":"Partneři odpovídají do hodiny.","step4_t":"Uzavřete obchod","step4_d":"Domluvte podmínky a dokončete přepravu.","reliability_t":"Zóna spolehlivosti","reliability_d":"Hodnocení firem na základě dokončených obchodů, recenzí partnerů a ověřených dokumentů.","blacklist_t":"Černá listina","blacklist_d":"Firmy, které porušily podmínky obchodu. Před spoluprací partnera ověřte.","contacts_title":"Kontakty","contacts_lede":"Vyberte nejbližší pobočku nebo nám napište přímo.","c_name":"Jméno","c_email":"E-mail","c_message":"Zpráva","c_send":"Odeslat","c_success":"Děkujeme! Zpráva byla odeslána, odpovíme do jednoho pracovního dne.","offices_title":"Pobočky","weather_title":"Počasí na trase","weather_lede":"Předpověď pro silniční dopravu — data z Open-Meteo, aktualizace každých 30 minut.","weather_tab_road":"Silniční","weather_tab_rail":"Železniční","weather_tab_sea":"Námořní","weather_tab_air":"Letecká","weather_show":"Zobrazit počasí","weather_from_label":"Místo odjezdu","weather_to_label":"Místo určení","weather_current":"Nyní","weather_forecast":"Předpověď na 12 hodin","weather_risk_title":"Rizika pro řidiče","weather_risk_ice":"Riziko náledí","weather_risk_wind":"Silný vítr","weather_risk_rain":"Silné srážky","weather_no_risk":"Nebyla zjištěna žádná zvláštní rizika","weather_updated":"Aktualizováno","weather_source":"Zdroj","weather_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" na svém počítači pro živá data z Open-Meteo.","weather_loading":"Načítání...","weather_error":"Data se nepodařilo načíst. Zkuste to prosím později.","weather_not_ready":"Zdroj dat pro tento druh dopravy zatím není v této fázi vývoje připojen — zobrazeno poctivě, nikoli simulováno.","weather_pick_points":"Vyberte výše místo odjezdu a určení pro zobrazení předpovědi.","weather_alerts_title":"Bouřková varování (MeteoAlarm)","weather_no_metar":"Pro toto letiště nejsou aktuální letecká data (vzdušný prostor může být uzavřen nebo stanice momentálně nehlásí).","directory_title":"Adresář zdrojů","directory_lede":"Oficiální úřady a agregátory poskytující data o hranicích, přístavech a logistice.","directory_transport_label":"Druh dopravy","directory_region_label":"Region","directory_search_label":"Hledat","directory_search_ph":"Název nebo popis...","directory_apply":"Použít","directory_all":"Vše","directory_region_eu":"EU","directory_region_asia":"Asie","directory_region_balkans":"Balkán","directory_region_cis":"SNS","directory_type_official":"Oficiální zdroj","directory_type_aggregator":"Agregátor","directory_visit":"Navštívit web","directory_empty":"Žádné výsledky pro tyto filtry.","directory_loading":"Načítání...","directory_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení adresáře.","borders_title":"Hranice","borders_lede":"Živá data o hraničních přechodech: DPSU (fronty z ukrajinské strany) a granica.gov.pl (čekací doby z polské strany).","borders_tab_road":"Silniční (EU)","borders_tab_rail":"Železniční","borders_tab_sea":"Námořní","borders_tab_asia":"Asie","borders_country_label":"Země","borders_apply":"Použít","borders_status_green":"Volno","borders_status_yellow":"Fronta","borders_status_red":"Ucpáno","borders_status_unknown":"Bez dat","borders_col_checkpoint":"Přechod","borders_col_direction":"Směr","borders_col_status":"Stav","borders_col_queue":"Fronta/čekání","borders_trucks":"kamionů","borders_wait":"čekání","borders_closed":"uzavřeno","borders_source_dpsu":"DPSU (Ukrajina)","borders_source_granica":"granica.gov.pl (Polsko)","borders_asia_notice":"Data CAREC BCP Monitor (Chorgos, Dostyk a další) jsou čtvrtletní referenční ukazatele, v této fázi vývoje ještě nepřipojené. Nejedná se o živé fronty.","borders_loading":"Načítání...","borders_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení dat o hranicích.","borders_error":"Data se nepodařilo načíst. Zkuste to prosím později.","borders_empty":"Žádné výsledky pro tyto filtry.","borders_partial":"Jeden ze zdrojů je dočasně nedostupný - zobrazena jsou pouze data z těch, které odpověděly.","qa_title":"Otázky a odpovědi","qa_lede":"AI asistent odpovídá na základě znalostní báze (Wiki) a hotových materiálů (Outputs) — s uvedením zdrojů, bez vymyšlených faktů.","qa_ask_ph":"Např.: co je nákladní list CMR?","qa_ask_button":"Zeptat se","qa_ask_thinking":"Hledám odpověď...","qa_chat_empty":"Zeptejte se na dokumenty, celní řízení nebo přepravní standardy — odpověď vychází pouze z materiálů znalostní báze níže.","qa_sources_label":"Zdroje:","qa_confidence_high":"vysoká relevance","qa_confidence_medium":"střední relevance","qa_confidence_low":"nízká relevance","qa_ai_unavailable":"AI odpovědi na tomto serveru ještě nejsou zapojeny (není nastaven ANTHROPIC_API_KEY). Zde jsou odpovídající materiály ze znalostní báze:","qa_insufficient":"Ve znalostní bázi zatím není nic, co by jasně odpovídalo na tuto otázku.","qa_error":"Odpověď se nepodařilo získat. Zkuste to prosím později.","qa_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\".","qa_wiki_heading":"Znalostní báze (Wiki)","qa_wiki_search_ph":"Hledat v článcích...","qa_wiki_all":"Všechny kategorie","qa_cat_dokumenty":"Dokumenty","qa_cat_standarty":"Standardy","qa_cat_mytnycia":"Clo","qa_cat_marshruty":"Trasy","qa_wiki_loading":"Načítání...","qa_wiki_empty":"Žádné výsledky pro tyto filtry.","qa_wiki_read_more":"Číst článek","qa_wiki_collapse":"Sbalit","qa_glossary_hint":"Klikněte na zvýrazněné slovo v checklistu výše (např. ADR) - vysvětlení se zobrazí zde.","qa_glossary_loading":"Načítání definice...","qa_outputs_heading":"Hotové materiály (Outputs)","qa_outputs_loading":"Načítání...","qa_outputs_empty":"Zatím žádné materiály.","qa_notfound_title":"Nenašli jste odpověď?","qa_notfound_body":"Popište svůj dotaz — přidáme odpověď do znalostní báze. Dotaz se ukládá lokálně v prohlížeči (demo režim, bez skutečného backendu).","qa_notfound_ph":"Váš dotaz...","qa_notfound_submit":"Odeslat","qa_notfound_success":"Děkujeme! Dotaz byl uložen.","err_required":"Toto pole je povinné","err_email":"Zadejte platný e-mail","err_pass":"Minimálně 6 znaků","err_match":"Hesla se neshodují","modal_login_title":"Přihlášení","modal_register_title":"Registrace firmy","f_password":"Heslo","f_password2":"Zopakujte heslo","f_companyname":"Název firmy","submit_login":"Přihlásit se","submit_register":"Vytvořit účet","switch_to_register":"Ještě nemáte účet? Zaregistrujte se","switch_to_login":"Už máte účet? Přihlaste se","toast_login_ok":"Přihlášení úspěšné","toast_register_ok":"Účet vytvořen, jste přihlášeni","toast_logout_ok":"Byli jste odhlášeni","footer_nav":"Navigace","footer_info":"Informační centrum","footer_support":"Podpora","footer_rights":"Všechna práva vyhrazena.","footer_note":"Designový koncept. Kontaktní údaje jsou ukázkové.","cta_register":"Zaregistrujte firmu"},
@@ -5432,7 +5517,8 @@ var ICONS = {
   chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
   shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
   server:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".8" fill="currentColor"/><circle cx="7" cy="17" r=".8" fill="currentColor"/></svg>',
-  layers:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>'
+  layers:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>',
+  checklist:'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 2h6v3H9z"/><path d="M8 11l1.5 1.5L12 10"/><path d="M8 16l1.5 1.5L12 15"/><path d="M14.5 11.5h3M14.5 16.5h3"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
@@ -6221,6 +6307,161 @@ function renderVerification(){
     '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
     '<ul class="automation-downloads">'+
       '<li>'+ICONS.book+'<a href="docs/verification-spec.md" target="_blank" rel="noopener">'+esc(t("verification_download_spec"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="#verification-sprint1" data-route="verification-sprint1">'+esc(t("sprint1_title"))+'</a></li>'+
+    '</ul>'+
+  '</div></section>';
+}
+
+/* ---------- render: verification Sprint 1 plan ----------
+ * Same honesty boundary as automation/verification/backend/stack: this is
+ * the Sprint 1 execution PLAN for the first working slice of the
+ * verification module (VIES/Biala lista/KRS connectors, case state
+ * machine, WORM evidence storage). None of it is deployed here - it is
+ * documented as a plan with its own readiness criteria, not reported as
+ * completed work. */
+var SPRINT1_ENTRY = [
+  {artifact:"Спринт 0: БД, міграція 001, довідники, імпорт 10 773 заявок", status:"Виконано, 25 із 25 приймальних тестів на живій БД"},
+  {artifact:"002_verification.sql — 12 таблиць, 2 тригери, подання досьє", status:"Написано, застосовано і перевірено, 42 із 42 тестів"},
+  {artifact:"verification.schema.json, openapi-verification.yaml", status:"Написано, 36 із 36 контрактних перевірок"},
+  {artifact:"verification_sources.json (13), verification_checks.json (14)", status:"Написано, звірено з DDL і OpenAPI"},
+  {artifact:"probe_sources.py", status:"Прогнано на живих джерелах"}
+];
+var SPRINT1_SCOPE = [
+  {id:"V1", name:"Каталоги і конфігурація", days:"2 д",
+   summary:"Завантажувач каталогів джерел і перевірок при старті з seed/, ідемпотентний upsert; ключі джерел — у секретах середовища, а не в коді; джерело needs_key без ключа стартує як unavailable, не падає; ендпойнт GET /verification/sources віддає фактичний стан.",
+   done:"Сервіс піднімається на чистій БД, каталоги збігаються з файлами байт у байт, GET /verification/sources показує 13 джерел із реальним станом."},
+  {id:"V2", name:"Три коннектори живих джерел", days:"4 д",
+   summary:"VIES (identity.vat_active, без ключа, лише асинхронно), Biała lista (monitor.vat_status + знімок рахунків), KRS (identity.registry_match_pl, 204 = не знайдено, stanZDnia → source_as_of); спільний контракт, кеш за TTL, експоненційна пауза, 3 спроби, потім unavailable.",
+   done:"Офлайн-фікстури для кожного джерела зелені, прапорець --live робить один реальний запит, недоступність джерела дає unavailable з кодом причини, а не виняток."},
+  {id:"V3", name:"Машина справи", days:"5 д",
+   summary:"Створення справи, черга перевірок, паралельний запуск, збірка результатів; правила рішення з ТЗ §5 (рішучі перевірки, blocking_unavailable, override_blocking з подвійним скороченням строку і окремою подією в журналі); автоматичне схвалення без оператора, коли всі обов'язкові перевірки пройдено; перехід у manual_review з переліком причин.",
+   done:"Компанія з чинним NIP проходить від POST /verification/cases до рівня L1 без участі людини, а компанія з недоступним блокуючим джерелом гарантовано в цю точку не потрапляє."},
+  {id:"V4", name:"Докази і зберігання", days:"2 д",
+   summary:"Об'єктне сховище з увімкненим WORM, запис сирого відгуку, SHA-256, розмір, тип; source_as_of окремо від fetched_at; retention_until = дата перевірки + 5 років, завдання прибирання за розкладом; тимчасові підписані посилання в GET /verification/checks/{id}/evidence.",
+   done:"Доказ, записаний тиждень тому, віддається за хешем, а спроба видалити його роллю застосунку відхиляється базою."},
+  {id:"V5", name:"API і ролі", days:"3 д",
+   summary:"10 шляхів із openapi-verification.yaml, валідація запитів і відповідей проти схеми в рантаймі; роль оператора верифікації окремо від адміністратора, журнал розкриття контактів подією contact_reveal; ліміт частоти на подання справ.",
+   done:"Відповідь, що не відповідає схемі, не виходить із сервісу — вона дає 500 і запис у журнал, а не мовчазне порушення контракту."},
+  {id:"V6", name:"Досьє і бейдж у SPA (фронтенд)", days:"3 д",
+   summary:"Бейдж у стрічці — чотири стани, без відтінків і зірочок; сторінка досьє з переліком перевірок, джерелом, датою перевірки і датою стану джерела, позначкою застарілого; екран стану власної справи для заявника.",
+   done:"Досьє показує рівно те, що є в базі, а недоступне джерело виглядає як недоступне — тим самим способом, яким це вже роблять вкладки погоди й кордонів."},
+  {id:"V7", name:"CI-гейти", days:"1.5 д",
+   summary:"Два обов'язкові статуси в правилі захисту гілки: «Контракт модуля верифікації» і «Інваріанти верифікації»; живий зонд джерел — у щоденний запуск за розкладом, не в перевірку pull request; п'ять негативних PR (unavailable зі знахідками; схвалення з непорожнім blocking_unavailable; критична зміна без призупинення; pass без строку дії; блокуюче джерело, позначене як лише ручне).",
+   done:"Усі п'ять негативних PR червоні, а звичайний PR зелений."},
+  {id:"V8", name:"Юридичний трек (паралельно, день 1)", days:"паралельно",
+   summary:"Звернення до ДП НАІС за договором на API ЄДР (18 000 грн з ПДВ на календарний місяць); запит ключа до Державного реєстру санкцій РНБО; резервний тариф агрегатора на випадок затримки договору (від 399 грн на місяць за 400 перевірок); оцінка легітимного інтересу (LIA) і шаблон DPA з провайдером даних.",
+   done:"Усі три звернення надіслані й мають вхідний номер. Результат до кінця спринту не очікується — очікується запущений процес."}
+];
+var SPRINT1_CALENDAR = [
+  {day:"1", work:"Рішення про хостинг. Розгортання бекенду і сховища. Юридичний трек V8 — усі три звернення"},
+  {day:"2", work:"V1 каталоги і конфігурація"},
+  {day:"3–4", work:"V2 VIES і Biała lista"},
+  {day:"5", work:"V2 KRS, кеш і TTL"},
+  {day:"6–7", work:"V3 машина справи, правила рішення"},
+  {day:"8", work:"V3 override_blocking, V4 докази і WORM"},
+  {day:"9", work:"V5 API і ролі; фронтенд V6 паралельно з дня 7"},
+  {day:"10", work:"V7 гейти, негативні PR, наскрізний прогін, демонстрація"}
+];
+var SPRINT1_OUT = [
+  "Українські джерела: ЄДР, санкції РНБО, ЄДРСР — Спринт 2, після ключів і договору",
+  "Рівень L2, документи, право підпису, контрольний платіж — Спринт 2",
+  "Планувальник дельта-моніторингу і сповіщення — Спринт 3; знімки реквізитів уже пишуться в Спринті 1, тож планувальнику буде що порівнювати",
+  "Кабінет оператора зі складним ручним розглядом — у Спринті 1 достатньо мінімального переліку справ і кнопки рішення",
+  "Напрям B (ingest-агент) стартує з тижня 4 окремою людиною і не конкурує за бекенд-ресурс"
+];
+var SPRINT1_ACCEPTANCE = [
+  "Компанія з чинним польським NIP отримує L1 автоматично за менш ніж 60 секунд від подання, без дотику оператора",
+  "Компанія з statusVat не Czynny отримує fail за рішучою перевіркою і не отримує жодного рівня",
+  "При недоступному блокуючому джерелі справа переходить у manual_review, а не схвалюється",
+  "Схвалення з override_blocking дає рівень із удвічі коротшим строком і окремою подією в журналі",
+  "Доказ кожної перевірки віддається за хешем; видалити його роллю застосунку неможливо",
+  "Знімок офіційних банківських рахунків із Biała lista збережено — навіть без планувальника, бо це база для Спринту 3",
+  "Бейдж у стрічці й досьє показують джерело і дві дати; жодного агрегованого балу в інтерфейсі немає",
+  "«Контракт модуля верифікації» (36) і «Інваріанти верифікації» (42) — обов'язкові статуси в правилі захисту гілки, обидва зелені на main",
+  "П'ять негативних PR блокуються CI",
+  "Усі наявні перевірки Спринту 0 і контрактні перевірки репозиторію лишаються зеленими"
+];
+var SPRINT1_RISKS = [
+  {risk:"Рішення про хостинг затягується", signal:"День 1 закінчився без середовища", action:"Тимчасово розгорнути на VPS із бекапами; це оборотне, на відміну від простою всього спринту"},
+  {risk:"VIES відповідає повільно або з перебоями", signal:"Затримка перевищує 2 с у прогонах", action:"Перевірка вже асинхронна за задумом; результат unavailable з повтором, онбординг не блокується"},
+  {risk:"KRS повертає 204 як помилку в коннекторі", signal:"Хибні fail у фікстурах", action:"Явний тест на «компанію не знайдено» в наборі фікстур із дня 1"},
+  {risk:"Обсяг V3 недооцінено", signal:"До дня 7 машина справи не проходить наскрізь", action:"Пожертвувати V6 (бейдж у SPA) на користь V3; демонструвати через API"},
+  {risk:"Договір із НАІС не рухається", signal:"Немає вхідного номера до дня 3", action:"Одразу вмикати резервний тариф агрегатора, щоб Спринт 2 не зсунувся"}
+];
+var SPRINT1_COST = [
+  {source:"VIES, Biała lista, KRS", cost:"0 — публічні, без ключа"},
+  {source:"ДП НАІС", cost:"0 у спринті; з моменту договору — 18 000 грн з ПДВ на місяць"},
+  {source:"Агрегатор (резерв)", cost:"від 399 грн на місяць за 400 перевірок"},
+  {source:"OpenSanctions", cost:"0 у спринті; далі 0,10 EUR за запит або власне розгортання"},
+  {source:"Об'єктне сховище доказів", cost:"Мізерна за обсягами спринту"}
+];
+
+function renderVerificationSprint1(){
+  var entryHtml = SPRINT1_ENTRY.map(function(e){
+    return '<tr><td>'+esc(e.artifact)+'</td><td><span class="source-status live">'+esc(e.status)+'</span></td></tr>';
+  }).join("");
+  var scopeHtml = SPRINT1_SCOPE.map(function(s){
+    return '<tr><td><code>'+esc(s.id)+'</code> '+esc(s.name)+'</td><td>'+esc(s.days)+'</td>'+
+      '<td>'+esc(s.summary)+'</td><td>'+esc(s.done)+'</td></tr>';
+  }).join("");
+  var calendarHtml = SPRINT1_CALENDAR.map(function(c){
+    return '<tr><td>'+esc(c.day)+'</td><td>'+esc(c.work)+'</td></tr>';
+  }).join("");
+  var outHtml = SPRINT1_OUT.map(function(o){ return '<li>'+esc(o)+'</li>'; }).join("");
+  var acceptanceHtml = SPRINT1_ACCEPTANCE.map(function(a){ return '<li>'+esc(a)+'</li>'; }).join("");
+  var risksHtml = SPRINT1_RISKS.map(function(r){
+    return '<tr><td>'+esc(r.risk)+'</td><td>'+esc(r.signal)+'</td><td>'+esc(r.action)+'</td></tr>';
+  }).join("");
+  var costHtml = SPRINT1_COST.map(function(c){
+    return '<tr><td>'+esc(c.source)+'</td><td>'+esc(c.cost)+'</td></tr>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("sprint1_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("sprint1_lede"))+'</p>'+
+    '<p class="escrow-note">'+esc(t("sprint1_disclaimer"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_entry_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("sprint1_entry_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("sprint1_col_artifact"))+'</th><th>'+esc(t("sprint1_col_status"))+'</th>'+
+    '</tr></thead><tbody>'+entryHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_scope_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("sprint1_col_item"))+'</th><th>'+esc(t("sprint1_col_duration"))+'</th>'+
+      '<th>'+esc(t("sprint1_col_summary"))+'</th><th>'+esc(t("sprint1_col_donewhen"))+'</th>'+
+    '</tr></thead><tbody>'+scopeHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_calendar_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("sprint1_col_day"))+'</th><th>'+esc(t("sprint1_col_work"))+'</th>'+
+    '</tr></thead><tbody>'+calendarHtml+'</tbody></table></div>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("sprint1_calendar_resource"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_outofscope_heading"))+'</h2>'+
+    '<ul style="color:var(--ink-soft);max-width:760px;">'+outHtml+'</ul>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_acceptance_heading"))+'</h2>'+
+    '<ol style="color:var(--ink-soft);max-width:760px;">'+acceptanceHtml+'</ol>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_risks_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("sprint1_col_risk"))+'</th><th>'+esc(t("sprint1_col_signal"))+'</th><th>'+esc(t("sprint1_col_action"))+'</th>'+
+    '</tr></thead><tbody>'+risksHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_cost_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("sprint1_col_source"))+'</th><th>'+esc(t("sprint1_col_cost"))+'</th>'+
+    '</tr></thead><tbody>'+costHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_handoff_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">Спринт 2 (тижні 5–7) починається з того місця, де Спринт 1 зупинився, і додає: український напрям через отримані ключі, рівень L2 з документами і правом підпису, судовий і санкційний скринінг із ручним розглядом. Дельта-моніторинг і сповіщення — Спринт 3, тижні 7–8, паралельно з початком напряму C.</p>'+
+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
+    '<ul class="automation-downloads">'+
+      '<li>'+ICONS.book+'<a href="docs/verification-sprint1-spec.md" target="_blank" rel="noopener">'+esc(t("sprint1_download_spec"))+'</a></li>'+
+      '<li>'+ICONS.shield+'<a href="#verification" data-route="verification">'+esc(t("sprint1_link_verification"))+'</a></li>'+
     '</ul>'+
   '</div></section>';
 }
@@ -7132,6 +7373,7 @@ function pageContent(){
     case "rating": return renderRating();
     case "automation": return renderAutomation();
     case "verification": return renderVerification();
+    case "verification-sprint1": return renderVerificationSprint1();
     case "backend": return renderBackend();
     case "stack": return renderStack();
     default: return renderHero()+renderStats();
