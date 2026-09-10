@@ -4696,7 +4696,8 @@ var SERVICES = [
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"},
   {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"},
-  {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"}
+  {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"},
+  {icon:"server", route:"backend", uk:"Бекенд: Спринт 0", en:"Backend: Sprint 0", pl:"Backend: Sprint 0", de:"Backend: Sprint 0"}
 ];
 
 var NEWS = [
@@ -4845,7 +4846,29 @@ uk:{
   verification_col_importance:"Важливість", verification_col_effect:"Наслідок",
   verification_decisive_yes:"так", verification_decisive_no:"ні",
   verification_importance_critical:"критична", verification_importance_attention:"attention", verification_importance_info:"info",
-  verification_download_spec:"Повна специфікація модуля (Markdown)"
+  verification_download_spec:"Повна специфікація модуля (Markdown)",
+  backend_title:"Бекенд Trans-Atlas: Спринт 0",
+  backend_lede:"План переведення демонстраційного SPA на застосунок із серверним джерелом істини: акаунти компаній, персистентні заявки, довідники в БД, журнал подій.",
+  backend_disclaimer:"Це специфікація й запис уже проведених перевірок артефактів, а не підключений бекенд: index.html і зараз лишається односторінковим файлом без збірки, без PostgreSQL, без NestJS-сервера і без реального API. Розділ «Зміни на фронтенді» описує наступний крок, а не те, що вже застосовано — LISTINGS, вхід через localStorage і test-data/ й далі працюють так само, як до цієї сторінки.",
+  backend_scope_in_heading:"Входить у Спринт 0",
+  backend_scope_out_heading:"Не входить свідомо",
+  backend_stack_heading:"Стек і середовище",
+  backend_invariants_heading:"Ключові інваріанти на рівні БД",
+  backend_parity_heading:"Паритет фільтрів API і SPA",
+  backend_parity_lede:"Стрічка GET /api/v1/listings мусить давати той самий результат, що й filteredListings() сьогодні.",
+  backend_auth_heading:"Автентифікація і безпека",
+  backend_nfr_heading:"Нефункціональні вимоги",
+  backend_runs_heading:"Фактичні прогони",
+  backend_frontend_heading:"Заплановані зміни на фронтенді",
+  backend_frontend_lede:"Наступний крок після появи реального бекенду — не застосовано в цьому демо:",
+  backend_col_what:"Що", backend_col_why:"Чому", backend_col_where:"Куди перенесено",
+  backend_col_component:"Компонент", backend_col_decision:"Рішення",
+  backend_col_invariant:"Інваріант", backend_col_mechanism:"Механізм",
+  backend_col_spa_filter:"state.filters у SPA", backend_col_api_param:"Параметр API",
+  backend_col_requirement:"Вимога", backend_col_value:"Значення",
+  backend_col_metric:"Показник", backend_col_target:"Ціль",
+  backend_col_run:"Прогін", backend_col_checked:"Що перевіряв", backend_col_result:"Результат",
+  backend_download_spec:"Повна специфікація Спринту 0 (Markdown)"
 },
 en:{
   brand_tag:"Cargo & transport exchange",
@@ -4963,7 +4986,29 @@ en:{
   verification_col_importance:"Importance", verification_col_effect:"Effect",
   verification_decisive_yes:"yes", verification_decisive_no:"no",
   verification_importance_critical:"critical", verification_importance_attention:"attention", verification_importance_info:"info",
-  verification_download_spec:"Full module specification (Markdown)"
+  verification_download_spec:"Full module specification (Markdown)",
+  backend_title:"Trans-Atlas backend: Sprint 0",
+  backend_lede:"The plan for turning the demo SPA into an app with a server-side source of truth: company accounts, persistent listings, database-backed reference data, an event log.",
+  backend_disclaimer:"This is a specification and a record of artifact checks already run, not a connected backend: index.html is still a single-page file with no build step, no PostgreSQL, no NestJS server, and no real API. The \"Planned frontend changes\" section describes the next step, not what's already applied - LISTINGS, the localStorage login, and test-data/ keep working exactly as before this page.",
+  backend_scope_in_heading:"In scope for Sprint 0",
+  backend_scope_out_heading:"Deliberately out of scope",
+  backend_stack_heading:"Stack and environment",
+  backend_invariants_heading:"Key database-level invariants",
+  backend_parity_heading:"API/SPA filter parity",
+  backend_parity_lede:"GET /api/v1/listings must return the same result as today's filteredListings().",
+  backend_auth_heading:"Authentication and security",
+  backend_nfr_heading:"Non-functional requirements",
+  backend_runs_heading:"Actual test runs",
+  backend_frontend_heading:"Planned frontend changes",
+  backend_frontend_lede:"The next step once a real backend exists - not applied in this demo:",
+  backend_col_what:"What", backend_col_why:"Why", backend_col_where:"Moved to",
+  backend_col_component:"Component", backend_col_decision:"Decision",
+  backend_col_invariant:"Invariant", backend_col_mechanism:"Mechanism",
+  backend_col_spa_filter:"SPA state.filters", backend_col_api_param:"API parameter",
+  backend_col_requirement:"Requirement", backend_col_value:"Value",
+  backend_col_metric:"Metric", backend_col_target:"Target",
+  backend_col_run:"Run", backend_col_checked:"What it checked", backend_col_result:"Result",
+  backend_download_spec:"Full Sprint 0 specification (Markdown)"
 },
 pl:{
   brand_tag:"Giełda ładunków i transportu",
@@ -5081,7 +5126,29 @@ pl:{
   verification_col_importance:"Ważność", verification_col_effect:"Skutek",
   verification_decisive_yes:"tak", verification_decisive_no:"nie",
   verification_importance_critical:"krytyczna", verification_importance_attention:"attention", verification_importance_info:"info",
-  verification_download_spec:"Pełna specyfikacja modułu (Markdown)"
+  verification_download_spec:"Pełna specyfikacja modułu (Markdown)",
+  backend_title:"Backend Trans-Atlas: Sprint 0",
+  backend_lede:"Plan przekształcenia demonstracyjnego SPA w aplikację z serwerowym źródłem prawdy: konta firm, trwałe zgłoszenia, słowniki w bazie danych, dziennik zdarzeń.",
+  backend_disclaimer:"To specyfikacja i zapis już przeprowadzonych kontroli artefaktów, a nie podłączony backend: index.html nadal jest jednostronicowym plikiem bez etapu budowania, bez PostgreSQL, bez serwera NestJS i bez prawdziwego API. Sekcja „Planowane zmiany we frontendzie” opisuje kolejny krok, a nie to, co już zastosowano - LISTINGS, logowanie przez localStorage i test-data/ nadal działają tak samo, jak przed tą stroną.",
+  backend_scope_in_heading:"Zakres Sprintu 0",
+  backend_scope_out_heading:"Świadomie poza zakresem",
+  backend_stack_heading:"Stos i środowisko",
+  backend_invariants_heading:"Kluczowe niezmienniki na poziomie bazy danych",
+  backend_parity_heading:"Zgodność filtrów API i SPA",
+  backend_parity_lede:"GET /api/v1/listings musi zwracać ten sam wynik co dzisiejsze filteredListings().",
+  backend_auth_heading:"Uwierzytelnianie i bezpieczeństwo",
+  backend_nfr_heading:"Wymagania niefunkcjonalne",
+  backend_runs_heading:"Rzeczywiste przebiegi testów",
+  backend_frontend_heading:"Planowane zmiany we frontendzie",
+  backend_frontend_lede:"Kolejny krok po pojawieniu się prawdziwego backendu - niezastosowany w tym demo:",
+  backend_col_what:"Co", backend_col_why:"Dlaczego", backend_col_where:"Przeniesiono do",
+  backend_col_component:"Komponent", backend_col_decision:"Decyzja",
+  backend_col_invariant:"Niezmiennik", backend_col_mechanism:"Mechanizm",
+  backend_col_spa_filter:"state.filters w SPA", backend_col_api_param:"Parametr API",
+  backend_col_requirement:"Wymaganie", backend_col_value:"Wartość",
+  backend_col_metric:"Wskaźnik", backend_col_target:"Cel",
+  backend_col_run:"Przebieg", backend_col_checked:"Co sprawdzał", backend_col_result:"Wynik",
+  backend_download_spec:"Pełna specyfikacja Sprintu 0 (Markdown)"
 },
 de:{
   brand_tag:"Fracht- und Transportbörse",
@@ -5199,7 +5266,29 @@ de:{
   verification_col_importance:"Wichtigkeit", verification_col_effect:"Auswirkung",
   verification_decisive_yes:"ja", verification_decisive_no:"nein",
   verification_importance_critical:"kritisch", verification_importance_attention:"attention", verification_importance_info:"info",
-  verification_download_spec:"Vollständige Modulspezifikation (Markdown)"
+  verification_download_spec:"Vollständige Modulspezifikation (Markdown)",
+  backend_title:"Trans-Atlas-Backend: Sprint 0",
+  backend_lede:"Der Plan, die Demo-SPA in eine Anwendung mit serverseitiger Quelle der Wahrheit zu verwandeln: Firmenkonten, persistente Angebote, Referenzdaten in der Datenbank, ein Ereignisprotokoll.",
+  backend_disclaimer:"Dies ist eine Spezifikation und ein Protokoll bereits durchgeführter Artefaktprüfungen, kein angebundenes Backend: index.html bleibt eine einzelne Datei ohne Build-Schritt, ohne PostgreSQL, ohne NestJS-Server und ohne echte API. Der Abschnitt „Geplante Frontend-Änderungen“ beschreibt den nächsten Schritt, nicht das bereits Angewendete - LISTINGS, der localStorage-Login und test-data/ funktionieren weiterhin genau wie vor dieser Seite.",
+  backend_scope_in_heading:"Umfang von Sprint 0",
+  backend_scope_out_heading:"Bewusst außerhalb des Umfangs",
+  backend_stack_heading:"Stack und Umgebung",
+  backend_invariants_heading:"Wichtige Invarianten auf Datenbankebene",
+  backend_parity_heading:"Parität der API-/SPA-Filter",
+  backend_parity_lede:"GET /api/v1/listings muss dasselbe Ergebnis liefern wie das heutige filteredListings().",
+  backend_auth_heading:"Authentifizierung und Sicherheit",
+  backend_nfr_heading:"Nichtfunktionale Anforderungen",
+  backend_runs_heading:"Tatsächliche Testläufe",
+  backend_frontend_heading:"Geplante Frontend-Änderungen",
+  backend_frontend_lede:"Der nächste Schritt, sobald ein echtes Backend existiert - in dieser Demo nicht angewendet:",
+  backend_col_what:"Was", backend_col_why:"Warum", backend_col_where:"Verschoben nach",
+  backend_col_component:"Komponente", backend_col_decision:"Entscheidung",
+  backend_col_invariant:"Invariante", backend_col_mechanism:"Mechanismus",
+  backend_col_spa_filter:"SPA state.filters", backend_col_api_param:"API-Parameter",
+  backend_col_requirement:"Anforderung", backend_col_value:"Wert",
+  backend_col_metric:"Kennzahl", backend_col_target:"Ziel",
+  backend_col_run:"Lauf", backend_col_checked:"Was geprüft wurde", backend_col_result:"Ergebnis",
+  backend_download_spec:"Vollständige Sprint-0-Spezifikation (Markdown)"
 },
 ro:{"brand_tag":"Bursa de marfă și transport","nav_home":"Acasă","nav_cargo":"Marfă","nav_transport":"Transport","nav_market":"Piața vehiculelor","nav_news":"Știri","nav_contacts":"Contact","nav_about":"Despre noi","services_title":"Servicii","login":"Conectare","register":"Înregistrare","logout":"Deconectare","hero_title":"Găsiți marfă sau transport în câteva minute","hero_lede":"Legătură directă între expeditori și transportatori în toată Europa: rutier, feroviar, maritim, aerian și multimodal.","tab_cargo":"Caut transport","tab_transport":"Am marfă","f_from":"De unde","f_to":"Până unde","f_date":"Data încărcării","f_mode":"Tip de transport","f_weight":"Greutate, t","f_volume":"Volum, m³","search":"Caută","load_more":"Afișează mai multe","any":"Oricare","mode_auto":"Rutier","mode_rail":"Feroviar","mode_sea":"Maritim","mode_air":"Aerian","mode_drone":"Drone","mode_multi":"Multimodal","stats_title":"Bursa în cifre","stat_cargo":"anunțuri de marfă active","stat_transport":"vehicule disponibile","stat_companies":"companii membre","stat_countries":"țări acoperite","flows_intl_title":"Transport internațional","flows_domestic_title":"Transport intern","flows_continent_europe":"Europa","flows_continent_asia":"Asia","flows_continent_america":"America","flows_continent_africa":"Africa","flows_continent_australia":"Australia","flows_continent_todo":"Datele pentru acest continent nu sunt încă conectate.","flow_kind_transport":"Transport","flow_kind_cargo":"Marfă","flow_export":"Export","flow_import":"Import","rating_title":"Clasamentul companiilor","rating_lede":"Companii active acum pe bursă, ordonate după valoarea anunțului curent și grupate pe valută (fără curs valutar conectat) - date demonstrative, nu un scor de reputație.","results_title":"Anunțuri curente","results_count":"găsite","results_empty":"Niciun anunț nu corespunde acestei căutări. Încercați altă rută sau alt tip de transport.","col_route":"Rută","col_cargo":"Marfă","col_weight":"Greutate","col_volume":"Volum","col_date":"Data","col_price":"Tarif","contact_btn":"Contact","col_range":"Autonomie","col_permit":"Permis de zbor","unit_kg":"kg","unit_km":"km","permit_yes":"da","permit_no":"nu","f_currency":"Valută","currency_all":"Toate valutele","escrow_note":"Decontarea în USDC/USDT (escrow blockchain, TS §13.5) nu este conectată în acest demo; valutele de mai jos sunt doar valuta anunțului.","market_title":"Piața vehiculelor","market_lede":"Cumpărare, vânzare și închiriere de camioane, remorci și utilaje speciale.","market_listing_title":"Anunțuri în categorie","market_pick":"Alegeți o categorie mai sus pentru a vedea anunțurile.","news_title":"Știri din domeniu","news_more":"Citește mai mult","news_less":"Restrânge","about_title":"Despre Trans-Atlas","about_lede":"Trans-Atlas este o bursă internațională de transport marfă care conectează expeditori și transportatori în toată Europa și dincolo de ea. Facilităm găsirea unui partener pentru orice tip de livrare.","about_how":"Cum funcționează","step1_t":"Înregistrare","step1_d":"Creați un cont de companie în 2 minute.","step2_t":"Publicați un anunț","step2_d":"Descrieți marfa sau vehiculul liber.","step3_t":"Primiți oferte","step3_d":"Partenerii răspund în decurs de o oră.","step4_t":"Finalizați tranzacția","step4_d":"Conveniți termenii și finalizați transportul.","reliability_t":"Zona de fiabilitate","reliability_d":"Evaluarea companiilor pe baza tranzacțiilor finalizate, recenziilor partenerilor și documentelor verificate.","blacklist_t":"Listă neagră","blacklist_d":"Companii care au încălcat termenii tranzacțiilor. Verificați partenerul înainte de colaborare.","contacts_title":"Contact","contacts_lede":"Alegeți biroul cel mai apropiat sau scrieți-ne direct.","c_name":"Nume","c_email":"Email","c_message":"Mesaj","c_send":"Trimite","c_success":"Mulțumim! Mesajul a fost trimis, vă vom răspunde în cel mult o zi lucrătoare.","offices_title":"Birouri","weather_title":"Vremea pe rută","weather_lede":"Prognoză pentru transportul rutier — date de la Open-Meteo, actualizate la fiecare 30 de minute.","weather_tab_road":"Rutier","weather_tab_rail":"Feroviar","weather_tab_sea":"Maritim","weather_tab_air":"Aerian","weather_show":"Arată vremea","weather_from_label":"Punct de plecare","weather_to_label":"Punct de destinație","weather_current":"Acum","weather_forecast":"Prognoză pe 12 ore","weather_risk_title":"Riscuri pentru șofer","weather_risk_ice":"Risc de polei","weather_risk_wind":"Vânt puternic","weather_risk_rain":"Ploi abundente","weather_no_risk":"Niciun risc semnificativ detectat","weather_updated":"Actualizat","weather_source":"Sursă","weather_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pe calculatorul dvs. pentru date live de la Open-Meteo.","weather_loading":"Se încarcă...","weather_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","weather_not_ready":"Sursa de date pentru acest tip de transport nu este încă conectată în această fază de dezvoltare — arătat cinstit, nu simulat.","weather_pick_points":"Alegeți punctul de plecare și destinația de mai sus pentru a vedea prognoza.","weather_alerts_title":"Avertizări meteo (MeteoAlarm)","weather_no_metar":"Nu există date aeronautice curente pentru acest aeroport (spațiul aerian poate fi închis sau stația nu raportează în prezent).","directory_title":"Director de surse","directory_lede":"Autorități oficiale și agregatori care oferă date despre frontiere, porturi și logistică.","directory_transport_label":"Tip de transport","directory_region_label":"Regiune","directory_search_label":"Căutare","directory_search_ph":"Nume sau descriere...","directory_apply":"Aplică","directory_all":"Toate","directory_region_eu":"UE","directory_region_asia":"Asia","directory_region_balkans":"Balcani","directory_region_cis":"CSI","directory_type_official":"Sursă oficială","directory_type_aggregator":"Agregator","directory_visit":"Vizitează site-ul","directory_empty":"Niciun rezultat pentru aceste filtre.","directory_loading":"Se încarcă...","directory_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea directorul.","borders_title":"Frontiere","borders_lede":"Date live despre punctele de trecere: DPSU (cozi din partea ucraineană) și granica.gov.pl (timpi de așteptare din partea poloneză).","borders_tab_road":"Rutier (UE)","borders_tab_rail":"Feroviar","borders_tab_sea":"Maritim","borders_tab_asia":"Asia","borders_country_label":"Țară","borders_apply":"Aplică","borders_status_green":"Liber","borders_status_yellow":"Coadă","borders_status_red":"Aglomerat","borders_status_unknown":"Fără date","borders_col_checkpoint":"Punct de trecere","borders_col_direction":"Direcție","borders_col_status":"Stare","borders_col_queue":"Coadă/așteptare","borders_trucks":"camioane","borders_wait":"așteptare","borders_closed":"închis","borders_source_dpsu":"DPSU (Ucraina)","borders_source_granica":"granica.gov.pl (Polonia)","borders_asia_notice":"Datele CAREC BCP Monitor (Khorgos, Dostyk și altele) sunt indicatori de referință trimestriali, neconectați încă în această fază de dezvoltare. NU sunt cozi live.","borders_loading":"Se încarcă...","borders_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea datele frontaliere.","borders_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","borders_empty":"Niciun rezultat pentru aceste filtre.","borders_partial":"Una dintre surse este temporar indisponibilă - se arată doar datele celor care au răspuns.","qa_title":"Întrebări și răspunsuri","qa_lede":"Un asistent AI răspunde pe baza bazei de cunoștințe (Wiki) și a materialelor gata făcute (Outputs) — cu surse citate, fără fapte inventate.","qa_ask_ph":"Ex.: ce este o scrisoare de trăsură CMR?","qa_ask_button":"Întreabă","qa_ask_thinking":"Caut un răspuns...","qa_chat_empty":"Întrebați despre documente, vamă sau standarde de transport — răspunsul se bazează doar pe materialele bazei de cunoștințe de mai jos.","qa_sources_label":"Surse:","qa_confidence_high":"relevanță ridicată","qa_confidence_medium":"relevanță medie","qa_confidence_low":"relevanță scăzută","qa_ai_unavailable":"Răspunsurile AI nu sunt încă activate pe acest server (ANTHROPIC_API_KEY nesetat). Iată materialele potrivite din baza de cunoștințe:","qa_insufficient":"În baza de cunoștințe nu există încă materiale care să răspundă clar la această întrebare.","qa_error":"Nu s-a putut obține un răspuns. Încercați din nou mai târziu.","qa_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\".","qa_wiki_heading":"Bază de cunoștințe (Wiki)","qa_wiki_search_ph":"Caută articole...","qa_wiki_all":"Toate categoriile","qa_cat_dokumenty":"Documente","qa_cat_standarty":"Standarde","qa_cat_mytnycia":"Vamă","qa_cat_marshruty":"Rute","qa_wiki_loading":"Se încarcă...","qa_wiki_empty":"Niciun rezultat pentru aceste filtre.","qa_wiki_read_more":"Citește articolul","qa_wiki_collapse":"Restrânge","qa_glossary_hint":"Faceți clic pe un cuvânt evidențiat din lista de mai sus (de ex. ADR) - explicația apare aici.","qa_glossary_loading":"Se încarcă definiția...","qa_outputs_heading":"Materiale gata făcute (Outputs)","qa_outputs_loading":"Se încarcă...","qa_outputs_empty":"Încă nu există materiale.","qa_notfound_title":"Nu ați găsit răspunsul?","qa_notfound_body":"Descrieți întrebarea — vom adăuga un răspuns în baza de cunoștințe. Solicitarea se salvează local în browser (mod demo, fără backend real).","qa_notfound_ph":"Întrebarea dvs...","qa_notfound_submit":"Trimite","qa_notfound_success":"Mulțumim! Întrebarea a fost salvată.","err_required":"Acest câmp este obligatoriu","err_email":"Introduceți un email valid","err_pass":"Minimum 6 caractere","err_match":"Parolele nu coincid","modal_login_title":"Conectare","modal_register_title":"Înregistrare companie","f_password":"Parolă","f_password2":"Repetați parola","f_companyname":"Numele companiei","submit_login":"Conectare","submit_register":"Creează cont","switch_to_register":"Nu aveți cont? Înregistrați-vă","switch_to_login":"Aveți deja cont? Conectați-vă","toast_login_ok":"Conectare reușită","toast_register_ok":"Cont creat, sunteți conectat","toast_logout_ok":"V-ați deconectat","footer_nav":"Navigare","footer_info":"Centru de informații","footer_support":"Suport","footer_rights":"Toate drepturile rezervate.","footer_note":"Concept de design. Datele de contact sunt exemple demonstrative.","cta_register":"Înregistrați-vă compania"},
 cs:{"brand_tag":"Burza nákladů a dopravy","nav_home":"Domů","nav_cargo":"Náklad","nav_transport":"Doprava","nav_market":"Trh vozidel","nav_news":"Novinky","nav_contacts":"Kontakty","nav_about":"O nás","services_title":"Služby","login":"Přihlásit se","register":"Registrace","logout":"Odhlásit se","hero_title":"Najděte náklad nebo dopravu během pár minut","hero_lede":"Přímé spojení odesílatelů a dopravců po celé Evropě: silniční, železniční, námořní, letecká a multimodální doprava.","tab_cargo":"Hledám dopravu","tab_transport":"Mám náklad","f_from":"Odkud","f_to":"Kam","f_date":"Datum nakládky","f_mode":"Druh dopravy","f_weight":"Hmotnost, t","f_volume":"Objem, m³","search":"Hledat","load_more":"Zobrazit další","any":"Jakýkoli","mode_auto":"Silniční","mode_rail":"Železniční","mode_sea":"Námořní","mode_air":"Letecká","mode_drone":"Drony","mode_multi":"Multimodální","stats_title":"Burza v číslech","stat_cargo":"aktivních nabídek nákladu","stat_transport":"volných vozidel","stat_companies":"zapojených firem","stat_countries":"pokrytých zemí","flows_intl_title":"Mezinárodní doprava","flows_domestic_title":"Vnitrostátní doprava","flows_continent_europe":"Evropa","flows_continent_asia":"Asie","flows_continent_america":"Amerika","flows_continent_africa":"Afrika","flows_continent_australia":"Austrálie","flows_continent_todo":"Data pro tento kontinent ještě nejsou připojena.","flow_kind_transport":"Doprava","flow_kind_cargo":"Náklad","flow_export":"Export","flow_import":"Import","rating_title":"Hodnocení firem","rating_lede":"Firmy aktivní právě teď na burze, seřazené podle hodnoty aktuální nabídky a seskupené podle měny (bez připojeného směnného kurzu) - ukázková data, nikoli hodnocení reputace.","results_title":"Aktuální nabídky","results_count":"nalezeno","results_empty":"Žádné nabídky neodpovídají tomuto hledání. Zkuste jinou trasu nebo druh dopravy.","col_route":"Trasa","col_cargo":"Náklad","col_weight":"Hmotnost","col_volume":"Objem","col_date":"Datum","col_price":"Sazba","contact_btn":"Kontakt","col_range":"Dolet","col_permit":"Povolení k letu","unit_kg":"kg","unit_km":"km","permit_yes":"ano","permit_no":"ne","f_currency":"Měna","currency_all":"Všechny měny","escrow_note":"Vypořádání v USDC/USDT (blockchain escrow, ZD §13.5) není v tomto demu připojeno; měny níže jsou pouze měna nabídky.","market_title":"Trh vozidel","market_lede":"Nákup, prodej a pronájem nákladních vozidel, přívěsů a speciální techniky.","market_listing_title":"Nabídky v kategorii","market_pick":"Vyberte výše kategorii pro zobrazení nabídek.","news_title":"Novinky z oboru","news_more":"Číst dál","news_less":"Sbalit","about_title":"O Trans-Atlas","about_lede":"Trans-Atlas je mezinárodní burza nákladní dopravy propojující odesílatele a dopravce po celé Evropě i mimo ni. Usnadňujeme nalezení partnera pro jakýkoli druh přepravy.","about_how":"Jak to funguje","step1_t":"Registrace","step1_d":"Vytvořte firemní účet za 2 minuty.","step2_t":"Zadejte nabídku","step2_d":"Popište náklad nebo volné vozidlo.","step3_t":"Získejte nabídky","step3_d":"Partneři odpovídají do hodiny.","step4_t":"Uzavřete obchod","step4_d":"Domluvte podmínky a dokončete přepravu.","reliability_t":"Zóna spolehlivosti","reliability_d":"Hodnocení firem na základě dokončených obchodů, recenzí partnerů a ověřených dokumentů.","blacklist_t":"Černá listina","blacklist_d":"Firmy, které porušily podmínky obchodu. Před spoluprací partnera ověřte.","contacts_title":"Kontakty","contacts_lede":"Vyberte nejbližší pobočku nebo nám napište přímo.","c_name":"Jméno","c_email":"E-mail","c_message":"Zpráva","c_send":"Odeslat","c_success":"Děkujeme! Zpráva byla odeslána, odpovíme do jednoho pracovního dne.","offices_title":"Pobočky","weather_title":"Počasí na trase","weather_lede":"Předpověď pro silniční dopravu — data z Open-Meteo, aktualizace každých 30 minut.","weather_tab_road":"Silniční","weather_tab_rail":"Železniční","weather_tab_sea":"Námořní","weather_tab_air":"Letecká","weather_show":"Zobrazit počasí","weather_from_label":"Místo odjezdu","weather_to_label":"Místo určení","weather_current":"Nyní","weather_forecast":"Předpověď na 12 hodin","weather_risk_title":"Rizika pro řidiče","weather_risk_ice":"Riziko náledí","weather_risk_wind":"Silný vítr","weather_risk_rain":"Silné srážky","weather_no_risk":"Nebyla zjištěna žádná zvláštní rizika","weather_updated":"Aktualizováno","weather_source":"Zdroj","weather_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" na svém počítači pro živá data z Open-Meteo.","weather_loading":"Načítání...","weather_error":"Data se nepodařilo načíst. Zkuste to prosím později.","weather_not_ready":"Zdroj dat pro tento druh dopravy zatím není v této fázi vývoje připojen — zobrazeno poctivě, nikoli simulováno.","weather_pick_points":"Vyberte výše místo odjezdu a určení pro zobrazení předpovědi.","weather_alerts_title":"Bouřková varování (MeteoAlarm)","weather_no_metar":"Pro toto letiště nejsou aktuální letecká data (vzdušný prostor může být uzavřen nebo stanice momentálně nehlásí).","directory_title":"Adresář zdrojů","directory_lede":"Oficiální úřady a agregátory poskytující data o hranicích, přístavech a logistice.","directory_transport_label":"Druh dopravy","directory_region_label":"Region","directory_search_label":"Hledat","directory_search_ph":"Název nebo popis...","directory_apply":"Použít","directory_all":"Vše","directory_region_eu":"EU","directory_region_asia":"Asie","directory_region_balkans":"Balkán","directory_region_cis":"SNS","directory_type_official":"Oficiální zdroj","directory_type_aggregator":"Agregátor","directory_visit":"Navštívit web","directory_empty":"Žádné výsledky pro tyto filtry.","directory_loading":"Načítání...","directory_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení adresáře.","borders_title":"Hranice","borders_lede":"Živá data o hraničních přechodech: DPSU (fronty z ukrajinské strany) a granica.gov.pl (čekací doby z polské strany).","borders_tab_road":"Silniční (EU)","borders_tab_rail":"Železniční","borders_tab_sea":"Námořní","borders_tab_asia":"Asie","borders_country_label":"Země","borders_apply":"Použít","borders_status_green":"Volno","borders_status_yellow":"Fronta","borders_status_red":"Ucpáno","borders_status_unknown":"Bez dat","borders_col_checkpoint":"Přechod","borders_col_direction":"Směr","borders_col_status":"Stav","borders_col_queue":"Fronta/čekání","borders_trucks":"kamionů","borders_wait":"čekání","borders_closed":"uzavřeno","borders_source_dpsu":"DPSU (Ukrajina)","borders_source_granica":"granica.gov.pl (Polsko)","borders_asia_notice":"Data CAREC BCP Monitor (Chorgos, Dostyk a další) jsou čtvrtletní referenční ukazatele, v této fázi vývoje ještě nepřipojené. Nejedná se o živé fronty.","borders_loading":"Načítání...","borders_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení dat o hranicích.","borders_error":"Data se nepodařilo načíst. Zkuste to prosím později.","borders_empty":"Žádné výsledky pro tyto filtry.","borders_partial":"Jeden ze zdrojů je dočasně nedostupný - zobrazena jsou pouze data z těch, které odpověděly.","qa_title":"Otázky a odpovědi","qa_lede":"AI asistent odpovídá na základě znalostní báze (Wiki) a hotových materiálů (Outputs) — s uvedením zdrojů, bez vymyšlených faktů.","qa_ask_ph":"Např.: co je nákladní list CMR?","qa_ask_button":"Zeptat se","qa_ask_thinking":"Hledám odpověď...","qa_chat_empty":"Zeptejte se na dokumenty, celní řízení nebo přepravní standardy — odpověď vychází pouze z materiálů znalostní báze níže.","qa_sources_label":"Zdroje:","qa_confidence_high":"vysoká relevance","qa_confidence_medium":"střední relevance","qa_confidence_low":"nízká relevance","qa_ai_unavailable":"AI odpovědi na tomto serveru ještě nejsou zapojeny (není nastaven ANTHROPIC_API_KEY). Zde jsou odpovídající materiály ze znalostní báze:","qa_insufficient":"Ve znalostní bázi zatím není nic, co by jasně odpovídalo na tuto otázku.","qa_error":"Odpověď se nepodařilo získat. Zkuste to prosím později.","qa_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\".","qa_wiki_heading":"Znalostní báze (Wiki)","qa_wiki_search_ph":"Hledat v článcích...","qa_wiki_all":"Všechny kategorie","qa_cat_dokumenty":"Dokumenty","qa_cat_standarty":"Standardy","qa_cat_mytnycia":"Clo","qa_cat_marshruty":"Trasy","qa_wiki_loading":"Načítání...","qa_wiki_empty":"Žádné výsledky pro tyto filtry.","qa_wiki_read_more":"Číst článek","qa_wiki_collapse":"Sbalit","qa_glossary_hint":"Klikněte na zvýrazněné slovo v checklistu výše (např. ADR) - vysvětlení se zobrazí zde.","qa_glossary_loading":"Načítání definice...","qa_outputs_heading":"Hotové materiály (Outputs)","qa_outputs_loading":"Načítání...","qa_outputs_empty":"Zatím žádné materiály.","qa_notfound_title":"Nenašli jste odpověď?","qa_notfound_body":"Popište svůj dotaz — přidáme odpověď do znalostní báze. Dotaz se ukládá lokálně v prohlížeči (demo režim, bez skutečného backendu).","qa_notfound_ph":"Váš dotaz...","qa_notfound_submit":"Odeslat","qa_notfound_success":"Děkujeme! Dotaz byl uložen.","err_required":"Toto pole je povinné","err_email":"Zadejte platný e-mail","err_pass":"Minimálně 6 znaků","err_match":"Hesla se neshodují","modal_login_title":"Přihlášení","modal_register_title":"Registrace firmy","f_password":"Heslo","f_password2":"Zopakujte heslo","f_companyname":"Název firmy","submit_login":"Přihlásit se","submit_register":"Vytvořit účet","switch_to_register":"Ještě nemáte účet? Zaregistrujte se","switch_to_login":"Už máte účet? Přihlaste se","toast_login_ok":"Přihlášení úspěšné","toast_register_ok":"Účet vytvořen, jste přihlášeni","toast_logout_ok":"Byli jste odhlášeni","footer_nav":"Navigace","footer_info":"Informační centrum","footer_support":"Podpora","footer_rights":"Všechna práva vyhrazena.","footer_note":"Designový koncept. Kontaktní údaje jsou ukázkové.","cta_register":"Zaregistrujte firmu"},
@@ -5276,7 +5365,8 @@ var ICONS = {
   battery:'<svg class="icon" viewBox="0 0 24 24"><rect x="6" y="4" width="10" height="17" rx="2"/><path d="M9 4V2h4v2"/><path d="M9 9h4M9 13h4M9 17h4"/></svg>',
   station:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>',
   chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
-  shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>'
+  shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+  server:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".8" fill="currentColor"/><circle cx="7" cy="17" r=".8" fill="currentColor"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
@@ -6069,6 +6159,165 @@ function renderVerification(){
   '</div></section>';
 }
 
+/* ---------- render: backend (Sprint 0 spec) ----------
+ * Same honesty pattern as automation/verification: index.html stays a
+ * single-page, buildless file with zero real backend behind it. This
+ * page documents the Sprint 0 plan (PostgreSQL/NestJS/Redis, auth, API
+ * contract, legacy-data migration) as a specification and a record of
+ * checks already run against it - it does NOT mean LISTINGS/getUsers()/
+ * loadExternalListings() have actually been replaced; section 8 of the
+ * spec itself frames that as a later step ("Зміни на фронтенді"), not
+ * something to apply today. Doing so now would rip out the only auth
+ * and listings mechanism this demo has, with nothing real to put in its
+ * place. */
+var BACKEND_SCOPE_IN = [
+  "PostgreSQL 18 + PostGIS: схема, міграції, довідники з реєстрів SPA",
+  "Автентифікація: реєстрація компанії, вхід, ротація refresh-токенів, підтвердження email, ролі",
+  "CRUD заявок і стрічка з фільтрами, що повторюють filteredListings()",
+  "Імпорт наявних 10 773 демо- і тестових заявок у БД без втрати даних",
+  "Append-only журнал подій",
+  "Розгортання, міграції, бекапи, моніторинг"
+];
+var BACKEND_SCOPE_OUT = [
+  {what:"Модуль SEARCH (маршрути, магістраль→фідери, POST_DRONE)", why:"Власний REST-контракт і власний CI", where:"Окремий етап"},
+  {what:"Верифікація контрагента (KYB, реєстри, дельта-моніторинг)", why:"Напрям A плану", where:"Тижні 3–7"},
+  {what:"Ingest-агент", why:"Напрям B плану", where:"Тижні 4–8"},
+  {what:"SSE-стрічка, push, PWA", why:"Напрям C плану", where:"Тижні 6–10"},
+  {what:"Ставки, торг, ескроу, розрахунки", why:"Межа модулів A.1.3 рамкового ТЗ", where:"Після перших угод"}
+];
+var BACKEND_STACK = [
+  {component:"Мова", decision:"TypeScript, Node.js 24 LTS", why:"Одна мова від схеми до інтерфейсу"},
+  {component:"Каркас", decision:"NestJS", why:"Модульність, DI, готова інтеграція валідації та OpenAPI"},
+  {component:"БД", decision:"PostgreSQL 18 + PostGIS 3.6", why:"PostGIS потрібен уже зараз для країн і відстаней"},
+  {component:"Кеш і черга", decision:"Redis 7", why:"Ідемпотентність, ліміти запитів, надалі шина подій стрічки"},
+  {component:"Міграції", decision:"node-pg-migrate або Flyway, тільки вперед", why:"Застосовність до продової бази без ручних кроків"},
+  {component:"Пошта", decision:"SMTP із SPF/DKIM/DMARC", why:"Підтвердження email і скидання пароля"},
+  {component:"Спостережуваність", decision:"JSON-логи, /api/v1/health, Prometheus", why:"Мінімум, без якого продакшн не запускається"}
+];
+var BACKEND_INVARIANTS = [
+  {inv:"mode='multi' ⇒ components містить ≥ 2 плеча, лише базові види", mech:"CHECK listings_components_rule"},
+  {inv:"mode<>'multi' ⇒ components IS NULL", mech:"той самий CHECK"},
+  {inv:"mode='drone' ⇔ існує рядок у listing_drone_details", mech:"відкладений CONSTRAINT TRIGGER"},
+  {inv:"Місто відправлення ≠ місто призначення", mech:"CHECK listings_origin_ne_destination"},
+  {inv:"is_cross_border не редагується вручну", mech:"GENERATED ALWAYS AS ... STORED"},
+  {inv:"Рівень верифікації вище L0 неможливий без дати перевірки", mech:"CHECK companies_verified_needs_date"},
+  {inv:"У компанії рівно один власник", mech:"частковий UNIQUE INDEX по role='owner'"},
+  {inv:"Email унікальний без урахування регістру", mech:"тип citext"},
+  {inv:"Журнал подій не редагується застосунком", mech:"REVOKE UPDATE, DELETE для ролі застосунку"}
+];
+var BACKEND_FILTER_PARITY = [
+  ["mode","mode"], ["multiModes","components"], ["from","origin_city_id"], ["to","destination_city_id"],
+  ["fromCountry","origin_country"], ["toCountry","destination_country"], ["borderScope","border_scope"], ["currency","currency"]
+];
+var BACKEND_AUTH = [
+  {req:"Хешування пароля", val:"argon2id, m=64 MiB, t=3, p=1"},
+  {req:"Мінімальна довжина пароля", val:"10 символів; перевірка за списком скомпрометованих"},
+  {req:"Access-токен", val:"JWT, 15 хв, EdDSA, kid для ротації ключів"},
+  {req:"Refresh-токен", val:"30 днів, лише SHA-256; ротація з родиною, повторне використання вбиває всі сесії"},
+  {req:"Блокування", val:"10 невдалих спроб → блок на 15 хвилин"},
+  {req:"Підтвердження email", val:"Одноразовий токен, 24 години; до підтвердження - перегляд без публікації"},
+  {req:"Ролі", val:"owner, manager, viewer; редагувати заявку може лише її компанія"}
+];
+var BACKEND_NFR = [
+  {metric:"Стрічка з фільтрами, p95", target:"≤ 200 мс на 100 тис. заявок"},
+  {metric:"Публікація заявки, p95", target:"≤ 300 мс"},
+  {metric:"Доступність", target:"99.5% на місяць"},
+  {metric:"Бекап", target:"Щодоби повний, WAL безперервно, відновлення - щомісяця"},
+  {metric:"Міграції", target:"Тільки вперед, без ручних кроків"}
+];
+var BACKEND_RUNS = [
+  {run:"tools/extract_registries.py", what:"Витягування реєстрів із index.html", result:"175 міст, 9 вантажів, 32 валюти, порожніх полів немає"},
+  {run:"ci/check_backend_contract.py", what:"8 груп перевірок артефактів", result:"15 із 15 пройдено"},
+  {run:"ci/acceptance_db.py", what:"Жива PostgreSQL 18.6 + PostGIS 3.6", result:"25 із 25 пройдено"}
+];
+var BACKEND_FRONTEND_CHANGES = [
+  "LISTINGS перестає бути літералом і стає результатом GET /api/v1/listings; loadExternalListings() і LISTINGS_FEED замінюються курсорною пагінацією",
+  "getUsers(), setUsers(), saveUser() видаляються. localStorage лишається лише для мови, вибраного виду транспорту та інших втрачуваних станів UI",
+  "Форма модального вікна отримує третій режим — публікацію заявки",
+  "Помилки показуються з problem+json, поле в помилці підсвічується за JSON Pointer",
+  "Перемикач API_BASE: за відсутності бекенду сайт чесно повідомляє про це, як уже роблять вкладки погоди й кордонів"
+];
+
+function renderBackend(){
+  var scopeInHtml = BACKEND_SCOPE_IN.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("");
+  var scopeOutHtml = BACKEND_SCOPE_OUT.map(function(s){
+    return '<tr><td>'+esc(s.what)+'</td><td>'+esc(s.why)+'</td><td>'+esc(s.where)+'</td></tr>';
+  }).join("");
+  var stackHtml = BACKEND_STACK.map(function(s){
+    return '<tr><td>'+esc(s.component)+'</td><td><code>'+esc(s.decision)+'</code></td><td>'+esc(s.why)+'</td></tr>';
+  }).join("");
+  var invHtml = BACKEND_INVARIANTS.map(function(i){
+    return '<tr><td>'+esc(i.inv)+'</td><td><code>'+esc(i.mech)+'</code></td></tr>';
+  }).join("");
+  var parityHtml = BACKEND_FILTER_PARITY.map(function(p){
+    return '<tr><td><code>state.filters.'+esc(p[0])+'</code></td><td><code>'+esc(p[1])+'</code></td></tr>';
+  }).join("");
+  var authHtml = BACKEND_AUTH.map(function(a){
+    return '<tr><td>'+esc(a.req)+'</td><td>'+esc(a.val)+'</td></tr>';
+  }).join("");
+  var nfrHtml = BACKEND_NFR.map(function(n){
+    return '<tr><td>'+esc(n.metric)+'</td><td>'+esc(n.target)+'</td></tr>';
+  }).join("");
+  var runsHtml = BACKEND_RUNS.map(function(r){
+    return '<tr><td><code>'+esc(r.run)+'</code></td><td>'+esc(r.what)+'</td><td><span class="source-status live">'+esc(r.result)+'</span></td></tr>';
+  }).join("");
+  var feChangesHtml = BACKEND_FRONTEND_CHANGES.map(function(c){ return '<li>'+esc(c)+'</li>'; }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("backend_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("backend_lede"))+'</p>'+
+    '<p class="escrow-note">'+esc(t("backend_disclaimer"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_scope_in_heading"))+'</h2>'+
+    '<ul style="color:var(--ink-soft);max-width:760px;">'+scopeInHtml+'</ul>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_scope_out_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_what"))+'</th><th>'+esc(t("backend_col_why"))+'</th><th>'+esc(t("backend_col_where"))+'</th>'+
+    '</tr></thead><tbody>'+scopeOutHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_stack_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_component"))+'</th><th>'+esc(t("backend_col_decision"))+'</th><th>'+esc(t("backend_col_why"))+'</th>'+
+    '</tr></thead><tbody>'+stackHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_invariants_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_invariant"))+'</th><th>'+esc(t("backend_col_mechanism"))+'</th>'+
+    '</tr></thead><tbody>'+invHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_parity_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("backend_parity_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_spa_filter"))+'</th><th>'+esc(t("backend_col_api_param"))+'</th>'+
+    '</tr></thead><tbody>'+parityHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_auth_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_requirement"))+'</th><th>'+esc(t("backend_col_value"))+'</th>'+
+    '</tr></thead><tbody>'+authHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_nfr_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_metric"))+'</th><th>'+esc(t("backend_col_target"))+'</th>'+
+    '</tr></thead><tbody>'+nfrHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_runs_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_run"))+'</th><th>'+esc(t("backend_col_checked"))+'</th><th>'+esc(t("backend_col_result"))+'</th>'+
+    '</tr></thead><tbody>'+runsHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_frontend_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("backend_frontend_lede"))+'</p>'+
+    '<ul style="color:var(--ink-soft);max-width:760px;">'+feChangesHtml+'</ul>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
+    '<ul class="automation-downloads">'+
+      '<li>'+ICONS.book+'<a href="docs/backend-sprint0-spec.md" target="_blank" rel="noopener">'+esc(t("backend_download_spec"))+'</a></li>'+
+    '</ul>'+
+  '</div></section>';
+}
+
 /* ---------- render: contacts ---------- */
 var OFFICES=[
   {city:{uk:"Київ",en:"Kyiv",pl:"Kijów",de:"Kiew"}, addr:"вул. Портова, 12", phone:"+380 44 000 00 00", email:"kyiv@trans-atlas.example"},
@@ -6703,6 +6952,7 @@ function pageContent(){
     case "rating": return renderRating();
     case "automation": return renderAutomation();
     case "verification": return renderVerification();
+    case "backend": return renderBackend();
     default: return renderHero()+renderStats();
   }
 }
