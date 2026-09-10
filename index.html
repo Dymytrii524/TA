@@ -4697,7 +4697,8 @@ var SERVICES = [
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"},
   {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"},
   {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"},
-  {icon:"server", route:"backend", uk:"Бекенд: Спринт 0", en:"Backend: Sprint 0", pl:"Backend: Sprint 0", de:"Backend: Sprint 0"}
+  {icon:"server", route:"backend", uk:"Бекенд: Спринт 0", en:"Backend: Sprint 0", pl:"Backend: Sprint 0", de:"Backend: Sprint 0"},
+  {icon:"layers", route:"stack", uk:"Технологічний стек", en:"Technology stack", pl:"Stos technologiczny", de:"Technologie-Stack"}
 ];
 
 var NEWS = [
@@ -4868,7 +4869,23 @@ uk:{
   backend_col_requirement:"Вимога", backend_col_value:"Значення",
   backend_col_metric:"Показник", backend_col_target:"Ціль",
   backend_col_run:"Прогін", backend_col_checked:"Що перевіряв", backend_col_result:"Результат",
-  backend_download_spec:"Повна специфікація Спринту 0 (Markdown)"
+  backend_download_spec:"Повна специфікація Спринту 0 (Markdown)",
+  stack_title:"Технологічний стек",
+  stack_lede:"Вибір мов і технологій для production-рерайту Trans-Atlas як біржі з шістьма видами транспорту: серверна СУБД як єдине джерело істини, PostgreSQL + PostGIS, контракти через JSON Schema.",
+  stack_disclaimer:"Це документ-рішення, а не впроваджений стек: жоден із перелічених сервісів (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) не розгорнутий у цьому проєкті. index.html лишається тим самим односторінковим файлом. «Бекенд: Спринт 0» — перший виконаний і перевірений шматок цього ширшого плану.",
+  stack_decisions_heading:"Рішення по шарах",
+  stack_why_heading:"Чому саме так",
+  stack_why_ts:"TypeScript — основна мова: один тип-контракт від бази до інтерфейсу, найбільший ринок наймання для вебпродукту такого класу, а наявний демо-прототип і локальний сервер TA переносяться у production без зміни мови.",
+  stack_why_go:"Go — лише для модуля SEARCH: обхід графа маршрутів і масові розрахунки відстаней у Node дають нестабільну латентність під навантаженням; горутини й один статичний бінарник роблять паралельний fan-out прямим і передбачуваним.",
+  stack_rejected_heading:"Що навмисно не обрано",
+  stack_map_heading:"Мапа сервісів MVP",
+  stack_launch_heading:"Черговість запуску",
+  stack_acceptance_heading:"Критерії приймання вибору стека",
+  stack_col_layer:"Шар", stack_col_choice:"Вибір", stack_col_lang:"Мова",
+  stack_col_rejected:"Відкинуто", stack_col_reason:"Причина",
+  stack_col_stage:"Етап", stack_col_includes:"Що входить", stack_col_tech:"Технологічний приріст",
+  stack_download_spec:"Повний документ рішення (Markdown)",
+  stack_link_backend:"Бекенд: Спринт 0 — перший виконаний етап"
 },
 en:{
   brand_tag:"Cargo & transport exchange",
@@ -5008,7 +5025,23 @@ en:{
   backend_col_requirement:"Requirement", backend_col_value:"Value",
   backend_col_metric:"Metric", backend_col_target:"Target",
   backend_col_run:"Run", backend_col_checked:"What it checked", backend_col_result:"Result",
-  backend_download_spec:"Full Sprint 0 specification (Markdown)"
+  backend_download_spec:"Full Sprint 0 specification (Markdown)",
+  stack_title:"Technology stack",
+  stack_lede:"The language and technology choices for a production rewrite of Trans-Atlas as an exchange covering six transport modes: a server-side database as the single source of truth, PostgreSQL + PostGIS, contracts via JSON Schema.",
+  stack_disclaimer:"This is a decision record, not a deployed stack: none of the listed services (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) actually run in this project. index.html stays the same single-page file it always was. \"Backend: Sprint 0\" is the first executed and tested slice of this broader plan.",
+  stack_decisions_heading:"Decisions by layer",
+  stack_why_heading:"Why these choices",
+  stack_why_ts:"TypeScript as the primary language: one type contract from database to UI, the largest hiring market for a web product of this class, and the existing demo prototype and local TA server carry over to production without a language change.",
+  stack_why_go:"Go for the SEARCH module only: graph traversal for routing and bulk distance calculations give unstable latency under load in Node; goroutines and a single static binary make the parallel fan-out direct and predictable.",
+  stack_rejected_heading:"Deliberately not chosen",
+  stack_map_heading:"MVP service map",
+  stack_launch_heading:"Launch sequence",
+  stack_acceptance_heading:"Acceptance criteria for the stack choice",
+  stack_col_layer:"Layer", stack_col_choice:"Choice", stack_col_lang:"Language",
+  stack_col_rejected:"Rejected", stack_col_reason:"Reason",
+  stack_col_stage:"Stage", stack_col_includes:"What's included", stack_col_tech:"Technology added",
+  stack_download_spec:"Full decision record (Markdown)",
+  stack_link_backend:"Backend: Sprint 0 - the first executed stage"
 },
 pl:{
   brand_tag:"Giełda ładunków i transportu",
@@ -5148,7 +5181,23 @@ pl:{
   backend_col_requirement:"Wymaganie", backend_col_value:"Wartość",
   backend_col_metric:"Wskaźnik", backend_col_target:"Cel",
   backend_col_run:"Przebieg", backend_col_checked:"Co sprawdzał", backend_col_result:"Wynik",
-  backend_download_spec:"Pełna specyfikacja Sprintu 0 (Markdown)"
+  backend_download_spec:"Pełna specyfikacja Sprintu 0 (Markdown)",
+  stack_title:"Stos technologiczny",
+  stack_lede:"Wybór języków i technologii dla produkcyjnego przepisania Trans-Atlas jako giełdy obejmującej sześć rodzajów transportu: serwerowa baza danych jako jedyne źródło prawdy, PostgreSQL + PostGIS, kontrakty przez JSON Schema.",
+  stack_disclaimer:"To dokument decyzyjny, a nie wdrożony stos: żadna z wymienionych usług (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) nie działa w tym projekcie. index.html pozostaje tym samym jednostronicowym plikiem. „Backend: Sprint 0” to pierwszy zrealizowany i przetestowany fragment tego szerszego planu.",
+  stack_decisions_heading:"Decyzje według warstw",
+  stack_why_heading:"Dlaczego tak",
+  stack_why_ts:"TypeScript jako język główny: jeden kontrakt typów od bazy danych po interfejs, największy rynek zatrudnienia dla produktu webowego tej klasy, a istniejący prototyp demo i lokalny serwer TA przechodzą do produkcji bez zmiany języka.",
+  stack_why_go:"Go wyłącznie dla modułu SEARCH: przechodzenie grafu tras i masowe obliczenia odległości w Node dają niestabilne opóźnienia pod obciążeniem; gorutyny i jeden statyczny plik binarny czynią równoległy fan-out bezpośrednim i przewidywalnym.",
+  stack_rejected_heading:"Świadomie niewybrane",
+  stack_map_heading:"Mapa usług MVP",
+  stack_launch_heading:"Kolejność uruchamiania",
+  stack_acceptance_heading:"Kryteria przyjęcia wyboru stosu",
+  stack_col_layer:"Warstwa", stack_col_choice:"Wybór", stack_col_lang:"Język",
+  stack_col_rejected:"Odrzucono", stack_col_reason:"Powód",
+  stack_col_stage:"Etap", stack_col_includes:"Co obejmuje", stack_col_tech:"Przyrost technologiczny",
+  stack_download_spec:"Pełny dokument decyzyjny (Markdown)",
+  stack_link_backend:"Backend: Sprint 0 - pierwszy zrealizowany etap"
 },
 de:{
   brand_tag:"Fracht- und Transportbörse",
@@ -5288,7 +5337,23 @@ de:{
   backend_col_requirement:"Anforderung", backend_col_value:"Wert",
   backend_col_metric:"Kennzahl", backend_col_target:"Ziel",
   backend_col_run:"Lauf", backend_col_checked:"Was geprüft wurde", backend_col_result:"Ergebnis",
-  backend_download_spec:"Vollständige Sprint-0-Spezifikation (Markdown)"
+  backend_download_spec:"Vollständige Sprint-0-Spezifikation (Markdown)",
+  stack_title:"Technologie-Stack",
+  stack_lede:"Die Sprach- und Technologieentscheidungen für eine Produktions-Neuentwicklung von Trans-Atlas als Börse für sechs Transportarten: eine serverseitige Datenbank als einzige Quelle der Wahrheit, PostgreSQL + PostGIS, Verträge über JSON Schema.",
+  stack_disclaimer:"Dies ist ein Entscheidungsprotokoll, kein bereitgestellter Stack: Keiner der genannten Dienste (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) läuft tatsächlich in diesem Projekt. index.html bleibt dieselbe einzelne Datei wie zuvor. „Backend: Sprint 0“ ist der erste umgesetzte und getestete Teil dieses umfassenderen Plans.",
+  stack_decisions_heading:"Entscheidungen nach Schicht",
+  stack_why_heading:"Warum diese Wahl",
+  stack_why_ts:"TypeScript als Hauptsprache: ein Typvertrag von der Datenbank bis zur Oberfläche, der größte Einstellungsmarkt für ein Webprodukt dieser Klasse, und der vorhandene Demo-Prototyp sowie der lokale TA-Server lassen sich ohne Sprachwechsel in die Produktion übernehmen.",
+  stack_why_go:"Go nur für das SEARCH-Modul: Graphdurchlauf für Routing und Massenberechnungen von Entfernungen führen in Node unter Last zu instabiler Latenz; Goroutinen und eine einzelne statische Binärdatei machen den parallelen Fan-out direkt und vorhersehbar.",
+  stack_rejected_heading:"Bewusst nicht gewählt",
+  stack_map_heading:"MVP-Servicekarte",
+  stack_launch_heading:"Startreihenfolge",
+  stack_acceptance_heading:"Abnahmekriterien für die Stack-Wahl",
+  stack_col_layer:"Schicht", stack_col_choice:"Wahl", stack_col_lang:"Sprache",
+  stack_col_rejected:"Abgelehnt", stack_col_reason:"Grund",
+  stack_col_stage:"Phase", stack_col_includes:"Umfang", stack_col_tech:"Technologiezuwachs",
+  stack_download_spec:"Vollständiges Entscheidungsdokument (Markdown)",
+  stack_link_backend:"Backend: Sprint 0 - die erste umgesetzte Phase"
 },
 ro:{"brand_tag":"Bursa de marfă și transport","nav_home":"Acasă","nav_cargo":"Marfă","nav_transport":"Transport","nav_market":"Piața vehiculelor","nav_news":"Știri","nav_contacts":"Contact","nav_about":"Despre noi","services_title":"Servicii","login":"Conectare","register":"Înregistrare","logout":"Deconectare","hero_title":"Găsiți marfă sau transport în câteva minute","hero_lede":"Legătură directă între expeditori și transportatori în toată Europa: rutier, feroviar, maritim, aerian și multimodal.","tab_cargo":"Caut transport","tab_transport":"Am marfă","f_from":"De unde","f_to":"Până unde","f_date":"Data încărcării","f_mode":"Tip de transport","f_weight":"Greutate, t","f_volume":"Volum, m³","search":"Caută","load_more":"Afișează mai multe","any":"Oricare","mode_auto":"Rutier","mode_rail":"Feroviar","mode_sea":"Maritim","mode_air":"Aerian","mode_drone":"Drone","mode_multi":"Multimodal","stats_title":"Bursa în cifre","stat_cargo":"anunțuri de marfă active","stat_transport":"vehicule disponibile","stat_companies":"companii membre","stat_countries":"țări acoperite","flows_intl_title":"Transport internațional","flows_domestic_title":"Transport intern","flows_continent_europe":"Europa","flows_continent_asia":"Asia","flows_continent_america":"America","flows_continent_africa":"Africa","flows_continent_australia":"Australia","flows_continent_todo":"Datele pentru acest continent nu sunt încă conectate.","flow_kind_transport":"Transport","flow_kind_cargo":"Marfă","flow_export":"Export","flow_import":"Import","rating_title":"Clasamentul companiilor","rating_lede":"Companii active acum pe bursă, ordonate după valoarea anunțului curent și grupate pe valută (fără curs valutar conectat) - date demonstrative, nu un scor de reputație.","results_title":"Anunțuri curente","results_count":"găsite","results_empty":"Niciun anunț nu corespunde acestei căutări. Încercați altă rută sau alt tip de transport.","col_route":"Rută","col_cargo":"Marfă","col_weight":"Greutate","col_volume":"Volum","col_date":"Data","col_price":"Tarif","contact_btn":"Contact","col_range":"Autonomie","col_permit":"Permis de zbor","unit_kg":"kg","unit_km":"km","permit_yes":"da","permit_no":"nu","f_currency":"Valută","currency_all":"Toate valutele","escrow_note":"Decontarea în USDC/USDT (escrow blockchain, TS §13.5) nu este conectată în acest demo; valutele de mai jos sunt doar valuta anunțului.","market_title":"Piața vehiculelor","market_lede":"Cumpărare, vânzare și închiriere de camioane, remorci și utilaje speciale.","market_listing_title":"Anunțuri în categorie","market_pick":"Alegeți o categorie mai sus pentru a vedea anunțurile.","news_title":"Știri din domeniu","news_more":"Citește mai mult","news_less":"Restrânge","about_title":"Despre Trans-Atlas","about_lede":"Trans-Atlas este o bursă internațională de transport marfă care conectează expeditori și transportatori în toată Europa și dincolo de ea. Facilităm găsirea unui partener pentru orice tip de livrare.","about_how":"Cum funcționează","step1_t":"Înregistrare","step1_d":"Creați un cont de companie în 2 minute.","step2_t":"Publicați un anunț","step2_d":"Descrieți marfa sau vehiculul liber.","step3_t":"Primiți oferte","step3_d":"Partenerii răspund în decurs de o oră.","step4_t":"Finalizați tranzacția","step4_d":"Conveniți termenii și finalizați transportul.","reliability_t":"Zona de fiabilitate","reliability_d":"Evaluarea companiilor pe baza tranzacțiilor finalizate, recenziilor partenerilor și documentelor verificate.","blacklist_t":"Listă neagră","blacklist_d":"Companii care au încălcat termenii tranzacțiilor. Verificați partenerul înainte de colaborare.","contacts_title":"Contact","contacts_lede":"Alegeți biroul cel mai apropiat sau scrieți-ne direct.","c_name":"Nume","c_email":"Email","c_message":"Mesaj","c_send":"Trimite","c_success":"Mulțumim! Mesajul a fost trimis, vă vom răspunde în cel mult o zi lucrătoare.","offices_title":"Birouri","weather_title":"Vremea pe rută","weather_lede":"Prognoză pentru transportul rutier — date de la Open-Meteo, actualizate la fiecare 30 de minute.","weather_tab_road":"Rutier","weather_tab_rail":"Feroviar","weather_tab_sea":"Maritim","weather_tab_air":"Aerian","weather_show":"Arată vremea","weather_from_label":"Punct de plecare","weather_to_label":"Punct de destinație","weather_current":"Acum","weather_forecast":"Prognoză pe 12 ore","weather_risk_title":"Riscuri pentru șofer","weather_risk_ice":"Risc de polei","weather_risk_wind":"Vânt puternic","weather_risk_rain":"Ploi abundente","weather_no_risk":"Niciun risc semnificativ detectat","weather_updated":"Actualizat","weather_source":"Sursă","weather_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pe calculatorul dvs. pentru date live de la Open-Meteo.","weather_loading":"Se încarcă...","weather_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","weather_not_ready":"Sursa de date pentru acest tip de transport nu este încă conectată în această fază de dezvoltare — arătat cinstit, nu simulat.","weather_pick_points":"Alegeți punctul de plecare și destinația de mai sus pentru a vedea prognoza.","weather_alerts_title":"Avertizări meteo (MeteoAlarm)","weather_no_metar":"Nu există date aeronautice curente pentru acest aeroport (spațiul aerian poate fi închis sau stația nu raportează în prezent).","directory_title":"Director de surse","directory_lede":"Autorități oficiale și agregatori care oferă date despre frontiere, porturi și logistică.","directory_transport_label":"Tip de transport","directory_region_label":"Regiune","directory_search_label":"Căutare","directory_search_ph":"Nume sau descriere...","directory_apply":"Aplică","directory_all":"Toate","directory_region_eu":"UE","directory_region_asia":"Asia","directory_region_balkans":"Balcani","directory_region_cis":"CSI","directory_type_official":"Sursă oficială","directory_type_aggregator":"Agregator","directory_visit":"Vizitează site-ul","directory_empty":"Niciun rezultat pentru aceste filtre.","directory_loading":"Se încarcă...","directory_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea directorul.","borders_title":"Frontiere","borders_lede":"Date live despre punctele de trecere: DPSU (cozi din partea ucraineană) și granica.gov.pl (timpi de așteptare din partea poloneză).","borders_tab_road":"Rutier (UE)","borders_tab_rail":"Feroviar","borders_tab_sea":"Maritim","borders_tab_asia":"Asia","borders_country_label":"Țară","borders_apply":"Aplică","borders_status_green":"Liber","borders_status_yellow":"Coadă","borders_status_red":"Aglomerat","borders_status_unknown":"Fără date","borders_col_checkpoint":"Punct de trecere","borders_col_direction":"Direcție","borders_col_status":"Stare","borders_col_queue":"Coadă/așteptare","borders_trucks":"camioane","borders_wait":"așteptare","borders_closed":"închis","borders_source_dpsu":"DPSU (Ucraina)","borders_source_granica":"granica.gov.pl (Polonia)","borders_asia_notice":"Datele CAREC BCP Monitor (Khorgos, Dostyk și altele) sunt indicatori de referință trimestriali, neconectați încă în această fază de dezvoltare. NU sunt cozi live.","borders_loading":"Se încarcă...","borders_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\" pentru a vedea datele frontaliere.","borders_error":"Datele nu au putut fi obținute. Încercați din nou mai târziu.","borders_empty":"Niciun rezultat pentru aceste filtre.","borders_partial":"Una dintre surse este temporar indisponibilă - se arată doar datele celor care au răspuns.","qa_title":"Întrebări și răspunsuri","qa_lede":"Un asistent AI răspunde pe baza bazei de cunoștințe (Wiki) și a materialelor gata făcute (Outputs) — cu surse citate, fără fapte inventate.","qa_ask_ph":"Ex.: ce este o scrisoare de trăsură CMR?","qa_ask_button":"Întreabă","qa_ask_thinking":"Caut un răspuns...","qa_chat_empty":"Întrebați despre documente, vamă sau standarde de transport — răspunsul se bazează doar pe materialele bazei de cunoștințe de mai jos.","qa_sources_label":"Surse:","qa_confidence_high":"relevanță ridicată","qa_confidence_medium":"relevanță medie","qa_confidence_low":"relevanță scăzută","qa_ai_unavailable":"Răspunsurile AI nu sunt încă activate pe acest server (ANTHROPIC_API_KEY nesetat). Iată materialele potrivite din baza de cunoștințe:","qa_insufficient":"În baza de cunoștințe nu există încă materiale care să răspundă clar la această întrebare.","qa_error":"Nu s-a putut obține un răspuns. Încercați din nou mai târziu.","qa_offline":"Serverul local de date nu este accesibil. Rulați \"node server/index.js\".","qa_wiki_heading":"Bază de cunoștințe (Wiki)","qa_wiki_search_ph":"Caută articole...","qa_wiki_all":"Toate categoriile","qa_cat_dokumenty":"Documente","qa_cat_standarty":"Standarde","qa_cat_mytnycia":"Vamă","qa_cat_marshruty":"Rute","qa_wiki_loading":"Se încarcă...","qa_wiki_empty":"Niciun rezultat pentru aceste filtre.","qa_wiki_read_more":"Citește articolul","qa_wiki_collapse":"Restrânge","qa_glossary_hint":"Faceți clic pe un cuvânt evidențiat din lista de mai sus (de ex. ADR) - explicația apare aici.","qa_glossary_loading":"Se încarcă definiția...","qa_outputs_heading":"Materiale gata făcute (Outputs)","qa_outputs_loading":"Se încarcă...","qa_outputs_empty":"Încă nu există materiale.","qa_notfound_title":"Nu ați găsit răspunsul?","qa_notfound_body":"Descrieți întrebarea — vom adăuga un răspuns în baza de cunoștințe. Solicitarea se salvează local în browser (mod demo, fără backend real).","qa_notfound_ph":"Întrebarea dvs...","qa_notfound_submit":"Trimite","qa_notfound_success":"Mulțumim! Întrebarea a fost salvată.","err_required":"Acest câmp este obligatoriu","err_email":"Introduceți un email valid","err_pass":"Minimum 6 caractere","err_match":"Parolele nu coincid","modal_login_title":"Conectare","modal_register_title":"Înregistrare companie","f_password":"Parolă","f_password2":"Repetați parola","f_companyname":"Numele companiei","submit_login":"Conectare","submit_register":"Creează cont","switch_to_register":"Nu aveți cont? Înregistrați-vă","switch_to_login":"Aveți deja cont? Conectați-vă","toast_login_ok":"Conectare reușită","toast_register_ok":"Cont creat, sunteți conectat","toast_logout_ok":"V-ați deconectat","footer_nav":"Navigare","footer_info":"Centru de informații","footer_support":"Suport","footer_rights":"Toate drepturile rezervate.","footer_note":"Concept de design. Datele de contact sunt exemple demonstrative.","cta_register":"Înregistrați-vă compania"},
 cs:{"brand_tag":"Burza nákladů a dopravy","nav_home":"Domů","nav_cargo":"Náklad","nav_transport":"Doprava","nav_market":"Trh vozidel","nav_news":"Novinky","nav_contacts":"Kontakty","nav_about":"O nás","services_title":"Služby","login":"Přihlásit se","register":"Registrace","logout":"Odhlásit se","hero_title":"Najděte náklad nebo dopravu během pár minut","hero_lede":"Přímé spojení odesílatelů a dopravců po celé Evropě: silniční, železniční, námořní, letecká a multimodální doprava.","tab_cargo":"Hledám dopravu","tab_transport":"Mám náklad","f_from":"Odkud","f_to":"Kam","f_date":"Datum nakládky","f_mode":"Druh dopravy","f_weight":"Hmotnost, t","f_volume":"Objem, m³","search":"Hledat","load_more":"Zobrazit další","any":"Jakýkoli","mode_auto":"Silniční","mode_rail":"Železniční","mode_sea":"Námořní","mode_air":"Letecká","mode_drone":"Drony","mode_multi":"Multimodální","stats_title":"Burza v číslech","stat_cargo":"aktivních nabídek nákladu","stat_transport":"volných vozidel","stat_companies":"zapojených firem","stat_countries":"pokrytých zemí","flows_intl_title":"Mezinárodní doprava","flows_domestic_title":"Vnitrostátní doprava","flows_continent_europe":"Evropa","flows_continent_asia":"Asie","flows_continent_america":"Amerika","flows_continent_africa":"Afrika","flows_continent_australia":"Austrálie","flows_continent_todo":"Data pro tento kontinent ještě nejsou připojena.","flow_kind_transport":"Doprava","flow_kind_cargo":"Náklad","flow_export":"Export","flow_import":"Import","rating_title":"Hodnocení firem","rating_lede":"Firmy aktivní právě teď na burze, seřazené podle hodnoty aktuální nabídky a seskupené podle měny (bez připojeného směnného kurzu) - ukázková data, nikoli hodnocení reputace.","results_title":"Aktuální nabídky","results_count":"nalezeno","results_empty":"Žádné nabídky neodpovídají tomuto hledání. Zkuste jinou trasu nebo druh dopravy.","col_route":"Trasa","col_cargo":"Náklad","col_weight":"Hmotnost","col_volume":"Objem","col_date":"Datum","col_price":"Sazba","contact_btn":"Kontakt","col_range":"Dolet","col_permit":"Povolení k letu","unit_kg":"kg","unit_km":"km","permit_yes":"ano","permit_no":"ne","f_currency":"Měna","currency_all":"Všechny měny","escrow_note":"Vypořádání v USDC/USDT (blockchain escrow, ZD §13.5) není v tomto demu připojeno; měny níže jsou pouze měna nabídky.","market_title":"Trh vozidel","market_lede":"Nákup, prodej a pronájem nákladních vozidel, přívěsů a speciální techniky.","market_listing_title":"Nabídky v kategorii","market_pick":"Vyberte výše kategorii pro zobrazení nabídek.","news_title":"Novinky z oboru","news_more":"Číst dál","news_less":"Sbalit","about_title":"O Trans-Atlas","about_lede":"Trans-Atlas je mezinárodní burza nákladní dopravy propojující odesílatele a dopravce po celé Evropě i mimo ni. Usnadňujeme nalezení partnera pro jakýkoli druh přepravy.","about_how":"Jak to funguje","step1_t":"Registrace","step1_d":"Vytvořte firemní účet za 2 minuty.","step2_t":"Zadejte nabídku","step2_d":"Popište náklad nebo volné vozidlo.","step3_t":"Získejte nabídky","step3_d":"Partneři odpovídají do hodiny.","step4_t":"Uzavřete obchod","step4_d":"Domluvte podmínky a dokončete přepravu.","reliability_t":"Zóna spolehlivosti","reliability_d":"Hodnocení firem na základě dokončených obchodů, recenzí partnerů a ověřených dokumentů.","blacklist_t":"Černá listina","blacklist_d":"Firmy, které porušily podmínky obchodu. Před spoluprací partnera ověřte.","contacts_title":"Kontakty","contacts_lede":"Vyberte nejbližší pobočku nebo nám napište přímo.","c_name":"Jméno","c_email":"E-mail","c_message":"Zpráva","c_send":"Odeslat","c_success":"Děkujeme! Zpráva byla odeslána, odpovíme do jednoho pracovního dne.","offices_title":"Pobočky","weather_title":"Počasí na trase","weather_lede":"Předpověď pro silniční dopravu — data z Open-Meteo, aktualizace každých 30 minut.","weather_tab_road":"Silniční","weather_tab_rail":"Železniční","weather_tab_sea":"Námořní","weather_tab_air":"Letecká","weather_show":"Zobrazit počasí","weather_from_label":"Místo odjezdu","weather_to_label":"Místo určení","weather_current":"Nyní","weather_forecast":"Předpověď na 12 hodin","weather_risk_title":"Rizika pro řidiče","weather_risk_ice":"Riziko náledí","weather_risk_wind":"Silný vítr","weather_risk_rain":"Silné srážky","weather_no_risk":"Nebyla zjištěna žádná zvláštní rizika","weather_updated":"Aktualizováno","weather_source":"Zdroj","weather_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" na svém počítači pro živá data z Open-Meteo.","weather_loading":"Načítání...","weather_error":"Data se nepodařilo načíst. Zkuste to prosím později.","weather_not_ready":"Zdroj dat pro tento druh dopravy zatím není v této fázi vývoje připojen — zobrazeno poctivě, nikoli simulováno.","weather_pick_points":"Vyberte výše místo odjezdu a určení pro zobrazení předpovědi.","weather_alerts_title":"Bouřková varování (MeteoAlarm)","weather_no_metar":"Pro toto letiště nejsou aktuální letecká data (vzdušný prostor může být uzavřen nebo stanice momentálně nehlásí).","directory_title":"Adresář zdrojů","directory_lede":"Oficiální úřady a agregátory poskytující data o hranicích, přístavech a logistice.","directory_transport_label":"Druh dopravy","directory_region_label":"Region","directory_search_label":"Hledat","directory_search_ph":"Název nebo popis...","directory_apply":"Použít","directory_all":"Vše","directory_region_eu":"EU","directory_region_asia":"Asie","directory_region_balkans":"Balkán","directory_region_cis":"SNS","directory_type_official":"Oficiální zdroj","directory_type_aggregator":"Agregátor","directory_visit":"Navštívit web","directory_empty":"Žádné výsledky pro tyto filtry.","directory_loading":"Načítání...","directory_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení adresáře.","borders_title":"Hranice","borders_lede":"Živá data o hraničních přechodech: DPSU (fronty z ukrajinské strany) a granica.gov.pl (čekací doby z polské strany).","borders_tab_road":"Silniční (EU)","borders_tab_rail":"Železniční","borders_tab_sea":"Námořní","borders_tab_asia":"Asie","borders_country_label":"Země","borders_apply":"Použít","borders_status_green":"Volno","borders_status_yellow":"Fronta","borders_status_red":"Ucpáno","borders_status_unknown":"Bez dat","borders_col_checkpoint":"Přechod","borders_col_direction":"Směr","borders_col_status":"Stav","borders_col_queue":"Fronta/čekání","borders_trucks":"kamionů","borders_wait":"čekání","borders_closed":"uzavřeno","borders_source_dpsu":"DPSU (Ukrajina)","borders_source_granica":"granica.gov.pl (Polsko)","borders_asia_notice":"Data CAREC BCP Monitor (Chorgos, Dostyk a další) jsou čtvrtletní referenční ukazatele, v této fázi vývoje ještě nepřipojené. Nejedná se o živé fronty.","borders_loading":"Načítání...","borders_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\" pro zobrazení dat o hranicích.","borders_error":"Data se nepodařilo načíst. Zkuste to prosím později.","borders_empty":"Žádné výsledky pro tyto filtry.","borders_partial":"Jeden ze zdrojů je dočasně nedostupný - zobrazena jsou pouze data z těch, které odpověděly.","qa_title":"Otázky a odpovědi","qa_lede":"AI asistent odpovídá na základě znalostní báze (Wiki) a hotových materiálů (Outputs) — s uvedením zdrojů, bez vymyšlených faktů.","qa_ask_ph":"Např.: co je nákladní list CMR?","qa_ask_button":"Zeptat se","qa_ask_thinking":"Hledám odpověď...","qa_chat_empty":"Zeptejte se na dokumenty, celní řízení nebo přepravní standardy — odpověď vychází pouze z materiálů znalostní báze níže.","qa_sources_label":"Zdroje:","qa_confidence_high":"vysoká relevance","qa_confidence_medium":"střední relevance","qa_confidence_low":"nízká relevance","qa_ai_unavailable":"AI odpovědi na tomto serveru ještě nejsou zapojeny (není nastaven ANTHROPIC_API_KEY). Zde jsou odpovídající materiály ze znalostní báze:","qa_insufficient":"Ve znalostní bázi zatím není nic, co by jasně odpovídalo na tuto otázku.","qa_error":"Odpověď se nepodařilo získat. Zkuste to prosím později.","qa_offline":"Místní datový server není dostupný. Spusťte \"node server/index.js\".","qa_wiki_heading":"Znalostní báze (Wiki)","qa_wiki_search_ph":"Hledat v článcích...","qa_wiki_all":"Všechny kategorie","qa_cat_dokumenty":"Dokumenty","qa_cat_standarty":"Standardy","qa_cat_mytnycia":"Clo","qa_cat_marshruty":"Trasy","qa_wiki_loading":"Načítání...","qa_wiki_empty":"Žádné výsledky pro tyto filtry.","qa_wiki_read_more":"Číst článek","qa_wiki_collapse":"Sbalit","qa_glossary_hint":"Klikněte na zvýrazněné slovo v checklistu výše (např. ADR) - vysvětlení se zobrazí zde.","qa_glossary_loading":"Načítání definice...","qa_outputs_heading":"Hotové materiály (Outputs)","qa_outputs_loading":"Načítání...","qa_outputs_empty":"Zatím žádné materiály.","qa_notfound_title":"Nenašli jste odpověď?","qa_notfound_body":"Popište svůj dotaz — přidáme odpověď do znalostní báze. Dotaz se ukládá lokálně v prohlížeči (demo režim, bez skutečného backendu).","qa_notfound_ph":"Váš dotaz...","qa_notfound_submit":"Odeslat","qa_notfound_success":"Děkujeme! Dotaz byl uložen.","err_required":"Toto pole je povinné","err_email":"Zadejte platný e-mail","err_pass":"Minimálně 6 znaků","err_match":"Hesla se neshodují","modal_login_title":"Přihlášení","modal_register_title":"Registrace firmy","f_password":"Heslo","f_password2":"Zopakujte heslo","f_companyname":"Název firmy","submit_login":"Přihlásit se","submit_register":"Vytvořit účet","switch_to_register":"Ještě nemáte účet? Zaregistrujte se","switch_to_login":"Už máte účet? Přihlaste se","toast_login_ok":"Přihlášení úspěšné","toast_register_ok":"Účet vytvořen, jste přihlášeni","toast_logout_ok":"Byli jste odhlášeni","footer_nav":"Navigace","footer_info":"Informační centrum","footer_support":"Podpora","footer_rights":"Všechna práva vyhrazena.","footer_note":"Designový koncept. Kontaktní údaje jsou ukázkové.","cta_register":"Zaregistrujte firmu"},
@@ -5366,7 +5431,8 @@ var ICONS = {
   station:'<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>',
   chevronDown:'<svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
   shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
-  server:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".8" fill="currentColor"/><circle cx="7" cy="17" r=".8" fill="currentColor"/></svg>'
+  server:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".8" fill="currentColor"/><circle cx="7" cy="17" r=".8" fill="currentColor"/></svg>',
+  layers:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
@@ -6318,6 +6384,120 @@ function renderBackend(){
   '</div></section>';
 }
 
+/* ---------- render: technology stack decision record ----------
+ * Same pattern as automation/verification/backend: this is the broader
+ * architecture decision behind a hypothetical production rewrite (Next.js,
+ * NestJS, a Go SEARCH service, Kafka, ClickHouse, Web3 escrow...) of which
+ * "Бекенд: Спринт 0" is only the first executed slice. Documented as a
+ * decision record, not implemented - none of Next.js/Go/Kafka/ClickHouse/
+ * Kubernetes actually runs anywhere in this project. index.html stays the
+ * same single file it always was. */
+var STACK_DECISIONS = [
+  {layer:"Frontend", choice:"Next.js (App Router) + React + TypeScript", lang:"TypeScript", why:"SSR/ISR для SEO-розділів біржі, клієнтські таблиці заявок, один тип-контракт із бекендом"},
+  {layer:"UI-шар", choice:"Tailwind CSS + Radix UI + TanStack Table/Query", lang:"TypeScript", why:"Щільні табличні інтерфейси біржі, доступність, серверний кеш замість localStorage"},
+  {layer:"Основний backend", choice:"NestJS на Node.js 24 LTS", lang:"TypeScript", why:"Одна мова з фронтендом, модульність під розділи транспорту, зрілі валідація/DI/OpenAPI"},
+  {layer:"ORM / доступ до даних", choice:"Prisma для CRUD + чистий SQL (pg) для геозапитів", lang:"TypeScript / SQL", why:"PostGIS-функції та ранжування пишуться SQL-ом, не ORM-абстракцією"},
+  {layer:"Пошук маршрутів (SEARCH)", choice:"окремий сервіс на Go", lang:"Go", why:"Обхід графа магістраль→фідери, POST_DRONE; передбачувана латентність і паралелізм"},
+  {layer:"Геодані та відстані", choice:"PostgreSQL 18 + PostGIS; OSRM або Valhalla", lang:"SQL / C++", why:"Радіусний пошук для дрон-плеча, реальні дорожні відстані замість «по прямій»"},
+  {layer:"СУБД", choice:"PostgreSQL 18 (Patroni або керований кластер)", lang:"SQL", why:"Транзакційна цілісність угод, ставок, ескроу; JSONB для шаблонів заявок"},
+  {layer:"Кеш і черги коротких задач", choice:"Redis 7", lang:"—", why:"Вимога A.4/A.11; кеш конекторів погоди та кордонів"},
+  {layer:"Шина подій", choice:"Kafka (або Redpanda)", lang:"—", why:"Ставки, статуси угод, аудит, вебхуки партнерам; ordered log під фінансові події"},
+  {layer:"Повнотекстовий пошук", choice:"PostgreSQL FTS на MVP → OpenSearch за потреби", lang:"SQL", why:"Не вводити ще один кластер, поки Postgres тримає навантаження"},
+  {layer:"Реальний час (ставки, чат)", choice:"WebSocket (Socket.IO або ws) + Redis pub/sub", lang:"TypeScript", why:"Онлайн-стрічка заявок і ставок"},
+  {layer:"Платежі, валюти, ескроу", choice:"окремий сервіс settlement, decimal-арифметика", lang:"TypeScript + SQL", why:"Валюта ціни ≠ валюта оплати: ставка, договір, платіж, курс, комісія — окремі поля"},
+  {layer:"Web3-шар (опційний)", choice:"Solidity + Foundry, EVM L2, стейблкоїн-виплати", lang:"Solidity", why:"Смартконтрактне ескроу як додатковий шар, а не заміна фіатної бухгалтерії"},
+  {layer:"Аналітика та BI", choice:"ClickHouse (події) + Metabase/Power BI", lang:"SQL", why:"Оперативна аналітика без навантаження на OLTP"},
+  {layer:"ML / прогноз ставок", choice:"Python (FastAPI, pandas, scikit-learn/LightGBM)", lang:"Python", why:"Окремий сервіс, викликається API; не змішується з доменним бекендом"},
+  {layer:"Інфраструктура", choice:"Docker + Kubernetes (керований) або Nomad; Terraform", lang:"HCL / YAML", why:"Один спосіб опису середовищ, узгоджений із наявним CI-підходом"},
+  {layer:"CI/CD і контракти", choice:"GitHub Actions + JSON Schema + мутаційні тести + bash -euo pipefail", lang:"YAML / Python", why:"Продовження вже перевіреного контрактного CI проєкту TA"},
+  {layer:"Спостережуваність", choice:"OpenTelemetry → Grafana (Loki, Tempo, Prometheus), Sentry", lang:"—", why:"Трасування пошуку маршрутів і платіжних операцій end-to-end"}
+];
+var STACK_REJECTED = [
+  {what:"PHP/Laravel монолiт", why:"Слабший шлях до реального часу й до окремого високонавантаженого сервісу пошуку"},
+  {what:"Java/Spring", why:"Придатний і надійний, але дорожчий у наймі та повільніший в ітераціях для команди такого розміру"},
+  {what:"Python як основний backend", why:"Залишено лише для ML і аналітики; для OLTP-домену з ескроу типізований TypeScript зручніший у контрактному CI"},
+  {what:"MongoDB як основна база", why:"Угоди, ставки, ескроу потребують транзакцій і обмежень цілісності"},
+  {what:"Vector DB на старті Q&A", why:"У TA вже працює локальне retrieval по курованих wiki.json/outputs.json — цього достатньо для MVP"},
+  {what:"Повністю on-chain біржа", why:"Юридично значущі документи й фіатні платежі лишаються off-chain; блокчейн — опційний розрахунковий шар"},
+  {what:"localStorage як сховище предметних даних", why:"Пряма заборона рамкового ТЗ; допустимий лише втрачуваний UI-стан"}
+];
+var STACK_LAUNCH = [
+  {stage:"Етап 1 (0–3 міс.)", includes:"Заявки, ставки, профілі, права на розділи, UK/EN/PL/DE, платна реєстрація", tech:"Next.js, NestJS, PostgreSQL+PostGIS, Redis, GitHub Actions"},
+  {stage:"Етап 2 (3–6 міс.)", includes:"Модуль SEARCH, POST_DRONE, реальні дорожні відстані", tech:"Go-сервіс, OSRM/Valhalla, gRPC-контракт"},
+  {stage:"Етап 3 (6–9 міс.)", includes:"Мультивалютні угоди, ескроу, e-invoicing, локальні виплати", tech:"settlement, decimal-арифметика, PSP-інтеграції"},
+  {stage:"Етап 4 (9–12 міс.)", includes:"Аналітика, рейтинги на даних, прогноз ставок, вебхуки партнерам", tech:"ClickHouse, Python-ML, Kafka Connect"},
+  {stage:"Етап 5", includes:"Смартконтрактне ескроу й оракули підтвердження доставки", tech:"Solidity + Foundry, L2"}
+];
+var STACK_ACCEPTANCE = [
+  "Жоден предметний запис не зберігається у сховищі браузера; очищення браузера не втрачає даних учасника",
+  "Кожен публічний API-ендпойнт має JSON Schema, і мутація схеми валить CI",
+  "Контракт між api-gateway і search перевіряється окремим негативним pull request",
+  "Пошук повертає зібраний і ранжований набір варіантів, а не перший знайдений маршрут",
+  "Дрон-варіант додається як альтернатива останнього авто-плеча і не видаляє авто-варіант",
+  "У угоді ставка, договір, платіж, курс, джерело курсу, комісія та стан ескроу — окремі поля",
+  "Деградація одного зовнішнього конектора дає частковий результат, а не помилку всієї сторінки",
+  "Усі bash-кроки конвеєра виконуються з bash -euo pipefail"
+];
+var STACK_SERVICE_MAP = "web (Next.js, TS)\n" +
+  "  └─ api-gateway (NestJS, TS) ── OpenAPI + JSON Schema\n" +
+  "       ├─ identity (KYB, тризрівневий онбординг, права на розділи транспорту)\n" +
+  "       ├─ exchange (заявки, лоти, ставки, рейтинги)  ── Kafka\n" +
+  "       ├─ settlement (валюта ціни / валюта оплати, курс + джерело курсу, комісія, ескроу)\n" +
+  "       ├─ search (Go)  ── PostGIS, OSRM/Valhalla, Redis\n" +
+  "       ├─ connectors (погода, кордони, довідники) ── Redis-кеш, деградація по джерелу\n" +
+  "       └─ qa-portal (raw → wiki → outputs, цитати й статус перевірки)\n" +
+  "PostgreSQL 18 + PostGIS · Redis · Kafka · ClickHouse · S3-сумісне сховище документів";
+
+function renderStack(){
+  var decisionsHtml = STACK_DECISIONS.map(function(d){
+    return '<tr><td>'+esc(d.layer)+'</td><td><code>'+esc(d.choice)+'</code></td><td>'+esc(d.lang)+'</td><td>'+esc(d.why)+'</td></tr>';
+  }).join("");
+  var rejectedHtml = STACK_REJECTED.map(function(r){
+    return '<tr><td>'+esc(r.what)+'</td><td>'+esc(r.why)+'</td></tr>';
+  }).join("");
+  var launchHtml = STACK_LAUNCH.map(function(l){
+    return '<tr><td>'+esc(l.stage)+'</td><td>'+esc(l.includes)+'</td><td><code>'+esc(l.tech)+'</code></td></tr>';
+  }).join("");
+  var acceptanceHtml = STACK_ACCEPTANCE.map(function(a){ return '<li>'+esc(a)+'</li>'; }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("stack_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("stack_lede"))+'</p>'+
+    '<p class="escrow-note">'+esc(t("stack_disclaimer"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_decisions_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("stack_col_layer"))+'</th><th>'+esc(t("stack_col_choice"))+'</th><th>'+esc(t("stack_col_lang"))+'</th><th>'+esc(t("backend_col_why"))+'</th>'+
+    '</tr></thead><tbody>'+decisionsHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_why_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("stack_why_ts"))+'</p>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("stack_why_go"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_rejected_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("stack_col_rejected"))+'</th><th>'+esc(t("stack_col_reason"))+'</th>'+
+    '</tr></thead><tbody>'+rejectedHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_map_heading"))+'</h2>'+
+    '<div class="bpmn-diagram"><pre style="margin:0;font-family:var(--font-mono);font-size:.8rem;white-space:pre;">'+esc(STACK_SERVICE_MAP)+'</pre></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_launch_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("stack_col_stage"))+'</th><th>'+esc(t("stack_col_includes"))+'</th><th>'+esc(t("stack_col_tech"))+'</th>'+
+    '</tr></thead><tbody>'+launchHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_acceptance_heading"))+'</h2>'+
+    '<ul style="color:var(--ink-soft);max-width:760px;">'+acceptanceHtml+'</ul>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
+    '<ul class="automation-downloads">'+
+      '<li>'+ICONS.book+'<a href="docs/stack-decision-spec.md" target="_blank" rel="noopener">'+esc(t("stack_download_spec"))+'</a></li>'+
+      '<li>'+ICONS.server+'<a href="#backend" data-route="backend">'+esc(t("stack_link_backend"))+'</a></li>'+
+    '</ul>'+
+  '</div></section>';
+}
+
 /* ---------- render: contacts ---------- */
 var OFFICES=[
   {city:{uk:"Київ",en:"Kyiv",pl:"Kijów",de:"Kiew"}, addr:"вул. Портова, 12", phone:"+380 44 000 00 00", email:"kyiv@trans-atlas.example"},
@@ -6953,6 +7133,7 @@ function pageContent(){
     case "automation": return renderAutomation();
     case "verification": return renderVerification();
     case "backend": return renderBackend();
+    case "stack": return renderStack();
     default: return renderHero()+renderStats();
   }
 }
