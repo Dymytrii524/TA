@@ -4871,6 +4871,12 @@ uk:{
   backend_col_metric:"Показник", backend_col_target:"Ціль",
   backend_col_run:"Прогін", backend_col_checked:"Що перевіряв", backend_col_result:"Результат",
   backend_download_spec:"Повна специфікація Спринту 0 (Markdown)",
+  backend_cigates_heading:"CI-гейти: обов'язкові перевірки",
+  backend_cigates_lede:"Дев'ять перевірок від двох конвеєрів; кожен конвеєр має власний gate-job, що падає, якщо впав будь-який job, від якого він залежить.",
+  backend_col_pipeline:"Конвеєр", backend_col_job:"Job", backend_col_check:"Перевірка в правилі",
+  backend_cigates_note:"Це дизайн конвеєра й правила захисту гілки, а не застосована конфігурація: у цьому репозиторії ruleset і .github/workflows/ і зараз вимагають лише трьох перевірок (contract-gate, схема, i18n) — дев'ятиперевіркове правило не накладено, а workflow бекенду не скопійовано в .github/workflows/, бо скриптів sprint-0-backend/ci/*, які він викликає, ще не існує.",
+  backend_download_ciworkflow:"Дзеркало workflow контракту бекенду (YAML)",
+  backend_download_ciruleset:"Пропоноване правило захисту гілки, 9 перевірок (JSON)",
   stack_title:"Технологічний стек",
   stack_lede:"Вибір мов і технологій для production-рерайту Trans-Atlas як біржі з шістьма видами транспорту: серверна СУБД як єдине джерело істини, PostgreSQL + PostGIS, контракти через JSON Schema.",
   stack_disclaimer:"Це документ-рішення, а не впроваджений стек: жоден із перелічених сервісів (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) не розгорнутий у цьому проєкті. index.html лишається тим самим односторінковим файлом. «Бекенд: Спринт 0» — перший виконаний і перевірений шматок цього ширшого плану.",
@@ -5048,6 +5054,12 @@ en:{
   backend_col_metric:"Metric", backend_col_target:"Target",
   backend_col_run:"Run", backend_col_checked:"What it checked", backend_col_result:"Result",
   backend_download_spec:"Full Sprint 0 specification (Markdown)",
+  backend_cigates_heading:"CI gates: required checks",
+  backend_cigates_lede:"Nine checks from two pipelines; each pipeline has its own gate job, which fails if any job it depends on fails.",
+  backend_col_pipeline:"Pipeline", backend_col_job:"Job", backend_col_check:"Check in the ruleset",
+  backend_cigates_note:"This is a pipeline and branch-protection design, not an applied configuration: in this repository, the ruleset and .github/workflows/ still require only three checks (contract-gate, schema, i18n) - the nine-check ruleset has not been applied, and the backend workflow has not been copied into .github/workflows/, because the sprint-0-backend/ci/* scripts it calls don't exist yet.",
+  backend_download_ciworkflow:"Backend contract workflow mirror (YAML)",
+  backend_download_ciruleset:"Proposed branch-protection ruleset, 9 checks (JSON)",
   stack_title:"Technology stack",
   stack_lede:"The language and technology choices for a production rewrite of Trans-Atlas as an exchange covering six transport modes: a server-side database as the single source of truth, PostgreSQL + PostGIS, contracts via JSON Schema.",
   stack_disclaimer:"This is a decision record, not a deployed stack: none of the listed services (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) actually run in this project. index.html stays the same single-page file it always was. \"Backend: Sprint 0\" is the first executed and tested slice of this broader plan.",
@@ -5225,6 +5237,12 @@ pl:{
   backend_col_metric:"Wskaźnik", backend_col_target:"Cel",
   backend_col_run:"Przebieg", backend_col_checked:"Co sprawdzał", backend_col_result:"Wynik",
   backend_download_spec:"Pełna specyfikacja Sprintu 0 (Markdown)",
+  backend_cigates_heading:"Bramki CI: wymagane kontrole",
+  backend_cigates_lede:"Dziewięć kontroli z dwóch potoków; każdy potok ma własny job-bramkę, który kończy się niepowodzeniem, jeśli zawiedzie dowolny zależny od niego job.",
+  backend_col_pipeline:"Potok", backend_col_job:"Job", backend_col_check:"Kontrola w regule",
+  backend_cigates_note:"To projekt potoku i ochrony gałęzi, a nie zastosowana konfiguracja: w tym repozytorium ruleset i .github/workflows/ nadal wymagają tylko trzech kontroli (contract-gate, schema, i18n) - reguła z dziewięcioma kontrolami nie została zastosowana, a workflow backendu nie skopiowano do .github/workflows/, bo skrypty sprint-0-backend/ci/*, które wywołuje, jeszcze nie istnieją.",
+  backend_download_ciworkflow:"Lustro workflow kontraktu backendu (YAML)",
+  backend_download_ciruleset:"Proponowana reguła ochrony gałęzi, 9 kontroli (JSON)",
   stack_title:"Stos technologiczny",
   stack_lede:"Wybór języków i technologii dla produkcyjnego przepisania Trans-Atlas jako giełdy obejmującej sześć rodzajów transportu: serwerowa baza danych jako jedyne źródło prawdy, PostgreSQL + PostGIS, kontrakty przez JSON Schema.",
   stack_disclaimer:"To dokument decyzyjny, a nie wdrożony stos: żadna z wymienionych usług (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) nie działa w tym projekcie. index.html pozostaje tym samym jednostronicowym plikiem. „Backend: Sprint 0” to pierwszy zrealizowany i przetestowany fragment tego szerszego planu.",
@@ -5402,6 +5420,12 @@ de:{
   backend_col_metric:"Kennzahl", backend_col_target:"Ziel",
   backend_col_run:"Lauf", backend_col_checked:"Was geprüft wurde", backend_col_result:"Ergebnis",
   backend_download_spec:"Vollständige Sprint-0-Spezifikation (Markdown)",
+  backend_cigates_heading:"CI-Gates: erforderliche Prüfungen",
+  backend_cigates_lede:"Neun Prüfungen aus zwei Pipelines; jede Pipeline hat einen eigenen Gate-Job, der fehlschlägt, wenn ein Job, von dem er abhängt, fehlschlägt.",
+  backend_col_pipeline:"Pipeline", backend_col_job:"Job", backend_col_check:"Prüfung im Regelwerk",
+  backend_cigates_note:"Dies ist ein Pipeline- und Branch-Protection-Entwurf, keine angewendete Konfiguration: In diesem Repository verlangen Ruleset und .github/workflows/ weiterhin nur drei Prüfungen (contract-gate, schema, i18n) - das Neun-Prüfungen-Regelwerk wurde nicht angewendet, und der Backend-Workflow wurde nicht nach .github/workflows/ kopiert, weil die von ihm aufgerufenen sprint-0-backend/ci/*-Skripte noch nicht existieren.",
+  backend_download_ciworkflow:"Spiegel des Backend-Contract-Workflows (YAML)",
+  backend_download_ciruleset:"Vorgeschlagenes Branch-Protection-Regelwerk, 9 Prüfungen (JSON)",
   stack_title:"Technologie-Stack",
   stack_lede:"Die Sprach- und Technologieentscheidungen für eine Produktions-Neuentwicklung von Trans-Atlas als Börse für sechs Transportarten: eine serverseitige Datenbank als einzige Quelle der Wahrheit, PostgreSQL + PostGIS, Verträge über JSON Schema.",
   stack_disclaimer:"Dies ist ein Entscheidungsprotokoll, kein bereitgestellter Stack: Keiner der genannten Dienste (Next.js, NestJS, Go, Kafka, ClickHouse, Kubernetes) läuft tatsächlich in diesem Projekt. index.html bleibt dieselbe einzelne Datei wie zuvor. „Backend: Sprint 0“ ist der erste umgesetzte und getestete Teil dieses umfassenderen Plans.",
@@ -6545,6 +6569,18 @@ var BACKEND_FRONTEND_CHANGES = [
   "Перемикач API_BASE: за відсутності бекенду сайт чесно повідомляє про це, як уже роблять вкладки погоди й кордонів"
 ];
 
+var BACKEND_CI_GATES = [
+  {pipeline:"ci/github-actions-contract.yml", job:"schema", check:"Схема і сценарії T16-T27"},
+  {pipeline:"", job:"i18n", check:"Валютні та мовні сценарії C1-C13, L1-L12"},
+  {pipeline:"", job:"proto", check:"Контракт proto модуля SEARCH"},
+  {pipeline:"", job:"contract-gate", check:"contract-gate"},
+  {pipeline:"ci/backend-contract.yml", job:"backend-contract", check:"Контракт бекенду Спринту 0"},
+  {pipeline:"", job:"backend-db", check:"Приймальні тести БД Спринту 0"},
+  {pipeline:"", job:"verification-contract", check:"Контракт модуля верифікації"},
+  {pipeline:"", job:"verification-db", check:"Інваріанти верифікації"},
+  {pipeline:"", job:"backend-gate", check:"backend-gate"}
+];
+
 function renderBackend(){
   var scopeInHtml = BACKEND_SCOPE_IN.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("");
   var scopeOutHtml = BACKEND_SCOPE_OUT.map(function(s){
@@ -6569,6 +6605,9 @@ function renderBackend(){
     return '<tr><td><code>'+esc(r.run)+'</code></td><td>'+esc(r.what)+'</td><td><span class="source-status live">'+esc(r.result)+'</span></td></tr>';
   }).join("");
   var feChangesHtml = BACKEND_FRONTEND_CHANGES.map(function(c){ return '<li>'+esc(c)+'</li>'; }).join("");
+  var ciGatesHtml = BACKEND_CI_GATES.map(function(g){
+    return '<tr><td>'+(g.pipeline?'<code>'+esc(g.pipeline)+'</code>':'')+'</td><td><code>'+esc(g.job)+'</code></td><td>'+esc(g.check)+'</td></tr>';
+  }).join("");
   return ''+
   '<section><div class="wrap">'+
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("backend_title"))+'</h1>'+
@@ -6618,9 +6657,18 @@ function renderBackend(){
     '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("backend_frontend_lede"))+'</p>'+
     '<ul style="color:var(--ink-soft);max-width:760px;">'+feChangesHtml+'</ul>'+
 
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_cigates_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("backend_cigates_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("backend_col_pipeline"))+'</th><th>'+esc(t("backend_col_job"))+'</th><th>'+esc(t("backend_col_check"))+'</th>'+
+    '</tr></thead><tbody>'+ciGatesHtml+'</tbody></table></div>'+
+    '<p class="escrow-note">'+esc(t("backend_cigates_note"))+'</p>'+
+
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
     '<ul class="automation-downloads">'+
       '<li>'+ICONS.book+'<a href="docs/backend-sprint0-spec.md" target="_blank" rel="noopener">'+esc(t("backend_download_spec"))+'</a></li>'+
+      '<li>'+ICONS.server+'<a href="docs/ci-backend-contract-workflow.yml" target="_blank" rel="noopener">'+esc(t("backend_download_ciworkflow"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="docs/ci-ruleset-contract-proposed.json" target="_blank" rel="noopener">'+esc(t("backend_download_ciruleset"))+'</a></li>'+
     '</ul>'+
   '</div></section>';
 }
