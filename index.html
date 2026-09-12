@@ -4927,7 +4927,9 @@ uk:{
   backend_cigates_heading:"CI-гейти: обов'язкові перевірки",
   backend_cigates_lede:"Дев'ять перевірок від двох конвеєрів; кожен конвеєр має власний gate-job, що падає, якщо впав будь-який job, від якого він залежить.",
   backend_col_pipeline:"Конвеєр", backend_col_job:"Job", backend_col_check:"Перевірка в правилі",
-  backend_cigates_note:"Це дизайн конвеєра й правила захисту гілки, а не застосована конфігурація: у цьому репозиторії ruleset і .github/workflows/ і зараз вимагають лише трьох перевірок (contract-gate, схема, i18n) — дев'ятиперевіркове правило не накладено, а workflow бекенду не скопійовано в .github/workflows/, бо скриптів sprint-0-backend/ci/*, які він викликає, ще не існує.",
+  backend_cigates_note:"Це дизайн конвеєра й правила захисту гілки, а не застосована конфігурація: у цьому репозиторії ruleset і .github/workflows/ і зараз вимагають лише трьох перевірок (contract-gate, схема, i18n) — дев'ятиперевіркове правило не накладено, а workflow бекенду не скопійовано в .github/workflows/, бо скриптів sprint-0-backend/ci/*, які він викликає, ще не існує. `ci/check_live_ruleset.py` — реальний, робочий файл (звіряє файл правила з живим GitHub, лише за ручного запуску з токеном, нічого не змінює). Оновлена перевірка узгодженості на 13 правил лишається довідковим файлом: запущена зараз, вона одразу падає на відсутньому `ci/backend-contract.yml` — перевірено в цій сесії, а не просто заявлено.",
+  backend_download_liveruleset:"Звіряння живого правила з GitHub (ci/check_live_ruleset.py, реальний файл)",
+  backend_download_checkruleset_proposed:"Оновлена перевірка узгодженості, 13 правил (довідковий файл)",
   backend_download_ciworkflow:"Дзеркало workflow контракту бекенду (YAML)",
   backend_download_ciruleset:"Пропоноване правило захисту гілки, 9 перевірок (JSON)",
   stack_title:"Технологічний стек",
@@ -5111,7 +5113,9 @@ en:{
   backend_cigates_heading:"CI gates: required checks",
   backend_cigates_lede:"Nine checks from two pipelines; each pipeline has its own gate job, which fails if any job it depends on fails.",
   backend_col_pipeline:"Pipeline", backend_col_job:"Job", backend_col_check:"Check in the ruleset",
-  backend_cigates_note:"This is a pipeline and branch-protection design, not an applied configuration: in this repository, the ruleset and .github/workflows/ still require only three checks (contract-gate, schema, i18n) - the nine-check ruleset has not been applied, and the backend workflow has not been copied into .github/workflows/, because the sprint-0-backend/ci/* scripts it calls don't exist yet.",
+  backend_cigates_note:"This is a pipeline and branch-protection design, not an applied configuration: in this repository, the ruleset and .github/workflows/ still require only three checks (contract-gate, schema, i18n) - the nine-check ruleset has not been applied, and the backend workflow has not been copied into .github/workflows/, because the sprint-0-backend/ci/* scripts it calls don't exist yet. `ci/check_live_ruleset.py` is a real, working file (diffs the ruleset file against the live GitHub rule, manual invocation with a token only, changes nothing). The updated 13-rule consistency checker stays a reference-only file: run now, it fails immediately on the missing `ci/backend-contract.yml` - verified in this session, not just claimed.",
+  backend_download_liveruleset:"Live-ruleset reconciliation with GitHub (ci/check_live_ruleset.py, real file)",
+  backend_download_checkruleset_proposed:"Updated consistency checker, 13 rules (reference file)",
   backend_download_ciworkflow:"Backend contract workflow mirror (YAML)",
   backend_download_ciruleset:"Proposed branch-protection ruleset, 9 checks (JSON)",
   stack_title:"Technology stack",
@@ -5295,7 +5299,9 @@ pl:{
   backend_cigates_heading:"Bramki CI: wymagane kontrole",
   backend_cigates_lede:"Dziewięć kontroli z dwóch potoków; każdy potok ma własny job-bramkę, który kończy się niepowodzeniem, jeśli zawiedzie dowolny zależny od niego job.",
   backend_col_pipeline:"Potok", backend_col_job:"Job", backend_col_check:"Kontrola w regule",
-  backend_cigates_note:"To projekt potoku i ochrony gałęzi, a nie zastosowana konfiguracja: w tym repozytorium ruleset i .github/workflows/ nadal wymagają tylko trzech kontroli (contract-gate, schema, i18n) - reguła z dziewięcioma kontrolami nie została zastosowana, a workflow backendu nie skopiowano do .github/workflows/, bo skrypty sprint-0-backend/ci/*, które wywołuje, jeszcze nie istnieją.",
+  backend_cigates_note:"To projekt potoku i ochrony gałęzi, a nie zastosowana konfiguracja: w tym repozytorium ruleset i .github/workflows/ nadal wymagają tylko trzech kontroli (contract-gate, schema, i18n) - reguła z dziewięcioma kontrolami nie została zastosowana, a workflow backendu nie skopiowano do .github/workflows/, bo skrypty sprint-0-backend/ci/*, które wywołuje, jeszcze nie istnieją. `ci/check_live_ruleset.py` to prawdziwy, działający plik (porównuje plik reguły z żywą regułą GitHub, tylko przy ręcznym uruchomieniu z tokenem, niczego nie zmienia). Zaktualizowany walidator spójności na 13 reguł pozostaje plikiem referencyjnym: uruchomiony teraz, natychmiast kończy się niepowodzeniem z powodu brakującego `ci/backend-contract.yml` - zweryfikowano w tej sesji, a nie tylko zadeklarowano.",
+  backend_download_liveruleset:"Porównanie żywej reguły z GitHub (ci/check_live_ruleset.py, prawdziwy plik)",
+  backend_download_checkruleset_proposed:"Zaktualizowany walidator spójności, 13 reguł (plik referencyjny)",
   backend_download_ciworkflow:"Lustro workflow kontraktu backendu (YAML)",
   backend_download_ciruleset:"Proponowana reguła ochrony gałęzi, 9 kontroli (JSON)",
   stack_title:"Stos technologiczny",
@@ -5479,7 +5485,9 @@ de:{
   backend_cigates_heading:"CI-Gates: erforderliche Prüfungen",
   backend_cigates_lede:"Neun Prüfungen aus zwei Pipelines; jede Pipeline hat einen eigenen Gate-Job, der fehlschlägt, wenn ein Job, von dem er abhängt, fehlschlägt.",
   backend_col_pipeline:"Pipeline", backend_col_job:"Job", backend_col_check:"Prüfung im Regelwerk",
-  backend_cigates_note:"Dies ist ein Pipeline- und Branch-Protection-Entwurf, keine angewendete Konfiguration: In diesem Repository verlangen Ruleset und .github/workflows/ weiterhin nur drei Prüfungen (contract-gate, schema, i18n) - das Neun-Prüfungen-Regelwerk wurde nicht angewendet, und der Backend-Workflow wurde nicht nach .github/workflows/ kopiert, weil die von ihm aufgerufenen sprint-0-backend/ci/*-Skripte noch nicht existieren.",
+  backend_cigates_note:"Dies ist ein Pipeline- und Branch-Protection-Entwurf, keine angewendete Konfiguration: In diesem Repository verlangen Ruleset und .github/workflows/ weiterhin nur drei Prüfungen (contract-gate, schema, i18n) - das Neun-Prüfungen-Regelwerk wurde nicht angewendet, und der Backend-Workflow wurde nicht nach .github/workflows/ kopiert, weil die von ihm aufgerufenen sprint-0-backend/ci/*-Skripte noch nicht existieren. `ci/check_live_ruleset.py` ist eine echte, funktionierende Datei (vergleicht die Regelwerksdatei mit der live GitHub-Regel, nur bei manuellem Aufruf mit einem Token, ändert nichts). Der aktualisierte 13-Regel-Konsistenzprüfer bleibt eine reine Referenzdatei: jetzt ausgeführt, schlägt er sofort wegen des fehlenden `ci/backend-contract.yml` fehl - in dieser Sitzung überprüft, nicht nur behauptet.",
+  backend_download_liveruleset:"Abgleich des Live-Regelwerks mit GitHub (ci/check_live_ruleset.py, echte Datei)",
+  backend_download_checkruleset_proposed:"Aktualisierter Konsistenzprüfer, 13 Regeln (Referenzdatei)",
   backend_download_ciworkflow:"Spiegel des Backend-Contract-Workflows (YAML)",
   backend_download_ciruleset:"Vorgeschlagenes Branch-Protection-Regelwerk, 9 Prüfungen (JSON)",
   stack_title:"Technologie-Stack",
@@ -6744,6 +6752,8 @@ function renderBackend(){
       '<li>'+ICONS.book+'<a href="docs/backend-sprint0-spec.md" target="_blank" rel="noopener">'+esc(t("backend_download_spec"))+'</a></li>'+
       '<li>'+ICONS.server+'<a href="docs/ci-backend-contract-workflow.yml" target="_blank" rel="noopener">'+esc(t("backend_download_ciworkflow"))+'</a></li>'+
       '<li>'+ICONS.checklist+'<a href="docs/ci-ruleset-contract-proposed.json" target="_blank" rel="noopener">'+esc(t("backend_download_ciruleset"))+'</a></li>'+
+      '<li>'+ICONS.shield+'<a href="ci/check_live_ruleset.py" target="_blank" rel="noopener">'+esc(t("backend_download_liveruleset"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="docs/ci-check-ruleset-proposed.py" target="_blank" rel="noopener">'+esc(t("backend_download_checkruleset_proposed"))+'</a></li>'+
     '</ul>'+
   '</div></section>';
 }
