@@ -1,3 +1,5 @@
 ﻿images/*-orig.jpg
 .claude/
 server/.cache.json
+
+ci/node_modules/

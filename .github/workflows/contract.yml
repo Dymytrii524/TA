@@ -160,11 +160,66 @@ jobs:
           name: i18n-report
           path: i18n-report.txt
 
+  ui:
+    name: UI-сценарії U1-U8 вибору виду транспорту
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Чи торкнувся PR головної сторінки або самого прогону
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          base="origin/${{ github.base_ref }}"
+          git fetch origin "${{ github.base_ref }}" --quiet
+          if git diff --name-only "$base"...HEAD | grep -Eq '^(index\.html|ci/|\.github/workflows/)'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Головна сторінка й прогін не змінювалися - прогін пропускається, перевірка вважається успішною."
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.changed.outputs.run == 'true'
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ci/package-lock.json
+
+      - name: Встановити залежності
+        if: steps.changed.outputs.run == 'true'
+        run: npm ci --prefix ci
+
+      - name: Сценарії U1-U8 з мутаціями
+        if: steps.changed.outputs.run == 'true'
+        run: node ci/verify_heromode.js | tee ui-report.txt
+
+      - name: Звіт у підсумок pull request
+        if: always() && steps.changed.outputs.run == 'true'
+        run: |
+          {
+            echo "## UI-сценарії вибору виду транспорту"
+            echo '```'
+            cat ui-report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.changed.outputs.run == 'true'
+        with:
+          name: ui-report
+          path: ui-report.txt
+
   # Саме цю перевірку призначають обовʼязковою в правилах гілки.
   # Вона виконується завжди й падає, якщо впав будь-який із job «schema» або «i18n».
   contract-gate:
     name: contract-gate
-    needs: [schema, i18n]
+    needs: [schema, i18n, ui]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -172,7 +227,7 @@ jobs:
       - name: Результат кроку «Контракт»
         run: |
           rc=0
-          for pair in "schema:${{ needs.schema.result }}" "i18n:${{ needs.i18n.result }}"; do
+          for pair in "schema:${{ needs.schema.result }}" "i18n:${{ needs.i18n.result }}" "ui:${{ needs.ui.result }}"; do
             job="${pair%%:*}"; result="${pair#*:}"
             echo "job $job: $result"
             case "$result" in

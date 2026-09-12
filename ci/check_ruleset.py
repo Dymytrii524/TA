@@ -20,6 +20,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 ROOT = os.environ.get("CONTRACT_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WF = os.path.join(ROOT, "ci", "github-actions-contract.yml")
+LIVE_WF = os.path.join(ROOT, ".github", "workflows", "contract.yml")
 RS = os.path.join(ROOT, "ci", "ruleset-contract.json")
 
 GATE = "contract-gate"
@@ -155,9 +156,24 @@ def r10_pipeline_does_not_mask_failures(wf, rs):
                 f"команди (наприклад tee), і провал прогону стане невидимим")
 
 
+def r11_mirror_matches_live_workflow(wf, rs):
+    """R11. Дзеркало ci/github-actions-contract.yml збігається з робочим .github/workflows/contract.yml.
+
+    Усі перевірки цього прогону читають дзеркало, а GitHub виконує файл у
+    .github/workflows. Розходження між ними означає, що правило гілки
+    перевірено на одному конвеєрі, а працює інший.
+    """
+    assert os.path.exists(LIVE_WF), f"робочий конвеєр {LIVE_WF} відсутній"
+    mirror = open(WF, encoding="utf-8").read()
+    live = open(LIVE_WF, encoding="utf-8").read()
+    assert mirror == live, ("дзеркало ci/github-actions-contract.yml розійшлося з "
+                            ".github/workflows/contract.yml - оновіть обидва файли разом")
+
+
 CHECKS = [r1_contexts_exist, r2_all_jobs_required, r3_gate_present, r4_gate_needs_all,
           r5_run_jobs_always_report, r6_no_path_filter_on_trigger, r7_scenario_groups_named,
-          r8_rule_hardening, r9_scenario_ids_documented, r10_pipeline_does_not_mask_failures]
+          r8_rule_hardening, r9_scenario_ids_documented, r10_pipeline_does_not_mask_failures,
+          r11_mirror_matches_live_workflow]
 
 IDS = {f.__name__: f.__doc__.split(".")[0] for f in CHECKS}
 
@@ -193,6 +209,14 @@ MUTATIONS = [
                      for r in rs["rules"] if r["type"] == "pull_request"]),
     ("R10: у конвеєрі знято pipefail - провал маскується tee",
      lambda wf, rs: wf["defaults"]["run"].update(shell="bash -e {0}")),
+    ("R2: job ui прибрано з правила гілки",
+     lambda wf, rs: set_ctx(rs, [c for c in contexts(rs) if not c.startswith("UI-сценарії")])),
+    ("R1, R2: job ui перейменовано без оновлення правила",
+     lambda wf, rs: wf["jobs"]["ui"].update(name="ui-checks")),
+    ("R4: gate більше не залежить від ui",
+     lambda wf, rs: wf["jobs"][GATE].update(needs=["schema", "i18n"])),
+    ("R5: у job-а ui зʼявився job-level if",
+     lambda wf, rs: wf["jobs"]["ui"].update({"if": "github.event_name == 'pull_request'"})),
     ("R7: у правилі лишились перевірки без назв груп сценаріїв",
      lambda wf, rs: set_ctx(rs, [GATE, "Схема", "Валюти"])),
 ]

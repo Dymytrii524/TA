@@ -27,9 +27,13 @@ if hasattr(sys.stdout, "reconfigure"):
 import yaml
 
 ROOT = os.environ.get("CONTRACT_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-COPY = ["ci", "schemas", "i18n", "ТЗ-рамкове-логістична-біржа.md",
+COPY = ["ci", "schemas", "i18n", ".github", "index.html",
+        "ТЗ-рамкове-логістична-біржа.md",
         "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md",
         "ТЗ-логістична-біржа-v2-мови-валюти.md"]
+# node_modules не копіюється (десятки мегабайт на кожен прогін) - замість цього
+# кроку `npm ci` підставляється заглушка, а jsdom резолвиться через NODE_PATH.
+IGNORE = shutil.ignore_patterns("node_modules")
 BASE = "main"
 SUCCESS, SKIPPED, FAILURE = "success", "skipped", "failure"
 
@@ -120,8 +124,28 @@ def s_job_renamed(d):
 
 def s_gate_needs_dropped(d):
     p = os.path.join(d, "ci", "github-actions-contract.yml")
-    t = open(p, encoding="utf-8").read().replace("    needs: [schema, i18n]", "    needs: [schema]")
+    src = open(p, encoding="utf-8").read()
+    t = src.replace("    needs: [schema, i18n, ui]", "    needs: [schema]")
+    assert t != src, "мутація PR-10 не застосувалася: змінився рядок needs у gate-job"
     open(p, "w", encoding="utf-8").write(t)
+
+
+def s_heromode_regression(d):
+    """Регресія самої функціональності: деталізація знову скидає фільтр у "all"."""
+    p = os.path.join(d, "index.html")
+    t = open(p, encoding="utf-8").read()
+    out = t.replace('state.filters.mode = state.heroMode || "all";', 'state.filters.mode = "all";')
+    assert out != t, "мутація PR-12 не застосувалася"
+    open(p, "w", encoding="utf-8").write(out)
+
+
+def s_home_cosmetic(d):
+    """Косметична правка головної, яка не чіпає логіку вибору виду транспорту."""
+    p = os.path.join(d, "index.html")
+    t = open(p, encoding="utf-8").read()
+    out = t.replace("</body>", "<!-- косметична правка -->\n</body>", 1)
+    assert out != t, "мутація PR-13 не застосувалася"
+    open(p, "w", encoding="utf-8").write(out)
 
 
 def s_rule_weakened(d):
@@ -158,6 +182,12 @@ SCENARIOS = [
      "R4: втрачено залежність gate-а"),
     ("PR-11 перевірку i18n вилучено з правила", s_rule_weakened, {"schema": FAILURE}, False,
      "R2, R7: правило перестало називати групу C1-C13, L1-L12"),
+    ("PR-12 регресія вибору виду транспорту на головній", s_heromode_regression,
+     {"ui": FAILURE, "schema": SUCCESS, "i18n": SUCCESS}, False,
+     "U6: деталізація по стрілці перестала нести вибраний вид транспорту"),
+    ("PR-13 косметична правка головної сторінки", s_home_cosmetic,
+     {"ui": SUCCESS, "schema": SUCCESS, "i18n": SUCCESS}, True,
+     "UI-сценарії проходять, злиття вільне"),
 ]
 
 
@@ -174,7 +204,7 @@ def prepare(tmp):
     for item in COPY:
         src = os.path.join(ROOT, item)
         dst = os.path.join(work, item)
-        shutil.copytree(src, dst) if os.path.isdir(src) else shutil.copy2(src, dst)
+        shutil.copytree(src, dst, ignore=IGNORE) if os.path.isdir(src) else shutil.copy2(src, dst)
     sh(["git", "add", "-A"], work)
     sh(["git", "commit", "-qm", "base"], work)
     sh(["git", "remote", "add", "origin", origin], work)
@@ -196,14 +226,24 @@ def make_branch(work, name, mutate):
 
 
 def shims(tmp):
-    """python -> python3, pip -> заглушка (залежності вже встановлені, мережі немає)."""
+    """python -> python3, pip і npm -> заглушки (залежності вже встановлені, мережі немає)."""
     b = os.path.join(tmp, "bin")
     os.makedirs(b, exist_ok=True)
     open(os.path.join(b, "python"), "w").write("#!/bin/sh\nexec python3 \"$@\"\n")
     open(os.path.join(b, "pip"), "w").write('#!/bin/sh\necho "pip: пропущено (залежності в середовищі)"\n')
-    for f in ("python", "pip"):
+    open(os.path.join(b, "npm"), "w").write('#!/bin/sh\necho "npm: пропущено (jsdom підключено через NODE_PATH)"\n')
+    for f in ("python", "pip", "npm"):
         os.chmod(os.path.join(b, f), 0o755)
     return b
+
+
+def node_path():
+    """Каталог із jsdom для кроку UI-сценаріїв: мережі в прогоні немає."""
+    for cand in (os.path.join(ROOT, "ci", "node_modules"),
+                 os.path.join(os.path.dirname(ROOT), "node_modules")):
+        if os.path.isdir(os.path.join(cand, "jsdom")):
+            return cand
+    raise SystemExit("jsdom не знайдено: виконайте `npm ci --prefix ci` перед прогоном")
 
 
 def subst(text, branch):
@@ -248,6 +288,11 @@ def shell_argv(wf, job, step):
 def run_job(work, binpath, wf, job, branch, logs, side):
     env = dict(os.environ)
     env["PATH"] = binpath + os.pathsep + env["PATH"]
+    env["NODE_PATH"] = node_path()
+    # У симуляції UI-набір іде швидким режимом: перевіряються всі гілки
+    # обробника, але не кожна з ~270 стрілок - інакше один прогін правила
+    # гілки тривав би десятки хвилин. Вичерпний режим лишається в CI.
+    env["HEROMODE_FULL"] = "0"
     outputs, failed = {}, False
     gh_out = os.path.join(side, "gh_output")
     gh_sum = os.path.join(side, "gh_summary")
@@ -349,9 +394,9 @@ def main():
             if verbose or not ok:
                 print("\n".join(logs))
         print()
-        print(f"{'Сценарій':52s} {'schema':9s} {'i18n':9s} {'gate':9s} {'злиття':10s} {'очікувано':10s} Вердикт")
+        print(f"{'Сценарій':52s} {'schema':9s} {'i18n':9s} {'ui':9s} {'gate':9s} {'злиття':10s} {'очікувано':10s} Вердикт")
         for title, st, allowed, exp, ok, why in rows:
-            print(f"{title[:52]:52s} {st.get('schema',''):9s} {st.get('i18n',''):9s} "
+            print(f"{title[:52]:52s} {st.get('schema',''):9s} {st.get('i18n',''):9s} {st.get('ui',''):9s} "
                   f"{st.get('contract-gate',''):9s} {'дозволене' if allowed else 'блоковане':10s} "
                   f"{'дозволене' if exp else 'блоковане':10s} {'OK' if ok else 'РОЗБІЖНІСТЬ'}")
             print(f"{'':52s} причина: {why}")
