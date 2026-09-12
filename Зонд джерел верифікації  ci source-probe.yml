@@ -1,0 +1,53 @@
+# Живий зонд зовнішніх реєстрів верифікації.
+#
+# Свідомо винесено з ci/backend-contract.yml і НЕ є обовʼязковою перевіркою
+# в правилі захисту гілки: недоступність VIES, KRS чи реєстру санкцій —
+# це стан зовнішнього світу, а не дефект pull request. Блокувати вливання
+# коду через чужий 503 неприпустимо.
+#
+# Результат зонда — артефакт probe.json зі станом кожного джерела
+# (live / needs_key / degraded / stale / down / manual_only) і затримкою.
+name: Стан джерел верифікації
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
+
+jobs:
+  sources:
+    name: Стан джерел верифікації
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Залежності
+        run: pip install -r sprint-0-backend/requirements.txt
+      - name: Зонд джерел
+        run: python3 sprint-0-backend/tools/probe_sources.py --json probe.json | tee probe-report.txt
+      - name: Звіт у підсумок прогону
+        if: always()
+        run: |
+          {
+            echo "## Стан джерел верифікації"
+            echo '```'
+            cat probe-report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-probe
+          path: |
+            probe.json
+            probe-report.txt
