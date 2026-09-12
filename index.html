@@ -863,6 +863,52 @@ var CARGO_TYPES = [
 ];
 function cargoName(id,lang){ var c=CARGO_TYPES.filter(function(x){return x.id===id;})[0]; return c? c[lang]||c.en : id; }
 
+/* ---------- data: vehicle body/wagon/vessel types (transport-kind listings) ----------
+ * A "transport" listing offers vehicle capacity, not a specific shipment -
+ * its weight/volume fields describe the vehicle, not cargo. Showing the
+ * cargo type name there is misleading (see renderListingRow); this catalog
+ * derives a real body/wagon/vessel type from mode+cargo instead. */
+var VEHICLE_BODY_TYPES = {
+  auto: [
+    {id:"tent", uk:"Тент", en:"Curtain-sider", pl:"Plandeka", de:"Planenauflieger"},
+    {id:"reefer", uk:"Реф", en:"Reefer", pl:"Chłodnia", de:"Kühlfahrzeug"},
+    {id:"tank", uk:"Цистерна", en:"Tank truck", pl:"Cysterna", de:"Tankfahrzeug"},
+    {id:"box", uk:"Цільнометалевий фургон", en:"Box van", pl:"Furgon", de:"Kofferaufbau"},
+    {id:"flatbed", uk:"Бортова платформа", en:"Flatbed", pl:"Platforma", de:"Pritsche"}
+  ],
+  rail: [
+    {id:"covered", uk:"Критий вагон", en:"Covered wagon", pl:"Wagon kryty", de:"Gedeckter Wagen"},
+    {id:"tank", uk:"Вагон-цистерна", en:"Tank wagon", pl:"Wagon-cysterna", de:"Kesselwagen"},
+    {id:"reefer", uk:"Вагон-рефрижератор", en:"Refrigerated wagon", pl:"Wagon-chłodnia", de:"Kühlwagen"},
+    {id:"gondola", uk:"Напіввагон", en:"Gondola wagon", pl:"Wagon-węglarka", de:"Offener Güterwagen"},
+    {id:"hopper", uk:"Вагон-хопер (зерновоз)", en:"Hopper wagon", pl:"Wagon-hopper", de:"Schüttgutwagen"}
+  ],
+  sea: [
+    {id:"container", uk:"Контейнеровоз", en:"Container ship", pl:"Kontenerowiec", de:"Containerschiff"},
+    {id:"tanker", uk:"Танкер", en:"Tanker", pl:"Tankowiec", de:"Tanker"},
+    {id:"reefer", uk:"Рефрижераторне судно", en:"Reefer vessel", pl:"Chłodniowiec", de:"Kühlschiff"},
+    {id:"bulk", uk:"Балкер (сухогруз)", en:"Bulk carrier", pl:"Masowiec", de:"Massengutfrachter"}
+  ],
+  air: [
+    {id:"freighter", uk:"Вантажний літак (ULD/палети)", en:"Freighter aircraft (ULD/pallets)", pl:"Samolot cargo (ULD/palety)", de:"Frachtflugzeug (ULD/Paletten)"}
+  ],
+  multi: [
+    {id:"combo", uk:"Мультимодальна платформа", en:"Multimodal platform", pl:"Platforma multimodalna", de:"Multimodale Plattform"}
+  ]
+};
+var VEHICLE_BODY_BY_CARGO = {
+  auto: {chem:"tank", food:"reefer", metal:"flatbed", build:"flatbed", electro:"box", docs:"box", furn:"tent", textile:"tent", agro:"tent"},
+  rail: {chem:"tank", food:"reefer", metal:"gondola", build:"gondola", agro:"hopper", electro:"covered", docs:"covered", furn:"covered", textile:"covered"},
+  sea: {chem:"tanker", food:"reefer", metal:"bulk", build:"bulk", agro:"bulk", electro:"container", docs:"container", furn:"container", textile:"container"}
+};
+function vehicleBodyTypeName(mode, cargo, lang){
+  var list = VEHICLE_BODY_TYPES[mode] || VEHICLE_BODY_TYPES.auto;
+  var id = mode==="air" ? "freighter" : mode==="multi" ? "combo" :
+    ((VEHICLE_BODY_BY_CARGO[mode]||VEHICLE_BODY_BY_CARGO.auto)[cargo] || list[0].id);
+  var b = list.filter(function(x){return x.id===id;})[0] || list[0];
+  return b[lang]||b.en;
+}
+
 /* ---------- data: listings ---------- */
 var LISTINGS = [
   {id:1,kind:"cargo",mode:"auto",from:"kyiv",to:"warsaw",date:"2026-08-19",cargo:"build",weight:20,volume:82,price:1450,currency:"EUR",company:"ТзОВ «Карпат-Логістика»"},
@@ -4753,6 +4799,7 @@ uk:{
   results_title:"Актуальні заявки", results_count:"знайдено", results_empty:"За цим запитом нічого не знайдено. Спробуйте змінити напрямок або вид транспорту.",
   col_route:"Маршрут", col_cargo:"Вантаж", col_weight:"Вага", col_volume:"Обʼєм", col_date:"Дата", col_price:"Ставка", contact_btn:"Звʼязатись",
   col_range:"Дальність", col_permit:"Дозвіл на політ", unit_kg:"кг", unit_km:"км", permit_yes:"є", permit_no:"немає",
+  col_bodytype:"Тип ТЗ", col_available_date:"Дата під завантаження", col_freight:"Сума фрахту",
   f_currency:"Валюта", currency_all:"Всі валюти", escrow_note:"Розрахунки в USDC/USDT (блокчейн-ескроу, ТЗ розд. 13.5) — сервіс не підключено в цьому демо; валюти нижче — лише валюта ставки в оголошенні.",
   market_title:"Ринок транспорту", market_lede:"Купівля, продаж і оренда вантажного транспорту та спецтехніки.",
   market_listing_title:"Оголошення в категорії", market_pick:"Оберіть категорію вище, щоб побачити оголошення.",
@@ -4936,6 +4983,7 @@ en:{
   results_title:"Current listings", results_count:"found", results_empty:"No listings match this search. Try another route or transport type.",
   col_route:"Route", col_cargo:"Cargo", col_weight:"Weight", col_volume:"Volume", col_date:"Date", col_price:"Rate", contact_btn:"Contact",
   col_range:"Range", col_permit:"Flight permit", unit_kg:"kg", unit_km:"km", permit_yes:"yes", permit_no:"none",
+  col_bodytype:"Vehicle type", col_available_date:"Available for loading", col_freight:"Freight amount",
   f_currency:"Currency", currency_all:"All currencies", escrow_note:"USDC/USDT settlement (blockchain escrow, ToR §13.5) is not connected in this demo; the currencies below are only the listing's quoted currency.",
   market_title:"Vehicle market", market_lede:"Buy, sell and rent trucks, trailers and special equipment.",
   market_listing_title:"Listings in category", market_pick:"Pick a category above to see listings.",
@@ -5119,6 +5167,7 @@ pl:{
   results_title:"Aktualne oferty", results_count:"znaleziono", results_empty:"Brak ofert dla tego zapytania. Spróbuj innej trasy lub rodzaju transportu.",
   col_route:"Trasa", col_cargo:"Ładunek", col_weight:"Waga", col_volume:"Objętość", col_date:"Data", col_price:"Stawka", contact_btn:"Kontakt",
   col_range:"Zasięg", col_permit:"Zezwolenie na lot", unit_kg:"kg", unit_km:"km", permit_yes:"jest", permit_no:"brak",
+  col_bodytype:"Typ pojazdu", col_available_date:"Gotowy do załadunku", col_freight:"Kwota frachtu",
   f_currency:"Waluta", currency_all:"Wszystkie waluty", escrow_note:"Rozliczenia w USDC/USDT (escrow blockchain, ToR §13.5) nie są podłączone w tym demo; waluty poniżej to tylko waluta stawki w ogłoszeniu.",
   market_title:"Rynek pojazdów", market_lede:"Kupno, sprzedaż i wynajem ciężarówek, naczep i sprzętu specjalistycznego.",
   market_listing_title:"Oferty w kategorii", market_pick:"Wybierz kategorię powyżej, aby zobaczyć oferty.",
@@ -5302,6 +5351,7 @@ de:{
   results_title:"Aktuelle Angebote", results_count:"gefunden", results_empty:"Keine Angebote zu dieser Suche. Versuchen Sie eine andere Route oder Transportart.",
   col_route:"Route", col_cargo:"Fracht", col_weight:"Gewicht", col_volume:"Volumen", col_date:"Datum", col_price:"Preis", contact_btn:"Kontakt",
   col_range:"Reichweite", col_permit:"Flugerlaubnis", unit_kg:"kg", unit_km:"km", permit_yes:"vorhanden", permit_no:"keine",
+  col_bodytype:"Fahrzeugtyp", col_available_date:"Verfügbar ab (Verladedatum)", col_freight:"Frachtbetrag",
   f_currency:"Währung", currency_all:"Alle Währungen", escrow_note:"USDC/USDT-Abwicklung (Blockchain-Escrow, LV §13.5) ist in dieser Demo nicht angebunden; die Währungen unten sind nur die Angebotswährung.",
   market_title:"Fahrzeugmarkt", market_lede:"Kauf, Verkauf und Vermietung von LKW, Anhängern und Sondertechnik.",
   market_listing_title:"Angebote in der Kategorie", market_pick:"Wählen Sie oben eine Kategorie, um Angebote zu sehen.",
@@ -6009,22 +6059,41 @@ function renderListingRow(l){
   var fromCountryCode = (cityCountry(l.from)||"").toLowerCase();
   var toCountryCode = (cityCountry(l.to)||"").toLowerCase();
   var isDrone = l.mode==="drone";
+  // Kind "transport" = someone offering vehicle capacity, not a specific
+  // shipment: weight/volume describe the vehicle, and showing the cargo
+  // type name is misleading there. Kind "cargo" keeps the original,
+  // shipment-centric figures unchanged.
+  var isTransport = l.kind==="transport";
   var servicesHtml = ''+
     '<a href="#directory" data-route="directory" title="'+esc(serviceLabel("directory"))+'">'+ICONS.book+'</a>'+
     '<a href="#borders" class="m-svc-borders" data-country="'+esc(cityCountry(l.to)||"")+'" title="'+esc(serviceLabel("borders"))+'">'+ICONS.flagpost+'</a>'+
     '<a href="#weather" class="m-svc-weather" data-from="'+esc(l.from)+'" data-to="'+esc(l.to)+'" title="'+esc(serviceLabel("weather"))+'">'+ICONS.sun+'</a>'+
     '<a href="#contacts" data-route="contacts" title="'+esc(serviceLabel("contacts"))+'">'+ICONS.pin+'</a>';
-  var midFiguresHtml = isDrone ?
+  var midFiguresHtml;
+  if(isDrone){
     // Дрон: вага в кг (не т, щоб не плутати з полем weight_t інших видів
     // транспорту - ТЗ додаток A, розд. A.3.2/5.1) + дальність і дозвіл
     // на політ замість обʼєму - обʼєм для легкого дрон-вантажу нерелевантний.
-    '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+l.weight+' '+esc(t("unit_kg"))+'</div>'+
-    '<div class="m-figure"><span class="lab">'+esc(t("col_range"))+'</span>'+l.rangeKm+' '+esc(t("unit_km"))+'</div>'+
-    '<div class="m-figure"><span class="lab">'+esc(t("col_permit"))+'</span>'+(l.flightPermit? esc(t("permit_yes")) : '<span class="permit-no">'+esc(t("permit_no"))+'</span>')+'</div>'
-    :
-    '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+l.weight+' t</div>'+
-    '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
-    '<div class="m-figure"><span class="lab">'+esc(t("col_date"))+'</span>'+fmtDate(l.date)+'</div>';
+    // Для kind="transport" вага - це maxPayloadKg (вантажопідйомність
+    // самого дрона), а не вага конкретної відправки.
+    midFiguresHtml =
+      '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+(isTransport? l.maxPayloadKg : l.weight)+' '+esc(t("unit_kg"))+'</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_range"))+'</span>'+l.rangeKm+' '+esc(t("unit_km"))+'</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_permit"))+'</span>'+(l.flightPermit? esc(t("permit_yes")) : '<span class="permit-no">'+esc(t("permit_no"))+'</span>')+'</div>';
+  } else if(isTransport){
+    midFiguresHtml =
+      '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_bodytype"))+'</span>'+esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang))+'</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_available_date"))+'</span>'+fmtDate(l.date)+'</div>';
+  } else {
+    midFiguresHtml =
+      '<div class="m-figure"><span class="lab">'+esc(t("col_weight"))+'</span>'+l.weight+' t</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_date"))+'</span>'+fmtDate(l.date)+'</div>';
+  }
+  var subtitleHtml = isTransport ?
+    (isDrone? esc(l.droneType) : esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang))) + ' &middot; ' + esc(l.company) :
+    esc(cargoName(l.cargo,state.lang)) + ' &middot; ' + esc(l.company) + (isDrone? ' &middot; '+esc(l.droneType) : '');
   return ''+
   '<div class="m-row">'+
     '<span class="m-id">&#8470;'+l.id+'</span>'+
@@ -6034,9 +6103,9 @@ function renderListingRow(l){
       '<span class="arr">&rarr;</span>'+
       '<span class="country-flag '+toCountryCode+'" title="'+esc(countryName(cityCountry(l.to)))+'"></span>'+esc(cityName(l.to,state.lang))+
     '</div>'+
-      '<div class="m-sub">'+esc(cargoName(l.cargo,state.lang))+' &middot; '+esc(l.company)+(isDrone? ' &middot; '+esc(l.droneType) : '')+'</div></div>'+
+      '<div class="m-sub">'+subtitleHtml+'</div></div>'+
     midFiguresHtml+
-    '<div class="m-figure"><span class="lab">'+esc(t("col_price"))+'</span>'+priceStr(l)+'</div>'+
+    '<div class="m-figure"><span class="lab">'+esc(t(isTransport?"col_freight":"col_price"))+'</span>'+priceStr(l)+'</div>'+
     '<div class="m-services">'+servicesHtml+'</div>'+
     '<button class="btn btn-sm contact-listing" data-id="'+l.id+'">'+esc(t("contact_btn"))+'</button>'+
   '</div>';
