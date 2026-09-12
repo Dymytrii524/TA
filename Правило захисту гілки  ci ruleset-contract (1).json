@@ -1,0 +1,66 @@
+{
+  "name": "main: обовʼязковий контракт",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": [
+        "~DEFAULT_BRANCH"
+      ],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    },
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": false,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": true
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          {
+            "context": "contract-gate"
+          },
+          {
+            "context": "Схема і сценарії T16-T27"
+          },
+          {
+            "context": "Валютні та мовні сценарії C1-C13, L1-L12"
+          },
+          {
+            "context": "Контракт proto модуля SEARCH"
+          },
+          {
+            "context": "backend-gate"
+          },
+          {
+            "context": "Контракт бекенду Спринту 0"
+          },
+          {
+            "context": "Приймальні тести БД Спринту 0"
+          },
+          {
+            "context": "Контракт модуля верифікації"
+          },
+          {
+            "context": "Інваріанти верифікації"
+          }
+        ]
+      }
+    }
+  ]
+}
