@@ -3,7 +3,7 @@
 import json, os, random, re
 
 random.seed(20260905)
-REPO = "/home/user/workspace/TA"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "test-data")
 os.makedirs(OUT, exist_ok=True)
 
@@ -212,6 +212,33 @@ CARGO = ["build","electro","metal","chem","food","furn","agro","textile","docs"]
 DRONE_CARGO = ["docs","docs","electro","food"]
 DRONE_TYPES = ["мультикоптер","конвертоплан","літакового типу","гібридний"]
 MULTI_COMPONENTS = [["auto","rail"],["sea","auto"],["sea","rail"],["air","auto"],["rail","auto"],["sea","rail","auto"],["air","rail"]]
+
+# kind="transport" = хтось пропонує місткість конкретного ТЗ, а не конкретну
+# відправку: обʼєм/вага - характеристики самого ТЗ, а не вантажу. bodyType
+# фіксує вид вантажного відсіку (тент/реф/цистерна/...) для авто, тип вагона
+# для залізниці, тип судна для моря - ті самі ідентифікатори, що й
+# VEHICLE_BODY_TYPES в index.html, щоб сайт міг показати явне поле бази
+# замість похідного значення з cargo. air/multi мають єдиний узагальнений
+# тип на сайті, тому окреме поле для них не заводимо.
+BODY_TYPES = {
+ "auto": ["tent", "reefer", "tank", "box", "flatbed"],
+ "rail": ["covered", "tank", "reefer", "gondola", "hopper"],
+ "sea": ["container", "tanker", "reefer", "bulk"],
+}
+BODY_BY_CARGO = {
+ "auto": {"chem": "tank", "food": "reefer", "metal": "flatbed", "build": "flatbed", "electro": "box", "docs": "box", "furn": "tent", "textile": "tent", "agro": "tent"},
+ "rail": {"chem": "tank", "food": "reefer", "metal": "gondola", "build": "gondola", "agro": "hopper", "electro": "covered", "docs": "covered", "furn": "covered", "textile": "covered"},
+ "sea": {"chem": "tanker", "food": "reefer", "metal": "bulk", "build": "bulk", "agro": "bulk", "electro": "container", "docs": "container", "furn": "container", "textile": "container"},
+}
+
+
+def pick_body_type(mode, cargo):
+    """75% - реалістичне зіставлення з вантажем що перевозить ТЗ (хімія -> цистерна
+    і т.д.), 25% - інший тип того самого виду ТЗ, щоб набір не був монотонним."""
+    mapped = BODY_BY_CARGO[mode].get(cargo, BODY_TYPES[mode][0])
+    if random.random() < 0.75:
+        return mapped
+    return random.choice(BODY_TYPES[mode])
 COMPANIES = {
  "europe": ["ТзОВ «Карпат-Логістика»","FastRoad Sp. z o.o.","АгроТранс Груп","Blue Line Shipping","AirCargo Bavaria","Meble-Trans","Baltic Grain Co.","CentroRail Cargo","NordTrans AG","ChemLog GmbH","Anatolia Freight","УкрМеталТранс","Rhein Спедиція ТзОВ","Sarmatia Логістика s.r.o.","Marina Freight","Iberia Cargo SL","Nordic Rail Cargo AB","Adria Spedition d.o.o."],
  "asia": ["Sinotrans Logistics Co.","Pacific Rim Freight Ltd.","Nippon Cargo Lines","Hanjin Logistics Corp.","Bharat Freight Pvt Ltd","Mekong Shipping JSC","Gulf Cargo LLC","Silk Road Logistics","Asia Star Forwarding","Tashkent Trans Group","Sunrise Rail Cargo","Orient Air Freight","Caspian Spedition LLC","Malacca Lines Sdn Bhd"],
@@ -282,6 +309,8 @@ def make(idx, region, mode):
             it["weight"] = round(random.uniform(10, 140), 1); it["volume"] = float(round(random.uniform(30, 400))); it["price"] = float(round(random.uniform(1000, 18000)))
         else:
             it["weight"] = round(random.uniform(1.5, 24), 1); it["volume"] = float(round(random.uniform(8, 92))); it["price"] = float(round(random.uniform(300, 6000)))
+        if it["kind"] == "transport" and mode in BODY_TYPES:
+            it["bodyType"] = pick_body_type(mode, it["cargo"])
     it["currency"] = random.choice(CUR[region])
     it["company"] = random.choice(COMPANIES[region])
     if mode == "drone":

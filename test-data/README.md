@@ -38,6 +38,7 @@
 - `cargo` — лише `id` з `CARGO_TYPES`; `currency` — лише коди з `CURRENCIES` (включно з `USDC`/`USDT`/`EURC`).
 - `mode: "multi"` має `components` (наприклад `["sea","auto"]`) — працює з фільтром складових мультимодального маршруту.
 - `mode: "drone"` має `weightUnit`, `rangeKm`, `maxPayloadKg`, `droneType`, `flightPermit` — узгоджено з `schemas/post-drone.schema.json`.
+- `kind: "transport"` для `mode` `auto`/`rail`/`sea` має `bodyType` — тип вантажного відсіку (`tent`/`reefer`/`tank`/`box`/`flatbed` для авто), вагона (`covered`/`tank`/`reefer`/`gondola`/`hopper` для залізниці) або судна (`container`/`tanker`/`reefer`/`bulk` для моря). Значення на 75% узгоджене з `cargo` (хімія → цистерна тощо) і на 25% випадкове серед типів того самого виду ТЗ. `index.html` (`VEHICLE_BODY_TYPES`) використовує це поле як основне джерело назви й лише за його відсутності виводить тип із `cargo`. `air`/`multi` окремого поля не мають — на сайті для них один узагальнений тип.
 - Морські заявки йдуть між портами, авіа — між авіахабами, решта — між усіма містами континенту; близько чверті маршрутів внутрішні (одна країна), решта міжнародні, щоб і `borderScope=domestic`, і `international` мали дані.
 
 ## Примітка

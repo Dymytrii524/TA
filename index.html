@@ -901,9 +901,15 @@ var VEHICLE_BODY_BY_CARGO = {
   rail: {chem:"tank", food:"reefer", metal:"gondola", build:"gondola", agro:"hopper", electro:"covered", docs:"covered", furn:"covered", textile:"covered"},
   sea: {chem:"tanker", food:"reefer", metal:"bulk", build:"bulk", agro:"bulk", electro:"container", docs:"container", furn:"container", textile:"container"}
 };
-function vehicleBodyTypeName(mode, cargo, lang){
+function vehicleBodyTypeName(mode, cargo, lang, explicitId){
   var list = VEHICLE_BODY_TYPES[mode] || VEHICLE_BODY_TYPES.auto;
-  var id = mode==="air" ? "freighter" : mode==="multi" ? "combo" :
+  // Дані test-data/generate.py записують явне поле bodyType для
+  // kind="transport" (auto/rail/sea) - воно достовірніше за похідне
+  // значення з cargo і має пріоритет, коли є. Похідне значення лишається
+  // резервним для ~200 вшитих LISTINGS без цього поля та для air/multi,
+  // де на сайті лише один узагальнений тип.
+  var id = explicitId && list.some(function(x){return x.id===explicitId;}) ? explicitId :
+    mode==="air" ? "freighter" : mode==="multi" ? "combo" :
     ((VEHICLE_BODY_BY_CARGO[mode]||VEHICLE_BODY_BY_CARGO.auto)[cargo] || list[0].id);
   var b = list.filter(function(x){return x.id===id;})[0] || list[0];
   return b[lang]||b.en;
@@ -6083,7 +6089,7 @@ function renderListingRow(l){
   } else if(isTransport){
     midFiguresHtml =
       '<div class="m-figure"><span class="lab">'+esc(t("col_volume"))+'</span>'+l.volume+' m&sup3;</div>'+
-      '<div class="m-figure"><span class="lab">'+esc(t("col_bodytype"))+'</span>'+esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang))+'</div>'+
+      '<div class="m-figure"><span class="lab">'+esc(t("col_bodytype"))+'</span>'+esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang,l.bodyType))+'</div>'+
       '<div class="m-figure"><span class="lab">'+esc(t("col_available_date"))+'</span>'+fmtDate(l.date)+'</div>';
   } else {
     midFiguresHtml =
@@ -6092,7 +6098,7 @@ function renderListingRow(l){
       '<div class="m-figure"><span class="lab">'+esc(t("col_date"))+'</span>'+fmtDate(l.date)+'</div>';
   }
   var subtitleHtml = isTransport ?
-    (isDrone? esc(l.droneType) : esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang))) + ' &middot; ' + esc(l.company) :
+    (isDrone? esc(l.droneType) : esc(vehicleBodyTypeName(l.mode,l.cargo,state.lang,l.bodyType))) + ' &middot; ' + esc(l.company) :
     esc(cargoName(l.cargo,state.lang)) + ' &middot; ' + esc(l.company) + (isDrone? ' &middot; '+esc(l.droneType) : '');
   return ''+
   '<div class="m-row">'+
