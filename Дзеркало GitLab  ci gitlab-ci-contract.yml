@@ -1,0 +1,146 @@
+# Той самий крок «Контракт» для GitLab CI. Підключається в .gitlab-ci.yml:
+#   include:
+#     - local: ci/gitlab-ci-contract.yml
+
+contract:
+  stage: test
+  image: python:3.12-slim
+  timeout: 5 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "ТЗ-рамкове-логістична-біржа.md"
+        - "ТЗ-логістична-біржа-v2-мови-валюти.md"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  script:
+    - pip install -r schemas/requirements.txt
+    - python schemas/validate_schema.py
+    - python ci/check_ruleset.py
+    - set -o pipefail
+    - python schemas/check_schema.py | tee contract-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - contract-report.txt
+
+# Валютні та мовні сценарії (рамкове ТЗ, розділи 13.6 і 14.7).
+i18n:
+  stage: test
+  image: python:3.12-slim
+  timeout: 5 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-рамкове-логістична-біржа.md"
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "ТЗ-логістична-біржа-v2-мови-валюти.md"
+        - "i18n/**/*"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  script:
+    - pip install -r schemas/requirements.txt
+    - python schemas/validate_schema.py schemas/i18n.schema.json
+    - set -o pipefail
+    - python schemas/check_i18n.py | tee i18n-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - i18n-report.txt
+
+# Контракт proto модуля SEARCH (додаток A, розділи A.8.4.2 і A.13.6).
+# У GitLab потрібен `GIT_DEPTH: 0`: перевірка сумісності порівнює контракт із
+# базовою гілкою, а на неглибокому клоні її просто немає в історії.
+proto:
+  stage: test
+  image: python:3.12-slim
+  timeout: 6 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "ТЗ-рамкове-логістична-біржа.md"
+        - "proto/**/*"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    GIT_DEPTH: "0"
+  script:
+    - pip install -r schemas/requirements.txt
+    - test -s third_party/buf/validate/validate.proto
+    - set -o pipefail
+    - python schemas/check_proto_contract.py | tee proto-report.txt
+    - python ci/proto_mutation.py | tee -a proto-report.txt
+    - python ci/check_contract_text.py | tee -a proto-report.txt
+    - python ci/check_contract_text.py --self-test | tee -a proto-report.txt
+    - >
+      if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
+        git fetch --quiet origin "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME";
+        python ci/proto_breaking.py --base "origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" | tee -a proto-report.txt;
+      fi
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - proto-report.txt
+
+# UI-сценарії U1-U8: вибір виду транспорту на головній сторінці та його
+# наскрізне застосування до панелі потоків і деталізації.
+ui:
+  stage: test
+  image: node:24-slim
+  timeout: 10 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "index.html"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - ci/package-lock.json
+    paths:
+      - ci/node_modules
+  script:
+    - npm ci --prefix ci
+    - set -o pipefail
+    - node ci/verify_heromode.js | tee ui-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - ui-report.txt
