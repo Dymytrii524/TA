@@ -4747,6 +4747,7 @@ var SERVICES = [
   {icon:"chat", route:"qa", uk:"Питання і відповіді", en:"Q&A", pl:"Pytania i odpowiedzi", de:"Fragen & Antworten"},
   {icon:"sun", route:"weather", uk:"Погода", en:"Weather", pl:"Pogoda", de:"Wetter"},
   {icon:"pin", route:"contacts", uk:"Карта", en:"Map", pl:"Mapa", de:"Karte"},
+  {icon:"route", route:"search-module", uk:"Модуль SEARCH: алгоритм маршрутів", en:"SEARCH module: routing algorithm", pl:"Moduł SEARCH: algorytm tras", de:"SEARCH-Modul: Routing-Algorithmus"},
   {icon:"phone", route:"automation", uk:"Автоматичний check-call", en:"Automated check-call", pl:"Automatyczny check-call", de:"Automatisierter Check-Call"},
   {icon:"shield", route:"verification", uk:"Верифікація контрагентів", en:"Counterparty verification", pl:"Weryfikacja kontrahentów", de:"Verifizierung von Vertragspartnern"},
   {icon:"checklist", route:"verification-sprint1", uk:"Верифікація: план Спринту 1", en:"Verification: Sprint 1 plan", pl:"Weryfikacja: plan Sprintu 1", de:"Verifizierung: Sprint-1-Plan"},
@@ -4872,6 +4873,25 @@ uk:{
   footer_nav:"Навігація", footer_info:"Інфоцентр", footer_support:"Підтримка",
   footer_rights:"Усі права захищені.", footer_note:"Дизайн-концепт сайту. Контактні дані — приклад для демонстрації.",
   cta_register:"Зареєструвати компанію", load_more:"Показати ще",
+  search_title:"Модуль SEARCH: алгоритм маршрутів і POST_DRONE",
+  search_lede:"Додаток A до рамкового ТЗ: блок-схема № 3.1.1 — основний і єдиний алгоритм пошуку для будь-якого перевезення, що потребує понад одного виду транспорту, розширена на шість видів транспорту без зміни структури графа.",
+  search_disclaimer:"Це специфікація алгоритму, а не працюючий сервіс: жодної бази points/lots, жодного API /search/routes і жодного Go-сервіса SEARCH у цьому демо немає. JSON Schema контракту POST_DRONE (schemas/post-drone.schema.json) і її перевірка (schemas/check_schema.py) — реальні, робочі файли цього репозиторію: 12 прикладів валідні, 37 із 37 мутацій відхилено. ci/check_contract_text.py — теж реальний файл, але зараз не виконується: немає ні каталогу proto/, ні бібліотеки grpc_tools.",
+  search_subsystems_heading:"Підсистеми модуля (S1–S8)",
+  search_modes_heading:"Шість видів транспорту в графі маршруту",
+  search_modes_lede:"Дрон — не плече графа, а пост-обробка вже знайденого маршруту: єдина реалізація замість чотирьох копій умови в кожній гілці.",
+  search_gates_heading:"Ворота модуля POST_DRONE (рисунок 3.1.1-7)",
+  search_gates_lede:"Кожне «ні» — вихід із модуля: авто-плече лишається без змін, дрон-варіант не створюється і не замінює авто-варіант.",
+  search_rank_heading:"Ранжування: ваги критерію та штрафи за прапорці",
+  search_ci_heading:"Кроки CI (обовʼязкові для злиття)",
+  search_ci_lede:"Контракт, правило гілки та валютно-мовні сценарії не потребують ні бази, ні застосунку — лише текст ТЗ, схему і фікстури.",
+  search_ci_note:"Стан у цьому репозиторії: schemas/check_schema.py і schemas/check_i18n.py проходять на 100% (перевірено в цій сесії). ci/check_ruleset.py теж проходить, але поки узгоджує лише конвеєр контракту й UI-сценаріїв — job proto, який мав би викликати ci/check_contract_text.py, ще не доданий.",
+  search_col_name:"Назва", search_col_desc:"Зміст", search_col_code:"Код", search_col_role:"Роль у графі", search_col_base:"База пунктів",
+  search_col_gate:"Ворота", search_col_check:"Перевірка", search_col_reason:"Код причини", search_col_scenario:"Сценарій",
+  search_col_criterion:"Критерій", search_col_flag:"Прапорець", search_col_penalty:"Штраф", search_col_why:"Обґрунтування",
+  search_col_step:"Крок", search_col_command:"Команда", search_col_fails:"Що падає",
+  search_download_tz:"Повний текст ТЗ, додаток A (Markdown)",
+  search_download_schema:"JSON Schema контракту POST_DRONE",
+  search_download_contracttext:"Перевірка тексту/схеми/proto, U1–U5, N1–N5 (Python)",
   automation_title:"Автоматизований check-call: як це влаштовано",
   automation_lede:"BPMN-модель процесу автоматизованого відстеження рейсу: коли система сама зв'язується з водієм і як виняткові ситуації доходять до диспетчера.",
   automation_disclaimer:"Це дизайн-концепція процесу (BPMN-схема), а не підключений сервіс: у цьому демо немає ні реального AI-дзвінка водієві, ні інтеграції з TMS чи SMS-шлюзом.",
@@ -5058,6 +5078,25 @@ en:{
   footer_nav:"Navigation", footer_info:"Info center", footer_support:"Support",
   footer_rights:"All rights reserved.", footer_note:"Design concept. Contact details are placeholders for demonstration.",
   cta_register:"Register your company", load_more:"Load more",
+  search_title:"SEARCH module: routing algorithm and POST_DRONE",
+  search_lede:"Appendix A to the framework spec: flowchart No. 3.1.1 — the main and only routing algorithm for any shipment needing more than one transport mode, extended to six modes without changing the graph structure.",
+  search_disclaimer:"This is an algorithm specification, not a running service: there is no points/lots database, no /search/routes API and no Go SEARCH service anywhere in this demo. The POST_DRONE contract's JSON Schema (schemas/post-drone.schema.json) and its checker (schemas/check_schema.py) are real, working files in this repository: 12 examples valid, 37 of 37 mutations rejected. ci/check_contract_text.py is also a real file, but doesn't run yet - there's no proto/ directory and no grpc_tools library.",
+  search_subsystems_heading:"Module subsystems (S1-S8)",
+  search_modes_heading:"Six transport modes in the route graph",
+  search_modes_lede:"The drone isn't a graph leg - it's post-processing of an already-found route: one implementation instead of four copies of the same condition in every branch.",
+  search_gates_heading:"POST_DRONE module gates (figure 3.1.1-7)",
+  search_gates_lede:"Every \"no\" exits the module: the auto leg is left unchanged, and no drone variant is created or replaces it.",
+  search_rank_heading:"Ranking: criterion weights and flag penalties",
+  search_ci_heading:"CI steps (required for merge)",
+  search_ci_lede:"Contract, branch-rule and currency/language scenarios need no database or app - only the spec text, the schema and fixtures.",
+  search_ci_note:"State in this repository: schemas/check_schema.py and schemas/check_i18n.py both pass at 100% (verified in this session). ci/check_ruleset.py also passes, but currently only reconciles the contract and UI-scenario pipeline - the proto job that would call ci/check_contract_text.py hasn't been added yet.",
+  search_col_name:"Name", search_col_desc:"What it covers", search_col_code:"Code", search_col_role:"Role in the graph", search_col_base:"Point base",
+  search_col_gate:"Gate", search_col_check:"Check", search_col_reason:"Reason code", search_col_scenario:"Scenario",
+  search_col_criterion:"Criterion", search_col_flag:"Flag", search_col_penalty:"Penalty", search_col_why:"Rationale",
+  search_col_step:"Step", search_col_command:"Command", search_col_fails:"What fails",
+  search_download_tz:"Full spec text, Appendix A (Markdown)",
+  search_download_schema:"POST_DRONE contract JSON Schema",
+  search_download_contracttext:"Text/schema/proto checker, U1-U5, N1-N5 (Python)",
   automation_title:"Automated check-call: how it works",
   automation_lede:"A BPMN model of the automated shipment-tracking process: when the system reaches out to the driver on its own, and how exceptions reach a dispatcher.",
   automation_disclaimer:"This is a process design concept (a BPMN diagram), not a connected service: this demo has no real AI call to a driver, TMS integration, or SMS gateway.",
@@ -5244,6 +5283,25 @@ pl:{
   footer_nav:"Nawigacja", footer_info:"Centrum informacji", footer_support:"Wsparcie",
   footer_rights:"Wszelkie prawa zastrzeżone.", footer_note:"Koncepcja projektowa. Dane kontaktowe są przykładowe.",
   cta_register:"Zarejestruj firmę", load_more:"Pokaż więcej",
+  search_title:"Moduł SEARCH: algorytm tras i POST_DRONE",
+  search_lede:"Załącznik A do ramowej specyfikacji: schemat blokowy nr 3.1.1 — główny i jedyny algorytm wyszukiwania dla przewozu wymagającego więcej niż jednego rodzaju transportu, rozszerzony na sześć rodzajów bez zmiany struktury grafu.",
+  search_disclaimer:"To specyfikacja algorytmu, a nie działająca usługa: w tym demo nie ma bazy points/lots, API /search/routes ani usługi SEARCH w Go. JSON Schema kontraktu POST_DRONE (schemas/post-drone.schema.json) i jej walidator (schemas/check_schema.py) to prawdziwe, działające pliki tego repozytorium: 12 przykładów poprawnych, 37 z 37 mutacji odrzuconych. ci/check_contract_text.py to również prawdziwy plik, ale jeszcze się nie uruchamia - brakuje katalogu proto/ i biblioteki grpc_tools.",
+  search_subsystems_heading:"Podsystemy modułu (S1-S8)",
+  search_modes_heading:"Sześć rodzajów transportu w grafie trasy",
+  search_modes_lede:"Dron nie jest odcinkiem grafu - to post-processing już znalezionej trasy: jedna implementacja zamiast czterech kopii tego samego warunku w każdej gałęzi.",
+  search_gates_heading:"Bramki modułu POST_DRONE (rysunek 3.1.1-7)",
+  search_gates_lede:"Każde „nie” kończy działanie modułu: odcinek auto pozostaje bez zmian, wariant dronowy nie powstaje i go nie zastępuje.",
+  search_rank_heading:"Ranking: wagi kryterium i kary za flagi",
+  search_ci_heading:"Kroki CI (wymagane do scalenia)",
+  search_ci_lede:"Kontrakt, reguła gałęzi oraz scenariusze walutowo-językowe nie wymagają bazy ani aplikacji - tylko tekst specyfikacji, schemat i fixtures.",
+  search_ci_note:"Stan w tym repozytorium: schemas/check_schema.py i schemas/check_i18n.py przechodzą w 100% (zweryfikowano w tej sesji). ci/check_ruleset.py również przechodzi, ale na razie uzgadnia tylko potok kontraktu i scenariuszy UI - job proto, który wywoływałby ci/check_contract_text.py, nie został jeszcze dodany.",
+  search_col_name:"Nazwa", search_col_desc:"Co obejmuje", search_col_code:"Kod", search_col_role:"Rola w grafie", search_col_base:"Baza punktów",
+  search_col_gate:"Bramka", search_col_check:"Kontrola", search_col_reason:"Kod przyczyny", search_col_scenario:"Scenariusz",
+  search_col_criterion:"Kryterium", search_col_flag:"Flaga", search_col_penalty:"Kara", search_col_why:"Uzasadnienie",
+  search_col_step:"Krok", search_col_command:"Polecenie", search_col_fails:"Co zawodzi",
+  search_download_tz:"Pełny tekst specyfikacji, załącznik A (Markdown)",
+  search_download_schema:"JSON Schema kontraktu POST_DRONE",
+  search_download_contracttext:"Walidator tekstu/schematu/proto, U1-U5, N1-N5 (Python)",
   automation_title:"Automatyczny check-call: jak to działa",
   automation_lede:"Model BPMN procesu automatycznego śledzenia przewozu: kiedy system sam kontaktuje się z kierowcą i jak wyjątki trafiają do dyspozytora.",
   automation_disclaimer:"To koncepcja projektowa procesu (diagram BPMN), a nie podłączona usługa: w tym demo nie ma ani prawdziwego połączenia AI z kierowcą, ani integracji z TMS czy bramką SMS.",
@@ -5430,6 +5488,25 @@ de:{
   footer_nav:"Navigation", footer_info:"Infocenter", footer_support:"Support",
   footer_rights:"Alle Rechte vorbehalten.", footer_note:"Gestaltungskonzept. Kontaktdaten dienen nur als Beispiel.",
   cta_register:"Unternehmen registrieren", load_more:"Mehr anzeigen",
+  search_title:"SEARCH-Modul: Routing-Algorithmus und POST_DRONE",
+  search_lede:"Anhang A zur Rahmenspezifikation: Flussdiagramm Nr. 3.1.1 - der Haupt- und einzige Suchalgorithmus für jeden Transport, der mehr als eine Verkehrsart benötigt, erweitert auf sechs Verkehrsarten ohne Änderung der Graphstruktur.",
+  search_disclaimer:"Dies ist eine Algorithmus-Spezifikation, kein laufender Dienst: Es gibt in dieser Demo keine points/lots-Datenbank, keine /search/routes-API und keinen Go-SEARCH-Dienst. Das JSON Schema des POST_DRONE-Vertrags (schemas/post-drone.schema.json) und sein Prüfer (schemas/check_schema.py) sind echte, funktionierende Dateien dieses Repositories: 12 Beispiele gültig, 37 von 37 Mutationen abgelehnt. ci/check_contract_text.py ist ebenfalls eine echte Datei, läuft aber noch nicht - es fehlen sowohl das Verzeichnis proto/ als auch die Bibliothek grpc_tools.",
+  search_subsystems_heading:"Modul-Subsysteme (S1-S8)",
+  search_modes_heading:"Sechs Verkehrsarten im Routengraphen",
+  search_modes_lede:"Die Drohne ist kein Graph-Abschnitt, sondern Nachbearbeitung einer bereits gefundenen Route: eine Implementierung statt vier Kopien derselben Bedingung in jedem Zweig.",
+  search_gates_heading:"Gates des POST_DRONE-Moduls (Abbildung 3.1.1-7)",
+  search_gates_lede:"Jedes „Nein” beendet das Modul: Der Auto-Abschnitt bleibt unverändert, keine Drohnen-Variante wird erstellt oder ersetzt ihn.",
+  search_rank_heading:"Ranking: Kriteriengewichte und Flag-Strafen",
+  search_ci_heading:"CI-Schritte (für den Merge erforderlich)",
+  search_ci_lede:"Vertrag, Branch-Regel und Währungs-/Sprachszenarien benötigen weder Datenbank noch Anwendung - nur den Spezifikationstext, das Schema und Fixtures.",
+  search_ci_note:"Stand in diesem Repository: schemas/check_schema.py und schemas/check_i18n.py bestehen beide zu 100 % (in dieser Sitzung verifiziert). ci/check_ruleset.py besteht ebenfalls, gleicht aber bisher nur die Contract- und UI-Szenario-Pipeline ab - der proto-Job, der ci/check_contract_text.py aufrufen würde, wurde noch nicht hinzugefügt.",
+  search_col_name:"Name", search_col_desc:"Inhalt", search_col_code:"Code", search_col_role:"Rolle im Graphen", search_col_base:"Punktbasis",
+  search_col_gate:"Gate", search_col_check:"Prüfung", search_col_reason:"Ursachencode", search_col_scenario:"Szenario",
+  search_col_criterion:"Kriterium", search_col_flag:"Flag", search_col_penalty:"Strafe", search_col_why:"Begründung",
+  search_col_step:"Schritt", search_col_command:"Befehl", search_col_fails:"Was fehlschlägt",
+  search_download_tz:"Vollständiger Spezifikationstext, Anhang A (Markdown)",
+  search_download_schema:"JSON Schema des POST_DRONE-Vertrags",
+  search_download_contracttext:"Text-/Schema-/Proto-Prüfer, U1-U5, N1-N5 (Python)",
   automation_title:"Automatisierter Check-Call: so funktioniert es",
   automation_lede:"Ein BPMN-Modell des automatisierten Sendungsverfolgungsprozesses: wann das System selbst den Fahrer kontaktiert und wie Ausnahmen den Disponenten erreichen.",
   automation_disclaimer:"Dies ist ein Prozess-Designkonzept (ein BPMN-Diagramm), kein angebundener Dienst: In dieser Demo gibt es weder einen echten KI-Anruf beim Fahrer noch eine TMS- oder SMS-Gateway-Integration.",
@@ -5606,7 +5683,8 @@ var ICONS = {
   shield:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
   server:'<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7" cy="7" r=".8" fill="currentColor"/><circle cx="7" cy="17" r=".8" fill="currentColor"/></svg>',
   layers:'<svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>',
-  checklist:'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 2h6v3H9z"/><path d="M8 11l1.5 1.5L12 10"/><path d="M8 16l1.5 1.5L12 15"/><path d="M14.5 11.5h3M14.5 16.5h3"/></svg>'
+  checklist:'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 2h6v3H9z"/><path d="M8 11l1.5 1.5L12 10"/><path d="M8 16l1.5 1.5L12 15"/><path d="M14.5 11.5h3M14.5 16.5h3"/></svg>',
+  route:'<svg class="icon" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M5 8v3a4 4 0 0 0 4 4h3a4 4 0 0 1 4 4v0" stroke-dasharray="2.5 2.5"/></svg>'
 };
 var MODE_ICON = {auto:"truck", rail:"train", sea:"ship", air:"plane", drone:"drone", multi:"boxes"};
 
@@ -6273,6 +6351,126 @@ function renderAbout(){
       '<div class="info-card warn"><h3 style="font-size:1rem;">'+esc(t("blacklist_t"))+'</h3><p style="margin:0;font-size:.88rem;color:var(--ink-soft);">'+esc(t("blacklist_d"))+'</p></div>'+
     '</div>'+
     '<button class="btn btn-primary" id="aboutRegisterBtn" style="margin-top:26px;">'+esc(t("cta_register"))+'</button>'+
+  '</div></section>';
+}
+
+/* ---------- render: SEARCH module (routing algorithm, Appendix A) ----------
+ * Documents ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md (Appendix A) as a
+ * specification: the routing graph, POST_DRONE contract and CI steps are
+ * real, checked artifacts (schemas/post-drone.schema.json + check_schema.py
+ * are live and passing), but no actual SEARCH service, database or proto
+ * contract runs anywhere in this project - ci/check_contract_text.py exists
+ * as a file but can't run yet (no proto/ directory, no grpc_tools). */
+var SEARCH_SUBSYSTEMS = [
+  {id:"S1", name:"Простий пошук заявок", desc:"Пошук по одному розділу за фільтрами: країна, регіон, пункт, дата, тип транспорту, тип завантаження, маса, обʼєм"},
+  {id:"S2", name:"Фільтр «інші напрямки»", desc:"Два незалежні списки пунктів відправлення / призначення"},
+  {id:"S3", name:"Пошук зворотних рейсів", desc:"Заявки, виставлені до пункту відправлення (ймовірний зворотний рейс)"},
+  {id:"S4", name:"Пошук мультимодального маршруту", desc:"Основний алгоритм — блок-схема № 3.1.1; ланцюг заявок з 2–4 плечима по 6 видах транспорту"},
+  {id:"S5", name:"Fallback «компанії напрямку»", desc:"Перелік компаній, які коли-небудь перевозили в цьому напрямку"},
+  {id:"S6", name:"Fallback «можливі сполучення»", desc:"Перелік станцій/портів/аеропортів/точок дрона, між якими існує сполучення"},
+  {id:"S7", name:"Ранжування", desc:"Сортування за критерієм «вартість» або «швидкість» + успадкований коефіцієнт переваги"},
+  {id:"S8", name:"Збереження запиту", desc:"Історія запитів, підписка, сповіщення про нові відповідні заявки"}
+];
+var SEARCH_MODES = [
+  {code:"M", name:"Море", role:"Магістральне плече (гілка 1)", base:"порти (seaport)"},
+  {code:"F", name:"Авіа", role:"Магістральне плече — альтернатива морю", base:"аеропорти (airport)"},
+  {code:"T", name:"ЖД", role:"Фідерне плече 1-го рівня", base:"станції (rail_station)"},
+  {code:"A", name:"Авто", role:"Фідерне плече 2-го рівня, «остання миля»", base:"міста (city)"},
+  {code:"D", name:"Дрон", role:"Не плече графа — пост-обробка останнього авто-плеча", base:"майданчики (drone_pad)"},
+  {code:"X", name:"Мультимодальний", role:"Не окреме плече — розділ із доступом до заявок усіх розділів", base:"усі типи пунктів"}
+];
+var SEARCH_DRONE_GATES = [
+  {gate:"1", check:"Плече останнє й вид — авто", reason:"not_last_auto_leg", scenario:"T16"},
+  {gate:"2", check:"Зона дозволена (немає no_permit)", reason:"no_permit", scenario:"T17"},
+  {gate:"3", check:"d ≤ range_km × drone_range_margin", reason:"out_of_range", scenario:"T18"},
+  {gate:"4", check:"weight_t × 1000 ≤ max_payload_kg, габарити, ADR, не живі тварини", reason:"cargo_not_allowed", scenario:"T19"},
+  {gate:"5", check:"Лот D знайдено або підставлено площадку в межах max_legs=4", reason:"no_drone_lot / no_landing_pad / max_legs_exceeded / extra_leg_disabled", scenario:"T20, T22, T23"},
+  {gate:"6", check:"Погода у вікні вильоту (не відмова — прапорець weather_risk)", reason:"— (weather_risk)", scenario:"T21, T26"},
+  {gate:"—", check:"Модуль вимкнено запитом", reason:"drone_disabled", scenario:"T24"},
+  {gate:"—", check:"Перевищено бюджет модуля", reason:"timeout", scenario:"T25"}
+];
+var SEARCH_RANK_WEIGHTS = [
+  {criterion:"cost", wc:"0.55", wt:"0.10", wk:"0.15", wr:"0.10", wn:"0.10"},
+  {criterion:"time", wc:"0.10", wt:"0.55", wk:"0.10", wr:"0.10", wn:"0.15"},
+  {criterion:"balanced", wc:"0.30", wt:"0.30", wk:"0.15", wr:"0.15", wn:"0.10"}
+];
+var SEARCH_FLAG_PENALTIES = [
+  {flag:"weather_risk", penalty:"0.08", why:"Ризик погоди або невідома погода у дрон-плечі"},
+  {flag:"no_permit", penalty:"0.10", why:"Плече без дозволу вимагає дій учасника"},
+  {flag:"customs_missing", penalty:"0.06", why:"У плечі немає потрібного документа CMR/T1/TIR"},
+  {flag:"estimated_price", penalty:"0.03", why:"Вартість не з лота, а з медіан link_stats"}
+];
+var SEARCH_CI_STEPS = [
+  {step:"Контракт", cmd:"schemas/validate_schema.py, schemas/check_schema.py", fails:"невалідний приклад A.8.4.1, порушення програмної перевірки, непокрита мутація, непокритий код reason"},
+  {step:"Правило гілки", cmd:"ci/check_ruleset.py", fails:"перевірка з правила не відповідає job-у, gate не залежить від нового job-а, фільтр paths у тригері, сценарій не описаний у ТЗ"},
+  {step:"Валюти й мови", cmd:"schemas/check_i18n.py", fails:"різна базова валюта в A.5 і рамковому ТЗ, застарілий курс без позначки, непокрита мутація"},
+  {step:"Текст/схема/proto", cmd:"ci/check_contract_text.py (U1–U5, N1–N5)", fails:"розбіжність носія одиниці ваги або коду валюти між ТЗ, схемою і proto"},
+  {step:"Юніт і приймання", cmd:"тести модуля + сценарії T1–T27", fails:"розбіжність реалізації або поведінки з контрактом (модуль ще не реалізований)"}
+];
+
+function renderSearchModule(){
+  var subsystemsHtml = SEARCH_SUBSYSTEMS.map(function(s){
+    return '<tr><td><code>'+esc(s.id)+'</code></td><td>'+esc(s.name)+'</td><td>'+esc(s.desc)+'</td></tr>';
+  }).join("");
+  var modesHtml = SEARCH_MODES.map(function(m){
+    return '<tr><td><code>'+esc(m.code)+'</code></td><td>'+esc(m.name)+'</td><td>'+esc(m.role)+'</td><td>'+esc(m.base)+'</td></tr>';
+  }).join("");
+  var gatesHtml = SEARCH_DRONE_GATES.map(function(g){
+    return '<tr><td>'+esc(g.gate)+'</td><td>'+esc(g.check)+'</td><td><code>'+esc(g.reason)+'</code></td><td>'+esc(g.scenario)+'</td></tr>';
+  }).join("");
+  var weightsHtml = SEARCH_RANK_WEIGHTS.map(function(w){
+    return '<tr><td><code>'+esc(w.criterion)+'</code></td><td>'+esc(w.wc)+'</td><td>'+esc(w.wt)+'</td><td>'+esc(w.wk)+'</td><td>'+esc(w.wr)+'</td><td>'+esc(w.wn)+'</td></tr>';
+  }).join("");
+  var penaltiesHtml = SEARCH_FLAG_PENALTIES.map(function(p){
+    return '<tr><td><code>'+esc(p.flag)+'</code></td><td>'+esc(p.penalty)+'</td><td>'+esc(p.why)+'</td></tr>';
+  }).join("");
+  var ciHtml = SEARCH_CI_STEPS.map(function(c){
+    return '<tr><td>'+esc(c.step)+'</td><td><code>'+esc(c.cmd)+'</code></td><td>'+esc(c.fails)+'</td></tr>';
+  }).join("");
+  return ''+
+  '<section><div class="wrap">'+
+    '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("search_title"))+'</h1>'+
+    '<p class="lede">'+esc(t("search_lede"))+'</p>'+
+    '<p class="escrow-note">'+esc(t("search_disclaimer"))+'</p>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_subsystems_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>ID</th><th>'+esc(t("search_col_name"))+'</th><th>'+esc(t("search_col_desc"))+'</th>'+
+    '</tr></thead><tbody>'+subsystemsHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_modes_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("search_modes_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("search_col_code"))+'</th><th>'+esc(t("search_col_name"))+'</th><th>'+esc(t("search_col_role"))+'</th><th>'+esc(t("search_col_base"))+'</th>'+
+    '</tr></thead><tbody>'+modesHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_gates_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("search_gates_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("search_col_gate"))+'</th><th>'+esc(t("search_col_check"))+'</th><th>'+esc(t("search_col_reason"))+'</th><th>'+esc(t("search_col_scenario"))+'</th>'+
+    '</tr></thead><tbody>'+gatesHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_rank_heading"))+'</h2>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("search_col_criterion"))+'</th><th>w<sub>c</sub></th><th>w<sub>t</sub></th><th>w<sub>k</sub></th><th>w<sub>r</sub></th><th>w<sub>n</sub></th>'+
+    '</tr></thead><tbody>'+weightsHtml+'</tbody></table></div>'+
+    '<div class="bpmn-diagram" style="padding:0;margin-top:14px;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("search_col_flag"))+'</th><th>'+esc(t("search_col_penalty"))+'</th><th>'+esc(t("search_col_why"))+'</th>'+
+    '</tr></thead><tbody>'+penaltiesHtml+'</tbody></table></div>'+
+
+    '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_ci_heading"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("search_ci_lede"))+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
+      '<th>'+esc(t("search_col_step"))+'</th><th>'+esc(t("search_col_command"))+'</th><th>'+esc(t("search_col_fails"))+'</th>'+
+    '</tr></thead><tbody>'+ciHtml+'</tbody></table></div>'+
+    '<p class="escrow-note">'+esc(t("search_ci_note"))+'</p>'+
+
+    '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
+    '<ul class="automation-downloads">'+
+      '<li>'+ICONS.book+'<a href="ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md" target="_blank" rel="noopener">'+esc(t("search_download_tz"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="schemas/post-drone.schema.json" target="_blank" rel="noopener">'+esc(t("search_download_schema"))+'</a></li>'+
+      '<li>'+ICONS.route+'<a href="ci/check_contract_text.py" target="_blank" rel="noopener">'+esc(t("search_download_contracttext"))+'</a></li>'+
+    '</ul>'+
   '</div></section>';
 }
 
@@ -7504,6 +7702,7 @@ function pageContent(){
     case "borders": return renderBorders();
     case "qa": return renderQa();
     case "rating": return renderRating();
+    case "search-module": return renderSearchModule();
     case "automation": return renderAutomation();
     case "verification": return renderVerification();
     case "verification-sprint1": return renderVerificationSprint1();
