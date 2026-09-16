@@ -4884,7 +4884,7 @@ uk:{
   search_rank_heading:"Ранжування: ваги критерію та штрафи за прапорці",
   search_ci_heading:"Кроки CI (обовʼязкові для злиття)",
   search_ci_lede:"Контракт, правило гілки та валютно-мовні сценарії не потребують ні бази, ні застосунку — лише текст ТЗ, схему і фікстури.",
-  search_ci_note:"Стан у цьому репозиторії: schemas/check_schema.py і schemas/check_i18n.py проходять на 100% (перевірено в цій сесії). ci/check_ruleset.py теж проходить, але поки узгоджує лише конвеєр контракту й UI-сценаріїв — job proto, який мав би викликати ci/check_contract_text.py, ще не доданий.",
+  search_ci_note:"Стан у цьому репозиторії: schemas/check_schema.py, schemas/check_i18n.py, ci/check_ruleset.py (R1–R11, 18 мутацій) і новий ci/check_doc_counts.py (D1–D8, 9 мутацій) проходять на 100% — перевірено в цій сесії, разом із самоперевіркою ci/check_doc_counts.py --self-test. ci/check_ruleset.py поки узгоджує лише конвеєр контракту й UI-сценаріїв — job proto, який мав би викликати ci/check_contract_text.py, ще не доданий.",
   search_col_name:"Назва", search_col_desc:"Зміст", search_col_code:"Код", search_col_role:"Роль у графі", search_col_base:"База пунктів",
   search_col_gate:"Ворота", search_col_check:"Перевірка", search_col_reason:"Код причини", search_col_scenario:"Сценарій",
   search_col_criterion:"Критерій", search_col_flag:"Прапорець", search_col_penalty:"Штраф", search_col_why:"Обґрунтування",
@@ -4892,6 +4892,7 @@ uk:{
   search_download_tz:"Повний текст ТЗ, додаток A (Markdown)",
   search_download_schema:"JSON Schema контракту POST_DRONE",
   search_download_contracttext:"Перевірка тексту/схеми/proto, U1–U5, N1–N5 (Python)",
+  search_download_doccounts:"Перевірка чисел у документації, D1–D8 (Python, реальний файл)",
   automation_title:"Автоматизований check-call: як це влаштовано",
   automation_lede:"BPMN-модель процесу автоматизованого відстеження рейсу: коли система сама зв'язується з водієм і як виняткові ситуації доходять до диспетчера.",
   automation_disclaimer:"Це дизайн-концепція процесу (BPMN-схема), а не підключений сервіс: у цьому демо немає ні реального AI-дзвінка водієві, ні інтеграції з TMS чи SMS-шлюзом.",
@@ -5089,7 +5090,7 @@ en:{
   search_rank_heading:"Ranking: criterion weights and flag penalties",
   search_ci_heading:"CI steps (required for merge)",
   search_ci_lede:"Contract, branch-rule and currency/language scenarios need no database or app - only the spec text, the schema and fixtures.",
-  search_ci_note:"State in this repository: schemas/check_schema.py and schemas/check_i18n.py both pass at 100% (verified in this session). ci/check_ruleset.py also passes, but currently only reconciles the contract and UI-scenario pipeline - the proto job that would call ci/check_contract_text.py hasn't been added yet.",
+  search_ci_note:"State in this repository: schemas/check_schema.py, schemas/check_i18n.py, ci/check_ruleset.py (R1-R11, 18 mutations) and the new ci/check_doc_counts.py (D1-D8, 9 mutations) all pass at 100% - verified in this session, including ci/check_doc_counts.py --self-test. ci/check_ruleset.py currently only reconciles the contract and UI-scenario pipeline - the proto job that would call ci/check_contract_text.py hasn't been added yet.",
   search_col_name:"Name", search_col_desc:"What it covers", search_col_code:"Code", search_col_role:"Role in the graph", search_col_base:"Point base",
   search_col_gate:"Gate", search_col_check:"Check", search_col_reason:"Reason code", search_col_scenario:"Scenario",
   search_col_criterion:"Criterion", search_col_flag:"Flag", search_col_penalty:"Penalty", search_col_why:"Rationale",
@@ -5097,6 +5098,7 @@ en:{
   search_download_tz:"Full spec text, Appendix A (Markdown)",
   search_download_schema:"POST_DRONE contract JSON Schema",
   search_download_contracttext:"Text/schema/proto checker, U1-U5, N1-N5 (Python)",
+  search_download_doccounts:"Documentation-numbers checker, D1-D8 (Python, real file)",
   automation_title:"Automated check-call: how it works",
   automation_lede:"A BPMN model of the automated shipment-tracking process: when the system reaches out to the driver on its own, and how exceptions reach a dispatcher.",
   automation_disclaimer:"This is a process design concept (a BPMN diagram), not a connected service: this demo has no real AI call to a driver, TMS integration, or SMS gateway.",
@@ -5294,7 +5296,7 @@ pl:{
   search_rank_heading:"Ranking: wagi kryterium i kary za flagi",
   search_ci_heading:"Kroki CI (wymagane do scalenia)",
   search_ci_lede:"Kontrakt, reguła gałęzi oraz scenariusze walutowo-językowe nie wymagają bazy ani aplikacji - tylko tekst specyfikacji, schemat i fixtures.",
-  search_ci_note:"Stan w tym repozytorium: schemas/check_schema.py i schemas/check_i18n.py przechodzą w 100% (zweryfikowano w tej sesji). ci/check_ruleset.py również przechodzi, ale na razie uzgadnia tylko potok kontraktu i scenariuszy UI - job proto, który wywoływałby ci/check_contract_text.py, nie został jeszcze dodany.",
+  search_ci_note:"Stan w tym repozytorium: schemas/check_schema.py, schemas/check_i18n.py, ci/check_ruleset.py (R1-R11, 18 mutacji) i nowy ci/check_doc_counts.py (D1-D8, 9 mutacji) przechodzą w 100% - zweryfikowano w tej sesji, wraz z ci/check_doc_counts.py --self-test. ci/check_ruleset.py na razie uzgadnia tylko potok kontraktu i scenariuszy UI - job proto, który wywoływałby ci/check_contract_text.py, nie został jeszcze dodany.",
   search_col_name:"Nazwa", search_col_desc:"Co obejmuje", search_col_code:"Kod", search_col_role:"Rola w grafie", search_col_base:"Baza punktów",
   search_col_gate:"Bramka", search_col_check:"Kontrola", search_col_reason:"Kod przyczyny", search_col_scenario:"Scenariusz",
   search_col_criterion:"Kryterium", search_col_flag:"Flaga", search_col_penalty:"Kara", search_col_why:"Uzasadnienie",
@@ -5302,6 +5304,7 @@ pl:{
   search_download_tz:"Pełny tekst specyfikacji, załącznik A (Markdown)",
   search_download_schema:"JSON Schema kontraktu POST_DRONE",
   search_download_contracttext:"Walidator tekstu/schematu/proto, U1-U5, N1-N5 (Python)",
+  search_download_doccounts:"Walidator liczb w dokumentacji, D1-D8 (Python, prawdziwy plik)",
   automation_title:"Automatyczny check-call: jak to działa",
   automation_lede:"Model BPMN procesu automatycznego śledzenia przewozu: kiedy system sam kontaktuje się z kierowcą i jak wyjątki trafiają do dyspozytora.",
   automation_disclaimer:"To koncepcja projektowa procesu (diagram BPMN), a nie podłączona usługa: w tym demo nie ma ani prawdziwego połączenia AI z kierowcą, ani integracji z TMS czy bramką SMS.",
@@ -5499,7 +5502,7 @@ de:{
   search_rank_heading:"Ranking: Kriteriengewichte und Flag-Strafen",
   search_ci_heading:"CI-Schritte (für den Merge erforderlich)",
   search_ci_lede:"Vertrag, Branch-Regel und Währungs-/Sprachszenarien benötigen weder Datenbank noch Anwendung - nur den Spezifikationstext, das Schema und Fixtures.",
-  search_ci_note:"Stand in diesem Repository: schemas/check_schema.py und schemas/check_i18n.py bestehen beide zu 100 % (in dieser Sitzung verifiziert). ci/check_ruleset.py besteht ebenfalls, gleicht aber bisher nur die Contract- und UI-Szenario-Pipeline ab - der proto-Job, der ci/check_contract_text.py aufrufen würde, wurde noch nicht hinzugefügt.",
+  search_ci_note:"Stand in diesem Repository: schemas/check_schema.py, schemas/check_i18n.py, ci/check_ruleset.py (R1-R11, 18 Mutationen) und das neue ci/check_doc_counts.py (D1-D8, 9 Mutationen) bestehen alle zu 100 % - in dieser Sitzung verifiziert, einschließlich ci/check_doc_counts.py --self-test. ci/check_ruleset.py gleicht bisher nur die Contract- und UI-Szenario-Pipeline ab - der proto-Job, der ci/check_contract_text.py aufrufen würde, wurde noch nicht hinzugefügt.",
   search_col_name:"Name", search_col_desc:"Inhalt", search_col_code:"Code", search_col_role:"Rolle im Graphen", search_col_base:"Punktbasis",
   search_col_gate:"Gate", search_col_check:"Prüfung", search_col_reason:"Ursachencode", search_col_scenario:"Szenario",
   search_col_criterion:"Kriterium", search_col_flag:"Flag", search_col_penalty:"Strafe", search_col_why:"Begründung",
@@ -5507,6 +5510,7 @@ de:{
   search_download_tz:"Vollständiger Spezifikationstext, Anhang A (Markdown)",
   search_download_schema:"JSON Schema des POST_DRONE-Vertrags",
   search_download_contracttext:"Text-/Schema-/Proto-Prüfer, U1-U5, N1-N5 (Python)",
+  search_download_doccounts:"Prüfer für Zahlen in der Dokumentation, D1-D8 (Python, echte Datei)",
   automation_title:"Automatisierter Check-Call: so funktioniert es",
   automation_lede:"Ein BPMN-Modell des automatisierten Sendungsverfolgungsprozesses: wann das System selbst den Fahrer kontaktiert und wie Ausnahmen den Disponenten erreichen.",
   automation_disclaimer:"Dies ist ein Prozess-Designkonzept (ein BPMN-Diagramm), kein angebundener Dienst: In dieser Demo gibt es weder einen echten KI-Anruf beim Fahrer noch eine TMS- oder SMS-Gateway-Integration.",
@@ -6403,6 +6407,7 @@ var SEARCH_FLAG_PENALTIES = [
 var SEARCH_CI_STEPS = [
   {step:"Контракт", cmd:"schemas/validate_schema.py, schemas/check_schema.py", fails:"невалідний приклад A.8.4.1, порушення програмної перевірки, непокрита мутація, непокритий код reason"},
   {step:"Правило гілки", cmd:"ci/check_ruleset.py", fails:"перевірка з правила не відповідає job-у, gate не залежить від нового job-а, фільтр paths у тригері, сценарій не описаний у ТЗ"},
+  {step:"Числа в документації", cmd:"ci/check_doc_counts.py", fails:"твердження ТЗ про кількість обовʼязкових перевірок, діапазон правил R1–RN, кількість сценаріїв pull request чи назва групи сценаріїв відстали від фактичного складу правила гілки й конвеєрів"},
   {step:"Валюти й мови", cmd:"schemas/check_i18n.py", fails:"різна базова валюта в A.5 і рамковому ТЗ, застарілий курс без позначки, непокрита мутація"},
   {step:"Текст/схема/proto", cmd:"ci/check_contract_text.py (U1–U5, N1–N5)", fails:"розбіжність носія одиниці ваги або коду валюти між ТЗ, схемою і proto"},
   {step:"Юніт і приймання", cmd:"тести модуля + сценарії T1–T27", fails:"розбіжність реалізації або поведінки з контрактом (модуль ще не реалізований)"}
@@ -6470,6 +6475,7 @@ function renderSearchModule(){
       '<li>'+ICONS.book+'<a href="ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md" target="_blank" rel="noopener">'+esc(t("search_download_tz"))+'</a></li>'+
       '<li>'+ICONS.checklist+'<a href="schemas/post-drone.schema.json" target="_blank" rel="noopener">'+esc(t("search_download_schema"))+'</a></li>'+
       '<li>'+ICONS.route+'<a href="ci/check_contract_text.py" target="_blank" rel="noopener">'+esc(t("search_download_contracttext"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="ci/check_doc_counts.py" target="_blank" rel="noopener">'+esc(t("search_download_doccounts"))+'</a></li>'+
     '</ul>'+
   '</div></section>';
 }
