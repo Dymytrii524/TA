@@ -2,6 +2,13 @@
   "name": "main: обовʼязковий контракт",
   "target": "branch",
   "enforcement": "active",
+  "bypass_actors": [
+    {
+      "actor_id": 5,
+      "actor_type": "RepositoryRole",
+      "bypass_mode": "always"
+    }
+  ],
   "conditions": {
     "ref_name": {
       "include": [
@@ -42,7 +49,25 @@
             "context": "Валютні та мовні сценарії C1-C13, L1-L12"
           },
           {
+            "context": "Контракт proto модуля SEARCH"
+          },
+          {
             "context": "UI-сценарії U1-U8 вибору виду транспорту"
+          },
+          {
+            "context": "backend-gate"
+          },
+          {
+            "context": "Контракт бекенду Спринту 0"
+          },
+          {
+            "context": "Приймальні тести БД Спринту 0"
+          },
+          {
+            "context": "Контракт модуля верифікації"
+          },
+          {
+            "context": "Інваріанти верифікації"
           }
         ]
       }

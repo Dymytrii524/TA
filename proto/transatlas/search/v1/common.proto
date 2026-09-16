@@ -1,0 +1,206 @@
+// Модуль SEARCH логістичної біржі — спільні типи.
+//
+// Нормативні джерела:
+//   ТЗ додаток A, розділи A.3 (позначення), A.4 (структура даних), A.5 (нормалізація).
+//   schemas/post-drone.schema.json — машинний контракт дрон-частини відповіді.
+//
+// Правило пріоритету: у питаннях дрон-частини відповіді `/search/routes`
+// нормативною лишається JSON Schema. Цей proto є типізованим поданням того
+// самого контракту для транспорту gRPC між api-gateway і сервісом search (Go).
+// Розбіжність proto зі схемою є дефектом proto, а не схеми.
+
+syntax = "proto3";
+
+package transatlas.search.v1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/trans-atlas/search/gen/transatlas/search/v1;searchv1";
+option java_multiple_files = true;
+option java_package = "net.transatlas.search.v1";
+
+// ---------------------------------------------------------------------------
+// Відображення enum на значення JSON-контракту
+// ---------------------------------------------------------------------------
+//
+// Значення enum у proto зобов'язані мати префікс типу (стиль protobuf), тоді як
+// JSON-контракт додатка A використовує короткі рядки ("A", "not_last_auto_leg").
+// Щоб відображення не жило в коді двох сервісів окремо, воно оголошується тут
+// опцією `wire` і перевіряється в CI прогоном `schemas/check_proto_contract.py`,
+// який зіставляє набір `wire`-значень із перерахуванням JSON Schema.
+//
+// Значення *_UNSPECIFIED опції `wire` не мають: у JSON-контракті їм немає
+// відповідника, вони існують лише як нульове значення proto3.
+extend google.protobuf.EnumValueOptions {
+  optional string wire = 50001;
+}
+
+// ---------------------------------------------------------------------------
+// Види транспорту (A.3.1)
+// ---------------------------------------------------------------------------
+
+enum TransportMode {
+  TRANSPORT_MODE_UNSPECIFIED = 0;
+
+  // Автомобільний. Базова база пунктів — city.
+  TRANSPORT_MODE_AUTO = 1 [(wire) = "A"];
+
+  // Залізничний. Базова база пунктів — rail_station.
+  TRANSPORT_MODE_RAIL = 2 [(wire) = "T"];
+
+  // Авіаційний. Базова база пунктів — airport.
+  TRANSPORT_MODE_AIR = 3 [(wire) = "F"];
+
+  // Морський. Базова база пунктів — seaport.
+  TRANSPORT_MODE_SEA = 4 [(wire) = "M"];
+
+  // Дрони. Базова база пунктів — drone_pad.
+  TRANSPORT_MODE_DRONE = 5 [(wire) = "D"];
+
+  // Мультимодальний — окремий розділ біржі, а НЕ вид плеча (A.3.1).
+  // Допустимий у `SearchLotsRequest.mode` і `Lot.mode`; у `Leg.mode` заборонений
+  // (плече завжди має конкретний вид транспорту).
+  TRANSPORT_MODE_MULTIMODAL = 6 [(wire) = "X"];
+}
+
+// ---------------------------------------------------------------------------
+// Пункти (A.4.1)
+// ---------------------------------------------------------------------------
+
+enum PointKind {
+  POINT_KIND_UNSPECIFIED = 0;
+  POINT_KIND_CITY = 1 [(wire) = "city"];
+  POINT_KIND_RAIL_STATION = 2 [(wire) = "rail_station"];
+  POINT_KIND_SEAPORT = 3 [(wire) = "seaport"];
+  POINT_KIND_AIRPORT = 4 [(wire) = "airport"];
+  POINT_KIND_DRONE_PAD = 5 [(wire) = "drone_pad"];
+  POINT_KIND_WAREHOUSE = 6 [(wire) = "warehouse"];
+  POINT_KIND_BORDER_CROSSING = 7 [(wire) = "border_crossing"];
+}
+
+// Пункт у відповіді.
+//
+// JSON Schema допускає для точки дві форми: ціле число (лише id) або об'єкт з
+// обов'язковим `id`. Обидві форми відображаються на цей message: коротка форма
+// заповнює тільки `id`. Шар JSON-серіалізації відповідає за прийняття обох форм
+// на вході й за вибір форми на виході.
+message Point {
+  // Первинний ключ points.id. Обов'язковий в обох формах JSON-контракту.
+  int64 id = 1 [(buf.validate.field).int64.gt = 0];
+
+  PointKind kind = 2 [(buf.validate.field).enum.defined_only = true];
+
+  // Назва в мові інтерфейсу запиту (points.name_i18n, НФВ A.11 «мовна підтримка»).
+  string name = 3;
+
+  // ISO 3166-1 alpha-2.
+  string country_code = 4 [(buf.validate.field).string.pattern = "^([A-Z]{2})?$"];
+
+  string region = 5;
+
+  LatLng geo = 6;
+}
+
+message LatLng {
+  double lat = 1 [
+    (buf.validate.field).double.gte = -90,
+    (buf.validate.field).double.lte = 90
+  ];
+  double lon = 2 [
+    (buf.validate.field).double.gte = -180,
+    (buf.validate.field).double.lte = 180
+  ];
+}
+
+// Спосіб задання пункту в запиті: id, вільний текст із геокодуванням,
+// адміністративна область або координати (A.3.2 P1/P2, A.6.10).
+message PlaceQuery {
+  oneof selector {
+    option (buf.validate.oneof).required = true;
+
+    int64 point_id = 1 [(buf.validate.field).int64.gt = 0];
+
+    // Вільний текст, напр. "Луцьк, UA". Розв'язується геокодуванням і
+    // підстановкою найближчого пункту (A.6.10).
+    string text = 2 [(buf.validate.field).string.min_len = 1];
+
+    // Адміністративна область — країна та (необов'язково) регіон.
+    // Використовується фільтром «інші напрямки» (A.8.2).
+    GeoArea area = 3;
+
+    LatLng coords = 4;
+  }
+}
+
+message GeoArea {
+  string country = 1 [(buf.validate.field).string.pattern = "^[A-Z]{2}$"];
+  string region = 2;
+}
+
+// ---------------------------------------------------------------------------
+// Габарити та компанія
+// ---------------------------------------------------------------------------
+
+message Dimensions {
+  double length_m = 1 [(buf.validate.field).double.gt = 0];
+  double width_m = 2 [(buf.validate.field).double.gt = 0];
+  double height_m = 3 [(buf.validate.field).double.gt = 0];
+}
+
+message Company {
+  int64 id = 1 [(buf.validate.field).int64.gt = 0];
+  string name = 2;
+
+  // 0..5, шкала рейтингів біржі (A.9).
+  double rating = 3 [
+    (buf.validate.field).double.gte = 0,
+    (buf.validate.field).double.lte = 5
+  ];
+
+  repeated string badges = 4;
+  bool is_blacklisted = 5;
+}
+
+// ---------------------------------------------------------------------------
+// Гроші й нормалізація (A.5)
+// ---------------------------------------------------------------------------
+//
+// УВАГА, нормативне обмеження. Числові поля вартості в цьому контракті
+// (`*_cost_base`, `total_cost_eur`) — ВНУТРІШНЯ величина ранжування в базовій
+// валюті біржі. Вони не є джерелом істини для показу ціни користувачеві й не
+// можуть використовуватися в документах або платежах: ставку у валюті автора
+// заявки та перерахунок у валюту користувача віддає сервіс settlement
+// (рамкове ТЗ, розділи 13.3, 13.4). Double тут допустимий саме тому, що це
+// величина сортування; для фінансових сум double заборонений.
+//
+// Базова валюта біржі одна (A.5) і передається полем
+// `SearchRoutesResponse.base_currency_code`, а не «прошивається» в назві поля.
+
+// Контекст виклику: локаль, валюта відображення, актор і зріз даних.
+message SearchContext {
+  // Мова інтерфейсу для назв пунктів і типів вантажу (НФВ A.11).
+  // Ядро MVP: uk, en, pl, de.
+  string locale = 1 [(buf.validate.field).string.pattern = "^[a-z]{2}(-[A-Z]{2})?$"];
+
+  // Валюта відображення. НЕ впливає на порядок видачі (A.5, рамкове ТЗ 14.7).
+  string display_currency = 2 [(buf.validate.field).string.pattern = "^([A-Z]{3,4})?$"];
+
+  int64 user_id = 3;
+  int64 company_id = 4;
+
+  // Оплачені розділи транспорту. Порожній список означає безкоштовний акаунт:
+  // модуль застосовує затримку `free_account_delay_min` (A.10) і приховує
+  // контакти (A.8.1).
+  repeated TransportMode paid_modes = 5 [(buf.validate.field).repeated.items = {
+    enum: {defined_only: true}
+  }];
+
+  // Ключ ідемпотентності виклику. Разом із `data_snapshot_id` забезпечує
+  // вимогу аудиту A.11: ті самі параметри на тому самому зрізі даних дають
+  // ідентичну видачу.
+  string idempotency_key = 6;
+
+  // Ідентифікатор зрізу даних для відтворюваності. Порожній — «поточний зріз».
+  string data_snapshot_id = 7;
+}

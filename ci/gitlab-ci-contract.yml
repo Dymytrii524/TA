@@ -1,6 +1,28 @@
-# Той самий крок «Контракт» для GitLab CI. Підключається в .gitlab-ci.yml:
+# Дзеркало обовʼязкових перевірок для GitLab CI. Підключається в .gitlab-ci.yml:
 #   include:
 #     - local: ci/gitlab-ci-contract.yml
+#
+# Паритет із GitHub Actions: цей файл дзеркалить обидва конвеєри —
+# ci/github-actions-contract.yml (job-и contract, i18n, proto, ui) і
+# ci/backend-contract.yml (backend-contract, verification-contract,
+# backend-db, verification-db). Зонд зовнішніх реєстрів
+# (ci/source-probe.yml) свідомо лишається поза обовʼязковим конвеєром.
+#
+# Різниця моделей, про яку треба знати: у GitHub обовʼязковість задається
+# переліком контекстів у ci/ruleset-contract.json, а в GitLab — налаштуванням
+# «Pipelines must succeed» для merge request. Тому в GitLab немає окремих
+# gate-job-ів: роль gate-а виконує сам статус конвеєра. Через це кожен job
+# тут не має `allow_failure`, інакше провал перестане блокувати злиття.
+#
+# Відповідність назв job-ів обовʼязковим перевіркам GitHub:
+#   contract              -> "Схема і сценарії T16-T27"
+#   i18n                  -> "Валютні та мовні сценарії C1-C13, L1-L12"
+#   proto                 -> "Контракт proto модуля SEARCH"
+#   ui                    -> "UI-сценарії U1-U8 вибору виду транспорту"
+#   backend-contract      -> "Контракт бекенду Спринту 0"
+#   verification-contract -> "Контракт модуля верифікації"
+#   backend-db            -> "Приймальні тести БД Спринту 0"
+#   verification-db       -> "Інваріанти верифікації"
 
 contract:
   stage: test
@@ -28,6 +50,8 @@ contract:
     - pip install -r schemas/requirements.txt
     - python schemas/validate_schema.py
     - python ci/check_ruleset.py
+    - python ci/check_doc_counts.py
+    - python ci/check_doc_counts.py --self-test
     - set -o pipefail
     - python schemas/check_schema.py | tee contract-report.txt
   artifacts:
@@ -71,6 +95,51 @@ i18n:
     paths:
       - i18n-report.txt
 
+# Контракт proto модуля SEARCH (додаток A, розділи A.8.4.2 і A.13.6).
+# У GitLab потрібен `GIT_DEPTH: 0`: перевірка сумісності порівнює контракт із
+# базовою гілкою, а на неглибокому клоні її просто немає в історії.
+proto:
+  stage: test
+  image: python:3.12-slim
+  timeout: 6 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
+        - "ТЗ-рамкове-логістична-біржа.md"
+        - "proto/**/*"
+        - "schemas/**/*"
+        - "ci/**/*"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - schemas/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    GIT_DEPTH: "0"
+  script:
+    - pip install -r schemas/requirements.txt
+    - test -s third_party/buf/validate/validate.proto
+    - set -o pipefail
+    - python schemas/check_proto_contract.py | tee proto-report.txt
+    - python ci/proto_mutation.py | tee -a proto-report.txt
+    - python ci/check_contract_text.py | tee -a proto-report.txt
+    - python ci/check_contract_text.py --self-test | tee -a proto-report.txt
+    - >
+      if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
+        git fetch --quiet origin "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME";
+        python ci/proto_breaking.py --base "origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" | tee -a proto-report.txt;
+      fi
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - proto-report.txt
+
 # UI-сценарії U1-U8: вибір виду транспорту на головній сторінці та його
 # наскрізне застосування до панелі потоків і деталізації.
 ui:
@@ -99,3 +168,168 @@ ui:
     expire_in: 30 days
     paths:
       - ui-report.txt
+
+# --------------------------------------------------------------------------
+# Конвеєр бекенду і модуля верифікації (дзеркало ci/backend-contract.yml).
+#
+# Фільтра `changes` тут навмисно немає: у GitHub ці job-и є обовʼязковими
+# перевірками без paths-фільтра, бо перевірка з умовою не зʼявляється
+# в pull request і злиття зависає в очікуванні статусу. Щоб дзеркало
+# лишалося дзеркалом, у GitLab вони теж виконуються в кожному merge request.
+# --------------------------------------------------------------------------
+backend-contract:
+  stage: test
+  image: python:3.12-slim
+  timeout: 6 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - sprint-0-backend/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq --no-install-recommends git
+  script:
+    - pip install -r sprint-0-backend/requirements.txt
+    # Реєстри в seed/ мусять збігатися з index.html: інакше сервер і сторінка
+    # розійдуться в довідниках міст, валют і типів вантажу.
+    - python3 sprint-0-backend/tools/extract_registries.py index.html sprint-0-backend/seed
+    - >
+      git diff --exit-code sprint-0-backend/seed
+      || { echo "Реєстри в seed/ розійшлися з index.html — перегенеруйте і закомітьте"; exit 1; }
+    - set -o pipefail
+    - python3 sprint-0-backend/ci/check_backend_contract.py . | tee backend-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - backend-report.txt
+
+# Каталоги джерел і перевірок, JSON Schema, OpenAPI, перерахування DDL
+# і навмисні мутації контракту. Зовнішня мережа тут не потрібна:
+# недоступність реєстру не має блокувати вливання коду.
+verification-contract:
+  stage: test
+  image: python:3.12-slim
+  timeout: 5 minutes
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - sprint-0-backend/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  script:
+    - pip install -r sprint-0-backend/requirements.txt
+    - set -o pipefail
+    - python3 sprint-0-backend/ci/check_verification_contract.py | tee verification-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - verification-report.txt
+
+# Приймальні тести на живій PostgreSQL з PostGIS. У GitLab сервіс доступний
+# за іменем образу, тому PGHOST — `postgres`, а не 127.0.0.1 як у GitHub.
+backend-db:
+  stage: test
+  image: python:3.12-slim
+  timeout: 10 minutes
+  interruptible: true
+  services:
+    - name: postgis/postgis:18-3.6
+      alias: postgres
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - sprint-0-backend/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    POSTGRES_USER: ta
+    POSTGRES_PASSWORD: ta
+    POSTGRES_DB: ta
+    PGHOST: postgres
+  script:
+    - pip install -r sprint-0-backend/requirements.txt
+    - python3 sprint-0-backend/tools/extract_registries.py index.html sprint-0-backend/seed
+    - python3 sprint-0-backend/ci/acceptance_db.py . "host=postgres user=ta password=ta dbname=ta"
+
+# Негативні сценарії: рівень без справи, unavailable зі знахідками,
+# критична зміна реквізитів без призупинення рівня, видалення доказу.
+# Кожен із них мусить відхилити сама база, а не код застосунку.
+verification-db:
+  stage: test
+  image: python:3.12-slim
+  timeout: 10 minutes
+  interruptible: true
+  services:
+    - name: postgis/postgis:18-3.6
+      alias: postgres
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  cache:
+    key:
+      files:
+        - sprint-0-backend/requirements.txt
+    paths:
+      - .cache/pip
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+    POSTGRES_USER: ta
+    POSTGRES_PASSWORD: ta
+    POSTGRES_DB: ta
+    PGHOST: postgres
+  script:
+    - pip install -r sprint-0-backend/requirements.txt
+    - set -o pipefail
+    - >
+      python3 sprint-0-backend/ci/acceptance_verification_db.py
+      "host=postgres user=ta password=ta dbname=ta" | tee verification-db-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - verification-db-report.txt
+
+# --------------------------------------------------------------------------
+# Зонд зовнішніх реєстрів верифікації. НЕ обовʼязковий:
+# недоступність VIES, KRS чи реєстру санкцій — стан зовнішнього світу,
+# а не дефект merge request. `allow_failure: true` тут доречний саме тому,
+# і лише тут. Запускається за розкладом (Schedules) або вручну.
+# --------------------------------------------------------------------------
+source-probe:
+  stage: test
+  image: python:3.12-slim
+  timeout: 15 minutes
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: manual
+  script:
+    - pip install -r sprint-0-backend/requirements.txt
+    - set -o pipefail
+    - python3 sprint-0-backend/tools/probe_sources.py --json probe.json | tee probe-report.txt
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths:
+      - probe.json
+      - probe-report.txt

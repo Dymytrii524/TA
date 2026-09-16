@@ -1,0 +1,34 @@
+# Генерація SDK з контракту модуля SEARCH.
+#
+# Розподіл мов узятий із рішення щодо стека: сам модуль SEARCH — Go, решта
+# сервісів і фронтенд — TypeScript. Обидва SDK генеруються з одного контракту,
+# тому розійтися вони не можуть.
+#
+#   buf generate            # у gen/ (каталог не комітиться)
+#   buf generate --template buf.gen.yaml --path proto/transatlas/search/v1
+version: v2
+
+managed:
+  enabled: true
+  override:
+    # Шлях імпорту Go-пакетів; замінити на власний модуль репозиторію.
+    - file_option: go_package_prefix
+      value: github.com/transatlas/ta/gen/go
+
+plugins:
+  # Go: сам модуль SEARCH.
+  - remote: buf.build/protocolbuffers/go
+    out: gen/go
+    opt: paths=source_relative
+  - remote: buf.build/grpc/go
+    out: gen/go
+    opt: paths=source_relative
+
+  # TypeScript: клієнт біржі та сервіси на Node.
+  - remote: buf.build/bufbuild/es
+    out: gen/ts
+    opt:
+      - target=ts
+      # json_types потрібні тому, що дрон-частина відповіді нормується
+      # JSON Schema: типізований JSON дає збіг із нею на етапі компіляції.
+      - json_types=true

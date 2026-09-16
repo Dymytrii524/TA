@@ -21,20 +21,20 @@ import subprocess
 import sys
 import tempfile
 
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8")
-
 import yaml
 
 ROOT = os.environ.get("CONTRACT_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-COPY = ["ci", "schemas", "i18n", ".github", "index.html",
+COPY = ["ci", "schemas", "i18n", "proto", "third_party", "sprint-0-backend",
+        ".github", "index.html",
         "ТЗ-рамкове-логістична-біржа.md",
         "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md",
         "ТЗ-логістична-біржа-v2-мови-валюти.md"]
-# node_modules не копіюється (десятки мегабайт на кожен прогін) - замість цього
-# кроку `npm ci` підставляється заглушка, а jsdom резолвиться через NODE_PATH.
+# node_modules не копіюється (десятки мегабайт на кожен сценарій): кроку `npm ci`
+# підставляється заглушка, а jsdom резолвиться через NODE_PATH.
 IGNORE = shutil.ignore_patterns("node_modules")
 BASE = "main"
+# Конвеєр, кроки якого симуляція виконує насправді.
+SIMULATED = "github-actions-contract.yml"
 SUCCESS, SKIPPED, FAILURE = "success", "skipped", "failure"
 
 
@@ -125,8 +125,60 @@ def s_job_renamed(d):
 def s_gate_needs_dropped(d):
     p = os.path.join(d, "ci", "github-actions-contract.yml")
     src = open(p, encoding="utf-8").read()
-    t = src.replace("    needs: [schema, i18n, ui]", "    needs: [schema]")
-    assert t != src, "мутація PR-10 не застосувалася: змінився рядок needs у gate-job"
+    t = src.replace("    needs: [schema, i18n, proto, ui]", "    needs: [schema, proto]")
+    assert t != src, "мутація PR-10 не застосувалася: список needs гейта змінився"
+    open(p, "w", encoding="utf-8").write(t)
+
+
+def s_proto_wire_renamed(d):
+    """Зміна JSON-рядка в перерахуванні: компіляція ціла, клієнти зламані."""
+    p = os.path.join(d, "proto", "transatlas", "search", "v1", "routes.proto")
+    src = open(p, encoding="utf-8").read()
+    t = src.replace('(wire) = "out_of_range"', '(wire) = "range_exceeded"')
+    assert t != src, "мутація PR-12 не застосувалася"
+    open(p, "w", encoding="utf-8").write(t)
+
+
+def s_proto_field_added(d):
+    """Нове необовʼязкове поле з описом у схемі — сумісна правка."""
+    p = os.path.join(d, "proto", "transatlas", "search", "v1", "lots.proto")
+    src = open(p, encoding="utf-8").read()
+    anchor = "message SuggestPointsRequest {"
+    assert anchor in src, "мутація PR-13 не застосувалася"
+    t = src.replace(anchor, anchor + "\n  // Сумісне додавання поля (сценарій симуляції).\n"
+                      "  string client_hint = 90;", 1)
+    open(p, "w", encoding="utf-8").write(t)
+
+
+def s_verification_job_renamed(d):
+    """Перейменування job-а бекенду: правило гілки чекатиме на стару назву."""
+    p = os.path.join(d, "ci", "backend-contract.yml")
+    src = open(p, encoding="utf-8").read()
+    t = src.replace("    name: Інваріанти верифікації\n", "    name: Верифікація БД\n", 1)
+    assert t != src, "мутація PR-14 не застосувалася"
+    open(p, "w", encoding="utf-8").write(t)
+
+
+def s_probe_job_back_in_gate(d):
+    """Зонд зовнішніх реєстрів повернуто в обовʼязковий конвеєр із job-level if."""
+    p = os.path.join(d, "ci", "backend-contract.yml")
+    src = open(p, encoding="utf-8").read()
+    t = src.rstrip("\n") + ("\n\n  sources:\n    name: Стан джерел верифікації\n"
+                            "    if: github.event_name == 'schedule'\n"
+                            "    runs-on: ubuntu-latest\n"
+                            "    steps:\n      - uses: actions/checkout@v4\n")
+    open(p, "w", encoding="utf-8").write(t)
+
+
+def s_gate_result_unchecked(d):
+    """Job лишається в needs gate-а, але зникає зі скрипта звіряння."""
+    p = os.path.join(d, "ci", "backend-contract.yml")
+    src = open(p, encoding="utf-8").read()
+    marker = '            "verification-db:${{ needs.verification-db.result }}"; do\n'
+    assert marker in src, "мутація PR-16 не застосувалася"
+    t = src.replace(marker, "            ; do\n", 1).replace(
+        '            "backend-db:${{ needs.backend-db.result }}" \\\n',
+        '            "backend-db:${{ needs.backend-db.result }}"; do\n', 1)
     open(p, "w", encoding="utf-8").write(t)
 
 
@@ -135,7 +187,7 @@ def s_heromode_regression(d):
     p = os.path.join(d, "index.html")
     t = open(p, encoding="utf-8").read()
     out = t.replace('state.filters.mode = state.heroMode || "all";', 'state.filters.mode = "all";')
-    assert out != t, "мутація PR-12 не застосувалася"
+    assert out != t, "мутація PR-18 не застосувалася"
     open(p, "w", encoding="utf-8").write(out)
 
 
@@ -144,8 +196,18 @@ def s_home_cosmetic(d):
     p = os.path.join(d, "index.html")
     t = open(p, encoding="utf-8").read()
     out = t.replace("</body>", "<!-- косметична правка -->\n</body>", 1)
-    assert out != t, "мутація PR-13 не застосувалася"
+    assert out != t, "мутація PR-19 не застосувалася"
     open(p, "w", encoding="utf-8").write(out)
+
+
+def s_bypass_widened(d):
+    """Тихе розширення списку винятків: право обходу правила отримує роль write."""
+    p = os.path.join(d, "ci", "ruleset-contract.json")
+    obj = json.load(open(p, encoding="utf-8"))
+    assert "bypass_actors" in obj, "мутація PR-17 не застосувалася"
+    obj["bypass_actors"].append(
+        {"actor_id": 3, "actor_type": "RepositoryRole", "bypass_mode": "always"})
+    json.dump(obj, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
 
 def s_rule_weakened(d):
@@ -182,12 +244,28 @@ SCENARIOS = [
      "R4: втрачено залежність gate-а"),
     ("PR-11 перевірку i18n вилучено з правила", s_rule_weakened, {"schema": FAILURE}, False,
      "R2, R7: правило перестало називати групу C1-C13, L1-L12"),
-    ("PR-12 регресія вибору виду транспорту на головній", s_heromode_regression,
+    ("PR-12 змінено JSON-рядок wire у proto", s_proto_wire_renamed, {"proto": FAILURE}, False,
+     "P1 і B6: proto розійшлося зі схемою й з випущеними SDK"),
+    ("PR-13 сумісне додавання поля в proto", s_proto_field_added, {"proto": SUCCESS}, True,
+     "нове поле сумісне: злиття вільне"),
+    ("PR-14 job верифікації перейменовано без оновлення правила",
+     s_verification_job_renamed, {"schema": FAILURE}, False,
+     "R1, R2: правило чекало б на 'Інваріанти верифікації', якого вже немає"),
+    ("PR-15 зонд зовнішніх джерел повернуто в обов'язковий конвеєр",
+     s_probe_job_back_in_gate, {"schema": FAILURE}, False,
+     "R5: job із job-level if залишив би pull request у вічному очікуванні"),
+    ("PR-16 backend-gate не звіряє результат інваріантів",
+     s_gate_result_unchecked, {"schema": FAILURE}, False,
+     "R12: job у needs, але його провал не змінює код виходу gate-а"),
+    ("PR-17 право обходу правила тихо розширено на роль write",
+     s_bypass_widened, {"schema": FAILURE}, False,
+     "R13: виняток поза списком дозволених зняв би обовʼязкові перевірки для будь-кого з write"),
+    ("PR-18 регресія вибору виду транспорту на головній", s_heromode_regression,
      {"ui": FAILURE, "schema": SUCCESS, "i18n": SUCCESS}, False,
-     "U6: деталізація по стрілці перестала нести вибраний вид транспорту"),
-    ("PR-13 косметична правка головної сторінки", s_home_cosmetic,
+     "U3-U6: деталізація скидає фільтр виду транспорту"),
+    ("PR-19 косметична правка головної сторінки", s_home_cosmetic,
      {"ui": SUCCESS, "schema": SUCCESS, "i18n": SUCCESS}, True,
-     "UI-сценарії проходять, злиття вільне"),
+     "логіка вибору не змінилася: злиття вільне"),
 ]
 
 
@@ -226,7 +304,7 @@ def make_branch(work, name, mutate):
 
 
 def shims(tmp):
-    """python -> python3, pip і npm -> заглушки (залежності вже встановлені, мережі немає)."""
+    """python -> python3, pip -> заглушка (залежності вже встановлені, мережі немає)."""
     b = os.path.join(tmp, "bin")
     os.makedirs(b, exist_ok=True)
     open(os.path.join(b, "python"), "w").write("#!/bin/sh\nexec python3 \"$@\"\n")
@@ -290,8 +368,8 @@ def run_job(work, binpath, wf, job, branch, logs, side):
     env["PATH"] = binpath + os.pathsep + env["PATH"]
     env["NODE_PATH"] = node_path()
     # У симуляції UI-набір іде швидким режимом: перевіряються всі гілки
-    # обробника, але не кожна з ~270 стрілок - інакше один прогін правила
-    # гілки тривав би десятки хвилин. Вичерпний режим лишається в CI.
+    # обробника, але не кожна з ~270 стрілок — інакше один прогін правила
+    # тривав би десятки хвилин. Вичерпний режим лишається в CI.
     env["HEROMODE_FULL"] = "0"
     outputs, failed = {}, False
     gh_out = os.path.join(side, "gh_output")
@@ -344,15 +422,32 @@ def run_gate(work, binpath, wf, results, logs):
 
 
 def merge_allowed(work, statuses, logs):
-    """Застосування правила гілки: кожна обовʼязкова перевірка мусить бути success або skipped."""
+    """Застосування правила гілки: кожна обовʼязкова перевірка мусить бути success або skipped.
+
+    Симуляція проганяє лише конвеєр контракту (`SIMULATED`). Обовʼязкові
+    перевірки інших конвеєрів (контракт бекенду і модуля верифікації потребують
+    живої PostgreSQL) тут не виконуються. Їх помічено явно як поза межами
+    симуляції, а не прийнято мовчки за success: їхню узгодженість із правилом
+    перевіряє `ci/check_ruleset.py`, який сам працює всередині цієї симуляції.
+    """
     rs = json.load(open(os.path.join(work, "ci", "ruleset-contract.json"), encoding="utf-8"))
-    wf = yaml.safe_load(open(os.path.join(work, "ci", "github-actions-contract.yml"), encoding="utf-8"))
+    wf = yaml.safe_load(open(os.path.join(work, "ci", SIMULATED), encoding="utf-8"))
     names = {job.get("name", jid): jid for jid, job in wf["jobs"].items()}
+    external = {}
+    for fname in sorted(os.listdir(os.path.join(work, "ci"))):
+        if not fname.endswith(".yml") or fname == SIMULATED:
+            continue
+        other = yaml.safe_load(open(os.path.join(work, "ci", fname), encoding="utf-8"))
+        for jid, job in (other.get("jobs") or {}).items():
+            external.setdefault(job.get("name", jid), fname)
     contexts = [c["context"] for r in rs["rules"] if r["type"] == "required_status_checks"
                 for c in r["parameters"]["required_status_checks"]]
     ok = True
     for ctx in contexts:
         jid = names.get(ctx)
+        if jid is None and ctx in external:
+            logs.append(f"      перевірка {ctx!r}: конвеєр {external[ctx]} — поза межами цієї симуляції")
+            continue
         if jid is None:
             logs.append(f"      перевірка {ctx!r}: статусу немає (job відсутній) — pull request в очікуванні")
             ok = False
@@ -394,12 +489,14 @@ def main():
             if verbose or not ok:
                 print("\n".join(logs))
         print()
-        print(f"{'Сценарій':52s} {'schema':9s} {'i18n':9s} {'ui':9s} {'gate':9s} {'злиття':10s} {'очікувано':10s} Вердикт")
+        print(f"{'Сценарій':48s} {'schema':9s} {'i18n':9s} {'proto':9s} {'ui':9s} {'gate':9s} "
+              f"{'злиття':10s} {'очікувано':10s} Вердикт")
         for title, st, allowed, exp, ok, why in rows:
-            print(f"{title[:52]:52s} {st.get('schema',''):9s} {st.get('i18n',''):9s} {st.get('ui',''):9s} "
-                  f"{st.get('contract-gate',''):9s} {'дозволене' if allowed else 'блоковане':10s} "
+            print(f"{title[:48]:48s} {st.get('schema',''):9s} {st.get('i18n',''):9s} "
+                  f"{st.get('proto',''):9s} {st.get('ui',''):9s} {st.get('contract-gate',''):9s} "
+                  f"{'дозволене' if allowed else 'блоковане':10s} "
                   f"{'дозволене' if exp else 'блоковане':10s} {'OK' if ok else 'РОЗБІЖНІСТЬ'}")
-            print(f"{'':52s} причина: {why}")
+            print(f"{'':48s} причина: {why}")
         print(f"\nсценаріїв pull request: {len(SCENARIOS)}, розбіжностей з очікуванням: {bad}")
         return 1 if bad else 0
     finally:

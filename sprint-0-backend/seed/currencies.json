@@ -1,0 +1,194 @@
+[
+ {
+  "code": "EUR",
+  "symbol": "€",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "USD",
+  "symbol": "$",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "UAH",
+  "symbol": "₴",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "PLN",
+  "symbol": "zł",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "CZK",
+  "symbol": "Kč",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "RON",
+  "symbol": "lei",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "GBP",
+  "symbol": "£",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "CHF",
+  "symbol": "CHF",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "HUF",
+  "symbol": "Ft",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "BGN",
+  "symbol": "лв",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "SEK",
+  "symbol": "SEK",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "DKK",
+  "symbol": "DKK",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "NOK",
+  "symbol": "NOK",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "TRY",
+  "symbol": "₺",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "RSD",
+  "symbol": "дин.",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "MDL",
+  "symbol": "MDL",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "CAD",
+  "symbol": "CA$",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "MXN",
+  "symbol": "MX$",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "CNY",
+  "symbol": "CN¥",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "JPY",
+  "symbol": "JP¥",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "AED",
+  "symbol": "AED",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "SGD",
+  "symbol": "S$",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "INR",
+  "symbol": "₹",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "KRW",
+  "symbol": "₩",
+  "position": "pre",
+  "kind": "fiat"
+ },
+ {
+  "code": "GEL",
+  "symbol": "₾",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "AZN",
+  "symbol": "₼",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "KZT",
+  "symbol": "₸",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "UZS",
+  "symbol": "soʻm",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "AMD",
+  "symbol": "֏",
+  "position": "post",
+  "kind": "fiat"
+ },
+ {
+  "code": "USDC",
+  "symbol": "USDC",
+  "position": "pre",
+  "kind": "crypto"
+ },
+ {
+  "code": "USDT",
+  "symbol": "USDT",
+  "position": "pre",
+  "kind": "crypto"
+ },
+ {
+  "code": "EURC",
+  "symbol": "EURC",
+  "position": "pre",
+  "kind": "crypto"
+ }
+]

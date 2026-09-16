@@ -1,0 +1,167 @@
+# Дзеркало workflow для контракту бекенду й модуля верифікації.
+# Копіювати в .github/workflows/backend-contract.yml без змін.
+#
+# Кожен job тут — окрема обовʼязкова перевірка в правилі захисту гілки
+# (ci/ruleset-contract.json). Тому жоден із прогінних job-ів не має
+# job-level `if:`: перевірка з умовою не зʼявляється в pull request,
+# і злиття зависає в очікуванні статусу, якого GitHub ніколи не отримає.
+# Живий зонд зовнішніх реєстрів винесено в ci/source-probe.yml саме тому.
+name: Контракт бекенду
+
+on:
+  # Фільтра paths навмисно немає: обовʼязкова перевірка мусить зʼявлятися
+  # в кожному pull request.
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# pipefail обовʼязковий: без нього код виходу `python ... | tee` дорівнює коду tee,
+# і провал прогону лишається непоміченим.
+defaults:
+  run:
+    shell: bash -euo pipefail {0}
+
+concurrency:
+  group: backend-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-contract:
+    name: Контракт бекенду Спринту 0
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Залежності
+        run: pip install -r sprint-0-backend/requirements.txt
+      - name: Реєстри з index.html
+        run: |
+          python3 sprint-0-backend/tools/extract_registries.py index.html sprint-0-backend/seed
+          git diff --exit-code sprint-0-backend/seed \
+            || { echo "Реєстри в seed/ розійшлися з index.html — перегенеруйте і закомітьте"; exit 1; }
+      - name: Схеми, OpenAPI, DDL, імпортер
+        run: python3 sprint-0-backend/ci/check_backend_contract.py . | tee backend-report.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-report
+          path: backend-report.txt
+
+  verification-contract:
+    name: Контракт модуля верифікації
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Залежності
+        run: pip install -r sprint-0-backend/requirements.txt
+      # Каталоги джерел і перевірок, JSON Schema, OpenAPI, перерахування DDL
+      # і навмисні мутації контракту. Зовнішня мережа тут не потрібна:
+      # недоступність реєстру не має блокувати вливання коду.
+      - name: Контракт модуля верифікації
+        run: python3 sprint-0-backend/ci/check_verification_contract.py | tee verification-report.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-report
+          path: verification-report.txt
+
+  backend-db:
+    name: Приймальні тести БД Спринту 0
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgis/postgis:18-3.6
+        env:
+          POSTGRES_USER: ta
+          POSTGRES_PASSWORD: ta
+          POSTGRES_DB: ta
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Залежності
+        run: pip install -r sprint-0-backend/requirements.txt
+      - name: Міграція, імпорт, інваріанти
+        env:
+          PGHOST: 127.0.0.1
+        run: |
+          python3 sprint-0-backend/tools/extract_registries.py index.html sprint-0-backend/seed
+          python3 sprint-0-backend/ci/acceptance_db.py . "host=127.0.0.1 user=ta password=ta dbname=ta"
+
+  verification-db:
+    name: Інваріанти верифікації
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgis/postgis:18-3.6
+        env:
+          POSTGRES_USER: ta
+          POSTGRES_PASSWORD: ta
+          POSTGRES_DB: ta
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Залежності
+        run: pip install -r sprint-0-backend/requirements.txt
+      # Негативні сценарії: рівень без справи, unavailable зі знахідками,
+      # критична зміна реквізитів без призупинення рівня, видалення доказу.
+      # Кожен із них мусить відхилити сама база, а не код застосунку.
+      - name: Інваріанти верифікації на живій PostgreSQL
+        env:
+          PGHOST: 127.0.0.1
+        run: |
+          python3 sprint-0-backend/ci/acceptance_verification_db.py \
+            "host=127.0.0.1 user=ta password=ta dbname=ta" | tee verification-db-report.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-db-report
+          path: verification-db-report.txt
+
+  # Gate конвеєра бекенду. Виконується завжди й падає, якщо впав будь-який
+  # із прогінних job-ів — навіть якщо той не встиг повідомити свій статус.
+  backend-gate:
+    name: backend-gate
+    needs: [backend-contract, verification-contract, backend-db, verification-db]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Результат контракту бекенду
+        run: |
+          rc=0
+          for pair in \
+            "backend-contract:${{ needs.backend-contract.result }}" \
+            "verification-contract:${{ needs.verification-contract.result }}" \
+            "backend-db:${{ needs.backend-db.result }}" \
+            "verification-db:${{ needs.verification-db.result }}"; do
+            job="${pair%%:*}"; result="${pair#*:}"
+            echo "job $job: $result"
+            case "$result" in
+              success|skipped) ;;
+              *) echo "::error::Job $job не пройдено ($result)."; rc=1 ;;
+            esac
+          done
+          if [ "$rc" -eq 0 ]; then echo "перевірка пройдена"; fi
+          exit "$rc"

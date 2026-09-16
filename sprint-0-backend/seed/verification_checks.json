@@ -1,0 +1,128 @@
+[
+  {
+    "id": "identity.email_domain",
+    "title": "Контроль над корпоративною поштою",
+    "source_id": "domain_email",
+    "required_for": "L1",
+    "is_decisive": false,
+    "jurisdictions": null,
+    "description": "Підтверджено адресу в домені компанії; домен старший за 90 днів і має MX-записи. Безкоштовна пошта дозволена, але не зараховується як доказ."
+  },
+  {
+    "id": "identity.registry_match",
+    "title": "Компанія існує в держреєстрі, дані збігаються",
+    "source_id": "edr_nais",
+    "required_for": "L1",
+    "is_decisive": true,
+    "jurisdictions": ["UA"],
+    "description": "За кодом ЄДРПОУ знайдено запис; назва після нормалізації збігається із заявленою, статус не «припинено», КВЕД містить вантажні перевезення або експедирування. Розбіжність назви понад поріг подібності дає fail, а не attention."
+  },
+  {
+    "id": "identity.registry_match_pl",
+    "title": "Компанія існує в KRS, дані збігаються",
+    "source_id": "pl_krs",
+    "required_for": "L1",
+    "is_decisive": true,
+    "jurisdictions": ["PL"],
+    "description": "За номером KRS отримано актуальний витяг; звіряються назва, статус і дата останнього запису. HTTP 204 означає «не знайдено в реєстрі підприємців» і дає fail, а не unavailable."
+  },
+  {
+    "id": "identity.vat_active",
+    "title": "Номер ПДВ чинний",
+    "source_id": "vies",
+    "required_for": "L1",
+    "is_decisive": false,
+    "jurisdictions": null,
+    "description": "VIES повертає valid=true. Для країн поза ЄС перевірка not_applicable. Якщо check-status показує недоступність держави-члена — unavailable, і рішення про L1 ухвалюється за реєстровим збігом."
+  },
+  {
+    "id": "identity.signatory",
+    "title": "Заявник має право діяти від імені компанії",
+    "source_id": "edr_nais",
+    "required_for": "L2",
+    "is_decisive": true,
+    "jurisdictions": null,
+    "description": "Прізвище заявника збігається з керівником у реєстрі, або подано довіреність, перевірену оператором. Без цього акаунт може створити будь-хто на чужу компанію."
+  },
+  {
+    "id": "identity.control_payment",
+    "title": "Контрольний платіж із рахунку компанії",
+    "source_id": "control_payment",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": null,
+    "description": "Платіж отримано, назва платника збігається з назвою в реєстрі. Обов'язковий, коли реєстрове джерело недоступне і рішення інакше спиралося б лише на слова заявника."
+  },
+  {
+    "id": "risk.sanctions",
+    "title": "Санкційні списки",
+    "source_id": "opensanctions",
+    "required_for": "L1",
+    "is_decisive": true,
+    "jurisdictions": null,
+    "description": "Звіряються назва, ідентифікатор і країна проти консолідованих списків. Збіг за назвою — гіпотеза: до підтвердження оператором справа йде в ручний розгляд, а не відхиляється автоматично. Недоступність джерела блокує позитивне рішення."
+  },
+  {
+    "id": "risk.sanctions_ua",
+    "title": "Державний реєстр санкцій України",
+    "source_id": "drs_nsdc",
+    "required_for": "L1",
+    "is_decisive": true,
+    "jurisdictions": ["UA"],
+    "description": "Перевірка за реєстром РНБО. Доступ за ключем; поки ключа немає, перевірка виконується через консолідований набір і позначається як похідне джерело."
+  },
+  {
+    "id": "risk.court_cases",
+    "title": "Судові рішення",
+    "source_id": "edrsr",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": ["UA"],
+    "description": "Пошук за кодом компанії. Значення мають лише категорії банкрутство, стягнення заборгованості за перевезення, податковий спір і втрата вантажу — решта показується без впливу на рівень."
+  },
+  {
+    "id": "risk.bankruptcy",
+    "title": "Ознаки банкрутства або припинення",
+    "source_id": "edr_nais",
+    "required_for": "L1",
+    "is_decisive": true,
+    "jurisdictions": null,
+    "description": "Статус у реєстрі «в стані припинення», «банкрутство» або наявність відкритої справи про банкрутство. Рішуча перевірка: такий контрагент не отримує рівня."
+  },
+  {
+    "id": "capability.license",
+    "title": "Ліцензія або дозвіл на перевезення",
+    "source_id": "dsbt_licenses",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": ["UA"],
+    "description": "В Україні звичайні вантажні автоперевезення не ліцензуються, тому відсутність ліцензії не є вадою. Перевірка застосовна до пасажирських і небезпечних вантажів; результат подається з датою вивантаження реєстру."
+  },
+  {
+    "id": "capability.eu_licence",
+    "title": "Ліцензія Спільноти для міжнародних перевезень",
+    "source_id": "erru",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": null,
+    "description": "Копія ліцензії подається заявником і звіряється оператором з номером і строком дії. Автоматизація неможлива: ERRU закритий для приватних компаній."
+  },
+  {
+    "id": "monitor.requisites",
+    "title": "Моніторинг зміни реквізитів",
+    "source_id": "opendatabot",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": null,
+    "description": "Підписка активна, останній прогін не старший за подвоєний інтервал. Зміна банківського рахунку, директора, назви або статусу породжує подію; критична зміна призупиняє рівень до підтвердження."
+  },
+  {
+    "id": "monitor.vat_status",
+    "title": "Моніторинг статусу платника ПДВ",
+    "source_id": "pl_white_list",
+    "required_for": "L2",
+    "is_decisive": false,
+    "jurisdictions": ["PL"],
+    "description": "Щотижнева перевірка статусу і переліку офіційних рахунків. Зміна рахунку — критична подія: саме на підміні реквізитів у листуванні будується більшість шахрайства на цьому ринку."
+  }
+]

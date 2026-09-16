@@ -1,0 +1,21 @@
+{
+ "modes": [
+  "auto",
+  "rail",
+  "sea",
+  "air",
+  "multi",
+  "drone"
+ ],
+ "kinds": [
+  "cargo",
+  "transport"
+ ],
+ "continents": [
+  "europe",
+  "asia",
+  "africa",
+  "america",
+  "australia"
+ ]
+}

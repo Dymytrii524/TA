@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trans-atlas.net/schemas/listing.schema.json",
+  "title": "Заявка (канонічний серверний формат)",
+  "description": "Форма, у якій заявка зберігається в БД і повертається API v1. Відмінності від legacy: UUID замість цілого id, гроші рядком (без float), вага завжди в кілограмах, компанія — посилання на сутність, а не рядок, і явні поля життєвого циклу.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "kind", "mode", "origin_city_id", "destination_city_id",
+    "ready_date", "cargo_type_id", "weight_kg", "price_amount", "price_currency",
+    "company", "status", "created_at", "updated_at"
+  ],
+  "properties": {
+    "id": {"$ref": "#/$defs/uuid"},
+    "legacy_id": {"type": ["integer", "null"], "minimum": 1, "description": "id із SPA/test-data; NULL для заявок, створених після імпорту"},
+    "kind": {"enum": ["cargo", "transport"]},
+    "mode": {"enum": ["auto", "rail", "sea", "air", "multi", "drone"]},
+    "components": {
+      "type": ["array", "null"],
+      "items": {"enum": ["auto", "rail", "sea", "air"]},
+      "minItems": 2,
+      "uniqueItems": true,
+      "description": "Обов'язкове і непорожнє лише для mode=multi; NULL для решти"
+    },
+    "origin_city_id": {"$ref": "#/$defs/cityId"},
+    "destination_city_id": {"$ref": "#/$defs/cityId"},
+    "origin_country": {"$ref": "#/$defs/country"},
+    "destination_country": {"$ref": "#/$defs/country"},
+    "is_cross_border": {"type": "boolean", "description": "Обчислюване поле: origin_country <> destination_country"},
+    "ready_date": {"type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "cargo_type_id": {"$ref": "#/$defs/cargoId"},
+    "weight_kg": {"$ref": "#/$defs/decimal", "description": "Завжди кілограми. Legacy-поле weight у тоннах множиться на 1000 при імпорті, крім mode=drone, де воно вже в кг (weightUnit=kg)"},
+    "volume_m3": {"anyOf": [{"$ref": "#/$defs/decimal"}, {"type": "null"}]},
+    "price_amount": {"$ref": "#/$defs/money", "description": "Десятковий рядок, максимум 2 знаки після коми — рівно як NUMERIC(14,2) у БД. Числа з рухомою комою для грошей заборонені"},
+    "price_currency": {"$ref": "#/$defs/currencyCode"},
+    "price_kind": {"enum": ["fixed", "negotiable", "request"], "default": "fixed"},
+    "company": {"$ref": "#/$defs/companyRef"},
+    "drone": {"anyOf": [{"$ref": "#/$defs/drone"}, {"type": "null"}]},
+    "status": {"enum": ["draft", "active", "paused", "expired", "closed", "removed"]},
+    "source": {"enum": ["manual", "import", "ingest_email", "ingest_file", "ingest_bot", "api"], "default": "manual"},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"mode": {"const": "multi"}}, "required": ["mode"]},
+      "then": {"required": ["components"], "properties": {"components": {"type": "array"}}},
+      "else": {"properties": {"components": {"type": "null"}}}
+    },
+    {
+      "if": {"properties": {"mode": {"const": "drone"}}, "required": ["mode"]},
+      "then": {"required": ["drone"], "properties": {"drone": {"$ref": "#/$defs/drone"}}},
+      "else": {"properties": {"drone": {"type": "null"}}}
+    }
+  ],
+  "$defs": {
+    "uuid": {"type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"},
+    "cityId": {"type": "string", "pattern": "^[a-z0-9_-]+$", "description": "Ідентифікатор із довідника cities (джерело — CITIES у index.html)"},
+    "cargoId": {"enum": ["build", "food", "furn", "metal", "chem", "textile", "electro", "agro", "docs"]},
+    "currencyCode": {"type": "string", "pattern": "^[A-Z]{3,4}$"},
+    "country": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "decimal": {"type": "string", "pattern": "^(0|[1-9][0-9]{0,12})(\\.[0-9]{1,3})?$", "description": "Величини вимірювання: до 3 знаків"},
+    "money": {"type": "string", "pattern": "^(0|[1-9][0-9]{0,12})(\\.[0-9]{1,2})?$", "description": "Грошова сума: до 2 знаків"},
+    "companyRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "display_name", "verification_level"],
+      "properties": {
+        "id": {"$ref": "#/$defs/uuid"},
+        "display_name": {"type": "string", "minLength": 1, "maxLength": 200},
+        "verification_level": {"enum": ["L0", "L1", "L2"], "description": "Рівень із напряму A. Спринт 0 виставляє L0 усім, у тому числі імпортованим"},
+        "verified_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "drone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["range_km", "max_payload_kg", "drone_type", "flight_permit"],
+      "properties": {
+        "range_km": {"$ref": "#/$defs/decimal"},
+        "max_payload_kg": {"$ref": "#/$defs/decimal"},
+        "drone_type": {"type": "string", "minLength": 1, "maxLength": 100},
+        "flight_permit": {"type": "boolean"}
+      }
+    }
+  }
+}
