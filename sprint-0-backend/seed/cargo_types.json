@@ -1,0 +1,65 @@
+[
+ {
+  "id": "build",
+  "name_uk": "Будівельні матеріали",
+  "name_en": "Construction materials",
+  "name_pl": "Materiały budowlane",
+  "name_de": "Baumaterialien"
+ },
+ {
+  "id": "food",
+  "name_uk": "Продукти харчування",
+  "name_en": "Foodstuffs",
+  "name_pl": "Artykuły spożywcze",
+  "name_de": "Lebensmittel"
+ },
+ {
+  "id": "furn",
+  "name_uk": "Меблі",
+  "name_en": "Furniture",
+  "name_pl": "Meble",
+  "name_de": "Möbel"
+ },
+ {
+  "id": "metal",
+  "name_uk": "Металопрокат",
+  "name_en": "Steel & metal",
+  "name_pl": "Wyroby stalowe",
+  "name_de": "Stahlprodukte"
+ },
+ {
+  "id": "chem",
+  "name_uk": "Хімічна продукція",
+  "name_en": "Chemicals",
+  "name_pl": "Chemikalia",
+  "name_de": "Chemikalien"
+ },
+ {
+  "id": "textile",
+  "name_uk": "Текстиль",
+  "name_en": "Textiles",
+  "name_pl": "Tekstylia",
+  "name_de": "Textilien"
+ },
+ {
+  "id": "electro",
+  "name_uk": "Електроніка",
+  "name_en": "Electronics",
+  "name_pl": "Elektronika",
+  "name_de": "Elektronik"
+ },
+ {
+  "id": "agro",
+  "name_uk": "Сільгосппродукція",
+  "name_en": "Agricultural produce",
+  "name_pl": "Produkty rolne",
+  "name_de": "Agrarerzeugnisse"
+ },
+ {
+  "id": "docs",
+  "name_uk": "Документи/малогабарит",
+  "name_en": "Documents/small parcels",
+  "name_pl": "Dokumenty/drobne przesyłki",
+  "name_de": "Dokumente/Kleinsendungen"
+ }
+]

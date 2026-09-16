@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trans-atlas.net/schemas/listing-legacy.schema.json",
+  "title": "Заявка у форматі SPA (legacy)",
+  "description": "Форма запису, у якій заявки зараз живуть у index.html (LISTINGS) і test-data/*.json. Це вхідний контракт імпортера Спринту 0. Нові дані створюються лише в канонічному форматі (listing.schema.json).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "mode",
+    "from",
+    "to",
+    "date",
+    "cargo",
+    "weight",
+    "price",
+    "currency",
+    "company"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "cargo",
+        "transport"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "auto",
+        "rail",
+        "sea",
+        "air",
+        "multi",
+        "drone"
+      ]
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "auto",
+          "rail",
+          "sea",
+          "air"
+        ]
+      },
+      "minItems": 2,
+      "uniqueItems": true
+    },
+    "continent": {
+      "enum": [
+        "Europe",
+        "Asia",
+        "Africa",
+        "North America",
+        "South America",
+        "Oceania"
+      ]
+    },
+    "from": {
+      "$ref": "#/$defs/cityId"
+    },
+    "to": {
+      "$ref": "#/$defs/cityId"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "cargo": {
+      "$ref": "#/$defs/cargoId"
+    },
+    "weight": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "weightUnit": {
+      "enum": [
+        "kg"
+      ]
+    },
+    "volume": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "$ref": "#/$defs/currencyCode"
+    },
+    "company": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "rangeKm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "maxPayloadKg": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "droneType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "flightPermit": {
+      "type": "boolean"
+    },
+    "bodyType": {
+      "description": "Тип кузова, вагона або судна у пропозиції транспорту. Лише kind=transport і лише для auto, rail, sea: у air, drone і multi носія типу кузова немає. Поле необовʼязкове: частина ранніх записів SPA його не має.",
+      "enum": [
+        "box",
+        "bulk",
+        "container",
+        "covered",
+        "flatbed",
+        "gondola",
+        "hopper",
+        "reefer",
+        "tank",
+        "tanker",
+        "tent"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "multi"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "then": {
+        "required": [
+          "components"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "components"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "drone"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "then": {
+        "required": [
+          "weightUnit",
+          "rangeKm",
+          "maxPayloadKg",
+          "droneType",
+          "flightPermit"
+        ],
+        "properties": {
+          "weightUnit": {
+            "const": "kg"
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "weightUnit"
+              ]
+            },
+            {
+              "required": [
+                "rangeKm"
+              ]
+            },
+            {
+              "required": [
+                "maxPayloadKg"
+              ]
+            },
+            {
+              "required": [
+                "droneType"
+              ]
+            },
+            {
+              "required": [
+                "flightPermit"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "bodyType"
+        ]
+      },
+      "then": {
+        "required": [
+          "kind",
+          "mode"
+        ],
+        "properties": {
+          "kind": {
+            "const": "transport"
+          },
+          "mode": {
+            "enum": [
+              "auto",
+              "rail",
+              "sea"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "mode",
+          "bodyType"
+        ],
+        "properties": {
+          "mode": {
+            "const": "auto"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "bodyType": {
+            "enum": [
+              "box",
+              "flatbed",
+              "reefer",
+              "tank",
+              "tent"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "mode",
+          "bodyType"
+        ],
+        "properties": {
+          "mode": {
+            "const": "rail"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "bodyType": {
+            "enum": [
+              "covered",
+              "gondola",
+              "hopper",
+              "reefer",
+              "tank"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "mode",
+          "bodyType"
+        ],
+        "properties": {
+          "mode": {
+            "const": "sea"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "bodyType": {
+            "enum": [
+              "bulk",
+              "container",
+              "reefer",
+              "tanker"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "cityId": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$"
+    },
+    "cargoId": {
+      "enum": [
+        "build",
+        "food",
+        "furn",
+        "metal",
+        "chem",
+        "textile",
+        "electro",
+        "agro",
+        "docs"
+      ]
+    },
+    "currencyCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{3,4}$"
+    }
+  }
+}

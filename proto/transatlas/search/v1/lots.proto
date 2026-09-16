@@ -1,0 +1,245 @@
+// Модуль SEARCH — пошук заявок S1–S3 (A.8.1), розширений фільтр S2 (A.8.2),
+// автодоповнення пунктів і калькулятор (A.8.5).
+
+syntax = "proto3";
+
+package transatlas.search.v1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "transatlas/search/v1/common.proto";
+
+option go_package = "github.com/trans-atlas/search/gen/transatlas/search/v1;searchv1";
+option java_multiple_files = true;
+option java_package = "net.transatlas.search.v1";
+
+// Тип заявки (A.4.2 lots.lot_type).
+enum LotType {
+  LOT_TYPE_UNSPECIFIED = 0;
+  LOT_TYPE_FREE_CARGO = 1 [(wire) = "free_cargo"];
+  LOT_TYPE_FREE_TRANSPORT = 2 [(wire) = "free_transport"];
+  LOT_TYPE_TENDER = 3 [(wire) = "tender"];
+  LOT_TYPE_MULTIMODAL = 4 [(wire) = "multimodal"];
+}
+
+// Завантаження повне або дозавантаження (A.4.2 lots.load_fill).
+enum LoadFill {
+  LOAD_FILL_UNSPECIFIED = 0;
+  LOAD_FILL_FULL = 1 [(wire) = "full"];
+  LOAD_FILL_PARTIAL = 2 [(wire) = "partial"];
+}
+
+// Порядок видачі заявок.
+enum LotSort {
+  LOT_SORT_UNSPECIFIED = 0;
+  LOT_SORT_FRESH = 1 [(wire) = "fresh"];
+  LOT_SORT_PRICE = 2 [(wire) = "price"];
+  LOT_SORT_RATING = 3 [(wire) = "rating"];
+  LOT_SORT_DEPART = 4 [(wire) = "depart"];
+}
+
+// Успадковане колірне маркування за часом створення заявки (A.8.1).
+enum FreshnessColor {
+  FRESHNESS_COLOR_UNSPECIFIED = 0;
+  FRESHNESS_COLOR_GREEN = 1 [(wire) = "green"];
+  FRESHNESS_COLOR_YELLOW = 2 [(wire) = "yellow"];
+  FRESHNESS_COLOR_GREY = 3 [(wire) = "grey"];
+}
+
+message SearchLotsRequest {
+  option (buf.validate.message).cel = {
+    id: "search_lots.origin_form"
+    message: "задайте або origin, або origin_set, але не обидва (A.8.1, A.8.2)"
+    expression: "!(has(this.origin) && this.origin_set.size() > 0)"
+  };
+  option (buf.validate.message).cel = {
+    id: "search_lots.destination_form"
+    message: "задайте або destination, або destination_set, але не обидва"
+    expression:
+      "!(has(this.destination) && this.destination_set.size() > 0)"
+  };
+
+  // Розділ біржі. Обов'язковий: пошук заявок завжди в межах одного розділу.
+  TransportMode mode = 1 [(buf.validate.field).enum = {
+    defined_only: true
+    not_in: [0]
+  }];
+
+  optional PlaceQuery origin = 2;
+  optional PlaceQuery destination = 3;
+
+  // Розширений фільтр «інші напрямки» (A.8.2). Одна й та сама країна може
+  // бути в обох списках — тоді пошук виконується по території цієї країни.
+  repeated GeoArea origin_set = 4;
+  repeated GeoArea destination_set = 5;
+
+  string depart_from = 6 [(buf.validate.field).string.pattern = "^(\\d{4}-\\d{2}-\\d{2})?$"];
+  string depart_to = 7 [(buf.validate.field).string.pattern = "^(\\d{4}-\\d{2}-\\d{2})?$"];
+
+  double weight_t = 8 [(buf.validate.field).double.gte = 0];
+  double volume_m3 = 9 [(buf.validate.field).double.gte = 0];
+  Dimensions dims = 10;
+
+  string cargo_type = 11;
+  uint32 adr = 12 [(buf.validate.field).uint32.lte = 9];
+
+  // тент / реф / контейнеровоз / балкер / мультикоптер…
+  string transport_type = 13;
+
+  // боковая / задняя / верхняя…
+  string load_kind = 14;
+
+  LoadFill load_fill = 15 [(buf.validate.field).enum.defined_only = true];
+
+  // CMR, T1, TIR, медкнижка…
+  repeated string customs = 16;
+
+  repeated LotType lot_types = 17 [(buf.validate.field).repeated.items = {
+    enum: {defined_only: true}
+  }];
+
+  double min_rating = 18 [
+    (buf.validate.field).double.gte = 0,
+    (buf.validate.field).double.lte = 5
+  ];
+
+  // Шукати також зворотні рейси П2 → П1 (крок 1.2 алгоритму, A.6.12).
+  bool include_reverse = 19;
+
+  LotSort sort = 20 [(buf.validate.field).enum.defined_only = true];
+
+  uint32 page = 21 [(buf.validate.field).uint32.gte = 1];
+  uint32 per_page = 22 [
+    (buf.validate.field).uint32.gte = 1,
+    (buf.validate.field).uint32.lte = 200
+  ];
+
+  SearchContext context = 23;
+}
+
+message Lot {
+  int64 id = 1 [(buf.validate.field).int64.gt = 0];
+  TransportMode mode = 2 [(buf.validate.field).enum.defined_only = true];
+  LotType lot_type = 3 [(buf.validate.field).enum.defined_only = true];
+
+  Point origin = 4;
+  Point destination = 5;
+
+  // «Загрузка з» / «Загрузка по» (A.4.2).
+  string load_from = 6 [(buf.validate.field).string.pattern = "^\\d{4}-\\d{2}-\\d{2}$"];
+  string load_to = 7 [(buf.validate.field).string.pattern = "^\\d{4}-\\d{2}-\\d{2}$"];
+
+  google.protobuf.Timestamp arrive_est = 8;
+
+  double weight_t = 9;
+  double volume_m3 = 10;
+  Dimensions dims = 11;
+
+  string cargo_type = 12;
+  uint32 adr_class = 13 [(buf.validate.field).uint32.lte = 9];
+  string transport_type = 14;
+  string load_kind = 15;
+  LoadFill load_fill = 16 [(buf.validate.field).enum.defined_only = true];
+  repeated string customs = 17;
+
+  // Ставка В ОРИГІНАЛЬНІЙ валюті автора заявки, десятковим рядком.
+  // Рядок, а не double: це фінансова величина для показу й документів, а
+  // подвійна точність спричиняє помилки округлення (див. common.proto).
+  string freight_value = 18 [(buf.validate.field).string.pattern = "^(-?\\d+(\\.\\d+)?)?$"];
+
+  // Одиниця ставки: EUR, USD, UAH, USDC, EUR/km, UAH/km…
+  // Перелік читається з довідника валют адміністратора, а не «прошивається»
+  // в модулі (A.5, рамкове ТЗ 13.1).
+  string freight_unit = 19;
+
+  string pay_form = 20;
+
+  // Специфічні поля розділу: тип судна, дальність дрона, дозвіл на політ.
+  // Для розділу D — max_payload_kg, range_km, drone_type, flight_permit (A.4.5).
+  google.protobuf.Struct params = 21;
+
+  Company company = 22;
+  google.protobuf.Timestamp published_at = 23;
+  string valid_until = 24 [(buf.validate.field).string.pattern = "^\\d{4}-\\d{2}-\\d{2}$"];
+
+  // Право поставити ставку в цій заявці.
+  bool can_bid = 25;
+  uint32 bids_count = 26;
+
+  // Заповнене лише для платного акаунта; для безкоштовного — порожнє (A.8.1).
+  string contacts = 27;
+
+  // Лот знайдено як зворотний рейс.
+  bool is_reverse = 28;
+
+  FreshnessColor freshness_color = 29 [(buf.validate.field).enum.defined_only = true];
+}
+
+message SearchLotsResponse {
+  repeated Lot items = 1;
+  uint32 total = 2;
+  uint32 page = 3;
+  uint32 per_page = 4;
+
+  // true — видача неповна: недоступне джерело або спрацював ліміт часу
+  // (НФВ «чесність даних», A.11).
+  bool partial = 5;
+
+  // Затримка показу нових заявок для безкоштовного акаунта, хвилин
+  // (free_account_delay_min, A.10). 0 — затримки не застосовано.
+  uint32 free_account_delay_min = 6;
+}
+
+// --- Автодоповнення пунктів (A.8.5) ---------------------------------------
+
+message SuggestPointsRequest {
+  string query = 1 [(buf.validate.field).string.min_len = 1];
+
+  // Фільтр за типом пункту. Порожній — усі типи.
+  repeated PointKind kinds = 2 [(buf.validate.field).repeated.items = {
+    enum: {defined_only: true}
+  }];
+
+  string country_code = 3 [(buf.validate.field).string.pattern = "^([A-Z]{2})?$"];
+
+  uint32 limit = 4 [(buf.validate.field).uint32.lte = 50];
+
+  SearchContext context = 5;
+}
+
+message SuggestPointsResponse {
+  // Країна й регіон уже підтягнуті через parent_city_id (A.4.1) — клієнт не
+  // виконує другого запиту.
+  repeated Point items = 1;
+}
+
+// --- Калькулятор відстані та орієнтовної вартості (A.8.5) -----------------
+
+message EstimateRouteRequest {
+  PlaceQuery origin = 1 [(buf.validate.field).required = true];
+  PlaceQuery destination = 2 [(buf.validate.field).required = true];
+  TransportMode mode = 3 [(buf.validate.field).enum = {
+    defined_only: true
+    not_in: [0]
+  }];
+  double weight_t = 4 [(buf.validate.field).double.gte = 0];
+  SearchContext context = 5;
+}
+
+message EstimateRouteResponse {
+  double distance_km = 1 [(buf.validate.field).double.gte = 0];
+
+  // Оцінка з медіан link_stats у базовій валюті. Оцінка, а не ставка:
+  // завжди супроводжується estimated = true.
+  double estimated_cost_base = 2 [(buf.validate.field).double.gte = 0];
+  string base_currency_code = 3 [(buf.validate.field).string.pattern = "^[A-Z]{3,4}$"];
+  double median_transit_h = 4 [(buf.validate.field).double.gte = 0];
+
+  // false — медіани для цього сполучення немає: вартість невідома, і
+  // порожнє значення не можна показувати як нуль (НФВ «чесність даних»).
+  bool estimated = 5;
+
+  // Кількість заявок за 365 днів, на яких побудована оцінка (link_stats).
+  uint32 sample_lots_365d = 6;
+}

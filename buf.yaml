@@ -1,0 +1,27 @@
+# Конфігурація buf для контракту модуля SEARCH (ТЗ, розділ A.8.4.2).
+#
+# Каталог third_party тут навмисно не оголошений модулем: оголошення правил
+# валідації тягнуться як залежність із реєстру, а vendored копія в
+# third_party/ потрібна лише офлайновому прогону `schemas/check_proto_contract.py`
+# і `ci/proto_breaking.py`, які працюють через grpcio-tools без buf.
+version: v2
+
+modules:
+  - path: proto
+    name: buf.build/transatlas/search
+
+deps:
+  - buf.build/bufbuild/protovalidate
+
+lint:
+  use:
+    - STANDARD
+  # Перерахування контракту мають префікс типу (TRANSPORT_MODE_*), як вимагає
+  # STANDARD. Винятків немає навмисно: кожен виняток тут — це розбіжність між
+  # згенерованими SDK різних мов.
+
+breaking:
+  use:
+    - FILE
+  # Пакет v1 — публічний контракт партнерських інтеграцій. Несумісна зміна
+  # робиться пакетом transatlas.search.v2, а не правкою v1 (розділ A.13.6 ТЗ).

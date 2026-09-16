@@ -312,20 +312,20 @@ def m_stale_group(root):
 def m_required_count(root):
     p = os.path.join(root, "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("Обовʼязкових перевірок чотири", "Обовʼязкових перевірок три", 1))
+    return _write(p, t, t.replace("Обовʼязкових перевірок десять", "Обовʼязкових перевірок три", 1))
 
 
 def m_rule_range(root):
     p = os.path.join(root, "ci", "README.md")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("R1–R11", "R1–R10"))
+    return _write(p, t, t.replace("R1–R14", "R1–R10"))
 
 
 def m_pr_scenarios(root):
     p = os.path.join(root, "ci", "README.md")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("таблиця з тринадцяти сценаріїв",
-                                  "таблиця з одинадцяти сценаріїв"))
+    return _write(p, t, t.replace("таблиця з девʼятнадцяти сценаріїв",
+                                  "таблиця з тринадцяти сценаріїв"))
 
 
 def m_context_dropped(root):
@@ -355,13 +355,6 @@ def m_ui_group(root):
     return hit
 
 
-def _write(path, before, after):
-    if before == after:
-        return False
-    open(path, "w", encoding="utf-8").write(after)
-    return True
-
-
 def m_merge_methods_claim(root):
     p = os.path.join(root, "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md")
     t = open(p, encoding="utf-8").read()
@@ -374,6 +367,13 @@ def m_pr_param_flipped(root):
     t = open(p, encoding="utf-8").read()
     return _write(p, t, t.replace("схвалення власника коду вимкнено",
                                   "схвалення власника коду обовʼязкове", 1))
+
+
+def _write(path, before, after):
+    if before == after:
+        return False
+    open(path, "w", encoding="utf-8").write(after)
+    return True
 
 
 MUTATIONS = [

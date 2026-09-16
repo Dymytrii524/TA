@@ -1,0 +1,422 @@
+openapi: 3.1.0
+info:
+  title: Trans-Atlas — верифікація контрагентів
+  version: 1.0.0
+  description: |
+    Розширення контракту /api/v1 модулем верифікації.
+    Канонічні форми описано в schemas/verification.schema.json і підключено через $ref:
+    один опис обслуговує API, БД і коннектори джерел.
+
+    Наскрізні правила успадковані з openapi.yaml: RFC 9457 для помилок,
+    Idempotency-Key для створення, курсорна пагінація, RFC 3339 UTC.
+servers:
+  - url: https://api.trans-atlas.net/api/v1
+tags:
+  - name: verification
+    description: Справи перевірки та їх результати
+  - name: dossier
+    description: Публічне досьє контрагента
+  - name: monitoring
+    description: Підписки на зміни реквізитів
+  - name: sources
+    description: Каталог джерел і їхній фактичний стан
+
+paths:
+  /verification/cases:
+    post:
+      tags: [verification]
+      summary: Подати заявку на рівень верифікації
+      operationId: createVerificationCase
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [target_level, identifiers]
+              properties:
+                target_level: {enum: [L1, L2]}
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    additionalProperties: false
+                    required: [kind, value, country]
+                    properties:
+                      kind: {enum: [edrpou, vat_eu, nip, regon, krs, lei, other]}
+                      value: {type: string, minLength: 2, maxLength: 32}
+                      country: {type: string, pattern: '^[A-Z]{2}$'}
+                declared_name: {type: string, maxLength: 255}
+      responses:
+        '201':
+          description: Справу створено, перевірки поставлено в чергу
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Case'}
+        '409':
+          description: Уже існує активна справа для цієї компанії
+          content:
+            application/problem+json:
+              schema: {$ref: '#/components/schemas/Problem'}
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+
+  /verification/cases/{case_id}:
+    get:
+      tags: [verification]
+      summary: Стан справи з усіма результатами
+      operationId: getVerificationCase
+      parameters:
+        - $ref: '#/components/parameters/CaseId'
+      responses:
+        '200':
+          description: Справа
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Case'}
+        '404': {$ref: '#/components/responses/NotFound'}
+
+  /verification/cases/{case_id}/documents:
+    post:
+      tags: [verification]
+      summary: Подати документ, якого вимагає ручна перевірка
+      description: |
+        Використовується для ліцензії Спільноти, довіреності та інших доказів,
+        які неможливо отримати з машинного джерела.
+      operationId: uploadCaseDocument
+      parameters:
+        - $ref: '#/components/parameters/CaseId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [check_id, file]
+              properties:
+                check_id: {type: string}
+                file: {type: string, format: binary}
+      responses:
+        '202':
+          description: Документ прийнято, справа переходить у ручний розгляд
+        '413':
+          description: Файл більший за 20 МіБ
+          content:
+            application/problem+json:
+              schema: {$ref: '#/components/schemas/Problem'}
+
+  /verification/cases/{case_id}/decision:
+    post:
+      tags: [verification]
+      summary: Рішення оператора у справі
+      description: |
+        Доступно лише ролі оператора верифікації. Схвалення відхиляється,
+        поки blocking_unavailable непорожній: недоступність джерела не
+        конвертується в довіру рішенням людини без письмової підстави.
+      operationId: decideVerificationCase
+      parameters:
+        - $ref: '#/components/parameters/CaseId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [decision, reason]
+              properties:
+                decision: {enum: [approve, reject, request_input]}
+                reason: {type: string, minLength: 10, maxLength: 2000}
+                override_blocking:
+                  type: boolean
+                  default: false
+                  description: Свідоме схвалення попри недоступне блокуюче джерело. Пишеться в журнал окремою подією і скорочує строк дії рівня вдвічі.
+      responses:
+        '200':
+          description: Рішення застосовано
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Case'}
+        '409':
+          description: Схвалення неможливе через невиконані блокуючі перевірки
+          content:
+            application/problem+json:
+              schema: {$ref: '#/components/schemas/Problem'}
+
+  /verification/checks/{result_id}/evidence:
+    get:
+      tags: [verification]
+      summary: Доказ перевірки
+      description: |
+        Повертає підписане посилання на незмінний відгук джерела разом із його
+        SHA-256. Доступ мають оператор і сама компанія; кожен доступ журналюється.
+      operationId: getCheckEvidence
+      parameters:
+        - name: result_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: Метадані доказу і тимчасове посилання
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [payload_sha256, download_url, expires_at]
+                properties:
+                  payload_sha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+                  content_type: {type: string}
+                  fetched_at: {type: string, format: date-time}
+                  source_as_of: {type: [string, 'null'], format: date}
+                  download_url: {type: string}
+                  expires_at: {type: string, format: date-time}
+        '403': {$ref: '#/components/responses/Forbidden'}
+
+  /companies/{company_id}/dossier:
+    get:
+      tags: [dossier]
+      summary: Досьє контрагента
+      description: |
+        Перелік перевірок із джерелом і датою. Зведеної оцінки і зірочок немає
+        навмисно: майданчик показує факти, а рішення ухвалює користувач.
+        Застарілі результати позначаються is_stale, а не приховуються.
+      operationId: getCompanyDossier
+      parameters:
+        - name: company_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: Досьє
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Dossier'}
+        '404': {$ref: '#/components/responses/NotFound'}
+
+  /companies/{company_id}/changes:
+    get:
+      tags: [monitoring]
+      summary: Історія змін реквізитів
+      operationId: listRequisiteChanges
+      parameters:
+        - name: company_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+        - name: since
+          in: query
+          schema: {type: string, format: date-time}
+        - name: severity
+          in: query
+          schema: {enum: [info, attention, critical]}
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Cursor'
+      responses:
+        '200':
+          description: Зміни, найновіші першими
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: {$ref: '#/components/schemas/RequisiteChange'}
+                  next_cursor: {type: [string, 'null']}
+
+  /monitoring/subscriptions:
+    get:
+      tags: [monitoring]
+      summary: Мої підписки на контрагентів
+      operationId: listSubscriptions
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Cursor'
+      responses:
+        '200':
+          description: Підписки
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: {$ref: '#/components/schemas/Subscription'}
+                  next_cursor: {type: [string, 'null']}
+    post:
+      tags: [monitoring]
+      summary: Стежити за змінами контрагента
+      operationId: createSubscription
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [company_id]
+              properties:
+                company_id: {type: string, format: uuid}
+                interval_hours: {type: integer, minimum: 1, maximum: 8760, default: 24}
+                channels:
+                  type: array
+                  items: {enum: [email, push, webhook]}
+                  default: [email]
+      responses:
+        '201':
+          description: Підписку створено
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Subscription'}
+
+  /monitoring/subscriptions/{subscription_id}:
+    delete:
+      tags: [monitoring]
+      summary: Припинити стеження
+      operationId: deleteSubscription
+      parameters:
+        - name: subscription_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '204': {description: Підписку видалено}
+
+  /verification/sources:
+    get:
+      tags: [sources]
+      summary: Каталог джерел і їхній фактичний стан
+      description: |
+        Публічний перелік. Користувач має бачити, звідки взято дані і чи
+        джерело зараз працює: це і є різниця між перевіркою і зірочками.
+      operationId: listSources
+      responses:
+        '200':
+          description: Джерела
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: {$ref: '#/components/schemas/Source'}
+
+components:
+  parameters:
+    CaseId:
+      name: case_id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, minLength: 8, maxLength: 128}
+    Limit:
+      name: limit
+      in: query
+      schema: {type: integer, minimum: 1, maximum: 100, default: 30}
+    Cursor:
+      name: cursor
+      in: query
+      schema: {type: string}
+
+  responses:
+    NotFound:
+      description: Не знайдено
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Forbidden:
+      description: Недостатньо прав
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Unprocessable:
+      description: Дані не пройшли валідацію
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+
+  schemas:
+    Problem:
+      type: object
+      required: [type, title, status]
+      properties:
+        type: {type: string}
+        title: {type: string}
+        status: {type: integer}
+        detail: {type: string}
+        instance: {type: string}
+        errors:
+          type: array
+          items:
+            type: object
+            required: [pointer, code]
+            properties:
+              pointer: {type: string}
+              code: {type: string}
+              message: {type: string}
+
+    CheckResult:
+      $ref: '../schemas/verification.schema.json#/$defs/checkResult'
+    Case:
+      $ref: '../schemas/verification.schema.json#/$defs/verificationCase'
+    RequisiteChange:
+      $ref: '../schemas/verification.schema.json#/$defs/requisiteChange'
+    Dossier:
+      $ref: '../schemas/verification.schema.json#/$defs/dossier'
+
+    Subscription:
+      type: object
+      additionalProperties: false
+      required: [id, company_id, interval_hours, is_active]
+      properties:
+        id: {type: string, format: uuid}
+        company_id: {type: string, format: uuid}
+        interval_hours: {type: integer, minimum: 1, maximum: 8760}
+        next_run_at: {type: string, format: date-time}
+        last_run_at: {type: [string, 'null'], format: date-time}
+        last_status:
+          enum: [pass, attention, fail, unavailable, not_applicable, pending, null]
+        is_active: {type: boolean}
+
+    Source:
+      type: object
+      additionalProperties: false
+      required: [id, title, kind, jurisdiction, health, ttl_days, blocking]
+      properties:
+        id: {type: string}
+        title: {type: string}
+        kind: {enum: [state_registry, open_data, commercial_api, sanctions, court, tax, manual]}
+        jurisdiction: {type: string, pattern: '^[A-Z]{2}$'}
+        docs_url: {type: [string, 'null']}
+        health: {enum: [live, degraded, stale, down, manual_only]}
+        health_checked_at: {type: [string, 'null'], format: date-time}
+        ttl_days: {type: integer, minimum: 1}
+        blocking: {type: boolean}
+        notes: {type: [string, 'null']}
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
