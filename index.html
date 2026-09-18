@@ -324,20 +324,21 @@
   .country-flag.ch{background:#D52B1E;}
   .country-flag.de{background:linear-gradient(to bottom,#000 33%,#DD0000 33% 67%,#FFCE00 67%);}
   .country-flag.lt{background:linear-gradient(to bottom,#FDB913 33%,#006A44 33% 67%,#C1272D 67%);}
-  .country-flag.cz{background:linear-gradient(to bottom,#fff 50%,#D7141A 50%);}
+  .country-flag.cz{background:linear-gradient(to bottom,#fff 50%,#D7141A 50%); position:relative; overflow:hidden;}
+  .country-flag.cz::after{content:""; position:absolute; left:0; top:0; width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:10px solid #11457E;}
   .country-flag.at{background:linear-gradient(to bottom,#ED2939 33%,#fff 33% 67%,#ED2939 67%);}
   .country-flag.nl{background:linear-gradient(to bottom,#AE1C28 33%,#fff 33% 67%,#21468B 67%);}
   .country-flag.tr{background:#E30A17;}
   .country-flag.cn{background:#DE2910;}
-  .country-flag.jp{background:#fff;}
+  .country-flag.jp{background:radial-gradient(circle at 50% 50%,#BC002D 0 4px,transparent 4.3px),#fff;}
   .country-flag.kr{background:linear-gradient(135deg,#fff 45%,#CD2E3A 45% 55%,#0047A0 55%);}
   .country-flag.in{background:linear-gradient(to bottom,#FF9933 33%,#fff 33% 67%,#138808 67%);}
   .country-flag.th{background:linear-gradient(to bottom,#A51931 20%,#fff 20% 35%,#2D2A4A 35% 65%,#fff 65% 80%,#A51931 80%);}
   .country-flag.vn{background:#DA251D;}
-  .country-flag.sg{background:linear-gradient(to bottom,#EE2436 50%,#fff 50%);}
+  .country-flag.sg{background:radial-gradient(circle at 28% 27%,#fff 0 2px,transparent 2.3px),linear-gradient(to bottom,#EE2436 50%,#fff 50%);}
   .country-flag.ae{background:linear-gradient(to bottom,#00732F 33%,#fff 33% 67%,#000 67%);}
   .country-flag.sa{background:#006C35;}
-  .country-flag.ge{background:#fff;}
+  .country-flag.ge{background:linear-gradient(to bottom,transparent 40%,#FF0000 40% 60%,transparent 60%),linear-gradient(90deg,transparent 40%,#FF0000 40% 60%,transparent 60%),#fff;}
   .country-flag.az{background:linear-gradient(to bottom,#00B9E4 33%,#E4312B 33% 67%,#00AF66 67%);}
   .country-flag.uz{background:linear-gradient(to bottom,#0099B5 33%,#fff 33% 67%,#1EB53A 67%);}
   .country-flag.am{background:linear-gradient(to bottom,#D90012 33%,#0033A0 33% 67%,#F2A800 67%);}
@@ -358,6 +359,55 @@
   .country-flag.et{background:linear-gradient(to bottom,#009A44 33%,#FEDD00 33% 67%,#DA121A 67%);}
   .country-flag.au{background:#00008B;}
   .country-flag.nz{background:#00247D;}
+  .country-flag.ao{background:linear-gradient(to bottom,#CE1126 50%,#000 50%);}
+  .country-flag.bd{background:radial-gradient(circle at 42% 50%,#F42A41 0 4px,transparent 4.3px),#006A4E;}
+  .country-flag.be{background:linear-gradient(90deg,#000 33%,#FFD90F 33% 67%,#EF3340 67%);}
+  .country-flag.bg{background:linear-gradient(to bottom,#fff 33%,#00966E 33% 67%,#D62612 67%);}
+  .country-flag.bo{background:linear-gradient(to bottom,#D52B1E 33%,#F9E300 33% 67%,#007934 67%);}
+  .country-flag.ci{background:linear-gradient(90deg,#F77F00 33%,#fff 33% 67%,#009E60 67%);}
+  .country-flag.cm{background:linear-gradient(90deg,#007A5E 33%,#CE1126 33% 67%,#FCD116 67%);}
+  .country-flag.dk{background:linear-gradient(to bottom,transparent 43%,#fff 43% 57%,transparent 57%),linear-gradient(90deg,transparent 30%,#fff 30% 44%,transparent 44%),#C8102E;}
+  .country-flag.dz{background:linear-gradient(90deg,#006233 50%,#fff 50%);}
+  .country-flag.ec{background:linear-gradient(to bottom,#FFDD00 50%,#034EA2 50% 75%,#ED1C24 75%);}
+  .country-flag.es{background:linear-gradient(to bottom,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%);}
+  .country-flag.fi{background:linear-gradient(to bottom,transparent 43%,#003580 43% 57%,transparent 57%),linear-gradient(90deg,transparent 30%,#003580 30% 44%,transparent 44%),#fff;}
+  .country-flag.fj{background:#68BFE5;}
+  .country-flag.fr{background:linear-gradient(90deg,#0055A4 33%,#fff 33% 67%,#EF4135 67%);}
+  .country-flag.gb{background:linear-gradient(to bottom,transparent 44%,#C8102E 44% 56%,transparent 56%),linear-gradient(90deg,transparent 44%,#C8102E 44% 56%,transparent 56%),linear-gradient(to bottom,transparent 38%,#fff 38% 62%,transparent 62%),linear-gradient(90deg,transparent 38%,#fff 38% 62%,transparent 62%),linear-gradient(45deg,transparent 47%,#fff 47% 53%,transparent 53%),linear-gradient(-45deg,transparent 47%,#fff 47% 53%,transparent 53%),#00247D;}
+  .country-flag.gr{background:linear-gradient(to bottom,#0D5EAF 0 11%,#fff 11% 22%,#0D5EAF 22% 33%,#fff 33% 44%,#0D5EAF 44% 55%,#fff 55% 66%,#0D5EAF 66% 77%,#fff 77% 88%,#0D5EAF 88% 100%);}
+  .country-flag.gy{background:#009E49;}
+  .country-flag.hk{background:radial-gradient(circle at 50% 50%,#fff 0 3px,transparent 3.3px),#DE2910;}
+  .country-flag.hu{background:linear-gradient(to bottom,#CE2939 33%,#fff 33% 67%,#477050 67%);}
+  .country-flag.id{background:linear-gradient(to bottom,#FF0000 50%,#fff 50%);}
+  .country-flag.ie{background:linear-gradient(90deg,#169B62 33%,#fff 33% 67%,#FF883E 67%);}
+  .country-flag.ir{background:linear-gradient(to bottom,#239F40 33%,#fff 33% 67%,#DA0000 67%);}
+  .country-flag.it{background:linear-gradient(90deg,#009246 33%,#fff 33% 67%,#CE2B37 67%);}
+  .country-flag.lk{background:#8A1538;}
+  .country-flag.lv{background:linear-gradient(to bottom,#9E3039 40%,#fff 40% 60%,#9E3039 60%);}
+  .country-flag.ly{background:linear-gradient(to bottom,#E70013 25%,#000 25% 75%,#239E46 75%);}
+  .country-flag.my{background:linear-gradient(to bottom,#CC0001 0 12.5%,#fff 12.5% 25%,#CC0001 25% 37.5%,#fff 37.5% 50%,#CC0001 50% 62.5%,#fff 62.5% 75%,#CC0001 75% 87.5%,#fff 87.5% 100%);}
+  .country-flag.mz{background:linear-gradient(to bottom,#009739 33%,#000 33% 67%,#FCD116 67%);}
+  .country-flag.na{background:linear-gradient(135deg,#003580 45%,#fff 45% 50%,#D21034 50% 55%,#fff 55% 60%,#009543 60%);}
+  .country-flag.nc{background:linear-gradient(90deg,#0055A4 33%,#fff 33% 67%,#EF4135 67%);}
+  .country-flag.no{background:linear-gradient(to bottom,transparent 43%,#002868 46% 54%,transparent 57%),linear-gradient(90deg,transparent 30%,#002868 34% 40%,transparent 44%),linear-gradient(to bottom,transparent 43%,#fff 43% 57%,transparent 57%),linear-gradient(90deg,transparent 30%,#fff 30% 44%,transparent 44%),#EF2B2D;}
+  .country-flag.pa{background:linear-gradient(90deg,#fff 50%,#D21034 50%) top/100% 50% no-repeat,linear-gradient(90deg,#005293 50%,#fff 50%) bottom/100% 50% no-repeat;}
+  .country-flag.pg{background:linear-gradient(135deg,#000 50%,#CE1126 50%);}
+  .country-flag.ph{background:linear-gradient(to bottom,#0038A8 50%,#CE1126 50%);}
+  .country-flag.pk{background:linear-gradient(90deg,#fff 25%,#01411C 25%);}
+  .country-flag.pt{background:linear-gradient(90deg,#046A38 40%,#DA020E 40%);}
+  .country-flag.py{background:linear-gradient(to bottom,#D52B1E 33%,#fff 33% 67%,#0038A8 67%);}
+  .country-flag.qa{background:linear-gradient(90deg,#fff 25%,#8D1B3D 25%);}
+  .country-flag.rs{background:linear-gradient(to bottom,#C6363C 33%,#0C4076 33% 67%,#fff 67%);}
+  .country-flag.se{background:linear-gradient(to bottom,transparent 43%,#FECC02 43% 57%,transparent 57%),linear-gradient(90deg,transparent 30%,#FECC02 30% 44%,transparent 44%),#006AA7;}
+  .country-flag.sn{background:linear-gradient(90deg,#00853F 33%,#FDEF42 33% 67%,#E31B23 67%);}
+  .country-flag.tw{background:linear-gradient(#003D79,#003D79) top left/45% 45% no-repeat,#FE0000;}
+  .country-flag.tz{background:linear-gradient(135deg,#1EB53A 45%,#000 45% 55%,#00A3DD 55%);}
+  .country-flag.ug{background:linear-gradient(to bottom,#000 0 16.6%,#FCDC04 16.6% 33.3%,#D90000 33.3% 50%,#000 50% 66.6%,#FCDC04 66.6% 83.3%,#D90000 83.3% 100%);}
+  .country-flag.uy{background:linear-gradient(to bottom,#fff 0 11%,#0038A8 11% 22%,#fff 22% 33%,#0038A8 33% 44%,#fff 44% 55%,#0038A8 55% 66%,#fff 66% 77%,#0038A8 77% 88%,#fff 88% 100%);}
+  .country-flag.ve{background:linear-gradient(to bottom,#FCD116 33%,#003893 33% 67%,#CF142B 67%);}
+  .country-flag.ws{background:linear-gradient(#002B7F,#002B7F) top left/40% 50% no-repeat,#CE1126;}
+  .country-flag.zm{background:linear-gradient(90deg,#DE2010 0 3px,#000 3px 6px,#EF7D00 6px 9px) right/9px 100% no-repeat,#198A00;}
+  .country-flag.zw{background:linear-gradient(to bottom,#006400 0 14.3%,#FFD200 14.3% 28.6%,#D40000 28.6% 42.9%,#000 42.9% 57.1%,#D40000 57.1% 71.4%,#FFD200 71.4% 85.7%,#006400 85.7% 100%);}
   .directory-card-head h3{margin:0; font-size:.92rem; line-height:1.3;}
   .directory-badge{align-self:flex-start; font-size:.68rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.03em; padding:.2em .5em; border:1px solid var(--line); color:var(--ink-soft);}
   .directory-badge.official{color:var(--success); border-color:var(--success);}
