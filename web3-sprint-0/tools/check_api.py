@@ -1,6 +1,8 @@
 """Validate API syntax, negative fixtures and drift against actual Solidity/SQL."""
 from pathlib import Path
+import json
 import re
+import subprocess
 import yaml
 from jsonschema import Draft202012Validator
 from referencing import Registry, Resource
@@ -38,6 +40,37 @@ for value in positive:
     validator.validate(value)
 for value in negative:
     assert list(validator.iter_errors(value)), f"negative fixture passed: {value}"
+
+# C03: validate full response objects, then check the SAME data pattern in JS.
+calldata_cases = json.loads((root / "tests/fixtures/calldata.json").read_text())
+response_validator = Draft202012Validator(
+    {"$ref": "urn:ta:web3#/components/schemas/TransactionIntent"}, registry=registry
+)
+response = {
+    "intent_id": "00000000-0000-4000-8000-000000000001", "chain_id": 31337,
+    "from": "0x" + "1" * 40, "to": "0x" + "2" * 40,
+    "value_atomic": "0", "expires_at": "2030-01-01T00:00:00Z", "broadcast": False,
+}
+for case in calldata_cases:
+    accepted = response_validator.is_valid({**response, "data": case["data"]})
+    assert accepted == case["valid"], f"C03 response fixture: {case['name']}"
+assert not response_validator.is_valid(response), "calldata must remain required"
+data_schema = doc["components"]["schemas"]["TransactionIntent"]["properties"]["data"]
+subprocess.run(
+    ["node", str(root / "tests/api-calldata.test.mjs")],
+    input=json.dumps(data_schema), text=True, check=True,
+)
+# Negative controls: prove fixtures detect both the original odd-hex defect
+# and the tempting even-byte '$' pattern that still admits final LF in Python.
+for pattern, witness in [
+    (r"^0x[0-9a-f]*$", "odd-one-nibble"),
+    (r"^0x(?:[0-9a-f]{2})*$", "final-lf"),
+]:
+    case = next(c for c in calldata_cases if c["name"] == witness)
+    mutant = Draft202012Validator({**data_schema, "pattern": pattern})
+    assert not case["valid"] and mutant.is_valid(case["data"]), f"undetected mutation: {witness}"
+print(f"PASS C03 Python response validation: {sum(c['valid'] for c in calldata_cases)} positive, "
+      f"{sum(not c['valid'] for c in calldata_cases)} negative; missing data rejected; 2 regex mutations detected.")
 sol = (root / "src/TransAtlasEscrow.sol").read_text()
 assert re.search(r"function create\(\s*bytes32 nonce,", sol)
 assert 'id = deriveEscrowId(msg.sender, nonce);' in sol

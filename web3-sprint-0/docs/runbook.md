@@ -49,6 +49,12 @@ node tools/foundry.mjs forge inspect TransAtlasEscrow abi --json
 
 Не поєднуйте невдалу перевірку з подальшою командою так, щоб втратити її exit code. Для логів через `tee` обов’язково вмикайте `set -o pipefail`.
 
+### API та C03
+
+`python tools/check_api.py` перевіряє повні TransactionIntent responses на спільних `tests/fixtures/calldata.json`, потім передає розібрану data-схему через stdin у `tests/api-calldata.test.mjs`. Node subprocess має check=True: його помилка зупиняє перевірку й CI. Не запускайте цей JS-файл без schema stdin; основна команда відтворення та `npm run test:api` запускають весь набір.
+
+Calldata має бути парним lowercase hex без whitespace/line terminators; використано строгий кінець вводу `(?![\s\S])`, а не `$`. Порожні bytes `0x` збережено як лексично валідні, але майбутній сервіс повинен перевіряти destination, action/selector і повні ABI arguments; regex не дозволяє вважати довільні bytes коректним escrow-викликом. F05/F07 цей патч не змінює.
+
 ## База даних
 
 `tests/db.test.mjs` використовує справжню PostgreSQL-логіку в WASM через PGlite, без зовнішнього сервера. Тестові public.companies/users є мінімальними fixtures, а не повним TA backend.

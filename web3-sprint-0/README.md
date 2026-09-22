@@ -12,7 +12,8 @@
 | `docs/state-machine.md` | Стани, переходи, ролі та точні часові межі |
 | `docs/acceptance-report.pplx.md` | Реальні результати перевірок та обмеження |
 | `docs/p1-fixes.pplx.md` | Історичний звіт виправлень F01–F03 |
-| `docs/p2-fixes.pplx.md` | F04 і скінченність F06: поточні зміни, тести та межі |
+| `docs/p2-fixes.pplx.md` | F04 і скінченність F06: зміни, тести та межі |
+| `docs/c03-fix.pplx.md` | C03: строгий формат calldata, Python/JavaScript регресії |
 | `docs/runbook.md` | Локальний запуск, підготовка Amoy, інтеграція в TA |
 | `src/TransAtlasEscrow.sol` | Тестовий escrow без комісії та upgrade |
 | `api/openapi.yaml` | Контракт HTTP API 3.1, не сервер |
@@ -49,6 +50,8 @@ node tests/integration.test.mjs
 ```
 
 Не використовуйте `node_modules/@foundry-rs/forge/bin.mjs` напряму: під час перевірки його npm-обгортка 1.7.1 повертала код 0 після провалу Forge. Власна `tools/foundry.mjs` запускає закріплений нативний бінарник і передає справжній код завершення; mutation-тести перевіряють цей захист.
+
+`python tools/check_api.py` також запускає C03 response fixtures та дочірній Node-тест з тим самим pattern із фактичного OpenAPI. Перевіряються 6 позитивних і 24 негативні calldata-випадки, відсутнє поле data, Python/JS узгодженість і два негативні regex-controls; це вже входить до чинного Web3 CI без окремого workflow.
 
 ## Межа відповідальності
 

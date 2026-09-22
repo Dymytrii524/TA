@@ -210,7 +210,13 @@ components:
         chain_id: {$ref: '#/components/schemas/ChainId'}
         from: {$ref: '#/components/schemas/Address'}
         to: {$ref: '#/components/schemas/Address'}
-        data: {type: string, pattern: '^0x[0-9a-f]*$'}
+        data:
+          type: string
+          pattern: '^0x(?:[0-9a-f]{2})*(?![\s\S])'
+          description: |
+            Canonical lowercase hex bytes: even digit count, no whitespace or line terminators.
+            Empty bytes (0x) are lexically valid, not proof of a valid escrow call.
+            The service must separately verify destination, action/selector and full ABI arguments.
         value_atomic: {const: '0'}
         expires_at: {type: string, format: date-time}
         broadcast: {const: false}

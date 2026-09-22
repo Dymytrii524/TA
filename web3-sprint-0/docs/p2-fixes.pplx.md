@@ -2,6 +2,8 @@
 
 Дата: 22.09.2026. Окремий патч поверх `5067b7a` на прохання власника: тільки F04, скінченність F06, регресійні тести й additive CI; без merge, зовнішнього deployment або зміни правил гілок ([PR #15](https://github.com/Dymytrii524/TA/pull/15)).
 
+Історичний звіт P2-коміту `fdc8d58`; статус C03 нижче стосується саме цього зрізу. Наступне виправлення формату calldata й актуальні C03 регресії описані у `docs/c03-fix.pplx.md`.
+
 ## Реалізація
 
 - **F04:** нова міграція `db/004_p2_chain_and_finite.sql` додає UNIQUE `(id,chain_id)` до intents і composite FK `(intent_id,chain_id)` для intent_transactions. NO ACTION захищає також UPDATE батьківського intent; FK до chain_transactions і заборона приписати транзакцію двом intents збережені.
