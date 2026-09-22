@@ -1,0 +1,6 @@
+PASS unresolved role addresses fail closed
+PASS mainnet intent denied
+PASS broadcast denied
+PASS duplicate roles denied
+PASS offline constructor calldata generated with dummy test roles
+Amoy config checks: 5 passed; no external deployment or RPC.

@@ -1,0 +1,9 @@
+node_modules/
+out/
+cache/
+coverage/
+.env
+.env.*
+*.key
+*.pem
+artifacts/deployment-intent.local.json

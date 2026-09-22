@@ -1,0 +1,47 @@
+PASS mutation payer-authority: testOnlyPayerApproves exit=1
+PASS mutation challenge-window: testNoPrematureRelease exit=1
+PASS mutation chain-domain: testChainChangeRejected exit=1
+PASS mutation deposit-delta: testFeeTokenRejectedAtomically exit=1
+PASS mutation allocation: testFuzzConservation exit=1
+PASS mutation evidence-binding: testWrongEvidence exit=1
+{
+  "mutations": [
+    {
+      "mutation": "payer-authority",
+      "test": "testOnlyPayerApproves",
+      "detected": true,
+      "exit_code": 1
+    },
+    {
+      "mutation": "challenge-window",
+      "test": "testNoPrematureRelease",
+      "detected": true,
+      "exit_code": 1
+    },
+    {
+      "mutation": "chain-domain",
+      "test": "testChainChangeRejected",
+      "detected": true,
+      "exit_code": 1
+    },
+    {
+      "mutation": "deposit-delta",
+      "test": "testFeeTokenRejectedAtomically",
+      "detected": true,
+      "exit_code": 1
+    },
+    {
+      "mutation": "allocation",
+      "test": "testFuzzConservation",
+      "detected": true,
+      "exit_code": 1
+    },
+    {
+      "mutation": "evidence-binding",
+      "test": "testWrongEvidence",
+      "detected": true,
+      "exit_code": 1
+    }
+  ],
+  "detected": 6
+}
