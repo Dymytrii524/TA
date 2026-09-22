@@ -39,6 +39,7 @@ jobs:
         run: |
           node tests/db.test.mjs
           node tests/db-p1.test.mjs
+          node tests/db-p2.test.mjs
           python tools/check_api.py
           node tests/amoy-config.test.mjs
       - name: Local EVM integration

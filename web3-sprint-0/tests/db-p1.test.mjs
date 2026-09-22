@@ -13,7 +13,7 @@ const insertIntent=()=>db.query(`INSERT INTO web3.intents VALUES
   ($1,$2,$3,31337,'create','1234567890abcdef',$4,'prepared',now(),now()+interval '5 minutes')`,
   [u(40),u(10),u(4),h(40)]);
 try {
-  pass('001 + 002 + 003 migrate on empty schema');
+  pass('001 + 002 + 003 + 004 migrate on empty schema');
   const original=(await db.query('SELECT * FROM web3.deal_terms')).rows[0];
   for(const [field,value] of [['wallet_address',a(99)],['company_id',u(3)],
     ['chain_id',80002],['verified_by_user_id',u(4)],['challenge_hash',h(99)]]){

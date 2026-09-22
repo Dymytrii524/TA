@@ -14,6 +14,7 @@ FOUNDRY_PROFILE=ci node tools/foundry.mjs forge test -vv
 python tools/mutations.py
 node tests/db.test.mjs
 node tests/db-p1.test.mjs
+node tests/db-p2.test.mjs
 python tools/check_api.py
 node tests/amoy-config.test.mjs
 ```
@@ -52,13 +53,15 @@ node tools/foundry.mjs forge inspect TransAtlasEscrow abi --json
 
 `tests/db.test.mjs` використовує справжню PostgreSQL-логіку в WASM через PGlite, без зовнішнього сервера. Тестові public.companies/users є мінімальними fixtures, а не повним TA backend.
 
-Порядок майбутньої інтеграції: резервна копія dev-бази; наявна TA міграція з компаніями/користувачами; `001_web3.sql`; `002_ta_foreign_keys.sql`; `003_p1_integrity.sql`; окремі runtime grants без DDL. Міграція 003 обов’язкова до freeze/ingestion; вона відхиляє наявні terms/projections/events і потребує окремого погодженого backfill для старих даних, не видалення історії.
+Порядок майбутньої інтеграції: резервна копія dev-бази; наявна TA міграція з компаніями/користувачами; `001_web3.sql`; `002_ta_foreign_keys.sql`; `003_p1_integrity.sql`; `004_p2_chain_and_finite.sql`; окремі runtime grants без DDL. Міграція 003 обов’язкова до freeze/ingestion; вона відхиляє наявні terms/projections/events і потребує окремого погодженого backfill для старих даних, не видалення історії.
 
-`db.test.mjs` навмисно зберігає legacy baseline 001/002, а `db-p1.test.mjs` тестує повний актуальний ланцюжок 001/002/003. Frozen terms створюються явним списком колонок із nonce та очікуваним terms hash; trigger сам копіює wallet/network/commercial values, і подальший intent читає тільки цей snapshot.
+`db.test.mjs` навмисно зберігає legacy baseline 001/002; `db-p1.test.mjs` і `db-p2.test.mjs` тестують актуальний ланцюжок 001/002/003/004. Лише історичні fixtures P2 явно зупиняються після 003, щоб перевірити upgrade. Frozen terms створюються явним списком колонок із nonce та очікуваним terms hash; trigger сам копіює wallet/network/commercial values, і подальший intent читає тільки цей snapshot.
+
+004 бере ACCESS EXCLUSIVE locks і валідовує наявні рядки в одній транзакції; для populated БД потрібне погоджене maintenance window. Помилка `intent_transactions_same_chain`, `deal_price_finite`, `deal_fx_finite`, `snapshot_price_finite` або `snapshot_fx_finite` означає зупинку: виконайте ROLLBACK, збережіть діагностику й погодьте remediation, не вимикайте constraints та не переписуйте frozen history. Коректні дані залишаються незмінними; 004 не є автоматичним backfill і не скасовує вимог 003. Після успішного застосування не запускайте міграції вдруге; production migration runner ще не реалізовано.
 
 Для `create` перший аргумент тепер `escrow_nonce`; canonical ID обчислює контракт із payer-domain, а `tools/escrow-identity.mjs` повторює формулу для сервісу. ABI selector через незмінні типи аргументів не змінився, але семантика змінилася: старі unsigned/signed create intents потрібно відкинути, а не повторно передати.
 
-Міграція 003 перевіряє chain/company при freeze, активність bindings при новому create intent та відповідність funding projection знімку і парі подій. Повний tenant authorization, calldata verification, F04-зв’язок intent_transactions та інші зауваження P2 залишаються окремими задачами, не реалізованими HTTP handlers.
+Міграція 003 перевіряє chain/company при freeze, активність bindings при новому create intent та відповідність funding projection знімку і парі подій. 004 додає F04 same-chain FK і F06 finite checks для price/FX та snapshots. Повний tenant authorization, calldata verification, wallet accounting F05, inspection window F07 та HTTP handlers залишаються окремими задачами; нові бізнес-межі price/FX і серверна валідація не входять у цей патч.
 
 ## Підготовка Amoy без broadcast
 
@@ -105,7 +108,7 @@ node tools/amoy_intent.mjs config/amoy.json
 Не змінюй бізнес-логіку контракту, mainnet guards і чинні CI/ruleset.
 Не використовуй приватні ключі, зовнішній deployment або реальні кошти.
 Додай лише каталог пакета й additive workflow.
-Виконай unit/fuzz/invariant, 6 негативних mutations, SQL,
+Виконай unit/fuzz/invariant, 7 негативних mutations, SQL (включно з P1/P2),
 OpenAPI, offline Amoy-config та local Anvil tests.
 Будь-який failed/skipped/cancelled required job означає failure.
 Вкажи actual stdout/exit codes і точний git diff.

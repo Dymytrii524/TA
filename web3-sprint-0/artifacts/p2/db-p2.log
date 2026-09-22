@@ -1,0 +1,43 @@
+PASS 001/002/003/004 install on an empty schema
+PASS F04 rejects cross-chain INSERT 31337->80002
+PASS F04 rejects association chain UPDATE 31337->80002
+PASS F04 rejects parent intent chain UPDATE 31337->80002
+PASS F04 same-chain replacement and replay work on 31337
+PASS F04 rejects cross-chain INSERT 80002->31337
+PASS F04 rejects association chain UPDATE 80002->31337
+PASS F04 rejects parent intent chain UPDATE 80002->31337
+PASS F04 same-chain replacement and replay work on 80002
+PASS F04 rejects reassignment to an intent on another chain
+PASS F04 existing transaction FK still rejects missing transactions
+PASS F04 one transaction cannot be assigned to two intents
+PASS F04 parent transaction chain cannot orphan an association
+PASS F06 rejects price_amount INSERT NaN
+PASS F06 rejects price_amount UPDATE NaN
+PASS F06 rejects price_amount INSERT Infinity
+PASS F06 rejects price_amount UPDATE Infinity
+PASS F06 rejects price_amount INSERT -Infinity
+PASS F06 rejects price_amount UPDATE -Infinity
+PASS F06 preserves price_amount positive-only rule for 0
+PASS F06 preserves price_amount positive-only rule for -1
+PASS F06 rejects fx_rate INSERT NaN
+PASS F06 rejects fx_rate UPDATE NaN
+PASS F06 rejects fx_rate INSERT Infinity
+PASS F06 rejects fx_rate UPDATE Infinity
+PASS F06 rejects fx_rate INSERT -Infinity
+PASS F06 rejects fx_rate UPDATE -Infinity
+PASS F06 preserves fx_rate positive-only rule for 0
+PASS F06 preserves fx_rate positive-only rule for -1
+PASS F06 preserves two-decimal price validation without rounding
+PASS F06 finite values freeze exactly and caller JSON cannot replace them
+PASS F06 finite mutable update still leaves historical snapshot unchanged
+PASS 004 accepts valid populated history without rewriting it
+PASS 004 rejects historical cross-chain link and rolls back all DDL
+PASS 004 refuses historical price_amount=NaN, preserving data
+PASS 004 refuses frozen price_amount=NaN even after mutable repair
+PASS 004 refuses historical price_amount=Infinity, preserving data
+PASS 004 refuses frozen price_amount=Infinity even after mutable repair
+PASS 004 refuses historical fx_rate=NaN, preserving data
+PASS 004 refuses frozen fx_rate=NaN even after mutable repair
+PASS 004 refuses historical fx_rate=Infinity, preserving data
+PASS 004 refuses frozen fx_rate=Infinity even after mutable repair
+P2 DB regression checks: 42 passed; PGlite, not multi-session PostgreSQL concurrency.

@@ -7,6 +7,7 @@
     "test:contracts": "node tools/foundry.mjs forge test -vv",
     "test:db": "node tests/db.test.mjs",
     "test:db:p1": "node tests/db-p1.test.mjs",
+    "test:db:p2": "node tests/db-p2.test.mjs",
     "test:integration": "node tests/integration.test.mjs",
     "test:api": "python tools/check_api.py",
     "test:mutation": "python tools/mutations.py",

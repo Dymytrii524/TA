@@ -90,7 +90,7 @@ Guardian, основний та резервний арбітри мають р�
 - **Idempotency:** усі POST вимагають ключ; той самий scope+key+body повертає попередній результат, інший body з тим самим ключем дає 409. SQL забезпечує унікальність intent scope; загальний idempotency middleware для evidence/transaction endpoints ще потрібно реалізувати.
 - **Amounts:** decimal strings у JSON, uint256/цілі numeric у сховищі; JS Number для atomic заборонений. Верхню межу uint256 сервер перевіряє окремо від regex.
 - **Create payload:** nonce/amount/deadlines/parties/agreement походять тільки з повного immutable deal_terms snapshot, не через JOIN до поточних mutable deals і не з довільного запиту користувача. Поточний binding використовується лише для перевірки авторизації/відкликання; адреса для calldata береться зі знімка.
-- **Replacements:** `intent_transactions` допускає кілька tx_hash одного intent; кожен tx належить одному intent. Сервер перевіряє збіг chain, sender, to, calldata, nonce/replace semantics.
+- **Replacements:** `intent_transactions` допускає кілька tx_hash одного intent; кожен tx належить одному intent. Міграція 004 забезпечує збіг chain через composite FK; сервер додатково перевіряє chain, sender, to, calldata, nonce/replace semantics.
 - **Expiry:** expires_at intent обмежує його підготовку/використання API, але саме по собі не анулює calldata on-chain. Контракт застосовує власні дедлайни/стан; UI не повинен обіцяти криптографічне відкликання intent.
 - **Withdraw:** маршрут містить deal_id для business authorization, але контракт виводить aggregate wallet claim. До production потрібне окреме wallet-level представлення та рознесення по угодах, а не хибне трактування «ця одна угода оплачена».
 - **Errors:** 401/403/409/422/503, structured problem+json, без витоку чужих документів/реквізитів.
@@ -98,6 +98,8 @@ Guardian, основний та резервний арбітри мають р�
 ## SQL і облік
 
 Міграція `001_web3.sql` створює окрему схему; `002_ta_foreign_keys.sql` додає зв’язки з наявними public.companies/public.users; обов’язкова `003_p1_integrity.sql` додає immutable snapshots і звірку funding. Остання відхиляє існуючі terms/projections/events, бо історичні умови не можна автоматично відновити з mutable rows; у тестах є тільки мінімальні parent fixtures, не повний TA/PostGIS.
+
+Наступна обов’язкова міграція `004_p2_chain_and_finite.sql` забезпечує однаковий chain intent/transaction association та відхиляє NaN/±Infinity у price_amount/fx_rate й відповідних snapshot-полях. Усі наявні рядки валідовуються без автоматичного переписування: невідповідність зупиняє всю міграцію. Поточні правила позитивності й двох знаків price збережені; нові максимуми й FX precision/scale не встановлені.
 
 | Сутність | Інваріант або роль |
 |---|---|
