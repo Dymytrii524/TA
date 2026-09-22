@@ -21,6 +21,8 @@ cases = [
      "claimable[d.carrier] += d.amount - payerAmount + 1;", "testFuzzConservation"),
     ("evidence-binding", "if (expectedEvidence != d.evidence) revert Invalid();", "",
      "testWrongEvidence"),
+    ("payer-id-namespace", "id = deriveEscrowId(msg.sender, nonce);", "id = nonce;",
+     "testP1AttackerCannotOccupyVictimId"),
 ]
 results = []
 env = {**os.environ, "FOUNDRY_FUZZ_RUNS": "32"}

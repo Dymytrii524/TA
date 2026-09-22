@@ -195,6 +195,14 @@ components:
           then: {required: [payer_amount_atomic]}
     TransactionIntent:
       type: object
+      description: |
+        For create, the service reads only the immutable deal_terms snapshot.
+        create(bytes32 nonce, ...) takes escrow_nonce, NOT escrow_id.
+        escrow_id = keccak256(abi.encode(keccak256("TRANS_ATLAS_ESCROW_ID_V1"),
+        uint256(chain_id), escrow_contract, payer_wallet, escrow_nonce)).
+        Include escrow_id and escrow_nonce for a create response; no client-supplied override.
+        Recheck binding revocation before preparing a new intent. Revocation cannot cancel
+        previously signed transactions on chain.
       additionalProperties: false
       required: [intent_id, chain_id, from, to, data, value_atomic, expires_at, broadcast]
       properties:
@@ -206,6 +214,8 @@ components:
         value_atomic: {const: '0'}
         expires_at: {type: string, format: date-time}
         broadcast: {const: false}
+        escrow_id: {$ref: '#/components/schemas/Hash'}
+        escrow_nonce: {$ref: '#/components/schemas/Hash'}
     Escrow:
       type: object
       additionalProperties: false

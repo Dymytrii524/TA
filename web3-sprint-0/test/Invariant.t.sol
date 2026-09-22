@@ -22,11 +22,11 @@ contract Handler is TestBase {
     function create(uint96 raw) external {
         uint256 amount=uint256(raw)%10000e6+1;
         if(e.locked()+e.totalClaimable()+amount>e.maxLiability()) return;
-        bytes32 id=bytes32(++counter);
+        bytes32 nonce=bytes32(++counter);
         t.mint(P,amount);
         vm.startPrank(P);
         t.approve(address(e),amount);
-        e.create(id,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+3 days),COM);
+        bytes32 id=e.create(nonce,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+3 days),COM);
         vm.stopPrank();
         ids.push(id); ghostDeposits+=amount; successfulTransitions++;
     }

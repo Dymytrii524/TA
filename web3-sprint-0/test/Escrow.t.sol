@@ -13,7 +13,8 @@ contract EscrowTest is TestBase {
     address constant A = address(104);
     address constant B = address(105);
     address constant X = address(106);
-    bytes32 constant ID = keccak256("TA-1");
+    bytes32 constant NONCE = keccak256("TA-1");
+    bytes32 ID;
     bytes32 constant COM = keccak256("private-document-with-random-salt");
     uint256 constant AMOUNT = 1000e6;
     function setUp() public {
@@ -21,11 +22,12 @@ contract EscrowTest is TestBase {
         vm.warp(100000);
         t = new MockUSDC();
         e = new E(t,G,A,B,10000e6,100000e6,1 days,7 days);
+        ID = e.deriveEscrowId(P,NONCE);
         t.mint(P,1000000e6);
         vm.prank(P); t.approve(address(e),type(uint256).max);
     }
     function fund() internal {
-        vm.prank(P); e.create(ID,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        vm.prank(P); e.create(NONCE,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
     }
     function active() internal {
         fund(); bytes32 terms = e.getDeal(ID).termsHash;
@@ -117,9 +119,9 @@ contract EscrowTest is TestBase {
     }
     function testZeroAndTooLargeAmounts() public {
         vm.expectRevert(E.Invalid.selector); vm.prank(P);
-        e.create(ID,C,0,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        e.create(NONCE,C,0,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
         vm.expectRevert(E.Invalid.selector); vm.prank(P);
-        e.create(ID,C,10001e6,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        e.create(NONCE,C,10001e6,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
     }
     function testFeeTokenRejectedAtomically() public {
         t.setFee(true); vm.expectRevert(E.Invalid.selector); fund();
@@ -173,7 +175,7 @@ contract EscrowTest is TestBase {
     function testFuzzConservation(uint96 raw,uint96 split) public {
         uint256 amount=uint256(raw)%10000e6+1;
         uint256 refund=uint256(split)%(amount+1);
-        vm.prank(P); e.create(ID,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        vm.prank(P); e.create(NONCE,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
         bytes32 terms=e.getDeal(ID).termsHash;
         vm.prank(C); e.accept(ID,terms); vm.prank(P); e.dispute(ID,COM);
         vm.prank(A); e.resolve(ID,refund);

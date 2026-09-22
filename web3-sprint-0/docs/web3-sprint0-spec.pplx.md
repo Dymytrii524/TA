@@ -43,7 +43,7 @@ TA UI + гаманець
 
 ### Заморожування умов
 
-- **Deal identity:** business `deal_id` є UUID; окремий випадковий ненульовий `escrow_id` має 32 байти. Зберігати відповідність у `deal_terms`, не виводити id з ПІБ, номера телефону чи документа.
+- **Deal identity:** business `deal_id` є UUID; випадковий ненульовий `escrow_nonce` має 32 байти й належить платнику. Контракт обчислює `escrow_id = keccak256(abi.encode(keccak256("TRANS_ATLAS_ESCROW_ID_V1"), uint256(chainId), address(this), payer, escrow_nonce))`; зберігати nonce та ID у `deal_terms`, не виводити nonce з ПІБ або документа.
 - **Terms snapshot:** до create зафіксувати chain, token, контракт, company/wallet bindings, amount_atomic, acceptBy, deliveryBy, FX snapshot та agreement commitment.
 - **Commitment:** запропонований формат для майбутнього document-сервісу: `keccak256(abi.encode(domainVersion, randomNonce32, sha256(fileBytes)))`; nonce зберігається приватно. У контракт передається лише bytes32, а генератор документних commitments не реалізовано.
 - **termsHash:** контракт обчислює `keccak256(abi.encode(chainId, contract, id, payer, carrier, token, amount, acceptBy, deliveryBy, agreementCommitment, arbiter, backupArbiter, challengePeriod, arbitrationPeriod))`.
@@ -89,7 +89,7 @@ Guardian, основний та резервний арбітри мають р�
 - **Auth:** JWT перевіряється сервером; user → company → wallet binding не береться на довіру з request body.
 - **Idempotency:** усі POST вимагають ключ; той самий scope+key+body повертає попередній результат, інший body з тим самим ключем дає 409. SQL забезпечує унікальність intent scope; загальний idempotency middleware для evidence/transaction endpoints ще потрібно реалізувати.
 - **Amounts:** decimal strings у JSON, uint256/цілі numeric у сховищі; JS Number для atomic заборонений. Верхню межу uint256 сервер перевіряє окремо від regex.
-- **Create payload:** amount/deadlines/parties походять із замороженого deal_terms і binding, а не довільного запиту користувача.
+- **Create payload:** nonce/amount/deadlines/parties/agreement походять тільки з повного immutable deal_terms snapshot, не через JOIN до поточних mutable deals і не з довільного запиту користувача. Поточний binding використовується лише для перевірки авторизації/відкликання; адреса для calldata береться зі знімка.
 - **Replacements:** `intent_transactions` допускає кілька tx_hash одного intent; кожен tx належить одному intent. Сервер перевіряє збіг chain, sender, to, calldata, nonce/replace semantics.
 - **Expiry:** expires_at intent обмежує його підготовку/використання API, але саме по собі не анулює calldata on-chain. Контракт застосовує власні дедлайни/стан; UI не повинен обіцяти криптографічне відкликання intent.
 - **Withdraw:** маршрут містить deal_id для business authorization, але контракт виводить aggregate wallet claim. До production потрібне окреме wallet-level представлення та рознесення по угодах, а не хибне трактування «ця одна угода оплачена».
@@ -97,17 +97,17 @@ Guardian, основний та резервний арбітри мають р�
 
 ## SQL і облік
 
-Міграція `001_web3.sql` створює окрему схему; `002_ta_foreign_keys.sql` додає зв’язки з наявними public.companies/public.users. У тестах створено тільки мінімальні parent fixtures, тому сумісність у повному серверному середовищі TA/PostGIS залишається окремою перевіркою.
+Міграція `001_web3.sql` створює окрему схему; `002_ta_foreign_keys.sql` додає зв’язки з наявними public.companies/public.users; обов’язкова `003_p1_integrity.sql` додає immutable snapshots і звірку funding. Остання відхиляє існуючі terms/projections/events, бо історичні умови не можна автоматично відновити з mutable rows; у тестах є тільки мінімальні parent fixtures, не повний TA/PostGIS.
 
 | Сутність | Інваріант або роль |
 |---|---|
 | networks | Chain allowlist, USDC на Amoy, immutable контракт/code hash |
-| wallet_bindings | Активна унікальна адреса в мережі, challenge, verified/revoked times |
+| wallet_bindings | Незмінна identity/challenge, активна унікальна адреса, односпрямоване відкликання |
 | deals | Компанії, fiat price, FX snapshot, agreement commitment |
-| deal_terms | Immutable pre-funding chain/id/bindings/amount/deadlines |
+| deal_terms | Immutable pre-funding nonce/id/hash, wallet/network values, commercial/FX snapshot, amount/deadlines |
 | intents / intent_transactions | Намір і набір кандидатів транзакцій |
 | chain_transactions / chain_events | Receipt, canonical block, log identity, finality |
-| escrows | Лише допустимі переходи, незмінна principal/terms, final event FK |
+| escrows | Незмінні principal/terms/funding_event_id, звірка Funded + StateChanged з snapshot, DELETE/TRUNCATE заборонені |
 | evidence | Append-only приватні посилання та commitments |
 | outbox | Запис у тій самій SQL-транзакції, що intent, а не окремий best-effort POST |
 | ledger_entries | Цілі atomic, збалансована операція, один final event, append-only |
@@ -121,7 +121,7 @@ SQL не перевіряє криптографічно Ethereum receipt і н�
 - **Before finality:** included receipt не змінює фінансову projection; orphaned кандидат відкидається, retries не дублюють події.
 - **After finality:** розбіжність canonical hash зупиняє reconciliation, а не тихо переписує облік. SQL забороняє мутацію finalized receipts/events.
 - **Replay:** індексатор має відновлюватися з deployment_block з дедуплікацією chain/block/tx/log, перевіркою порядку block/transaction/log та переходів state machine.
-- **Тестова межа:** Anvil fixture використовує два додаткові блоки лише для локального сценарію; вона зберігає стан у пам’яті, не підключена до SQL і не є production indexer.
+- **Тестова межа:** Anvil fixture використовує два додаткові блоки лише локально; P1 funding-сценарій звіряє реальні ABI logs і `getDeal` на finalized block та записує funding у PGlite. Решта lifecycle observer лишається in-memory, без повного SQL journal/indexer.
 - **Amoy policy:** перед допуском потрібен окремий перевірений адаптер фінальності та контроль доступності/узгодженості RPC, а не копіювання числа «2 блоки». Модель фінальності Polygon слід брати з актуальної документації ([Polygon finality](https://docs.polygon.technology/pos/concepts/finality/finality)).
 
 ## Безпека, приватність та відкриті ризики

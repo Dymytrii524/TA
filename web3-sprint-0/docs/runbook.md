@@ -13,6 +13,7 @@ set -o pipefail
 FOUNDRY_PROFILE=ci node tools/foundry.mjs forge test -vv
 python tools/mutations.py
 node tests/db.test.mjs
+node tests/db-p1.test.mjs
 python tools/check_api.py
 node tests/amoy-config.test.mjs
 ```
@@ -51,9 +52,13 @@ node tools/foundry.mjs forge inspect TransAtlasEscrow abi --json
 
 `tests/db.test.mjs` використовує справжню PostgreSQL-логіку в WASM через PGlite, без зовнішнього сервера. Тестові public.companies/users є мінімальними fixtures, а не повним TA backend.
 
-Порядок майбутньої інтеграції: резервна копія dev-бази; наявна TA міграція з компаніями/користувачами; `001_web3.sql`; `002_ta_foreign_keys.sql`; окремі runtime grants без DDL. Автоматичного down-migration немає навмисно: після першої фінансової події виправлення робляться forward migration, а не видаленням журналу.
+Порядок майбутньої інтеграції: резервна копія dev-бази; наявна TA міграція з компаніями/користувачами; `001_web3.sql`; `002_ta_foreign_keys.sql`; `003_p1_integrity.sql`; окремі runtime grants без DDL. Міграція 003 обов’язкова до freeze/ingestion; вона відхиляє наявні terms/projections/events і потребує окремого погодженого backfill для старих даних, не видалення історії.
 
-Перед production слід додати перевірки відповідності chain/company між wallet bindings, frozen terms, intent і projection. Частину зв’язків перевіряють FK та triggers пакета, але cross-table business authorization і перевірка calldata залишаються обов’язками ще не реалізованого сервісу.
+`db.test.mjs` навмисно зберігає legacy baseline 001/002, а `db-p1.test.mjs` тестує повний актуальний ланцюжок 001/002/003. Frozen terms створюються явним списком колонок із nonce та очікуваним terms hash; trigger сам копіює wallet/network/commercial values, і подальший intent читає тільки цей snapshot.
+
+Для `create` перший аргумент тепер `escrow_nonce`; canonical ID обчислює контракт із payer-domain, а `tools/escrow-identity.mjs` повторює формулу для сервісу. ABI selector через незмінні типи аргументів не змінився, але семантика змінилася: старі unsigned/signed create intents потрібно відкинути, а не повторно передати.
+
+Міграція 003 перевіряє chain/company при freeze, активність bindings при новому create intent та відповідність funding projection знімку і парі подій. Повний tenant authorization, calldata verification, F04-зв’язок intent_transactions та інші зауваження P2 залишаються окремими задачами, не реалізованими HTTP handlers.
 
 ## Підготовка Amoy без broadcast
 

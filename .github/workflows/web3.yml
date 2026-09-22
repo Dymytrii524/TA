@@ -38,6 +38,7 @@ jobs:
       - name: SQL and API contracts
         run: |
           node tests/db.test.mjs
+          node tests/db-p1.test.mjs
           python tools/check_api.py
           node tests/amoy-config.test.mjs
       - name: Local EVM integration

@@ -40,6 +40,7 @@ contract TransAtlasEscrow is ReentrancyGuard {
     uint256 public totalClaimable;
     mapping(bytes32 => Deal) private _deals;
     mapping(address => uint256) public claimable;
+    bytes32 public constant ID_DOMAIN = keccak256("TRANS_ATLAS_ESCROW_ID_V1");
 
     error Forbidden();
     error Invalid();
@@ -91,6 +92,11 @@ contract TransAtlasEscrow is ReentrancyGuard {
 
     function getDeal(bytes32 id) external view returns (Deal memory) { return _deals[id]; }
 
+    /// @notice Nonce is payer-local; copying another payer's nonce cannot occupy their id.
+    function deriveEscrowId(address payer, bytes32 nonce) public view returns (bytes32) {
+        return keccak256(abi.encode(ID_DOMAIN, chainId, address(this), payer, nonce));
+    }
+
     function setIntakePaused(bool value) external correctChain {
         if (msg.sender != guardian) revert Forbidden();
         intakePaused = value;
@@ -98,11 +104,12 @@ contract TransAtlasEscrow is ReentrancyGuard {
     }
 
     function create(
-        bytes32 id, address carrier, uint256 amount, uint64 acceptBy,
+        bytes32 nonce, address carrier, uint256 amount, uint64 acceptBy,
         uint64 deliveryBy, bytes32 agreementCommitment
-    ) external nonReentrant correctChain {
+    ) external nonReentrant correctChain returns (bytes32 id) {
         if (intakePaused) revert Paused();
-        if (id == bytes32(0) || _deals[id].state != State.None
+        id = deriveEscrowId(msg.sender, nonce);
+        if (nonce == bytes32(0) || _deals[id].state != State.None
             || carrier == address(0) || carrier == msg.sender || carrier == address(this)
             || carrier == arbiter || carrier == backupArbiter
             || msg.sender == arbiter || msg.sender == backupArbiter

@@ -31,12 +31,17 @@ negative = [
     {"action": "resolve", "chain_id": 31337, "payer_amount_atomic": "1.5"},
     {"action": "dispute", "chain_id": 31337},
     {"action": "create", "chain_id": 31337, "private_key": "forbidden"},
+    {"action": "create", "chain_id": 31337, "escrow_id": h},
+    {"action": "create", "chain_id": 31337, "escrow_nonce": h},
 ]
 for value in positive:
     validator.validate(value)
 for value in negative:
     assert list(validator.iter_errors(value)), f"negative fixture passed: {value}"
 sol = (root / "src/TransAtlasEscrow.sol").read_text()
+assert re.search(r"function create\(\s*bytes32 nonce,", sol)
+assert 'id = deriveEscrowId(msg.sender, nonce);' in sol
+assert 'escrow_nonce' in doc["components"]["schemas"]["TransactionIntent"]["properties"]
 sql = (root / "db/001_web3.sql").read_text()
 states = [v.strip().upper() for v in re.search(r"enum State \{([^}]+)", sol)[1].split(",")][1:]
 assert states == doc["components"]["schemas"]["State"]["enum"]

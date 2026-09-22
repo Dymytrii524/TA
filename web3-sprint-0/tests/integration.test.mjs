@@ -2,6 +2,8 @@
 import {JsonRpcProvider,ContractFactory,Interface,keccak256,toUtf8Bytes,toQuantity} from 'ethers';
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
+import {deriveEscrowId} from '../tools/escrow-identity.mjs';
+import {createFixture,recordFunding,project} from './p1-fixture.mjs';
 const url=process.env.ANVIL_URL??'http://127.0.0.1:8545';
 const parsed=new URL(url);
 if(!['localhost','127.0.0.1','[::1]'].includes(parsed.hostname)) throw new Error('Local RPC only');
@@ -10,6 +12,7 @@ rpc.pollingInterval=100;
 const artifact=name=>JSON.parse(readFileSync(`out/${name}.sol/${name}.json`));
 const escrowArtifact=artifact('TransAtlasEscrow');
 let checks=0;
+let fundingDb;
 const pass=s=>{checks++;console.log(`PASS ${s}`)};
 const send=async p=>{const receipt=await(await p).wait();assert.equal(receipt.status,1);return receipt};
 const mine=async()=>{await rpc.send('evm_mine',[]);await rpc.send('evm_mine',[])};
@@ -59,11 +62,44 @@ try{
   assert.equal(await rpc.send('evm_revert',[snapshot]),true);
   await assert.rejects(()=>projection.consume(orphanReceipt),/orphaned/);
   assert.equal(projection.states.size,0);pass('actual pre-finality reorg rejected');
-  const id=hash('e2e-delivery');
+  const nonce=hash('e2e-delivery');
+  const id=deriveEscrowId(31337,eaddr,addr[0],nonce);
+  assert.equal(await escrow.deriveEscrowId(addr[0],nonce),id);
   const amount=1000n*10n**6n;
-  let receipt=await send(escrow.create(id,addr[1],amount,ts+3600,ts+864000,hash('terms')));
+  const fixture=await createFixture({contract:eaddr,token:await token.getAddress(),
+    payer:addr[0],carrier:addr[1],arbiter:addr[3],backup:addr[4],nonce,
+    amount:amount.toString(),acceptBy:ts+3600,deliveryBy:ts+864000,agreement:hash('terms')});
+  fundingDb=fixture.db;
+  let receipt=await send(escrow.create(nonce,addr[1],amount,ts+3600,ts+864000,hash('terms')));
   await mine();assert.equal(await projection.consume(receipt),'finalized');
   assert.equal(projection.states.get(id),1);pass('finalized funding projection');
+  // P1 bridge: real decoded ABI -> finalized-block getDeal -> frozen SQL snapshot.
+  const funded=receipt.logs.filter(l=>l.address.toLowerCase()===eaddr.toLowerCase())
+    .map(l=>({log:l,event:escrow.interface.parseLog(l)}));
+  const f=funded.find(x=>x.event?.name==='Funded');
+  const st=funded.find(x=>x.event?.name==='StateChanged');
+  assert.ok(f&&st);assert.equal(Number(st.event.args.state),1);
+  assert.equal(f.event.args.id,id);assert.equal(st.event.args.id,id);
+  const atBlock=await escrow.getDeal(id,{blockTag:receipt.blockNumber});
+  assert.equal(atBlock.payer.toLowerCase(),fixture.t.payer);
+  assert.equal(atBlock.carrier.toLowerCase(),fixture.t.carrier);
+  assert.equal(atBlock.amount,amount);
+  assert.equal(atBlock.acceptBy,BigInt(fixture.t.acceptBy));
+  assert.equal(atBlock.deliveryBy,BigInt(fixture.t.deliveryBy));
+  assert.equal(atBlock.termsHash,fixture.t.termsHash);
+  assert.equal(atBlock.state,1n);
+  await fundingDb.exec('BEGIN');
+  try {
+    await recordFunding(fundingDb,fixture.t,{tx:receipt.hash,block:receipt.blockHash,
+      height:receipt.blockNumber,fundingLog:f.log.index,stateLog:st.log.index,
+      payload:{payer:f.event.args.payer.toLowerCase(),carrier:f.event.args.carrier.toLowerCase(),
+        amount:f.event.args.amount.toString(),termsHash:f.event.args.termsHash}});
+    await project(fundingDb,fixture.t);
+    await fundingDb.exec('COMMIT');
+  } catch(error){await fundingDb.exec('ROLLBACK');throw error}
+  assert.equal((await fundingDb.query('SELECT amount_atomic::text FROM web3.escrows')).rows[0].amount_atomic,amount.toString());
+  pass('P1 payer-scoped ID and termsHash agree between JavaScript and Solidity');
+  pass('P1 real Funded/StateChanged logs and finalized getDeal match frozen SQL terms');
   const seen=projection.seen.size;await projection.consume(receipt);
   assert.equal(projection.seen.size,seen);pass('duplicate receipt idempotent');
   const terms=(await escrow.getDeal(id)).termsHash;
@@ -93,4 +129,4 @@ try{
   await restart.consume(receipt);assert.equal(restart.states.get(id),6);pass('receipt replay after observer restart');
   console.log(JSON.stringify({network:'LOCAL ANVIL ONLY',escrow:eaddr,token:await token.getAddress(),
     settlementTx:receipt.hash,withdrawalTx:withdrawal.hash,checks,amoyDeployed:false},null,2));
-} finally {rpc.destroy()}
+} finally {if(fundingDb)await fundingDb.close();rpc.destroy()}

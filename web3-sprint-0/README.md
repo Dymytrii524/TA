@@ -11,12 +11,13 @@
 | `docs/web3-sprint0-spec.pplx.md` | Повне ТЗ, модель довіри, критерії приймання |
 | `docs/state-machine.md` | Стани, переходи, ролі та точні часові межі |
 | `docs/acceptance-report.pplx.md` | Реальні результати перевірок та обмеження |
+| `docs/p1-fixes.pplx.md` | Виправлення F01–F03 та поточні регресійні перевірки |
 | `docs/runbook.md` | Локальний запуск, підготовка Amoy, інтеграція в TA |
 | `src/TransAtlasEscrow.sol` | Тестовий escrow без комісії та upgrade |
 | `api/openapi.yaml` | Контракт HTTP API 3.1, не сервер |
-| `db/001_web3.sql`, `db/002_ta_foreign_keys.sql` | Схема та FK до наявних companies/users |
+| `db/001_web3.sql`, `db/002_ta_foreign_keys.sql`, `db/003_p1_integrity.sql` | Обов’язковий порядок міграцій; повний snapshot і funding guards |
 | `test/`, `tests/` | Solidity, SQL, API-конфігурація й локальні RPC-перевірки |
-| `ci/web3.yml` | Додатковий workflow, ще не встановлений у GitHub |
+| `ci/web3.yml` | Копія additive workflow `.github/workflows/web3.yml` |
 | `config/amoy.json` | Конфігурація testnet із незаповненими ролями |
 | `artifacts/` | ABI та журнали фактичних запусків |
 
@@ -30,6 +31,7 @@ python -m pip install -r requirements.txt
 FOUNDRY_PROFILE=ci node tools/foundry.mjs forge test -vv
 python tools/mutations.py
 node tests/db.test.mjs
+node tests/db-p1.test.mjs
 python tools/check_api.py
 node tests/amoy-config.test.mjs
 ```
@@ -50,4 +52,6 @@ node tests/integration.test.mjs
 
 Контракт керує тестовими токенами, а майбутній сервіс settlement має одноосібно вести журнал обліку за підтвердженими подіями. `SETTLED` означає розподіл права на виведення, а не фактичну оплату: вона настає після успішного `withdraw`.
 
-Зміни до `Dymytrii524/TA` не надсилалися, PR не створювався, Amoy не розгортався. Пакет підготовлено для окремого review і подальшої інтеграції без послаблення чинних перевірок TA.
+Пакет розміщено в [PR #15](https://github.com/Dymytrii524/TA/pull/15), без merge та зовнішнього deployment. Виправлення P1 змінює семантику першого аргументу `create`: це payer-local nonce, а не готовий escrow ID; старий calldata повторно використовувати не можна.
+
+Міграція 003 навмисно відхиляє БД з наявними frozen terms, escrow projections або chain events. Для такої БД потрібен окремо перевірений історичний backfill, а не видалення даних чи автоматичне «заморожування» поточних реквізитів.
