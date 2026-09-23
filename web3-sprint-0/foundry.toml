@@ -1,0 +1,28 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["node_modules"]
+remappings = ["@openzeppelin/=node_modules/@openzeppelin/"]
+solc_version = "0.8.30"
+evm_version = "paris"
+optimizer = true
+optimizer_runs = 200
+ffi = false
+
+[profile.default.fuzz]
+runs = 512
+seed = "0x20260922"
+
+[profile.default.invariant]
+runs = 128
+depth = 64
+fail_on_revert = true
+
+[profile.ci.fuzz]
+runs = 2048
+
+[profile.ci.invariant]
+runs = 256
+depth = 128
+fail_on_revert = true

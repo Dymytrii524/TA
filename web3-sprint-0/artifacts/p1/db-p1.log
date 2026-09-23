@@ -1,0 +1,43 @@
+PASS 001 + 002 + 003 migrate on empty schema
+PASS F02 binding wallet_address immutable
+PASS F02 binding company_id immutable
+PASS F02 binding chain_id immutable
+PASS F02 binding verified_by_user_id immutable
+PASS F02 binding challenge_hash immutable
+PASS F02 binding history cannot be deleted
+PASS F02 mutable commercial values cannot alter frozen snapshot
+PASS F02 frozen row cannot be rewritten
+PASS F02 valid create intent still accepted
+PASS F02 revocation preserves snapshot and blocks new create intents
+PASS F02 revocation cannot be undone
+PASS F02 new freeze rejects company binding
+PASS F02 new freeze rejects revoked binding
+PASS F02 new freeze rejects chain binding
+PASS F03 valid funded event pair projects atomically
+PASS F03 projection rejects wrong amount
+PASS F03 projection rejects wrong payer
+PASS F03 projection rejects wrong carrier
+PASS F03 projection rejects wrong termsHash
+PASS F03 projection rejects wrong id
+PASS F03 projection rejects wrong acceptBy
+PASS F03 projection rejects wrong deliveryBy
+PASS F03 funding payload rejects wrong payer
+PASS F03 funding payload requires payer
+PASS F03 funding payload rejects wrong carrier
+PASS F03 funding payload requires carrier
+PASS F03 funding payload rejects wrong amount
+PASS F03 funding payload requires amount
+PASS F03 funding payload rejects wrong termsHash
+PASS F03 funding payload requires termsHash
+PASS F03 rejects unfinalized
+PASS F03 rejects non-adjacent logs
+PASS F03 rejects wrong event kind
+PASS F03 rejects cross-transaction event pair
+PASS F03 validated replay is idempotent without another escrow
+PASS F03 projection delete/reinsert blocked
+PASS F03 projection TRUNCATE blocked
+PASS F02 terms TRUNCATE blocked
+PASS F03 funding reference immutable
+PASS F03 valid later state transition keeps funding evidence
+PASS P1 migration refuses existing frozen history
+P1 DB regression checks: 42 passed; PGlite, not a production PostgreSQL deployment.

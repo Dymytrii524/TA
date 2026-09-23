@@ -1,0 +1,23 @@
+{
+  "name": "trans-atlas-web3-sprint-0",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local/testnet-only escrow acceptance package. No production API or mainnet deployment.",
+  "scripts": {
+    "test:contracts": "node tools/foundry.mjs forge test -vv",
+    "test:db": "node tests/db.test.mjs",
+    "test:db:p1": "node tests/db-p1.test.mjs",
+    "test:db:p2": "node tests/db-p2.test.mjs",
+    "test:integration": "node tests/integration.test.mjs",
+    "test:api": "python tools/check_api.py",
+    "test:mutation": "python tools/mutations.py",
+    "test:amoy-config": "node tests/amoy-config.test.mjs"
+  },
+  "devDependencies": {
+    "@foundry-rs/forge": "1.7.1",
+    "@foundry-rs/anvil": "1.7.1",
+    "@openzeppelin/contracts": "5.4.0",
+    "@electric-sql/pglite": "0.3.14",
+    "ethers": "6.17.0"
+  }
+}

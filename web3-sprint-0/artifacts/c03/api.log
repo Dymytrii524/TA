@@ -1,0 +1,3 @@
+PASS C03 JavaScript regex parity: 6 positive, 24 negative; byte decoding and actual withdraw ABI round-trip.
+PASS C03 Python response validation: 6 positive, 24 negative; missing data rejected; 2 regex mutations detected.
+PASS OpenAPI 3.1; 5 positive, 10 negative fixtures; Solidity/SQL/API state parity; 10 function mappings; all POST idempotency headers.

@@ -1,0 +1,32 @@
+{
+  version: 'PostgreSQL 17.5 on aarch64-unknown-linux-gnu, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit'
+}
+PASS migration
+PASS TA foreign keys against explicit parent fixtures
+PASS mainnet denied
+PASS wrong Amoy token denied
+PASS fractional atomic amount rejected
+PASS negative atomic amount rejected
+PASS uint256 overflow rejected
+PASS same company rejected
+PASS unknown company FK rejected
+PASS receipt required
+PASS unfinalized event rejected
+PASS finalized funding projects
+PASS finality breach halts
+PASS finalized event immutable
+PASS immutable amount rejected
+PASS illegal state jump rejected
+PASS duplicate chain log rejected
+PASS unbalanced ledger rejected
+PASS balanced ledger committed
+PASS journal immutable
+PASS journal undeletable
+PASS idempotency uniqueness
+PASS pre-funding terms persisted
+PASS pre-funding terms immutable
+PASS intent transaction association
+PASS unknown transaction association rejected
+PASS outbox intent FK
+PASS transactional outbox rollback
+DB checks: 28 passed; 0 failed. Engine: PGlite PostgreSQL WASM, not external server.
