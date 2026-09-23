@@ -68,6 +68,12 @@
           },
           {
             "context": "Інваріанти верифікації"
+          },
+          {
+            "context": "web3-sprint0-tests"
+          },
+          {
+            "context": "blockchain-gate"
           }
         ]
       }
