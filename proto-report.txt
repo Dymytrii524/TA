@@ -1,0 +1,49 @@
+proto: /tmp/TA/proto
+схема: /tmp/TA/schemas/post-drone.schema.json
+перевірок виконано: 101
+контракти узгоджені
+еталон: перевірка проходить
+виявлено  P1 перейменувати wire-значення причини пропуску
+          [P1] DroneReason: набір wire-значень не дорівнює перерахуванню схеми; лишні=['range_exceeded'] відсутні=['out_of_range']
+виявлено  P1 прибрати опцію wire у виду транспорту
+          [P1] TransportMode: види плеча не збігаються зі схемою; лишні=[] відсутні=['M']
+виявлено  P2 звузити патерн route_id
+          [P2] Route.route_id: патерн '^rt_[0-9]+(_d)?$' != '^rt_[A-Za-z0-9]+(_d)?$' зі схеми
+виявлено  P3 розширити ліміт плечей 4 -> 5
+          [P3] Route.legs: max_items != maxItems=4 (max_legs з дроном, A.6.7)
+виявлено  P3 змінити межі воріт 1..6 -> 0..6
+          [P3] DiagnosticsItem.gate: межі не збігаються з $defs.gate (1..6)
+виявлено  P3 зробити drone_diagnostics repeated замість presence
+          [P3] SearchRoutesResponse.drone_diagnostics мусить мати presence: при diagnostics=false поле відсутнє, а не порожній масив
+виявлено  P4 додати незадеклароване поле в Route
+          [P4] Route: у proto є незадеклароване поле ['internal_debug_note'] — додайте його в схему або в PROTO_ONLY з обґрунтуванням
+виявлено  P5 вивести gate-причину за суцільний діапазон
+          [P5] номери gate-причин [1, 2, 3, 4, 6, 7, 8, 11] не є суцільним діапазоном — вираз `reason >= X && reason <= Y` перестане бути точним
+виявлено  P5 звузити діапазон у самому CEL-виразі 1..8 -> 1..7
+          [P5] CEL-правило diagnostics.gate_iff_gate_reason перевіряє не той діапазон: очікувався 1..8 за нумерацією DroneReason, у виразі — '(this.reason >= 1 && this.re
+виявлено  P5 втратити CEL-правило воріт цілком
+          [P5] DiagnosticsItem: немає CEL-правила 'diagnostics.gate_iff_gate_reason'
+виявлено  P6 прибрати стан «джерело недоступне» в погоді
+          [P6] WeatherStatus мусить мати рівно три змістовні значення (true/false/null), а має ['WEATHER_STATUS_OK', 'WEATHER_STATUS_EXCEEDED']
+виявлено  P6 прибрати presence у wind_ms
+          [P6] Weather.wind_ms мусить мати presence: «0 м/с» і «немає даних» — різні стани
+
+мутацій: 12, виявлено: 12
+мутаційний прогін пройдено
+перевірок виконано: 24
+текст ТЗ узгоджений зі схемою й proto-контрактом
+  U1: виявлено (ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md)
+  U2: виявлено (ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md)
+  U3: виявлено (ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md)
+  U4: виявлено (proto/transatlas/search/v1/routes.proto)
+  U5: виявлено (proto/transatlas/search/v1/routes.proto)
+  N1: виявлено (schemas/post-drone.schema.json)
+  N2: виявлено (schemas/post-drone.schema.json)
+  N3: виявлено (proto/transatlas/search/v1/routes.proto)
+  N4: виявлено (ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md)
+  N5: виявлено (ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md)
+
+мутацій: 10, виявлено: 10
+мутаційний прогін пройдено
+порівняно з origin/main: повідомлень 29, перерахувань 14, сервісів 1
+сумісно з базовою гілкою
