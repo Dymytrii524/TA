@@ -15,9 +15,14 @@ GitHub далі чекає на статус, якого більше немає
 Код виходу 0 — правило узгоджене; 1 — є розбіжність.
 """
 import copy
+import shutil
+import tempfile
 import json
 import os
 import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 import yaml
 
@@ -29,6 +34,16 @@ RS = os.path.join(ROOT, "ci", "ruleset-contract.json")
 WORKFLOWS = {
     "github-actions-contract.yml": "contract-gate",
     "backend-contract.yml": "backend-gate",
+}
+
+# Дзеркало ci/<файл> -> робочий конвеєр .github/workflows/<файл>. GitHub виконує
+# лише другий; перший читають ці прогони. Розходження означає, що правило гілки
+# перевірено на одному конвеєрі, а працює інший. Зонд джерел теж у переліку:
+# він не обовʼязковий, але його дзеркало так само не має тихо розʼїжджатися.
+MIRRORS = {
+    "github-actions-contract.yml": "contract.yml",
+    "backend-contract.yml": "backend.yml",
+    "source-probe.yml": "source-probe.yml",
 }
 
 # Групи сценаріїв, які мусять бути названі в правилі гілки (рамкове ТЗ, розділи 13.7 і 14.8).
@@ -236,7 +251,7 @@ def r12_gate_reads_every_result(wfs, rs):
 def r13_bypass_explicit(wfs, rs):
     """R13. Список винятків з правила оголошений явно, містить лише дозволені ролі й описаний у ТЗ."""
     assert "bypass_actors" in rs, (
-        "у правилі немає ключа bypass_actors: відсутність ключа не дорівнює  «винятків немає» — "
+        "у правилі немає ключа bypass_actors: відсутність ключа не дорівнює  «винятків немає» — "
         "живе правило в GitHub може мати винятки, яких немає у файлі, і розбіжність лишиться непоміченою")
     actors = rs["bypass_actors"]
     assert isinstance(actors, list), "bypass_actors мусить бути списком"
@@ -263,10 +278,25 @@ def r13_bypass_explicit(wfs, rs):
                 f"обходити правило, мусить бути записано, а не жити лише в налаштуваннях GitHub")
 
 
+def r14_mirrors_match_live(wfs, rs):
+    """R14. Кожне дзеркало в ci/ побайтово збігається з робочим конвеєром у .github/workflows."""
+    for mirror_name, live_name in MIRRORS.items():
+        mirror = os.path.join(ROOT, "ci", mirror_name)
+        live = os.path.join(ROOT, ".github", "workflows", live_name)
+        assert os.path.exists(live), (
+            f"робочого конвеєра {live} немає: дзеркало ci/{mirror_name} перевіряється, "
+            f"а GitHub не виконує нічого")
+        a = open(mirror, encoding="utf-8").read()
+        b = open(live, encoding="utf-8").read()
+        assert a == b, (f"дзеркало ci/{mirror_name} розійшлося з .github/workflows/{live_name} — "
+                        f"оновлюйте обидва файли разом")
+
+
 CHECKS = [r1_contexts_exist, r2_all_jobs_required, r3_gate_present, r4_gate_needs_all,
           r5_run_jobs_always_report, r6_no_path_filter_on_trigger, r7_scenario_groups_named,
           r8_rule_hardening, r9_scenario_ids_documented, r10_pipeline_does_not_mask_failures,
-          r11_contexts_unique, r12_gate_reads_every_result, r13_bypass_explicit]
+          r11_contexts_unique, r12_gate_reads_every_result, r13_bypass_explicit,
+          r14_mirrors_match_live]
 
 IDS = {f.__name__: f.__doc__.split(".")[0] for f in CHECKS}
 
@@ -278,6 +308,31 @@ def set_ctx(rs, values):
     for rule in rs["rules"]:
         if rule["type"] == "required_status_checks":
             rule["parameters"]["required_status_checks"] = [{"context": v} for v in values]
+
+
+def file_mutation(rel, transform):
+    """Мутація не структури в памʼяті, а самого файлу: потрібна для правил,
+    які читають диск (R9, R13, R14). Прогін виконується на копії дерева,
+    робочий репозиторій лишається незмінним. transform=None означає
+    вилучення файлу."""
+    def apply(root):
+        # rel може бути списком: згадку треба прибрати в усіх документах одразу,
+        # інакше мутація «опис зник» не спрацює — правило знайде її в сусідньому.
+        hit = False
+        for item in ([rel] if isinstance(rel, str) else rel):
+            path = os.path.join(root, item)
+            if transform is None:
+                os.remove(path)
+                hit = True
+                continue
+            text = open(path, encoding="utf-8").read()
+            changed = transform(text)
+            if changed != text:
+                open(path, "w", encoding="utf-8").write(changed)
+                hit = True
+        assert hit, f"мутація файлу {rel} не застосувалася"
+    apply.needs_files = True
+    return apply
 
 
 MUTATIONS = [
@@ -355,6 +410,17 @@ MUTATIONS = [
      lambda wfs, rs: rs["bypass_actors"].append(dict(rs["bypass_actors"][0]))),
     ("R13: режим винятку підмінено на невідомий",
      lambda wfs, rs: rs["bypass_actors"][0].update(bypass_mode="never_checked")),
+    ("R14: дзеркало конвеєра контракту розійшлося з робочим файлом",
+     file_mutation(".github/workflows/contract.yml",
+                   lambda t: t.replace("timeout-minutes: 5", "timeout-minutes: 9", 1))),
+    ("R14: дзеркало конвеєра бекенду розійшлося з робочим файлом",
+     file_mutation(".github/workflows/backend.yml",
+                   lambda t: t.replace("runs-on: ubuntu-latest", "runs-on: ubuntu-22.04", 1))),
+    ("R14: робочий конвеєр зонда джерел зник",
+     file_mutation(".github/workflows/source-probe.yml", None)),
+    ("R13: опис винятку зник із документів ТЗ",
+     file_mutation(DOCS,
+                   lambda t: t.replace("Repository admin", "адміністратор"))),
 ]
 
 
@@ -384,10 +450,25 @@ def main():
 
     print("\nмутаційне тестування:")
     not_caught = []
+    global ROOT
     for title, mut in MUTATIONS:
-        w, r = copy.deepcopy(wfs), copy.deepcopy(rs)
-        mut(w, r)
-        caught = bool(run(w, r))
+        if getattr(mut, "needs_files", False):
+            with tempfile.TemporaryDirectory() as tmp:
+                for rel in ["ci", ".github"] + DOCS:
+                    src = os.path.join(ROOT, rel)
+                    dst = os.path.join(tmp, rel)
+                    os.makedirs(os.path.dirname(dst), exist_ok=True)
+                    (shutil.copytree if os.path.isdir(src) else shutil.copy2)(src, dst)
+                mut(tmp)
+                saved, ROOT = ROOT, tmp
+                try:
+                    caught = bool(run(*load()))
+                finally:
+                    ROOT = saved
+        else:
+            w, r = copy.deepcopy(wfs), copy.deepcopy(rs)
+            mut(w, r)
+            caught = bool(run(w, r))
         if not caught:
             not_caught.append(title)
         print(f"  {'відхилено' if caught else 'НЕ ВИЯВЛЕНО':12s} {title}")
