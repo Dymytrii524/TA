@@ -1,0 +1,33 @@
+T16  позитив: OK   негатив: 3/3 +1 кодом
+T17  позитив: OK   негатив: 2/2 
+T18  позитив: OK   негатив: 2/2 
+T19  позитив: OK   негатив: 1/1 
+T20  позитив: OK   негатив: 4/4 
+T21  позитив: OK   негатив: 5/5 +2 кодом
+T22  позитив: OK   негатив: 2/2 
+T23  позитив: OK   негатив: 6/6 +2 кодом
+T24  позитив: OK   негатив: 2/2 
+T25  позитив: OK   негатив: 4/4 
+T26  позитив: OK   негатив: 4/4 +1 кодом
+T27  позитив: OK   негатив: 2/2 
+
+порядок масиву routes:
+  перевірено 12 сценаріїв, порушень: 0
+
+покриття кодів reason: 10/10
+
+самоперевірка перевірок:
+  OK   assert_no_variant_after_refusal
+  OK   assert_no_variant_after_refusal (не спрацьовує на іншому маршруті)
+  OK   assert_parent_present
+  OK   assert_diag_parents_known
+  OK   assert_cta_consistency (невідомий батько)
+  OK   assert_cta_consistency (cta разом із варіантом)
+  OK   assert_cta_consistency (не спрацьовує без cta)
+  OK   assert_pinned_after_anchor (варіант вище якоря)
+  OK   assert_pinned_after_anchor (якоря немає у видачі)
+  OK   assert_pinned_after_anchor (не спрацьовує на правильному порядку)
+  OK   assert_norm_base_matches
+
+сценаріїв: 12, помилок на позитивних прикладах: 0
+мутацій: 37, відхилено схемою: 31, відхилено кодом: 6, не покрито: 0, покриття: 100%

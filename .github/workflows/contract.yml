@@ -45,7 +45,7 @@ jobs:
           # core.quotepath=false обовʼязковий: типово git виводить неASCII
           # імена як "\320\242\320\227-...", і шаблон на «ТЗ-» не збігається,
           # тому правка лише документа ТЗ тихо пропускала б увесь прогін.
-          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|ТЗ-логістична-біржа-v2-мови-валюти\.md|schemas/|i18n/|ci/)'; then
+          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|ТЗ-логістична-біржа-v2-мови-валюти\.md|index\.html|docs/|proto/|sprint-0-backend/(ci/|requirements\.txt|ТЗ-)|\.github/workflows/|schemas/|i18n/|ci/)'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -72,6 +72,12 @@ jobs:
       - name: Узгодженість правила гілки з конвеєром
         if: steps.changed.outputs.run == 'true'
         run: python ci/check_ruleset.py
+
+      - name: Фільтри змін покривають те, що читають прогони
+        if: steps.changed.outputs.run == 'true'
+        run: |
+          python ci/check_change_filters.py
+          python ci/check_change_filters.py --self-test
 
       - name: Числа в документації відповідають конвеєрам
         if: steps.changed.outputs.run == 'true'
@@ -130,7 +136,7 @@ jobs:
           # core.quotepath=false обовʼязковий: типово git виводить неASCII
           # імена як "\320\242\320\227-...", і шаблон на «ТЗ-» не збігається,
           # тому правка лише документа ТЗ тихо пропускала б увесь прогін.
-          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|ТЗ-логістична-біржа-v2-мови-валюти\.md|schemas/|i18n/|ci/)'; then
+          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|ТЗ-логістична-біржа-v2-мови-валюти\.md|\.github/workflows/|schemas/|i18n/|ci/)'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -192,7 +198,7 @@ jobs:
           # core.quotepath=false обовʼязковий: типово git виводить неASCII
           # імена як "\320\242\320\227-...", і шаблон на «ТЗ-» не збігається,
           # тому правка лише документа ТЗ тихо пропускала б увесь прогін.
-          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|proto/|schemas/|ci/)'; then
+          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(ТЗ-алгоритм-пошуку-вантажів-і-маршрутів\.md|ТЗ-рамкове-логістична-біржа\.md|proto/|third_party/|\.github/workflows/|schemas/|ci/)'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -289,7 +295,7 @@ jobs:
           fi
           base="origin/${{ github.base_ref }}"
           git fetch origin "${{ github.base_ref }}" --quiet
-          if git diff --name-only "$base"...HEAD | grep -Eq '^(index\.html|ci/|\.github/workflows/)'; then
+          if git -c core.quotepath=false diff --name-only "$base"...HEAD | grep -Eq '^(index\.html|ci/|\.github/workflows/)'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
