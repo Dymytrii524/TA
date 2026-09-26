@@ -1,0 +1,331 @@
+<title>Хроніка Trans-Atlas</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --paper-2:#F1F4F8; --surface:#FFFFFF;
+    --ink:#1B2733; --ink-soft:#5B6B7A; --line:#D6DEE6;
+    --accent:#1B5FA8; --accent-ink:#FFFFFF; --accent-2:#123F70;
+    --success:#2E7D5B; --warning:#B4791D; --danger:#B23B2E;
+    --shadow:rgba(20,33,50,.12);
+    --font-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:ui-monospace,"Cascadia Mono","SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E1620; --paper-2:#141F2C; --surface:#121C27;
+      --ink:#E6EBF0; --ink-soft:#93A3B2; --line:#25333F;
+      --accent:#5B9BDB; --accent-ink:#0E1620; --accent-2:#8FC0EE;
+      --success:#4FAE85; --warning:#D3A551; --danger:#E17862;
+      --shadow:rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1620; --paper-2:#141F2C; --surface:#121C27;
+    --ink:#E6EBF0; --ink-soft:#93A3B2; --line:#25333F;
+    --accent:#5B9BDB; --accent-ink:#0E1620; --accent-2:#8FC0EE;
+    --success:#4FAE85; --warning:#D3A551; --danger:#E17862;
+    --shadow:rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-display); line-height:1.5;
+    padding-inline:20px; padding-block:32px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto;}
+  .eyebrow{font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; color:var(--ink-soft); margin:0 0 8px;}
+  .wordmark{font-family:var(--font-display); font-weight:700; font-size:2.3rem; letter-spacing:.01em; margin:0 0 6px; text-wrap:balance;}
+  .wordmark b{color:var(--accent);}
+  .lede{font-size:1rem; color:var(--ink-soft); max-width:62ch; margin:0 0 28px;}
+  .stats-strip{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+    margin-bottom:32px;
+  }
+  @media (max-width:760px){.stats-strip{grid-template-columns:repeat(3,1fr);}}
+  .stat-cell{background:var(--surface); padding:14px 10px; text-align:center;}
+  .stat-cell .val{display:block; font-family:var(--font-mono); font-variant-numeric:tabular-nums; font-weight:700; font-size:1.3rem; color:var(--accent);}
+  .stat-cell .lab{display:block; font-size:.7rem; color:var(--ink-soft); margin-top:2px;}
+
+  .panel{background:var(--surface); border:1px solid var(--line); border-radius:4px; margin-bottom:20px;}
+  .panel-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px 18px; border-bottom:1px solid var(--line);}
+  .panel-head h2{font-size:1rem; margin:0;}
+  .legend{display:flex; gap:16px; font-size:.76rem; color:var(--ink-soft); align-items:center; flex-wrap:wrap;}
+  .legend-dot{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; vertical-align:-1px;}
+
+  .diagram-scroll{overflow-x:auto; background:#fff; padding:20px;}
+  .diagram-scroll .mermaid{min-width:1900px;}
+  .diagram-hint{font-size:.72rem; color:var(--ink-soft); padding:8px 18px 14px; border-top:1px solid var(--line); font-family:var(--font-mono);}
+
+  .detail{padding:18px; min-height:108px;}
+  .detail-empty{color:var(--ink-soft); font-size:.88rem;}
+  .detail-title{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
+  .detail-title h3{margin:0; font-size:1.02rem;}
+  .badge{display:inline-flex; align-items:center; gap:5px; font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; padding:.2em .55em; border-radius:20px;}
+  .badge.done{background:var(--success); color:#fff;}
+  .badge.todo{background:var(--warning); color:#fff;}
+  .badge.phase{background:var(--paper-2); color:var(--ink-soft); border:1px solid var(--line);}
+  .detail-body{font-size:.88rem; color:var(--ink); max-width:70ch; margin:0 0 10px;}
+  .detail-link{font-size:.8rem; font-family:var(--font-mono);}
+  .detail-link a{color:var(--accent);}
+
+  footer{margin-top:30px; font-size:.76rem; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:16px;}
+  footer a{color:var(--accent);}
+
+  .node{cursor:pointer;}
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">Історія розробки</p>
+  <h1 class="wordmark">Хроніка <b>Trans-Atlas</b></h1>
+  <p class="lede">Дизайн-концепт міжнародної біржі вантажоперевезень — від першої перевірки технічного завдання до рішення про технологічний стек. Клікніть по будь-якому блоку схеми нижче, щоб побачити деталі цього кроку.</p>
+
+  <div class="stats-strip">
+    <div class="stat-cell"><span class="val num">13</span><span class="lab">фаз роботи</span></div>
+    <div class="stat-cell"><span class="val num">33</span><span class="lab">мови інтерфейсу</span></div>
+    <div class="stat-cell"><span class="val num">29</span><span class="lab">валют у фільтрі</span></div>
+    <div class="stat-cell"><span class="val num">10 773</span><span class="lab">тестові заявки</span></div>
+    <div class="stat-cell"><span class="val num">4</span><span class="lab">модулі-специфікації</span></div>
+    <div class="stat-cell"><span class="val num">9</span><span class="lab">пунктів у бекзі</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Карта шляху</h2>
+      <div class="legend">
+        <span><span class="legend-dot" style="background:var(--success);"></span>реалізовано</span>
+        <span><span class="legend-dot" style="background:var(--warning);"></span>залишилось зробити</span>
+        <span><span class="legend-dot" style="background:var(--paper-2); border:1px solid var(--line);"></span>фаза</span>
+      </div>
+    </div>
+    <div class="diagram-scroll" id="diagramScroll">
+<pre class="mermaid">
+%%{init: {"flowchart": {"htmlLabels": true, "curve": "basis"}, "themeVariables": {"fontFamily": "ui-monospace, Consolas, monospace", "fontSize": "13px"}}}%%
+flowchart LR
+    classDef phase fill:#F1F4F8,stroke:#1B5FA8,stroke-width:1px,color:#1B2733,font-weight:700
+    classDef done fill:#2E7D5B,stroke:#1d5940,color:#ffffff
+    classDef todo fill:#B4791D,stroke:#835613,color:#ffffff,stroke-dasharray: 3 2
+
+    subgraph P1["1 · ТЗ і напрямок"]
+        direction TB
+        n_tz["Перевірка ТЗ → DOCX"]
+        n_direction["Напрямок: розширити демо,<br/>не будувати продакшн"]
+    end
+
+    subgraph P2["2 · Розширення демо"]
+        direction TB
+        n_currency7["7 валют у заявках"]
+        n_drone_v1["Режим «дрон» (2 заявки)"]
+        n_rating["Рейтинг компаній<br/>за валютою"]
+        n_qa["База знань Q&amp;A"]
+        n_services_nav["Дропдаун «Сервіси»"]
+        n_modefix["Фікс фільтра режимів"]
+    end
+
+    subgraph P3["3 · Перший вихід на GitHub"]
+        direction TB
+        n_push1["Перший пуш"]
+        n_mergeA["Злиття з CI/i18n-роботою"]
+    end
+
+    subgraph P4["4 · Аудит i18n"]
+        direction TB
+        n_audit["Аудит: 4/34 мов живі"]
+        n_stage2["Етап 2: +11 мов, +9 валют"]
+    end
+
+    subgraph P5["5 · Повний мовний розкат"]
+        direction TB
+        n_full_langs["+29 мов, разом 33"]
+        n_lang_dropdown["Перемикач мов → dropdown"]
+        n_rtl["RTL для арабської"]
+        n_crypto["USDC/USDT/EURC у фільтрі"]
+    end
+
+    subgraph P6["6 · Масові заявки"]
+        direction TB
+        n_bulk1["3653 заявки"]
+        n_drone_bulk["+500 дрон-заявок"]
+    end
+
+    subgraph P7["7 · Виправлення головної"]
+        direction TB
+        n_zindex["Фікс: меню під навбаром"]
+        n_flowcolor["Колір імпорт/експорт"]
+        n_flowarrow["Напрямок стрілок"]
+        n_heromode["Клік по виду транспорту"]
+        n_herodrill["Дрилл-даун зберігає режим"]
+    end
+
+    subgraph P8["8 · BPMN check-call"]
+        direction TB
+        n_bpmn1["Генератор 2 SVG-діаграм"]
+        n_bpmn_page["Сторінка check-call"]
+        n_bpmn2["Перегенерація + 2 BPMN XML"]
+    end
+
+    subgraph P9["9 · Верифікація"]
+        direction TB
+        n_verify["Сторінка верифікації<br/>L0/L1/L2"]
+    end
+
+    subgraph P10["10 · Злиття test-data"]
+        direction TB
+        n_merge2["+120 міст, 7120 заявок"]
+    end
+
+    subgraph P11["11 · Бекенд Спринт 0"]
+        direction TB
+        n_backend["Сторінка «Бекенд: Спринт 0»"]
+    end
+
+    subgraph P12["12 · Технологічний стек"]
+        direction TB
+        n_stack["Рішення про production-стек"]
+    end
+
+    subgraph P13["13 · Цей дашборд"]
+        direction TB
+        n_dashboard["Мета-артефакт (оновлено)"]
+    end
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10 --> P11 --> P12 --> P13
+
+    subgraph TODO["Залишилось зробити"]
+        direction TB
+        r_backend_impl["Реальний бекенд:<br/>NestJS + PostgreSQL"]
+        r_verify_impl["Реальні інтеграції реєстрів"]
+        r_i18n_full["Повний словник i18n/messages"]
+        r_search["Модуль SEARCH"]
+        r_ingest["Ingest-агент"]
+        r_sse["SSE-стрічка, push, PWA"]
+        r_deals["Ставки, торг, ескроу"]
+        r_pages["Реальний деплой сайту"]
+        r_prod_stack["Розгорнути стек:<br/>Next.js/Go/Kafka/ClickHouse/K8s"]
+    end
+
+    n_backend -.-> r_backend_impl
+    n_backend -.-> r_search
+    n_backend -.-> r_ingest
+    n_backend -.-> r_sse
+    n_backend -.-> r_deals
+    n_verify -.-> r_verify_impl
+    n_stage2 -.-> r_i18n_full
+    n_dashboard -.-> r_pages
+    n_stack -.-> r_prod_stack
+
+    class P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,TODO phase
+    class n_tz,n_direction,n_currency7,n_drone_v1,n_rating,n_qa,n_services_nav,n_modefix,n_push1,n_mergeA,n_audit,n_stage2,n_full_langs,n_lang_dropdown,n_rtl,n_crypto,n_bulk1,n_drone_bulk,n_zindex,n_flowcolor,n_flowarrow,n_heromode,n_herodrill,n_bpmn1,n_bpmn_page,n_bpmn2,n_verify,n_merge2,n_backend,n_stack,n_dashboard done
+    class r_backend_impl,r_verify_impl,r_i18n_full,r_search,r_ingest,r_sse,r_deals,r_pages,r_prod_stack todo
+</pre>
+    </div>
+    <p class="diagram-hint">← прокрутіть схему по горизонталі · клікніть блок для деталей →</p>
+  </div>
+
+  <div class="panel">
+    <div class="detail" id="detailPanel">
+      <p class="detail-empty">Клікніть будь-який блок на схемі вище — тут з'явиться опис цього кроку.</p>
+    </div>
+  </div>
+
+  <footer>
+    Репозиторій: <a href="https://github.com/Dymytrii524/TA" target="_blank" rel="noopener">github.com/Dymytrii524/TA</a> ·
+    Ця сторінка — окремий мета-артефакт, не частина самого сайту Trans-Atlas.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var DETAILS = {
+    n_tz: {phase:"1 · ТЗ і напрямок", status:"done", title:"Перевірка ТЗ", body:"Рамкове ТЗ і додаток A перевірено на внутрішню узгодженість; знахідки оформлено окремим DOCX-файлом і передано напряму: 2 критичні (дубльована схема маршруту, розбіжність «порт»/«seaport»), 2 середні (неоднозначність кількості валют USDT, повторне використання weight_t для ваги дрона в кг), 2 незначні."},
+    n_direction: {phase:"1 · ТЗ і напрямок", status:"done", title:"Вибір напрямку роботи", body:"Уточнено через пряме запитання: розширювати наявний демо-фронтенд (index.html) чи будувати повноцінну продакшн-інфраструктуру (PostgreSQL, Redis, блокчейн, CI). Обрано перше — друге означало б вигадувати дані й сервіси, яких не існує."},
+    n_currency7: {phase:"2 · Розширення демо", status:"done", title:"Валюта заявки", body:"У кожного з 20 демо-оголошень з'явилося поле currency (EUR/USD/UAH/PLN/CZK/RON/GBP), формат ціни (priceStr) враховує позицію символу до/після суми."},
+    n_drone_v1: {phase:"2 · Розширення демо", status:"done", title:"Перший режим «дрон»", body:"Додано 2 показові дрон-заявки з власним набором полів — вага в кілограмах (не тоннах), дальність, вантажопідйомність, тип дрона, дозвіл на політ."},
+    n_rating: {phase:"2 · Розширення демо", status:"done", title:"Рейтинг компаній", body:"Сортування рейтингу перероблено: спершу групування за валютою, і лише всередині однієї валюти — за сумою. Це прибрало вигадане крос-валютне порівняння без реального курсу."},
+    n_qa: {phase:"2 · Розширення демо", status:"done", title:"База знань Q&A", body:"Додано розділ «Питання і відповіді» з пошуком по статтях, категоріями та чесним поясненням, коли AI-відповіді не підключені на сервері."},
+    n_services_nav: {phase:"2 · Розширення демо", status:"done", title:"Дропдаун «Сервіси»", body:"У верхньому навбарі з'явився hover/focus-дропдаун «Сервіси» між «Ринок транспорту» і «Новини» — додатковий вхід до сторінок-сервісів з будь-якої сторінки сайту."},
+    n_modefix: {phase:"2 · Розширення демо", status:"done", title:"Знайдений і виправлений баг", body:"У випадному списку фільтра видів транспорту випадково бракувало пункту «дрон» — знайдено проактивно під час іншої роботи, не за скаргою користувача."},
+    n_push1: {phase:"3 · Перший вихід на GitHub", status:"done", title:"Перший пуш на GitHub", body:"git push спершу зависав через інтерактивний запит Git Credential Manager у пісочниці без графічного інтерфейсу. Діагностовано точну причину (GIT_TERMINAL_PROMPT=0 дає миттєву чесну помилку), після чого користувач завершив вхід і пуш пройшов."},
+    n_mergeA: {phase:"3 · Перший вихід на GitHub", status:"done", title:"Перше злиття паралельної роботи", body:"На віддаленому репозиторії з'явилися чужі коміти (CI-контракти, i18n-схеми) від іншого інструменту користувача. Після підтвердження, що це «свій» інструмент, конфлікти злиття розв'язано по файлах."},
+    n_audit: {phase:"4 · Аудит i18n", status:"done", title:"Аудит мов і валют", body:"Перевірено фактичний стан: i18n/language-roadmap.json обіцяв 34 мови й 32 валюти, а в самому застосунку живими лишалися лише 4 мови (uk/en/pl/de) і 7-9 валют. Дорожню карту й код розвели свідомо."},
+    n_stage2: {phase:"4 · Аудит i18n", status:"done", title:"Етап 2 мов і валют", body:"У живий застосунок додано 11 мов етапу 2 (ro, cs, sk, hu, bg, lt, lv, et, sl, hr, sr) і 9 валют (CHF, HUF, BGN, SEK, DKK, NOK, TRY, RSD, MDL), з синхронізацією статусів у дорожній карті."},
+    n_full_langs: {phase:"5 · Повний мовний розкат", status:"done", title:"Усі мови до кінця", body:"Додано решту 18 мов (етап 3 і резерв): fr, es, it, nl, pt, tr, el, sv, da, nb, fi, zh, ar, ka, az, kk, uz, hy — 225 перекладених ключів у кожній, звірених із англійським шаблоном."},
+    n_lang_dropdown: {phase:"5 · Повний мовний розкат", status:"done", title:"Перемикач мов", body:"Плаский рядок із 4 кнопок не витримав би 33 мови — перероблено на dropdown (той самий патерн, що й меню «Сервіси»), зі скролом у самому списку."},
+    n_rtl: {phase:"5 · Повний мовний розкат", status:"done", title:"RTL для арабської", body:"dir=\"rtl\" і lang на <html> прив'язані до вибраної мови; окремий CSS-блок дзеркалить лише ті декларації, які використовують фізичні left/right/border замість логічних властивостей."},
+    n_crypto: {phase:"5 · Повний мовний розкат", status:"done", title:"Криптовалюта у фільтрі", body:"USDC/USDT/EURC додано як опції фільтра валют заявки — за прямим запитом користувача, з незмінним чесним застереженням, що ескроу в демо не підключено."},
+    n_bulk1: {phase:"6 · Масові заявки", status:"done", title:"3653 заявки", body:"Згенеровано програмно: 5 континентів × 5 видів транспорту (без дронів), реалістичні пари міст, компанії, дати й валюти — жодних порожніх чи вигаданих полів."},
+    n_drone_bulk: {phase:"6 · Масові заявки", status:"done", title:"Дрон-заявки по континентах", body:"Додано ще 500 дрон-заявок, по 100 на континент, з маршрутами виключно всередині одного континенту — дрон не літає через океан."},
+    n_zindex: {phase:"7 · Виправлення головної", status:"done", title:"Меню мови під навбаром", body:"Випадне меню вибору мови малювалося під темною навігаційною панеллю через однаковий z-index двох елементів без власного стекінг-контексту. Виправлено одним явним z-index."},
+    n_flowcolor: {phase:"7 · Виправлення головної", status:"done", title:"Колір імпорт/експорт", body:"Синій і жовтий кольори стрілок на панелі потоків було переплутано зі словами — поміняно місцями через CSS-клас, без зміни логіки підрахунку."},
+    n_flowarrow: {phase:"7 · Виправлення головної", status:"done", title:"Напрямок стрілок", body:"Після зміни кольорів користувач попросив дзеркально поміняти й напрямок самих іконок-стрілок — імпорт тепер вказує ліворуч, експорт праворуч."},
+    n_heromode: {phase:"7 · Виправлення головної", status:"done", title:"Клік по виду транспорту", body:"Плитка виду транспорту на головній тепер лишається «розгорнутою» після кліку (а не лише на ховері) і фільтрує панель потоків нижче лише під цей вид, аж поки не обрати інший."},
+    n_herodrill: {phase:"7 · Виправлення головної", status:"done", title:"Дрилл-даун зберігає фільтр", body:"Клік по стрілці імпорт/експорт раніше скидав фільтр виду транспорту на «всі». Тепер обраний на головній вид транспорту переноситься в список заявок."},
+    n_bpmn1: {phase:"8 · BPMN check-call", status:"done", title:"Генератор BPMN-діаграм", body:"Завантажений користувачем Python-скрипт мав пошкоджений багаторазовим mojibake текст. Структуру (координати, id вузлів) відновлено з коду, українські підписи переписано наново за зрозумілою логікою процесу."},
+    n_bpmn_page: {phase:"8 · BPMN check-call", status:"done", title:"Сторінка «Автоматичний check-call»", body:"Нова сторінка серед «Сервісів» із двома SVG-діаграмами процесу — з явним застереженням, що це модель процесу, а не підключений AI-дзвінок водієві."},
+    n_bpmn2: {phase:"8 · BPMN check-call", status:"done", title:"Перегенерація за оновленою моделлю", body:"За новою специфікацією і референсними SVG прибрано зсув підпроцесу та message flows з ілюстрації; додано два файли BPMN 2.0 XML (checkcall.bpmn і checkcall-exception.bpmn), яких генератор раніше не створював."},
+    n_verify: {phase:"9 · Верифікація контрагентів", status:"done", title:"Сторінка верифікації", body:"Документовано модуль верифікації контрагентів: рівні L0/L1/L2, 14 перевірок і 9 джерел із реальним станом (live/потрібен ключ/застаріле/лише вручну) — без жодного вигаданого бейджа на демо-компаніях."},
+    n_merge2: {phase:"10 · Злиття test-data", status:"done", title:"Злиття з паралельною роботою", body:"Інший інструмент користувача незалежно додав 120 міст і 7120 заявок у test-data/*.json з чесним офлайн-фолбеком. Злито без конфліктів — зміни лежали в різних частинах файлу."},
+    n_backend: {phase:"11 · Бекенд Спринт 0", status:"done", title:"Сторінка «Бекенд: Спринт 0»", body:"Документовано план переведення сайту на реальний бекенд (PostgreSQL, NestJS, Redis) і вже проведені перевірки артефактів — як специфікацію, а не підключений сервіс."},
+    n_stack: {phase:"12 · Технологічний стек", status:"done", title:"Рішення про production-стек", body:"Документовано ширше архітектурне рішення: Next.js/NestJS/TypeScript для фронтенду й API, окремий сервіс на Go для модуля SEARCH, PostgreSQL+PostGIS, Redis, Kafka, ClickHouse, опційний Solidity/L2-шар для ескроу — з таблицею відкинутих альтернатив і мапою сервісів MVP. «Бекенд: Спринт 0» — перший виконаний шматок цього плану."},
+    n_dashboard: {phase:"13 · Цей дашборд", status:"done", title:"Ви тут", body:"Цей мета-артефакт — інтерактивна візуалізація всього шляху розробки. Оновлено вдруге за прямим запитом: додано фазу технологічного стека й новий пункт у списку того, що залишилось."},
+
+    r_backend_impl: {phase:"Залишилось", status:"todo", title:"Реальна імплементація бекенду", body:"NestJS-модулі auth/companies/listings/reference/events, розгорнута PostgreSQL 18 + PostGIS, реальний /api/v1 замість вшитого масиву LISTINGS."},
+    r_verify_impl: {phase:"Залишилось", status:"todo", title:"Реальні інтеграції реєстрів", body:"Підключення до VIES, Biała lista, KRS, ЄДР (через договір із ДП НАІС) та інших джерел замість статичного каталогу на сторінці верифікації."},
+    r_i18n_full: {phase:"Залишилось", status:"todo", title:"Повний словник i18n/messages", body:"i18n/messages/{uk,en,pl,de}.json і зараз лише 13 демонстраційних ключів для контрактного тестування — не повний словник сотень nav_/col_/qa_ ключів із самого index.html."},
+    r_search: {phase:"Залишилось", status:"todo", title:"Модуль SEARCH", body:"Маршрутизація вантажів (магістраль → фідери), окремий ендпойнт POST_DRONE — власний REST-контракт і власний CI, поза межами Спринту 0."},
+    r_ingest: {phase:"Залишилось", status:"todo", title:"Ingest-агент", body:"Автоматичне наповнення стрічки заявок із зовнішніх джерел — напрям B плану, тижні 4–8."},
+    r_sse: {phase:"Залишилось", status:"todo", title:"SSE-стрічка, push, PWA", body:"Оновлення стрічки заявок у реальному часі, push-сповіщення, офлайн-режим застосунку — напрям C плану."},
+    r_deals: {phase:"Залишилось", status:"todo", title:"Ставки, торг, ескроу", body:"Реальні розрахунки між сторонами угоди — за межею модулів A.1.3 рамкового ТЗ, після перших реальних угод."},
+    r_pages: {phase:"Залишилось", status:"todo", title:"Реальний деплой сайту", body:"GitHub Pages для цього репозиторію ще не налаштовано (перевірено — 404); сайт наразі доступний лише через локальний чекаут."},
+    r_prod_stack: {phase:"Залишилось", status:"todo", title:"Розгорнути production-стек", body:"Жоден із сервісів технологічного рішення (Next.js, Go-сервіс SEARCH, Kafka, ClickHouse, Kubernetes) фактично не розгорнутий — документ фіксує вибір, а не інфраструктуру, що вже працює."}
+  };
+
+  var panel = document.getElementById("detailPanel");
+  var active = null;
+
+  function renderDetail(id){
+    var d = DETAILS[id];
+    if(!d) return;
+    var badgeClass = d.status === "done" ? "done" : "todo";
+    var badgeLabel = d.status === "done" ? "реалізовано" : "залишилось";
+    panel.innerHTML =
+      '<div class="detail-title">' +
+        '<span class="badge phase">' + d.phase + '</span>' +
+        '<span class="badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+        '<h3>' + d.title + '</h3>' +
+      '</div>' +
+      '<p class="detail-body">' + d.body + '</p>';
+  }
+
+  function bindNodes(svg){
+    var nodes = svg.querySelectorAll(".node");
+    nodes.forEach(function(el){
+      var raw = el.id || "";
+      var m = raw.match(/flowchart-([A-Za-z0-9_]+)-\d+$/) || raw.match(/^([A-Za-z0-9_]+)$/);
+      var key = m ? m[1] : null;
+      if(!key || !DETAILS[key]) return;
+      el.addEventListener("click", function(){
+        if(active) active.style.filter = "";
+        el.style.filter = "brightness(1.15)";
+        active = el;
+        renderDetail(key);
+        panel.scrollIntoView({behavior:"smooth", block:"nearest"});
+      });
+    });
+  }
+
+  var scrollHost = document.getElementById("diagramScroll");
+  var tries = 0;
+  var timer = setInterval(function(){
+    tries++;
+    var svg = scrollHost.querySelector("svg");
+    if(svg){
+      clearInterval(timer);
+      bindNodes(svg);
+    } else if(tries > 100){
+      clearInterval(timer);
+    }
+  }, 100);
+})();
+</script>
