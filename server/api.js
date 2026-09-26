@@ -14,6 +14,8 @@
  *   GET  /api/qa/outputs?tag=&q=
  *   POST /api/qa/ask  { question }
  *   GET  /api/health
+ *   /api/verification/*  (див. verification/api.js)
+ *   /api/v1/*            (читальний зріз контракту Спринту 0, див. v1/api.js)
  */
 
 var http = require('http');
@@ -28,6 +30,8 @@ var dpsuBorders = require('./connectors/dpsuBorders');
 var granicaBorders = require('./connectors/granicaBorders');
 var meteoAlarmAlerts = require('./connectors/meteoAlarmAlerts');
 var aviationWeatherAir = require('./connectors/aviationWeatherAir');
+var verificationApi = require('./verification/api');
+var v1Api = require('./v1/api');
 var anthropicChat = require('./connectors/anthropicChat');
 var qaRetrieval = require('./services/qaRetrieval');
 
@@ -537,6 +541,8 @@ function handleHealth(req, res) {
 }
 
 function createServer() {
+  var verification = verificationApi.create();
+  var v1 = v1Api.create();
   return http.createServer(function (req, res) {
     var parsed = url.parse(req.url, true);
     if (req.method === 'OPTIONS') {
@@ -549,11 +555,14 @@ function createServer() {
         // send the real POST. Without it, fetch() fails with an opaque
         // network error (no server log, no response) - curl doesn't do
         // preflights, so this only shows up in an actual browser.
-        'Access-Control-Allow-Headers': 'content-type',
+        'Access-Control-Allow-Headers': 'content-type, idempotency-key, x-operator-token',
       });
       res.end();
       return;
     }
+
+    if (verification.handle(req, res, parsed, { sendJson: sendJson, readJsonBody: readJsonBody })) return;
+    if (v1.handle(req, res, parsed, sendJson)) return;
 
     if (req.method === 'POST' && parsed.pathname === '/api/qa/ask') {
       readJsonBody(req).then(function (body) {

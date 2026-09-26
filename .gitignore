@@ -3,3 +3,5 @@
 server/.cache.json
 
 ci/node_modules/
+server/.verification-store/
+server/data/listings.canonical.json

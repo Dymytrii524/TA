@@ -613,6 +613,28 @@
   .verify-level-card{border:1px solid var(--line); border-radius:4px; padding:16px; background:var(--surface);}
   .verify-level-card .v-meaning{font-size:.86rem; margin:10px 0 6px; color:var(--ink);}
   .verify-level-card .v-gives{font-size:.8rem; margin:0; color:var(--ink-soft);}
+  .vl-status{display:inline-block; font-size:.68rem; font-weight:700; padding:1px 8px; border-radius:9px; border:1px solid var(--line); white-space:nowrap;}
+  .vl-status.pass{background:#E3F1E6; border-color:#4C8B5B; color:#245C34;}
+  .vl-status.fail{background:#F8E1E1; border-color:#B24545; color:#7B1F1F;}
+  .vl-status.attention{background:#FBF0D5; border-color:#B7791F; color:#7A4E0B;}
+  .vl-status.unavailable{background:#ECECEC; border-color:#8B8B8B; color:#444;}
+  .vl-status.not_applicable,.vl-status.pending{background:transparent; color:var(--ink-soft);}
+  .vl-summary{border:1px solid var(--line); border-left:4px solid var(--accent); padding:12px 14px; margin:12px 0; background:var(--paper);}
+  .vl-summary.rejected{border-left-color:#B24545;} .vl-summary.approved{border-left-color:#4C8B5B;} .vl-summary.manual_review{border-left-color:#B7791F;}
+  .sl-form{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px 14px; background:var(--paper-2); border:1px solid var(--line); border-radius:2px; padding:16px; margin:14px 0 18px;}
+  .sl-form label{display:block; font-size:.74rem; font-weight:700; margin-bottom:4px;}
+  .sl-form select,.sl-form input[type=number]{width:100%;}
+  .sl-checks{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; grid-column:1/-1; font-size:.82rem;}
+  .sl-checks label{display:inline-flex; gap:5px; align-items:center; margin:0; font-weight:400;}
+  .sl-route{border:1px solid var(--line); border-radius:2px; padding:12px 14px; margin-bottom:10px; background:var(--paper);}
+  .sl-route.drone{border-left:3px solid var(--accent);}
+  .sl-route h4{margin:0 0 6px; font-size:.92rem; display:flex; flex-wrap:wrap; gap:8px; align-items:baseline;}
+  .sl-meta{font-size:.78rem; color:var(--ink-soft);}
+  .sl-chip{display:inline-block; font-size:.68rem; font-weight:700; padding:1px 7px; border:1px solid var(--line); border-radius:9px; background:var(--paper-2);}
+  .sl-chip.warn{border-color:#B7791F; color:#8A5A0B;}
+  .sl-legs{list-style:none; margin:8px 0 0; padding:0; font-size:.8rem;}
+  .sl-legs li{padding:3px 0; border-top:1px dashed var(--line);}
+  .sl-note{font-size:.78rem; color:var(--ink-soft); margin:6px 0;}
   .verify-table{width:100%; border-collapse:collapse; font-size:.82rem; min-width:820px;}
   .verify-table th{text-align:left; padding:8px 10px; background:var(--paper-2); border-bottom:1px solid var(--line); white-space:nowrap; font-weight:700;}
   .verify-table td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
@@ -711,6 +733,7 @@
 <div id="modalRoot" class="modal-backdrop"></div>
 <div id="toast"></div>
 
+<script src="search/engine.js"></script>
 <script>
 (function(){
 "use strict";
@@ -4925,7 +4948,7 @@ uk:{
   cta_register:"Зареєструвати компанію", load_more:"Показати ще",
   search_title:"Модуль SEARCH: алгоритм маршрутів і POST_DRONE",
   search_lede:"Додаток A до рамкового ТЗ: блок-схема № 3.1.1 — основний і єдиний алгоритм пошуку для будь-якого перевезення, що потребує понад одного виду транспорту, розширена на шість видів транспорту без зміни структури графа.",
-  search_disclaimer:"Це специфікація алгоритму, а не працюючий сервіс: жодної бази points/lots, жодного API /search/routes і жодного Go-сервіса SEARCH у цьому демо немає. JSON Schema контракту POST_DRONE (schemas/post-drone.schema.json) і її перевірка (schemas/check_schema.py) — реальні, робочі файли цього репозиторію: 12 прикладів валідні, 37 із 37 мутацій відхилено. ci/check_contract_text.py — теж реальний файл, і тепер він виконується: каталог proto/ і grpc_tools на місці, прогін дає 24 перевірки узгодженості тексту ТЗ зі схемою й proto-контрактом, а self-test виявляє 10 із 10 мутацій. Цей прогін — крок job-а proto конвеєра contract.yml, тобто частина обов'язкової перевірки «Контракт proto модуля SEARCH».",
+  search_disclaimer:"Алгоритм працює як реальний код у браузері (search/engine.js): пошук маршрутів по заявках цього сайту, ворота POST_DRONE, ранжування A.7 — див. панель нижче; 16 тестів і сценарії T16–T27 проходять, відповіді рушія валідні за схемою. Але це не серверний сервіс: бази points/lots, API /search/routes і Go-сервіса SEARCH у цьому демо немає, курси валют демонстраційні, рейтингів компаній і документів CMR/T1/TIR немає. JSON Schema контракту POST_DRONE (schemas/post-drone.schema.json) і її перевірка (schemas/check_schema.py) — реальні, робочі файли цього репозиторію: 12 прикладів валідні, 37 із 37 мутацій відхилено. ci/check_contract_text.py — теж реальний файл, і тепер він виконується: каталог proto/ і grpc_tools на місці, прогін дає 24 перевірки узгодженості тексту ТЗ зі схемою й proto-контрактом, а self-test виявляє 10 із 10 мутацій. Цей прогін — крок job-а proto конвеєра contract.yml, тобто частина обов'язкової перевірки «Контракт proto модуля SEARCH».",
   search_subsystems_heading:"Підсистеми модуля (S1–S8)",
   search_modes_heading:"Шість видів транспорту в графі маршруту",
   search_modes_lede:"Дрон — не плече графа, а пост-обробка вже знайденого маршруту: єдина реалізація замість чотирьох копій умови в кожній гілці.",
@@ -4945,7 +4968,7 @@ uk:{
   search_download_doccounts:"Перевірка чисел у документації, D1–D8 (Python, реальний файл)",
   automation_title:"Автоматизований check-call: як це влаштовано",
   automation_lede:"BPMN-модель процесу автоматизованого відстеження рейсу: коли система сама зв'язується з водієм і як виняткові ситуації доходять до диспетчера.",
-  automation_disclaimer:"Це дизайн-концепція процесу (BPMN-схема), а не підключений сервіс: у цьому демо немає ні реального AI-дзвінка водієві, ні інтеграції з TMS чи SMS-шлюзом.",
+  automation_disclaimer:"Це дизайн-концепція процесу (BPMN-схема), а не підключений сервіс: у цьому демо немає ні реального AI-дзвінка водієві, ні інтеграції з TMS чи SMS-шлюзом. Реальна лише структурна перевірка самих діаграм (bpmn/check_bpmn.py, розділ нижче).",
   automation_main_heading:"Основний процес: моніторинг рейсу",
   automation_main_body:"Система регулярно отримує позицію (ELD/GPS/застосунок водія) і звіряє її з планом. Якщо дані застаріли понад 30 хв, AI-агент телефонує водієві, розпізнає відповідь і записує статус; якщо водій не відповідає — надсилає SMS/email і за потреби передає ситуацію в підпроцес обробки винятку.",
   automation_sub_heading:"Підпроцес «Обробка винятку»",
@@ -4958,7 +4981,7 @@ uk:{
   automation_download_spec:"Повна специфікація процесу (Markdown)",
   verification_title:"Верифікація контрагентів",
   verification_lede:"Верифікація — не оцінка, а зафіксований факт із джерелом, датою і доказом: без зірочок, без зведеного балу і без місця, де недоступність джерела мовчки перетворюється на довіру.",
-  verification_disclaimer:"Це специфікація модуля (каталоги рівнів, перевірок і джерел), а не підключений сервіс: у цьому демо немає бази даних, реальних інтеграцій із реєстрами чи ключів доступу до жодного з перелічених джерел.",
+  verification_disclaimer:"Три джерела з каталогу підключені по-справжньому через локальний сервер: VIES, Biała lista і KRS (панель нижче; server/verification/, 23 тести, справи валідні за verification.schema.json). Решта — специфікація: бази даних немає, ключів до ЄДР, реєстру санкцій РНБО, OpenSanctions, ЄДРСР і агрегатора немає, тому ці перевірки повертають «недоступно» (NO_API_KEY), а не вигадані дані. Сховище доказів — локальні файли, не WORM; ролей і автентифікації немає.",
   verification_levels_heading:"Рівні верифікації",
   verification_checks_heading:"Каталог перевірок",
   verification_checks_lede:"14 перевірок; рішучі перевірки при провалі відхиляють справу, інші йдуть у ручний розгляд.",
@@ -4975,7 +4998,7 @@ uk:{
   verification_download_spec:"Повна специфікація модуля (Markdown)",
   backend_title:"Бекенд Trans-Atlas: Спринт 0",
   backend_lede:"План переведення демонстраційного SPA на застосунок із серверним джерелом істини: акаунти компаній, персистентні заявки, довідники в БД, журнал подій.",
-  backend_disclaimer:"Це специфікація й запис уже проведених перевірок артефактів, а не підключений бекенд: index.html і зараз лишається односторінковим файлом без збірки, без PostgreSQL, без NestJS-сервера і без реального API. Розділ «Зміни на фронтенді» описує наступний крок, а не те, що вже застосовано — LISTINGS, вхід через localStorage і test-data/ й далі працюють так само, як до цієї сторінки.",
+  backend_disclaimer:"Це специфікація й запис уже проведених перевірок артефактів плюс один працюючий зріз: локальний сервер (node server/index.js) віддає читальну частину контракту /api/v1 з файлу — стрічку заявок із фільтрами й курсором, одну заявку, довідники (панель нижче, 12 тестів). Це не бекенд зі специфікації: немає PostgreSQL, Redis, NestJS, автентифікації й публікації заявок, а index.html і зараз лишається односторінковим файлом без збірки. Розділ «Зміни на фронтенді» описує наступний крок, а не те, що вже застосовано — LISTINGS, вхід через localStorage і test-data/ й далі працюють так само.",
   backend_scope_in_heading:"Входить у Спринт 0",
   backend_scope_out_heading:"Не входить свідомо",
   backend_stack_heading:"Стек і середовище",
@@ -5021,7 +5044,7 @@ uk:{
   stack_link_backend:"Бекенд: Спринт 0 — перший виконаний етап",
   sprint1_title:"Верифікація, Спринт 1: перша працездатна частина",
   sprint1_lede:"Тижні 3–4: польська або європейська компанія за номером ПДВ отримує рівень L1 автоматично, менш ніж за 60 секунд, із доказами в сховищі та бейджем у стрічці — на джерелах, які вже працюють без ключа й без договору.",
-  sprint1_disclaimer:"Це план спринту з переліком критеріїв готовності, а не звіт про виконану роботу: коннектори VIES/Biała lista/KRS, машина справи, сховище доказів WORM і роль оператора верифікації в цьому демо не розгорнуті. Дата складання документа — 10 вересня 2026.",
+  sprint1_disclaimer:"Це план спринту з переліком критеріїв готовності; частину вже виконано — розділ «Фактичний стан плану» нижче показує, що саме (V2 і V3 зроблено, решта частково або ні). Сховище доказів WORM, роль оператора з автентифікацією, база даних і агрегатор не розгорнуті. Дата складання плану — 10 вересня 2026.",
   sprint1_goal_heading:"Мета спринту",
   sprint1_entry_heading:"Умови входу: що вже є",
   sprint1_entry_lede:"Спринт починається не з проєктування, а з реалізації за готовим і машинно перевіреним контрактом. Незакритим лишається хостинг бекенду — рішення дня 1.",
@@ -5131,7 +5154,7 @@ en:{
   cta_register:"Register your company", load_more:"Load more",
   search_title:"SEARCH module: routing algorithm and POST_DRONE",
   search_lede:"Appendix A to the framework spec: flowchart No. 3.1.1 — the main and only routing algorithm for any shipment needing more than one transport mode, extended to six modes without changing the graph structure.",
-  search_disclaimer:"This is an algorithm specification, not a running service: there is no points/lots database, no /search/routes API and no Go SEARCH service anywhere in this demo. The POST_DRONE contract's JSON Schema (schemas/post-drone.schema.json) and its checker (schemas/check_schema.py) are real, working files in this repository: 12 examples valid, 37 of 37 mutations rejected. ci/check_contract_text.py is also a real file, and it now runs: the proto/ directory and grpc_tools are in place, a run yields 24 checks reconciling the spec text with the schema and the proto contract, and the self-test catches 10 of 10 mutations. That run is a step of the proto job in contract.yml, i.e. part of the required check «Контракт proto модуля SEARCH».",
+  search_disclaimer:"The algorithm runs as real code in the browser (search/engine.js): route search over this site's listings, POST_DRONE gates, A.7 ranking — see the panel below; 16 tests and scenarios T16–T27 pass, and the engine's responses validate against the schema. It is not a server-side service, though: there is no points/lots database, no /search/routes API and no Go SEARCH service in this demo, exchange rates are demonstrational, and there are no company ratings or CMR/T1/TIR documents. The POST_DRONE contract's JSON Schema (schemas/post-drone.schema.json) and its checker (schemas/check_schema.py) are real, working files in this repository: 12 examples valid, 37 of 37 mutations rejected. ci/check_contract_text.py is also a real file, and it now runs: the proto/ directory and grpc_tools are in place, a run yields 24 checks reconciling the spec text with the schema and the proto contract, and the self-test catches 10 of 10 mutations. That run is a step of the proto job in contract.yml, i.e. part of the required check «Контракт proto модуля SEARCH».",
   search_subsystems_heading:"Module subsystems (S1-S8)",
   search_modes_heading:"Six transport modes in the route graph",
   search_modes_lede:"The drone isn't a graph leg - it's post-processing of an already-found route: one implementation instead of four copies of the same condition in every branch.",
@@ -5151,7 +5174,7 @@ en:{
   search_download_doccounts:"Documentation-numbers checker, D1-D8 (Python, real file)",
   automation_title:"Automated check-call: how it works",
   automation_lede:"A BPMN model of the automated shipment-tracking process: when the system reaches out to the driver on its own, and how exceptions reach a dispatcher.",
-  automation_disclaimer:"This is a process design concept (a BPMN diagram), not a connected service: this demo has no real AI call to a driver, TMS integration, or SMS gateway.",
+  automation_disclaimer:"This is a process design concept (a BPMN diagram), not a connected service: this demo has no real AI call to a driver, TMS integration, or SMS gateway. Only the structural check of the diagrams themselves is real (bpmn/check_bpmn.py, section below).",
   automation_main_heading:"Main process: shipment monitoring",
   automation_main_body:"The system regularly pulls position data (ELD/GPS/driver app) and checks it against the plan. If the data is more than 30 min stale, an AI agent calls the driver, parses the response and logs status; if the driver doesn't answer, it sends an SMS/email and, if needed, hands the case to the exception subprocess.",
   automation_sub_heading:"“Exception handling” subprocess",
@@ -5164,7 +5187,7 @@ en:{
   automation_download_spec:"Full process specification (Markdown)",
   verification_title:"Counterparty verification",
   verification_lede:"Verification isn't a score - it's a recorded fact with a source, a date and evidence: no stars, no aggregate rating, and no place where a source's unavailability silently turns into trust.",
-  verification_disclaimer:"This is the module's specification (level, check and source catalogs), not a connected service: this demo has no database, no real registry integrations, and no access keys for any of the listed sources.",
+  verification_disclaimer:"Three sources from the catalog are really connected through the local server: VIES, Biała lista and KRS (panel below; server/verification/, 23 tests, cases validate against verification.schema.json). The rest is specification: there is no database and no keys for the EDR registry, the NSDC sanctions register, OpenSanctions, EDRSR or the aggregator, so those checks return «unavailable» (NO_API_KEY) rather than invented data. Evidence storage is local files, not WORM; there are no roles or authentication.",
   verification_levels_heading:"Verification levels",
   verification_checks_heading:"Check catalog",
   verification_checks_lede:"14 checks; decisive checks reject the case on failure, others go to manual review.",
@@ -5181,7 +5204,7 @@ en:{
   verification_download_spec:"Full module specification (Markdown)",
   backend_title:"Trans-Atlas backend: Sprint 0",
   backend_lede:"The plan for turning the demo SPA into an app with a server-side source of truth: company accounts, persistent listings, database-backed reference data, an event log.",
-  backend_disclaimer:"This is a specification and a record of artifact checks already run, not a connected backend: index.html is still a single-page file with no build step, no PostgreSQL, no NestJS server, and no real API. The \"Planned frontend changes\" section describes the next step, not what's already applied - LISTINGS, the localStorage login, and test-data/ keep working exactly as before this page.",
+  backend_disclaimer:"This is a specification and a record of artifact checks already run, plus one working slice: the local server (node server/index.js) serves the read-only part of the /api/v1 contract from a file — the listing feed with filters and cursor, a single listing, reference data (panel below, 12 tests). It is not the backend from the spec: there is no PostgreSQL, Redis, NestJS, authentication or listing publishing, and index.html is still a single-page file with no build step. The \"Planned frontend changes\" section describes the next step, not what's already applied - LISTINGS, the localStorage login and test-data/ keep working as before.",
   backend_scope_in_heading:"In scope for Sprint 0",
   backend_scope_out_heading:"Deliberately out of scope",
   backend_stack_heading:"Stack and environment",
@@ -5227,7 +5250,7 @@ en:{
   stack_link_backend:"Backend: Sprint 0 - the first executed stage",
   sprint1_title:"Verification Sprint 1: first working slice",
   sprint1_lede:"Weeks 3-4: a Polish or EU company identified by VAT number gets level L1 automatically, in under 60 seconds, with evidence in storage and a badge in the feed - built on sources that already work with no key and no contract.",
-  sprint1_disclaimer:"This is a sprint plan with a list of readiness criteria, not a report of completed work: the VIES/Biala lista/KRS connectors, the case state machine, WORM evidence storage and the verification-operator role are not deployed in this demo. Document date: 10 September 2026.",
+  sprint1_disclaimer:"This is a sprint plan with a list of readiness criteria; part of it is already done — the «Actual state of the plan» section below shows exactly what (V2 and V3 done, the rest partial or not done). WORM evidence storage, an authenticated operator role, a database and an aggregator are not deployed. Plan date: 10 September 2026.",
   sprint1_goal_heading:"Sprint goal",
   sprint1_entry_heading:"Entry conditions: what already exists",
   sprint1_entry_lede:"The sprint starts from implementation against an already-written, machine-checked contract, not from design. Backend hosting is the one open question - a day-1 decision.",
@@ -5337,7 +5360,7 @@ pl:{
   cta_register:"Zarejestruj firmę", load_more:"Pokaż więcej",
   search_title:"Moduł SEARCH: algorytm tras i POST_DRONE",
   search_lede:"Załącznik A do ramowej specyfikacji: schemat blokowy nr 3.1.1 — główny i jedyny algorytm wyszukiwania dla przewozu wymagającego więcej niż jednego rodzaju transportu, rozszerzony na sześć rodzajów bez zmiany struktury grafu.",
-  search_disclaimer:"To specyfikacja algorytmu, a nie działająca usługa: w tym demo nie ma bazy points/lots, API /search/routes ani usługi SEARCH w Go. JSON Schema kontraktu POST_DRONE (schemas/post-drone.schema.json) i jej walidator (schemas/check_schema.py) to prawdziwe, działające pliki tego repozytorium: 12 przykładów poprawnych, 37 z 37 mutacji odrzuconych. ci/check_contract_text.py to również prawdziwy plik i teraz się uruchamia: katalog proto/ i grpc_tools są na miejscu, przebieg daje 24 kontrole zgodności tekstu specyfikacji ze schematem i kontraktem proto, a self-test wykrywa 10 z 10 mutacji. Ten przebieg jest krokiem joba proto w contract.yml, czyli częścią wymaganej kontroli «Контракт proto модуля SEARCH».",
+  search_disclaimer:"Algorytm działa jako prawdziwy kod w przeglądarce (search/engine.js): wyszukiwanie tras po zgłoszeniach tego serwisu, bramki POST_DRONE, ranking A.7 — zob. panel poniżej; 16 testów i scenariusze T16–T27 przechodzą, a odpowiedzi silnika są zgodne ze schematem. To jednak nie usługa serwerowa: w tym demo nie ma bazy points/lots, API /search/routes ani usługi SEARCH w Go, kursy walut są demonstracyjne, nie ma ocen firm ani dokumentów CMR/T1/TIR. JSON Schema kontraktu POST_DRONE (schemas/post-drone.schema.json) i jej walidator (schemas/check_schema.py) to prawdziwe, działające pliki tego repozytorium: 12 przykładów poprawnych, 37 z 37 mutacji odrzuconych. ci/check_contract_text.py to również prawdziwy plik i teraz się uruchamia: katalog proto/ i grpc_tools są na miejscu, przebieg daje 24 kontrole zgodności tekstu specyfikacji ze schematem i kontraktem proto, a self-test wykrywa 10 z 10 mutacji. Ten przebieg jest krokiem joba proto w contract.yml, czyli częścią wymaganej kontroli «Контракт proto модуля SEARCH».",
   search_subsystems_heading:"Podsystemy modułu (S1-S8)",
   search_modes_heading:"Sześć rodzajów transportu w grafie trasy",
   search_modes_lede:"Dron nie jest odcinkiem grafu - to post-processing już znalezionej trasy: jedna implementacja zamiast czterech kopii tego samego warunku w każdej gałęzi.",
@@ -5357,7 +5380,7 @@ pl:{
   search_download_doccounts:"Walidator liczb w dokumentacji, D1-D8 (Python, prawdziwy plik)",
   automation_title:"Automatyczny check-call: jak to działa",
   automation_lede:"Model BPMN procesu automatycznego śledzenia przewozu: kiedy system sam kontaktuje się z kierowcą i jak wyjątki trafiają do dyspozytora.",
-  automation_disclaimer:"To koncepcja projektowa procesu (diagram BPMN), a nie podłączona usługa: w tym demo nie ma ani prawdziwego połączenia AI z kierowcą, ani integracji z TMS czy bramką SMS.",
+  automation_disclaimer:"To koncepcja projektowa procesu (diagram BPMN), a nie podłączona usługa: w tym demo nie ma ani prawdziwego połączenia AI z kierowcą, ani integracji z TMS czy bramką SMS. Prawdziwa jest tylko strukturalna kontrola samych diagramów (bpmn/check_bpmn.py, sekcja poniżej).",
   automation_main_heading:"Proces główny: monitorowanie przewozu",
   automation_main_body:"System regularnie pobiera pozycję (ELD/GPS/aplikacja kierowcy) i porównuje ją z planem. Jeśli dane są nieaktualne od ponad 30 minut, agent AI dzwoni do kierowcy, rozpoznaje odpowiedź i zapisuje status; jeśli kierowca nie odpowiada, wysyła SMS/e-mail i w razie potrzeby przekazuje sprawę do podprocesu obsługi wyjątku.",
   automation_sub_heading:"Podproces „Obsługa wyjątku”",
@@ -5370,7 +5393,7 @@ pl:{
   automation_download_spec:"Pełna specyfikacja procesu (Markdown)",
   verification_title:"Weryfikacja kontrahentów",
   verification_lede:"Weryfikacja to nie ocena, lecz odnotowany fakt ze źródłem, datą i dowodem: bez gwiazdek, bez zbiorczego wyniku i bez miejsca, w którym niedostępność źródła po cichu zamienia się w zaufanie.",
-  verification_disclaimer:"To specyfikacja modułu (katalogi poziomów, kontroli i źródeł), a nie podłączona usługa: to demo nie ma bazy danych, prawdziwych integracji z rejestrami ani kluczy dostępu do żadnego z wymienionych źródeł.",
+  verification_disclaimer:"Trzy źródła z katalogu są naprawdę podłączone przez lokalny serwer: VIES, Biała lista i KRS (panel poniżej; server/verification/, 23 testy, sprawy zgodne z verification.schema.json). Reszta to specyfikacja: nie ma bazy danych ani kluczy do rejestru EDR, rejestru sankcji RBNiO, OpenSanctions, EDRSR i agregatora, więc te kontrole zwracają «niedostępne» (NO_API_KEY), a nie zmyślone dane. Magazyn dowodów to lokalne pliki, nie WORM; nie ma ról ani uwierzytelniania.",
   verification_levels_heading:"Poziomy weryfikacji",
   verification_checks_heading:"Katalog kontroli",
   verification_checks_lede:"14 kontroli; kontrole rozstrzygające odrzucają sprawę przy niepowodzeniu, pozostałe trafiają do ręcznego przeglądu.",
@@ -5387,7 +5410,7 @@ pl:{
   verification_download_spec:"Pełna specyfikacja modułu (Markdown)",
   backend_title:"Backend Trans-Atlas: Sprint 0",
   backend_lede:"Plan przekształcenia demonstracyjnego SPA w aplikację z serwerowym źródłem prawdy: konta firm, trwałe zgłoszenia, słowniki w bazie danych, dziennik zdarzeń.",
-  backend_disclaimer:"To specyfikacja i zapis już przeprowadzonych kontroli artefaktów, a nie podłączony backend: index.html nadal jest jednostronicowym plikiem bez etapu budowania, bez PostgreSQL, bez serwera NestJS i bez prawdziwego API. Sekcja „Planowane zmiany we frontendzie” opisuje kolejny krok, a nie to, co już zastosowano - LISTINGS, logowanie przez localStorage i test-data/ nadal działają tak samo, jak przed tą stroną.",
+  backend_disclaimer:"To specyfikacja i zapis już przeprowadzonych kontroli artefaktów oraz jeden działający wycinek: lokalny serwer (node server/index.js) zwraca z pliku część odczytową kontraktu /api/v1 — listę zgłoszeń z filtrami i kursorem, pojedyncze zgłoszenie, słowniki (panel poniżej, 12 testów). To nie jest backend ze specyfikacji: nie ma PostgreSQL, Redis, NestJS, uwierzytelniania ani publikowania zgłoszeń, a index.html nadal jest jednostronicowym plikiem bez etapu budowania. Sekcja „Planowane zmiany we frontendzie” opisuje kolejny krok, a nie to, co już zastosowano - LISTINGS, logowanie przez localStorage i test-data/ działają jak dotąd.",
   backend_scope_in_heading:"Zakres Sprintu 0",
   backend_scope_out_heading:"Świadomie poza zakresem",
   backend_stack_heading:"Stos i środowisko",
@@ -5433,7 +5456,7 @@ pl:{
   stack_link_backend:"Backend: Sprint 0 - pierwszy zrealizowany etap",
   sprint1_title:"Weryfikacja, Sprint 1: pierwsza działająca część",
   sprint1_lede:"Tygodnie 3-4: polska lub unijna firma po numerze VAT otrzymuje poziom L1 automatycznie, w mniej niż 60 sekund, z dowodami w magazynie i odznaką w strumieniu - na źródłach, które już działają bez klucza i bez umowy.",
-  sprint1_disclaimer:"To plan sprintu z listą kryteriów gotowości, a nie raport z wykonanej pracy: konektory VIES/Biała lista/KRS, maszyna stanów sprawy, magazyn dowodów WORM i rola operatora weryfikacji nie są wdrożone w tym demo. Data dokumentu: 10 września 2026.",
+  sprint1_disclaimer:"To plan sprintu z listą kryteriów gotowości; część jest już wykonana — sekcja «Faktyczny stan planu» poniżej pokazuje dokładnie co (V2 i V3 zrobione, reszta częściowo lub wcale). Magazyn dowodów WORM, rola operatora z uwierzytelnianiem, baza danych i agregator nie są wdrożone. Data planu: 10 września 2026.",
   sprint1_goal_heading:"Cel sprintu",
   sprint1_entry_heading:"Warunki wejścia: co już jest",
   sprint1_entry_lede:"Sprint zaczyna się od implementacji według gotowego, maszynowo zweryfikowanego kontraktu, a nie od projektowania. Otwartą kwestią pozostaje hosting backendu - decyzja dnia 1.",
@@ -5543,7 +5566,7 @@ de:{
   cta_register:"Unternehmen registrieren", load_more:"Mehr anzeigen",
   search_title:"SEARCH-Modul: Routing-Algorithmus und POST_DRONE",
   search_lede:"Anhang A zur Rahmenspezifikation: Flussdiagramm Nr. 3.1.1 - der Haupt- und einzige Suchalgorithmus für jeden Transport, der mehr als eine Verkehrsart benötigt, erweitert auf sechs Verkehrsarten ohne Änderung der Graphstruktur.",
-  search_disclaimer:"Dies ist eine Algorithmus-Spezifikation, kein laufender Dienst: Es gibt in dieser Demo keine points/lots-Datenbank, keine /search/routes-API und keinen Go-SEARCH-Dienst. Das JSON Schema des POST_DRONE-Vertrags (schemas/post-drone.schema.json) und sein Prüfer (schemas/check_schema.py) sind echte, funktionierende Dateien dieses Repositories: 12 Beispiele gültig, 37 von 37 Mutationen abgelehnt. ci/check_contract_text.py ist ebenfalls eine echte Datei und läuft jetzt: das Verzeichnis proto/ und grpc_tools sind vorhanden, ein Lauf ergibt 24 Prüfungen des Spezifikationstexts gegen Schema und proto-Vertrag, und der Self-Test erkennt 10 von 10 Mutationen. Dieser Lauf ist ein Schritt des proto-Jobs in contract.yml, also Teil der erforderlichen Prüfung «Контракт proto модуля SEARCH».",
+  search_disclaimer:"Der Algorithmus läuft als echter Code im Browser (search/engine.js): Routensuche über die Angebote dieser Seite, POST_DRONE-Tore, Ranking nach A.7 — siehe Panel unten; 16 Tests und die Szenarien T16–T27 laufen durch, die Antworten des Rechenkerns sind schemakonform. Ein serverseitiger Dienst ist es nicht: In dieser Demo gibt es keine points/lots-Datenbank, keine /search/routes-API und keinen Go-SEARCH-Dienst, die Wechselkurse sind Demonstrationswerte, und es gibt weder Firmenbewertungen noch CMR/T1/TIR-Dokumente. Das JSON Schema des POST_DRONE-Vertrags (schemas/post-drone.schema.json) und sein Prüfer (schemas/check_schema.py) sind echte, funktionierende Dateien dieses Repositories: 12 Beispiele gültig, 37 von 37 Mutationen abgelehnt. ci/check_contract_text.py ist ebenfalls eine echte Datei und läuft jetzt: das Verzeichnis proto/ und grpc_tools sind vorhanden, ein Lauf ergibt 24 Prüfungen des Spezifikationstexts gegen Schema und proto-Vertrag, und der Self-Test erkennt 10 von 10 Mutationen. Dieser Lauf ist ein Schritt des proto-Jobs in contract.yml, also Teil der erforderlichen Prüfung «Контракт proto модуля SEARCH».",
   search_subsystems_heading:"Modul-Subsysteme (S1-S8)",
   search_modes_heading:"Sechs Verkehrsarten im Routengraphen",
   search_modes_lede:"Die Drohne ist kein Graph-Abschnitt, sondern Nachbearbeitung einer bereits gefundenen Route: eine Implementierung statt vier Kopien derselben Bedingung in jedem Zweig.",
@@ -5563,7 +5586,7 @@ de:{
   search_download_doccounts:"Prüfer für Zahlen in der Dokumentation, D1-D8 (Python, echte Datei)",
   automation_title:"Automatisierter Check-Call: so funktioniert es",
   automation_lede:"Ein BPMN-Modell des automatisierten Sendungsverfolgungsprozesses: wann das System selbst den Fahrer kontaktiert und wie Ausnahmen den Disponenten erreichen.",
-  automation_disclaimer:"Dies ist ein Prozess-Designkonzept (ein BPMN-Diagramm), kein angebundener Dienst: In dieser Demo gibt es weder einen echten KI-Anruf beim Fahrer noch eine TMS- oder SMS-Gateway-Integration.",
+  automation_disclaimer:"Dies ist ein Prozess-Designkonzept (ein BPMN-Diagramm), kein angebundener Dienst: In dieser Demo gibt es weder einen echten KI-Anruf beim Fahrer noch eine TMS- oder SMS-Gateway-Integration. Real ist nur die Strukturprüfung der Diagramme selbst (bpmn/check_bpmn.py, Abschnitt unten).",
   automation_main_heading:"Hauptprozess: Sendungsüberwachung",
   automation_main_body:"Das System ruft regelmäßig die Position ab (ELD/GPS/Fahrer-App) und gleicht sie mit dem Plan ab. Sind die Daten älter als 30 Minuten, ruft ein KI-Agent den Fahrer an, erkennt die Antwort und protokolliert den Status; antwortet der Fahrer nicht, sendet das System eine SMS/E-Mail und übergibt den Fall bei Bedarf an den Ausnahme-Teilprozess.",
   automation_sub_heading:"Teilprozess „Ausnahmebehandlung“",
@@ -5576,7 +5599,7 @@ de:{
   automation_download_spec:"Vollständige Prozessspezifikation (Markdown)",
   verification_title:"Verifizierung von Vertragspartnern",
   verification_lede:"Verifizierung ist keine Bewertung, sondern eine festgehaltene Tatsache mit Quelle, Datum und Beleg: keine Sterne, keine Gesamtpunktzahl und keine Stelle, an der die Nichtverfügbarkeit einer Quelle stillschweigend zu Vertrauen wird.",
-  verification_disclaimer:"Dies ist die Spezifikation des Moduls (Kataloge für Stufen, Prüfungen und Quellen), kein angebundener Dienst: Diese Demo hat keine Datenbank, keine echten Registerintegrationen und keine Zugangsschlüssel für eine der genannten Quellen.",
+  verification_disclaimer:"Drei Quellen des Katalogs sind über den lokalen Server tatsächlich angebunden: VIES, Biała lista und KRS (Panel unten; server/verification/, 23 Tests, Fälle valide gegen verification.schema.json). Der Rest ist Spezifikation: Es gibt keine Datenbank und keine Schlüssel für das EDR-Register, das Sanktionsregister des NSDC, OpenSanctions, EDRSR und den Aggregator, daher liefern diese Prüfungen «nicht verfügbar» (NO_API_KEY) statt erfundener Daten. Der Belegspeicher besteht aus lokalen Dateien, nicht WORM; Rollen und Authentifizierung gibt es nicht.",
   verification_levels_heading:"Verifizierungsstufen",
   verification_checks_heading:"Prüfkatalog",
   verification_checks_lede:"14 Prüfungen; entscheidende Prüfungen lehnen den Fall bei Fehlschlag ab, andere gehen in die manuelle Prüfung.",
@@ -5593,7 +5616,7 @@ de:{
   verification_download_spec:"Vollständige Modulspezifikation (Markdown)",
   backend_title:"Trans-Atlas-Backend: Sprint 0",
   backend_lede:"Der Plan, die Demo-SPA in eine Anwendung mit serverseitiger Quelle der Wahrheit zu verwandeln: Firmenkonten, persistente Angebote, Referenzdaten in der Datenbank, ein Ereignisprotokoll.",
-  backend_disclaimer:"Dies ist eine Spezifikation und ein Protokoll bereits durchgeführter Artefaktprüfungen, kein angebundenes Backend: index.html bleibt eine einzelne Datei ohne Build-Schritt, ohne PostgreSQL, ohne NestJS-Server und ohne echte API. Der Abschnitt „Geplante Frontend-Änderungen“ beschreibt den nächsten Schritt, nicht das bereits Angewendete - LISTINGS, der localStorage-Login und test-data/ funktionieren weiterhin genau wie vor dieser Seite.",
+  backend_disclaimer:"Dies ist eine Spezifikation und ein Protokoll bereits durchgeführter Artefaktprüfungen plus ein funktionierender Ausschnitt: Der lokale Server (node server/index.js) liefert den lesenden Teil des /api/v1-Vertrags aus einer Datei — Angebotsliste mit Filtern und Cursor, ein einzelnes Angebot, Referenzdaten (Panel unten, 12 Tests). Das ist nicht das Backend aus der Spezifikation: Es gibt kein PostgreSQL, kein Redis, kein NestJS, keine Authentifizierung und kein Veröffentlichen von Angeboten, und index.html bleibt eine einzelne Datei ohne Build-Schritt. Der Abschnitt „Geplante Frontend-Änderungen“ beschreibt den nächsten Schritt, nicht das bereits Angewendete - LISTINGS, der localStorage-Login und test-data/ funktionieren wie bisher.",
   backend_scope_in_heading:"Umfang von Sprint 0",
   backend_scope_out_heading:"Bewusst außerhalb des Umfangs",
   backend_stack_heading:"Stack und Umgebung",
@@ -5639,7 +5662,7 @@ de:{
   stack_link_backend:"Backend: Sprint 0 - die erste umgesetzte Phase",
   sprint1_title:"Verifizierung, Sprint 1: erster funktionsfähiger Teil",
   sprint1_lede:"Wochen 3-4: Ein polnisches oder EU-Unternehmen erhält anhand seiner USt-IdNr. automatisch die Stufe L1, in unter 60 Sekunden, mit Belegen im Speicher und einem Abzeichen im Feed - auf Basis von Quellen, die bereits ohne Schlüssel und ohne Vertrag funktionieren.",
-  sprint1_disclaimer:"Dies ist ein Sprintplan mit einer Liste von Abnahmekriterien, kein Bericht über bereits erledigte Arbeit: Die Konnektoren VIES/Biała lista/KRS, die Fall-Zustandsmaschine, der WORM-Belegspeicher und die Rolle des Verifizierungs-Operators sind in dieser Demo nicht bereitgestellt. Dokumentdatum: 10. September 2026.",
+  sprint1_disclaimer:"Dies ist ein Sprintplan mit einer Liste von Abnahmekriterien; ein Teil ist bereits erledigt — der Abschnitt «Tatsächlicher Stand des Plans» unten zeigt genau, was (V2 und V3 erledigt, der Rest teilweise oder offen). WORM-Belegspeicher, eine authentifizierte Operator-Rolle, eine Datenbank und ein Aggregator sind nicht bereitgestellt. Plandatum: 10. September 2026.",
   sprint1_goal_heading:"Sprintziel",
   sprint1_entry_heading:"Einstiegsbedingungen: was bereits vorhanden ist",
   sprint1_entry_lede:"Der Sprint beginnt mit der Umsetzung nach einem bereits geschriebenen, maschinell geprüften Vertrag, nicht mit dem Entwurf. Offen bleibt das Backend-Hosting - eine Entscheidung von Tag 1.",
@@ -5800,6 +5823,9 @@ var state = {
   modal: null,
   modalMode:"login",
   weather:{tab:"road", from:"", to:"", loading:false, error:null, points:null},
+  backendLive:{loading:false, ran:false, rows:null},
+  verifyLive:{form:{level:"L1", country:"PL", value:"5250000251", name:"Polskie Koleje Państwowe S.A."}, loading:false, error:null, c:null, ran:false},
+  searchLive:{form:{from:"kyiv", to:"berlin", weight:10, criterion:"balanced", dataset:"site", modes:["A","T","M","F","D"], radius:300, allowDrone:true, extraLeg:true, diagnostics:true, adr:false, animals:false}, loading:false, error:null, result:null, ran:false},
   directory:{transport:"", region:"", q:"", loading:false, error:null, entries:null},
   borders:{tab:"road", country:"", loading:false, error:null, partial:false, entries:null},
   flows:{intlContinent:"europe", domesticContinent:"europe"},
@@ -6461,8 +6487,204 @@ var SEARCH_CI_STEPS = [
   {step:"Числа в документації", cmd:"ci/check_doc_counts.py", fails:"твердження ТЗ про кількість обовʼязкових перевірок, діапазон правил R1–RN, кількість сценаріїв pull request чи назва групи сценаріїв відстали від фактичного складу правила гілки й конвеєрів"},
   {step:"Валюти й мови", cmd:"schemas/check_i18n.py", fails:"різна базова валюта в A.5 і рамковому ТЗ, застарілий курс без позначки, непокрита мутація"},
   {step:"Текст/схема/proto", cmd:"ci/check_contract_text.py (U1–U5, N1–N5)", fails:"розбіжність носія одиниці ваги або коду валюти між ТЗ, схемою і proto"},
-  {step:"Юніт і приймання", cmd:"тести модуля + сценарії T1–T27", fails:"розбіжність реалізації або поведінки з контрактом (модуль ще не реалізований)"}
+  {step:"Рушій: тести й контракт", cmd:"node search/tests/engine.test.js, search/tests/validate_engine_output.py", fails:"сценарій T16–T27 не проходить на рушії або його відповідь не валідна за JSON Schema. Це локальні перевірки, а не обов'язкові статуси правила гілки"},
+  {step:"Приймання на 100 000 лотів", cmd:"— (не виконується)", fails:"вимога ТЗ A.12.1: 27 сценаріїв на наборі від 100 000 лотів і бюджет 800 мс на реальній базі; тут є лише 7 120 демо-заявок у test-data"}
 ];
+
+
+/* ---------- SEARCH: працюючий пошук маршрутів у браузері ----------
+ * Рушій - search/engine.js (window.TransAtlasSearch): реальний код, який
+ * працює на LISTINGS і CITIES цього сайту. Це не сервіс: бази points/lots і
+ * API /search/routes немає, курси валют демонстраційні. Тексти панелі
+ * локальні (uk/en/pl/de) з фолбеком на en, як FEED_TEXT вище. */
+var SEARCH_LIVE_TEXT = {
+  uk:{dataset:"Набір даних", ds_site:"Заявки сайту (реальні дані демо)", ds_syn:"Синтетичний сценарій", ds_note:"На заявках сайту дрон-варіанти не з’являються: жодна дрон-заявка не проходить ворота дальності (заявки згенеровані без географії), тож діагностика показує out_of_range. Щоб побачити модуль у роботі, оберіть синтетичний сценарій — місто, заявки й вітер там задані сценарієм, а не з реальних джерел.", h:"Спробувати алгоритм на даних сайту", lede:"Реальний пошук маршрутів по заявках транспорту цього сайту: гілки (авто, жд, море, авіа), пост-обробка POST_DRONE, ранжування за A.7.",
+    from:"Звідки", to:"Куди", weight:"Вага, т", criterion:"Критерій", cost:"Вартість", time:"Час", balanced:"Збалансовано", radius:"Радіус підстановки пунктів, км",
+    modes:"Види транспорту", allowDrone:"Дрон-модуль (POST_DRONE)", extraLeg:"Дозволити 4-те плече через площадку", diagnostics:"Діагностика воріт", adr:"Небезпечний вантаж (ADR)", animals:"Живі тварини",
+    run:"Знайти маршрути", running:"Пошук…", none:"Маршрутів не знайдено. Нижче — компанії напрямку та можливі сполучення (A.6.14–A.6.15).", found:"Знайдено маршрутів", branch:"гілка", drone:"дрон-варіант",
+    cost_l:"вартість", time_l:"час", h:"год", ships:"перевантажень", score:"скор", pinned:"стоїть під батьківським маршрутом (обмеження порядку A.7)", est:"вартість плеча оцінена за медіаною EUR/км",
+    weather_unknown:"погода невідома", wind:"вітер", diag_h:"Діагностика POST_DRONE", cta:"Площадка знайдена, але авто-лота немає — можна створити заявку", partial:"Відповідь часткова: частину даних не отримано (погода, курси або бюджет модуля). Значення не вигадувались.",
+    fx:"Курси валют — демонстраційна таблиця станом на", fxNote:"це не котирування; у реальній системі курс береться з джерела платежів (A.5).", noEngine:"Рушій search/engine.js не завантажився — пошук недоступний.",
+    companies:"Компанії напрямку", links:"Можливі сполучення", weatherNote:"Погода береться з локального сервера (node server/index.js), лише в межах 12 годин прогнозу; далі або без сервера — «невідома», і варіант отримує weather_risk.",
+    col_rank:"Ранг", legs:"Плечі"},
+  en:{dataset:"Dataset", ds_site:"Site listings (real demo data)", ds_syn:"Synthetic scenario", ds_note:"On the site listings no drone variants appear: no drone listing passes the range gate (listings are generated without geography), so diagnostics show out_of_range. To see the module at work, choose a synthetic scenario — cities, listings and wind there are set by the scenario, not taken from real sources.", h:"Try the algorithm on the site's data", lede:"A real route search over this site's transport listings: branches (road, rail, sea, air), POST_DRONE post-processing, A.7 ranking.",
+    from:"From", to:"To", weight:"Weight, t", criterion:"Criterion", cost:"Cost", time:"Time", balanced:"Balanced", radius:"Hub substitution radius, km",
+    modes:"Transport modes", allowDrone:"Drone module (POST_DRONE)", extraLeg:"Allow 4th leg via landing pad", diagnostics:"Gate diagnostics", adr:"Dangerous goods (ADR)", animals:"Live animals",
+    run:"Find routes", running:"Searching…", none:"No routes found. Below: companies on the direction and possible links (A.6.14–A.6.15).", found:"Routes found", branch:"branch", drone:"drone variant",
+    cost_l:"cost", time_l:"time", h:"h", ships:"transshipments", score:"score", pinned:"pinned below its parent route (A.7 order constraint)", est:"leg cost estimated from the EUR/km median",
+    weather_unknown:"weather unknown", wind:"wind", diag_h:"POST_DRONE diagnostics", cta:"A landing pad was found but there is no road lot — you can create a listing", partial:"Partial response: some data was not obtained (weather, rates or module budget). Nothing was invented.",
+    fx:"Exchange rates — a demonstration table as of", fxNote:"not market quotes; a real system takes the rate from the payment source (A.5).", noEngine:"search/engine.js failed to load — search unavailable.",
+    companies:"Companies on the direction", links:"Possible links", weatherNote:"Weather comes from the local server (node server/index.js), only within the 12-hour forecast; beyond that, or without the server, it is «unknown» and the variant gets weather_risk.",
+    col_rank:"Rank", legs:"Legs"},
+  pl:{dataset:"Zbiór danych", ds_site:"Zgłoszenia serwisu (prawdziwe dane demo)", ds_syn:"Scenariusz syntetyczny", ds_note:"Na zgłoszeniach serwisu warianty dronów się nie pojawiają: żadne zgłoszenie drona nie przechodzi bramki zasięgu (zgłoszenia generowano bez geografii), więc diagnostyka pokazuje out_of_range. Aby zobaczyć moduł w działaniu, wybierz scenariusz syntetyczny — miasta, zgłoszenia i wiatr ustala scenariusz, nie prawdziwe źródła.", h:"Wypróbuj algorytm na danych serwisu", lede:"Prawdziwe wyszukiwanie tras po ofertach transportu tego serwisu: gałęzie (drogowy, kolej, morze, lotniczy), post-processing POST_DRONE, ranking A.7.",
+    from:"Skąd", to:"Dokąd", weight:"Waga, t", criterion:"Kryterium", cost:"Koszt", time:"Czas", balanced:"Zrównoważone", radius:"Promień podstawiania punktów, km",
+    modes:"Rodzaje transportu", allowDrone:"Moduł dronów (POST_DRONE)", extraLeg:"Zezwól na 4. odcinek przez lądowisko", diagnostics:"Diagnostyka bramek", adr:"Towary niebezpieczne (ADR)", animals:"Żywe zwierzęta",
+    run:"Znajdź trasy", running:"Szukam…", none:"Nie znaleziono tras. Poniżej: firmy na kierunku i możliwe połączenia (A.6.14–A.6.15).", found:"Znalezione trasy", branch:"gałąź", drone:"wariant drona",
+    cost_l:"koszt", time_l:"czas", h:"godz.", ships:"przeładunków", score:"wynik", pinned:"poniżej trasy nadrzędnej (ograniczenie kolejności A.7)", est:"koszt odcinka oszacowany z mediany EUR/km",
+    weather_unknown:"pogoda nieznana", wind:"wiatr", diag_h:"Diagnostyka POST_DRONE", cta:"Znaleziono lądowisko, ale brak oferty drogowej — można utworzyć zgłoszenie", partial:"Odpowiedź częściowa: nie uzyskano części danych (pogoda, kursy lub budżet modułu). Niczego nie zmyślono.",
+    fx:"Kursy walut — tabela demonstracyjna na dzień", fxNote:"to nie są notowania; w prawdziwym systemie kurs pochodzi ze źródła płatności (A.5).", noEngine:"Nie załadowano search/engine.js — wyszukiwanie niedostępne.",
+    companies:"Firmy na kierunku", links:"Możliwe połączenia", weatherNote:"Pogoda z lokalnego serwera (node server/index.js), tylko w oknie 12 godzin prognozy; poza nim lub bez serwera jest «nieznana» i wariant dostaje weather_risk.",
+    col_rank:"Ranga", legs:"Odcinki"},
+  de:{dataset:"Datensatz", ds_site:"Angebote der Seite (echte Demodaten)", ds_syn:"Synthetisches Szenario", ds_note:"Bei den Angeboten der Seite entstehen keine Drohnenvarianten: kein Drohnenangebot passiert das Reichweitentor (die Angebote wurden ohne Geografie erzeugt), die Diagnose zeigt daher out_of_range. Um das Modul in Aktion zu sehen, ein synthetisches Szenario wählen — Städte, Angebote und Wind legt das Szenario fest, nicht echte Quellen.", h:"Den Algorithmus mit den Daten der Seite testen", lede:"Eine echte Routensuche über die Transportangebote dieser Seite: Zweige (Straße, Schiene, See, Luft), POST_DRONE-Nachbearbeitung, Ranking nach A.7.",
+    from:"Von", to:"Nach", weight:"Gewicht, t", criterion:"Kriterium", cost:"Kosten", time:"Zeit", balanced:"Ausgewogen", radius:"Radius für Ersatzpunkte, km",
+    modes:"Verkehrsträger", allowDrone:"Drohnenmodul (POST_DRONE)", extraLeg:"4. Abschnitt über Landeplatz erlauben", diagnostics:"Tor-Diagnose", adr:"Gefahrgut (ADR)", animals:"Lebende Tiere",
+    run:"Routen suchen", running:"Suche…", none:"Keine Routen gefunden. Unten: Firmen auf der Relation und mögliche Verbindungen (A.6.14–A.6.15).", found:"Gefundene Routen", branch:"Zweig", drone:"Drohnenvariante",
+    cost_l:"Kosten", time_l:"Zeit", h:"Std.", ships:"Umschläge", score:"Score", pinned:"unterhalb der Elternroute fixiert (Reihenfolgeregel A.7)", est:"Abschnittskosten aus dem EUR/km-Median geschätzt",
+    weather_unknown:"Wetter unbekannt", wind:"Wind", diag_h:"POST_DRONE-Diagnose", cta:"Landeplatz gefunden, aber kein Straßenlos — Angebot kann angelegt werden", partial:"Teilantwort: ein Teil der Daten fehlt (Wetter, Kurse oder Modulbudget). Nichts wurde erfunden.",
+    fx:"Wechselkurse — Demonstrationstabelle vom", fxNote:"keine Marktkurse; ein echtes System nimmt den Kurs aus der Zahlungsquelle (A.5).", noEngine:"search/engine.js wurde nicht geladen — Suche nicht verfügbar.",
+    companies:"Firmen auf der Relation", links:"Mögliche Verbindungen", weatherNote:"Wetter vom lokalen Server (node server/index.js), nur im 12-Stunden-Fenster; sonst oder ohne Server «unbekannt», und die Variante erhält weather_risk.",
+    col_rank:"Rang", legs:"Abschnitte"}
+};
+var SEARCH_SCENARIO_LABEL = {
+  T17:{uk:"T17 — зона без дозволу (ворота 2)", en:"T17 — zone without permit (gate 2)", pl:"T17 — strefa bez zezwolenia (bramka 2)", de:"T17 — Zone ohne Genehmigung (Tor 2)"},
+  T18:{uk:"T18 — дрон-варіант проходить (39 км ≤ 40)", en:"T18 — drone variant passes (39 km ≤ 40)", pl:"T18 — wariant drona przechodzi (39 km ≤ 40)", de:"T18 — Drohnenvariante passiert (39 km ≤ 40)"},
+  T20:{uk:"T20 — четверте плече через площадку", en:"T20 — extra leg via landing pad", pl:"T20 — dodatkowy odcinek przez lądowisko", de:"T20 — zusätzlicher Abschnitt über Landeplatz"},
+  T21:{uk:"T21 — вітер 15 м/с: дешевший дрон стоїть нижче", en:"T21 — wind 15 m/s: the cheaper drone is ranked below", pl:"T21 — wiatr 15 m/s: tańszy dron niżej", de:"T21 — Wind 15 m/s: die günstigere Drohne steht darunter"},
+  T23:{uk:"T23 — площадка є, авто-лота немає (drone_cta)", en:"T23 — pad exists, no road lot (drone_cta)", pl:"T23 — lądowisko jest, brak oferty drogowej (drone_cta)", de:"T23 — Landeplatz da, kein Straßenlos (drone_cta)"}
+};
+function slt(k){ var d=SEARCH_LIVE_TEXT[state.lang]||SEARCH_LIVE_TEXT.en; return d[k]!==undefined? d[k] : SEARCH_LIVE_TEXT.en[k]; }
+
+function searchLiveWeather(fromCity, toCity, departIso){
+  var horizonMs = 12*3600*1000;
+  if(typeof fetch!=="function" || location.protocol==="file:") return Promise.reject(new Error("weather_server_unavailable"));
+  if(Date.parse(departIso) > Date.now()+horizonMs) return Promise.reject(new Error("forecast_horizon"));
+  var url = WEATHER_API_BASE+"/api/services/weather?mode=road&lat="+fromCity.lat+"&lon="+fromCity.lon+"&label="+encodeURIComponent(fromCity.id)+"&country="+encodeURIComponent(fromCity.country||"");
+  return fetch(url).then(function(res){ return res.json().then(function(j){
+    if(!res.ok || j.error || !j.data || !j.data.payload || !j.data.payload.next12h) throw new Error("weather_bad_response");
+    var max = 0;
+    j.data.payload.next12h.forEach(function(h){ if(typeof h.windSpeedKmh==="number" && h.windSpeedKmh>max) max=h.windSpeedKmh; });
+    return {wind_ms: Math.round(max/3.6*10)/10};
+  }); });
+}
+
+function readSearchLiveForm(){
+  var root = document.getElementById("searchLiveForm");
+  if(!root) return;
+  var f = state.searchLive.form;
+  f.dataset = root.querySelector('[name="sldataset"]').value;
+  f.from = root.querySelector('[name="slfrom"]').value;
+  f.to = root.querySelector('[name="slto"]').value;
+  f.weight = parseFloat(root.querySelector('[name="slweight"]').value) || 0;
+  f.criterion = root.querySelector('[name="slcriterion"]').value;
+  f.radius = parseFloat(root.querySelector('[name="slradius"]').value) || 0;
+  f.modes = ["A","T","M","F"].filter(function(m){ return root.querySelector('[name="slmode'+m+'"]').checked; });
+  f.allowDrone = root.querySelector('[name="slallow"]').checked;
+  if(f.allowDrone) f.modes.push("D");
+  f.extraLeg = root.querySelector('[name="slextra"]').checked;
+  f.diagnostics = root.querySelector('[name="sldiag"]').checked;
+  f.adr = root.querySelector('[name="sladr"]').checked;
+  f.animals = root.querySelector('[name="slanimals"]').checked;
+}
+
+function runSearchLive(){
+  readSearchLiveForm();
+  executeSearchLive();
+}
+function executeSearchLive(){
+  var sl = state.searchLive;
+  if(!window.TransAtlasSearch){ sl.error = "engine"; sl.ran = true; renderApp(); return; }
+  var f = sl.form;
+  sl.loading = true; sl.error = null; sl.result = null; sl.ran = true;
+  renderApp();
+  var req = {origin:f.from, destination:f.to, weight_t:f.weight, criterion:f.criterion, modes:f.modes.slice(), max_transships:3,
+    radius_km:{origin:f.radius, destination:f.radius},
+    cargo:{adr_class: f.adr ? "ADR" : undefined, live_animals: f.animals},
+    drone:{allow:f.allowDrone, allow_extra_leg:f.extraLeg, diagnostics:f.diagnostics}};
+  var data = {cities:CITIES, listings:LISTINGS};
+  var opts = {weather: searchLiveWeather, name: function(c){ return cityName(c.id, state.lang); }};
+  var scn = window.TransAtlasSearch.DEMO_SCENARIOS && window.TransAtlasSearch.DEMO_SCENARIOS[f.dataset];
+  if(scn){
+    data = window.TransAtlasSearch.syntheticWorld(scn.world);
+    req.origin = "o"; req.destination = "p2"; req.weight_t = 0.02; req.max_transships = 3; req.radius_km = {origin:0, destination:0};
+    req.modes = ["A","T","D"]; req.criterion = "cost";
+    opts = {weather: function(){ return Promise.resolve({wind_ms: scn.wind}); }, config: scn.config, name: function(c){ return state.lang==="uk"? c.uk : c.en; }};
+  }
+  window.TransAtlasSearch.search(req, data, opts).then(function(res){ sl.loading=false; sl.result=res; renderApp(); },
+    function(err){ sl.loading=false; sl.error=String(err && err.message || err); renderApp(); });
+}
+
+function searchLiveLegHtml(l){
+  var name = function(p){ return p && p.name ? p.name : ""; };
+  var modeName = (window.TransAtlasSearch && window.TransAtlasSearch.MODE_UK[l.mode]) || l.mode;
+  var extra = "";
+  if(l.mode==="D" && l.weather){
+    extra = l.weather.ok===null
+      ? ' · <span class="sl-chip warn">'+esc(slt("weather_unknown"))+' ('+esc(l.weather.source_error||"")+')</span>'
+      : ' · '+esc(slt("wind"))+' '+esc(l.weather.wind_ms)+' / '+esc(l.weather.limit_ms)+' m/s'+(l.weather.ok?'':' <span class="sl-chip warn">weather_risk</span>');
+  }
+  return '<li><strong>'+esc(l.mode)+'</strong> '+esc(modeName)+': '+esc(name(l.from))+' → '+esc(name(l.to))+
+    ' · '+esc(l.distance_km)+' km · €'+esc(l.cost_eur)+(l.lot_id!==undefined?' · lot #'+esc(l.lot_id):'')+
+    (l.estimated?' <span class="sl-chip warn">'+esc(slt("est"))+'</span>':'')+extra+'</li>';
+}
+
+function searchLiveResultHtml(){
+  var sl = state.searchLive, r = sl.result;
+  if(!sl.ran) return "";
+  if(sl.loading) return '<p class="sl-note">'+esc(slt("running"))+'</p>';
+  if(sl.error==="engine") return '<p class="escrow-note">'+esc(slt("noEngine"))+'</p>';
+  if(sl.error) return '<p class="escrow-note">'+esc(sl.error)+'</p>';
+  if(!r) return "";
+  var out = '<p class="sl-note"><strong>'+esc(slt("found"))+': '+r.routes.length+'</strong>'+(r.branch_reached?' · '+esc(r.branch_reached):'')+'</p>';
+  if(r.partial) out += '<p class="escrow-note">'+esc(slt("partial"))+'</p>';
+  if(!r.routes.length) out += '<p class="sl-note">'+esc(slt("none"))+'</p>';
+  out += r.routes.map(function(x, i){
+    var warns = (x.warnings||[]).map(function(w){ return '<span class="sl-chip warn">'+esc(w)+'</span>'; }).join(" ");
+    return '<div class="sl-route'+(x.origin==="post_drone"?' drone':'')+'">'+
+      '<h4><span>#'+(i+1)+'</span><code>'+esc(x.route_id)+'</code><span class="sl-chip">'+esc(x.origin==="post_drone"?slt("drone"):slt("branch"))+'</span>'+warns+'</h4>'+
+      '<div class="sl-meta">'+esc(slt("cost_l"))+' €'+esc(x.total_cost_eur)+' · '+esc(slt("time_l"))+' '+esc(x.total_time_h)+' '+esc(slt("h"))+' · '+esc(x.transships)+' '+esc(slt("ships"))+' · '+esc(slt("score"))+' '+esc(x.score)+
+        (x.variant_of?' · variant_of '+esc(x.variant_of):'')+'</div>'+
+      (x.order_pinned_below?'<div class="sl-note">'+esc(slt("pinned"))+' ('+esc(x.order_pinned_below)+')</div>':'')+
+      '<ul class="sl-legs">'+x.legs.map(searchLiveLegHtml).join("")+'</ul></div>';
+  }).join("");
+  if(r.drone_cta){
+    out += '<p class="sl-note"><strong>drone_cta:</strong> '+esc(slt("cta"))+' — '+esc(r.drone_cta.pad.name)+' ('+esc(r.drone_cta.pad.distance_to_dest_km)+' km)</p>';
+  }
+  if(r.drone_diagnostics && r.drone_diagnostics.length){
+    out += '<h3 style="font-size:1rem;margin-top:16px;">'+esc(slt("diag_h"))+'</h3><div class="bpmn-diagram" style="padding:0;"><table class="verify-table" style="min-width:0;"><thead><tr><th>route</th><th>gate</th><th>reason</th><th>detail</th></tr></thead><tbody>'+
+      r.drone_diagnostics.map(function(d){
+        return '<tr><td><code>'+esc(d.parent_route||"—")+'</code></td><td>'+esc(d.gate===undefined?"—":d.gate)+'</td><td><code>'+esc(d.reason)+'</code></td><td>'+esc(d.detail?JSON.stringify(d.detail):"")+'</td></tr>';
+      }).join("")+'</tbody></table></div>';
+  }
+  if(!r.routes.length){
+    if(r.companies_on_direction && r.companies_on_direction.length){
+      out += '<h3 style="font-size:1rem;margin-top:16px;">'+esc(slt("companies"))+'</h3><ul class="sl-legs">'+r.companies_on_direction.map(function(c){ return '<li>'+esc(c.name)+' ('+esc(c.mode)+')</li>'; }).join("")+'</ul>';
+    }
+    if(r.possible_links && r.possible_links.length){
+      out += '<h3 style="font-size:1rem;margin-top:16px;">'+esc(slt("links"))+'</h3><ul class="sl-legs">'+r.possible_links.map(function(l){ return '<li>'+esc(l.mode)+': '+esc(cityName(l.from,state.lang))+' → '+esc(cityName(l.to,state.lang))+' · lot #'+esc(l.lot_id)+' · '+esc(l.remaining_km)+' km</li>'; }).join("")+'</ul>';
+    }
+  }
+  out += '<p class="sl-note">'+esc(slt("fx"))+' '+esc(r.fx.as_of)+' — '+esc(slt("fxNote"))+'</p><p class="sl-note">'+esc(slt("weatherNote"))+'</p>';
+  return out;
+}
+
+function renderSearchLive(){
+  var f = state.searchLive.form;
+  var opts = function(sel){
+    return CITIES.map(function(c){ return '<option value="'+c.id+'"'+(sel===c.id?" selected":"")+'>'+esc(cityName(c.id,state.lang))+'</option>'; }).join("");
+  };
+  var chk = function(name, on, label){ return '<label><input type="checkbox" name="'+name+'"'+(on?" checked":"")+'> '+esc(label)+'</label>'; };
+  var modeLabel = function(m){ return m+" "+(window.TransAtlasSearch? window.TransAtlasSearch.MODE_UK[m] : m); };
+  return ''+
+  '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(slt("h"))+'</h2>'+
+  '<p style="color:var(--ink-soft);max-width:760px;">'+esc(slt("lede"))+'</p>'+
+  '<div class="sl-form" id="searchLiveForm">'+
+    '<div style="grid-column:1/-1"><label>'+esc(slt("dataset"))+'</label><select name="sldataset">'+
+      '<option value="site"'+(f.dataset==="site"?" selected":"")+'>'+esc(slt("ds_site"))+'</option>'+
+      Object.keys(SEARCH_SCENARIO_LABEL).map(function(k){ return '<option value="'+k+'"'+(f.dataset===k?" selected":"")+'>'+esc(slt("ds_syn"))+': '+esc(SEARCH_SCENARIO_LABEL[k][state.lang]||SEARCH_SCENARIO_LABEL[k].en)+'</option>'; }).join("")+
+    '</select><div class="sl-note">'+esc(slt("ds_note"))+'</div></div>'+
+    '<div><label>'+esc(slt("from"))+'</label><select name="slfrom">'+opts(f.from)+'</select></div>'+
+    '<div><label>'+esc(slt("to"))+'</label><select name="slto">'+opts(f.to)+'</select></div>'+
+    '<div><label>'+esc(slt("weight"))+'</label><input type="number" name="slweight" min="0" step="0.1" value="'+esc(f.weight)+'"></div>'+
+    '<div><label>'+esc(slt("criterion"))+'</label><select name="slcriterion">'+
+      ["cost","time","balanced"].map(function(c){ return '<option value="'+c+'"'+(f.criterion===c?" selected":"")+'>'+esc(slt(c))+'</option>'; }).join("")+'</select></div>'+
+    '<div><label>'+esc(slt("radius"))+'</label><input type="number" name="slradius" min="0" step="50" value="'+esc(f.radius)+'"></div>'+
+    '<div class="sl-checks"><strong>'+esc(slt("modes"))+':</strong>'+
+      ["A","T","M","F"].map(function(m){ return chk("slmode"+m, f.modes.indexOf(m)>=0, modeLabel(m)); }).join("")+'</div>'+
+    '<div class="sl-checks">'+chk("slallow", f.allowDrone, slt("allowDrone"))+chk("slextra", f.extraLeg, slt("extraLeg"))+chk("sldiag", f.diagnostics, slt("diagnostics"))+chk("sladr", f.adr, slt("adr"))+chk("slanimals", f.animals, slt("animals"))+'</div>'+
+    '<div><button class="btn btn-primary" id="searchLiveRun" type="button">'+ICONS.search+esc(slt("run"))+'</button></div>'+
+  '</div>'+
+  searchLiveResultHtml();
+}
 
 function renderSearchModule(){
   var subsystemsHtml = SEARCH_SUBSYSTEMS.map(function(s){
@@ -6488,6 +6710,7 @@ function renderSearchModule(){
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("search_title"))+'</h1>'+
     '<p class="lede">'+esc(t("search_lede"))+'</p>'+
     '<p class="escrow-note">'+esc(t("search_disclaimer"))+'</p>'+
+    renderSearchLive()+
 
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("search_subsystems_heading"))+'</h2>'+
     '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
@@ -6527,6 +6750,8 @@ function renderSearchModule(){
       '<li>'+ICONS.checklist+'<a href="schemas/post-drone.schema.json" target="_blank" rel="noopener">'+esc(t("search_download_schema"))+'</a></li>'+
       '<li>'+ICONS.route+'<a href="ci/check_contract_text.py" target="_blank" rel="noopener">'+esc(t("search_download_contracttext"))+'</a></li>'+
       '<li>'+ICONS.checklist+'<a href="ci/check_doc_counts.py" target="_blank" rel="noopener">'+esc(t("search_download_doccounts"))+'</a></li>'+
+      '<li>'+ICONS.route+'<a href="search/engine.js" target="_blank" rel="noopener">search/engine.js</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="search/tests/engine.test.js" target="_blank" rel="noopener">search/tests/engine.test.js</a></li>'+
     '</ul>'+
   '</div></section>';
 }
@@ -6539,6 +6764,31 @@ function renderSearchModule(){
  * dispatcher) - no AI dialer, TMS or SMS gateway is actually connected in
  * this demo. automation_disclaimer says so explicitly, same pattern as
  * escrow_note and weather_not_ready elsewhere on the site. */
+
+/* Структурна перевірка діаграм: результат bpmn/check_bpmn.py на дату прогону. Таблиця не живий запит, а запис прогону. */
+var BPMN_CHECK_RUN = {date:"2026-09-26", files:[
+  {file:"bpmn/checkcall.bpmn", nodes:50, flows:58, lanes:3},
+  {file:"bpmn/checkcall-exception.bpmn", nodes:25, flows:31, lanes:0}
+], mutations:"7 із 7", found:"У збереженій версії основного процесу задача «Оновити статус у TMS і сповістити клієнта» не мала вихідного потоку: після неї процес обривався, і моніторинг не повертався до таймера. Додано потік «наступний інтервал моніторингу» у генератор, діаграми згенеровано заново."};
+var BPMN_CHECK_TEXT = {
+  uk:{h:"Структурна перевірка діаграм", lede:"Скрипт bpmn/check_bpmn.py перевіряє, що діаграма цілісна: потоки не висять, кожен шлях доходить до кінця, лейни повні, для кожного вузла є фігура. Він не доводить, що процес правильний за змістом.", run:"Прогін від", file:"Файл", nodes:"Вузлів", flows:"Потоків", lanes:"Лейнів", res:"Результат", ok:"без помилок", mut:"Самоперевірка на мутаціях:", defect:"Що знайшов перший прогін:"},
+  en:{h:"Structural check of the diagrams", lede:"The script bpmn/check_bpmn.py checks that the diagram is sound: no dangling flows, every path reaches an end, lanes are complete, every node has a shape. It does not prove the process is right in substance.", run:"Run of", file:"File", nodes:"Nodes", flows:"Flows", lanes:"Lanes", res:"Result", ok:"no errors", mut:"Mutation self-test:", defect:"What the first run found:"},
+  pl:{h:"Kontrola strukturalna diagramów", lede:"Skrypt bpmn/check_bpmn.py sprawdza spójność diagramu: brak wiszących przepływów, każda ścieżka dochodzi do końca, tory są kompletne, każdy węzeł ma kształt. Nie dowodzi, że proces jest merytorycznie poprawny.", run:"Przebieg z", file:"Plik", nodes:"Węzłów", flows:"Przepływów", lanes:"Torów", res:"Wynik", ok:"bez błędów", mut:"Samotest na mutacjach:", defect:"Co znalazł pierwszy przebieg:"},
+  de:{h:"Strukturprüfung der Diagramme", lede:"Das Skript bpmn/check_bpmn.py prüft, ob das Diagramm in sich stimmig ist: keine hängenden Flüsse, jeder Pfad erreicht ein Ende, Bahnen sind vollständig, jeder Knoten hat eine Form. Es beweist nicht, dass der Prozess inhaltlich richtig ist.", run:"Lauf vom", file:"Datei", nodes:"Knoten", flows:"Flüsse", lanes:"Bahnen", res:"Ergebnis", ok:"keine Fehler", mut:"Mutations-Selbsttest:", defect:"Was der erste Lauf fand:"}
+};
+function bct(k){ var d=BPMN_CHECK_TEXT[state.lang]||BPMN_CHECK_TEXT.en; return d[k]!==undefined? d[k] : BPMN_CHECK_TEXT.en[k]; }
+function renderBpmnCheck(){
+  var rows = BPMN_CHECK_RUN.files.map(function(f){
+    return '<tr><td><code>'+esc(f.file)+'</code></td><td>'+esc(f.nodes)+'</td><td>'+esc(f.flows)+'</td><td>'+esc(f.lanes)+'</td><td><span class="vl-status pass">'+esc(bct("ok"))+'</span></td></tr>';
+  }).join("");
+  return '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(bct("h"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(bct("lede"))+'</p>'+
+    '<p class="sl-note">'+esc(bct("run"))+' '+esc(BPMN_CHECK_RUN.date)+'</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table" style="min-width:0;"><thead><tr><th>'+esc(bct("file"))+'</th><th>'+esc(bct("nodes"))+'</th><th>'+esc(bct("flows"))+'</th><th>'+esc(bct("lanes"))+'</th><th>'+esc(bct("res"))+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+    '<p class="sl-note">'+esc(bct("mut"))+' '+esc(BPMN_CHECK_RUN.mutations)+'</p>'+
+    (state.lang==="uk" ? '<p class="sl-note"><strong>'+esc(bct("defect"))+'</strong> '+esc(BPMN_CHECK_RUN.found)+'</p>' : '');
+}
+
 function renderAutomation(){
   return ''+
   '<section><div class="wrap">'+
@@ -6551,11 +6801,13 @@ function renderAutomation(){
     '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_sub_heading"))+'</h2>'+
     '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("automation_sub_body"))+'</p>'+
     '<div class="bpmn-diagram"><img src="images/checkcall-exception-subprocess.svg" alt="'+esc(t("automation_diagram2_alt"))+'" loading="lazy"></div>'+
+    renderBpmnCheck()+
     '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("automation_downloads_heading"))+'</h2>'+
     '<ul class="automation-downloads">'+
       '<li>'+ICONS.book+'<a href="bpmn/checkcall.bpmn" target="_blank" rel="noopener">'+esc(t("automation_download_bpmn1"))+'</a></li>'+
       '<li>'+ICONS.book+'<a href="bpmn/checkcall-exception.bpmn" target="_blank" rel="noopener">'+esc(t("automation_download_bpmn2"))+'</a></li>'+
       '<li>'+ICONS.book+'<a href="bpmn/checkcall-spec.md" target="_blank" rel="noopener">'+esc(t("automation_download_spec"))+'</a></li>'+
+      '<li>'+ICONS.checklist+'<a href="bpmn/check_bpmn.py" target="_blank" rel="noopener">bpmn/check_bpmn.py</a></li>'+
     '</ul>'+
   '</div></section>';
 }
@@ -6617,6 +6869,133 @@ var VERIFICATION_MATRIX = [
   {what:"Телефон, сайт, пошта", importance:"info", effect:"Тільки в історії"}
 ];
 
+
+/* ---------- Верифікація: справжня перевірка через локальний сервер ----------
+ * Панель викликає /api/verification/* (server/verification/): живі VIES, Biała lista
+ * і KRS, правила рішення з розділу 5 ТЗ. Без запущеного `node server/index.js`
+ * результату немає, і сторінка так і каже, а не показує вигаданий. Джерела, що потребують
+ * ключа (санкції, ЄДР), повертають unavailable/NO_API_KEY: це не pass. */
+var VERIFY_LIVE_TEXT = {
+  uk:{h:"Перевірити компанію (живі джерела)", lede:"Справжній запит до VIES, Biała lista podatników VAT і KRS через локальний сервер. Результат — за правилами розділу 5 ТЗ: недоступне джерело не дорівнює pass.",
+    level:"Цільовий рівень", country:"Країна", id_pl:"NIP (Польща)", id_vat:"Номер ПДВ (без коду країни)", id_ua:"ЄДРПОУ", name:"Назва компанії (необов’язково; звіряється з реєстром)",
+    run:"Перевірити", running:"Виконуються перевірки…", case:"Справа", level_now:"Поточний рівень", blocking:"Блокуючі перевірки без результату",
+    col_check:"Перевірка", col_source:"Джерело", col_status:"Статус", col_reason:"Причина", col_dates:"Стан у джерелі / запит / діє до", col_evidence:"Доказ (SHA-256)",
+    st_running:"виконується", st_manual_review:"ручний розгляд", st_approved:"схвалено", st_rejected:"відхилено", st_awaiting_input:"очікує дані",
+    s_pass:"пройдено", s_fail:"не пройдено", s_attention:"потребує уваги", s_unavailable:"недоступно", s_not_applicable:"не застосовна", s_pending:"очікує",
+    offline:"Сервер верифікації не відповідає. Запустіть «node server/index.js» — без нього перевірку виконати неможливо, і результату немає.",
+    conflict:"Для цієї компанії вже є активна справа (за ТЗ повторно її не створюють) — показано її.", note:"Джерела без ключа (санкції, реєстр ЄДР) повертають NO_API_KEY — це «недоступно», а не «пройдено»; тому справа польської компанії зараз завершується ручним розглядом, а не автоматичним L1.",
+    idem:"Докази зберігаються локально, як файли за хешем (не WORM); рішення оператора вимкнено, поки на сервері не задано VERIFICATION_OPERATOR_TOKEN.", no_reason:"—"},
+  en:{h:"Verify a company (live sources)", lede:"A real request to VIES, the Polish VAT white list (Biała lista) and KRS through the local server. The outcome follows section 5 of the spec: an unavailable source never equals pass.",
+    level:"Target level", country:"Country", id_pl:"NIP (Poland)", id_vat:"VAT number (without country code)", id_ua:"EDRPOU", name:"Company name (optional; compared with the registry)",
+    run:"Verify", running:"Running checks…", case:"Case", level_now:"Current level", blocking:"Blocking checks without a result",
+    col_check:"Check", col_source:"Source", col_status:"Status", col_reason:"Reason", col_dates:"Source state / requested / valid until", col_evidence:"Evidence (SHA-256)",
+    st_running:"running", st_manual_review:"manual review", st_approved:"approved", st_rejected:"rejected", st_awaiting_input:"awaiting input",
+    s_pass:"pass", s_fail:"fail", s_attention:"attention", s_unavailable:"unavailable", s_not_applicable:"not applicable", s_pending:"pending",
+    offline:"The verification server is not responding. Start «node server/index.js» — without it the check cannot run and there is no result.",
+    conflict:"An active case already exists for this company (the spec does not allow a second one) — it is shown below.", note:"Sources without a key (sanctions, the EDR registry) return NO_API_KEY — that is «unavailable», not «pass»; so a Polish company's case currently ends in manual review, not automatic L1.",
+    idem:"Evidence is stored locally as files named by hash (not WORM); operator decisions are disabled until VERIFICATION_OPERATOR_TOKEN is set on the server.", no_reason:"—"},
+  pl:{h:"Sprawdź firmę (żywe źródła)", lede:"Prawdziwe zapytanie do VIES, białej listy podatników VAT i KRS przez lokalny serwer. Wynik wg sekcji 5 specyfikacji: niedostępne źródło nigdy nie jest równe pass.",
+    level:"Poziom docelowy", country:"Kraj", id_pl:"NIP (Polska)", id_vat:"Numer VAT (bez kodu kraju)", id_ua:"EDRPOU", name:"Nazwa firmy (opcjonalnie; porównywana z rejestrem)",
+    run:"Sprawdź", running:"Trwają kontrole…", case:"Sprawa", level_now:"Bieżący poziom", blocking:"Blokujące kontrole bez wyniku",
+    col_check:"Kontrola", col_source:"Źródło", col_status:"Status", col_reason:"Powód", col_dates:"Stan źródła / zapytanie / ważne do", col_evidence:"Dowód (SHA-256)",
+    st_running:"w toku", st_manual_review:"ręczna weryfikacja", st_approved:"zatwierdzona", st_rejected:"odrzucona", st_awaiting_input:"oczekuje na dane",
+    s_pass:"zaliczona", s_fail:"niezaliczona", s_attention:"wymaga uwagi", s_unavailable:"niedostępne", s_not_applicable:"nie dotyczy", s_pending:"oczekuje",
+    offline:"Serwer weryfikacji nie odpowiada. Uruchom «node server/index.js» — bez niego kontroli nie da się wykonać i nie ma wyniku.",
+    conflict:"Dla tej firmy istnieje już aktywna sprawa (specyfikacja nie pozwala na drugą) — pokazano ją poniżej.", note:"Źródła bez klucza (sankcje, rejestr EDR) zwracają NO_API_KEY — to «niedostępne», a nie «zaliczone»; dlatego sprawa polskiej firmy kończy się obecnie ręczną weryfikacją, a nie automatycznym L1.",
+    idem:"Dowody są przechowywane lokalnie jako pliki nazwane hashem (nie WORM); decyzje operatora są wyłączone, dopóki na serwerze nie ustawiono VERIFICATION_OPERATOR_TOKEN.", no_reason:"—"},
+  de:{h:"Unternehmen prüfen (Live-Quellen)", lede:"Eine echte Abfrage bei VIES, der polnischen Weißen Liste (Biała lista) und KRS über den lokalen Server. Das Ergebnis folgt Abschnitt 5 der Spezifikation: eine nicht verfügbare Quelle ist nie gleich pass.",
+    level:"Zielstufe", country:"Land", id_pl:"NIP (Polen)", id_vat:"USt-IdNr. (ohne Ländercode)", id_ua:"EDRPOU", name:"Firmenname (optional; wird mit dem Register verglichen)",
+    run:"Prüfen", running:"Prüfungen laufen…", case:"Fall", level_now:"Aktuelle Stufe", blocking:"Blockierende Prüfungen ohne Ergebnis",
+    col_check:"Prüfung", col_source:"Quelle", col_status:"Status", col_reason:"Grund", col_dates:"Quellenstand / Anfrage / gültig bis", col_evidence:"Beleg (SHA-256)",
+    st_running:"läuft", st_manual_review:"manuelle Prüfung", st_approved:"genehmigt", st_rejected:"abgelehnt", st_awaiting_input:"wartet auf Angaben",
+    s_pass:"bestanden", s_fail:"nicht bestanden", s_attention:"Aufmerksamkeit", s_unavailable:"nicht verfügbar", s_not_applicable:"nicht anwendbar", s_pending:"ausstehend",
+    offline:"Der Verifizierungsserver antwortet nicht. «node server/index.js» starten — ohne ihn lässt sich die Prüfung nicht ausführen, und es gibt kein Ergebnis.",
+    conflict:"Für dieses Unternehmen gibt es bereits einen aktiven Fall (die Spezifikation erlaubt keinen zweiten) — er wird unten gezeigt.", note:"Quellen ohne Schlüssel (Sanktionen, EDR-Register) liefern NO_API_KEY — das ist «nicht verfügbar», nicht «bestanden»; deshalb endet der Fall eines polnischen Unternehmens derzeit in der manuellen Prüfung, nicht in automatischem L1.",
+    idem:"Belege werden lokal als nach Hash benannte Dateien gespeichert (nicht WORM); Operator-Entscheidungen sind deaktiviert, solange VERIFICATION_OPERATOR_TOKEN auf dem Server nicht gesetzt ist.", no_reason:"—"}
+};
+function vlt(k){ var d=VERIFY_LIVE_TEXT[state.lang]||VERIFY_LIVE_TEXT.en; return d[k]!==undefined? d[k] : VERIFY_LIVE_TEXT.en[k]; }
+
+function readVerifyLiveForm(){
+  var root = document.getElementById("verifyLiveForm");
+  if(!root) return;
+  var f = state.verifyLive.form;
+  f.level = root.querySelector('[name="vllevel"]').value;
+  f.country = root.querySelector('[name="vlcountry"]').value;
+  f.value = root.querySelector('[name="vlvalue"]').value.trim();
+  f.name = root.querySelector('[name="vlname"]').value.trim();
+}
+function verifyLiveIdKind(country){ return country==="PL" ? "nip" : (country==="UA" ? "edrpou" : "vat_eu"); }
+
+function runVerifyLive(){
+  readVerifyLiveForm();
+  executeVerifyLive();
+}
+function executeVerifyLive(){
+  var vl = state.verifyLive, f = vl.form;
+  vl.ran = true; vl.loading = true; vl.error = null; vl.c = null; vl.conflict = false;
+  renderApp();
+  var body = {target_level:f.level, identifiers:[{kind:verifyLiveIdKind(f.country), value:f.value, country:f.country}]};
+  if(f.name) body.declared_name = f.name;
+  var key = "vl-"+Date.now()+"-"+Math.random().toString(36).slice(2,10);
+  fetch(WEATHER_API_BASE+"/api/verification/cases", {method:"POST", headers:{"Content-Type":"application/json","Idempotency-Key":key}, body:JSON.stringify(body)})
+    .then(function(res){ return res.json().then(function(j){ return {status:res.status, json:j}; }); })
+    .then(function(r){
+      if(r.status===409 && r.json && r.json.existing_case_id){ vl.conflict=true; pollVerifyLive(r.json.existing_case_id, 0); return; }
+      if(r.status===409){ vl.loading=false; vl.error=vlt("conflict"); renderApp(); return; }
+      if(r.status!==201 && r.status!==200){ vl.loading=false; vl.error=(r.json && (r.json.detail||r.json.title)) || ("HTTP "+r.status); renderApp(); return; }
+      pollVerifyLive(r.json.id, 0);
+    }, function(){ vl.loading=false; vl.error=vlt("offline"); renderApp(); });
+}
+function pollVerifyLive(id, n){
+  var vl = state.verifyLive;
+  fetch(WEATHER_API_BASE+"/api/verification/cases/"+id).then(function(res){ return res.json(); }).then(function(c){
+    if(c.status==="running" && n<40){ setTimeout(function(){ pollVerifyLive(id, n+1); }, 700); return; }
+    vl.loading=false; vl.c=c; renderApp();
+  }, function(){ vl.loading=false; vl.error=vlt("offline"); renderApp(); });
+}
+
+function verifyLiveResultHtml(){
+  var vl = state.verifyLive, c = vl.c;
+  if(!vl.ran) return "";
+  if(vl.loading) return '<p class="sl-note">'+esc(vlt("running"))+'</p>';
+  if(vl.error) return '<p class="escrow-note">'+esc(vl.error)+'</p>';
+  if(!c) return "";
+  var rows = c.results.map(function(r){
+    var ev = r.evidence;
+    var dates = ev ? esc(ev.source_as_of||"—")+' / '+esc(String(ev.fetched_at).slice(0,19).replace("T"," "))+' / '+esc(r.valid_until?String(r.valid_until).slice(0,10):"—") : "—";
+    var evHtml = ev ? '<a href="'+esc(WEATHER_API_BASE+"/api/verification/evidence/"+ev.payload_sha256)+'" target="_blank" rel="noopener"><code>'+esc(ev.payload_sha256.slice(0,12))+'…</code></a>' : "—";
+    return '<tr><td><code>'+esc(r.check_id)+'</code></td><td>'+esc(r.source_id)+'</td>'+
+      '<td><span class="vl-status '+esc(r.status)+'">'+esc(vlt("s_"+r.status))+'</span></td>'+
+      '<td>'+(r.reason_code?'<code>'+esc(r.reason_code)+'</code>':esc(vlt("no_reason")))+(r.reason_text?'<div class="sl-note">'+esc(r.reason_text)+'</div>':'')+'</td>'+
+      '<td>'+dates+'</td><td>'+evHtml+'</td></tr>';
+  }).join("");
+  return ''+
+    (vl.conflict?'<p class="sl-note">'+esc(vlt("conflict"))+'</p>':'')+
+    '<div class="vl-summary '+esc(c.status)+'"><strong>'+esc(vlt("case"))+':</strong> '+esc(vlt("st_"+c.status))+' · '+esc(vlt("level_now"))+': <strong>'+esc(c.level||"L0")+'</strong>'+
+      (c.blocking_unavailable&&c.blocking_unavailable.length?'<div class="sl-note">'+esc(vlt("blocking"))+': <code>'+esc(c.blocking_unavailable.join(", "))+'</code></div>':'')+
+      (c.decision_reason?'<div class="sl-note">'+esc(c.decision_reason)+'</div>':'')+
+    '</div>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr><th>'+esc(vlt("col_check"))+'</th><th>'+esc(vlt("col_source"))+'</th><th>'+esc(vlt("col_status"))+'</th><th>'+esc(vlt("col_reason"))+'</th><th>'+esc(vlt("col_dates"))+'</th><th>'+esc(vlt("col_evidence"))+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+    '<p class="sl-note">'+esc(vlt("note"))+'</p><p class="sl-note">'+esc(vlt("idem"))+'</p>';
+}
+
+function renderVerifyLive(){
+  var f = state.verifyLive.form;
+  var idLabel = f.country==="PL" ? vlt("id_pl") : (f.country==="UA" ? vlt("id_ua") : vlt("id_vat"));
+  var countries = ["PL","DE","CZ","LT","LV","SK","RO","HU","FR","IT","NL","UA"];
+  return ''+
+  '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(vlt("h"))+'</h2>'+
+  '<p style="color:var(--ink-soft);max-width:760px;">'+esc(vlt("lede"))+'</p>'+
+  '<div class="sl-form" id="verifyLiveForm">'+
+    '<div><label>'+esc(vlt("level"))+'</label><select name="vllevel"><option value="L1"'+(f.level==="L1"?" selected":"")+'>L1</option><option value="L2"'+(f.level==="L2"?" selected":"")+'>L2</option></select></div>'+
+    '<div><label>'+esc(vlt("country"))+'</label><select name="vlcountry">'+countries.map(function(c){ return '<option value="'+c+'"'+(f.country===c?" selected":"")+'>'+c+'</option>'; }).join("")+'</select></div>'+
+    '<div><label>'+esc(idLabel)+'</label><input type="text" name="vlvalue" maxlength="32" value="'+esc(f.value)+'"></div>'+
+    '<div style="grid-column:1/-1"><label>'+esc(vlt("name"))+'</label><input type="text" name="vlname" maxlength="255" value="'+esc(f.name)+'" style="width:100%"></div>'+
+    '<div><button class="btn btn-primary" id="verifyLiveRun" type="button">'+ICONS.shield+esc(vlt("run"))+'</button></div>'+
+  '</div>'+
+  verifyLiveResultHtml();
+}
+
 function renderVerification(){
   var levelsHtml = VERIFICATION_LEVELS.map(function(l){
     return '<div class="verify-level-card">'+
@@ -6647,6 +7026,7 @@ function renderVerification(){
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("verification_title"))+'</h1>'+
     '<p class="lede">'+esc(t("verification_lede"))+'</p>'+
     '<p class="escrow-note">'+esc(t("verification_disclaimer"))+'</p>'+
+    renderVerifyLive()+
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("verification_levels_heading"))+'</h2>'+
     '<div class="verify-level-grid">'+levelsHtml+'</div>'+
     '<h2 style="margin-top:34px;font-size:1.2rem;">'+esc(t("verification_checks_heading"))+'</h2>'+
@@ -6758,6 +7138,50 @@ var SPRINT1_COST = [
   {source:"Об'єктне сховище доказів", cost:"Мізерна за обсягами спринту"}
 ];
 
+
+/* Фактичний стан плану Спринту 1 на дату нижче: що з V1-V8 і 10 критеріїв приймання вже є в коді. */
+var SPRINT1_ACTUAL_DATE = "2026-09-26";
+var SPRINT1_ACTUAL = [
+  {id:"V1", state:"partial", text:"Каталоги читаються з seed/, GET /api/verification/sources віддає 13 джерел зі станом і ознакою реалізованого коннектора. Немає upsert у БД (бази немає) і секретів середовища понад змінні оточення."},
+  {id:"V2", state:"done", text:"VIES, Biała lista (дата за Варшавою: UTC давав WL-103 «дата з майбутнього»), KRS (204 = not_found); кеш за TTL, 3 спроби з паузою, unavailable з кодом причини; 7 тестів на живих знімках і прогін --live."},
+  {id:"V3", state:"done", text:"Правила розділу 5, blocking_unavailable, override_blocking (строк удвічі коротший, окрема подія), строк дії рівня, ідемпотентність, конфлікт активної справи; справи валідні за verification.schema.json."},
+  {id:"V4", state:"partial", text:"SHA-256, розмір, тип, source_as_of окремо від fetched_at, retention_until +5 років, видача за хешем. Немає WORM (файли з прапором wx — захист на рівні застосунку), завдання прибирання й підписаних посилань."},
+  {id:"V5", state:"partial", text:"5 із 10 шляхів openapi-verification.yaml (cases, cases/{id}, decision, evidence, sources) плюс журнал подій. Немає documents, dossier, changes, monitoring; рантайм-перевірки відповіді проти схеми немає (є в тесті). Рішення оператора вимкнено, доки не задано токен у змінній оточення."},
+  {id:"V6", state:"partial", text:"Панель «Перевірити компанію» на сторінці верифікації показує перевірки, статуси, причини, докази й обидві дати. Бейджа в стрічці заявок і сторінки досьє немає."},
+  {id:"V7", state:"absent", text:"Нових обов'язкових статусів немає: два наявні (36 і 42) не змінювались. Тести модуля — локальні й не входять у правило гілки; п'яти негативних PR немає."},
+  {id:"V8", state:"absent", text:"Юридичний трек (ДП НАІС, НСДЦ, LIA, DPA) — не код; звернень із цього репозиторію не надіслано."}
+];
+var SPRINT1_ACCEPT_ACTUAL = [
+  {n:1, state:"absent", text:"L1 автоматично за менш ніж 60 с для польської компанії — не досягається: реєстр і VIES відпрацьовують за ~2 с, але санкції (OpenSanctions) і банкрутство (ЄДР) — блокуючі джерела без ключа, тож справа завершується ручним розглядом. Потрібен ключ і коннектор санкцій."},
+  {n:2, state:"partial", text:"«statusVat не Czynny → fail рішучої перевірки» суперечить каталогу: статус ПДВ читає monitor.vat_status (L2, нерішуча), тож дає attention. Рішучі перевірки L1 для PL — KRS, санкції, банкрутство. Критерій або каталог треба виправити."},
+  {n:3, state:"done", text:"Недоступне блокуюче джерело → manual_review, не схвалення (тест)."},
+  {n:4, state:"done", text:"override_blocking → строк удвічі коротший і окрема подія в журналі (тест: 182 дні замість 365)."},
+  {n:5, state:"partial", text:"Доказ віддається за хешем; заборона видалення роллю застосунку — лише прапор wx на файлі, не право БД."},
+  {n:6, state:"partial", text:"Сирий відгук Biała lista і SHA-256 переліку рахунків зберігаються; окремої таблиці знімків рахунків немає."},
+  {n:7, state:"partial", text:"Панель показує джерело й дві дати, зведеного балу немає; бейджа в стрічці немає."},
+  {n:8, state:"done", text:"«Контракт модуля верифікації» і «Інваріанти верифікації» — обов'язкові статуси правила гілки (без змін)."},
+  {n:9, state:"absent", text:"П'ять негативних PR не створено."},
+  {n:10, state:"done", text:"Наявні перевірки лишаються зеленими за локальним прогоном (check_schema, check_i18n, check_ruleset, check_doc_counts)."}
+];
+var SPRINT1_ACTUAL_TEXT = {
+  uk:{h:"Фактичний стан плану", lede:"Станом на", scope:"Обсяг V1–V8", accept:"Критерії приймання", done:"зроблено", partial:"частково", absent:"немає"},
+  en:{h:"Actual state of the plan", lede:"As of", scope:"Scope V1–V8", accept:"Acceptance criteria", done:"done", partial:"partial", absent:"not done"},
+  pl:{h:"Faktyczny stan planu", lede:"Stan na", scope:"Zakres V1–V8", accept:"Kryteria odbioru", done:"zrobione", partial:"częściowo", absent:"brak"},
+  de:{h:"Tatsächlicher Stand des Plans", lede:"Stand", scope:"Umfang V1–V8", accept:"Abnahmekriterien", done:"erledigt", partial:"teilweise", absent:"offen"}
+};
+function s1at(k){ var d=SPRINT1_ACTUAL_TEXT[state.lang]||SPRINT1_ACTUAL_TEXT.en; return d[k]!==undefined? d[k] : SPRINT1_ACTUAL_TEXT.en[k]; }
+function renderSprint1Actual(){
+  var cls = {done:"pass", partial:"attention", absent:"unavailable"};
+  var scope = SPRINT1_ACTUAL.map(function(r){ return '<tr><td><code>'+esc(r.id)+'</code></td><td><span class="vl-status '+cls[r.state]+'">'+esc(s1at(r.state))+'</span></td><td>'+esc(r.text)+'</td></tr>'; }).join("");
+  var acc = SPRINT1_ACCEPT_ACTUAL.map(function(r){ return '<tr><td>'+esc(r.n)+'</td><td><span class="vl-status '+cls[r.state]+'">'+esc(s1at(r.state))+'</span></td><td>'+esc(r.text)+'</td></tr>'; }).join("");
+  return '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(s1at("h"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(s1at("lede"))+' '+esc(SPRINT1_ACTUAL_DATE)+'.</p>'+
+    '<h3 style="font-size:1rem;margin-top:14px;">'+esc(s1at("scope"))+'</h3>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table" style="min-width:0;"><tbody>'+scope+'</tbody></table></div>'+
+    '<h3 style="font-size:1rem;margin-top:14px;">'+esc(s1at("accept"))+'</h3>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table" style="min-width:0;"><tbody>'+acc+'</tbody></table></div>';
+}
+
 function renderVerificationSprint1(){
   var entryHtml = SPRINT1_ENTRY.map(function(e){
     return '<tr><td>'+esc(e.artifact)+'</td><td><span class="source-status live">'+esc(e.status)+'</span></td></tr>';
@@ -6782,6 +7206,7 @@ function renderVerificationSprint1(){
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("sprint1_title"))+'</h1>'+
     '<p class="lede">'+esc(t("sprint1_lede"))+'</p>'+
     '<p class="escrow-note">'+esc(t("sprint1_disclaimer"))+'</p>'+
+    renderSprint1Actual()+
 
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("sprint1_entry_heading"))+'</h2>'+
     '<p style="color:var(--ink-soft);max-width:760px;">'+esc(t("sprint1_entry_lede"))+'</p>'+
@@ -6897,7 +7322,9 @@ var BACKEND_NFR = [
 var BACKEND_RUNS = [
   {run:"tools/extract_registries.py", what:"Витягування реєстрів із index.html", result:"175 міст, 9 вантажів, 32 валюти, порожніх полів немає"},
   {run:"ci/check_backend_contract.py", what:"8 груп перевірок артефактів", result:"15 із 15 пройдено"},
-  {run:"ci/acceptance_db.py", what:"Жива PostgreSQL 18.6 + PostGIS 3.6", result:"25 із 25 пройдено"}
+  {run:"ci/acceptance_db.py", what:"Жива PostgreSQL 18.6 + PostGIS 3.6", result:"25 із 25 пройдено"},
+  {run:"server/tests/v1.test.js --real", what:"Читальний зріз /api/v1 на сервері без БД: фільтри, курсор, 422/501/503", result:"12 із 12 пройдено"},
+  {run:"server/tests/validate_v1_listings.py", what:"Усі заявки з експортера проти listing.schema.json", result:"10 773 із 10 773 валідні"}
 ];
 var BACKEND_FRONTEND_CHANGES = [
   "LISTINGS перестає бути літералом і стає результатом GET /api/v1/listings; loadExternalListings() і LISTINGS_FEED замінюються курсорною пагінацією",
@@ -6919,6 +7346,76 @@ var BACKEND_CI_GATES = [
   {pipeline:"", job:"verification-db", check:"Інваріанти верифікації"},
   {pipeline:"", job:"backend-gate", check:"backend-gate"}
 ];
+
+
+/* ---------- Бекенд: живий стан читального зрізу /api/v1 ----------
+ * Кнопка робить справжні запити до локального сервера (node server/index.js) і показує
+ * код відповіді, час і результат. Без сервера рядки червоні: вигаданого "ok" немає. */
+var BACKEND_LIVE_TEXT = {
+  uk:{h:"Стан читального зрізу /api/v1 (живі запити)", lede:"Реалізовано лише читання: health, стрічка заявок із фільтрами й курсором, одна заявка, довідники. Дані — 10 773 канонічні заявки з файлу, який пише той самий код перетворення, що й БД-імпортер. PostgreSQL, Redis, автентифікації й публікації заявок немає.",
+    run:"Перевірити зараз", running:"Запити виконуються…", ep:"Ендпойнт", http:"HTTP", ms:"мс", res:"Результат", offline:"немає відповіді — запустіть «node server/index.js»",
+    cmp:"Заявок у /api/v1 (активних)", cmp2:"Заявок у LISTINGS на цій сторінці зараз", note:"Сама сторінка досі бере заявки з вшитого масиву й test-data/: перемикання LISTINGS на цей API — окремий крок із розділу «Зміни на фронтенді».",
+    export:"Якщо /listings повертає 503, згенеруйте набір: python sprint-0-backend/tools/export_canonical.py"},
+  en:{h:"State of the read-only /api/v1 slice (live requests)", lede:"Only reading is implemented: health, the listing feed with filters and cursor, a single listing, reference data. Data is 10,773 canonical listings from a file written by the same conversion code as the DB importer. There is no PostgreSQL, Redis, authentication or listing publishing.",
+    run:"Check now", running:"Requests running…", ep:"Endpoint", http:"HTTP", ms:"ms", res:"Result", offline:"no response — start «node server/index.js»",
+    cmp:"Listings in /api/v1 (active)", cmp2:"Listings in LISTINGS on this page now", note:"The page itself still takes listings from the built-in array and test-data/: switching LISTINGS to this API is a separate step from the «Frontend changes» section.",
+    export:"If /listings returns 503, generate the dataset: python sprint-0-backend/tools/export_canonical.py"},
+  pl:{h:"Stan odczytowego wycinka /api/v1 (żywe zapytania)", lede:"Zaimplementowano tylko odczyt: health, listę zgłoszeń z filtrami i kursorem, pojedyncze zgłoszenie, słowniki. Dane to 10 773 kanoniczne zgłoszenia z pliku zapisanego tym samym kodem konwersji co importer do bazy. Nie ma PostgreSQL, Redis, uwierzytelniania ani publikowania zgłoszeń.",
+    run:"Sprawdź teraz", running:"Zapytania w toku…", ep:"Endpoint", http:"HTTP", ms:"ms", res:"Wynik", offline:"brak odpowiedzi — uruchom «node server/index.js»",
+    cmp:"Zgłoszeń w /api/v1 (aktywnych)", cmp2:"Zgłoszeń w LISTINGS na tej stronie teraz", note:"Sama strona nadal bierze zgłoszenia z wbudowanej tablicy i test-data/: przełączenie LISTINGS na to API to osobny krok z sekcji «Zmiany we frontendzie».",
+    export:"Jeśli /listings zwraca 503, wygeneruj zbiór: python sprint-0-backend/tools/export_canonical.py"},
+  de:{h:"Stand des lesenden /api/v1-Ausschnitts (Live-Anfragen)", lede:"Nur Lesen ist umgesetzt: Health, Angebotsliste mit Filtern und Cursor, ein einzelnes Angebot, Referenzdaten. Die Daten sind 10.773 kanonische Angebote aus einer Datei, die derselbe Umwandlungscode wie der DB-Importer schreibt. Es gibt kein PostgreSQL, kein Redis, keine Authentifizierung und kein Veröffentlichen von Angeboten.",
+    run:"Jetzt prüfen", running:"Anfragen laufen…", ep:"Endpunkt", http:"HTTP", ms:"ms", res:"Ergebnis", offline:"keine Antwort — «node server/index.js» starten",
+    cmp:"Angebote in /api/v1 (aktiv)", cmp2:"Angebote in LISTINGS auf dieser Seite jetzt", note:"Die Seite selbst nimmt Angebote weiterhin aus dem eingebauten Array und test-data/: die Umstellung von LISTINGS auf diese API ist ein eigener Schritt aus dem Abschnitt «Frontend-Änderungen».",
+    export:"Liefert /listings 503, den Datensatz erzeugen: python sprint-0-backend/tools/export_canonical.py"}
+};
+function blt(k){ var d=BACKEND_LIVE_TEXT[state.lang]||BACKEND_LIVE_TEXT.en; return d[k]!==undefined? d[k] : BACKEND_LIVE_TEXT.en[k]; }
+
+var BACKEND_LIVE_PROBES = [
+  {path:"/api/v1/health", sum:function(j){ return "status="+j.status+", db="+j.db+", redis="+j.redis+", "+j.listings_loaded+" listings"; }},
+  {path:"/api/v1/listings?limit=3&sort=date_asc", sum:function(j){ return j.items.length+" items, has_more="+j.page.has_more+", total="+j.page.total_matching; }},
+  {path:"/api/v1/listings?kind=transport&mode=drone&limit=1", sum:function(j){ return "drone transport: "+j.page.total_matching; }},
+  {path:"/api/v1/listings?border_scope=domestic&limit=1", sum:function(j){ return "domestic: "+j.page.total_matching; }},
+  {path:"/api/v1/reference/currencies", sum:function(j){ return j.items.length+" currencies"; }},
+  {path:"/api/v1/reference/cities?country=PL", sum:function(j){ return j.items.length+" cities (PL)"; }},
+  {path:"/api/v1/auth/me", sum:function(j){ return j.title; }}
+];
+function runBackendLive(){
+  var bl = state.backendLive;
+  bl.ran = true; bl.loading = true; bl.rows = null;
+  renderApp();
+  Promise.all(BACKEND_LIVE_PROBES.map(function(pr){
+    var t0 = Date.now();
+    return fetch(WEATHER_API_BASE+pr.path).then(function(res){
+      return res.json().then(function(j){
+        var text; try{ text = pr.sum(j); }catch(e){ text = j.title || j.detail || ""; }
+        if(res.status>=400 && j.detail) text = (j.title||"")+": "+j.detail;
+        return {path:pr.path, status:res.status, ms:Date.now()-t0, text:text, total:(j.page&&j.page.total_matching)};
+      });
+    }, function(){ return {path:pr.path, status:0, ms:Date.now()-t0, text:blt("offline")}; });
+  })).then(function(rows){ bl.loading=false; bl.rows=rows; renderApp(); });
+}
+function renderBackendLive(){
+  var bl = state.backendLive, body = "";
+  if(bl.ran){
+    if(bl.loading) body = '<p class="sl-note">'+esc(blt("running"))+'</p>';
+    else if(bl.rows){
+      var rows = bl.rows.map(function(r){
+        var cls = r.status===0 ? "fail" : (r.status<400 ? "pass" : (r.status===501 ? "attention" : "fail"));
+        return '<tr><td><code>'+esc(r.path)+'</code></td><td><span class="vl-status '+cls+'">'+esc(r.status||"—")+'</span></td><td>'+esc(r.ms)+'</td><td>'+esc(r.text)+'</td></tr>';
+      }).join("");
+      var listing = bl.rows[1] && bl.rows[1].total;
+      body = '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table" style="min-width:0;"><thead><tr><th>'+esc(blt("ep"))+'</th><th>'+esc(blt("http"))+'</th><th>'+esc(blt("ms"))+'</th><th>'+esc(blt("res"))+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+        (listing!==undefined && listing!==null ? '<p class="sl-note">'+esc(blt("cmp"))+': <strong>'+esc(listing)+'</strong> · '+esc(blt("cmp2"))+': <strong>'+esc(LISTINGS.length)+'</strong></p>' : '')+
+        '<p class="sl-note">'+esc(blt("note"))+'</p><p class="sl-note">'+esc(blt("export"))+'</p>';
+    }
+  }
+  return ''+
+  '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(blt("h"))+'</h2>'+
+  '<p style="color:var(--ink-soft);max-width:760px;">'+esc(blt("lede"))+'</p>'+
+  '<div class="sl-form"><div><button class="btn btn-primary" id="backendLiveRun" type="button">'+ICONS.search+esc(blt("run"))+'</button></div></div>'+
+  body;
+}
 
 function renderBackend(){
   var scopeInHtml = BACKEND_SCOPE_IN.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("");
@@ -6952,6 +7449,7 @@ function renderBackend(){
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("backend_title"))+'</h1>'+
     '<p class="lede">'+esc(t("backend_lede"))+'</p>'+
     '<p class="escrow-note">'+esc(t("backend_disclaimer"))+'</p>'+
+    renderBackendLive()+
 
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("backend_scope_in_heading"))+'</h2>'+
     '<ul style="color:var(--ink-soft);max-width:760px;">'+scopeInHtml+'</ul>'+
@@ -7078,6 +7576,41 @@ var STACK_SERVICE_MAP = "web (Next.js, TS)\n" +
   "       └─ qa-portal (raw → wiki → outputs, цитати й статус перевірки)\n" +
   "PostgreSQL 18 + PostGIS · Redis · Kafka · ClickHouse · S3-сумісне сховище документів";
 
+
+/* Рішення стека проти того, що реально лежить у репозиторії. Рядки пишуться вручну за станом
+ * репозиторію на дату нижче; якщо стан зміниться, таблиця застаріє - тому дата в заголовку. */
+var STACK_ACTUAL_DATE = "2026-09-26";
+var STACK_ACTUAL = [
+  {layer:"Frontend", decision:"Next.js + React + TypeScript", actual:"Один файл index.html, ванільний JS, без збірки й без npm", state:"absent"},
+  {layer:"Основний backend", decision:"NestJS на Node.js 24", actual:"Node.js без залежностей (server/, node:http): погода, кордони, довідник, Q&A, верифікація, читальний /api/v1", state:"partial"},
+  {layer:"Пошук маршрутів (SEARCH)", decision:"Окремий сервіс на Go", actual:"Рушій на JavaScript (search/engine.js) у браузері й Node: 16 тестів, відповіді валідні за схемою POST_DRONE. Не сервіс і не Go", state:"partial"},
+  {layer:"СУБД", decision:"PostgreSQL 18 + PostGIS", actual:"Міграції, довідники, імпорт 10 773 заявок і приймальні тести проходять на живій БД у CI. Розгорнутої бази, до якої підключено сайт, немає", state:"partial"},
+  {layer:"Верифікація контрагентів", decision:"Сервіс + агрегатори + WORM-сховище", actual:"Три живі джерела (VIES, Biała lista, KRS), правила рішення, докази з SHA-256 у локальних файлах (не WORM)", state:"partial"},
+  {layer:"CI/CD і контракти", decision:"GitHub Actions + JSON Schema + мутаційні тести", actual:"Працює: 10 обов'язкових перевірок у правилі гілки main, схеми, мутаційні самотести", state:"real"},
+  {layer:"Python для інструментів", decision:"Python (FastAPI, pandas) для ML", actual:"Python використано лише для CI-перевірок та імпортера; ML-сервісу немає", state:"partial"},
+  {layer:"Redis 7", decision:"Кеш, rate limit, ідемпотентність", actual:"Немає. Ідемпотентність верифікації тримається в пам'яті процесу", state:"absent"},
+  {layer:"Kafka / Redpanda", decision:"Шина подій", actual:"Немає", state:"absent"},
+  {layer:"ClickHouse, Metabase", decision:"Аналітика", actual:"Немає", state:"absent"},
+  {layer:"Kubernetes, Terraform", decision:"Інфраструктура", actual:"Немає", state:"absent"},
+  {layer:"Web3-шар", decision:"Solidity + Foundry", actual:"Немає", state:"absent"}
+];
+var STACK_ACTUAL_TEXT = {
+  uk:{h:"Рішення проти фактичного стану репозиторію", lede:"Станом на", layer:"Шар", decision:"Рішення", actual:"Фактично в репозиторії", st:"Стан", real:"працює", partial:"частково", absent:"немає"},
+  en:{h:"Decisions versus the repository's actual state", lede:"As of", layer:"Layer", decision:"Decision", actual:"Actually in the repository", st:"State", real:"working", partial:"partial", absent:"absent"},
+  pl:{h:"Decyzje a faktyczny stan repozytorium", lede:"Stan na", layer:"Warstwa", decision:"Decyzja", actual:"Faktycznie w repozytorium", st:"Stan", real:"działa", partial:"częściowo", absent:"brak"},
+  de:{h:"Entscheidungen gegenüber dem tatsächlichen Repository-Stand", lede:"Stand", layer:"Schicht", decision:"Entscheidung", actual:"Tatsächlich im Repository", st:"Stand", real:"funktioniert", partial:"teilweise", absent:"fehlt"}
+};
+function satx(k){ var d=STACK_ACTUAL_TEXT[state.lang]||STACK_ACTUAL_TEXT.en; return d[k]!==undefined? d[k] : STACK_ACTUAL_TEXT.en[k]; }
+function renderStackActual(){
+  var cls = {real:"pass", partial:"attention", absent:"unavailable"};
+  var rows = STACK_ACTUAL.map(function(r){
+    return '<tr><td>'+esc(r.layer)+'</td><td>'+esc(r.decision)+'</td><td>'+esc(r.actual)+'</td><td><span class="vl-status '+cls[r.state]+'">'+esc(satx(r.state))+'</span></td></tr>';
+  }).join("");
+  return '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(satx("h"))+'</h2>'+
+    '<p style="color:var(--ink-soft);max-width:760px;">'+esc(satx("lede"))+' '+esc(STACK_ACTUAL_DATE)+'.</p>'+
+    '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr><th>'+esc(satx("layer"))+'</th><th>'+esc(satx("decision"))+'</th><th>'+esc(satx("actual"))+'</th><th>'+esc(satx("st"))+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+
 function renderStack(){
   var decisionsHtml = STACK_DECISIONS.map(function(d){
     return '<tr><td>'+esc(d.layer)+'</td><td><code>'+esc(d.choice)+'</code></td><td>'+esc(d.lang)+'</td><td>'+esc(d.why)+'</td></tr>';
@@ -7094,6 +7627,7 @@ function renderStack(){
     '<p class="eyebrow">'+esc(t("services_title"))+'</p><h1>'+esc(t("stack_title"))+'</h1>'+
     '<p class="lede">'+esc(t("stack_lede"))+'</p>'+
     '<p class="escrow-note">'+esc(t("stack_disclaimer"))+'</p>'+
+    renderStackActual()+
 
     '<h2 style="margin-top:30px;font-size:1.2rem;">'+esc(t("stack_decisions_heading"))+'</h2>'+
     '<div class="bpmn-diagram" style="padding:0;"><table class="verify-table"><thead><tr>'+
@@ -8021,6 +8555,17 @@ function bindEvents(){
       renderApp();
     });
   });
+  var backendLiveRun=document.getElementById("backendLiveRun");
+  if(backendLiveRun) backendLiveRun.addEventListener("click", runBackendLive);
+
+  var verifyLiveRun=document.getElementById("verifyLiveRun");
+  if(verifyLiveRun) verifyLiveRun.addEventListener("click", runVerifyLive);
+  var verifyLiveCountry=app.querySelector('#verifyLiveForm [name="vlcountry"]');
+  if(verifyLiveCountry) verifyLiveCountry.addEventListener("change", function(){ readVerifyLiveForm(); renderApp(); });
+
+  var searchLiveRun=document.getElementById("searchLiveRun");
+  if(searchLiveRun) searchLiveRun.addEventListener("click", runSearchLive);
+
   var weatherShowBtn=document.getElementById("weatherShowBtn");
   if(weatherShowBtn){
     weatherShowBtn.addEventListener("click", function(){

@@ -35,6 +35,9 @@
 <path d="M 1246 450 L 1280 450 L 1280 120 L 1320 120" fill="none" stroke="#1c2b3a" stroke-width="1.5" marker-end="url(#arr)"/>
 <rect x="1253" y="431" width="20" height="18" rx="3" fill="#ffffff" opacity="0.93"/>
 <text x="1263" y="443.5" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#44586d" text-anchor="middle">ні</text>
+<path d="M 1400 83 L 1400 72 L 480 72 L 480 101" fill="none" stroke="#1c2b3a" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="883" y="50" width="114" height="32" rx="3" fill="#ffffff" opacity="0.93"/>
+<text x="940" y="62.5" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#44586d" text-anchor="middle">наступний інтервал</text><text x="940" y="76.5" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#44586d" text-anchor="middle">моніторингу</text>
 <path d="M 970 476 L 970 570 L 1020 570" fill="none" stroke="#1c2b3a" stroke-width="1.5" marker-end="url(#arr)"/>
 <rect x="976" y="513" width="20" height="18" rx="3" fill="#ffffff" opacity="0.93"/>
 <text x="986" y="525.5" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="600" fill="#44586d" text-anchor="middle">ні</text>

@@ -1,0 +1,22 @@
+{
+  "isValid" : true,
+  "requestDate" : "2026-09-25T22:17:26.389Z",
+  "userError" : "VALID",
+  "name" : "POLSKIE KOLEJE PAŃSTWOWE SPÓŁKA AKCYJNA",
+  "address" : "ALEJE JEROZOLIMSKIE 142A\n02-305 WARSZAWA",
+  "requestIdentifier" : "",
+  "originalVatNumber" : "5250000251",
+  "vatNumber" : "5250000251",
+  "viesApproximate" : {
+    "name" : "---",
+    "street" : "---",
+    "postalCode" : "---",
+    "city" : "---",
+    "companyType" : "---",
+    "matchName" : 3,
+    "matchStreet" : 3,
+    "matchPostalCode" : 3,
+    "matchCity" : 3,
+    "matchCompanyType" : 3
+  }
+}

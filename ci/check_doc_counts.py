@@ -271,7 +271,10 @@ def d12_page_mirrors(f, fails):
         a, b = os.path.join(ROOT, mirror), os.path.join(ROOT, live)
         if not (os.path.exists(a) and os.path.exists(b)):
             continue
-        if open(a, "rb").read() != open(b, "rb").read():
+        # CRLF у робочому дереві Windows (autocrlf) не є розбіжністю: у git обидва файли з LF
+        same = (open(a, "rb").read().replace(b"\r\n", b"\n") ==
+                open(b, "rb").read().replace(b"\r\n", b"\n"))
+        if not same:
             fails.append(f"D12: {mirror} розійшовся з {live}")
 
 

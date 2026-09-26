@@ -1,0 +1,40 @@
+{
+ "odpis": {
+  "rodzaj": "Aktualny",
+  "naglowekA": {
+   "rejestr": "RejP",
+   "numerKRS": "0000019193",
+   "dataCzasOdpisu": "26.09.2026 00:17:26",
+   "stanZDnia": "27.08.2026",
+   "dataRejestracjiWKRS": "11.06.2001",
+   "numerOstatniegoWpisu": 215,
+   "dataOstatniegoWpisu": "27.08.2026",
+   "sygnaturaAktSprawyDotyczacejOstatniegoWpisu": "WA.XII NS-REJ.KRS/49730/26/357",
+   "oznaczenieSaduDokonujacegoOstatniegoWpisu": "SĄD REJONOWY DLA M.ST. WARSZAWY W WARSZAWIE, XII WYDZIAŁ GOSPODARCZY KRAJOWEGO REJESTRU SĄDOWEGO",
+   "stanPozycji": 1
+  },
+  "dane": {
+   "dzial1": {
+    "danePodmiotu": {
+     "formaPrawna": "SPÓŁKA AKCYJNA",
+     "identyfikatory": {
+      "regon": "00012680100000",
+      "nip": "5250000251"
+     },
+     "nazwa": "POLSKIE KOLEJE PAŃSTWOWE SPÓŁKA AKCYJNA",
+     "daneOWczesniejszejRejestracji": {
+      "nazwaPoprzedniegoRejestru": "RHB",
+      "numerWPoprzednimRejestrze": "63218",
+      "sadProwadzacyRejestr": "SĄD REJONOWY DLA M. ST. WARSZAWY -SĄD GOSPODARCZY -XVI WYDZIAŁ REJESTROWY"
+     },
+     "czyProwadziDzialalnoscZInnymiPodmiotami": false,
+     "czyPosiadaStatusOPP": false
+    }
+   },
+   "dzial6": {
+    "polaczeniePodzialPrzeksztalcenie": "(скорочено в фікстурі)"
+   }
+  }
+ },
+ "_fixture_note": "Живий витяг KRS 0000019193, скорочений до полів, які читає коннектор (server/verification/sources.js)"
+}
