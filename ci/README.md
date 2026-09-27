@@ -9,8 +9,9 @@
 | `github-actions-contract.yml` | GitHub Actions: job `schema`, job `i18n`, job `proto` + gate-job `contract-gate` |
 | `gitlab-ci-contract.yml` | GitLab CI: ті самі три job через `include: local`; у GitLab обовʼязковість задається не переліком перевірок, а налаштуванням **Pipelines must succeed** для merge request |
 | `ruleset-contract.json` | Правило захисту гілки з десятьма обовʼязковими перевірками: `contract-gate`, `Схема і сценарії T16-T27`, `Валютні та мовні сценарії C1-C13, L1-L12`, `Контракт proto модуля SEARCH`, `UI-сценарії U1-U8 вибору виду транспорту`, `backend-gate`, `Контракт бекенду Спринту 0`, `Приймальні тести БД Спринту 0`, `Контракт модуля верифікації`, `Інваріанти верифікації` |
-| `check_doc_counts.py` | Прогін D1–D8: числа й назви в документах ТЗ звірені з правилом гілки, конвеєрами та списками сценаріїв прогонів, а блок `pull_request` правила — з його описом у ТЗ (D8); 9 мутацій зістареної документації |
+| `check_doc_counts.py` | Прогін D1–D12: числа й назви в документах ТЗ звірені з правилом гілки, конвеєрами та списками сценаріїв прогонів, блок `pull_request` правила — з його описом у ТЗ (D8), а сторінка index.html — з правилом і живими артефактами (D9–D12); 14 мутацій зістареної документації |
 | `check_ruleset.py` | Прогін R1–R14: узгодженість правила гілки з конвеєрами й дзеркал із робочими файлами, 35 мутацій |
+| `check_change_filters.py` | Прогін C1–C2: `changes:`-фільтри обох конвеєрів (GitHub bash-регулярка, GitLab `rules: changes:`) справді покривають шляхи, які читають їхні job-и — за реальним деревом `git ls-files`, а не описом фільтра; 6 мутацій звуженого фільтра |
 | `check_live_ruleset.py` | Звіряння живого правила в GitHub із файлом `ruleset-contract.json`: перевірки, винятки, вимога схвалення. Потребує `gh` і токена з правом читання налаштувань, тому не входить до обовʼязкових перевірок |
 | `proto_mutation.py` | Мутаційний прогін proto-контракту: 12 навмисно зламаних копій, по кожній із перевірок P1–P6 |
 | `proto_breaking.py` | Сумісність `transatlas.search.v1` із базовою гілкою (B1–B7), без `buf` |
@@ -104,6 +105,8 @@ python schemas/check_schema.py
 python schemas/validate_schema.py schemas/i18n.schema.json
 python schemas/check_i18n.py
 python ci/check_ruleset.py
+python ci/check_change_filters.py
+python ci/check_change_filters.py --self-test
 python ci/check_doc_counts.py
 python ci/check_doc_counts.py --self-test
 python schemas/check_proto_contract.py
