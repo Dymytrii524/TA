@@ -1,6 +1,6 @@
 # Trans-Atlas Web3 Sprint 0
 
-Єдиний пакет: ТЗ, state machine, OpenAPI, SQL, виконуваний escrow-контракт і перевірки Foundry. Версія 0.1.0 від 22.09.2026, лише для локальної мережі та підготовки до Polygon Amoy.
+Єдиний пакет: ТЗ, state machine, OpenAPI, SQL, виконуваний escrow-контракт і перевірки Foundry. Оновлення F05-B/F07-A від 29.09.2026, terms/API V2, лише для локальних тестів та підготовки до Polygon Amoy.
 
 **Не для реальних коштів.** Контракт не проходив незалежний аудит; mainnet заборонено в конструкторі. F05 додає виконуваний wallet HTTP handler та пілотний reconciliation; production auth/indexer, UI-гаманець і зовнішнє розгортання не входять до виконаної реалізації.
 
@@ -15,6 +15,8 @@
 | `docs/p2-fixes.pplx.md` | F04 і скінченність F06: зміни, тести та межі |
 | `docs/c03-fix.pplx.md` | C03: строгий формат calldata, Python/JavaScript регресії |
 | `docs/f05-b-implementation.md` | F05-B: wallet API, claim-lots/allocations, перевірка RPC та межі production |
+| `docs/f07-a-implementation.md` | F07-A: 48h review window, terms/ABI V2, міграція і регресії |
+| `db/006_review_window.sql` | Після 005: порожня frozen history, terms V2, незмінний evidence-bound review clock |
 | `runtime/wallet.mjs` | Fail-closed HTTP handler і виконуваний reconciliation; auth adapter обов’язковий |
 | `db/005_wallet_accounting.sql` | Після 004: typed events/intents, permissions, immutable subledger snapshots |
 | `docs/runbook.md` | Локальний запуск, підготовка Amoy, інтеграція в TA |
@@ -38,6 +40,7 @@ node tests/db.test.mjs
 node tests/db-p1.test.mjs
 node tests/db-p2.test.mjs
 node tests/wallet.test.mjs
+node tests/review.test.mjs
 python tools/check_api.py
 node tests/amoy-config.test.mjs
 ```

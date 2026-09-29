@@ -9,6 +9,12 @@ import json
 root = Path(__file__).resolve().parents[1]
 source = (root / "src/TransAtlasEscrow.sol").read_text()
 cases = [
+    ("review-clock", "if (block.timestamp > d.reviewBy) revert Deadline();",
+     "if (block.timestamp > d.deliveryBy) revert Deadline();", "testF07DeadlineDeliveryGetsFull48Hours"),
+    ("delivered-overdue", "d.state == State.Delivered ? d.reviewBy : d.deliveryBy",
+     "d.deliveryBy", "testF07DeliveredCannotEscalateOnOldDeadline"),
+    ("review-duration", "uint64 public constant reviewPeriod = 48 hours;",
+     "uint64 public constant reviewPeriod = 24 hours;", "testF07DeadlineDeliveryGetsFull48Hours"),
     ("payer-authority", "if (msg.sender != d.payer) revert Forbidden();", "",
      "testOnlyPayerApproves"),
     ("challenge-window", "if (block.timestamp < d.releaseAt) revert Deadline();", "",

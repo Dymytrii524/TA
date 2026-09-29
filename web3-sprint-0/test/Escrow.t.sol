@@ -27,7 +27,7 @@ contract EscrowTest is TestBase {
         vm.prank(P); t.approve(address(e),type(uint256).max);
     }
     function fund() internal {
-        vm.prank(P); e.create(NONCE,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        vm.prank(P); e.create(NONCE,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
     }
     function active() internal {
         fund(); bytes32 terms = e.getDeal(ID).termsHash;
@@ -119,9 +119,9 @@ contract EscrowTest is TestBase {
     }
     function testZeroAndTooLargeAmounts() public {
         vm.expectRevert(E.Invalid.selector); vm.prank(P);
-        e.create(NONCE,C,0,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        e.create(NONCE,C,0,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
         vm.expectRevert(E.Invalid.selector); vm.prank(P);
-        e.create(NONCE,C,10001e6,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        e.create(NONCE,C,10001e6,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
     }
     function testFeeTokenRejectedAtomically() public {
         t.setFee(true); vm.expectRevert(E.Invalid.selector); fund();
@@ -175,7 +175,7 @@ contract EscrowTest is TestBase {
     function testFuzzConservation(uint96 raw,uint96 split) public {
         uint256 amount=uint256(raw)%10000e6+1;
         uint256 refund=uint256(split)%(amount+1);
-        vm.prank(P); e.create(NONCE,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        vm.prank(P); e.create(NONCE,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
         bytes32 terms=e.getDeal(ID).termsHash;
         vm.prank(C); e.accept(ID,terms); vm.prank(P); e.dispute(ID,COM);
         vm.prank(A); e.resolve(ID,refund);

@@ -1,0 +1,28 @@
+PASS local chain guard
+PASS real contract deployment on Anvil
+PASS unconfirmed receipt does not project
+PASS actual pre-finality reorg rejected
+PASS finalized funding projection
+PASS P1 payer-scoped ID and termsHash agree between JavaScript and Solidity
+PASS P1 real Funded/StateChanged logs and finalized getDeal match frozen SQL terms
+PASS duplicate receipt idempotent
+PASS unauthorized transaction simulation rejected
+PASS F07 orphan delivery does not publish a review clock
+PASS carrier delivery does not pay
+PASS F07 real deadline delivery ABI -> SQL -> API clock is 48 hours
+PASS F07 versioned approval calldata succeeds after deliveryBy
+PASS challenge window enforced over RPC
+PASS settlement is claim, not paid status
+PASS failed transfer preserves claim
+PASS withdraw and reconciliation
+PASS repeated settlement rejected over RPC
+PASS receipt replay after observer restart
+{
+  "network": "LOCAL ANVIL ONLY",
+  "escrow": "0x36C02dA8a0983159322a80FFE9F24b1acfF8B570",
+  "token": "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
+  "settlementTx": "0x939a5c6af524273166ae03e031879b53c68ef22153b243715d9d41fe300450e1",
+  "withdrawalTx": "0x29015f073f712bdbbb2945365c2b99c69366dffc47e58d32b921a828005dae27",
+  "checks": 19,
+  "amoyDeployed": false
+}

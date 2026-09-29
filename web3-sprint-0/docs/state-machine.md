@@ -28,15 +28,16 @@ Settled -> claimable[beneficiary] -> withdraw() -> ERC20 transfer
 
 | Виклик | Звідки → куди | Хто | Точна умова |
 |---|---|---|---|
-| create | None → Funded | Платник | Унікальний ненульовий id, exact deposit, `now < acceptBy < deliveryBy`, ненульовий commitment |
+| create | None → Funded | Платник | Ненульовий payer-local nonce, derived ID, `termsVersion=2`, exact deposit, `now < acceptBy < deliveryBy`, ненульовий commitment; без uint64 overflow строків |
 | accept | Funded → Active | Перевізник | `now <= acceptBy`, expectedTerms дорівнює termsHash |
 | cancelUnaccepted | Funded → Settled | Перевізник | Відмова будь-коли до прийняття; весь депозит платнику |
 | cancelUnaccepted | Funded → Settled | Платник | Лише `now > acceptBy`; весь депозит платнику |
-| submitDelivery | Active → Delivered | Перевізник | `now <= deliveryBy`, ненульовий evidence commitment |
-| approveDelivery | Delivered → Accepted | Платник | `now <= deliveryBy`, точний expectedEvidence; releaseAt = now + challengePeriod |
+| submitDelivery | Active → Delivered | Перевізник | `now <= deliveryBy`, ненульовий evidence commitment; submittedAt = now, reviewBy = now + 48h |
+| approveDelivery | Delivered → Accepted | Платник | `now <= reviewBy`, точний expectedEvidence; releaseAt = now + challengePeriod |
 | dispute | Active/Delivered → Disputed | Будь-яка сторона | Ненульовий reason commitment |
 | dispute | Accepted → Disputed | Будь-яка сторона | Лише `now < releaseAt`; ненульовий reason commitment |
-| escalateOverdue | Active/Delivered → Disputed | Будь-хто | Лише `now > deliveryBy`; гроші не розблоковуються |
+| escalateOverdue | Active → Disputed | Будь-хто | Лише `now > deliveryBy`; гроші не розблоковуються |
+| escalateOverdue | Delivered → Disputed | Будь-хто | Лише `now > reviewBy`, не deliveryBy; гроші не розблоковуються |
 | finalize | Accepted → Settled | Будь-хто | `now >= releaseAt`; усе перевізнику |
 | resolve | Disputed → Settled | Основний арбітр | `now < disputedAt + arbitrationPeriod`; payerAmount ≤ deposit |
 | resolve | Disputed → Settled | Резервний арбітр | `now >= disputedAt + arbitrationPeriod`; payerAmount ≤ deposit |
@@ -47,17 +48,18 @@ Settled -> claimable[beneficiary] -> withdraw() -> ERC20 transfer
 
 ## Параметри пілота
 
+- **Перевірка доставки:** погоджені 48 календарних годин = 172800 секунд від канонічного on-chain submitDelivery; включено в terms V2.
 - **Challenge window:** 86 400 секунд, у тестах і шаблоні Amoy.
 - **Основний арбітраж:** 604 800 секунд після відкриття спору, далі повноваження резервного арбітра.
 - **Ліміт угоди:** 10 000 тестових USDC, або `10000000000` atomic.
 - **Сукупний ліміт:** 100 000 тестових USDC, включаючи locked та невиведені claimable.
 - **Одержувачі:** тільки зафіксовані payer/carrier; арбітр не може вказати довільну адресу.
 
-Ці числа є запропонованими параметрами тестового пілота, не погодженими комерційними умовами. Зміна незмінних параметрів потребує нового розгортання контракту.
+Окрім явно погоджених 48 годин перевірки, ці числа є шаблонними параметрами тестового пілота. Зміна незмінних параметрів потребує окремо дозволеної нової версії контракту; розгортання цим пакетом не виконується.
 
 ## Важливі крайові випадки
 
-- **Відсутність відповіді платника:** Delivered не перетворюється автоматично на payout; після deliveryBy будь-хто відкриває спір.
+- **Відсутність відповіді платника:** Delivered не перетворюється автоматично на payout; лише після reviewBy будь-хто може відкрити спір. На самій reviewBy approval ще дозволене.
 - **Непрацездатний резервний арбітр:** кошти можуть залишитися заблокованими безстроково; автоматичного третього рівня або mutual-resolution немає.
 - **Відмова токена у transfer:** withdraw відкочується повністю, claim зберігається; це не гарантує доступність коштів, доки емітент обмежує адресу.
 - **Випадковий ERC20 переказ:** не створює права вимоги; rescue немає, тому сторонні внески можуть бути невивідними.

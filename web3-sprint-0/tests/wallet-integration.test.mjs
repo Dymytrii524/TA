@@ -32,7 +32,7 @@ try{
   db=fixture.db;const t=fixture.t;
   await db.query('INSERT INTO web3.wallet_permissions VALUES($1,$2,true)',[u(4),u(1)]);
   await send(token.mint(addr[0],5000000000n));await send(token.approve(contract,5000000000n));
-  const fund=async v=>send(escrow.create(v.nonce,addr[1],v.amount,v.acceptBy,v.deliveryBy,v.agreement));
+  const fund=async v=>send(escrow.create(v.nonce,addr[1],v.amount,v.acceptBy,v.deliveryBy,v.agreement,2));
   await fund(t);await send(escrow.connect(signers[1]).cancelUnaccepted(t.id));
   const t2={...t,nonce:hash('wallet-second'),amount:'500000000'};
   t2.id=deriveEscrowId(t2.chainId,t2.contract,t2.payer,t2.nonce);t2.termsHash=deriveTermsHash(t2);

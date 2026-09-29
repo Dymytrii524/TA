@@ -9,6 +9,7 @@
     "test:db:p1": "node tests/db-p1.test.mjs",
     "test:db:p2": "node tests/db-p2.test.mjs",
     "test:wallet": "node tests/wallet.test.mjs",
+    "test:review": "node tests/review.test.mjs",
     "test:wallet:integration": "node tests/wallet-integration.test.mjs",
     "test:integration": "node tests/integration.test.mjs",
     "test:api": "python tools/check_api.py",

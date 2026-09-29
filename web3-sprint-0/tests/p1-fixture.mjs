@@ -5,7 +5,7 @@ import {deriveEscrowId,deriveTermsHash} from '../tools/escrow-identity.mjs';
 export const h=n=>'0x'+BigInt(n).toString(16).padStart(64,'0');
 export const a=n=>'0x'+BigInt(n).toString(16).padStart(40,'0');
 export const u=n=>`00000000-0000-4000-8000-${n.toString().padStart(12,'0')}`;
-export async function createFixture(overrides={}, {applyP2=true,applyWallet=applyP2}={}){
+export async function createFixture(overrides={}, {applyP2=true,applyWallet=applyP2,applyReview=applyWallet}={}){
   const db=new PGlite();
   try {
     await db.exec(readFileSync('db/001_web3.sql','utf8'));
@@ -16,6 +16,7 @@ export async function createFixture(overrides={}, {applyP2=true,applyWallet=appl
     // Opt out only to construct pre-004 historical migration fixtures.
     if(applyP2) await db.exec(readFileSync('db/004_p2_chain_and_finite.sql','utf8'));
     if(applyWallet) await db.exec(readFileSync('db/005_wallet_accounting.sql','utf8'));
+    if(applyReview) await db.exec(readFileSync('db/006_review_window.sql','utf8'));
     const now=Math.floor(Date.now()/1000);
     const t={chainId:31337,contract:a(2),token:a(1),payer:a(3),carrier:a(4),
       arbiter:a(5),backup:a(6),challenge:86400,arbitration:604800,

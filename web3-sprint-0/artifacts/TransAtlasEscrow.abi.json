@@ -60,6 +60,19 @@
   },
   {
     "type": "function",
+    "name": "TERMS_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "accept",
     "inputs": [
       {
@@ -224,6 +237,11 @@
         "name": "agreementCommitment",
         "type": "bytes32",
         "internalType": "bytes32"
+      },
+      {
+        "name": "termsVersion",
+        "type": "uint16",
+        "internalType": "uint16"
       }
     ],
     "outputs": [
@@ -368,6 +386,16 @@
             "name": "evidence",
             "type": "bytes32",
             "internalType": "bytes32"
+          },
+          {
+            "name": "deliverySubmittedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "reviewBy",
+            "type": "uint64",
+            "internalType": "uint64"
           }
         ]
       }
@@ -456,6 +484,19 @@
     ],
     "outputs": [],
     "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "reviewPeriod",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "stateMutability": "view"
   },
   {
     "type": "function",
@@ -600,6 +641,18 @@
         "type": "bytes32",
         "indexed": false,
         "internalType": "bytes32"
+      },
+      {
+        "name": "submittedAt",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "reviewBy",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
       }
     ],
     "anonymous": false

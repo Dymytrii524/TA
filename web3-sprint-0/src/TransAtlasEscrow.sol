@@ -22,6 +22,8 @@ contract TransAtlasEscrow is ReentrancyGuard {
         State state;
         bytes32 termsHash;
         bytes32 evidence;
+        uint64 deliverySubmittedAt;
+        uint64 reviewBy;
     }
 
     IERC20 public immutable token;
@@ -33,6 +35,8 @@ contract TransAtlasEscrow is ReentrancyGuard {
     uint256 public immutable maxLiability;
     uint64 public immutable challengePeriod;
     uint64 public immutable arbitrationPeriod;
+    uint64 public constant reviewPeriod = 48 hours;
+    bytes32 public constant TERMS_DOMAIN = keccak256("TRANS_ATLAS_TERMS_V2");
     bool public intakePaused;
     uint256 public totalDeposited;
     uint256 public totalWithdrawn;
@@ -52,7 +56,7 @@ contract TransAtlasEscrow is ReentrancyGuard {
     event Funded(bytes32 indexed id, address indexed payer, address indexed carrier,
         uint256 amount, bytes32 termsHash);
     event StateChanged(bytes32 indexed id, State state);
-    event EvidenceSubmitted(bytes32 indexed id, bytes32 commitment);
+    event EvidenceSubmitted(bytes32 indexed id, bytes32 commitment, uint64 submittedAt, uint64 reviewBy);
     event Accepted(bytes32 indexed id, uint64 releaseAt);
     event Disputed(bytes32 indexed id, bytes32 reasonCommitment);
     event Settled(bytes32 indexed id, uint256 payerAmount, uint256 carrierAmount);
@@ -105,25 +109,34 @@ contract TransAtlasEscrow is ReentrancyGuard {
 
     function create(
         bytes32 nonce, address carrier, uint256 amount, uint64 acceptBy,
-        uint64 deliveryBy, bytes32 agreementCommitment
+        uint64 deliveryBy, bytes32 agreementCommitment, uint16 termsVersion
     ) external nonReentrant correctChain returns (bytes32 id) {
         if (intakePaused) revert Paused();
         id = deriveEscrowId(msg.sender, nonce);
-        if (nonce == bytes32(0) || _deals[id].state != State.None
+        if (termsVersion != 2 || nonce == bytes32(0) || _deals[id].state != State.None
             || carrier == address(0) || carrier == msg.sender || carrier == address(this)
             || carrier == arbiter || carrier == backupArbiter
             || msg.sender == arbiter || msg.sender == backupArbiter
             || amount == 0 || amount > maxPerDeal
             || locked + totalClaimable + amount > maxLiability
             || acceptBy <= block.timestamp || deliveryBy <= acceptBy
+            || uint256(deliveryBy) + reviewPeriod + challengePeriod > type(uint64).max
             || agreementCommitment == bytes32(0)) revert Invalid();
-        bytes32 terms = keccak256(abi.encode(
-            chainId, address(this), id, msg.sender, carrier, address(token), amount,
-            acceptBy, deliveryBy, agreementCommitment, arbiter, backupArbiter,
-            challengePeriod, arbitrationPeriod
+        // All fields are static ABI types: concatenated encodings are identical
+        // to one abi.encode, without requiring a different compiler pipeline.
+        bytes32 terms = keccak256(bytes.concat(
+            abi.encode(TERMS_DOMAIN, chainId, address(this), id, msg.sender, carrier, address(token), amount),
+            abi.encode(acceptBy, deliveryBy, agreementCommitment, arbiter, backupArbiter,
+                challengePeriod, arbitrationPeriod, reviewPeriod)
         ));
-        _deals[id] = Deal(msg.sender, carrier, amount, acceptBy, deliveryBy,
-            0, 0, State.Funded, terms, bytes32(0));
+        Deal storage created = _deals[id];
+        created.payer = msg.sender;
+        created.carrier = carrier;
+        created.amount = amount;
+        created.acceptBy = acceptBy;
+        created.deliveryBy = deliveryBy;
+        created.state = State.Funded;
+        created.termsHash = terms;
         locked += amount;
         totalDeposited += amount;
         uint256 beforeBalance = token.balanceOf(address(this));
@@ -160,8 +173,10 @@ contract TransAtlasEscrow is ReentrancyGuard {
         if (block.timestamp > d.deliveryBy) revert Deadline();
         if (evidenceCommitment == bytes32(0)) revert Invalid();
         d.evidence = evidenceCommitment;
+        d.deliverySubmittedAt = uint64(block.timestamp);
+        d.reviewBy = uint64(block.timestamp + reviewPeriod);
         d.state = State.Delivered;
-        emit EvidenceSubmitted(id, evidenceCommitment);
+        emit EvidenceSubmitted(id, evidenceCommitment, d.deliverySubmittedAt, d.reviewBy);
         emit StateChanged(id, d.state);
     }
 
@@ -169,7 +184,7 @@ contract TransAtlasEscrow is ReentrancyGuard {
         Deal storage d = _deals[id];
         if (msg.sender != d.payer) revert Forbidden();
         if (d.state != State.Delivered) revert WrongState();
-        if (block.timestamp > d.deliveryBy) revert Deadline();
+        if (block.timestamp > d.reviewBy) revert Deadline();
         if (expectedEvidence != d.evidence) revert Invalid();
         d.releaseAt = uint64(block.timestamp) + challengePeriod;
         d.state = State.Accepted;
@@ -191,7 +206,8 @@ contract TransAtlasEscrow is ReentrancyGuard {
     function escalateOverdue(bytes32 id) external correctChain {
         Deal storage d = _deals[id];
         if (d.state != State.Active && d.state != State.Delivered) revert WrongState();
-        if (block.timestamp <= d.deliveryBy) revert Deadline();
+        uint64 deadline = d.state == State.Delivered ? d.reviewBy : d.deliveryBy;
+        if (block.timestamp <= deadline) revert Deadline();
         _dispute(id, d, keccak256("OVERDUE"));
     }
 
