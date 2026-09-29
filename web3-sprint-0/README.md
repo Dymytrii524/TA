@@ -19,7 +19,6 @@
 | `api/openapi.yaml` | Контракт HTTP API 3.1, не сервер |
 | `db/001_web3.sql` → `002_ta_foreign_keys.sql` → `003_p1_integrity.sql` → `004_p2_chain_and_finite.sql` | Обов’язковий порядок міграцій; snapshot/funding, same-chain FK і скінченність price/FX |
 | `test/`, `tests/` | Solidity, SQL, API-конфігурація й локальні RPC-перевірки |
-| `ci/web3.yml` | Копія additive workflow `.github/workflows/web3.yml` |
 | `config/amoy.json` | Конфігурація testnet із незаповненими ролями |
 | `artifacts/` | ABI та журнали фактичних запусків |
 

@@ -1,5 +1,5 @@
-# Proposed additive workflow. Copy to .github/workflows/web3.yml only after review.
-# Existing checks/ruleset remain unchanged. No path filter, secrets or deployment.
+# Робочий конвеєр Web3 Sprint 0. Дзеркало — ci/web3.yml (правило R14 стежить за збігом).
+# Без фільтрів paths, без секретів і без розгортання.
 name: Web3 Sprint 0
 on:
   pull_request:
@@ -59,6 +59,7 @@ jobs:
         working-directory: .
     steps:
       - name: Fail closed including skipped or cancelled tests
-        env:
-          RESULT: ${{ needs.web3-tests.result }}
-        run: test "$RESULT" = success
+        run: |
+          result="${{ needs.web3-tests.result }}"
+          echo "job web3-tests: $result"
+          test "$result" = success
