@@ -2,7 +2,7 @@
 
 Єдиний пакет: ТЗ, state machine, OpenAPI, SQL, виконуваний escrow-контракт і перевірки Foundry. Версія 0.1.0 від 22.09.2026, лише для локальної мережі та підготовки до Polygon Amoy.
 
-**Не для реальних коштів.** Контракт не проходив незалежний аудит; mainnet заборонено в конструкторі. HTTP-сервер, production-індексатор, UI-гаманець і зовнішнє розгортання не входять до виконаної реалізації.
+**Не для реальних коштів.** Контракт не проходив незалежний аудит; mainnet заборонено в конструкторі. F05 додає виконуваний wallet HTTP handler та пілотний reconciliation; production auth/indexer, UI-гаманець і зовнішнє розгортання не входять до виконаної реалізації.
 
 ## Що відкривати
 
@@ -14,6 +14,9 @@
 | `docs/p1-fixes.pplx.md` | Історичний звіт виправлень F01–F03 |
 | `docs/p2-fixes.pplx.md` | F04 і скінченність F06: зміни, тести та межі |
 | `docs/c03-fix.pplx.md` | C03: строгий формат calldata, Python/JavaScript регресії |
+| `docs/f05-b-implementation.md` | F05-B: wallet API, claim-lots/allocations, перевірка RPC та межі production |
+| `runtime/wallet.mjs` | Fail-closed HTTP handler і виконуваний reconciliation; auth adapter обов’язковий |
+| `db/005_wallet_accounting.sql` | Після 004: typed events/intents, permissions, immutable subledger snapshots |
 | `docs/runbook.md` | Локальний запуск, підготовка Amoy, інтеграція в TA |
 | `src/TransAtlasEscrow.sol` | Тестовий escrow без комісії та upgrade |
 | `api/openapi.yaml` | Контракт HTTP API 3.1, не сервер |
@@ -34,6 +37,7 @@ python tools/mutations.py
 node tests/db.test.mjs
 node tests/db-p1.test.mjs
 node tests/db-p2.test.mjs
+node tests/wallet.test.mjs
 python tools/check_api.py
 node tests/amoy-config.test.mjs
 ```
@@ -46,6 +50,7 @@ node tools/foundry.mjs anvil --host 127.0.0.1 --port 8545 --chain-id 31337 --sil
 # Термінал B
 node tools/wait_rpc.mjs
 node tests/integration.test.mjs
+node tests/wallet-integration.test.mjs
 ```
 
 Не використовуйте `node_modules/@foundry-rs/forge/bin.mjs` напряму: під час перевірки його npm-обгортка 1.7.1 повертала код 0 після провалу Forge. Власна `tools/foundry.mjs` запускає закріплений нативний бінарник і передає справжній код завершення; mutation-тести перевіряють цей захист.

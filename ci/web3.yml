@@ -40,6 +40,7 @@ jobs:
           node tests/db.test.mjs
           node tests/db-p1.test.mjs
           node tests/db-p2.test.mjs
+          node tests/wallet.test.mjs
           python tools/check_api.py
           node tests/amoy-config.test.mjs
       - name: Local EVM integration
@@ -49,6 +50,7 @@ jobs:
           trap 'kill "$anvil_pid" || true' EXIT
           node tools/wait_rpc.mjs
           node tests/integration.test.mjs
+          node tests/wallet-integration.test.mjs
   blockchain-gate:
     name: blockchain-gate
     needs: [web3-tests]

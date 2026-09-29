@@ -3,7 +3,8 @@ info:
   title: Trans-Atlas Web3 Sprint 0
   version: 0.1.0
   description: |
-    CONTRACT ONLY: no HTTP server is shipped in this sprint.
+    Deal endpoints are CONTRACT ONLY. runtime/wallet.mjs provides the F05 wallet
+    HTTP handler; requires trusted TA authentication and DB/RPC adapters.
     Local/Amoy-only transaction intents, not a signing/custody API.
     Wallet sends transactions directly. API verifies company membership and wallet binding.
     All mutations require Idempotency-Key; same key/different body returns 409.
@@ -15,6 +16,51 @@ servers:
 security:
   - bearerAuth: []
 paths:
+  /api/v1/web3/wallets/{binding_id}/claims:
+    parameters:
+      - $ref: '#/components/parameters/BindingId'
+    get:
+      operationId: getWalletClaims
+      description: |
+        Requires financial permission in the binding company and active wallet binding.
+        Returns finalized full-history reconciliation and internal deal allocations.
+        SETTLED is not paid. Reconciliation failure returns 503, never stale success.
+      responses:
+        '200':
+          description: Verified wallet subledger at the stated canonical block
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/WalletClaims'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /api/v1/web3/wallets/{binding_id}/intents:
+    parameters:
+      - $ref: '#/components/parameters/BindingId'
+    post:
+      operationId: prepareWalletWithdrawal
+      description: |
+        Unsigned withdraw-all intent. No deal_id, amount or alternate recipient.
+        Amount is the entire claim at execution, not a guaranteed preparation quote.
+        Revocation is rechecked but cannot revoke an already signed on-chain transaction.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/WalletIntentRequest'}
+      responses:
+        '201':
+          description: Unsigned wallet transaction; nothing broadcast
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/TransactionIntent'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+        '503': {$ref: '#/components/responses/Unavailable'}
   /api/v1/web3/deals/{deal_id}/intents:
     parameters:
       - $ref: '#/components/parameters/DealId'
@@ -147,6 +193,11 @@ components:
   securitySchemes:
     bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
   parameters:
+    BindingId:
+      name: binding_id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
     DealId:
       name: deal_id
       in: path
@@ -158,6 +209,60 @@ components:
       required: true
       schema: {type: string, minLength: 16, maxLength: 128}
   schemas:
+    WalletIntentRequest:
+      type: object
+      additionalProperties: false
+      required: [action, chain_id]
+      properties:
+        action: {const: withdraw}
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+    WalletClaims:
+      type: object
+      additionalProperties: false
+      required: [chain_id, contract, token, account, block_number, block_hash, claimable_atomic, lots, withdrawals]
+      properties:
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+        contract: {$ref: '#/components/schemas/Address'}
+        token: {$ref: '#/components/schemas/Address'}
+        account: {$ref: '#/components/schemas/Address'}
+        block_number: {type: integer, minimum: 0}
+        block_hash: {$ref: '#/components/schemas/Hash'}
+        claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        lots:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, deal_id, escrow_id, account, amount_atomic, kind, settlement_event, withdrawal_event]
+            properties:
+              id: {type: string}
+              deal_id: {type: string, format: uuid}
+              escrow_id: {$ref: '#/components/schemas/Hash'}
+              account: {$ref: '#/components/schemas/Address'}
+              amount_atomic: {$ref: '#/components/schemas/Atomic'}
+              kind: {enum: [refund, proceeds]}
+              settlement_event: {type: string}
+              withdrawal_event: {type: [string, 'null']}
+        withdrawals:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [event, account, amount_atomic, allocations]
+            properties:
+              event: {type: string}
+              account: {$ref: '#/components/schemas/Address'}
+              amount_atomic: {$ref: '#/components/schemas/Atomic'}
+              allocations:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  required: [lot_id, deal_id, amount_atomic]
+                  properties:
+                    lot_id: {type: string}
+                    deal_id: {type: string, format: uuid}
+                    amount_atomic: {$ref: '#/components/schemas/Atomic'}
     ChainId: {type: integer, enum: [31337, 80002]}
     Hash: {type: string, pattern: '^0x[0-9a-f]{64}$'}
     Address: {type: string, pattern: '^0x[0-9a-f]{40}$'}
@@ -178,7 +283,7 @@ components:
       properties:
         action:
           type: string
-          enum: [create, accept, cancelUnaccepted, submitDelivery, approveDelivery, dispute, escalateOverdue, finalize, resolve, withdraw]
+          enum: [create, accept, cancelUnaccepted, submitDelivery, approveDelivery, dispute, escalateOverdue, finalize, resolve]
         chain_id: {$ref: '#/components/schemas/ChainId'}
         expected_terms_hash: {$ref: '#/components/schemas/Hash'}
         evidence_commitment: {$ref: '#/components/schemas/Hash'}

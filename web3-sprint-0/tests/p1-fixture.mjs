@@ -5,7 +5,7 @@ import {deriveEscrowId,deriveTermsHash} from '../tools/escrow-identity.mjs';
 export const h=n=>'0x'+BigInt(n).toString(16).padStart(64,'0');
 export const a=n=>'0x'+BigInt(n).toString(16).padStart(40,'0');
 export const u=n=>`00000000-0000-4000-8000-${n.toString().padStart(12,'0')}`;
-export async function createFixture(overrides={}, {applyP2=true}={}){
+export async function createFixture(overrides={}, {applyP2=true,applyWallet=applyP2}={}){
   const db=new PGlite();
   try {
     await db.exec(readFileSync('db/001_web3.sql','utf8'));
@@ -15,6 +15,7 @@ export async function createFixture(overrides={}, {applyP2=true}={}){
     await db.exec(readFileSync('db/003_p1_integrity.sql','utf8'));
     // Opt out only to construct pre-004 historical migration fixtures.
     if(applyP2) await db.exec(readFileSync('db/004_p2_chain_and_finite.sql','utf8'));
+    if(applyWallet) await db.exec(readFileSync('db/005_wallet_accounting.sql','utf8'));
     const now=Math.floor(Date.now()/1000);
     const t={chainId:31337,contract:a(2),token:a(1),payer:a(3),carrier:a(4),
       arbiter:a(5),backup:a(6),challenge:86400,arbitration:604800,
@@ -26,7 +27,7 @@ export async function createFixture(overrides={}, {applyP2=true}={}){
     await db.query('INSERT INTO public.companies VALUES($1),($2),($3)',[u(1),u(2),u(3)]);
     await db.query('INSERT INTO public.users VALUES($1)',[u(4)]);
     await db.query('INSERT INTO web3.networks VALUES($1,$2,6,$3,0,$4)',
-      [t.chainId,t.token,t.contract,h(1)]);
+      [t.chainId,t.token,t.contract,t.codeHash??h(1)]);
     await db.query(`INSERT INTO web3.deals VALUES($1,$2,$3,100,'EUR','EUR',1.1,'FIXTURE',
       now(),now()+interval '1 hour',$4,now())`,[u(10),u(1),u(2),t.agreement]);
     await db.query(`INSERT INTO web3.wallet_bindings VALUES

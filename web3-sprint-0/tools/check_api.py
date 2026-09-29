@@ -25,6 +25,7 @@ positive = [
     {"action": "dispute", "chain_id": 31337, "reason_commitment": h},
 ]
 negative = [
+    {"action": "withdraw", "chain_id": 31337},
     {"action": "create", "chain_id": 137},
     {"action": "accept", "chain_id": 31337},
     {"action": "approveDelivery", "chain_id": 31337},
@@ -40,6 +41,14 @@ for value in positive:
     validator.validate(value)
 for value in negative:
     assert list(validator.iter_errors(value)), f"negative fixture passed: {value}"
+wallet_validator = Draft202012Validator(
+    {"$ref": "urn:ta:web3#/components/schemas/WalletIntentRequest"}, registry=registry)
+wallet_validator.validate({"action": "withdraw", "chain_id": 31337})
+for invalid in [{"action":"withdraw","chain_id":137},
+                {"action":"withdraw","chain_id":31337,"deal_id":"x"},
+                {"action":"withdraw","chain_id":31337,"amount":"1"},
+                {"action":"create","chain_id":31337}]:
+    assert not wallet_validator.is_valid(invalid)
 
 # C03: validate full response objects, then check the SAME data pattern in JS.
 calldata_cases = json.loads((root / "tests/fixtures/calldata.json").read_text())

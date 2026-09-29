@@ -8,6 +8,8 @@
     "test:db": "node tests/db.test.mjs",
     "test:db:p1": "node tests/db-p1.test.mjs",
     "test:db:p2": "node tests/db-p2.test.mjs",
+    "test:wallet": "node tests/wallet.test.mjs",
+    "test:wallet:integration": "node tests/wallet-integration.test.mjs",
     "test:integration": "node tests/integration.test.mjs",
     "test:api": "python tools/check_api.py",
     "test:mutation": "python tools/mutations.py",
