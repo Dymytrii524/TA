@@ -1,0 +1,16 @@
+PASS F05 EVM/HTTP two real settlements -> exact claim
+PASS F05 EVM/HTTP restart replay no duplicate snapshot
+PASS F05 EVM/HTTP wrong chain/code, missing history, failed receipt fail atomically
+PASS F05 EVM/HTTP HTTP unauthenticated rejected
+PASS F05 EVM/HTTP HTTP wrong-company wallet rejected
+PASS F05 EVM/HTTP HTTP finalized claims
+PASS F05 EVM/HTTP HTTP unsigned wallet intent and idempotency
+PASS F05 EVM/HTTP HTTP rejects deal-scoped wallet payload
+PASS F05 EVM/HTTP unfinalized payout not booked
+PASS F05 EVM/HTTP actual full sweep after new claim allocated exactly
+PASS F05 EVM/HTTP actual ABI Withdrawn stored without fake deal ID
+PASS F05 EVM/HTTP HTTP returns internal allocations not SETTLED=paid
+PASS F05 EVM/HTTP receipt replay no double effect
+PASS F05 EVM/HTTP revoked binding denied including idempotent retry
+PASS F05 EVM/HTTP post-finality reorg halts, preserves audit; no silent rewrite
+{"checks":15,"withdrawalTx":"0x4218e1ef09d1363a901ec6ab0f27385a7237caee3c617c85a985c0d13f582f6f","network":"LOCAL ANVIL ONLY"}

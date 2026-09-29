@@ -33,7 +33,11 @@ try{
   await db.query('INSERT INTO web3.wallet_permissions VALUES($1,$2,true)',[u(4),u(1)]);
   await send(token.mint(addr[0],5000000000n));await send(token.approve(contract,5000000000n));
   const fund=async v=>send(escrow.create(v.nonce,addr[1],v.amount,v.acceptBy,v.deliveryBy,v.agreement,2));
-  await fund(t);await send(escrow.connect(signers[1]).cancelUnaccepted(t.id));
+  await fund(t);const earlySettlement=await send(escrow.connect(signers[1]).cancelUnaccepted(t.id));
+  await db.query(`INSERT INTO web3.chain_transactions
+    (chain_id,tx_hash,state,block_hash,block_number,receipt_success)
+    VALUES(31337,$1,'included',$2,$3,true)`,
+    [earlySettlement.hash,earlySettlement.blockHash,earlySettlement.blockNumber]);
   const t2={...t,nonce:hash('wallet-second'),amount:'500000000'};
   t2.id=deriveEscrowId(t2.chainId,t2.contract,t2.payer,t2.nonce);t2.termsHash=deriveTermsHash(t2);
   await db.query(`INSERT INTO web3.deals SELECT $1,payer_company_id,carrier_company_id,
@@ -77,6 +81,8 @@ try{
   await freeze(db,t3,u(12));await fund(t3);await send(escrow.connect(signers[1]).cancelUnaccepted(t3.id));await mine();
   const saved=await rpc.send('evm_snapshot',[]);
   const receipt=await send(signers[0].sendTransaction({to:intent.to,data:intent.data,value:0}));
+  await db.query(`INSERT INTO web3.chain_transactions(chain_id,tx_hash,state)
+    VALUES(31337,$1,'submitted')`,[receipt.hash]);
   snapshot=await reconcileWallet(db,rpc,31337);assert.equal(snapshot.ledger.withdrawals.length,0);pass('unfinalized payout not booked');
   await mine();snapshot=await reconcileWallet(db,rpc,31337);
   assert.equal(snapshot.ledger.withdrawals[0].amount_atomic,'1600000000');

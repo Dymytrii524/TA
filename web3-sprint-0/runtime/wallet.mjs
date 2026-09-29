@@ -4,6 +4,7 @@ import {Interface,keccak256,toQuantity} from 'ethers';
 import {randomUUID,createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {isDeepStrictEqual} from 'node:util';
+import {persistVerifiedTransaction,persistVerifiedEvent} from './finality.mjs';
 export const iface=new Interface(JSON.parse(readFileSync(new URL('../artifacts/TransAtlasEscrow.abi.json',import.meta.url))));
 const fail=(code,status=409)=>{throw Object.assign(new Error(code),{status})};
 const atomic=x=>{
@@ -135,24 +136,8 @@ export async function reconcileWallet(db,rpc,chainId,{localConfirmations=2}={}){
       VALUES($1,$2,$3,$4,$5,$6,'F05-B/1',$7::jsonb)`,
       [randomUUID(),chainId,net.escrow_address,net.token_address,height,anchor.hash,JSON.stringify(ledger)]);
     for(const e of events){
-      await tx.query(`INSERT INTO web3.chain_transactions
-        (chain_id,tx_hash,state,block_hash,block_number,receipt_success)
-        VALUES($1,$2,'finalized',$3,$4,true) ON CONFLICT(chain_id,tx_hash) DO NOTHING`,
-        [chainId,e.txHash,e.blockHash,e.blockNumber]);
-      const stored=(await tx.query('SELECT * FROM web3.chain_transactions WHERE chain_id=$1 AND tx_hash=$2',[chainId,e.txHash])).rows[0];
-      if(stored.block_hash!==e.blockHash||stored.state!=='finalized'||!stored.receipt_success)fail('transaction history conflict');
-      const payload=e.kind==='Withdrawn'?{account:e.account,amount:e.amount}:
-        {payerAmount:e.payerAmount,carrierAmount:e.carrierAmount,transactionIndex:e.transactionIndex};
-      await tx.query(`INSERT INTO web3.chain_events
-        (id,chain_id,tx_hash,block_hash,log_index,contract_address,escrow_id,event_kind,payload,finalized)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,true)
-        ON CONFLICT(chain_id,block_hash,tx_hash,log_index) DO NOTHING`,
-        [randomUUID(),chainId,e.txHash,e.blockHash,e.logIndex,net.escrow_address,e.escrowId??null,e.kind,JSON.stringify(payload)]);
-      const storedEvent=(await tx.query(`SELECT * FROM web3.chain_events
-        WHERE chain_id=$1 AND block_hash=$2 AND tx_hash=$3 AND log_index=$4`,
-        [chainId,e.blockHash,e.txHash,e.logIndex])).rows[0];
-      if(!storedEvent.finalized||storedEvent.contract_address!==net.escrow_address||storedEvent.event_kind!==e.kind
-        ||storedEvent.escrow_id!==(e.escrowId??null)||!isDeepStrictEqual(storedEvent.payload,payload))fail('event history conflict');
+      await persistVerifiedTransaction(tx,rpc,chainId,e);
+      await persistVerifiedEvent(tx,chainId,net.escrow_address,e);
     }
     return {chain_id:chainId,contract:net.escrow_address,token:net.token_address,
       block_number:height,block_hash:anchor.hash,ledger};
