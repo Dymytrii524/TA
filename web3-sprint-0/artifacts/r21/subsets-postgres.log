@@ -1,0 +1,20 @@
+PASS R21-02 populated V1 replay preserves old snapshots
+PASS R21-02 one atomic outsider preserves independent wallet HTTP and intent
+PASS R21-02 mixed wallet exact partitions and warning
+PASS R21-02 actual full sweep allocates TA and later external lots once
+PASS R21-02 restart no duplicate snapshot
+PASS R21-02 unattributed-only authorized withdraw intent
+PASS R21-02 late mapping never automatic; exact hash required
+PASS R21-02 same approver and wrong scope forbidden by SQL
+PASS R21-02 late mapping after payout creates new revision, no rewrite or second payout
+PASS R21-02 other-company TA references and other-wallet details not disclosed
+PASS R21-02 donation does not create a lot
+PASS R21-02 missing external Funded or receipt never skipped; atomic refusal
+PASS R21-02 two PostgreSQL reconcilers publish once
+PASS R21-02 corrupt legacy backfill refuses active pointer atomically
+PASS R21-02 V2 audit immutable
+PASS R21-02 1000-event bounded batches, same-range retry, no skip on failure
+PASS R21-02 unexplained residual cannot become external
+PASS full WalletClaims schema and partition sums: 4 actual HTTP responses
+PASS R21-02 actual mixed/external HTTP responses satisfy complete schema
+{"checks":18,"engine":"PostgreSQL","network":"LOCAL ONLY"}

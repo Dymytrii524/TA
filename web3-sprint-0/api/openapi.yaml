@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Trans-Atlas Web3 Sprint 0
-  version: 0.2.0
+  version: 0.3.0
   description: |
     Deal endpoints are CONTRACT ONLY. runtime/wallet.mjs provides the F05 wallet
     HTTP handler; requires trusted TA authentication and DB/RPC adapters.
@@ -23,7 +23,9 @@ paths:
       operationId: getWalletClaims
       description: |
         Requires financial permission in the binding company and active wallet binding.
-        Returns finalized full-history reconciliation and internal deal allocations.
+        Returns verified global wallet total plus TA/unattributed/restricted subsets.
+        Verified unknown escrows are counted, not fabricated TA deals.
+        Another company's historical attribution is redacted as RESTRICTED.
         SETTLED is not paid. Reconciliation failure returns 503, never stale success.
       responses:
         '200':
@@ -219,7 +221,7 @@ components:
     WalletClaims:
       type: object
       additionalProperties: false
-      required: [chain_id, contract, token, account, block_number, block_hash, claimable_atomic, lots, withdrawals]
+      required: [chain_id, contract, token, account, block_number, block_hash, claimable_atomic, ta_claimable_atomic, unattributed_claimable_atomic, restricted_claimable_atomic, reconciliation_status, policy_version, projection_revision, warnings, lots, withdrawals]
       properties:
         chain_id: {$ref: '#/components/schemas/ChainId'}
         contract: {$ref: '#/components/schemas/Address'}
@@ -228,15 +230,25 @@ components:
         block_number: {type: integer, minimum: 0}
         block_hash: {$ref: '#/components/schemas/Hash'}
         claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        ta_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        unattributed_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        restricted_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        reconciliation_status: {const: VERIFIED}
+        policy_version: {const: 'F05-B/2'}
+        projection_revision: {type: integer, minimum: 1}
+        warnings:
+          type: array
+          items: {enum: [WITHDRAW_ALL_INCLUDES_UNATTRIBUTED, WITHDRAW_ALL_INCLUDES_RESTRICTED]}
         lots:
           type: array
           items:
             type: object
             additionalProperties: false
-            required: [id, deal_id, escrow_id, account, amount_atomic, kind, settlement_event, withdrawal_event]
+            required: [id, deal_id, escrow_id, account, amount_atomic, kind, settlement_event, withdrawal_event, provenance]
             properties:
               id: {type: string}
-              deal_id: {type: string, format: uuid}
+              deal_id: {type: [string, 'null'], format: uuid}
+              provenance: {enum: [TA_MATCHED, UNATTRIBUTED, RESTRICTED]}
               escrow_id: {$ref: '#/components/schemas/Hash'}
               account: {$ref: '#/components/schemas/Address'}
               amount_atomic: {$ref: '#/components/schemas/Atomic'}
@@ -258,10 +270,11 @@ components:
                 items:
                   type: object
                   additionalProperties: false
-                  required: [lot_id, deal_id, amount_atomic]
+                  required: [lot_id, deal_id, amount_atomic, provenance]
                   properties:
                     lot_id: {type: string}
-                    deal_id: {type: string, format: uuid}
+                    deal_id: {type: [string, 'null'], format: uuid}
+                    provenance: {enum: [TA_MATCHED, UNATTRIBUTED, RESTRICTED]}
                     amount_atomic: {$ref: '#/components/schemas/Atomic'}
     ChainId: {type: integer, enum: [31337, 80002]}
     Hash: {type: string, pattern: '^0x[0-9a-f]{64}$'}

@@ -47,7 +47,7 @@ try{
   await mine();
   let snapshot=await reconcileWallet(db,rpc,31337);
   assert.equal(snapshot.ledger.balances[t.payer],'1500000000');pass('two real settlements -> exact claim');
-  const count=async()=>Number((await db.query('SELECT count(*) AS n FROM web3.wallet_reconciliations')).rows[0].n);
+  const count=async()=>Number((await db.query('SELECT count(*) AS n FROM web3.wallet_snapshots_v2')).rows[0].n);
   const before=await count();await reconcileWallet(db,rpc,31337);assert.equal(await count(),before);pass('restart replay no duplicate snapshot');
   const badRpc=override=>({send:async(method,args)=>override(method,args)});
   await assert.rejects(()=>reconcileWallet(db,badRpc((m,args)=>m==='eth_chainId'?'0x89':rpc.send(m,args)),31337),/wrong chain/);

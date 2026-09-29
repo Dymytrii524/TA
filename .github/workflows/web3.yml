@@ -68,6 +68,12 @@ jobs:
           node tools/wait_rpc.mjs
           node tests/integration.test.mjs
           node tests/wallet-integration.test.mjs
+          node tests/subsets.test.mjs
+          WEB3_TEST_DATABASE_URL=postgres://web3_test:local-ci-only@127.0.0.1:5432/ta_web3_test node tests/subsets.test.mjs
+      - name: Disposable PostgreSQL backup and restore
+        env:
+          PG_SERVICE_CONTAINER: ${{ job.services.postgres.id }}
+        run: bash tests/backup-restore-ci.sh
   blockchain-gate:
     name: blockchain-gate
     needs: [web3-tests]

@@ -32,7 +32,8 @@ export async function persistVerifiedTransaction(tx,rpc,chainId,e){
 }
 
 export async function persistVerifiedEvent(tx,chainId,contract,e){
-  const payload=e.kind==='Withdrawn'?{account:e.account,amount:e.amount}:
+  const payload=e.kind==='Funded'?{payer:e.payer,carrier:e.carrier,amount:e.amount,termsHash:e.termsHash}:
+    e.kind==='Withdrawn'?{account:e.account,amount:e.amount}:
     {payerAmount:e.payerAmount,carrierAmount:e.carrierAmount,transactionIndex:e.transactionIndex};
   await tx.query(`INSERT INTO web3.chain_events
     (id,chain_id,tx_hash,block_hash,log_index,contract_address,escrow_id,event_kind,payload,finalized)
