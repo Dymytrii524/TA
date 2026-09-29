@@ -18,7 +18,7 @@ const promote=e=>db.transaction(async tx=>{
 try{
   for(const [i,state] of [[1,'included'],[2,'submitted']]){
     const e=event(i);await insert(e,state,state==='submitted'?null:e.blockHash);
-    await promote(e);assert.equal((await db.query('SELECT state FROM web3.chain_transactions WHERE tx_hash=$1',[e.txHash])).rows[0].state,'finalized');
+    await assert.doesNotReject(()=>promote(e));assert.equal((await db.query('SELECT state FROM web3.chain_transactions WHERE tx_hash=$1',[e.txHash])).rows[0].state,'finalized');
     pass(state+' -> finalized atomic');
   }
   await promote(event(1));assert.equal(Number((await db.query('SELECT count(*) n FROM web3.chain_events')).rows[0].n),2);

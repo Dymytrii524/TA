@@ -62,6 +62,21 @@ node tests/wallet-integration.test.mjs
 
 ## Межа відповідальності
 
+Оновлення PR #21: погоджений ADR-R21-02/B, `F05-B/2` і виправлення R21-01/02/03
+описано в `docs/adr-r21-02.pplx.md` та `docs/r21-0{1,2,3}.md`.
+Застосовуються міграції 007/008; старі V1 snapshot не переписуються.
+Нові команди: `node tests/finality.test.mjs`, `node tests/subsets.test.mjs`,
+`node tests/http-errors.test.mjs`, `node tools/r21_mutations.mjs`.
+Останні три потребують лише локального Anvil. Dedicated local PostgreSQL 18:
+`WEB3_TEST_DATABASE_URL=postgres://web3_test:local-ci-only@127.0.0.1:5432/ta_web3_test`.
+Це fixture: тести видаляють його схему, ніколи не вказуйте production DB.
+Повторіть finality і subsets із цією змінною для multi-session доказів.
+CI також перевіряє backup/restore immutable V1/V2 payloads.
+
+Історичні розділи нижче описують PR #15, а не поточний стан відкритого PR #21.
+Новий пакет не є production-релізом: auth adapter, production least-privilege
+roles, повний deal HTTP/indexer, recovery та незалежний аудит залишаються окремими.
+
 Контракт керує тестовими токенами, а майбутній сервіс settlement має одноосібно вести журнал обліку за підтвердженими подіями. `SETTLED` означає розподіл права на виведення, а не фактичну оплату: вона настає після успішного `withdraw`.
 
 Пакет розміщено в [PR #15](https://github.com/Dymytrii524/TA/pull/15), без merge та зовнішнього deployment. Виправлення P1 змінює семантику першого аргументу `create`: це payer-local nonce, а не готовий escrow ID; старий calldata повторно використовувати не можна.

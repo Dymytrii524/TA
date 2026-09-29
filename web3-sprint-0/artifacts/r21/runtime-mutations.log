@@ -1,0 +1,7 @@
+PASS mutation detected promotion
+PASS mutation detected skip-unknown
+PASS mutation detected subset-is-global
+PASS mutation detected duplicate-allocation
+PASS mutation detected mask-ta-mismatch
+PASS mutation detected default-409
+{"detected":6,"total":6}

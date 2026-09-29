@@ -6,8 +6,9 @@ import {readFileSync} from 'node:fs';
 import {isDeepStrictEqual} from 'node:util';
 import {persistVerifiedTransaction,persistVerifiedEvent} from './finality.mjs';
 import {readHistory,classify,legacyLedger,publishSnapshot,publicWallet} from './subsets.mjs';
+import {DomainError,ReconciliationError,safeReason} from './errors.mjs';
 export const iface=new Interface(JSON.parse(readFileSync(new URL('../artifacts/TransAtlasEscrow.abi.json',import.meta.url))));
-const fail=(code,status=409)=>{throw Object.assign(new Error(code),{status})};
+const fail=(code,status=409)=>{throw new DomainError(code,status)};
 const atomic=x=>{
   if(typeof x!=='string'||!/^(0|[1-9][0-9]*)$/.test(x)||BigInt(x)>=2n**256n) fail('invalid atomic');
   return BigInt(x);
@@ -63,6 +64,7 @@ export function replayWallet(events){
 // production indexer). Verifies receipts, code, chain, finality anchor, frozen
 // parties, settlement totals and claimable at the SAME block.
 export async function reconcileWallet(db,rpc,chainId,{localConfirmations=2}={}){
+  const fail=reason=>{throw new ReconciliationError(reason)};
   // Bound individual RPC calls; do not accept stale partial results on timeout.
   const rawRpc=rpc;
   rpc={send:async(...args)=>{
@@ -238,7 +240,8 @@ export async function prepareWithdrawal(db,userId,bindingId,idempotencyKey,body,
 
 // Mount this handler in TA behind a trusted authenticate(req) adapter. Missing
 // adapter denies ALL requests; no built-in dev bearer token or unsigned JWT.
-export function walletHandler({db,rpc,authenticate=async()=>null}){
+export function walletHandler({db,rpc,authenticate=async()=>null,
+  audit=entry=>console.error(JSON.stringify(entry))}){
   return async(req,res)=>{
     const send=(status,data)=>{res.writeHead(status,{'Content-Type':status>=400?'application/problem+json':'application/json'});res.end(JSON.stringify(data))};
     try{
@@ -250,14 +253,27 @@ export function walletHandler({db,rpc,authenticate=async()=>null}){
       if((match[2]==='claims'&&req.method!=='GET')||(match[2]==='intents'&&req.method!=='POST'))fail('method not allowed',405);
       let body;
       if(req.method==='POST'){
-        let text='';for await(const chunk of req){text+=chunk;if(text.length>4096)fail('body too large',413)}
+        let text='',bytes=0;for await(const chunk of req){bytes+=Buffer.byteLength(chunk);if(bytes>4096)fail('body too large',413);text+=chunk}
         try{body=JSON.parse(text)}catch{fail('invalid JSON',422)}
       }
-      const snapshot=await reconcileWallet(db,rpc,Number(binding.chain_id));
+      let snapshot;
+      try{snapshot=await reconcileWallet(db,rpc,Number(binding.chain_id))}
+      catch(e){throw new ReconciliationError(safeReason(e))}
       if(match[2]==='claims'){
         await authorizeWallet(db,user.id,match[1]); // revocation during reconciliation
         send(200,publicWallet(snapshot,binding));
       }else send(201,await prepareWithdrawal(db,user.id,match[1],req.headers['idempotency-key'],body,snapshot));
-    }catch(e){send(e.status??503,{type:'about:blank',title:e.status?e.message:'reconciliation unavailable',status:e.status??503,code:e.status?e.message:'RECONCILIATION_UNAVAILABLE'})}
+    }catch(e){
+      if(e instanceof DomainError){
+        send(e.status,{type:'about:blank',title:e.message,status:e.status,code:e.message});
+      }else{
+        const correlation_id=randomUUID();
+        const reason=safeReason(e);
+        try{audit({event:'web3.reconciliation_failed',correlation_id,
+          reason})}catch{/* logger cannot change response */}
+        send(503,{type:'about:blank',title:'Reconciliation unavailable',status:503,
+          code:'RECONCILIATION_UNAVAILABLE',correlation_id});
+      }
+    }
   };
 }
