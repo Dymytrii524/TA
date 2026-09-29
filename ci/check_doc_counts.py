@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Документація не має відставати від конвеєрів (ТЗ, розділи A.13.4 і 13.6).
 
-Числа в ТЗ старіють мовчки: правило гілки виросло з трьох перевірок до десяти,
+Числа в ТЗ старіють мовчки: правило гілки виросло з трьох перевірок до дванадцяти,
 набір правил - з R1-R10 до R1-R14, сценаріїв pull request стало девʼятнадцять,
 а речення в документах лишалися з попередньої редакції. Око цього не бачить.
 
@@ -116,11 +116,11 @@ LANGS = ("uk", "en", "pl", "de")
 # такий самий дефект, як й застаріле, бо перевірка мовчки стає порожньою.
 PAGE_WORDS = {
     "uk": {"три": 3, "трьох": 3, "дев'ять": 9, "девʼять": 9, "дев'яти": 9,
-           "десять": 10, "десяти": 10},
-    "en": {"three": 3, "nine": 9, "ten": 10},
+           "десять": 10, "десяти": 10, "дванадцять": 12, "дванадцяти": 12},
+    "en": {"three": 3, "nine": 9, "ten": 10, "twelve": 12},
     "pl": {"trzy": 3, "trzech": 3, "dziewięć": 9, "dziewięciu": 9, "dziewięcioma": 9,
-           "dziesięć": 10, "dziesięciu": 10},
-    "de": {"drei": 3, "neun": 9, "zehn": 10},
+           "dziesięć": 10, "dziesięciu": 10, "dwanaście": 12, "dwunastu": 12},
+    "de": {"drei": 3, "neun": 9, "zehn": 10, "zwölf": 12},
 }
 
 
@@ -491,7 +491,7 @@ def m_stale_group(root):
 def m_required_count(root):
     p = os.path.join(root, "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("Обовʼязкових перевірок десять", "Обовʼязкових перевірок три", 1))
+    return _write(p, t, t.replace("Обовʼязкових перевірок дванадцять", "Обовʼязкових перевірок три", 1))
 
 
 def m_rule_range(root):
@@ -565,15 +565,15 @@ def m_page_gate_dropped(root):
 def m_page_count_stale(root):
     p = os.path.join(root, "index.html")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("Десять обов'язкових перевірок від двох конвеєрів",
-                                  "Дев'ять обов'язкових перевірок від двох конвеєрів", 1))
+    return _write(p, t, t.replace("Дванадцять обов'язкових перевірок від трьох конвеєрів",
+                                  "Десять обов'язкових перевірок від двох конвеєрів", 1))
 
 
 def m_page_count_stale_de(root):
     p = os.path.join(root, "index.html")
     t = open(p, encoding="utf-8").read()
-    return _write(p, t, t.replace("Zehn erforderliche Prüfungen aus zwei Pipelines",
-                                  "Neun erforderliche Prüfungen aus zwei Pipelines", 1))
+    return _write(p, t, t.replace("Zwölf erforderliche Prüfungen aus drei Pipelines",
+                                  "Zehn erforderliche Prüfungen aus zwei Pipelines", 1))
 
 
 def m_page_denial_returned(root):

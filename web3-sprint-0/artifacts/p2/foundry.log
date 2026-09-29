@@ -1,0 +1,93 @@
+No files changed, compilation skipped
+
+Ran 35 tests for test/Escrow.t.sol:EscrowTest
+[PASS] testAmoyWrongTokenBlocked() (gas: 66388)
+[PASS] testBackupAtBoundary() (gas: 299837)
+[PASS] testBackupCannotResolveEarly() (gas: 266470)
+[PASS] testBlockedWithdrawalRetainsClaim() (gas: 364788)
+[PASS] testBoundaryDisputeClosed() (gas: 327796)
+[PASS] testCarrierAcceptsExactDeadline() (gas: 262754)
+[PASS] testChainChangeRejected() (gas: 252847)
+[PASS] testDisputeBlocksRelease() (gas: 297870)
+[PASS] testDonationDoesNotCreateLiability() (gas: 264015)
+[PASS] testDoubleSettlementRejected() (gas: 326558)
+[PASS] testDoubleWithdrawRejected() (gas: 324485)
+[PASS] testFeeTokenRejectedAtomically() (gas: 285437)
+[PASS] testFuzzConservation(uint96,uint96) (runs: 2048, μ: 327106, ~: 329181)
+[PASS] testHappyPath() (gas: 327016)
+[PASS] testIdReplayRejected() (gas: 255198)
+[PASS] testIntakePausePreservesExit() (gas: 290292)
+[PASS] testLateAcceptanceBlocked() (gas: 257477)
+[PASS] testMainnetDeploymentBlocked() (gas: 63112)
+[PASS] testNoGpsAutoRelease() (gas: 285382)
+[PASS] testNoPrematureRelease() (gas: 291328)
+[PASS] testOnlyCarrierAccepts() (gas: 256591)
+[PASS] testOnlyCarrierSubmits() (gas: 260458)
+[PASS] testOnlyPayerApproves() (gas: 285850)
+[PASS] testOverAllocationRejected() (gas: 266739)
+[PASS] testOverdueEscalationNoSilentPayout() (gas: 298220)
+[PASS] testPayerCannotCancelEarly() (gas: 253214)
+[PASS] testPayerRefundAfterAcceptanceDeadline() (gas: 288047)
+[PASS] testSplitResolution() (gas: 317951)
+[PASS] testTokenPauseDepositRollback() (gas: 239024)
+[PASS] testTransferCallbackCannotReenter() (gas: 301730)
+[PASS] testUnauthorizedPause() (gas: 8991)
+[PASS] testUnauthorizedResolver() (gas: 266414)
+[PASS] testWrongEvidence() (gas: 286254)
+[PASS] testWrongTerms() (gas: 253242)
+[PASS] testZeroAndTooLargeAmounts() (gas: 33486)
+Suite result: ok. 35 passed; 0 failed; 0 skipped; finished in 509.00ms (507.31ms CPU time)
+
+Ran 4 tests for test/P1Regression.t.sol:P1RegressionTest
+[PASS] testP1AttackerCannotOccupyVictimId() (gas: 497896)
+[PASS] testP1DerivedIdMatchesDomainAndContract() (gas: 1757062)
+[PASS] testP1SettledNonceCannotBeReusedBySamePayer() (gas: 271426)
+[PASS] testP1ZeroNonceRejected() (gas: 17254)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 784.66µs (431.47µs CPU time)
+
+Ran 3 tests for test/Invariant.t.sol:EscrowInvariantTest
+[PASS] invariantConservation() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantLockedMatchesDeals() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantSolvent() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 19.40s (27.34s CPU time)
+
+Ran 3 test suites in 19.41s (19.91s CPU time): 42 tests passed, 0 failed, 0 skipped (42 total tests)

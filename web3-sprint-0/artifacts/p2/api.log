@@ -1,0 +1,1 @@
+PASS OpenAPI 3.1; 5 positive, 10 negative fixtures; Solidity/SQL/API state parity; 10 function mappings; all POST idempotency headers.

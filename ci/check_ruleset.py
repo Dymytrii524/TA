@@ -34,6 +34,7 @@ RS = os.path.join(ROOT, "ci", "ruleset-contract.json")
 WORKFLOWS = {
     "github-actions-contract.yml": "contract-gate",
     "backend-contract.yml": "backend-gate",
+    "web3.yml": "blockchain-gate",
 }
 
 # Дзеркало ci/<файл> -> робочий конвеєр .github/workflows/<файл>. GitHub виконує
@@ -44,6 +45,7 @@ MIRRORS = {
     "github-actions-contract.yml": "contract.yml",
     "backend-contract.yml": "backend.yml",
     "source-probe.yml": "source-probe.yml",
+    "web3.yml": "web3.yml",
 }
 
 # Групи сценаріїв, які мусять бути названі в правилі гілки (рамкове ТЗ, розділи 13.7 і 14.8).

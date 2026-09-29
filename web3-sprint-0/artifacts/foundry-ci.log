@@ -1,0 +1,86 @@
+No files changed, compilation skipped
+
+Ran 35 tests for test/Escrow.t.sol:EscrowTest
+[PASS] testAmoyWrongTokenBlocked() (gas: 66323)
+[PASS] testBackupAtBoundary() (gas: 297085)
+[PASS] testBackupCannotResolveEarly() (gas: 263783)
+[PASS] testBlockedWithdrawalRetainsClaim() (gas: 362622)
+[PASS] testBoundaryDisputeClosed() (gas: 324892)
+[PASS] testCarrierAcceptsExactDeadline() (gas: 260162)
+[PASS] testChainChangeRejected() (gas: 250479)
+[PASS] testDisputeBlocksRelease() (gas: 295042)
+[PASS] testDonationDoesNotCreateLiability() (gas: 263657)
+[PASS] testDoubleSettlementRejected() (gas: 323654)
+[PASS] testDoubleWithdrawRejected() (gas: 321700)
+[PASS] testFeeTokenRejectedAtomically() (gas: 284245)
+[PASS] testFuzzConservation(uint96,uint96) (runs: 2048, μ: 325011, ~: 327139)
+[PASS] testHappyPath() (gas: 324264)
+[PASS] testIdReplayRejected() (gas: 254526)
+[PASS] testIntakePausePreservesExit() (gas: 287696)
+[PASS] testLateAcceptanceBlocked() (gas: 254962)
+[PASS] testMainnetDeploymentBlocked() (gas: 63047)
+[PASS] testNoGpsAutoRelease() (gas: 282706)
+[PASS] testNoPrematureRelease() (gas: 288576)
+[PASS] testOnlyCarrierAccepts() (gas: 254078)
+[PASS] testOnlyCarrierSubmits() (gas: 257869)
+[PASS] testOnlyPayerApproves() (gas: 283185)
+[PASS] testOverAllocationRejected() (gas: 264055)
+[PASS] testOverdueEscalationNoSilentPayout() (gas: 295379)
+[PASS] testPayerCannotCancelEarly() (gas: 250846)
+[PASS] testPayerRefundAfterAcceptanceDeadline() (gas: 285633)
+[PASS] testSplitResolution() (gas: 315330)
+[PASS] testTokenPauseDepositRollback() (gas: 237818)
+[PASS] testTransferCallbackCannotReenter() (gas: 301383)
+[PASS] testUnauthorizedPause() (gas: 8991)
+[PASS] testUnauthorizedResolver() (gas: 263727)
+[PASS] testWrongEvidence() (gas: 283589)
+[PASS] testWrongTerms() (gas: 250808)
+[PASS] testZeroAndTooLargeAmounts() (gas: 31957)
+Suite result: ok. 35 passed; 0 failed; 0 skipped; finished in 439.94ms (439.23ms CPU time)
+
+Ran 3 tests for test/Invariant.t.sol:EscrowInvariantTest
+[PASS] invariantConservation() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantLockedMatchesDeals() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantSolvent() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 20.83s (29.49s CPU time)
+
+Ran 2 test suites in 20.84s (21.27s CPU time): 38 tests passed, 0 failed, 0 skipped (38 total tests)

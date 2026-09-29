@@ -1,0 +1,108 @@
+Warning: `--ir-minimum` enables `viaIR` with minimum optimization, which can result in inaccurate source mappings.
+Only use this flag as a workaround if you are experiencing "stack too deep" errors.
+Note that `viaIR` is production ready since Solidity 0.8.13 and above.
+See more: https://book.getfoundry.sh/guides/best-practices/stack-too-deep
+Compiling 16 files with Solc 0.8.30
+Solc 0.8.30 finished in 1.36s
+Compiler run successful!
+Analysing contracts...
+Running tests...
+
+Ran 35 tests for test/Escrow.t.sol:EscrowTest
+[PASS] testAmoyWrongTokenBlocked() (gas: 76752)
+[PASS] testBackupAtBoundary() (gas: 353796)
+[PASS] testBackupCannotResolveEarly() (gas: 310814)
+[PASS] testBlockedWithdrawalRetainsClaim() (gas: 431782)
+[PASS] testBoundaryDisputeClosed() (gas: 389318)
+[PASS] testCarrierAcceptsExactDeadline() (gas: 303744)
+[PASS] testChainChangeRejected() (gas: 281253)
+[PASS] testDisputeBlocksRelease() (gas: 350888)
+[PASS] testDonationDoesNotCreateLiability() (gas: 300268)
+[PASS] testDoubleSettlementRejected() (gas: 386385)
+[PASS] testDoubleWithdrawRejected() (gas: 396570)
+[PASS] testFeeTokenRejectedAtomically() (gas: 319589)
+[PASS] testFuzzConservation(uint96,uint96) (runs: 512, μ: 390021, ~: 392044)
+[PASS] testHappyPath() (gas: 403987)
+[PASS] testIdReplayRejected() (gas: 289313)
+[PASS] testIntakePausePreservesExit() (gas: 332020)
+[PASS] testLateAcceptanceBlocked() (gas: 292204)
+[PASS] testMainnetDeploymentBlocked() (gas: 70075)
+[PASS] testNoGpsAutoRelease() (gas: 327973)
+[PASS] testNoPrematureRelease() (gas: 339606)
+[PASS] testOnlyCarrierAccepts() (gas: 290799)
+[PASS] testOnlyCarrierSubmits() (gas: 298656)
+[PASS] testOnlyPayerApproves() (gas: 329547)
+[PASS] testOverAllocationRejected() (gas: 311080)
+[PASS] testOverdueEscalationNoSilentPayout() (gas: 354673)
+[PASS] testPayerCannotCancelEarly() (gas: 282262)
+[PASS] testPayerRefundAfterAcceptanceDeadline() (gas: 329265)
+[PASS] testSplitResolution() (gas: 370083)
+[PASS] testTokenPauseDepositRollback() (gas: 262227)
+[PASS] testTransferCallbackCannotReenter() (gas: 337466)
+[PASS] testUnauthorizedPause() (gas: 12151)
+[PASS] testUnauthorizedResolver() (gas: 310653)
+[PASS] testWrongEvidence() (gas: 330782)
+[PASS] testWrongTerms() (gas: 282637)
+[PASS] testZeroAndTooLargeAmounts() (gas: 46035)
+Suite result: ok. 35 passed; 0 failed; 0 skipped; finished in 374.93ms (373.66ms CPU time)
+
+Ran 3 tests for test/Invariant.t.sol:EscrowInvariantTest
+[PASS] invariantConservation() (runs: 128, calls: 8192, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 2024  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 2058  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 2068  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 2042  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantLockedMatchesDeals() (runs: 128, calls: 8192, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 2024  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 2058  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 2068  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 2042  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantSolvent() (runs: 128, calls: 8192, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 2024  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 2058  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 2068  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 2042  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 8.73s (14.42s CPU time)
+
+Ran 2 test suites in 8.73s (9.10s CPU time): 38 tests passed, 0 failed, 0 skipped (38 total tests)
+
+╭--------------------------+------------------+------------------+----------------+-----------------╮
+| File                     | % Lines          | % Statements     | % Branches     | % Funcs         |
++===================================================================================================+
+| src/TransAtlasEscrow.sol | 99.20% (124/125) | 93.07% (188/202) | 58.82% (20/34) | 100.00% (16/16) |
+|--------------------------+------------------+------------------+----------------+-----------------|
+| test/Invariant.t.sol     | 97.50% (39/40)   | 95.65% (66/69)   | 47.83% (11/23) | 83.33% (5/6)    |
+|--------------------------+------------------+------------------+----------------+-----------------|
+| test/MockUSDC.sol        | 94.44% (17/18)   | 96.15% (25/26)   | 100.00% (6/6)  | 85.71% (6/7)    |
+|--------------------------+------------------+------------------+----------------+-----------------|
+| test/TestBase.sol        | 100.00% (2/2)    | 100.00% (2/2)    | 0.00% (0/4)    | 100.00% (2/2)   |
+|--------------------------+------------------+------------------+----------------+-----------------|
+| Total                    | 98.38% (182/185) | 93.98% (281/299) | 55.22% (37/67) | 93.55% (29/31)  |
+╰--------------------------+------------------+------------------+----------------+-----------------╯

@@ -1,0 +1,277 @@
+openapi: 3.1.0
+info:
+  title: Trans-Atlas Web3 Sprint 0
+  version: 0.1.0
+  description: |
+    CONTRACT ONLY: no HTTP server is shipped in this sprint.
+    Local/Amoy-only transaction intents, not a signing/custody API.
+    Wallet sends transactions directly. API verifies company membership and wallet binding.
+    All mutations require Idempotency-Key; same key/different body returns 409.
+    Monetary atomic values are decimal strings, never floating point.
+    No raw document, personal data or secret salt is sent on-chain.
+servers:
+  - url: http://localhost:8787
+    description: Target local TA API, not deployed by this package
+security:
+  - bearerAuth: []
+paths:
+  /api/v1/web3/deals/{deal_id}/intents:
+    parameters:
+      - $ref: '#/components/parameters/DealId'
+    post:
+      operationId: prepareEscrowIntent
+      summary: Prepare unsigned calldata after authorization and policy checks
+      description: |
+        Derive authorized sender from verified wallet binding, never trust caller-supplied payer.
+        Enforce role/action/state, quote expiry, country/KYB policy and expected evidence.
+        Read final on-chain state and contract bytecode/registry before preparing.
+        create has a separate ERC20 approval step: exact allowance, not unlimited.
+        No private key; no transaction broadcast; no successful-payment claim.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntentRequest'
+      responses:
+        '201':
+          description: Intent prepared, funds not moved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionIntent'
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /api/v1/web3/deals/{deal_id}/escrow:
+    parameters:
+      - $ref: '#/components/parameters/DealId'
+    get:
+      operationId: getEscrow
+      summary: Read authorized finalized projection, distinct from transaction status
+      responses:
+        '200':
+          description: Finalized projection and latest transaction state
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Escrow'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /api/v1/web3/intents/{intent_id}/transactions:
+    parameters:
+      - name: intent_id
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+    post:
+      operationId: recordSubmittedTransaction
+      summary: Register untrusted transaction hash for independent verification
+      description: |
+        Client tx hash is a hint, not evidence of success. Worker verifies sender,
+        chain, to, calldata, receipt, canonical block and expected emitted events.
+        Permit multiple hashes per intent for replaced transactions; terminal effect only once.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [chain_id, tx_hash]
+              properties:
+                chain_id: {$ref: '#/components/schemas/ChainId'}
+                tx_hash: {$ref: '#/components/schemas/Hash'}
+      responses:
+        '202':
+          description: Pending independent verification
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [transaction_status]
+                properties:
+                  transaction_status: {const: submitted}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+  /api/v1/web3/deals/{deal_id}/evidence:
+    parameters:
+      - $ref: '#/components/parameters/DealId'
+    post:
+      operationId: registerPrivateEvidence
+      summary: Record private object reference after upload and signature verification
+      description: |
+        Carrier membership required. Object must belong to this deal; malware scan,
+        retention policy and proof-of-delivery signature checks precede approval.
+        Salt is private; commitment alone is not proof of physical delivery.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [private_object_key, commitment]
+              properties:
+                private_object_key: {type: string, minLength: 1, maxLength: 512}
+                commitment: {$ref: '#/components/schemas/Hash'}
+      responses:
+        '201':
+          description: Evidence record stored, no payment authorization
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [evidence_id, commitment]
+                additionalProperties: false
+                properties:
+                  evidence_id: {type: string, format: uuid}
+                  commitment: {$ref: '#/components/schemas/Hash'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '422': {$ref: '#/components/responses/Invalid'}
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    DealId:
+      name: deal_id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, minLength: 16, maxLength: 128}
+  schemas:
+    ChainId: {type: integer, enum: [31337, 80002]}
+    Hash: {type: string, pattern: '^0x[0-9a-f]{64}$'}
+    Address: {type: string, pattern: '^0x[0-9a-f]{40}$'}
+    Atomic:
+      type: string
+      pattern: '^(0|[1-9][0-9]{0,77})$'
+      description: Validate uint256 upper bound in application; schema limits representation only
+    State:
+      type: string
+      enum: [FUNDED, ACTIVE, DELIVERED, ACCEPTED, DISPUTED, SETTLED]
+    TxState:
+      type: string
+      enum: [submitted, included, finalized, failed, orphaned]
+    IntentRequest:
+      type: object
+      additionalProperties: false
+      required: [action, chain_id]
+      properties:
+        action:
+          type: string
+          enum: [create, accept, cancelUnaccepted, submitDelivery, approveDelivery, dispute, escalateOverdue, finalize, resolve, withdraw]
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+        expected_terms_hash: {$ref: '#/components/schemas/Hash'}
+        evidence_commitment: {$ref: '#/components/schemas/Hash'}
+        reason_commitment: {$ref: '#/components/schemas/Hash'}
+        payer_amount_atomic: {$ref: '#/components/schemas/Atomic'}
+      allOf:
+        - if: {properties: {action: {const: accept}}}
+          then: {required: [expected_terms_hash]}
+        - if: {properties: {action: {enum: [submitDelivery, approveDelivery]}}}
+          then: {required: [evidence_commitment]}
+        - if: {properties: {action: {const: dispute}}}
+          then: {required: [reason_commitment]}
+        - if: {properties: {action: {const: resolve}}}
+          then: {required: [payer_amount_atomic]}
+    TransactionIntent:
+      type: object
+      description: |
+        For create, the service reads only the immutable deal_terms snapshot.
+        create(bytes32 nonce, ...) takes escrow_nonce, NOT escrow_id.
+        escrow_id = keccak256(abi.encode(keccak256("TRANS_ATLAS_ESCROW_ID_V1"),
+        uint256(chain_id), escrow_contract, payer_wallet, escrow_nonce)).
+        Include escrow_id and escrow_nonce for a create response; no client-supplied override.
+        Recheck binding revocation before preparing a new intent. Revocation cannot cancel
+        previously signed transactions on chain.
+      additionalProperties: false
+      required: [intent_id, chain_id, from, to, data, value_atomic, expires_at, broadcast]
+      properties:
+        intent_id: {type: string, format: uuid}
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+        from: {$ref: '#/components/schemas/Address'}
+        to: {$ref: '#/components/schemas/Address'}
+        data:
+          type: string
+          pattern: '^0x(?:[0-9a-f]{2})*(?![\s\S])'
+          description: |
+            Canonical lowercase hex bytes: even digit count, no whitespace or line terminators.
+            Empty bytes (0x) are lexically valid, not proof of a valid escrow call.
+            The service must separately verify destination, action/selector and full ABI arguments.
+        value_atomic: {const: '0'}
+        expires_at: {type: string, format: date-time}
+        broadcast: {const: false}
+        escrow_id: {$ref: '#/components/schemas/Hash'}
+        escrow_nonce: {$ref: '#/components/schemas/Hash'}
+    Escrow:
+      type: object
+      additionalProperties: false
+      required: [deal_id, escrow_id, chain_id, state, amount_atomic, terms_hash, last_finalized_event_id]
+      properties:
+        deal_id: {type: string, format: uuid}
+        escrow_id: {$ref: '#/components/schemas/Hash'}
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+        state: {$ref: '#/components/schemas/State'}
+        amount_atomic: {$ref: '#/components/schemas/Atomic'}
+        terms_hash: {$ref: '#/components/schemas/Hash'}
+        last_finalized_event_id: {type: string, format: uuid}
+        transaction_status: {$ref: '#/components/schemas/TxState'}
+    Problem:
+      type: object
+      required: [type, title, status, code]
+      properties:
+        type: {type: string, format: uri}
+        title: {type: string}
+        status: {type: integer, minimum: 400, maximum: 599}
+        code: {type: string}
+        detail: {type: string}
+  responses:
+    Unauthorized:
+      description: Missing or invalid authentication
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Forbidden:
+      description: Wrong company, wallet, role or KYB/country restriction
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Conflict:
+      description: State conflict or same idempotency key with a different request hash
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Invalid:
+      description: Schema, amount, token, chain, expiry or commitment validation failed
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    NotFound:
+      description: No finalized escrow projection exists
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    Unavailable:
+      description: RPC/DB unavailable or reconciliation halted; never synthesize success
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}

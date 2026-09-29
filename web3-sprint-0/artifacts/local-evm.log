@@ -1,0 +1,23 @@
+PASS local chain guard
+PASS real contract deployment on Anvil
+PASS unconfirmed receipt does not project
+PASS actual pre-finality reorg rejected
+PASS finalized funding projection
+PASS duplicate receipt idempotent
+PASS unauthorized transaction simulation rejected
+PASS carrier delivery does not pay
+PASS challenge window enforced over RPC
+PASS settlement is claim, not paid status
+PASS failed transfer preserves claim
+PASS withdraw and reconciliation
+PASS repeated settlement rejected over RPC
+PASS receipt replay after observer restart
+{
+  "network": "LOCAL ANVIL ONLY",
+  "escrow": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+  "token": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
+  "settlementTx": "0x802a6a7cd3df2338ba9963ad1b905d22af425bd01b59b14adade14feb6dbab2f",
+  "withdrawalTx": "0xe8fd9a6ecc6f2f03e7eeeef6cc8c068a1352d33dc0e9949c010169204e4d3fc5",
+  "checks": 14,
+  "amoyDeployed": false
+}
