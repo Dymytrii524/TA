@@ -35,7 +35,15 @@ contract:
         - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
         - "ТЗ-рамкове-логістична-біржа.md"
         - "ТЗ-логістична-біржа-v2-мови-валюти.md"
+        - "index.html"
+        - "docs/**/*"
+        - "proto/**/*"
+        - "sprint-0-backend/ci/**/*"
+        - "sprint-0-backend/requirements.txt"
+        - "sprint-0-backend/ТЗ-бекенд-Спринт-0.md"
+        - "sprint-0-backend/ТЗ-верифікація-контрагентів.md"
         - "schemas/**/*"
+        - "i18n/**/*"
         - "ci/**/*"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   cache:
@@ -47,9 +55,13 @@ contract:
   variables:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   script:
+    # check_change_filters.py читає git ls-files, а python:3.12-slim git не містить.
+    - apt-get update -qq && apt-get install -y -qq --no-install-recommends git
     - pip install -r schemas/requirements.txt
     - python schemas/validate_schema.py
     - python ci/check_ruleset.py
+    - python ci/check_change_filters.py
+    - python ci/check_change_filters.py --self-test
     - python ci/check_doc_counts.py
     - python ci/check_doc_counts.py --self-test
     - set -o pipefail
@@ -109,6 +121,7 @@ proto:
         - "ТЗ-алгоритм-пошуку-вантажів-і-маршрутів.md"
         - "ТЗ-рамкове-логістична-біржа.md"
         - "proto/**/*"
+        - "third_party/**/*"
         - "schemas/**/*"
         - "ci/**/*"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -122,6 +135,8 @@ proto:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
     GIT_DEPTH: "0"
   script:
+    # proto_breaking.py і git fetch нижче потребують git, якого немає в python:3.12-slim.
+    - apt-get update -qq && apt-get install -y -qq --no-install-recommends git
     - pip install -r schemas/requirements.txt
     - test -s third_party/buf/validate/validate.proto
     - set -o pipefail
