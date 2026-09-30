@@ -65,6 +65,11 @@ node tests/wallet-integration.test.mjs
 Оновлення PR #21: погоджений ADR-R21-02/B, `F05-B/2` і виправлення R21-01/02/03
 описано в `docs/adr-r21-02.pplx.md` та `docs/r21-0{1,2,3}.md`.
 Застосовуються міграції 007/008; старі V1 snapshot не переписуються.
+
+R21-04 додає міграцію 009 і causal preflight evidence замість порівняння
+SQL/block timestamps. Перед видачею create calldata потрібен trusted
+`recordMappingPreflight`; історичний V1 перевіряється повним replay.
+Деталі, межі інтеграції та регресії: `docs/r21-04.md`.
 Нові команди: `node tests/finality.test.mjs`, `node tests/subsets.test.mjs`,
 `node tests/http-errors.test.mjs`, `node tools/r21_mutations.mjs`.
 Останні три потребують лише локального Anvil. Dedicated local PostgreSQL 18:

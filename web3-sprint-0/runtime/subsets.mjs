@@ -20,14 +20,18 @@ export async function readHistory(rpc,address,from,to,topics,{batch=2000,maxBloc
   }
   return all;
 }
-export function classify(t,f,previous,approvals){
+export function classify(t,f,previous,approvals,{preflight=false,legacy=false}={}){
   if(!t)return {dealId:null,provenance:'UNATTRIBUTED',payerCompany:null,carrierCompany:null};
   if(t.token_address!==f.token||t.payer_address!==f.payer||t.carrier_address!==f.carrier||
     t.terms_hash!==f.termsHash||BigInt(t.amount_atomic)!==BigInt(f.amount))
     throw Error('TA_MISMATCH');
-  const late=new Date(t.frozen_at).getTime()>f.timestamp*1000||
-    previous?.provenance==='UNATTRIBUTED';
-  if(late&&!approvals.some(a=>a.escrow_id===f.escrowId&&a.deal_id===t.deal_id))
+  // Wall clocks (including rounded seconds) are NOT a causal proof.
+  // A published quarantine always requires explicit approval, even if evidence
+  // is subsequently discovered. Published TA attribution survives exact replay.
+  const continued=previous?.provenance==='TA_MATCHED'&&previous.dealId===t.deal_id&&
+    previous.funding_event===`${f.blockHash}:${f.txHash}:${f.logIndex}`;
+  const proved=previous?.provenance!=='UNATTRIBUTED'&&(preflight||legacy||continued);
+  if(!proved&&!approvals.some(a=>a.escrow_id===f.escrowId&&a.deal_id===t.deal_id))
     return {dealId:null,provenance:'UNATTRIBUTED',payerCompany:null,carrierCompany:null};
   return {dealId:t.deal_id,provenance:'TA_MATCHED',
     payerCompany:t.commercial_snapshot.payer_company_id,carrierCompany:t.commercial_snapshot.carrier_company_id};

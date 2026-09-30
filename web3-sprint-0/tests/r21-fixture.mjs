@@ -2,8 +2,9 @@ import {JsonRpcProvider,ContractFactory,keccak256,toUtf8Bytes} from 'ethers';
 import {readFileSync} from 'node:fs';
 import {createFixture,u} from './p1-fixture.mjs';
 import {postgresFixtureDB} from './pg-adapter.mjs';
+import {recordMappingPreflight} from '../runtime/mapping-evidence.mjs';
 export const hash=s=>keccak256(toUtf8Bytes(s));
-export async function r21Fixture(){
+export async function r21Fixture({preflight=true}={}){
   const url=process.env.ANVIL_URL??'http://127.0.0.1:8545';
   if(!['localhost','127.0.0.1'].includes(new URL(url).hostname))throw Error('local only');
   const rpc=new JsonRpcProvider(url,31337,{staticNetwork:true,cacheTimeout:-1});rpc.pollingInterval=30;
@@ -26,8 +27,7 @@ export async function r21Fixture(){
   await f.db.query('INSERT INTO web3.wallet_permissions VALUES($1,$2,true)',[u(4),u(1)]);
   await send(token.mint(addr[0],100000n));await send(token.approve(contract,100000n));
   await send(token.mint(addr[5],100000n));await send(token.connect(s[5]).approve(contract,100000n));
-  // Freeze wall-clock precedes the funded block even on fast local mining.
-  await rpc.send('evm_increaseTime',[2]);await rpc.send('evm_mine',[]);
+  if(preflight)await recordMappingPreflight(f.db,rpc,u(10));
   const create=async(nonce,amount=400,payer=0,carrier=1)=>{
     const receipt=await send(escrow.connect(s[payer]).create(nonce,addr[carrier],amount,
       f.t.acceptBy,f.t.deliveryBy,hash('r21-external'),2));

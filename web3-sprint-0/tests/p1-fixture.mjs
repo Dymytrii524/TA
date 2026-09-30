@@ -19,6 +19,7 @@ export async function createFixture(overrides={}, {applyP2=true,applyWallet=appl
     if(applyReview) await db.exec(readFileSync('db/006_review_window.sql','utf8'));
     if(applyReview) await db.exec(readFileSync('db/007_transaction_observations.sql','utf8'));
     if(applySubsets) await db.exec(readFileSync('db/008_wallet_subsets.sql','utf8'));
+    if(applySubsets) await db.exec(readFileSync('db/009_mapping_evidence.sql','utf8'));
     const now=Math.floor(Date.now()/1000);
     const t={chainId:31337,contract:a(2),token:a(1),payer:a(3),carrier:a(4),
       arbiter:a(5),backup:a(6),challenge:86400,arbitration:604800,

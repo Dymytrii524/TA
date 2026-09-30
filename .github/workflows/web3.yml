@@ -76,6 +76,16 @@ jobs:
         env:
           PG_SERVICE_CONTAINER: ${{ job.services.postgres.id }}
         run: bash tests/backup-restore-ci.sh
+      - name: R21-04 causal mapping and historical V1 regressions
+        env:
+          ANVIL_URL: http://127.0.0.1:8546
+        run: |
+          node tools/foundry.mjs anvil --host 127.0.0.1 --port 8546 --chain-id 31337 --timestamp $(($(date +%s)-600)) --silent &
+          anvil_pid=$!
+          trap 'kill "$anvil_pid" || true' EXIT
+          node tools/wait_rpc.mjs
+          node tests/mapping-evidence.test.mjs
+          WEB3_TEST_DATABASE_URL=postgres://web3_test:local-ci-only@127.0.0.1:5432/ta_web3_test node tests/mapping-evidence.test.mjs
   blockchain-gate:
     name: blockchain-gate
     needs: [web3-tests]

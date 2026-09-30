@@ -4,12 +4,8 @@ import {Interface,keccak256,toQuantity} from 'ethers';
 import {randomUUID,createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {isDeepStrictEqual} from 'node:util';
-import {persistVerifiedTransaction,persistVerifiedEvent} from './finality.mjs';
-import {readHistory,classify,legacyLedger,publishSnapshot,publicWallet} from './subsets.mjs';
-import {DomainError,ReconciliationError,safeReason} from './errors.mjs';
-import {verifyMappingPreflight} from './mapping-evidence.mjs';
 export const iface=new Interface(JSON.parse(readFileSync(new URL('../artifacts/TransAtlasEscrow.abi.json',import.meta.url))));
-const fail=(code,status=409)=>{throw new DomainError(code,status)};
+const fail=(code,status=409)=>{throw Object.assign(new Error(code),{status})};
 const atomic=x=>{
   if(typeof x!=='string'||!/^(0|[1-9][0-9]*)$/.test(x)||BigInt(x)>=2n**256n) fail('invalid atomic');
   return BigInt(x);
@@ -37,43 +33,27 @@ export function replayWallet(events){
       settled.add(e.escrowId);
       if(atomic(e.payerAmount)+atomic(e.carrierAmount)!==atomic(e.amount))fail('settlement mismatch');
       for(const [account,amount,kind] of [[e.payer,e.payerAmount,'refund'],[e.carrier,e.carrierAmount,'proceeds']]){
-        if(atomic(amount)>0n)lots.push({id:`${key(e)}:${kind}`,deal_id:e.dealId??null,escrow_id:e.escrowId,
-          provenance:e.dealId?'TA_MATCHED':'UNATTRIBUTED',company_id:kind==='refund'?e.payerCompany??null:e.carrierCompany??null,
+        if(atomic(amount)>0n)lots.push({id:`${key(e)}:${kind}`,deal_id:e.dealId,escrow_id:e.escrowId,
           account,amount_atomic:amount,kind,settlement_event:key(e),withdrawal_event:null});
       }
     }else if(e.kind==='Withdrawn'){
       const pending=lots.filter(l=>l.account===e.account&&l.withdrawal_event===null);
       if(atomic(e.amount)===0n||pending.reduce((n,l)=>n+atomic(l.amount_atomic),0n)!==atomic(e.amount))
         fail('withdrawal reconciliation mismatch');
-      const allocations=pending.map(l=>({lot_id:l.id,deal_id:l.deal_id,amount_atomic:l.amount_atomic,
-        provenance:l.provenance,company_id:l.company_id}));
+      const allocations=pending.map(l=>({lot_id:l.id,deal_id:l.deal_id,amount_atomic:l.amount_atomic}));
       pending.forEach(l=>l.withdrawal_event=key(e));
       withdrawals.push({event:key(e),account:e.account,amount_atomic:e.amount,allocations});
     }else fail('unsupported wallet event');
   }
-  const balances={},ta_balances={},unattributed_balances={};
-  for(const l of lots){
-    const amount=l.withdrawal_event?0n:atomic(l.amount_atomic);
-    balances[l.account]=String(BigInt(balances[l.account]??0)+amount);
-    const part=l.provenance==='TA_MATCHED'?ta_balances:unattributed_balances;
-    part[l.account]=String(BigInt(part[l.account]??0)+amount);
-  }
-  return {policy_version:'F05-B/2',lots,withdrawals,balances,ta_balances,unattributed_balances};
+  const balances={};
+  for(const l of lots)balances[l.account]=String(BigInt(balances[l.account]??0)+(l.withdrawal_event?0n:atomic(l.amount_atomic)));
+  return {policy_version:'F05-B/1',lots,withdrawals,balances};
 }
 
 // Reads FULL history on each sync (bounded pilot implementation, not a scalable
 // production indexer). Verifies receipts, code, chain, finality anchor, frozen
 // parties, settlement totals and claimable at the SAME block.
 export async function reconcileWallet(db,rpc,chainId,{localConfirmations=2}={}){
-  const fail=reason=>{throw new ReconciliationError(reason)};
-  // Bound individual RPC calls; do not accept stale partial results on timeout.
-  const rawRpc=rpc;
-  rpc={send:async(...args)=>{
-    let timer;
-    try{return await Promise.race([rawRpc.send(...args),new Promise((_,reject)=>{
-      timer=setTimeout(()=>reject(Error('RPC timeout')),15000);
-    })])}finally{clearTimeout(timer)}
-  }};
   return db.transaction(async tx=>{
     const net=(await tx.query('SELECT * FROM web3.networks WHERE chain_id=$1 FOR UPDATE',[chainId])).rows[0];
     if(!net)fail('unknown network');
@@ -94,117 +74,88 @@ export async function reconcileWallet(db,rpc,chainId,{localConfirmations=2}={}){
       {to:net.escrow_address,data:iface.encodeFunctionData(name,args)},tag]));
     if(keccak256(await rpc.send('eth_getCode',[net.escrow_address,tag]))!==net.code_hash)fail('code mismatch');
     if(lower((await call('token'))[0])!==net.token_address)fail('token mismatch');
-    const previous=(await tx.query(`SELECT s.* FROM web3.wallet_active_snapshot a
-      JOIN web3.wallet_snapshots_v2 s ON s.id=a.snapshot_id
-      WHERE a.chain_id=$1 AND a.contract_address=$2`,[chainId,net.escrow_address])).rows[0];
+    const previous=(await tx.query(`SELECT * FROM web3.wallet_reconciliations
+      WHERE chain_id=$1 AND contract_address=$2 ORDER BY block_number DESC LIMIT 1`,[chainId,net.escrow_address])).rows[0];
     if(previous){
       const block=await rpc.send('eth_getBlockByNumber',[toQuantity(previous.block_number),false]);
       if(!block||block.hash!==previous.block_hash||height<Number(previous.block_number))
         fail('finality breach: halt reconciliation');
     }
-    const terms=(await tx.query('SELECT * FROM web3.deal_terms WHERE chain_id=$1 AND escrow_address=$2',[chainId,net.escrow_address])).rows;
-    const approvals=(await tx.query('SELECT * FROM web3.wallet_mapping_approvals WHERE chain_id=$1 AND contract_address=$2',[chainId,net.escrow_address])).rows;
-    const preflights=(await tx.query('SELECT * FROM web3.mapping_preflight WHERE chain_id=$1 AND contract_address=$2',[chainId,net.escrow_address])).rows;
-    // Historical attribution is provisional until EVERY V1 snapshot is fully
-    // replayed below. Never publish a partially validated migration.
-    const legacy=previous?[]:(await tx.query('SELECT * FROM web3.wallet_reconciliations WHERE chain_id=$1 AND contract_address=$2',[chainId,net.escrow_address])).rows;
-    const logs=await readHistory(rpc,net.escrow_address,Number(net.deployment_block),height,
-      ['Funded','Settled','Withdrawn'].map(n=>iface.getEvent(n).topicHash));
-    logs.sort((a,b)=>Number(a.blockNumber)-Number(b.blockNumber)||Number(a.transactionIndex)-Number(b.transactionIndex)||Number(a.logIndex)-Number(b.logIndex));
-    const receipts=new Map(),blocks=new Map(),events=[],funding=new Map(),allEvents=[],seen=new Map(),positions=new Set();
+    const terms=(await tx.query('SELECT * FROM web3.deal_terms WHERE chain_id=$1',[chainId])).rows;
+    const logs=await rpc.send('eth_getLogs',[{address:net.escrow_address,
+      fromBlock:toQuantity(net.deployment_block),toBlock:tag,
+      topics:[[iface.getEvent('Settled').topicHash,iface.getEvent('Withdrawn').topicHash]]}]);
+    const receipts=new Map(),events=[];
     for(const log of logs){
       let receipt=receipts.get(log.transactionHash);
       if(!receipt){
         receipt=await rpc.send('eth_getTransactionReceipt',[log.transactionHash]);
-        if(!receipt||receipt.transactionHash!==log.transactionHash||Number(receipt.status)!==1)fail('failed receipt');
+        if(!receipt||Number(receipt.status)!==1)fail('failed receipt');
         const block=await rpc.send('eth_getBlockByNumber',[receipt.blockNumber,false]);
         if(!block||block.hash!==receipt.blockHash)fail('orphaned receipt');
         receipts.set(log.transactionHash,receipt);
       }
-      if(lower(log.address)!==net.escrow_address||log.removed||receipt.blockHash!==log.blockHash||Number(log.blockNumber)>height
+      if(log.removed||receipt.blockHash!==log.blockHash||Number(log.blockNumber)>height
         ||Number(receipt.blockNumber)!==Number(log.blockNumber)
         ||Number(receipt.transactionIndex)!==Number(log.transactionIndex)
         ||!receipt.logs.some(l=>l.logIndex===log.logIndex&&lower(l.address)===net.escrow_address
           &&l.data===log.data&&JSON.stringify(l.topics)===JSON.stringify(log.topics)))fail('unverified log');
       const p=iface.parseLog(log),e={kind:p.name,blockHash:log.blockHash,txHash:log.transactionHash,
         blockNumber:Number(log.blockNumber),transactionIndex:Number(log.transactionIndex),logIndex:Number(log.logIndex)};
-      const k=key(e),proof=JSON.stringify({address:log.address,data:log.data,topics:log.topics,position:position(e)});
-      if(seen.has(k)){if(seen.get(k)!==proof)fail('conflicting replay');continue}
-      seen.set(k,proof);
-      if(position(e).some(v=>!Number.isSafeInteger(v)||v<0)||positions.has(position(e).join(':')))
-        fail('conflicting canonical position');
-      positions.add(position(e).join(':'));
-      if(p.name==='Funded'){
-        if(funding.has(p.args.id))fail('duplicate funding');
+      if(p.name==='Settled'){
+        const t=terms.find(t=>t.escrow_id===p.args.id&&t.escrow_address===net.escrow_address);
+        if(!t)fail('missing frozen deal history');
         const [d]=await call('getDeal',[p.args.id]);
-        if(lower(d.payer)!==lower(p.args.payer)||lower(d.carrier)!==lower(p.args.carrier)||
-          d.termsHash!==p.args.termsHash||d.amount!==p.args.amount||Number(d.state)===0)fail('funding proof mismatch');
-        if(!blocks.has(e.blockHash))blocks.set(e.blockHash,await rpc.send('eth_getBlockByNumber',[toQuantity(e.blockNumber),false]));
-        Object.assign(e,{escrowId:p.args.id,payer:lower(d.payer),carrier:lower(d.carrier),
-          amount:String(d.amount),termsHash:d.termsHash,token:net.token_address,
-          timestamp:Number(blocks.get(e.blockHash).timestamp),settled:Number(d.state)===6});
-        const t=terms.find(t=>t.escrow_id===e.escrowId);
-        const preflight=t?await verifyMappingPreflight(rpc,preflights.find(p=>p.deal_id===t.deal_id),t,e):false;
-        const inherited=!!t&&legacy.some(s=>s.subledger.lots?.some(l=>
-          l.escrow_id===e.escrowId&&l.deal_id===t.deal_id));
-        Object.assign(e,classify(t,e,previous?.subledger.classifications.find(c=>c.escrowId===e.escrowId),approvals,
-          {preflight,legacy:inherited}));
-        funding.set(e.escrowId,e);
-      }else if(p.name==='Settled'){
-        const f=funding.get(p.args.id);
-        if(!f||!f.settled)fail('missing verified funding');
-        Object.assign(e,{escrowId:f.escrowId,dealId:f.dealId,payer:f.payer,carrier:f.carrier,
-          payerCompany:f.payerCompany,carrierCompany:f.carrierCompany,
-          amount:f.amount,payerAmount:String(p.args.payerAmount),carrierAmount:String(p.args.carrierAmount)});
-        events.push(e);
-      }else{
-        Object.assign(e,{account:lower(p.args.account),amount:String(p.args.amount)});events.push(e);
-      }
-      allEvents.push(e);
+        if(lower(d.payer)!==t.payer_address||lower(d.carrier)!==t.carrier_address
+          ||d.termsHash!==t.terms_hash||d.amount!==BigInt(t.amount_atomic)||Number(d.state)!==6)fail('frozen settlement mismatch');
+        Object.assign(e,{escrowId:p.args.id,dealId:t.deal_id,payer:t.payer_address,carrier:t.carrier_address,
+          amount:String(t.amount_atomic),payerAmount:String(p.args.payerAmount),carrierAmount:String(p.args.carrierAmount)});
+      }else Object.assign(e,{account:lower(p.args.account),amount:String(p.args.amount)});
+      events.push(e);
     }
     const ledger=replayWallet(events);
-    ledger.classifications=[...funding.values()].map(f=>({escrowId:f.escrowId,dealId:f.dealId,provenance:f.provenance,
-      reason:f.dealId?'VERIFIED_TA_TERMS':'NO_VERIFIED_TA_MAPPING',funding_event:key(f)})).sort((a,b)=>a.escrowId.localeCompare(b.escrowId));
-    const settledIds=new Set(events.filter(e=>e.kind==='Settled').map(e=>e.escrowId));
-    if([...funding.values()].some(f=>f.settled!==settledIds.has(f.escrowId)))fail('missing settlement history');
     // Include all frozen counterparties, even if a missing Settled log would
     // otherwise conceal their entire positive balance.
-    const accounts=new Set([...Object.keys(ledger.balances),...terms.flatMap(t=>[t.payer_address,t.carrier_address]),
-      ...[...funding.values()].flatMap(f=>[f.payer,f.carrier])]);
+    const accounts=new Set([...Object.keys(ledger.balances),...terms.flatMap(t=>[t.payer_address,t.carrier_address])]);
     for(const account of accounts){
       if(String((await call('claimable',[account]))[0])!==(ledger.balances[account]??'0'))fail('claimable mismatch');
     }
     if(String((await call('totalClaimable'))[0])!==String(Object.values(ledger.balances).reduce((n,a)=>n+BigInt(a),0n))
       ||String((await call('totalWithdrawn'))[0])!==String(ledger.withdrawals.reduce((n,w)=>n+BigInt(w.amount_atomic),0n)))
       fail('global liability mismatch');
-    const deposited=[...funding.values()].reduce((n,f)=>n+BigInt(f.amount),0n);
-    const locked=[...funding.values()].filter(f=>!f.settled).reduce((n,f)=>n+BigInt(f.amount),0n);
-    if(String((await call('totalDeposited'))[0])!==String(deposited)||
-      String((await call('locked'))[0])!==String(locked))fail('deposit history mismatch');
-    const erc20=new Interface(['function balanceOf(address) view returns (uint256)']);
-    const tokenBalance=erc20.decodeFunctionResult('balanceOf',await rpc.send('eth_call',[
-      {to:net.token_address,data:erc20.encodeFunctionData('balanceOf',[net.escrow_address])},tag]))[0];
-    if(tokenBalance<locked+Object.values(ledger.balances).reduce((n,v)=>n+BigInt(v),0n))fail('insolvent contract');
     const end=await rpc.send('eth_getBlockByNumber',[tag,false]);
     if(!end||end.hash!==anchor.hash)fail('anchor changed during reconciliation');
-    // First V2 activation must replay and verify ALL historical V1 snapshots.
-    if(!previous){
-      for(const s of legacy){
-        const b=await rpc.send('eth_getBlockByNumber',[toQuantity(s.block_number),false]);
-        if(!b||b.hash!==s.block_hash||Number(s.block_number)>height)fail('legacy finality conflict');
-        if(!isDeepStrictEqual(s.subledger,legacyLedger(replayWallet(events.filter(e=>e.blockNumber<=Number(s.block_number))))))
-          fail('legacy backfill mismatch');
-      }
+    const old=(await tx.query('SELECT subledger FROM web3.wallet_reconciliations WHERE chain_id=$1 AND contract_address=$2 AND block_hash=$3',
+      [chainId,net.escrow_address,anchor.hash])).rows[0];
+    if(old){
+      // JSONB object ordering is immaterial; compare canonical contents.
+      if(!isDeepStrictEqual(old.subledger,ledger))fail('conflicting finalized snapshot');
+    }else await tx.query(`INSERT INTO web3.wallet_reconciliations
+      (id,chain_id,contract_address,token_address,block_number,block_hash,policy_version,subledger)
+      VALUES($1,$2,$3,$4,$5,$6,'F05-B/1',$7::jsonb)`,
+      [randomUUID(),chainId,net.escrow_address,net.token_address,height,anchor.hash,JSON.stringify(ledger)]);
+    for(const e of events){
+      await tx.query(`INSERT INTO web3.chain_transactions
+        (chain_id,tx_hash,state,block_hash,block_number,receipt_success)
+        VALUES($1,$2,'finalized',$3,$4,true) ON CONFLICT(chain_id,tx_hash) DO NOTHING`,
+        [chainId,e.txHash,e.blockHash,e.blockNumber]);
+      const stored=(await tx.query('SELECT * FROM web3.chain_transactions WHERE chain_id=$1 AND tx_hash=$2',[chainId,e.txHash])).rows[0];
+      if(stored.block_hash!==e.blockHash||stored.state!=='finalized'||!stored.receipt_success)fail('transaction history conflict');
+      const payload=e.kind==='Withdrawn'?{account:e.account,amount:e.amount}:
+        {payerAmount:e.payerAmount,carrierAmount:e.carrierAmount,transactionIndex:e.transactionIndex};
+      await tx.query(`INSERT INTO web3.chain_events
+        (id,chain_id,tx_hash,block_hash,log_index,contract_address,escrow_id,event_kind,payload,finalized)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,true)
+        ON CONFLICT(chain_id,block_hash,tx_hash,log_index) DO NOTHING`,
+        [randomUUID(),chainId,e.txHash,e.blockHash,e.logIndex,net.escrow_address,e.escrowId??null,e.kind,JSON.stringify(payload)]);
+      const storedEvent=(await tx.query(`SELECT * FROM web3.chain_events
+        WHERE chain_id=$1 AND block_hash=$2 AND tx_hash=$3 AND log_index=$4`,
+        [chainId,e.blockHash,e.txHash,e.logIndex])).rows[0];
+      if(!storedEvent.finalized||storedEvent.contract_address!==net.escrow_address||storedEvent.event_kind!==e.kind
+        ||storedEvent.escrow_id!==(e.escrowId??null)||!isDeepStrictEqual(storedEvent.payload,payload))fail('event history conflict');
     }
-    for(const e of allEvents){
-      await persistVerifiedTransaction(tx,rpc,chainId,e);
-      await persistVerifiedEvent(tx,chainId,net.escrow_address,e);
-    }
-    if((await rpc.send('eth_getBlockByNumber',[tag,false]))?.hash!==anchor.hash)
-      fail('anchor changed before publish');
-    const projection_revision=await publishSnapshot(tx,net,anchor,ledger,previous);
     return {chain_id:chainId,contract:net.escrow_address,token:net.token_address,
-      block_number:height,block_hash:anchor.hash,projection_revision,ledger};
+      block_number:height,block_hash:anchor.hash,ledger};
   });
 }
 
@@ -248,8 +199,7 @@ export async function prepareWithdrawal(db,userId,bindingId,idempotencyKey,body,
 
 // Mount this handler in TA behind a trusted authenticate(req) adapter. Missing
 // adapter denies ALL requests; no built-in dev bearer token or unsigned JWT.
-export function walletHandler({db,rpc,authenticate=async()=>null,
-  audit=entry=>console.error(JSON.stringify(entry))}){
+export function walletHandler({db,rpc,authenticate=async()=>null}){
   return async(req,res)=>{
     const send=(status,data)=>{res.writeHead(status,{'Content-Type':status>=400?'application/problem+json':'application/json'});res.end(JSON.stringify(data))};
     try{
@@ -261,27 +211,18 @@ export function walletHandler({db,rpc,authenticate=async()=>null,
       if((match[2]==='claims'&&req.method!=='GET')||(match[2]==='intents'&&req.method!=='POST'))fail('method not allowed',405);
       let body;
       if(req.method==='POST'){
-        let text='',bytes=0;for await(const chunk of req){bytes+=Buffer.byteLength(chunk);if(bytes>4096)fail('body too large',413);text+=chunk}
+        let text='';for await(const chunk of req){text+=chunk;if(text.length>4096)fail('body too large',413)}
         try{body=JSON.parse(text)}catch{fail('invalid JSON',422)}
       }
-      let snapshot;
-      try{snapshot=await reconcileWallet(db,rpc,Number(binding.chain_id))}
-      catch(e){throw new ReconciliationError(safeReason(e))}
+      const snapshot=await reconcileWallet(db,rpc,Number(binding.chain_id));
       if(match[2]==='claims'){
         await authorizeWallet(db,user.id,match[1]); // revocation during reconciliation
-        send(200,publicWallet(snapshot,binding));
+        send(200,{chain_id:snapshot.chain_id,contract:snapshot.contract,token:snapshot.token,
+          account:binding.wallet_address,block_number:snapshot.block_number,block_hash:snapshot.block_hash,
+          claimable_atomic:snapshot.ledger.balances[binding.wallet_address]??'0',
+          lots:snapshot.ledger.lots.filter(l=>l.account===binding.wallet_address),
+          withdrawals:snapshot.ledger.withdrawals.filter(w=>w.account===binding.wallet_address)});
       }else send(201,await prepareWithdrawal(db,user.id,match[1],req.headers['idempotency-key'],body,snapshot));
-    }catch(e){
-      if(e instanceof DomainError){
-        send(e.status,{type:'about:blank',title:e.message,status:e.status,code:e.message});
-      }else{
-        const correlation_id=randomUUID();
-        const reason=safeReason(e);
-        try{audit({event:'web3.reconciliation_failed',correlation_id,
-          reason})}catch{/* logger cannot change response */}
-        send(503,{type:'about:blank',title:'Reconciliation unavailable',status:503,
-          code:'RECONCILIATION_UNAVAILABLE',correlation_id});
-      }
-    }
+    }catch(e){send(e.status??503,{type:'about:blank',title:e.status?e.message:'reconciliation unavailable',status:e.status??503,code:e.status?e.message:'RECONCILIATION_UNAVAILABLE'})}
   };
 }

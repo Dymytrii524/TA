@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {createFixture,freeze,u} from './p1-fixture.mjs';
 import {deriveEscrowId,deriveTermsHash} from '../tools/escrow-identity.mjs';
 import {reconcileWallet,walletHandler} from '../runtime/wallet.mjs';
+import {recordMappingPreflight} from '../runtime/mapping-evidence.mjs';
 const url=process.env.ANVIL_URL??'http://127.0.0.1:8545';
 if(!['localhost','127.0.0.1','[::1]'].includes(new URL(url).hostname))throw Error('local only');
 const rpc=new JsonRpcProvider(url,31337,{staticNetwork:true,cacheTimeout:-1});rpc.pollingInterval=50;
@@ -32,7 +33,11 @@ try{
   db=fixture.db;const t=fixture.t;
   await db.query('INSERT INTO web3.wallet_permissions VALUES($1,$2,true)',[u(4),u(1)]);
   await send(token.mint(addr[0],5000000000n));await send(token.approve(contract,5000000000n));
-  const fund=async v=>send(escrow.create(v.nonce,addr[1],v.amount,v.acceptBy,v.deliveryBy,v.agreement,2));
+  const fund=async v=>{
+    const row=(await db.query('SELECT deal_id FROM web3.deal_terms WHERE escrow_id=$1',[v.id])).rows[0];
+    await recordMappingPreflight(db,rpc,row.deal_id);
+    return send(escrow.create(v.nonce,addr[1],v.amount,v.acceptBy,v.deliveryBy,v.agreement,2));
+  };
   await fund(t);const earlySettlement=await send(escrow.connect(signers[1]).cancelUnaccepted(t.id));
   await db.query(`INSERT INTO web3.chain_transactions
     (chain_id,tx_hash,state,block_hash,block_number,receipt_success)

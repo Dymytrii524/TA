@@ -1,4 +1,5 @@
-const url='http://127.0.0.1:8545';
+const url=process.env.ANVIL_URL??'http://127.0.0.1:8545';
+if(!['127.0.0.1','localhost'].includes(new URL(url).hostname))throw Error('local Anvil only');
 let ready=false;
 for(let i=0;i<60;i++){
   try{
