@@ -15,7 +15,9 @@ export async function recordMappingPreflight(db,rawRpc,dealId){
     })])}finally{clearTimeout(timer)}
   };
   return db.transaction(async tx=>{
-    const t=(await tx.query('SELECT * FROM web3.deal_terms WHERE deal_id=$1 FOR SHARE',[dealId])).rows[0];
+    // Serialize evidence writers for this immutable deal. FOR SHARE allows two
+    // INSERTs to race across distinct unique indexes despite ON CONFLICT(deal_id).
+    const t=(await tx.query('SELECT * FROM web3.deal_terms WHERE deal_id=$1 FOR UPDATE',[dealId])).rows[0];
     if(!t)throw Error('missing frozen terms');
     const net=(await tx.query('SELECT * FROM web3.networks WHERE chain_id=$1',[t.chain_id])).rows[0];
     if(!net||![31337,80002].includes(Number(t.chain_id))||
@@ -37,8 +39,8 @@ export async function recordMappingPreflight(db,rawRpc,dealId){
     if(Number(deal.state)!==0)throw Error('preflight funding already exists');
     if((await send('eth_getBlockByNumber',[tag,false]))?.hash!==block.hash)
       throw Error('preflight anchor changed');
-    // Concurrent identical calls may race; the immutable winning observation is
-    // sufficient, and is revalidated against the funding block during replay.
+    // The deal row lock serializes identical preparations. The immutable winning
+    // observation is revalidated against the funding block during replay.
     await tx.query(`INSERT INTO web3.mapping_preflight
       (deal_id,chain_id,contract_address,escrow_id,terms_hash,block_number,block_hash)
       VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(deal_id) DO NOTHING`,

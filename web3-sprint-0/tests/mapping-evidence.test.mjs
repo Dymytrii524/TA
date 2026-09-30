@@ -113,8 +113,44 @@ try{
       (deal_id,chain_id,contract_address,escrow_id,terms_hash,block_number,block_hash)
       VALUES($1,31337,$2,$3,$4,1,$5)`,[u(10),f.t.contract,f.t.id,hash('wrong'),hash('block')]),/scope mismatch/);
     if(process.env.WEB3_TEST_DATABASE_URL){
-      await Promise.all([recordMappingPreflight(f.db,f.rpc,u(10)),recordMappingPreflight(f.db,f.rpc,u(10))]);
+      let entered,release,secondStarted;
+      const atRPC=new Promise(r=>entered=r),held=new Promise(r=>release=r);
+      const secondReady=new Promise(r=>secondStarted=r);
+      const pids=[];
+      const worker=index=>({transaction:fn=>f.db.transaction(async tx=>{
+        pids[index]=(await tx.query('SELECT pg_backend_pid() pid')).rows[0].pid;
+        if(index===1)secondStarted();
+        return fn(tx);
+      })});
+      let firstBlock=true,secondRPC=0;
+      const heldRPC={send:async(m,a)=>{
+        if(m==='eth_getBlockByNumber'&&firstBlock){firstBlock=false;entered();await held}
+        return f.rpc.send(m,a);
+      }};
+      const countedRPC={send:(...args)=>{secondRPC++;return f.rpc.send(...args)}};
+      const first=recordMappingPreflight(worker(0),heldRPC,u(10));
+      await atRPC;
+      const second=recordMappingPreflight(worker(1),countedRPC,u(10));
+      // Attach rejection handlers immediately; always release and drain both
+      // workers even when the lock assertion fails (mutation control).
+      const both=Promise.allSettled([first,second]);
+      await secondReady;
+      let blocked=false;
+      try{
+        assert.notEqual(pids[0],pids[1]);
+        for(let i=0;i<100;i++){
+          const state=(await f.db.query('SELECT wait_event_type FROM pg_stat_activity WHERE pid=$1',[pids[1]])).rows[0];
+          if(state?.wait_event_type==='Lock'){blocked=true;break}
+          await new Promise(r=>setTimeout(r,10));
+        }
+        assert(blocked,'second preflight must wait on immutable deal row');
+        assert.equal(secondRPC,0,'waiting writer must not reach RPC');
+      }finally{release();await both}
+      const results=await both;
+      assert(results.every(r=>r.status==='fulfilled'),JSON.stringify(results));
+      assert.deepEqual(results[0].value,results[1].value);
       assert.equal((await f.db.query('SELECT * FROM web3.mapping_preflight')).rows.length,1);
+      pass('forced two-session overlap: second writer blocks before RPC, identical immutable proof');
     }
     pass('wrong RPC chain/code/changing anchor and SQL scope rejected; no partial evidence');
   },{preflight:false});
