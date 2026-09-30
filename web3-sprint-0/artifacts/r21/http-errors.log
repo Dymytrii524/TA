@@ -1,0 +1,11 @@
+PASS R21-03 internal failures -> stable 503, no stale success or partial intent
+PASS R21-03 protected correlation audit excludes downstream messages
+PASS R21-03 401/403 remain domain errors
+PASS R21-03 404/405/413/422 preserved
+PASS R21-03 idempotency conflict remains 409
+PASS R21-03 verified quarantine is 200/201, not 503
+PASS R21-03 no finalized claim remains domain 409
+PASS R21-03 revoked retry denied
+PASS full problem response schemas: 24 actual HTTP errors
+PASS R21-03 complete real problem responses validate
+{"checks":9,"responses":24}

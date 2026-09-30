@@ -1,0 +1,2 @@
+F07 API/SQL regression checks: 19 passed
+PASS F07 historical freeze rejects migration atomically

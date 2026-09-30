@@ -1,0 +1,17 @@
+PASS two deals -> one full sweep with exact allocations
+PASS duplicate/restart replay is idempotent
+PASS later claim is not allocated to earlier withdrawal
+PASS same block follows transaction and log order
+PASS reject missing history
+PASS reject wrong wallet
+PASS reject overpayment
+PASS reject underpayment
+PASS reject duplicate settlement
+PASS reject forged split
+PASS reject bad atomic
+PASS reject conflicting replay
+PASS reject zero withdrawal
+PASS pre-finality replay omits orphan branch
+PASS refund/proceeds for same wallet are separately identified
+F05 wallet regression checks: 34 passed
+PASS F05 populated migration refusal and atomic rollback

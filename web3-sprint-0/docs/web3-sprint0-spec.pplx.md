@@ -1,6 +1,6 @@
 # Trans-Atlas: єдиний пакет Web3 Sprint 0
 
-Технічне завдання та виконаний локальний прототип, версія 0.1.0 від 22.09.2026. Пакет об’єднує три замовлені напрями: локальний/Amoy escrow, state machine разом з API та SQL, а також виконувані unit/fuzz/invariant-перевірки.
+Технічне завдання та виконаний локальний прототип, із доповненнями F05-B/F07-A від 29.09.2026 (terms/API V2). Поточні зміни та межі описано в `f05-b-implementation.md`, `f07-a-implementation.md`; первісні приймальні звіти залишаються історичними.
 
 ## Рішення та статус
 
@@ -12,8 +12,8 @@
 |---|---|---|
 | Escrow | Solidity-контракт, компіляція, deployment і транзакції в локальному Anvil | Mainnet, аудит, реальні гроші |
 | Amoy | Тестовий token allowlist, шаблон параметрів, генератор unsigned deployment calldata | RPC-перевірки Amoy, власники ролей, broadcast, contract address |
-| State machine | Формальні переходи, ролі, часові межі, відповідність enum між Solidity/SQL/API | Бізнес-погодження тривалостей і арбітрів |
-| API | Валідна OpenAPI 3.1 та позитивні/негативні schema fixtures | HTTP handlers, auth-сервер, WalletConnect/UI |
+| State machine | Формальні переходи, погоджені 48h перевірки доставки, відповідність enum | Production-власники арбітражних ролей |
+| API | OpenAPI 3.1, wallet HTTP handler, review policy guards | Production auth integration, повний deal HTTP, WalletConnect/UI |
 | SQL | Міграції та реальне виконання на PGlite PostgreSQL WASM | Повне розгортання TA/PostGIS, runtime roles, production backups |
 | Тести | Foundry, mutation, SQL, OpenAPI, локальні EVM-транзакції | Незалежний аудит, формальна верифікація, Amoy E2E |
 | CI | Additive workflow з fail-closed gate | GitHub PR, remote workflow run, зміна ruleset |
@@ -46,7 +46,7 @@ TA UI + гаманець
 - **Deal identity:** business `deal_id` є UUID; випадковий ненульовий `escrow_nonce` має 32 байти й належить платнику. Контракт обчислює `escrow_id = keccak256(abi.encode(keccak256("TRANS_ATLAS_ESCROW_ID_V1"), uint256(chainId), address(this), payer, escrow_nonce))`; зберігати nonce та ID у `deal_terms`, не виводити nonce з ПІБ або документа.
 - **Terms snapshot:** до create зафіксувати chain, token, контракт, company/wallet bindings, amount_atomic, acceptBy, deliveryBy, FX snapshot та agreement commitment.
 - **Commitment:** запропонований формат для майбутнього document-сервісу: `keccak256(abi.encode(domainVersion, randomNonce32, sha256(fileBytes)))`; nonce зберігається приватно. У контракт передається лише bytes32, а генератор документних commitments не реалізовано.
-- **termsHash:** контракт обчислює `keccak256(abi.encode(chainId, contract, id, payer, carrier, token, amount, acceptBy, deliveryBy, agreementCommitment, arbiter, backupArbiter, challengePeriod, arbitrationPeriod))`.
+- **termsHash V2:** `keccak256(abi.encode(keccak256("TRANS_ATLAS_TERMS_V2"), chainId, contract, id, payer, carrier, token, amount, acceptBy, deliveryBy, agreementCommitment, arbiter, backupArbiter, challengePeriod, arbitrationPeriod, uint64(172800)))`. Create вимагає останній аргумент `uint16 termsVersion=2`, старий selector не приймається.
 - **Погодження перевізником:** accept вимагає точний expectedTerms; UI повинен відобразити розшифровані умови, а не лише хеш.
 - **FX:** fiat-ціна і USDC atomic є різними величинами. Snapshot курсу, напрям конвертації, правило округлення і строк чинності мають бути явними; прототип не виконує реальної FX-конвертації.
 

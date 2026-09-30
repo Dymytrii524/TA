@@ -18,12 +18,12 @@ contract P1RegressionTest is TestBase {
         t.mint(P,10000e6);vm.prank(P);t.approve(address(e),type(uint256).max);
     }
     function fund() internal {
-        vm.prank(P);e.create(NONCE,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        vm.prank(P);e.create(NONCE,C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
     }
     function testP1AttackerCannotOccupyVictimId() public {
         t.mint(X,1); vm.prank(X); t.approve(address(e),1);
         vm.prank(X);
-        bytes32 attackerId=e.create(NONCE,C,1,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        bytes32 attackerId=e.create(NONCE,C,1,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
         ok(attackerId!=ID);
         vm.prank(C);e.cancelUnaccepted(attackerId);
         vm.prank(X);e.withdraw();
@@ -48,6 +48,6 @@ contract P1RegressionTest is TestBase {
     }
     function testP1ZeroNonceRejected() public {
         vm.expectRevert(E.Invalid.selector);vm.prank(P);
-        e.create(bytes32(0),C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM);
+        e.create(bytes32(0),C,AMOUNT,uint64(block.timestamp+1 days),uint64(block.timestamp+10 days),COM,2);
     }
 }

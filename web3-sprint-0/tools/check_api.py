@@ -18,28 +18,39 @@ validator = Draft202012Validator(
 )
 h = "0x" + "ab" * 32
 positive = [
-    {"action": "create", "chain_id": 31337},
+    {"action": "create", "chain_id": 31337, "terms_version": 2},
     {"action": "accept", "chain_id": 80002, "expected_terms_hash": h},
     {"action": "approveDelivery", "chain_id": 31337, "evidence_commitment": h},
     {"action": "resolve", "chain_id": 31337, "payer_amount_atomic": "123456"},
     {"action": "dispute", "chain_id": 31337, "reason_commitment": h},
 ]
 negative = [
-    {"action": "create", "chain_id": 137},
+    {"action": "create", "chain_id": 31337},
+    {"action": "create", "chain_id": 31337, "terms_version": 1},
+    {"action": "withdraw", "chain_id": 31337},
+    {"action": "create", "chain_id": 137, "terms_version": 2},
     {"action": "accept", "chain_id": 31337},
     {"action": "approveDelivery", "chain_id": 31337},
     {"action": "resolve", "chain_id": 31337, "payer_amount_atomic": 10},
     {"action": "resolve", "chain_id": 31337, "payer_amount_atomic": "-1"},
     {"action": "resolve", "chain_id": 31337, "payer_amount_atomic": "1.5"},
     {"action": "dispute", "chain_id": 31337},
-    {"action": "create", "chain_id": 31337, "private_key": "forbidden"},
-    {"action": "create", "chain_id": 31337, "escrow_id": h},
-    {"action": "create", "chain_id": 31337, "escrow_nonce": h},
+    {"action": "create", "chain_id": 31337, "terms_version": 2, "private_key": "forbidden"},
+    {"action": "create", "chain_id": 31337, "terms_version": 2, "escrow_id": h},
+    {"action": "create", "chain_id": 31337, "terms_version": 2, "escrow_nonce": h},
 ]
 for value in positive:
     validator.validate(value)
 for value in negative:
     assert list(validator.iter_errors(value)), f"negative fixture passed: {value}"
+wallet_validator = Draft202012Validator(
+    {"$ref": "urn:ta:web3#/components/schemas/WalletIntentRequest"}, registry=registry)
+wallet_validator.validate({"action": "withdraw", "chain_id": 31337})
+for invalid in [{"action":"withdraw","chain_id":137},
+                {"action":"withdraw","chain_id":31337,"deal_id":"x"},
+                {"action":"withdraw","chain_id":31337,"amount":"1"},
+                {"action":"create","chain_id":31337}]:
+    assert not wallet_validator.is_valid(invalid)
 
 # C03: validate full response objects, then check the SAME data pattern in JS.
 calldata_cases = json.loads((root / "tests/fixtures/calldata.json").read_text())
@@ -81,6 +92,12 @@ assert states == doc["components"]["schemas"]["State"]["enum"]
 sql_states = re.findall(r"'([^']+)'", re.search(r"CREATE TYPE web3.escrow_state AS ENUM \(([^)]+)", sql)[1])
 assert states == sql_states
 actions = doc["components"]["schemas"]["IntentRequest"]["properties"]["action"]["enum"]
+assert doc["components"]["schemas"]["Escrow"]["properties"]["review_period_seconds"]["const"] == 172800
+assert 'uint64 public constant reviewPeriod = 48 hours;' in sol
+assert 'TRANS_ATLAS_TERMS_V2' in sol and 'uint16 termsVersion' in sol
+abi = json.loads((root / "artifacts/TransAtlasEscrow.abi.json").read_text())
+create = next(item for item in abi if item.get("type") == "function" and item.get("name") == "create")
+assert create["inputs"][-1] == {"name":"termsVersion","type":"uint16","internalType":"uint16"}
 for action in actions:
     assert re.search(rf"function {action}\(", sol), action
 for path, item in doc["paths"].items():

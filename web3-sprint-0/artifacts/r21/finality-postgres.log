@@ -1,0 +1,13 @@
+PASS R21-01 included -> finalized atomic
+PASS R21-01 submitted -> finalized atomic
+PASS R21-01 finalized replay no UPDATE/no duplicate
+PASS R21-01 finalized height conflict
+PASS R21-01 finalized hash conflict
+PASS R21-01 proven pre-finality reorg retains observation
+PASS R21-01 canonical failure not promoted
+PASS R21-01 orphan re-inclusion newly verified
+PASS R21-01 fault after promotion rolls back
+PASS R21-01 existing non-final event promotes with tx
+PASS R21-01 conflicting finalized payload halts
+PASS R21-01 two PostgreSQL workers exactly once
+{"checks":12,"engine":"PostgreSQL"}

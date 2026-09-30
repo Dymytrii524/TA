@@ -1,9 +1,10 @@
 openapi: 3.1.0
 info:
   title: Trans-Atlas Web3 Sprint 0
-  version: 0.1.0
+  version: 0.3.0
   description: |
-    CONTRACT ONLY: no HTTP server is shipped in this sprint.
+    Deal endpoints are CONTRACT ONLY. runtime/wallet.mjs provides the F05 wallet
+    HTTP handler; requires trusted TA authentication and DB/RPC adapters.
     Local/Amoy-only transaction intents, not a signing/custody API.
     Wallet sends transactions directly. API verifies company membership and wallet binding.
     All mutations require Idempotency-Key; same key/different body returns 409.
@@ -15,6 +16,58 @@ servers:
 security:
   - bearerAuth: []
 paths:
+  /api/v1/web3/wallets/{binding_id}/claims:
+    parameters:
+      - $ref: '#/components/parameters/BindingId'
+    get:
+      operationId: getWalletClaims
+      description: |
+        Requires financial permission in the binding company and active wallet binding.
+        Returns verified global wallet total plus TA/unattributed/restricted subsets.
+        Verified unknown escrows are counted, not fabricated TA deals.
+        Another company's historical attribution is redacted as RESTRICTED.
+        SETTLED is not paid. Reconciliation failure returns 503, never stale success.
+      responses:
+        '200':
+          description: Verified wallet subledger at the stated canonical block
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/WalletClaims'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '405': {$ref: '#/components/responses/MethodNotAllowed'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /api/v1/web3/wallets/{binding_id}/intents:
+    parameters:
+      - $ref: '#/components/parameters/BindingId'
+    post:
+      operationId: prepareWalletWithdrawal
+      description: |
+        Unsigned withdraw-all intent. No deal_id, amount or alternate recipient.
+        Amount is the entire claim at execution, not a guaranteed preparation quote.
+        Revocation is rechecked but cannot revoke an already signed on-chain transaction.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/WalletIntentRequest'}
+      responses:
+        '201':
+          description: Unsigned wallet transaction; nothing broadcast
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/TransactionIntent'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '409': {$ref: '#/components/responses/Conflict'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '405': {$ref: '#/components/responses/MethodNotAllowed'}
+        '413': {$ref: '#/components/responses/TooLarge'}
+        '422': {$ref: '#/components/responses/Invalid'}
+        '503': {$ref: '#/components/responses/Unavailable'}
   /api/v1/web3/deals/{deal_id}/intents:
     parameters:
       - $ref: '#/components/parameters/DealId'
@@ -147,6 +200,20 @@ components:
   securitySchemes:
     bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
   parameters:
+    BindingId:
+      name: binding_id
+      in: path
+      required: true
+      description: |
+        Hyphenated UUID (8-4-4-4-12 hexadecimal digits, either case).
+        Malformed wallet paths return 404 before SQL/RPC, after authentication.
+        Well-formed unknown, foreign or revoked bindings return 403.
+      schema:
+        type: string
+        format: uuid
+        minLength: 36
+        maxLength: 36
+        pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
     DealId:
       name: deal_id
       in: path
@@ -158,6 +225,71 @@ components:
       required: true
       schema: {type: string, minLength: 16, maxLength: 128}
   schemas:
+    WalletIntentRequest:
+      type: object
+      additionalProperties: false
+      required: [action, chain_id]
+      properties:
+        action: {const: withdraw}
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+    WalletClaims:
+      type: object
+      additionalProperties: false
+      required: [chain_id, contract, token, account, block_number, block_hash, claimable_atomic, ta_claimable_atomic, unattributed_claimable_atomic, restricted_claimable_atomic, reconciliation_status, policy_version, projection_revision, warnings, lots, withdrawals]
+      properties:
+        chain_id: {$ref: '#/components/schemas/ChainId'}
+        contract: {$ref: '#/components/schemas/Address'}
+        token: {$ref: '#/components/schemas/Address'}
+        account: {$ref: '#/components/schemas/Address'}
+        block_number: {type: integer, minimum: 0}
+        block_hash: {$ref: '#/components/schemas/Hash'}
+        claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        ta_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        unattributed_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        restricted_claimable_atomic: {$ref: '#/components/schemas/Atomic'}
+        reconciliation_status: {const: VERIFIED}
+        policy_version: {const: 'F05-B/2'}
+        projection_revision: {type: integer, minimum: 1}
+        warnings:
+          type: array
+          items: {enum: [WITHDRAW_ALL_INCLUDES_UNATTRIBUTED, WITHDRAW_ALL_INCLUDES_RESTRICTED]}
+        lots:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [id, deal_id, escrow_id, account, amount_atomic, kind, settlement_event, withdrawal_event, provenance]
+            properties:
+              id: {type: string}
+              deal_id: {type: [string, 'null'], format: uuid}
+              provenance: {enum: [TA_MATCHED, UNATTRIBUTED, RESTRICTED]}
+              escrow_id: {$ref: '#/components/schemas/Hash'}
+              account: {$ref: '#/components/schemas/Address'}
+              amount_atomic: {$ref: '#/components/schemas/Atomic'}
+              kind: {enum: [refund, proceeds]}
+              settlement_event: {type: string}
+              withdrawal_event: {type: [string, 'null']}
+        withdrawals:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [event, account, amount_atomic, allocations]
+            properties:
+              event: {type: string}
+              account: {$ref: '#/components/schemas/Address'}
+              amount_atomic: {$ref: '#/components/schemas/Atomic'}
+              allocations:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  required: [lot_id, deal_id, amount_atomic, provenance]
+                  properties:
+                    lot_id: {type: string}
+                    deal_id: {type: [string, 'null'], format: uuid}
+                    provenance: {enum: [TA_MATCHED, UNATTRIBUTED, RESTRICTED]}
+                    amount_atomic: {$ref: '#/components/schemas/Atomic'}
     ChainId: {type: integer, enum: [31337, 80002]}
     Hash: {type: string, pattern: '^0x[0-9a-f]{64}$'}
     Address: {type: string, pattern: '^0x[0-9a-f]{40}$'}
@@ -178,13 +310,16 @@ components:
       properties:
         action:
           type: string
-          enum: [create, accept, cancelUnaccepted, submitDelivery, approveDelivery, dispute, escalateOverdue, finalize, resolve, withdraw]
+          enum: [create, accept, cancelUnaccepted, submitDelivery, approveDelivery, dispute, escalateOverdue, finalize, resolve]
         chain_id: {$ref: '#/components/schemas/ChainId'}
         expected_terms_hash: {$ref: '#/components/schemas/Hash'}
         evidence_commitment: {$ref: '#/components/schemas/Hash'}
         reason_commitment: {$ref: '#/components/schemas/Hash'}
         payer_amount_atomic: {$ref: '#/components/schemas/Atomic'}
+        terms_version: {type: integer, const: 2}
       allOf:
+        - if: {properties: {action: {const: create}}}
+          then: {required: [terms_version]}
         - if: {properties: {action: {const: accept}}}
           then: {required: [expected_terms_hash]}
         - if: {properties: {action: {enum: [submitDelivery, approveDelivery]}}}
@@ -197,7 +332,9 @@ components:
       type: object
       description: |
         For create, the service reads only the immutable deal_terms snapshot.
-        create(bytes32 nonce, ...) takes escrow_nonce, NOT escrow_id.
+        V2 create(bytes32 nonce, ..., uint16 termsVersion) requires termsVersion=2.
+        The ABI selector and termsHash domain differ from V1; invalidate/reissue old intents.
+        The first argument is escrow_nonce, NOT escrow_id.
         escrow_id = keccak256(abi.encode(keccak256("TRANS_ATLAS_ESCROW_ID_V1"),
         uint256(chain_id), escrow_contract, payer_wallet, escrow_nonce)).
         Include escrow_id and escrow_nonce for a create response; no client-supplied override.
@@ -225,7 +362,7 @@ components:
     Escrow:
       type: object
       additionalProperties: false
-      required: [deal_id, escrow_id, chain_id, state, amount_atomic, terms_hash, last_finalized_event_id]
+      required: [deal_id, escrow_id, chain_id, state, amount_atomic, terms_hash, last_finalized_event_id, terms_version, review_period_seconds, delivery_submitted_at, review_by]
       properties:
         deal_id: {type: string, format: uuid}
         escrow_id: {$ref: '#/components/schemas/Hash'}
@@ -235,6 +372,22 @@ components:
         terms_hash: {$ref: '#/components/schemas/Hash'}
         last_finalized_event_id: {type: string, format: uuid}
         transaction_status: {$ref: '#/components/schemas/TxState'}
+        terms_version: {type: integer, const: 2}
+        review_period_seconds: {type: integer, const: 172800}
+        delivery_submitted_at:
+          type: [string, 'null']
+          format: date-time
+          description: Canonical submitDelivery block timestamp, not notification time
+        review_by:
+          type: [string, 'null']
+          format: date-time
+          description: submittedAt + 48 calendar hours; expiry never means automatic payout
+      allOf:
+        - if: {properties: {state: {enum: [DELIVERED, ACCEPTED]}}}
+          then:
+            properties:
+              delivery_submitted_at: {type: string, format: date-time}
+              review_by: {type: string, format: date-time}
     Problem:
       type: object
       required: [type, title, status, code]
@@ -245,6 +398,16 @@ components:
         code: {type: string}
         detail: {type: string}
   responses:
+    MethodNotAllowed:
+      description: HTTP method not allowed on this wallet route
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
+    TooLarge:
+      description: Request body exceeds 4096 bytes
+      content:
+        application/problem+json:
+          schema: {$ref: '#/components/schemas/Problem'}
     Unauthorized:
       description: Missing or invalid authentication
       content:
@@ -271,7 +434,16 @@ components:
         application/problem+json:
           schema: {$ref: '#/components/schemas/Problem'}
     Unavailable:
-      description: RPC/DB unavailable or reconciliation halted; never synthesize success
+      description: Stable RECONCILIATION_UNAVAILABLE and correlation_id; never internal reasons or stale success
       content:
         application/problem+json:
-          schema: {$ref: '#/components/schemas/Problem'}
+          schema:
+            allOf:
+              - {$ref: '#/components/schemas/Problem'}
+              - type: object
+                required: [code, correlation_id]
+                properties:
+                  status: {const: 503}
+                  title: {const: Reconciliation unavailable}
+                  code: {const: RECONCILIATION_UNAVAILABLE}
+                  correlation_id: {type: string, format: uuid}

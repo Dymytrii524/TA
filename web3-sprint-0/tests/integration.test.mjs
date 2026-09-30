@@ -2,6 +2,8 @@
 import {JsonRpcProvider,ContractFactory,Interface,keccak256,toUtf8Bytes,toQuantity} from 'ethers';
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {reviewClock,reviewAction} from '../runtime/review.mjs';
 import {deriveEscrowId} from '../tools/escrow-identity.mjs';
 import {createFixture,recordFunding,project} from './p1-fixture.mjs';
 const url=process.env.ANVIL_URL??'http://127.0.0.1:8545';
@@ -17,6 +19,31 @@ const pass=s=>{checks++;console.log(`PASS ${s}`)};
 const send=async p=>{const receipt=await(await p).wait();assert.equal(receipt.status,1);return receipt};
 const mine=async()=>{await rpc.send('evm_mine',[]);await rpc.send('evm_mine',[])};
 const hash=s=>keccak256(toUtf8Bytes(s));
+// Integration adapter: consume only receipts already finalized by Projection.
+async function persistReviewState(db,contract,id,receipt,state,clocks=null){
+  await db.transaction(async tx=>{
+    await tx.query(`INSERT INTO web3.chain_transactions
+      (chain_id,tx_hash,state,block_hash,block_number,receipt_success)
+      VALUES(31337,$1,'finalized',$2,$3,true)`,[receipt.hash,receipt.blockHash,receipt.blockNumber]);
+    let stateId;
+    for(const log of receipt.logs.filter(l=>l.address.toLowerCase()===contract.toLowerCase())){
+      const parsed=new Interface(escrowArtifact.abi).parseLog(log);
+      if(!['EvidenceSubmitted','StateChanged'].includes(parsed.name))continue;
+      const eid=randomUUID();
+      const payload=parsed.name==='StateChanged'?{state}:{commitment:parsed.args.commitment,
+        submittedAt:String(parsed.args.submittedAt),reviewBy:String(parsed.args.reviewBy)};
+      await tx.query(`INSERT INTO web3.chain_events
+        (id,chain_id,tx_hash,block_hash,log_index,contract_address,escrow_id,event_kind,payload,finalized)
+        VALUES($1,31337,$2,$3,$4,$5,$6,$7,$8::jsonb,true)`,
+        [eid,receipt.hash,receipt.blockHash,log.index,contract.toLowerCase(),id,parsed.name,JSON.stringify(payload)]);
+      if(parsed.name==='StateChanged')stateId=eid;
+    }
+    if(clocks)await tx.query(`UPDATE web3.escrows SET state=$1,last_event_id=$2,
+      delivery_submitted_at=$3,review_by=$4 WHERE escrow_id=$5`,
+      [state,stateId,clocks.delivery_submitted_at,clocks.review_by,id]);
+    else await tx.query('UPDATE web3.escrows SET state=$1,last_event_id=$2 WHERE escrow_id=$3',[state,stateId,id]);
+  });
+}
 
 // Acceptance fixture, not production indexer. Two-block rule is LOCAL ONLY.
 class Projection {
@@ -56,7 +83,7 @@ try{
   const ts=Number((await rpc.send('eth_getBlockByNumber',['latest',false])).timestamp);
   const snapshot=await rpc.send('evm_snapshot',[]);
   const orphan=hash('orphan');
-  const orphanReceipt=await send(escrow.create(orphan,addr[1],100n,ts+3600,ts+864000,hash('terms')));
+  const orphanReceipt=await send(escrow.create(orphan,addr[1],100n,ts+3600,ts+864000,hash('terms'),2));
   assert.equal(await projection.consume(orphanReceipt),'included');
   assert.equal(projection.states.size,0);pass('unconfirmed receipt does not project');
   assert.equal(await rpc.send('evm_revert',[snapshot]),true);
@@ -70,7 +97,7 @@ try{
     payer:addr[0],carrier:addr[1],arbiter:addr[3],backup:addr[4],nonce,
     amount:amount.toString(),acceptBy:ts+3600,deliveryBy:ts+864000,agreement:hash('terms')});
   fundingDb=fixture.db;
-  let receipt=await send(escrow.create(nonce,addr[1],amount,ts+3600,ts+864000,hash('terms')));
+  let receipt=await send(escrow.create(nonce,addr[1],amount,ts+3600,ts+864000,hash('terms'),2));
   await mine();assert.equal(await projection.consume(receipt),'finalized');
   assert.equal(projection.states.get(id),1);pass('finalized funding projection');
   // P1 bridge: real decoded ABI -> finalized-block getDeal -> frozen SQL snapshot.
@@ -106,10 +133,31 @@ try{
   await assert.rejects(()=>escrow.connect(s[5]).accept.staticCall(id,terms));pass('unauthorized transaction simulation rejected');
   receipt=await send(escrow.connect(s[1]).accept(id,terms));await mine();await projection.consume(receipt);
   assert.equal(projection.states.get(id),2);
+  await persistReviewState(fundingDb,eaddr,id,receipt,'ACTIVE');
   const evidence=hash('private evidence + random secret nonce fixture');
+  const deliverySnapshot=await rpc.send('evm_snapshot',[]);
+  await rpc.send('evm_setNextBlockTimestamp',[fixture.t.deliveryBy-10]);
+  const orphanDelivery=await send(escrow.connect(s[1]).submitDelivery(id,evidence));
+  assert.equal(await projection.consume(orphanDelivery),'included');
+  await rpc.send('evm_revert',[deliverySnapshot]);
+  await assert.rejects(()=>projection.consume(orphanDelivery),/orphaned/);
+  assert.equal((await fundingDb.query('SELECT review_by FROM web3.escrows')).rows[0].review_by,null);
+  pass('F07 orphan delivery does not publish a review clock');
+  await rpc.send('evm_setNextBlockTimestamp',[fixture.t.deliveryBy]);
   receipt=await send(escrow.connect(s[1]).submitDelivery(id,evidence));await mine();await projection.consume(receipt);
   assert.equal(projection.states.get(id),3);pass('carrier delivery does not pay');
-  receipt=await send(escrow.approveDelivery(id,evidence));await mine();await projection.consume(receipt);
+  const delivered=await escrow.getDeal(id,{blockTag:receipt.blockNumber});
+  const clock=reviewClock(delivered);
+  assert.equal(delivered.deliverySubmittedAt,BigInt(fixture.t.deliveryBy));
+  assert.equal(delivered.reviewBy,BigInt(fixture.t.deliveryBy+172800));
+  await persistReviewState(fundingDb,eaddr,id,receipt,'DELIVERED',clock);
+  const savedClock=(await fundingDb.query('SELECT delivery_submitted_at,review_by FROM web3.escrows')).rows[0];
+  assert.equal(new Date(savedClock.review_by).toISOString(),clock.review_by);
+  pass('F07 real deadline delivery ABI -> SQL -> API clock is 48 hours');
+  const approvedData=reviewAction({deal:delivered,id,actor:addr[0],action:'approveDelivery',
+    evidence,now:BigInt(fixture.t.deliveryBy+2)});
+  receipt=await send(s[0].sendTransaction({to:eaddr,data:approvedData}));await mine();await projection.consume(receipt);
+  pass('F07 versioned approval calldata succeeds after deliveryBy');
   assert.equal(projection.states.get(id),4);
   await assert.rejects(()=>escrow.finalize.staticCall(id));pass('challenge window enforced over RPC');
   await rpc.send('evm_increaseTime',[86400]);await mine();

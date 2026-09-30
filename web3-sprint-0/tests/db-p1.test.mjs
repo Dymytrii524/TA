@@ -104,8 +104,8 @@ try {
   });
   await scenario('F03 projection TRUNCATE blocked',()=>reject(
     ()=>db.exec('TRUNCATE web3.escrows'),/append-only/));
-  await scenario('F02 terms TRUNCATE blocked',()=>reject(
-    ()=>db.exec('TRUNCATE web3.deal_terms'),/append-only/));
+  await scenario('F02 terms TRUNCATE CASCADE blocked including mapping approvals',()=>reject(
+    ()=>db.exec('TRUNCATE web3.deal_terms CASCADE'),/append-only/));
   await scenario('F03 funding reference immutable',async()=>{
     await recordFunding(db,t);await project(db,t);
     await reject(()=>db.query('UPDATE web3.escrows SET funding_event_id=$1',[u(21)]),

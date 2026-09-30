@@ -26,7 +26,7 @@ contract Handler is TestBase {
         t.mint(P,amount);
         vm.startPrank(P);
         t.approve(address(e),amount);
-        bytes32 id=e.create(nonce,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+3 days),COM);
+        bytes32 id=e.create(nonce,C,amount,uint64(block.timestamp+1 days),uint64(block.timestamp+3 days),COM,2);
         vm.stopPrank();
         ids.push(id); ghostDeposits+=amount; successfulTransitions++;
     }
@@ -38,7 +38,8 @@ contract Handler is TestBase {
             if(block.timestamp>d.acceptBy){ vm.prank(P); e.cancelUnaccepted(id); }
             else { vm.prank(C); e.accept(id,d.termsHash); }
         } else if(d.state==E.State.Active || d.state==E.State.Delivered){
-            if(block.timestamp>d.deliveryBy){ e.escalateOverdue(id); }
+            uint64 deadline=d.state==E.State.Delivered?d.reviewBy:d.deliveryBy;
+            if(block.timestamp>deadline){ e.escalateOverdue(id); }
             else if(challenge){ vm.prank(P); e.dispute(id,COM); }
             else if(d.state==E.State.Active){ vm.prank(C); e.submitDelivery(id,COM); }
             else { vm.prank(P); e.approveDelivery(id,COM); }

@@ -1,0 +1,112 @@
+No files changed, compilation skipped
+
+Ran 35 tests for test/Escrow.t.sol:EscrowTest
+[PASS] testAmoyWrongTokenBlocked() (gas: 66468)
+[PASS] testBackupAtBoundary() (gas: 303375)
+[PASS] testBackupCannotResolveEarly() (gas: 269964)
+[PASS] testBlockedWithdrawalRetainsClaim() (gas: 385090)
+[PASS] testBoundaryDisputeClosed() (gas: 352953)
+[PASS] testCarrierAcceptsExactDeadline() (gas: 266768)
+[PASS] testChainChangeRejected() (gas: 251868)
+[PASS] testDisputeBlocksRelease() (gas: 322507)
+[PASS] testDonationDoesNotCreateLiability() (gas: 262948)
+[PASS] testDoubleSettlementRejected() (gas: 351714)
+[PASS] testDoubleWithdrawRejected() (gas: 349729)
+[PASS] testFeeTokenRejectedAtomically() (gas: 284385)
+[PASS] testFuzzConservation(uint96,uint96) (runs: 2048, μ: 330021, ~: 332100)
+[PASS] testHappyPath() (gas: 352195)
+[PASS] testIdReplayRejected() (gas: 254262)
+[PASS] testIntakePausePreservesExit() (gas: 289656)
+[PASS] testLateAcceptanceBlocked() (gas: 260971)
+[PASS] testMainnetDeploymentBlocked() (gas: 63192)
+[PASS] testNoGpsAutoRelease() (gas: 309997)
+[PASS] testNoPrematureRelease() (gas: 315965)
+[PASS] testOnlyCarrierAccepts() (gas: 260085)
+[PASS] testOnlyCarrierSubmits() (gas: 263952)
+[PASS] testOnlyPayerApproves() (gas: 310487)
+[PASS] testOverAllocationRejected() (gas: 270233)
+[PASS] testOverdueEscalationNoSilentPayout() (gas: 323979)
+[PASS] testPayerCannotCancelEarly() (gas: 252235)
+[PASS] testPayerRefundAfterAcceptanceDeadline() (gas: 291628)
+[PASS] testSplitResolution() (gas: 321533)
+[PASS] testTokenPauseDepositRollback() (gas: 237950)
+[PASS] testTransferCallbackCannotReenter() (gas: 300707)
+[PASS] testUnauthorizedPause() (gas: 9035)
+[PASS] testUnauthorizedResolver() (gas: 269908)
+[PASS] testWrongEvidence() (gas: 310891)
+[PASS] testWrongTerms() (gas: 252219)
+[PASS] testZeroAndTooLargeAmounts() (gas: 33708)
+Suite result: ok. 35 passed; 0 failed; 0 skipped; finished in 850.85ms (850.00ms CPU time)
+
+Ran 16 tests for test/F07Regression.t.sol:F07RegressionTest
+[PASS] testF07ApprovalAfterReviewBoundaryRejected() (gas: 324784)
+[PASS] testF07ApprovalAtReviewBoundary() (gas: 323942)
+[PASS] testF07ApprovalBeforeReviewBoundary() (gas: 317470)
+[PASS] testF07DeadlineDeliveryGetsFull48Hours() (gas: 323177)
+[PASS] testF07DeliveredCannotEscalateOnOldDeadline() (gas: 321237)
+[PASS] testF07DeliveryJustBeforeDeadline() (gas: 311437)
+[PASS] testF07DirectDisputeAfterReviewExpiry() (gas: 318574)
+[PASS] testF07DisputeWinsAgainstLaterApproval() (gas: 314910)
+[PASS] testF07EarlyDeliveryStartsClockImmediately() (gas: 315395)
+[PASS] testF07LateSubmissionRejected() (gas: 268912)
+[PASS] testF07LegacyCreateSelectorRejected() (gas: 12220)
+[PASS] testF07NoClockResetOnRepeatDelivery() (gas: 313577)
+[PASS] testF07SilenceNeverCreatesClaims() (gas: 315100)
+[PASS] testF07TermsV2IncludesReviewPeriod() (gas: 264115)
+[PASS] testF07Uint64OverflowRejected() (gas: 24555)
+[PASS] testF07WrongTermsVersionRejected() (gas: 17521)
+Suite result: ok. 16 passed; 0 failed; 0 skipped; finished in 2.48ms (1.99ms CPU time)
+
+Ran 4 tests for test/P1Regression.t.sol:P1RegressionTest
+[PASS] testP1AttackerCannotOccupyVictimId() (gas: 500902)
+[PASS] testP1DerivedIdMatchesDomainAndContract() (gas: 1826568)
+[PASS] testP1SettledNonceCannotBeReusedBySamePayer() (gas: 270765)
+[PASS] testP1ZeroNonceRejected() (gas: 17366)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 739.99µs (438.76µs CPU time)
+
+Ran 3 tests for test/Invariant.t.sol:EscrowInvariantTest
+[PASS] invariantConservation() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantLockedMatchesDeals() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+[PASS] invariantSolvent() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------+----------+-------+---------+----------╮
+| Contract | Selector | Calls | Reverts | Discards |
++==================================================+
+| Handler  | advance  | 8280  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | create   | 8207  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | step     | 8145  | 0       | 0        |
+|----------+----------+-------+---------+----------|
+| Handler  | withdraw | 8136  | 0       | 0        |
+╰----------+----------+-------+---------+----------╯
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 29.53s (41.85s CPU time)
+
+Ran 4 test suites in 29.55s (30.39s CPU time): 58 tests passed, 0 failed, 0 skipped (58 total tests)
