@@ -70,6 +70,7 @@ jobs:
           node tests/wallet-integration.test.mjs
           node tests/subsets.test.mjs
           node tests/http-errors.test.mjs
+          node tests/wallet-id.test.mjs
           node tools/r21_mutations.mjs
           WEB3_TEST_DATABASE_URL=postgres://web3_test:local-ci-only@127.0.0.1:5432/ta_web3_test node tests/subsets.test.mjs
       - name: Disposable PostgreSQL backup and restore

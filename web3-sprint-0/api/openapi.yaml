@@ -204,7 +204,16 @@ components:
       name: binding_id
       in: path
       required: true
-      schema: {type: string, format: uuid}
+      description: |
+        Hyphenated UUID (8-4-4-4-12 hexadecimal digits, either case).
+        Malformed wallet paths return 404 before SQL/RPC, after authentication.
+        Well-formed unknown, foreign or revoked bindings return 403.
+      schema:
+        type: string
+        format: uuid
+        minLength: 36
+        maxLength: 36
+        pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
     DealId:
       name: deal_id
       in: path

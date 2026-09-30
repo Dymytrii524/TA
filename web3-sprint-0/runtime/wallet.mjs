@@ -15,6 +15,9 @@ const atomic=x=>{
   return BigInt(x);
 };
 const lower=x=>x.toLowerCase();
+const bindingIdPattern=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const validBindingId=id=>typeof id==='string'&&id.length===36&&bindingIdPattern.test(id);
+const requireBindingId=id=>{if(!validBindingId(id))fail('invalid wallet binding id',422)};
 const key=e=>`${e.blockHash}:${e.txHash}:${e.logIndex}`;
 const position=e=>[e.blockNumber,e.transactionIndex,e.logIndex];
 const cmp=(a,b)=>{for(let i=0;i<3;i++){const d=position(a)[i]-position(b)[i];if(d)return d}return 0};
@@ -209,6 +212,7 @@ export async function reconcileWallet(db,rpc,chainId,{localConfirmations=2}={}){
 }
 
 export async function authorizeWallet(db,userId,bindingId,lock=false){
+  requireBindingId(bindingId);
   const b=(await db.query(`SELECT b.*,n.escrow_address,n.token_address FROM web3.wallet_bindings b
     JOIN web3.wallet_permissions p ON p.company_id=b.company_id
     JOIN web3.networks n ON n.chain_id=b.chain_id
@@ -218,6 +222,7 @@ export async function authorizeWallet(db,userId,bindingId,lock=false){
   return b;
 }
 export async function prepareWithdrawal(db,userId,bindingId,idempotencyKey,body,snapshot){
+  requireBindingId(bindingId);
   if(typeof idempotencyKey!=='string'||idempotencyKey.length<16||idempotencyKey.length>128)fail('invalid idempotency key',422);
   if(!body||Object.keys(body).sort().join(',')!=='action,chain_id'||body.action!=='withdraw')fail('invalid wallet request',422);
   const requestHash='0x'+createHash('sha256').update(JSON.stringify({action:body.action,chain_id:body.chain_id})).digest('hex');
@@ -255,8 +260,8 @@ export function walletHandler({db,rpc,authenticate=async()=>null,
     try{
       const user=await authenticate(req);
       if(!user?.id)fail('unauthenticated',401);
-      const match=new URL(req.url,'http://localhost').pathname.match(/^\/api\/v1\/web3\/wallets\/([0-9a-f-]{36})\/(claims|intents)$/);
-      if(!match)fail('not found',404);
+      const match=new URL(req.url,'http://localhost').pathname.match(/^\/api\/v1\/web3\/wallets\/([^/]+)\/(claims|intents)$/);
+      if(!match||!validBindingId(match[1]))fail('not found',404);
       const binding=await authorizeWallet(db,user.id,match[1]);
       if((match[2]==='claims'&&req.method!=='GET')||(match[2]==='intents'&&req.method!=='POST'))fail('method not allowed',405);
       let body;
